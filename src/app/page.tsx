@@ -24,7 +24,7 @@ export default function Home() {
             <Link href="/reading">Listening</Link>
           </div>
           <div className=" bg-emerald-400 row-span-2 rounded-lg">
-            <Link href="/reading">AI CHAT</Link>
+            <Link href="/chat">AI CHAT</Link>
           </div>
           <div className=" bg-emerald-400 rounded-lg"></div>
         </div>
