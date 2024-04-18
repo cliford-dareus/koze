@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
+import MainNavigation from "@/components/main-navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +24,7 @@ export default function RootLayout({
         }
       >
         <main className="h-full ">{children}</main>
-        <div className="absolute bottom-4 left-4 right-4 border border-slate-700 rounded-full h-[50px]">
-          <button>Home</button>
-        </div>
+        <MainNavigation />
       </body>
     </html>
   );

@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="flex gap-4">
           <Link href=".">{"<"} Back</Link>
         </div>
-        <div className="mt-2 bg-slate-900 shadow p-4 rounded-lg">
+        <div className="mt-2 bg-slate-200 shadow p-4 rounded-lg">
           <h1 className="text-xl font-bold">AI</h1>
           <h1 className="text-3xl font-bold w-[80%]">
             Lets Learn something new
