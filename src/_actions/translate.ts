@@ -11,10 +11,30 @@ export const translate = async (text: string, from: string, to: string) => {
     });
 
     if (!res.ok) throw new Error("Something went wrong");
-    
+
     const data = await res.json();
     return data;
   } catch (error) {
     console.log(error);
   }
 };
+
+export async function getData() {
+  try {
+    var category = "happiness";
+    const response = await fetch(
+      `https://api.api-ninjas.com/v1/quotes?category=" ${category}`,
+      {
+        method: "GET",
+        headers: {
+          "X-Api-Key": "YOUR_API_KEY",
+        },
+      }
+    );
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+}

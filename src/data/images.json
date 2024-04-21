@@ -1,0 +1,66 @@
+{
+  "animals": [
+    {
+      "url": "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg",
+      "description": "Green Perched Parakeet sitting on a branch"
+    },
+    {
+      "url": "https://images.pexels.com/photos/67552/giraffe-tall-mammal-africa-67552.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "A Brown Giraffe from Africa Walking on Brown Grass, it is very tall"
+    },
+    {
+      "url": "https://images.pexels.com/photos/162140/duckling-birds-yellow-fluffy-162140.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Duckling with yellow fllufy feathers on Black Soil during Daytime"
+    },
+    {
+      "url": "https://images.pexels.com/photos/17811/pexels-photo.jpg",
+      "description": "Black and Green Toucan on Tree Branch"
+    },
+    {
+      "url": "https://images.pexels.com/photos/219906/pexels-photo-219906.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "A Brown Deer Near Withered Tree with a blue bird sitting on its horn"
+    },
+    {
+      "url": "https://images.pexels.com/photos/162203/panthera-tigris-altaica-tiger-siberian-amurtiger-162203.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Tiger Standing on the Grey Concrete Pavement"
+    },
+    {
+      "url": "https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "an Adult Black Pug"
+    },
+    {
+      "url": "https://images.pexels.com/photos/3551498/pexels-photo-3551498.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Two Gray Elephants on the forest."
+    },
+    {
+      "url": "https://images.pexels.com/photos/460961/pexels-photo-460961.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Brown and Black Bee on Yellow Flower"
+    },
+    {
+      "url": "https://images.pexels.com/photos/750539/pexels-photo-750539.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Zebras Standing on an Open Field"
+    },
+    {
+      "url": "https://images.pexels.com/photos/36762/scarlet-honeyeater-bird-red-feathers.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Red and Black feathers Bird, called scarlet Honeyeater standing on Red Flowers."
+    },
+    {
+      "url": "https://images.pexels.com/photos/1575857/pexels-photo-1575857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Brown Llama Standing on outside in the snow"
+    }
+  ],
+  "nature": [
+    {
+      "url": "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Yellow and Black Car on Road" 
+    },
+    {
+      "url": "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Yellow and Black Car on Road" 
+    },
+    {
+      "url": "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Yellow and Black Car on Road"    
+    }
+  ]
+}

@@ -52,8 +52,8 @@ const Translation = (props: Props) => {
 
   return (
     <div className="mt-auto h-[50vh]">
-      <div className="flex flex-col items-center p-4 rounded-lg border border-slate-300 mt-auto h-full">
-        <div className="flex gap-4 items-center w-full">
+      <div className="flex flex-col items-center p-4 rounded-lg border border-slate-300 mt-auto h-full w-full">
+        <div className="flex gap-4 items-center w-[100%]">
           <Select
             value={selectedLanguage.from}
             onValueChange={(value) => handleLanguageChange("from", value)}
@@ -88,6 +88,7 @@ const Translation = (props: Props) => {
             </SelectContent>
           </Select>
         </div>
+
         <div className="flex flex-col h-full gap-4 mt-4 w-full">
           <div className="flex-1 border p-2 rounded-md">
             {!isLoading ? (
@@ -103,7 +104,7 @@ const Translation = (props: Props) => {
               value={textToTranslate}
               onChange={(e) => setTextToTranslate(e.target.value)}
             />
-            <Button type="submit">Translate</Button>
+            <Button className="bg-indigo-400" type="submit">Translate</Button>
           </form>
         </div>
       </div>

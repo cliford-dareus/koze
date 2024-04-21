@@ -1,5 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import Translate from "../../public/language-translator.png";
+import Reading from "../../public/book.png";
+import Listening from "../../public/music-app.png";
 
 export default function Home() {
   return (
@@ -13,20 +16,32 @@ export default function Home() {
 
       <div>
         <div className="mt-4 grid auto-rows-[10vh] grid-cols-2 gap-4 mx-auto grid-rows-5">
-          <div className=" bg-emerald-400 row-span-2 rounded-lg">
-            <Link href="/translation">Translate</Link>
+          <div className=" bg-slate-100 row-span-2 rounded-lg shadow-md relative ">
+            <Link className="w-full h-full absolute inset-0 p-2 overflow-hidden" href="/translation">
+              <p className="font-bold">TRANSLATE</p>
+              <Image className="absolute -bottom-3  object-cover w-full h-full" src={Translate}  alt="translate" />
+            </Link>
           </div>
-          <div className="h-[10vh] bg-emerald-400 rounded-lg"></div>
-          <div className=" bg-emerald-400 row-span-2 rounded-lg">
-            <Link href="/reading">Reading</Link>
+          <div className="h-[10vh] rounded-lg shadow-md bg-indigo-500"></div>
+          <div className=" bg-slate-100 row-span-2 rounded-lg shadow-md relative ">
+            <Link className="w-full h-full absolute inset-0 p-2 overflow-hidden"  href="/reading">
+              <p className="font-bold">READING</p>
+              <Image className="absolute -bottom-3 -right-5 object-cover w-full h-full" src={Reading} width={100} height={100} alt="translate" />
+            </Link>
           </div>
-          <div className=" bg-emerald-400 row-span-2 rounded-lg">
-            <Link href="/reading">Listening</Link>
+          <div className=" bg-slate-100 row-span-2 rounded-lg shadow-md relative ">
+            <Link className="w-full h-full absolute inset-0 p-2 overflow-hidden"  href="/listening">
+              <p className="font-bold">LISTENING</p>
+              <Image className="absolute -bottom-5 object-cover w-full h-full" src={Listening} width={100} height={100} alt="translate" />
+            </Link>
           </div>
-          <div className=" bg-emerald-400 row-span-2 rounded-lg">
-            <Link href="/chat">AI CHAT</Link>
+          <div className=" bg-slate-100 row-span-2 rounded-lg shadow-md relative ">
+            <Link className="w-full h-full absolute inset-0 p-2 overflow-hidden"  href="/chat">
+              <p className="font-bold">AI CHAT</p>
+              <Image className="absolute inset-0 object-cover w-full h-full "  src={Translate} width={100} height={100} alt="translate" />
+            </Link>
           </div>
-          <div className=" bg-emerald-400 rounded-lg"></div>
+          <div className=" bg-blue-400 rounded-lg shadow-md"></div>
         </div>
       </div>
     </div>

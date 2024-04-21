@@ -4,6 +4,7 @@ import { getData } from "@/_actions/chat";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useCallback, useState } from "react";
 
 type Props = {
@@ -42,6 +43,8 @@ const initialQuestion = {
 } as InitialType;
 
 const Chat = ({ params }: Props) => {
+  const [start, setStart] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [state, setState] = useState(initialQuestion);
   const [data, setData] = React.useState<ResponseType | null>(null);
   const [formData, setFormData] = React.useState<FormDataType>(initialFormData);
@@ -89,22 +92,49 @@ const Chat = ({ params }: Props) => {
     setState((prev) => ({ ...prev, ...newData }));
   };
 
-  const shuffle =useCallback( (array: string[]) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array.sort(() => Math.random() - 0.5);
-  }, [state]);
+  const shuffle = useCallback(
+    (array: string[]) => {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array.sort(() => Math.random() - 0.5);
+    },
+    [state.wrong_answer, state.correct_answer]
+  );
 
   React.useEffect(() => {
     formatText();
   }, [data]);
 
+  if (!start)
+    return (
+      <div className="h-full p-4">
+        <Button>
+          <Link href= ".">Back</Link>
+        </Button>
+        <Button
+          onClick={async () => {
+            const data = await getData({
+              prompt: "hello",
+              category: `${params.slug}`,
+            });
+            setData(data);
+            setStart(true);
+          }}
+        >
+          Start
+        </Button>
+      </div>
+    );
+
   return (
     <div className="h-full p-4">
       <div className="h-[40vh] relative bg-slate-200 rounded-lg">
-        <img src={state.image} className="w-full h-full absolute inset-0" />
+        <img
+          src={state.image}
+          className="w-full h-full absolute inset-0 object-cover"
+        />
       </div>
       <div className="mt-4">
         <div className="min-h-[50px] bg-slate-200 rounded-lg">
