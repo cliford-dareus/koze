@@ -1,30 +1,43 @@
-import getTTS from "@/_actions/text-to-speech";
 import TextToSpeechButton from "@/components/text-to-speech-button";
-import { LucideSpeaker, LucideSpeech } from "lucide-react";
-import React from "react";
-import fs from "fs";
-import { Button } from "@/components/ui/button";
+import { LucideSpeech } from "lucide-react";
+import { getRandomFacts } from "@/_actions/translate";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import DefinitionTranslationDrawer from "@/components/definition-translation-drawer";
 
 type Props = {};
 
 const Listening = async (props: Props) => {
-  //   const data = await getTTS("en", "Good morning! How are you today?");
-  const data = "";
+  const randomFact = await getRandomFacts();
 
   return (
     <div className="h-full">
-      <div className="border rounded-md p-4 h-[20vh]"></div>
+      <div className="border rounded-md p-4 h-[25vh]">
+        <p>{randomFact?.text}</p>
+        <p className="font-medium mt-4 italic">"{randomFact?.author}"</p>
+      </div>
       <div className="border rounded-md p-4 mt-4">
-        <TextToSpeechButton data={data}>
+        <TextToSpeechButton
+          classnames="rounded bg-gradient-to-br from-indigo-500 to-slate-500 text-white"
+          text={randomFact?.text as unknown as string}
+        >
           <LucideSpeech size={50} />
-          <p>Tap to Listen</p>
+          <p className="font-bold">Tap to Listen</p>
         </TextToSpeechButton>
       </div>
-      <div className="border rounded-md p-4 mt-4 flex gap-2 overflow-x-scroll">
-        {"Good morning! How are you today?".split(" ").map((word, index) => (
-          <Button key={index} className="">
-            <p>{word}</p>
-          </Button>
+
+      <div className="border rounded-md p-4 mt-4 h-[80px] flex gap-2 overflow-x-scroll">
+        {randomFact?.text.split(" ").map((word: string, index: number) => (
+          <Drawer>
+            <DrawerTrigger
+              className="bg-blue-400 px-4 py-2 rounded-md min-w-[100px] text-white"
+              key={index}
+            >
+              {word}
+            </DrawerTrigger>
+            <DrawerContent>
+              <DefinitionTranslationDrawer word={word} />
+            </DrawerContent>
+          </Drawer>
         ))}
       </div>
     </div>

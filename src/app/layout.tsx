@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import MainNavigation from "@/components/main-navigation";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,15 +18,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={
-          inter.className +
-          " max-w-3xl mx-auto relative h-screen overflow-hidden"
-        }
-      >
-        <main className="h-full ">{children}</main>
-        <MainNavigation />
-      </body>
+      <TooltipProvider>
+        <body
+          className={
+            inter.className +
+            " max-w-3xl mx-auto relative h-screen overflow-hidden"
+          }
+        >
+          <main className="h-full ">{children}</main>
+          <MainNavigation />
+        </body>
+      </TooltipProvider>
     </html>
   );
 }

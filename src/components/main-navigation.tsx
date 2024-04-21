@@ -1,4 +1,4 @@
-import { LucideHome } from "lucide-react";
+import { LucideBadgeInfo, LucideBrainCircuit, LucideHome, LucideLanguages } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -11,28 +11,28 @@ const MainNavigation = (props: Props) => {
         <li>
           <Link className="flex flex-col items-center" href="/">
             <LucideHome size={18} />
-            <p>HOME</p>
+            <p className="font-medium">HOME</p>
           </Link>
         </li>
 
         <li>
-          <Link className="flex flex-col items-center" href="/">
-            <LucideHome size={18} />
-            <p>TRANSLATE</p>
+          <Link className="flex flex-col items-center" href="/translation">
+            <LucideLanguages size={18} />
+            <p className="font-medium">TRANSLATE</p>
           </Link>
         </li>
 
         <li>
-          <Link className="flex flex-col items-center" href="/">
-            <LucideHome size={18} />
-           <p>AI QUIZ</p> 
+          <Link className="flex flex-col items-center" href="/chat">
+            <LucideBrainCircuit size={18} />
+            <p className="font-medium">AI QUIZ</p>
           </Link>
         </li>
 
         <li>
-          <Link className="flex flex-col items-center" href="/">
-            <LucideHome size={18} />
-            <p>ABOUT</p>
+          <Link className="flex flex-col items-center" href="/about">
+            <LucideBadgeInfo size={18} />
+            <p className="font-medium">ABOUT</p>
           </Link>
         </li>
       </ul>

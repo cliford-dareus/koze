@@ -1,3 +1,5 @@
+"use server";
+
 const voicerssApiKey = process.env.VOICERS_API_KEY!;
 
 const URL = "http://api.voicerss.org/";
@@ -13,6 +15,7 @@ const voices = {
 };
 
 export default async function getTTS(lang: string, text: string) {
+    console.log(lang)
   const options = {
     method: "POST",
     headers: {
