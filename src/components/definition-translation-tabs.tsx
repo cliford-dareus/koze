@@ -61,8 +61,8 @@ const DefinitionTranslationTabs = ({ word }: Props) => {
         </TabsList>
         <div className="max-h-[80vh] overflow-y-auto">
           <TabsContent value="definition">
-            {meaningBytype.map((content) => (
-              <article key={content.title}>
+            {meaningBytype.map((content, index) => (
+              <article key={index}>
                 <h3 className="text-xl">{content.title}</h3>
                 <ul className="list-decimal ml-4 mb-4">
                   {content.content.definitions.map((def) => (

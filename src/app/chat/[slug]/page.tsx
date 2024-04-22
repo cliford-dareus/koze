@@ -99,13 +99,12 @@ const Chat = ({ params }: Props) => {
         [array[i], array[j]] = [array[j], array[i]];
       }
       return array.sort(() => Math.random() - 0.5);
-    },
-    [state.wrong_answer, state.correct_answer]
+    },[]
   );
 
   React.useEffect(() => {
     formatText();
-  }, [data]);
+  }, [data, formatText]);
 
   if (!start)
     return (
@@ -131,9 +130,10 @@ const Chat = ({ params }: Props) => {
   return (
     <div className="h-full p-4">
       <div className="h-[40vh] relative bg-slate-200 rounded-lg">
-        <img
+        <Image
           src={state.image}
           className="w-full h-full absolute inset-0 object-cover"
+          alt="image"
         />
       </div>
       <div className="mt-4">
