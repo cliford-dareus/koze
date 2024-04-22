@@ -9,6 +9,8 @@ type Props = {};
 const Listening = async (props: Props) => {
   const randomFact = await getRandomFacts();
 
+  if(randomFact === null) return
+
   return (
     <div className="h-full">
       <div className="border rounded-md p-4 h-[25vh]">
@@ -27,17 +29,16 @@ const Listening = async (props: Props) => {
 
       <div className="border rounded-md p-4 mt-4 h-[80px] flex gap-2 overflow-x-scroll">
         {randomFact?.text.split(" ").map((word: string, index: number) => (
-          <Drawer key={index}>
-            <DrawerTrigger
-              className="bg-blue-400 px-4 py-2 rounded-md min-w-[100px] text-white"
-              
-            >
-              {word}
-            </DrawerTrigger>
-            <DrawerContent>
-              <DefinitionTranslationTabs word={word} />
-            </DrawerContent>
-          </Drawer>
+          <div key={index}>
+            <Drawer>
+              <DrawerTrigger className="bg-blue-400 px-4 py-2 rounded-md min-w-[100px] text-white">
+                {word}
+              </DrawerTrigger>
+              <DrawerContent>
+                <DefinitionTranslationTabs word={word} />
+              </DrawerContent>
+            </Drawer>
+          </div>
         ))}
       </div>
     </div>
