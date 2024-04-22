@@ -2,7 +2,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextRequest, NextResponse } from "next/server";
 import animals  from "@/data/images.json";
 
-const genAi = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY ?? "");
+const genAi = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 
 export async function POST(request: NextRequest) {
   const { prompt, instruction } = await request.json();

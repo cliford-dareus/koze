@@ -92,27 +92,23 @@ const Chat = ({ params }: Props) => {
     setState((prev) => ({ ...prev, ...newData }));
   };
 
-  const shuffle = useCallback(
-    (array: string[]) => {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array.sort(() => Math.random() - 0.5);
-    },[]
-  );
+  const shuffle = useCallback((array: string[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array.sort(() => Math.random() - 0.5);
+  }, []);
 
   React.useEffect(() => {
-    if (!data)
-      formatText();
+    formatText();
   }, [data]);
-
 
   if (!start)
     return (
       <div className="h-full p-4">
         <Button>
-          <Link href= ".">Back</Link>
+          <Link href=".">Back</Link>
         </Button>
         <Button
           onClick={async () => {
@@ -128,10 +124,6 @@ const Chat = ({ params }: Props) => {
         </Button>
       </div>
     );
-
-  if(!data){
-    return <div className="h-full p-4">Loading...</div>
-  }
 
   return (
     <div className="h-full p-4">
