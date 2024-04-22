@@ -41,14 +41,16 @@ const Translation = (props: Props) => {
   const handleTranslate = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+
     const data = await translate(
       textToTranslate,
       selectedLanguage.from,
       selectedLanguage.to
-    );
+   );
 
-    setResult(data?.response.data.translations.translatedText);
-    setIsLoading(false);
+    if (data?.response.data.translations.translatedText)
+      setResult(data?.response.data.translations.translatedText);
+      setIsLoading(false);
   };
 
   return (
