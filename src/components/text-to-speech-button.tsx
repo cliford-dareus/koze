@@ -41,7 +41,7 @@ const TextToSpeechButton = ({
       setData(audioData);
     };
     fetchAudio();
-  }, []);
+  });
 
   return (
     <button
