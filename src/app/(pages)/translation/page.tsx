@@ -1,6 +1,7 @@
 "use client";
 
 import { translate } from "@/_actions/translate";
+import TextToSpeechButton from "@/components/text-to-speech-button";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -10,7 +11,7 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
-import { LucideArrowLeftRight } from "lucide-react";
+import { LucideArrowLeftRight, LucidePlayCircle } from "lucide-react";
 import React, { useState } from "react";
 
 type Props = {};
@@ -26,8 +27,8 @@ const Translation = (props: Props) => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [textToTranslate, setTextToTranslate] = React.useState("");
   const [selectedLanguage, setSelectedLanguage] = React.useState({
-    from: "",
-    to: "",
+    from: "En",
+    to: "Fr",
   });
 
   const handleLanguageChange = (type: "from" | "to", value: string) => {
@@ -46,7 +47,7 @@ const Translation = (props: Props) => {
       selectedLanguage.to
     );
 
-    setResult(data.response.data.translations.translatedText);
+    setResult(data?.response.data.translations.translatedText);
     setIsLoading(false);
   };
 
@@ -54,6 +55,15 @@ const Translation = (props: Props) => {
     <div className="mt-auto h-[50vh]">
       <div className="flex flex-col items-center p-4 rounded-lg border border-slate-300 mt-auto h-full w-full">
         <div className="flex gap-4 items-center w-[100%]">
+          {result && (
+            <TextToSpeechButton
+              text={textToTranslate}
+              lang={selectedLanguage.from}
+              classnames="shadow-none"
+            >
+              <LucidePlayCircle />
+            </TextToSpeechButton>
+          )}
           <Select
             value={selectedLanguage.from}
             onValueChange={(value) => handleLanguageChange("from", value)}
@@ -87,6 +97,15 @@ const Translation = (props: Props) => {
               </SelectGroup>
             </SelectContent>
           </Select>
+          {result && (
+            <TextToSpeechButton
+              text={result}
+              lang={selectedLanguage.to}
+              classnames="shadow-none"
+            >
+              <LucidePlayCircle />
+            </TextToSpeechButton>
+          )}
         </div>
 
         <div className="flex flex-col h-full gap-4 mt-4 w-full">
@@ -104,7 +123,9 @@ const Translation = (props: Props) => {
               value={textToTranslate}
               onChange={(e) => setTextToTranslate(e.target.value)}
             />
-            <Button className="bg-indigo-400" type="submit">Translate</Button>
+            <Button className="bg-indigo-400" type="submit">
+              Translate
+            </Button>
           </form>
         </div>
       </div>

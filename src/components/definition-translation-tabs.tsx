@@ -11,7 +11,7 @@ type Props = {
   word: string;
 };
 
-const DefinitionTranslationDrawer = ({ word }: Props) => {
+const DefinitionTranslationTabs = ({ word }: Props) => {
   const [meaningBytype, setMeaningBytype] = React.useState<
     {
       title: string;
@@ -68,7 +68,7 @@ const DefinitionTranslationDrawer = ({ word }: Props) => {
                   {content.content.definitions.map((def) => (
                     <li className="mt-2" key={def.definition}>
                       {def.definition} <br />
-                      <span className="text-slate-300">
+                      <span className="text-slate-500">
                         {def.example ? `"${def.example}"` : null}
                       </span>
                       {def.synonyms.length > 0 && (
@@ -77,7 +77,7 @@ const DefinitionTranslationDrawer = ({ word }: Props) => {
                           {def.synonyms.map((syn) => (
                             <p
                               key={syn}
-                              className="ml-2 mt-1 border border-green-500 px-3 rounded-3xl cursor-pointer"
+                              className="ml-2 mt-1 border border-indigo-500 px-3 rounded-3xl cursor-pointer"
                             >
                               {syn}
                             </p>
@@ -125,4 +125,4 @@ const DefinitionTranslationDrawer = ({ word }: Props) => {
   );
 };
 
-export default DefinitionTranslationDrawer;
+export default DefinitionTranslationTabs;

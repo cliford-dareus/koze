@@ -2,7 +2,7 @@ import TextToSpeechButton from "@/components/text-to-speech-button";
 import { LucideSpeech } from "lucide-react";
 import { getRandomFacts } from "@/_actions/translate";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import DefinitionTranslationDrawer from "@/components/definition-translation-drawer";
+import DefinitionTranslationTabs from "@/components/definition-translation-tabs";
 
 type Props = {};
 
@@ -17,7 +17,7 @@ const Listening = async (props: Props) => {
       </div>
       <div className="border rounded-md p-4 mt-4">
         <TextToSpeechButton
-          classnames="rounded bg-gradient-to-br from-indigo-500 to-slate-500 text-white"
+          classnames="w-full rounded bg-gradient-to-br from-indigo-500 to-slate-500 text-white"
           text={randomFact?.text as unknown as string}
         >
           <LucideSpeech size={50} />
@@ -35,7 +35,7 @@ const Listening = async (props: Props) => {
               {word}
             </DrawerTrigger>
             <DrawerContent>
-              <DefinitionTranslationDrawer word={word} />
+              <DefinitionTranslationTabs word={word} />
             </DrawerContent>
           </Drawer>
         ))}

@@ -11,7 +11,12 @@ type Props = {
   children?: React.ReactNode;
 };
 
-const TextToSpeechButton = ({ text, lang = "en", classnames, children }: Props) => {
+const TextToSpeechButton = ({
+  text,
+  lang = "en",
+  classnames,
+  children,
+}: Props) => {
   const [data, setData] = React.useState<string | null>(null);
   const [isPlaying, setIsPlaying] = React.useState(false);
   let audio: HTMLAudioElement | null = null;
@@ -19,10 +24,9 @@ const TextToSpeechButton = ({ text, lang = "en", classnames, children }: Props) 
   const playAudio = async () => {
     if (audio !== null) {
       audio.pause();
-      audio.currentTime = 0;
     }
-
     audio = new Audio();
+    audio.currentTime = 0;
     audio.src = data!;
     audio.play();
     setIsPlaying(true);
@@ -42,7 +46,7 @@ const TextToSpeechButton = ({ text, lang = "en", classnames, children }: Props) 
   return (
     <button
       className={clsx(
-        "w-full flex items-center justify-center gap-4 p-4bg-slate-100 shadow-md",
+        "flex items-center justify-center gap-4 shadow-md",
         classnames
       )}
       onClick={playAudio}

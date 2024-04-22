@@ -63,7 +63,6 @@ export async function getRandomFacts() {
   }
 };
 
-
 export async function getDefinition(word: string) {
   try {
     const response = await fetch(

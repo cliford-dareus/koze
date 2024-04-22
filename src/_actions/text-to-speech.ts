@@ -15,7 +15,6 @@ const voices = {
 };
 
 export default async function getTTS(lang: string, text: string) {
-    console.log(lang)
   const options = {
     method: "POST",
     headers: {
