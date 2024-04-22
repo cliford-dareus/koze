@@ -103,8 +103,10 @@ const Chat = ({ params }: Props) => {
   );
 
   React.useEffect(() => {
-    formatText();
-  }, []);
+    if (!data)
+      formatText();
+  }, [data]);
+
 
   if (!start)
     return (
@@ -127,11 +129,15 @@ const Chat = ({ params }: Props) => {
       </div>
     );
 
+  if(!data){
+    return <div className="h-full p-4">Loading...</div>
+  }
+
   return (
     <div className="h-full p-4">
       <div className="h-[40vh] relative bg-slate-200 rounded-lg">
         <Image
-          src={state.image}
+          src={state?.image}
           className="w-full h-full absolute inset-0 object-cover"
           alt="image"
         />

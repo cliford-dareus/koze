@@ -57,10 +57,10 @@ const Translation = (props: Props) => {
     <div className="mt-auto h-[50vh]">
       <div className="flex flex-col items-center p-4 rounded-lg border border-slate-300 mt-auto h-full w-full">
         <div className="flex gap-4 items-center w-[100%]">
-          {result && (
+          {result && selectedLanguage && (
             <TextToSpeechButton
               text={textToTranslate}
-              lang={selectedLanguage.from}
+              lang={selectedLanguage.from.toLocaleLowerCase()}
               classnames="shadow-none"
             >
               <LucidePlayCircle />
@@ -99,10 +99,10 @@ const Translation = (props: Props) => {
               </SelectGroup>
             </SelectContent>
           </Select>
-          {result && (
+          {result &&  selectedLanguage && (
             <TextToSpeechButton
               text={result}
-              lang={selectedLanguage.to}
+              lang={selectedLanguage.to.toLocaleLowerCase()}
               classnames="shadow-none"
             >
               <LucidePlayCircle />
@@ -122,6 +122,7 @@ const Translation = (props: Props) => {
           <form className="h-[100px]" action="" onSubmit={handleTranslate}>
             <Input
               className="mb-4"
+              placeholder="Enter text to translate"
               value={textToTranslate}
               onChange={(e) => setTextToTranslate(e.target.value)}
             />
