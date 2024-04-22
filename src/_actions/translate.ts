@@ -2,7 +2,7 @@
 
 export const translate = async (text: string, from: string, to: string) => {
   try {
-    const res = await fetch("http://localhost:3000/api/translate", {
+    const res = await fetch("https://koze.vercel.app/api/translate", {
       method: "POST",
       headers: {
         "content-type": "application/json",
