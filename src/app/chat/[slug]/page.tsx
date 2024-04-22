@@ -18,7 +18,7 @@ export type FormDataType = {
   category: string;
 };
 
-export const initialFormData = {
+const initialFormData = {
   prompt: "",
   category: "",
 } as FormDataType;
@@ -104,7 +104,7 @@ const Chat = ({ params }: Props) => {
 
   React.useEffect(() => {
     formatText();
-  }, [data, formatText]);
+  }, []);
 
   if (!start)
     return (
