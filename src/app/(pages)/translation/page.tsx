@@ -11,7 +11,7 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
-import { LucideArrowLeftRight, LucidePlayCircle } from "lucide-react";
+import { Loader, LucideArrowLeftRight, LucidePlayCircle } from "lucide-react";
 import React, { useState } from "react";
 
 type Props = {};
@@ -46,11 +46,11 @@ const Translation = (props: Props) => {
       textToTranslate,
       selectedLanguage.from,
       selectedLanguage.to
-   );
+    );
 
     if (data?.response.data.translations.translatedText)
       setResult(data?.response.data.translations.translatedText);
-      setIsLoading(false);
+    setIsLoading(false);
   };
 
   return (
@@ -99,7 +99,7 @@ const Translation = (props: Props) => {
               </SelectGroup>
             </SelectContent>
           </Select>
-          {result &&  selectedLanguage && (
+          {result && selectedLanguage && (
             <TextToSpeechButton
               text={result}
               lang={selectedLanguage.to.toLocaleLowerCase()}
@@ -115,7 +115,9 @@ const Translation = (props: Props) => {
             {!isLoading ? (
               <p className="text-2xl font-medium">{result}</p>
             ) : (
-              <div className="">Translating...</div>
+              <div className="h-full w-full flex justify-center items-center">
+                <Loader />
+              </div>
             )}
           </div>
 

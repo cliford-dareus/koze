@@ -3,12 +3,12 @@ import Link from "next/link";
 import Translate from "../../public/language-translator.png";
 import Reading from "../../public/book.png";
 import Listening from "../../public/music-app.png";
+import Loader from "@/components/ui/spinner";
 
 export default function Home() {
   return (
     <div className="p-4 h-full flex flex-col justify-between pb-[15dvh]">
       <div className="">
-        {/* <span className="text-xl font-bold">Dashboard</span> */}
         <h1 className="text-4xl font-bold w-[80%] mt-14">
           Hello, Welcome Back
         </h1>
