@@ -22,7 +22,11 @@ export default function Home() {
               <Image className="absolute -bottom-3  object-cover w-full h-full" src={Translate}  alt="translate" />
             </Link>
           </div>
-          <div className="h-[10vh] rounded-lg shadow-md bg-indigo-500"></div>
+          <div className="h-[10vh] rounded-lg shadow-md bg-indigo-500">
+            <Link href="/lessons">
+              <p className="font-bold">LESSONS</p>
+            </Link>
+          </div>
           <div className=" bg-slate-100 row-span-2 rounded-lg shadow-md relative ">
             <Link className="w-full h-full absolute inset-0 p-2 overflow-hidden"  href="/reading">
               <p className="font-bold">READING</p>
