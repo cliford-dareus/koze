@@ -1,10 +1,8 @@
 
-
-
 const Lesson = ({params} : {params: {lesson: string}}) => {
   console.log(params);
   return(
-    <div>SIngle Lesson</div>
+    <div className="">Single Lesson</div>
   )
 };
 

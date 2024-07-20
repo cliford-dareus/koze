@@ -1,7 +1,10 @@
 import Link from 'next/link' 
 type Props = {};
 
-const Lessons = (props: Props) => {
+const Lessons = async(props: Props) => {
+  // Get the lessons from the backend
+  // const lessons = await getAllLessonsAction();
+
   return (
     <div className="h-full">
       <div className="">
@@ -12,7 +15,7 @@ const Lessons = (props: Props) => {
         {
            // lesson in a the all the Lessons
           [1,2,3].map((number) => (
-            <div className="p-4 h-[50px] bg-gradient-to-br from-indigo-500 to-slate-500 mt-4 rounded-md">
+            <div key={number} className="p-4 h-[50px] bg-gradient-to-br from-indigo-500 to-slate-500 mt-4 rounded-md">
               <Link href={`/lessons/lesson-${number}`}>lesson{number}</Link>
             </div>
           ))
