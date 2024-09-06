@@ -3,7 +3,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
 
-type Props = {};
+type Props = {
+  onRecordingComplete: (blob: Blob) => void;
+};
 
 const SpeechToText = (props: Props) => {
   const [recording, setRecording] = useState(false);
@@ -13,7 +15,8 @@ const SpeechToText = (props: Props) => {
   const streamRef = useRef<MediaStream | null>(null);
   const mediaRecordRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
-  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  
 
   const startListening = async () => {
     setBlobRecorded(null);
@@ -45,8 +48,7 @@ const SpeechToText = (props: Props) => {
           }
 
           setBlobRecorded(blob);
-          // props.onRecordingComplete(blob);
-          console.log(event.data);
+          props.onRecordingComplete(blob);
           chunksRef.current = [];
         }
       });
@@ -98,23 +100,14 @@ const SpeechToText = (props: Props) => {
   };
 
   return (
-    <div className="relative">
-      <Button onClick={() => handleRecorder()}>
+    <div className="relative flex ">
+      <Button
+        onClick={() => handleRecorder()}
+      >
         <p className="font-bold">
           {recording ? `Stop Recording` : "Start Recording"}
         </p>
       </Button>
-
-      <div className="absolute w-[300px]">
-        {blobRecorded && (
-          <audio className="w-full" ref={audioRef} controls>
-            <source
-              src={URL.createObjectURL(blobRecorded)}
-              type={blobRecorded.type}
-            />
-          </audio>
-        )}
-      </div>
     </div>
   );
 };

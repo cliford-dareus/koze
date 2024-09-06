@@ -1,6 +1,9 @@
 import { getQuote } from "@/_actions/translate";
 import { Transcriber } from "@/components/providers/transcribe-provider";
+import ReadingManager from "@/components/reading-manager";
 import SpeechToText from "@/components/speech-to-text";
+import { Button } from "@/components/ui/button";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import React from "react";
 
@@ -23,7 +26,15 @@ const Reading = async (props: Props) => {
         <div className="flex flex-col mt-auto">
           {/* <div className="">Read the quote outloud</div> */}
           <div className="w-full mt-4 h-[30px]">
-            <SpeechToText />
+            <Drawer>
+              <DrawerTrigger>
+                <Button>Record</Button>
+              </DrawerTrigger>
+
+              <DrawerContent className="h-[80vh]">
+                <ReadingManager quote={randomQuote?.quote} />
+              </DrawerContent>
+            </Drawer>
           </div>
         </div>
       </div>

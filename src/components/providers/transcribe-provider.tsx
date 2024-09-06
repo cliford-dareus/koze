@@ -1,7 +1,13 @@
-"use client"
+"use client";
 
 import { useWorker } from "@/app/hooks/useWorker";
-import { createContext, useCallback, useContext, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 
 export interface TranscriberData {
   isBusy: boolean;
@@ -38,17 +44,32 @@ export const Transcriber = ({ children }: { children: React.ReactNode }) => {
 
   const webWorker = useWorker((event) => {
     const message = event.data;
-    
 
     switch (message.status) {
       case "initiate":
         console.log("INITIATE");
         break;
       case "ready":
+        console.log("READY");
         break;
       case "update":
+        console.log("UPDATE");
+        // TODO update the transcribe data on every chunk data
         break;
       case "complete":
+        console.log("COMPLETE");
+        console.log(message);
+        const completeTranscripe = message as {
+          data: {
+            text: string;
+            chunks: { text: string; timestamp: [number, number | null] }[];
+          };
+        };
+        setTranscript({
+          isBusy: false,
+          text: completeTranscripe.data.text,
+          chunks: completeTranscripe.data.chunks,
+        });
         break;
     }
   });
@@ -125,8 +146,6 @@ export const Transcriber = ({ children }: { children: React.ReactNode }) => {
     subtask,
     language,
   ]);
-  
-  console.log(transcribe)
 
   return (
     <transcriberContext.Provider value={{ ...transcribe }}>
@@ -135,8 +154,11 @@ export const Transcriber = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-
 export const useTranscriber = () => {
   const context = useContext(transcriberContext);
-  return context!
-}
+
+  if (!context) {
+    throw new Error("useUser must be used within a UserProvider");
+  }
+  return context;
+};
