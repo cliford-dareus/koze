@@ -3,6 +3,7 @@
 import getTTS from "@/_actions/text-to-speech";
 import clsx from "clsx";
 import React from "react";
+import { Button } from "./ui/button";
 
 type Props = {
   text: string;
@@ -15,6 +16,7 @@ const TextToSpeechButton = ({
   text,
   lang = "en",
   classnames,
+  
   children,
 }: Props) => {
   const [data, setData] = React.useState<string | null>(null);
@@ -44,15 +46,15 @@ const TextToSpeechButton = ({
   });
 
   return (
-    <button
+    <Button
       className={clsx(
-        "flex items-center justify-center gap-4 shadow-md",
+        "gap-4 shadow-md",
         classnames
       )}
       onClick={playAudio}
     >
       {children}
-    </button>
+    </Button>
   );
 };
 

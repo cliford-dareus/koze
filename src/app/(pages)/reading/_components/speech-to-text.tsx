@@ -1,7 +1,7 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import React, { useEffect, useRef, useState } from "react";
-import { Button } from "./ui/button";
 
 type Props = {
   onRecordingComplete: (blob: Blob) => void;
@@ -16,7 +16,6 @@ const SpeechToText = (props: Props) => {
   const mediaRecordRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  
 
   const startListening = async () => {
     setBlobRecorded(null);
@@ -100,15 +99,11 @@ const SpeechToText = (props: Props) => {
   };
 
   return (
-    <div className="relative flex ">
-      <Button
-        onClick={() => handleRecorder()}
-      >
-        <p className="font-bold">
-          {recording ? `Stop Recording` : "Start Recording"}
-        </p>
-      </Button>
-    </div>
+    <Button className="w-[70%]" onClick={() => handleRecorder()}>
+      <p className="font-bold">
+        {recording ? `Stop Recording` : "Start Recording"}
+      </p>
+    </Button>
   );
 };
 

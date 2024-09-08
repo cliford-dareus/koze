@@ -1,9 +1,9 @@
 "use client";
 
+import { useTranscriber } from "@/components/providers/transcribe-provider";
 import { useState } from "react";
 import SpeechToText from "./speech-to-text";
-import { Button } from "./ui/button";
-import { useTranscriber } from "./providers/transcribe-provider";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   quote: string;
@@ -53,12 +53,16 @@ const ReadingManager = ({ quote }: Props) => {
   };
 
   return (
-    <div className="p-4">
-      <div>
-        <p>{quote}</p>
+    <div className="px-4">
+      <div className="">
+        <h1 className="font-bold text-slate-300 leading-4">
+          Reapeat <br /> Pronunciation
+        </h1>
+
+        <p className="font-bold text-xl leading-5 text-center mt-16">{quote}</p>
       </div>
 
-      <div>
+      <div className="mt-16 w-full flex justify-center">
         <SpeechToText onRecordingComplete={onRecordingComplete} />
       </div>
 

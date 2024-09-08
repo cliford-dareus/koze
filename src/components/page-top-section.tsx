@@ -1,8 +1,10 @@
 "use client";
+
 import { LucideChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
+import { Button } from "./ui/button";
 
 type Props = {};
 
@@ -10,53 +12,15 @@ const PageTopSection = (props: Props) => {
   const pathanme = usePathname();
 
   return (
-    <div className="">
-      <Link className="flex gap-2 items-center" href=".">
-        <LucideChevronLeft size={20} />
-        <p className="font-medium">Back</p>
-      </Link>
+    <div className="flex justify-between items-center py-2">
+      <div className="h-[30px] w-[30px] flex items-center justify-center border rounded-full">
+        <LucideChevronLeft />
+      </div>
 
-      {pathanme === "/translation" ? (
-        <div className="mt-2 bg-gradient-to-b from-indigo-500 to-blue-400 shadow-md p-4 rounded-lg text-white">
-          <h1 className="font-bold">Word Of The Day</h1>
-          <h1 className="text-3xl font-bold w-[80%]">
-            Lets Learn something new
-          </h1>
-          <p className="mt-2 font-medium">
-            Lorem ipsum, dolor sit amet consectetur.
-          </p>
-        </div>
-      ) : pathanme === "/reading" ? (
-        <div className="mt-2 bg-gradient-to-b from-indigo-500 to-blue-400 shadow p-4 rounded-lg text-white">
-          <h1 className="font-bold">Word Of The Day</h1>
-          <h1 className="text-3xl font-bold w-[80%]">
-            Lets Learn something new
-          </h1>
-          <p className="mt-2 font-medium">
-            Lorem ipsum, dolor sit amet consectetur.
-          </p>
-        </div>
-      ) : pathanme === "/listening" ? (
-        <div className="mt-2 bg-gradient-to-b from-indigo-500 to-blue-400 shadow p-4 rounded-lg text-white">
-          <h1 className="font-bold">Word Of The Day</h1>
-          <h1 className="text-3xl font-bold w-[80%]">
-            Lets Learn something new
-          </h1>
-          <p className="mt-2 font-medium">
-            Lorem ipsum, dolor sit amet consectetur.
-          </p>
-        </div>
-      ) : (
-        <div className="mt-2 bg-gradient-to-b from-indigo-500 to-blue-400 shadow p-4 rounded-lg text-white">
-          <h1 className="font-bold">Word Of The Day</h1>
-          <h1 className="text-3xl font-bold w-[80%]">
-            Lets Learn something new
-          </h1>
-          <p className="mt-2 font-medium">
-            Lorem ipsum, dolor sit amet consectetur.
-          </p>
-        </div>
-      )}
+      <div className="">
+        {pathanme.slice(1, 2).toUpperCase() + pathanme.slice(2)}
+      </div>
+      <div className="w-[30px]"></div>
     </div>
   );
 };

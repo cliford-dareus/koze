@@ -47,7 +47,7 @@ export async function getRandomFacts() {
       "https://uselessfacts.jsph.pl/random.json?language=en",
       {
         method: "GET",
-        next: { revalidate: 3600 },
+        cache: 'no-store',
       }
     );
     const result = await response.json();

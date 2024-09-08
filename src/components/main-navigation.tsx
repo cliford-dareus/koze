@@ -11,28 +11,28 @@ const MainNavigation = (props: Props) => {
         <li>
           <Link className="flex flex-col items-center" href="/">
             <LucideHome size={18} />
-            <p className="font-medium">HOME</p>
+            <p className="font-bold text-xs">HOME</p>
           </Link>
         </li>
 
         <li>
           <Link className="flex flex-col items-center" href="/translation">
             <LucideLanguages size={18} />
-            <p className="font-medium">TRANSLATE</p>
+            <p className="font-bold text-xs">TRANSLATE</p>
           </Link>
         </li>
 
         <li>
           <Link className="flex flex-col items-center" href="/chat">
             <LucideBrainCircuit size={18} />
-            <p className="font-medium">AI QUIZ</p>
+            <p className="font-bold text-xs">AI QUIZ</p>
           </Link>
         </li>
 
         <li>
           <Link className="flex flex-col items-center" href="/about">
             <LucideBadgeInfo size={18} />
-            <p className="font-medium">ABOUT</p>
+            <p className="font-bold text-xs">ABOUT</p>
           </Link>
         </li>
       </ul>

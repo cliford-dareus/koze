@@ -43,6 +43,7 @@ const config = {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          muted: "hsla(var(--accent), 0.5)",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -53,61 +54,19 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      backgroundImage: {
+        "primary-gradient":
+          "linear-gradient(229deg, rgba(76,190,225,1) 0%, rgba(45,98,114,1) 35%, rgba(17,17,17,1) 60%, rgba(76,190,225,1) 100%)",
+        "secondary-gradient":
+          "linear-gradient(180deg, hsla(194,63%,59%,1) 0%, hsla(0,0%,7%,1) 100%)"
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       perspective: {
-        '600': '600px',
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        "page-2": {
-          "0%, 100%": {
-            transform: "rotateY(180deg)",
-            opacity: "0",
-          },
-          "20%": {
-            opacity: "1",
-          },
-          "50%, 100%": {
-            transform: "rotateY(0deg)",
-          },
-        },
-        "page-3": {
-          "15%": { transform: "rotateY(180deg)", opacity: "0" },
-          "35%": { opacity: "1" },
-          "50%, 100%": { opacity: "0" },
-          "65%, 100%": { transform: "rotateY(0deg)" },
-        },
-        "page-4": {
-          "30%": { transform: "rotateY(180deg)", opacity: "0" },
-          "50%": { opacity: "1" },
-          "65%, 100%": { opacity: "0" },
-          "80%, 100%": { transform: "rotateY(0deg)" },
-        },
-        "page-5": {
-          "45%": { transform: "rotateY(180deg)", opacity: "0" },
-          "65%": { opacity: "1" },
-          "80%, 100%": { opacity: "0" },
-          "95%, 100%": { transform: "rotateY(0deg)" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "page-2": "page-2 3s ease-out infinite",
-        "page-3": "page-3 3s ease-out infinite",
-        "page-4": "page-4 3s ease-out infinite",
-        "page-5": "page-5 3s ease-out infinite",
+        "600": "600px",
       },
     },
   },

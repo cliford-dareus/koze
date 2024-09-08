@@ -5,7 +5,7 @@ type Props = {};
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <section className=" p-4 flex flex-col justify-between h-full pb-[15vh] gap-4">
+    <section className="p-4 flex flex-col h-full gap-4">
       <PageTopSection />
       {children}
     </section>

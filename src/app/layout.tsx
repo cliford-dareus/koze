@@ -1,10 +1,10 @@
-import type { Viewport, Metadata } from 'next'
-import { Inter } from "next/font/google";
+import type { Viewport, Metadata } from "next";
+import { Inter, Poppins} from "next/font/google";
 import "../styles/globals.css";
 import MainNavigation from "@/components/main-navigation";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ weight: ['500', '600', '700', '800', '900'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "TiKoze",
@@ -194,14 +194,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   // maximumScale: 1,
   userScalable: false,
-  viewportFit: 'contain',
+  viewportFit: "contain",
   // Also supported by less commonly used
   // interactiveWidget: 'resizes-visual',
-}
+};
 
 export default function RootLayout({
   children,
@@ -213,12 +213,14 @@ export default function RootLayout({
       <TooltipProvider>
         <body
           className={
-            inter.className +
-            " max-w-3xl mx-auto relative h-screen overflow-hidden"
+            poppins.className +
+            " h-screen overflow-hidden"
           }
         >
-          <main className="h-full ">{children}</main>
-          <MainNavigation />
+          <div className="max-w-3xl mx-auto h-full relative">
+            <main className="h-full ">{children}</main>
+            <MainNavigation />
+          </div>
         </body>
       </TooltipProvider>
     </html>
