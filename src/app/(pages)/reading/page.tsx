@@ -15,7 +15,6 @@ const Reading = async (props: Props) => {
   if (randomQuote === null) return;
 
   return (
-    <Transcriber>
       <div className="flex flex-col">
         <div className="rounded-lg flex flex-col py-8 px-4 bg-primary-gradient">
           <h1 className="font-bold text-slate-300 leading-4">
@@ -48,7 +47,6 @@ const Reading = async (props: Props) => {
           </Drawer>
         </div>
       </div>
-    </Transcriber>
   );
 };
 
