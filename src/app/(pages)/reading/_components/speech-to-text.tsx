@@ -84,8 +84,8 @@ const SpeechToText = (props: Props) => {
     }
 
     return () => {
-      if (stream) {
-        stream.getTracks().forEach((track) => track.stop());
+      if (!stream) {
+        stream!.getTracks().forEach((track) => track.stop());
       }
     };
   }, [recording]);
