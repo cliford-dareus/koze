@@ -6,7 +6,13 @@ import Listening from "../../public/music-app.png";
 import Loader from "@/components/ui/spinner";
 
 const MENU = [
-  { id: 1, name: "Translate", link: "translation", stat: 100, image: Translate },
+  {
+    id: 1,
+    name: "Translate",
+    link: "translation",
+    stat: 100,
+    image: Translate,
+  },
   { id: 2, name: "Reading", link: "reading", stat: 300, image: Reading },
   { id: 3, name: "Listening", link: "listening", stat: 300, image: Listening },
   { id: 4, name: "Conversation", link: "chat", stat: 3, image: Translate },
@@ -16,7 +22,7 @@ export default function Home() {
   // Get the menu data
 
   return (
-    <div className="p-4 h-full flex flex-col gap-4  pb-[15dvh]">
+    <div className="p-4 h-full flex flex-col gap-4  pb-[15dvh] bg-landing-gradient">
       <div className="mt-auto">
         <h1 className="text-5xl font-bold">Let's learn together !</h1>
       </div>
@@ -30,7 +36,7 @@ export default function Home() {
         {MENU.map((menu) => (
           <div
             key={menu.id}
-            className="row-span-2 rounded-lg shadow-md relative h-[135px] bg-primary-gradient"
+            className="row-span-2 relative h-[135px] bg-[rgba(76,190,225,0.59)] rounded-lg shadow-lg backdrop-blur-[5.5px] border border-[#4cbee1] border-opacity-20"
           >
             <Link
               className="w-full h-full absolute inset-0 p-4 overflow-hidden flex flex-col"

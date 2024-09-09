@@ -10,13 +10,14 @@ type Props = {
   lang?: string;
   classnames?: string;
   children?: React.ReactNode;
+  prepareAudio?: (data: string) => Promise<void>;
 };
 
 const TextToSpeechButton = ({
   text,
   lang = "en",
   classnames,
-  
+  prepareAudio,
   children,
 }: Props) => {
   const [data, setData] = React.useState<string | null>(null);
@@ -31,6 +32,11 @@ const TextToSpeechButton = ({
     audio.currentTime = 0;
     audio.src = data!;
     audio.play();
+    
+    if (prepareAudio) {
+      await prepareAudio(data as string);
+    }
+    
     setIsPlaying(true);
     audio.addEventListener("ended", () => setIsPlaying(false));
   };
@@ -46,13 +52,7 @@ const TextToSpeechButton = ({
   });
 
   return (
-    <Button
-      className={clsx(
-        "gap-4 shadow-md",
-        classnames
-      )}
-      onClick={playAudio}
-    >
+    <Button className={clsx("gap-4 shadow-md", classnames)} onClick={playAudio}>
       {children}
     </Button>
   );

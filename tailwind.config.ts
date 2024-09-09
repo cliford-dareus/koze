@@ -53,12 +53,15 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        
       },
       backgroundImage: {
         "primary-gradient":
           "linear-gradient(229deg, rgba(76,190,225,1) 0%, rgba(45,98,114,1) 35%, rgba(17,17,17,1) 60%, rgba(76,190,225,1) 100%)",
         "secondary-gradient":
-          "linear-gradient(180deg, hsla(194,63%,59%,1) 0%, hsla(0,0%,7%,1) 100%)"
+          "linear-gradient(180deg, hsla(194,63%,59%,1) 0%, hsla(0,0%,7%,1) 100%)",
+        "landing-gradient":
+          "linear-gradient(225deg, hsla(0,0%,7%,1) 48%, hsla(194,43%,31%,1) 75%, hsla(194,71%,59%,1) 100%)",
       },
       borderRadius: {
         lg: "var(--radius)",

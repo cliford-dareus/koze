@@ -29,7 +29,10 @@ const Reading = async (props: Props) => {
         <div className="mt-4 p-4 rounded-lg bg-accent-muted bg-secondary-gradient shadow-sm">
           <h2 className="font-bold">Listen</h2>
           <div className="mt-4 flex  gap-4 items-center">
-            <TextToSpeechWithVirsual classname="h-[30px] w-[60%]" randomFact={randomQuote?.quote} />
+            <TextToSpeechWithVirsual
+              classname="h-[30px] w-[60%]"
+              randomFact={randomQuote?.quote}
+            />
           </div>
         </div>
 

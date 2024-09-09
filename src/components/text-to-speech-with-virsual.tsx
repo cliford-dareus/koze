@@ -12,7 +12,7 @@ type Props = {
 };
 
 const TextToSpeechWithVirsual = ({ randomFact, classname }: Props) => {
-  const [audioData, setAudioData] = useState("");
+  const [animations, setAnimations] = useState(Array(10).fill({ y: 0 }));
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
   const animationRef = useRef<number | null>(null);
@@ -51,16 +51,18 @@ const TextToSpeechWithVirsual = ({ randomFact, classname }: Props) => {
     if (!analyser) return;
 
     const animate = () => {
-      const frequencyData = new Uint8Array(analyser.frequencyBinCount);
+      const frequencyData = new Uint8Array(
+        analyser.frequencyBinCount,
+      );
       analyser.getByteFrequencyData(frequencyData);
 
-      // Use the average of the first few frequency bins
-      const averageFrequency =
-        frequencyData.slice(0, 4).reduce((a, b) => a + b) / 4;
-      const scale = 1 + (averageFrequency / 255) * 0.5; // Scale between 1 and 1.5
+      // Map frequency data to y-positions for each spike
+      const newAnimations = animations.map((_, index) => ({
+        y: -(frequencyData[index * 5] / 2), // Adjust this mapping as needed
+        transition: { duration: 0.1 },
+      }));
 
-      controls.start({ scale, transition: { duration: 0.1 } });
-
+      setAnimations(newAnimations);
       animationRef.current = requestAnimationFrame(animate);
     };
 
@@ -85,9 +87,106 @@ const TextToSpeechWithVirsual = ({ randomFact, classname }: Props) => {
           className="w-full h-full"
         >
           <motion.path
-            d="M1 67L16.5 12L38 57.5L45.5 8L54 49L66.5 22L72 49L87.5 19.5L106.5 67L127.5 19.5L155.5 57.5L163 8L203 49L215.5 2L237 57.5C244.333 44.6667 259.2 19.6 260 22C260.8 24.4 264.667 49.6667 266.5 62L280 5.5"
+            d="M1 67L16.5 12"
             stroke="white"
-            animate={controls}
+            strokeWidth="2"
+            animate={animations[0]}
+          />
+          <motion.path
+            d="M16.5 12L38 57.5"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[1]}
+          />
+          <motion.path
+            d="M38 57.5L45.5 8"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[2]}
+          />
+          <motion.path
+            d="M45.5 8L54 49"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[3]}
+          />
+          <motion.path
+            d="M54 49L66.5 22"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[4]}
+          />
+          <motion.path
+            d="M66.5 22L72 49"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[5]}
+          />
+          <motion.path
+            d="M72 49L87.5 19.5"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[6]}
+          />
+          <motion.path
+            d="M87.5 19.5L106.5 67"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[7]}
+          />
+          <motion.path
+            d="M106.5 67L127.5 19.5"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[8]}
+          />
+          <motion.path
+            d="M127.5 19.5L155.5 57.5"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[9]}
+          />
+          <motion.path
+            d="M155.5 57.5L163 8"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[10]}
+          />
+          <motion.path
+            d="M163 8L203 49"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[11]}
+          />
+          <motion.path
+            d="M203 49L215.5 2"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[12]}
+          />
+          <motion.path
+            d="M215.5 2L237 57.5"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[13]}
+          />
+          <motion.path
+            d="M237 57.5C244.333 44.6667 259.2 19.6 260 22"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[14]}
+          />
+          <motion.path
+            d="M260 22C260.8 24.4 264.667 49.6667 266.5 62"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[15]}
+          />
+          <motion.path
+            d="M266.5 62L280 5.5"
+            stroke="white"
+            strokeWidth="2"
+            animate={animations[16]}
           />
         </svg>
       </div>
@@ -95,6 +194,7 @@ const TextToSpeechWithVirsual = ({ randomFact, classname }: Props) => {
       <TextToSpeechButton
         classnames="w-[70%] bg-accent text-white self-center"
         text={randomFact?.text as unknown as string}
+        prepareAudio = {prepareAudio}
       >
         <LucideSpeech size={24} />
         <p className="font-bold text-base">Tap to Listen</p>
