@@ -13,6 +13,16 @@ const nextConfig = {
         }
         return config;
     },
+    images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'images.pexels.com',
+            port: '',
+            // pathname: '/account123/**',
+          },
+        ],
+      },
 }
 
 module.exports = nextConfig

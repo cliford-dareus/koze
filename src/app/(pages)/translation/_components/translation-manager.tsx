@@ -27,7 +27,7 @@ const TranslationMananger = () => {
     }));
   };
 
-  const handleTranslate = async (e: FormEvent) => {
+  const handleTranslation = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setResult("");
@@ -44,8 +44,6 @@ const TranslationMananger = () => {
     setIsLoading(false);
   };
 
-  console.log(selectedLang);
-
   return (
     <div className="">
       <ResultComponent
@@ -57,7 +55,7 @@ const TranslationMananger = () => {
       <TranslationForm
         handleLangChange={handleLangChange}
         selectedLang={selectedLang}
-        handleTranslation={handleTranslate}
+        handleTranslation={handleTranslation}
         setTextToTranslate={setTextToTranslate}
         textToTranslate={textToTranslate}
       />

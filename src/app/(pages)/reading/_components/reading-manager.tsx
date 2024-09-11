@@ -2,55 +2,21 @@
 
 import { useTranscriber } from "@/components/providers/transcribe-provider";
 import { useState } from "react";
-import SpeechToText from "./speech-to-text";
 import { Button } from "@/components/ui/button";
+import SpeechToText, {
+  AudioDataType,
+  AudioSource,
+} from "@/components/speech-to-text";
 
 type Props = {
   quote: string;
 };
 
-export enum AudioSource {
-  URL = "URL",
-  FILE = "FILE",
-  RECORDING = "RECORDING",
-}
-
 const ReadingManager = ({ quote }: Props) => {
   const { start, output } = useTranscriber();
-  const [audioData, setAudioData] = useState<
-    | {
-        buffer: AudioBuffer;
-        url: string;
-        source: AudioSource;
-        mimeType: string;
-      }
-    | undefined
-  >(undefined);
-
-  const onRecordingComplete = (data: Blob) => {
-    setAudioData(undefined);
-
-    const blobUrl = URL.createObjectURL(data);
-    const fileReader = new FileReader();
-    fileReader.onprogress = (event) => {
-      // setProgress(event.loaded / event.total || 0);
-    };
-    fileReader.onloadend = async () => {
-      const audioCTX = new AudioContext({
-        sampleRate: 16000,
-      });
-      const arrayBuffer = fileReader.result as ArrayBuffer;
-      const decoded = await audioCTX.decodeAudioData(arrayBuffer);
-      // setProgress(undefined);
-      setAudioData({
-        buffer: decoded,
-        url: blobUrl,
-        source: AudioSource.RECORDING,
-        mimeType: data.type,
-      });
-    };
-    fileReader.readAsArrayBuffer(data);
-  };
+  const [audioData, setAudioData] = useState<AudioDataType | undefined>(
+    undefined,
+  );
 
   return (
     <div className="px-4">
@@ -63,7 +29,7 @@ const ReadingManager = ({ quote }: Props) => {
       </div>
 
       <div className="mt-16 w-full flex justify-center">
-        <SpeechToText onRecordingComplete={onRecordingComplete} />
+        <SpeechToText setAudioData={setAudioData} />
       </div>
 
       {audioData && (

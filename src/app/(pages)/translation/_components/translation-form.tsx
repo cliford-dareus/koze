@@ -13,7 +13,11 @@ import {
   LucideFolder,
   LucideMic,
 } from "lucide-react";
-import { Dispatch, FormEvent, FormEventHandler, SetStateAction } from "react";
+import { Dispatch, FormEvent, SetStateAction } from "react";
+import SpeechToText from "@/components/speech-to-text";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import MicrophoneComponent from "./ microphone-component";
+import CameraComponent from "./camera-component";
 
 type Props = {
   handleLangChange: (type: "from" | "to", value: string) => void;
@@ -37,7 +41,7 @@ const TranslationForm = ({
           value={selectedLang.to}
           onValueChange={(value) => handleLangChange("to", value)}
         >
-          <SelectTrigger className="border-none px-6 rounded-full h-[30px]">
+          <SelectTrigger className="border-none px-6 rounded-full h-[30px] bg-accent">
             To : {selectedLang.to}
           </SelectTrigger>
           <SelectContent className="border-none">
@@ -61,20 +65,16 @@ const TranslationForm = ({
             placeholder="Enter your text here ..."
           />
 
-          <div className="h-[35px] flex justify-between items-center mt-4 rounded-full bg-slate-200">
+          <div className="h-[35px] flex justify-between items-center mt-4 rounded-full bg-[rgba(217,217,217,40%)]">
             <div className="flex gap-4 ml-4 items-center">
-              <div>
-                <LucideCamera size={20} />
-              </div>
+              <CameraComponent />
               <>
                 <label htmlFor="fi">
                   <LucideFolder size={20} />
                 </label>
                 <input name="fi" id="fi" type="file" hidden />
               </>
-              <div>
-                <LucideMic size={20} />
-              </div>
+              <MicrophoneComponent />
             </div>
 
             <Button

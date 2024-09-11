@@ -6,7 +6,7 @@ import {
   SelectTrigger,
 } from "@/components/ui/select";
 import { supportedLanguages } from "./translation-manager";
-import TypewriterEffect from "./typewriter-text";
+import TypewriterEffect from "@/components/typewriter-text";
 
 type Props = {
   handleLangChange: (type: "from" | "to", value: string) => void;
@@ -26,7 +26,7 @@ const ResultComponent = ({
           value={selectedLang.from}
           onValueChange={(value) => handleLangChange("from", value)}
         >
-          <SelectTrigger className="border-none px-6 rounded-full h-[30px]">
+          <SelectTrigger className="border-none px-6 rounded-full h-[30px] bg-accent">
             From : {selectedLang.from}
           </SelectTrigger>
           <SelectContent className="border-none">

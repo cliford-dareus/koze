@@ -1,13 +1,34 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import React, { useEffect, useRef, useState } from "react";
+import { getMimeType } from "@/lib/get-mimetype";
+import React, {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 type Props = {
-  onRecordingComplete: (blob: Blob) => void;
+  setAudioData: Dispatch<SetStateAction<AudioDataType | undefined>>;
 };
 
-const SpeechToText = (props: Props) => {
+export enum AudioSource {
+  URL = "URL",
+  FILE = "FILE",
+  RECORDING = "RECORDING",
+}
+
+export type AudioDataType = {
+  buffer: AudioBuffer;
+  url: string;
+  source: AudioSource;
+  mimeType: string;
+};
+
+const SpeechToText = ({ setAudioData }: Props) => {
   const [recording, setRecording] = useState(false);
   const [duration, setDuration] = useState(0);
   const [blobRecorded, setBlobRecorded] = useState<Blob | null>(null);
@@ -15,9 +36,9 @@ const SpeechToText = (props: Props) => {
   const streamRef = useRef<MediaStream | null>(null);
   const mediaRecordRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  // const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const startListening = async () => {
+  const startRecording = async () => {
     setBlobRecorded(null);
     let startTime = Date.now();
 
@@ -47,7 +68,7 @@ const SpeechToText = (props: Props) => {
           }
 
           setBlobRecorded(blob);
-          props.onRecordingComplete(blob);
+          onRecordingComplete(blob);
           chunksRef.current = [];
         }
       });
@@ -70,6 +91,32 @@ const SpeechToText = (props: Props) => {
     }
   };
 
+  const onRecordingComplete = (data: Blob) => {
+    setAudioData(undefined);
+
+    const blobUrl = URL.createObjectURL(data);
+    const fileReader = new FileReader();
+    fileReader.onprogress = (event) => {
+      // setProgress(event.loaded / event.total || 0);
+    };
+    
+    fileReader.onloadend = async () => {
+      const audioCTX = new AudioContext({
+        sampleRate: 16000,
+      });
+      const arrayBuffer = fileReader.result as ArrayBuffer;
+      const decoded = await audioCTX.decodeAudioData(arrayBuffer);
+      // setProgress(undefined);
+      setAudioData({
+        buffer: decoded,
+        url: blobUrl,
+        source: AudioSource.RECORDING,
+        mimeType: data.type,
+      });
+    };
+    fileReader.readAsArrayBuffer(data);
+  };
+
   useEffect(() => {
     let stream: MediaStream | null = null;
 
@@ -84,8 +131,8 @@ const SpeechToText = (props: Props) => {
     }
 
     return () => {
-      if (!stream) {
-        stream!.getTracks().forEach((track) => track.stop());
+      if (stream) {
+        (stream as MediaStream).getTracks().forEach((track) => track.stop());
       }
     };
   }, [recording]);
@@ -94,33 +141,17 @@ const SpeechToText = (props: Props) => {
     if (recording) {
       stopRecording();
     } else {
-      startListening();
+      startRecording();
     }
   };
 
   return (
-    <Button className="w-[70%]" onClick={() => handleRecorder()}>
-      <p className="font-bold">
-        {recording ? `Stop Recording` : "Start Recording"}
-      </p>
-    </Button>
+    <div className="w-[70%]" onClick={() => handleRecorder()}>
+      <Button className="font-bold">
+        {!recording ? "Start Recording" : "Stop Recording"}
+      </Button>
+    </div>
   );
 };
-
-function getMimeType() {
-  const types = [
-    "audio/webm",
-    "audio/mp4",
-    "audio/ogg",
-    "audio/wav",
-    "audio/aac",
-  ];
-  for (let i = 0; i < types.length; i++) {
-    if (MediaRecorder.isTypeSupported(types[i])) {
-      return types[i];
-    }
-  }
-  return undefined;
-}
 
 export default SpeechToText;

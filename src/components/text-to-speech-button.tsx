@@ -2,15 +2,17 @@
 
 import getTTS from "@/_actions/text-to-speech";
 import clsx from "clsx";
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
+import createBlobFromAudioURL from "@/app/(pages)/reading/_actions/create-blob-from-audio";
 
 type Props = {
   text: string;
   lang?: string;
   classnames?: string;
   children?: React.ReactNode;
-  prepareAudio?: (data: string) => Promise<void>;
+  prepareAudio?: (dat: Blob) => Promise<void>;
+  isPlaying: boolean;
 };
 
 const TextToSpeechButton = ({
@@ -19,40 +21,35 @@ const TextToSpeechButton = ({
   classnames,
   prepareAudio,
   children,
+  isPlaying,
 }: Props) => {
-  const [data, setData] = React.useState<string | null>(null);
-  const [isPlaying, setIsPlaying] = React.useState(false);
-  let audio: HTMLAudioElement | null = null;
+  const [data, setData] = useState<string | null>(null);
 
   const playAudio = async () => {
-    if (audio !== null) {
-      audio.pause();
-    }
-    audio = new Audio();
-    audio.currentTime = 0;
-    audio.src = data!;
-    audio.play();
-    
-    if (prepareAudio) {
-      await prepareAudio(data as string);
-    }
-    
-    setIsPlaying(true);
-    audio.addEventListener("ended", () => setIsPlaying(false));
+    const arrayBuffer = await createBlobFromAudioURL(data!);
+    const blob = new Blob([new Uint8Array(arrayBuffer)], {
+      type: "audio/mpeg",
+    });
+
+    prepareAudio && (await prepareAudio(blob));
   };
 
+  console.log(isPlaying);
+
   React.useEffect(() => {
-    if (isPlaying) return;
+    if (isPlaying || !lang || !text) return;
     const fetchAudio = async () => {
       const audioData = await getTTS(lang, text);
+
       if (!audioData) return;
-      setData(audioData);
+      setData(JSON.parse(audioData).URL);
     };
+
     fetchAudio();
-  });
+  }, []);
 
   return (
-    <Button className={clsx("gap-4 shadow-md", classnames)} onClick={playAudio}>
+    <Button disabled={isPlaying} className={clsx("gap-4 shadow-md", classnames)} onClick={playAudio}>
       {children}
     </Button>
   );
