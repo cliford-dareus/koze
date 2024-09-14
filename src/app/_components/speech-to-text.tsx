@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/app/_components/ui/button";
-import { getMimeType } from "@/app/lib/get-mimetype";
+import { getMimeType } from "@/lib/get-mimetype";
 import React, {
   Dispatch,
   ReactNode,
@@ -99,7 +99,7 @@ const SpeechToText = ({ setAudioData }: Props) => {
     fileReader.onprogress = (event) => {
       // setProgress(event.loaded / event.total || 0);
     };
-    
+
     fileReader.onloadend = async () => {
       const audioCTX = new AudioContext({
         sampleRate: 16000,

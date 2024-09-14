@@ -3,7 +3,7 @@
 import { getDefinition, translate } from "@/app/_actions/translate";
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { Group, groupSimilarMeanings } from "@/app/lib/utils";
+import { Group, groupSimilarMeanings } from "@/lib/utils";
 import { LucidePlay } from "lucide-react";
 import TextToSpeechButton from "./text-to-speech-button";
 
@@ -106,15 +106,24 @@ const DefinitionTranslationTabs = ({ word }: Props) => {
           </TabsContent>
           <TabsContent value="translation">
             <div>
-                <h3>{word}</h3>
+              <h3>{word}</h3>
             </div>
             <div className="flex gap-4">
-              <TextToSpeechButton isPlaying={isPlaying} text={word} classnames="py-4">
+              <TextToSpeechButton
+                isPlaying={isPlaying}
+                text={word}
+                classnames="py-4"
+              >
                 <LucidePlay size={20} />
                 <p>{word}</p>
               </TextToSpeechButton>
 
-              <TextToSpeechButton isPlaying={isPlaying} text={translation} lang="fr" classnames="py-4">
+              <TextToSpeechButton
+                isPlaying={isPlaying}
+                text={translation}
+                lang="fr"
+                classnames="py-4"
+              >
                 <LucidePlay size={20} />
                 <p>{translation}</p>
               </TextToSpeechButton>

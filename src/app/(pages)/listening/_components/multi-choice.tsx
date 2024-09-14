@@ -3,8 +3,12 @@
 import { useEffect, useState, useSyncExternalStore } from "react";
 import SuccessModal from "./succes-modal";
 import { useRouter } from "next/navigation";
-import { Dialog, DialogContent, DialogTrigger } from "@/app/_components/ui/dialog";
-import { cn } from "@/app/lib/utils";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/app/_components/ui/dialog";
+import { cn } from "@/lib/utils";
 
 type Props = {
   quote: string;
@@ -78,7 +82,7 @@ const MultiChoice = ({ quote }: Props) => {
                 ? sentence.iscorrect === false
                   ? "bg-red-500"
                   : "bg-green-500"
-                : "",
+                : ""
             )}
             key={sentence.id}
             onClick={() => checkAnswer(sentence)}

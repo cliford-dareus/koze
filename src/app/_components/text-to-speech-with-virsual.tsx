@@ -2,9 +2,9 @@
 
 import { LucideSpeech } from "lucide-react";
 import TextToSpeechButton from "./text-to-speech-button";
-import { cn } from "@/app/lib/utils";
+import { cn } from "@/lib/utils";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import loadAudioWorklet from "@/app/lib/load-audioworklet";
+import loadAudioWorklet from "@/lib/load-audioworklet";
 
 type Props = {
   randomFact: string;
@@ -15,7 +15,7 @@ const TextToSpeechWithVirsual = ({ randomFact, classname }: Props) => {
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
   const [sourceNode, setSourceNode] = useState<AudioBufferSourceNode | null>(
-    null,
+    null
   );
   const [workletNode, setWorkletNode] = useState<AudioWorkletNode | null>(null);
   const [message, setMessage] = useState("");
@@ -81,7 +81,7 @@ const TextToSpeechWithVirsual = ({ randomFact, classname }: Props) => {
       if (contextRef?.current.state === "running") {
         const canvas = canvasRef.current as HTMLCanvasElement;
         const canvasContext = canvas.getContext(
-          "2d",
+          "2d"
         ) as CanvasRenderingContext2D;
 
         canvasContext?.clearRect(0, 0, canvas.width, canvas.height);
