@@ -1,12 +1,9 @@
 "use client";
 
-import { useTranscriber } from "@/components/providers/transcribe-provider";
+import { useTranscriber } from "@/app/_components/providers/transcribe-provider";
+import SpeechToText, { AudioDataType } from "@/app/_components/speech-to-text";
+import { Button } from "@/app/_components/ui/button";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import SpeechToText, {
-  AudioDataType,
-  AudioSource,
-} from "@/components/speech-to-text";
 
 type Props = {
   quote: string;

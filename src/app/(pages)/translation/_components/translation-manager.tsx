@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import ResultComponent from "./result-component";
 import TranslationForm from "./translation-form";
-import { translate } from "@/_actions/translate";
+import { translate } from "@/app/_actions/translate";
 
 export const supportedLanguages = [
   { id: 1, name: "English", value: "en" },

@@ -1,6 +1,6 @@
 import React from "react";
-import PageTopSection from "@/components/page-top-section";
-import { Transcriber } from "@/components/providers/transcribe-provider";
+import PageTopSection from "@/app/_components/page-top-section";
+import { Transcriber } from "@/app/_components/providers/transcribe-provider";
 
 type Props = {};
 

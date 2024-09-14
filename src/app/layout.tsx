@@ -1,8 +1,8 @@
 import type { Viewport, Metadata } from "next";
 import { Inter, Poppins} from "next/font/google";
 import "../styles/globals.css";
-import MainNavigation from "@/components/main-navigation";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import MainNavigation from "@/app/_components/main-navigation";
+import { TooltipProvider } from "@/app/_components/ui/tooltip";
 
 const poppins = Poppins({ weight: ['500', '600', '700', '800', '900'], subsets: ['latin'] });
 

@@ -1,12 +1,9 @@
-import { getQuote } from "@/_actions/translate";
-import { Transcriber } from "@/components/providers/transcribe-provider";
-import { Button } from "@/components/ui/button";
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import { Input } from "@/components/ui/input";
 import React from "react";
 import ReadingManager from "./_components/reading-manager";
-import TextToSpeechWithVirsual from "@/components/text-to-speech-with-virsual";
-
+import { getQuote } from "@/app/_actions/translate";
+import TextToSpeechWithVirsual from "@/app/_components/text-to-speech-with-virsual";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/app/_components/ui/drawer";
+import { Button } from "@/app/_components/ui/button";
 type Props = {};
 
 const Reading = async (props: Props) => {
@@ -28,7 +25,7 @@ const Reading = async (props: Props) => {
         <div className="mt-4 p-4 rounded-lg bg-accent-muted bg-secondary-gradient shadow-sm">
           <h2 className="font-bold">Listen</h2>
           <div className="mt-4 flex  gap-4 items-center">
-            <TextToSpeechWithVirsual
+             <TextToSpeechWithVirsual
               classname="h-[30px] w-[60%]"
               randomFact={randomQuote?.quote}
             />

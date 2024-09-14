@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { getMimeType } from "@/lib/get-mimetype";
+import { Button } from "@/app/_components/ui/button";
+import { getMimeType } from "@/app/_lib/get-mimetype";
 import React, {
   Dispatch,
   ReactNode,

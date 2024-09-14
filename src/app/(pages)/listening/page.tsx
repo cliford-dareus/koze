@@ -1,10 +1,6 @@
-import TextToSpeechButton from "@/components/text-to-speech-button";
-import { LucideSpeech } from "lucide-react";
-import { getRandomFacts } from "@/_actions/translate";
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import DefinitionTranslationTabs from "@/components/definition-translation-tabs";
 import MultiChoice from "./_components/multi-choice";
-import TextToSpeechWithVirsual from "@/components/text-to-speech-with-virsual";
+import { getRandomFacts } from "@/app/_actions/translate";
+import TextToSpeechWithVirsual from "@/app/_components/text-to-speech-with-virsual";
 
 type Props = {};
 

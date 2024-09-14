@@ -4,9 +4,9 @@ import {
   SelectGroup,
   SelectItem,
   SelectTrigger,
-} from "@/components/ui/select";
+} from "@/app/_components/ui/select";
 import { supportedLanguages } from "./translation-manager";
-import TypewriterEffect from "@/components/typewriter-text";
+import TypewriterEffect from "@/app/_components/typewriter-text";
 
 type Props = {
   handleLangChange: (type: "from" | "to", value: string) => void;

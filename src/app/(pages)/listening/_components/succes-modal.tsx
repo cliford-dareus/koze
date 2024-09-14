@@ -1,7 +1,11 @@
-import DefinitionTranslationTabs from "@/components/definition-translation-tabs";
-import { Button } from "@/components/ui/button";
-import { DialogDescription, DialogTitle } from "@/components/ui/dialog";
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import DefinitionTranslationTabs from "@/app/_components/definition-translation-tabs";
+import { Button } from "@/app/_components/ui/button";
+import { DialogDescription, DialogTitle } from "@/app/_components/ui/dialog";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+} from "@/app/_components/ui/drawer";
 
 type Props = {
   quote: string;

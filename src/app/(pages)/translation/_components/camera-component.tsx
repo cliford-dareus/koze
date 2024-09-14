@@ -9,9 +9,9 @@ import {
   DrawerDescription,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
+} from "@/app/_components/ui/drawer";
 import { LucideBlend, LucideCamera, LucideContrast } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/_components/ui/button";
 import { createWorker } from "tesseract.js";
 import useImageProcessor from "@/app/hooks/useImageProcessor";
 

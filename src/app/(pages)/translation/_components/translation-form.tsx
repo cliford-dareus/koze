@@ -4,9 +4,9 @@ import {
   SelectGroup,
   SelectItem,
   SelectTrigger,
-} from "@/components/ui/select";
+} from "@/app/_components/ui/select";
 import { supportedLanguages } from "./translation-manager";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/_components/ui/button";
 import {
   LucideArrowRight,
   LucideCamera,
@@ -14,8 +14,8 @@ import {
   LucideMic,
 } from "lucide-react";
 import { Dispatch, FormEvent, SetStateAction } from "react";
-import SpeechToText from "@/components/speech-to-text";
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import SpeechToText from "@/app/_components/speech-to-text";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/app/_components/ui/drawer";
 import MicrophoneComponent from "./ microphone-component";
 import CameraComponent from "./camera-component";
 

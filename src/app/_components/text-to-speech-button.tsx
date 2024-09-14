@@ -1,8 +1,8 @@
 "use client";
 
-import getTTS from "@/_actions/text-to-speech";
+import getTTS from "@/app/_actions/text-to-speech";
 import clsx from "clsx";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import createBlobFromAudioURL from "@/app/(pages)/reading/_actions/create-blob-from-audio";
 
@@ -23,10 +23,11 @@ const TextToSpeechButton = ({
   children,
   isPlaying,
 }: Props) => {
-  const [data, setData] = useState<string | null>(null);
+  const [data, setData] = useState<{ URL: string;  type: string} | null>(null);
 
   const playAudio = async () => {
-    const arrayBuffer = await createBlobFromAudioURL(data!);
+    if(!data) return
+    const arrayBuffer = await createBlobFromAudioURL(data.URL!);
     const blob = new Blob([new Uint8Array(arrayBuffer)], {
       type: "audio/mpeg",
     });
@@ -34,15 +35,14 @@ const TextToSpeechButton = ({
     prepareAudio && (await prepareAudio(blob));
   };
 
-  console.log(isPlaying);
-
-  React.useEffect(() => {
+  useEffect(() => {
     if (isPlaying || !lang || !text) return;
+    
     const fetchAudio = async () => {
       const audioData = await getTTS(lang, text);
-
+      
       if (!audioData) return;
-      setData(JSON.parse(audioData).URL);
+      setData(JSON.parse(audioData));
     };
 
     fetchAudio();

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Translate from "../../public/language-translator.png";
 import Reading from "../../public/book.png";
 import Listening from "../../public/music-app.png";
-import Loader from "@/components/ui/spinner";
+import Loader from "@/app/_components/ui/spinner";
 
 const MENU = [
   {

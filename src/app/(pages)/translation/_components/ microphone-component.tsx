@@ -1,11 +1,11 @@
-import SpeechToText from "@/components/speech-to-text";
+import SpeechToText from "@/app/_components/speech-to-text";
 import {
   Drawer,
   DrawerContent,
   DrawerDescription,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
+} from "@/app/_components/ui/drawer";
 import { LucideMic } from "lucide-react";
 
 const MicrophoneComponent = () => {

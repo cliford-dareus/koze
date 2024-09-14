@@ -1,8 +1,8 @@
 "use client";
 
-import { getData } from "@/_actions/chat";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { getData } from "@/app/_actions/chat";
+import { Button } from "@/app/_components/ui/button";
+import { Input } from "@/app/_components/ui/input";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useCallback, useState } from "react";

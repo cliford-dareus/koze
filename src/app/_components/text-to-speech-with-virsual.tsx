@@ -2,9 +2,9 @@
 
 import { LucideSpeech } from "lucide-react";
 import TextToSpeechButton from "./text-to-speech-button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/_lib/utils";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import loadAudioWorklet from "@/lib/load-audioworklet";
+import loadAudioWorklet from "@/app/_lib/load-audioworklet";
 
 type Props = {
   randomFact: string;

@@ -1,14 +1,9 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import SuccessModal from "./succes-modal";
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
+import { Dialog, DialogContent, DialogTrigger } from "@/app/_components/ui/dialog";
 
 type Props = {
   quote: string;
