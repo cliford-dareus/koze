@@ -14,7 +14,9 @@ const PageTopSection = (props: Props) => {
   return (
     <div className="flex justify-between items-center py-2">
       <div className="h-[30px] w-[30px] flex items-center justify-center border rounded-full">
+      <Link href="..">
         <LucideChevronLeft />
+        </Link>
       </div>
 
       <div className="">

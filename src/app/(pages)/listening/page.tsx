@@ -17,7 +17,7 @@ const Listening = async (props: Props) => {
     <div className="w-full h-full relative">
       <div className="rounded-lg flex flex-col justify-between p-4 h-[30vh] bg-primary-gradient">
         <h1 className="font-bold text-xl">Listening Carefully</h1>
-        <TextToSpeechWithVirsual classname="h-[80px]" randomFact={randomFact} />
+        <TextToSpeechWithVirsual classname="h-[80px]" randomFact={randomFact?.text} />
       </div>
 
       <div className="mt-4">
