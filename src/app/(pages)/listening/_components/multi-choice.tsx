@@ -4,6 +4,7 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import SuccessModal from "./succes-modal";
 import { useRouter } from "next/navigation";
 import { Dialog, DialogContent, DialogTrigger } from "@/app/_components/ui/dialog";
+import { cn } from "@/app/lib/utils";
 
 type Props = {
   quote: string;

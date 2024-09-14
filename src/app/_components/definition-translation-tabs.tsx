@@ -3,7 +3,7 @@
 import { getDefinition, translate } from "@/app/_actions/translate";
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { Group, groupSimilarMeanings } from "@/app/_lib/utils";
+import { Group, groupSimilarMeanings } from "@/app/lib/utils";
 import { LucidePlay } from "lucide-react";
 import TextToSpeechButton from "./text-to-speech-button";
 
