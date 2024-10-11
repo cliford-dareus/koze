@@ -1,4 +1,4 @@
-import { FormDataType } from "@/app/chat/[slug]/page";
+import { FormDataType } from "@/app/(pages)/chat/[slug]/page";
 
 export async function getData(formData: FormDataType) {
   try {

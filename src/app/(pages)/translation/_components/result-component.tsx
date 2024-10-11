@@ -23,11 +23,11 @@ const ResultComponent = ({
     <div className="bg-primary-gradient relative p-4 h-[35vh] rounded-lg">
       <div className="absolute right-4">
         <Select
-          value={selectedLang.from}
+          value={selectedLang.to}
           onValueChange={(value) => handleLangChange("from", value)}
         >
           <SelectTrigger className="border-none px-6 rounded-full h-[30px] bg-accent">
-            From : {selectedLang.from}
+            To : {selectedLang.to}
           </SelectTrigger>
           <SelectContent className="border-none">
             <SelectGroup>

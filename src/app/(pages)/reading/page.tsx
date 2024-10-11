@@ -1,4 +1,3 @@
-import React from "react";
 import ReadingManager from "./_components/reading-manager";
 import { getQuote } from "@/app/_actions/translate";
 import TextToSpeechWithVirsual from "@/app/_components/text-to-speech-with-virsual";

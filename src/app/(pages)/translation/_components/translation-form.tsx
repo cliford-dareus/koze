@@ -15,7 +15,11 @@ import {
 } from "lucide-react";
 import { Dispatch, FormEvent, SetStateAction } from "react";
 import SpeechToText from "@/app/_components/speech-to-text";
-import { Drawer, DrawerContent, DrawerTrigger } from "@/app/_components/ui/drawer";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+} from "@/app/_components/ui/drawer";
 import MicrophoneComponent from "./ microphone-component";
 import CameraComponent from "./camera-component";
 
@@ -38,11 +42,11 @@ const TranslationForm = ({
     <div className="bg-accent-foreground rounded-lg p-4 mt-4 relative">
       <div className="absolute left-4">
         <Select
-          value={selectedLang.to}
+          value={selectedLang.from}
           onValueChange={(value) => handleLangChange("to", value)}
         >
           <SelectTrigger className="border-none px-6 rounded-full h-[30px] bg-accent">
-            To : {selectedLang.to}
+            From : {selectedLang.from}
           </SelectTrigger>
           <SelectContent className="border-none">
             <SelectGroup>
@@ -67,7 +71,7 @@ const TranslationForm = ({
 
           <div className="h-[35px] flex justify-between items-center mt-4 rounded-full bg-[rgba(217,217,217,40%)]">
             <div className="flex gap-4 ml-4 items-center">
-              <CameraComponent />
+              <CameraComponent setTextToTranslate={setTextToTranslate} />
               <>
                 <label htmlFor="fi">
                   <LucideFolder size={20} />

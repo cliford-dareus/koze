@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Webcam from "react-webcam";
 import {
@@ -15,7 +15,11 @@ import { Button } from "@/app/_components/ui/button";
 import { createWorker } from "tesseract.js";
 import useImageProcessor from "@/app/hooks/useImageProcessor";
 
-const CameraComponent = () => {
+type Props = {
+  setTextToTranslate: Dispatch<SetStateAction<string>>;
+};
+
+const CameraComponent = ({setTextToTranslate}: Props) => {
   const { preprocessImage } = useImageProcessor();
   const [open, setIsOpen] = useState(false);
   const [imageCaptured, setImageCaptured] = useState("");
@@ -50,10 +54,12 @@ const CameraComponent = () => {
       // await worker?.loadLanguage('eng');
       // await worker?.initialize('eng');
       const {
-        data
+        data: {text}
       } = await worker.recognize(imageRef.current!);
       // setExtractedText(data);
-      console.log(data);
+      setTextToTranslate(text);
+      console.log(text);
+      setIsOpen(false)
       await worker.terminate();
     } catch (error) {
       console.error("Error extracting text:", error);
