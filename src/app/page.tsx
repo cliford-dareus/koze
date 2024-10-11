@@ -3,47 +3,59 @@ import Link from "next/link";
 import Translate from "../../public/language-translator.png";
 import Reading from "../../public/book.png";
 import Listening from "../../public/music-app.png";
-import Loader from "@/components/ui/spinner";
+import Loader from "@/app/_components/ui/spinner";
+
+const MENU = [
+  {
+    id: 1,
+    name: "Translate",
+    link: "translation",
+    stat: 100,
+    image: Translate,
+  },
+  { id: 2, name: "Reading", link: "reading", stat: 300, image: Reading },
+  { id: 3, name: "Listening", link: "listening", stat: 300, image: Listening },
+  { id: 4, name: "Conversation", link: "chat", stat: 3, image: Translate },
+];
 
 export default function Home() {
+  // Get the menu data
+
   return (
-    <div className="p-4 h-full flex flex-col justify-between pb-[15dvh]">
-      <div className="">
-        <h1 className="text-4xl font-bold w-[80%] mt-14">
-          Hello, Welcome Back
-        </h1>
+    <div className="p-4 h-full flex flex-col gap-4  pb-[15dvh] bg-landing-gradient">
+      <div className="mt-auto">
+        <h1 className="text-5xl font-bold">Let's learn together !</h1>
       </div>
 
-      <div>
-        <div className="mt-4 grid auto-rows-[10vh] grid-cols-2 gap-4 mx-auto grid-rows-5">
-          <div className=" bg-slate-100 row-span-2 rounded-lg shadow-md relative ">
-            <Link className="w-full h-full absolute inset-0 p-2 overflow-hidden" href="/translation">
-              <p className="font-bold">TRANSLATE</p>
-              <Image className="absolute -bottom-3  object-cover w-full h-full" src={Translate}  alt="translate" />
-            </Link>
-          </div>
-          <div className="h-[10vh] rounded-lg shadow-md bg-indigo-500"></div>
-          <div className=" bg-slate-100 row-span-2 rounded-lg shadow-md relative ">
-            <Link className="w-full h-full absolute inset-0 p-2 overflow-hidden"  href="/reading">
-              <p className="font-bold">READING</p>
-              <Image className="absolute -bottom-3 -right-5 object-cover w-full h-full" src={Reading} width={100} height={100} alt="translate" />
-            </Link>
-          </div>
-          <div className=" bg-slate-100 row-span-2 rounded-lg shadow-md relative ">
-            <Link className="w-full h-full absolute inset-0 p-2 overflow-hidden"  href="/listening">
-              <p className="font-bold">LISTENING</p>
-              <Image className="absolute -bottom-5 object-cover w-full h-full" src={Listening} width={100} height={100} alt="translate" />
-            </Link>
-          </div>
-          <div className=" bg-slate-100 row-span-2 rounded-lg shadow-md relative ">
-            <Link className="w-full h-full absolute inset-0 p-2 overflow-hidden"  href="/chat">
-              <p className="font-bold">AI CHAT</p>
-              <Image className="absolute inset-0 object-cover w-full h-full "  src={Translate} width={100} height={100} alt="translate" />
-            </Link>
-          </div>
-          <div className=" bg-blue-400 rounded-lg shadow-md"></div>
-        </div>
+      <div className="flex justify-between items-center">
+        <p className="">Your Activities</p>
+        <div className=""></div>
       </div>
+
+      <div className="grid grid-cols-2 gap-2">
+        {MENU.map((menu) => (
+          <div
+            key={menu.id}
+            className="row-span-2 relative h-[135px] bg-[rgba(76,190,225,0.59)] rounded-lg shadow-lg backdrop-blur-[5.5px] border border-[#4cbee1] border-opacity-20"
+          >
+            <Link
+              className="w-full h-full absolute inset-0 p-4 overflow-hidden flex flex-col"
+              href={menu.link}
+            >
+              <div className="w-[60px] h-[60px]">
+                <Image className="" src={menu.image} alt="translate" />
+              </div>
+
+              <div className="mt-auto">
+                <h3 className="font-bold">{menu.name}</h3>
+                <p className="text-xs">10 word Translated</p>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
+
+      <div className="h-[50px] bg-accent-foreground rounded-lg"></div>
     </div>
   );
 }

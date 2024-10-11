@@ -1,4 +1,4 @@
-import Loader from '@/components/ui/spinner'
+import Loader from '@/app/_components/ui/spinner'
 import React from 'react'
 
 type Props = {}
