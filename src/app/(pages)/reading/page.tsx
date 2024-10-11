@@ -12,11 +12,11 @@ const Reading = async (props: Props) => {
 
   return (
       <div className="flex flex-col">
-        <div className="rounded-lg flex flex-col py-8 px-4 bg-primary-gradient">
-          <h1 className="font-bold text-slate-300 leading-4">
+        <div className="rounded-lg flex flex-col py-8 px-4 bg-primary-gradient min-h-[30vh]">
+          <h1 className="font-bold text-slate-300 leading-4 lg:text-xl">
             Repeat <br /> Pronunciation
           </h1>
-          <p className="font-bold text-xl leading-5 text-center mt-4">
+          <p className="font-bold text-xl leading-5 text-center mt-4 lg:text-3xl">
             {randomQuote?.quote}
           </p>
         </div>

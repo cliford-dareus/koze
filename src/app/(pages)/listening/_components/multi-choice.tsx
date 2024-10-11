@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import SuccessModal from "./succes-modal";
 import { useRouter } from "next/navigation";
 import {
@@ -35,7 +35,7 @@ const MultiChoice = ({ quote }: Props) => {
         return choice;
       });
     };
-
+  
     if (data.correct === false) {
       setChoices(filterChoices(false, data));
     }
@@ -51,9 +51,11 @@ const MultiChoice = ({ quote }: Props) => {
     router.refresh();
   };
 
-  const getAndShuffleAnswers = () => {
+  const getAndShuffleAnswers = useCallback(() => {
     const wrongAnswers: AnswerType[] = [
       { id: 1, text: "smonthing", iscorrect: undefined, correct: false },
+      { id: 2, text: "smonthing", iscorrect: undefined, correct: false },
+      { id: 3, text: "smonthing", iscorrect: undefined, correct: false },
     ];
 
     const rigthAnswer = {
@@ -63,9 +65,19 @@ const MultiChoice = ({ quote }: Props) => {
       correct: true,
     };
 
-    const shuffleAnswer = [rigthAnswer, ...wrongAnswers];
-    return shuffleAnswer;
-  };
+    const array = [rigthAnswer, ...wrongAnswers];
+    
+    function shuffleArray(array: AnswerType[]) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    const shuffledArray = shuffleArray(array);
+    return shuffledArray;
+  }, [quote]);
 
   useEffect(() => {
     setChoices(getAndShuffleAnswers());
