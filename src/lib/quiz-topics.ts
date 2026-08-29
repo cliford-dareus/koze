@@ -59,3 +59,11 @@ export const QUIZ_TOPICS: QuizTopic[] = [
 export function getTopic(slug: string) {
   return QUIZ_TOPICS.find((t) => t.slug === slug) ?? null;
 }
+
+export const PRACTICE_PROMPTS = [
+  "Greet me as if we just sat down for coffee.",
+  "Ask me how my morning went, then wait for my answer.",
+  "Help me order breakfast in a quiet cafe.",
+  "Correct my last sentence, then give a simpler version.",
+  "Teach me three words for weather, with examples.",
+];

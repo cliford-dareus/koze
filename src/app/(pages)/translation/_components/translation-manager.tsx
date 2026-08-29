@@ -4,97 +4,95 @@ import { FormEvent, useState } from "react";
 import ResultComponent from "./result-component";
 import TranslationForm from "./translation-form";
 import { translate } from "@/app/_actions/translate";
-import { supportedLanguages } from "@/lib/languages";
+import { LANGUAGES } from "@/lib/languages";
 import { recordActivity } from "@/lib/progress";
 
-export { supportedLanguages };
-
 const TranslationManager = () => {
-  const [result, setResult] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [textToTranslate, setTextToTranslate] = useState("");
-  const [selectedLang, setSelectedLang] = useState({
-    from: "en",
-    to: "fr",
-  });
+    const [result, setResult] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
+    const [textToTranslate, setTextToTranslate] = useState("");
+    const [selectedLang, setSelectedLang] = useState({
+        from: "en",
+        to: "fr",
+    });
 
-  const handleLangChange = (type: "from" | "to", value: string) => {
-    setSelectedLang((prevState) => ({
-      ...prevState,
-      [type]: value,
-    }));
-  };
+    const handleLangChange = (type: "from" | "to", value: string) => {
+        setSelectedLang((prevState) => ({
+            ...prevState,
+            [type]: value,
+        }));
+    };
 
-  const handleTranslation = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!textToTranslate.trim()) return;
+    const handleTranslation = async (e: FormEvent) => {
+        e.preventDefault();
+        if (!textToTranslate.trim()) return;
 
-    setIsLoading(true);
-    setResult("");
-    setError("");
+        setIsLoading(true);
+        setResult("");
+        setError("");
 
-    try {
-      const data = await translate(
-        textToTranslate,
-        selectedLang.from,
-        selectedLang.to,
-      );
+        try {
+            const data = await translate(
+                textToTranslate,
+                selectedLang.from,
+                selectedLang.to,
+            );
 
-      const translated =
-        data?.response?.data?.translations?.translatedText ?? null;
+            const translated =
+                data?.response?.data?.translations?.translatedText ?? null;
 
-      if (translated) {
-        setResult(
-          Array.isArray(translated) ? translated[0] : String(translated),
-        );
-        recordActivity("translation");
-      } else {
-        setError("Translation failed. Please try again.");
-      }
-    } catch (err) {
-      console.error(err);
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+            if (translated) {
+                setResult(
+                    Array.isArray(translated) ? translated[0] : String(translated),
+                );
+                recordActivity("translation");
+            } else {
+                setError("Translation failed. Please try again.");
+            }
+        } catch (err) {
+            console.error(err);
+            setError("Something went wrong. Please try again.");
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
-  return (
-    <div>
-      <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-        Translate
-      </p>
-      <h1 className="mt-2 font-display text-3xl font-medium">
-        From one tongue to another.
-      </h1>
+    return (
+        <div>
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                Translate
+            </p>
+            <h1 className="mt-2 font-display text-3xl font-medium">
+                From one tongue to another.
+            </h1>
 
-      <div className="mt-6">
-        <ResultComponent
-          handleLangChange={handleLangChange}
-          selectedLang={selectedLang}
-          output={result}
-        />
+            <div className="mt-6">
+                <ResultComponent
+                    handleLangChange={handleLangChange}
+                    selectedLang={selectedLang}
+                    output={result}
+                />
 
-        {error && (
-          <p className="mt-3 text-center text-sm text-destructive">{error}</p>
-        )}
-        {isLoading && (
-          <p className="mt-3 text-center text-sm text-muted-foreground">
-            Translating…
-          </p>
-        )}
+                {error && (
+                    <p className="mt-3 text-center text-sm text-destructive">{error}</p>
+                )}
+                {isLoading && (
+                    <p className="mt-3 text-center text-sm text-muted-foreground">
+                        Translating…
+                    </p>
+                )}
 
-        <TranslationForm
-          handleLangChange={handleLangChange}
-          selectedLang={selectedLang}
-          handleTranslation={handleTranslation}
-          setTextToTranslate={setTextToTranslate}
-          textToTranslate={textToTranslate}
-        />
-      </div>
-    </div>
-  );
+                <TranslationForm
+                    handleLangChange={handleLangChange}
+                    selectedLang={selectedLang}
+                    handleTranslation={handleTranslation}
+                    setTextToTranslate={setTextToTranslate}
+                    textToTranslate={textToTranslate}
+                />
+            </div>
+        </div>
+    );
 };
 
 export default TranslationManager;
