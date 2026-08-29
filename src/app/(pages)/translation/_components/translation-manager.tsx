@@ -11,9 +11,10 @@ export const supportedLanguages = [
   { id: 3, name: "Spanish", value: "es" },
 ];
 
-const TranslationMananger = () => {
+const TranslationManager = () => {
   const [result, setResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const [textToTranslate, setTextToTranslate] = useState("");
   const [selectedLang, setSelectedLang] = useState({
     from: "en",
@@ -29,19 +30,35 @@ const TranslationMananger = () => {
 
   const handleTranslation = async (e: FormEvent) => {
     e.preventDefault();
+    if (!textToTranslate.trim()) return;
+
     setIsLoading(true);
     setResult("");
+    setError("");
 
-    const data = await translate(
-      textToTranslate,
-      selectedLang.from,
-      selectedLang.to,
-    );
+    try {
+      const data = await translate(
+        textToTranslate,
+        selectedLang.from,
+        selectedLang.to,
+      );
 
-    if (data?.response.data.translations.translatedText)
-      setResult(data?.response.data.translations.translatedText);
-    setTextToTranslate("");
-    setIsLoading(false);
+      const translated =
+        data?.response?.data?.translations?.translatedText ?? null;
+
+      if (translated) {
+        setResult(
+          Array.isArray(translated) ? translated[0] : String(translated),
+        );
+      } else {
+        setError("Translation failed. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -51,6 +68,15 @@ const TranslationMananger = () => {
         selectedLang={selectedLang}
         output={result}
       />
+
+      {error && (
+        <p className="text-red-400 text-sm text-center mt-2 px-4">{error}</p>
+      )}
+      {isLoading && (
+        <p className="text-slate-300 text-sm text-center mt-2 px-4">
+          Translating…
+        </p>
+      )}
 
       <TranslationForm
         handleLangChange={handleLangChange}
@@ -63,4 +89,4 @@ const TranslationMananger = () => {
   );
 };
 
-export default TranslationMananger;
+export default TranslationManager;

@@ -24,7 +24,7 @@ const ResultComponent = ({
       <div className="absolute right-4">
         <Select
           value={selectedLang.to}
-          onValueChange={(value) => handleLangChange("from", value)}
+          onValueChange={(value) => handleLangChange("to", value)}
         >
           <SelectTrigger className="border-none px-6 rounded-full h-[30px] bg-accent">
             To : {selectedLang.to}

@@ -9,12 +9,9 @@ import { supportedLanguages } from "./translation-manager";
 import { Button } from "@/app/_components/ui/button";
 import {
   LucideArrowRight,
-  LucideCamera,
   LucideFolder,
-  LucideMic,
 } from "lucide-react";
 import { Dispatch, FormEvent, SetStateAction } from "react";
-import SpeechToText from "@/app/_components/speech-to-text";
 import {
   Drawer,
   DrawerContent,
@@ -43,7 +40,7 @@ const TranslationForm = ({
       <div className="absolute left-4">
         <Select
           value={selectedLang.from}
-          onValueChange={(value) => handleLangChange("to", value)}
+          onValueChange={(value) => handleLangChange("from", value)}
         >
           <SelectTrigger className="border-none px-6 rounded-full h-[30px] bg-accent">
             From : {selectedLang.from}
@@ -65,8 +62,8 @@ const TranslationForm = ({
           <input
             value={textToTranslate}
             onChange={(e) => setTextToTranslate(e.target.value)}
-            className="bg-transparent outline-none border-none"
-            placeholder="Enter your text here ..."
+            className="bg-transparent outline-none border-none w-full"
+            placeholder="Enter your text here, or scan with the camera…"
           />
 
           <div className="h-[35px] flex justify-between items-center mt-4 rounded-full bg-[rgba(217,217,217,40%)]">
@@ -76,7 +73,7 @@ const TranslationForm = ({
                 <label htmlFor="fi">
                   <LucideFolder size={20} />
                 </label>
-                <input name="fi" id="fi" type="file" hidden />
+                <input name="fi" id="fi" type="file" hidden accept="image/*" />
               </>
               <MicrophoneComponent />
             </div>
@@ -84,6 +81,7 @@ const TranslationForm = ({
             <Button
               type="submit"
               className="h-[36px] w-[36px] rounded-full bg-background"
+              disabled={!textToTranslate.trim()}
             >
               <div>
                 <LucideArrowRight size={24} />
