@@ -2,7 +2,7 @@ import { FormDataType } from "@/app/(pages)/chat/[slug]/page";
 
 export async function getData(formData: FormDataType) {
   try {
-    const res = await fetch("https://koze.vercel.app/api/chat", {
+    const res = await fetch("/api/chat", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -10,9 +10,14 @@ export async function getData(formData: FormDataType) {
       body: JSON.stringify(formData),
     });
 
-    const data = await res.json();
-    return data;
+    if (!res.ok) {
+      console.error("Chat API error", res.status);
+      return null;
+    }
+
+    return await res.json();
   } catch (error) {
     console.log(error);
+    return null;
   }
 }

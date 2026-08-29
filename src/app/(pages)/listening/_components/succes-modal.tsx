@@ -17,27 +17,27 @@ const SuccessModal = ({ quote, completeLevel }: Props) => {
     <div className="overflow-hidden">
       <div className="text-center">
         <DialogTitle asChild>
-          <h3 className="font-bold text-xl ">Congratulation</h3>
+          <h3 className="font-display text-xl font-medium">Well heard</h3>
         </DialogTitle>
         <DialogDescription asChild>
-          <p className="text-xs text-slate-300 mt-2">
-            You have successefully choose the correct answer!
+          <p className="mt-2 text-sm text-muted-foreground">
+            You chose the correct sentence. Progress is saved on this device.
           </p>
         </DialogDescription>
       </div>
 
-      <div className="bg-accent p-2 my-4 flex items-center justify-center rounded-sm">
-        800 correct Answer
+      <div className="my-4 flex items-center justify-center rounded-lg bg-accent p-3 text-sm font-medium text-accent-foreground">
+        Listening · +1
       </div>
 
-      <div className="mt-2 h-[60px] flex items-center gap-2 overflow-x-scroll">
+      <div className="mt-2 flex h-[60px] items-center gap-2 overflow-x-auto">
         {quote.split(" ").map((word: string, index: number) => (
           <div key={index}>
             <Drawer>
-              <DrawerTrigger className="bg-accent px-4 py-1 rounded-md  text-white">
+              <DrawerTrigger className="rounded-md bg-muted px-3 py-1 text-sm">
                 {word}
               </DrawerTrigger>
-              <DrawerContent>
+              <DrawerContent className="border-border bg-background">
                 <DefinitionTranslationTabs word={word} />
               </DrawerContent>
             </Drawer>
@@ -46,7 +46,9 @@ const SuccessModal = ({ quote, completeLevel }: Props) => {
       </div>
 
       <div className="mt-4">
-        <Button onClick={() => completeLevel()}>Complete Level</Button>
+        <Button className="w-full" onClick={() => completeLevel()}>
+          Next sentence
+        </Button>
       </div>
     </div>
   );

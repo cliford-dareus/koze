@@ -6,6 +6,7 @@ import {
   LucideLanguages,
   LucideMessageCircle,
 } from "lucide-react";
+import ProgressSummary from "@/app/_components/progress-summary";
 
 const ACTIVITIES = [
   {
@@ -29,7 +30,7 @@ const ACTIVITIES = [
   {
     title: "Practice",
     href: "/chat",
-    copy: "A short conversation with a patient tutor.",
+    copy: "Pick a topic and take a short quiz.",
     icon: LucideMessageCircle,
   },
 ];
@@ -65,9 +66,11 @@ export default function Home() {
         Learn in the quiet hours.
       </h1>
       <p className="mt-3 max-w-prose text-muted-foreground">
-        Four small practices. No streaks shouting at you — just a calm place to
-        keep a language alive.
+        Four small practices. Your progress stays on this device — no account
+        required.
       </p>
+
+      <ProgressSummary />
 
       <div className="mt-8 rounded-xl border border-border bg-card p-5 shadow-soft">
         <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">

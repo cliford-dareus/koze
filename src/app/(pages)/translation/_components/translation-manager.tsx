@@ -4,12 +4,10 @@ import { FormEvent, useState } from "react";
 import ResultComponent from "./result-component";
 import TranslationForm from "./translation-form";
 import { translate } from "@/app/_actions/translate";
+import { supportedLanguages } from "@/lib/languages";
+import { recordActivity } from "@/lib/progress";
 
-export const supportedLanguages = [
-  { id: 1, name: "English", value: "en" },
-  { id: 2, name: "French", value: "fr" },
-  { id: 3, name: "Spanish", value: "es" },
-];
+export { supportedLanguages };
 
 const TranslationManager = () => {
   const [result, setResult] = useState("");
@@ -50,6 +48,7 @@ const TranslationManager = () => {
         setResult(
           Array.isArray(translated) ? translated[0] : String(translated),
         );
+        recordActivity("translation");
       } else {
         setError("Translation failed. Please try again.");
       }
