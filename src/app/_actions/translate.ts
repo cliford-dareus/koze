@@ -2,7 +2,14 @@
 
 export const translate = async (text: string, from: string, to: string) => {
   try {
-    const res = await fetch("https://koze.vercel.app/api/translate", {
+    // Prefer relative URL so it works in local dev and production
+    const base =
+      process.env.NEXT_PUBLIC_APP_URL ||
+      (process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : "http://localhost:3000");
+
+    const res = await fetch(`${base}/api/translate`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -30,7 +37,7 @@ export async function getQuote() {
         headers: {
           "X-Api-Key": process.env.NINJA_API_KEY!,
         },
-      }
+      },
     );
 
     const result = await response.json();
@@ -40,29 +47,26 @@ export async function getQuote() {
   }
 }
 
-
 export async function getRandomFacts() {
   try {
     const response = await fetch(
       "https://uselessfacts.jsph.pl/random.json?language=en",
       {
         method: "GET",
-        cache: 'no-store',
-      }
+        cache: "no-store",
+      },
     );
     const result = await response.json();
     return {
-    text:  result.text ||
-      result.text_short ||
-      result.text_long ||
-      result.text_long ||
-      result.text,
-    author: result.source || result.author
-    }
-  } catch (error) {
-    
-  }
-};
+      text:
+        result.text ||
+        result.text_short ||
+        result.text_long ||
+        result.text,
+      author: result.source || result.author,
+    };
+  } catch (error) {}
+}
 
 export async function getDefinition(word: string) {
   try {
@@ -70,7 +74,7 @@ export async function getDefinition(word: string) {
       `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`,
       {
         method: "GET",
-      }
+      },
     );
     const result = await response.json();
     return result[0];
