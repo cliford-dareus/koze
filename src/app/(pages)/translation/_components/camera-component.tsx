@@ -18,34 +18,74 @@ import {
 } from "@/app/_components/ui/drawer";
 import { LucideCamera, LucideSwitchCamera } from "lucide-react";
 import { Button } from "@/app/_components/ui/button";
-import { createWorker } from "tesseract.js";
+import { createWorker, type Worker } from "tesseract.js";
 import useImageProcessor from "@/app/hooks/useImageProcessor";
 
 type Props = {
   setTextToTranslate: Dispatch<SetStateAction<string>>;
 };
 
+function cleanOcrText(raw: string) {
+  return raw
+    .replace(/[|]/g, "I")
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .replace(/[ \t]{2,}/g, " ")
+    .trim();
+}
+
+async function recognizeCanvas(canvas: HTMLCanvasElement) {
+  let worker: Worker | null = null;
+  try {
+    // eng + fra + spa covers the app's supported languages
+    worker = await createWorker(["eng", "fra", "spa"], 1, {
+      logger: () => {},
+    });
+
+    // Assume a uniform block of text (typical for a document / sign photo)
+    await worker.setParameters({
+      tessedit_pageseg_mode: "6" as unknown as undefined,
+      preserve_interword_spaces: "1",
+    });
+
+    const {
+      data: { text, confidence },
+    } = await worker.recognize(canvas);
+
+    return {
+      text: cleanOcrText(text ?? ""),
+      confidence: typeof confidence === "number" ? confidence : 0,
+    };
+  } finally {
+    if (worker) await worker.terminate();
+  }
+}
+
 const CameraComponent = ({ setTextToTranslate }: Props) => {
-  const { preprocessImage } = useImageProcessor();
+  const { preprocessImage, prepareCanvasFromImage } = useImageProcessor();
   const [open, setIsOpen] = useState(false);
   const [imageCaptured, setImageCaptured] = useState("");
   const [isExtracting, setIsExtracting] = useState(false);
   const [error, setError] = useState("");
-  const [facingMode, setFacingMode] = useState<"user" | "environment">("environment");
+  const [facingMode, setFacingMode] = useState<"user" | "environment">(
+    "environment",
+  );
 
   const webcamRef = useRef<Webcam | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const videoConstraints = {
     facingMode,
-    width: { ideal: 1280 },
-    height: { ideal: 720 },
+    width: { ideal: 1920 },
+    height: { ideal: 1080 },
   };
 
   const capture = useCallback(() => {
     setError("");
-    const imageSrc = webcamRef.current?.getScreenshot();
+    const imageSrc = webcamRef.current?.getScreenshot({
+      width: 1920,
+      height: 1080,
+    });
     if (!imageSrc) {
       setError("Could not capture image. Please try again.");
       return;
@@ -57,8 +97,30 @@ const CameraComponent = ({ setTextToTranslate }: Props) => {
     setFacingMode((prev) => (prev === "user" ? "environment" : "user"));
   }, []);
 
+  const waitForImage = (img: HTMLImageElement) =>
+    new Promise<void>((resolve, reject) => {
+      if (img.complete && img.naturalWidth > 0) {
+        resolve();
+        return;
+      }
+      const onLoad = () => {
+        cleanup();
+        resolve();
+      };
+      const onError = () => {
+        cleanup();
+        reject(new Error("Image failed to load"));
+      };
+      const cleanup = () => {
+        img.removeEventListener("load", onLoad);
+        img.removeEventListener("error", onError);
+      };
+      img.addEventListener("load", onLoad);
+      img.addEventListener("error", onError);
+    });
+
   const extractText = async () => {
-    if (!canvasRef.current || !imageRef.current) {
+    if (!imageRef.current) {
       setError("Image not ready. Please retake the photo.");
       return;
     }
@@ -67,39 +129,50 @@ const CameraComponent = ({ setTextToTranslate }: Props) => {
     setError("");
 
     try {
-      const canvas = canvasRef.current;
       const img = imageRef.current;
+      await waitForImage(img);
 
-      // Ensure canvas matches the natural image size for better OCR
-      canvas.width = img.naturalWidth || img.width;
-      canvas.height = img.naturalHeight || img.height;
+      // Upscale small captures so glyph edges are clearer for Tesseract
+      const baseCanvas = prepareCanvasFromImage(img, 1400);
+      const ctx = baseCanvas.getContext("2d", { willReadFrequently: true });
+      if (!ctx) throw new Error("Could not get canvas context");
 
-      const ctx = canvas.getContext("2d");
-      if (!ctx) {
-        throw new Error("Could not get canvas context");
-      }
+      // Pass 1: contrast-enhanced grayscale (usually best)
+      const enhanced = preprocessImage(baseCanvas, "enhance");
+      ctx.putImageData(enhanced, 0, 0);
+      const pass1 = await recognizeCanvas(baseCanvas);
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      // Pass 2: Otsu binary — only keep if clearly better
+      ctx.putImageData(enhanced, 0, 0);
+      const binary = preprocessImage(baseCanvas, "binary");
+      ctx.putImageData(binary, 0, 0);
+      const pass2 = await recognizeCanvas(baseCanvas);
 
-      // Preprocess for OCR (grayscale + threshold)
-      const processed = preprocessImage(canvas, "threshold");
-      ctx.putImageData(processed, 0, 0);
+      const best =
+        pass2.confidence > pass1.confidence + 5 && pass2.text.length > 0
+          ? pass2
+          : pass1.text.length >= pass2.text.length
+            ? pass1
+            : pass2;
 
-      const worker = await createWorker("eng");
-      const {
-        data: { text },
-      } = await worker.recognize(canvas);
-      await worker.terminate();
-
-      const cleaned = text?.trim() ?? "";
-      if (!cleaned) {
-        setError("No text found in the image. Try better lighting or a clearer photo.");
-        setIsExtracting(false);
+      if (!best.text) {
+        setError(
+          "No text found. Try brighter light, fill the frame with the text, and hold steady.",
+        );
         return;
       }
 
-      setTextToTranslate(cleaned);
+      // Very low confidence usually means noise / wrong region
+      if (best.confidence > 0 && best.confidence < 35) {
+        setError(
+          "Text was hard to read. Move closer, reduce glare, and try again.",
+        );
+        // Still fill the field so the user can edit
+        setTextToTranslate(best.text);
+        return;
+      }
+
+      setTextToTranslate(best.text);
       setImageCaptured("");
       setIsOpen(false);
     } catch (err) {
@@ -110,30 +183,6 @@ const CameraComponent = ({ setTextToTranslate }: Props) => {
     }
   };
 
-  // Draw image onto canvas when a capture is set
-  useEffect(() => {
-    if (!imageCaptured || !imageRef.current || !canvasRef.current) return;
-
-    const img = imageRef.current;
-    const canvas = canvasRef.current;
-
-    const draw = () => {
-      canvas.width = img.naturalWidth || img.width;
-      canvas.height = img.naturalHeight || img.height;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    };
-
-    if (img.complete) {
-      draw();
-    } else {
-      img.onload = draw;
-    }
-  }, [imageCaptured]);
-
-  // Reset state when drawer closes
   useEffect(() => {
     if (!open) {
       setImageCaptured("");
@@ -147,62 +196,67 @@ const CameraComponent = ({ setTextToTranslate }: Props) => {
       <DrawerTrigger className="" type="button">
         <LucideCamera size={20} />
       </DrawerTrigger>
-      <DrawerContent className="bg-primary-gradient border-none p-2 h-[90%]">
-        <DrawerTitle className="text-center">Scan text</DrawerTitle>
-        <DrawerDescription className="text-center text-slate-300 text-sm">
-          Point at text, capture, then extract to translate
+      <DrawerContent className="h-[90%] border-border bg-background p-2">
+        <DrawerTitle className="text-center font-display text-lg">
+          Scan text
+        </DrawerTitle>
+        <DrawerDescription className="text-center text-sm text-muted-foreground">
+          Fill the frame with the text, avoid glare, then extract
         </DrawerDescription>
 
-        <div className="max-h-[80vh] h-[70vh] mt-4 flex flex-col">
+        <div className="mt-4 flex h-[70vh] max-h-[80vh] flex-col">
           {!imageCaptured ? (
             <>
-              <div className="relative flex-1 min-h-0 rounded-md overflow-hidden bg-black">
+              <div className="relative min-h-0 flex-1 overflow-hidden rounded-md bg-black">
                 <Webcam
                   className="h-full w-full object-cover"
                   audio={false}
                   ref={webcamRef}
                   screenshotFormat="image/jpeg"
-                  screenshotQuality={0.92}
+                  screenshotQuality={0.95}
+                  forceScreenshotSourceSize
                   videoConstraints={videoConstraints}
                   mirrored={facingMode === "user"}
                 />
                 <button
                   type="button"
                   onClick={toggleCamera}
-                  className="absolute top-3 right-3 rounded-full w-10 h-10 bg-slate-800/80 flex items-center justify-center"
+                  className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white"
                   aria-label="Switch camera"
                 >
                   <LucideSwitchCamera size={20} />
                 </button>
               </div>
               {error && (
-                <p className="text-red-400 text-sm text-center mt-2">{error}</p>
+                <p className="mt-2 text-center text-sm text-destructive">
+                  {error}
+                </p>
               )}
-              <div className="flex justify-center mt-4">
-                <Button type="button" onClick={capture} className="font-bold px-8">
+              <div className="mt-4 flex justify-center">
+                <Button type="button" onClick={capture} className="px-8">
                   Capture
                 </Button>
               </div>
             </>
           ) : (
-            <div className="relative flex-1 min-h-0 flex flex-col">
-              <div className="relative flex-1 min-h-0 bg-black rounded-md overflow-hidden">
-                {/* Hidden canvas used for preprocessing + OCR */}
-                <canvas ref={canvasRef} className="hidden" />
+            <div className="relative flex min-h-0 flex-1 flex-col">
+              <div className="relative min-h-0 flex-1 overflow-hidden rounded-md bg-black">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   ref={imageRef}
-                  className="w-full h-full object-contain"
+                  className="h-full w-full object-contain"
                   src={imageCaptured}
                   alt="Captured for OCR"
                 />
               </div>
 
               {error && (
-                <p className="text-red-400 text-sm text-center mt-2">{error}</p>
+                <p className="mt-2 text-center text-sm text-destructive">
+                  {error}
+                </p>
               )}
 
-              <div className="flex gap-4 justify-center items-center mt-4">
+              <div className="mt-4 flex items-center justify-center gap-4">
                 <Button
                   type="button"
                   variant="outline"
@@ -218,7 +272,6 @@ const CameraComponent = ({ setTextToTranslate }: Props) => {
                   type="button"
                   onClick={extractText}
                   disabled={isExtracting}
-                  className="font-bold"
                 >
                   {isExtracting ? "Extracting…" : "Extract text"}
                 </Button>
