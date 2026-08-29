@@ -1,11 +1,11 @@
-import TranslationMananger from "./_components/translation-manager";
+import TranslationManager from "./_components/translation-manager";
 
 type Props = {};
 
 const Translation = (props: Props) => {
   return (
     <div className="">
-      <TranslationMananger />
+      <TranslationManager />
     </div>
   );
 };
