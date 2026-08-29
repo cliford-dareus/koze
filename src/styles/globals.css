@@ -12,51 +12,82 @@
 
 @layer base {
   :root {
-    --background: 0, 0%, 7%;
-    --foreground: 0, 0%, 100%;
-    
-    --accent: 194, 71%, 59%;
-    --accent-foreground: 194, 43%, 31%;
-    
-    --radius: 5px;
-  }
+    /* Warm paper editorial palette */
+    --background: 40 24% 94%;
+    --foreground: 40 8% 10%;
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --card: 40 30% 98%;
+    --card-foreground: 40 8% 10%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --popover: 40 30% 98%;
+    --popover-foreground: 40 8% 10%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --primary: 170 28% 23%;
+    --primary-foreground: 40 24% 94%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 40 18% 88%;
+    --secondary-foreground: 40 8% 10%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --muted: 40 16% 90%;
+    --muted-foreground: 40 6% 42%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 160 18% 88%;
+    --accent-foreground: 170 28% 23%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --destructive: 8 48% 38%;
+    --destructive-foreground: 40 30% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --border: 40 16% 80%;
+    --input: 40 30% 98%;
+    --ring: 170 28% 23%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --radius: 0.75rem;
   }
 }
 
 @layer base {
   * {
-    @apply border-border m-0 p-0;
+    @apply border-border;
   }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: hsl(170 28% 23% / 0.16);
+  }
+}
+
+.font-display {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+}
+
+.paper-grain {
+  background-image:
+    radial-gradient(circle at 18% 12%, hsl(170 28% 23% / 0.05), transparent 32%),
+    radial-gradient(circle at 88% 0%, hsl(40 8% 10% / 0.04), transparent 28%);
 }

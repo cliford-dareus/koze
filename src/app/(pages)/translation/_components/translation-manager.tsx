@@ -62,29 +62,38 @@ const TranslationManager = () => {
   };
 
   return (
-    <div className="">
-      <ResultComponent
-        handleLangChange={handleLangChange}
-        selectedLang={selectedLang}
-        output={result}
-      />
+    <div>
+      <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+        Translate
+      </p>
+      <h1 className="mt-2 font-display text-3xl font-medium">
+        From one tongue to another.
+      </h1>
 
-      {error && (
-        <p className="text-red-400 text-sm text-center mt-2 px-4">{error}</p>
-      )}
-      {isLoading && (
-        <p className="text-slate-300 text-sm text-center mt-2 px-4">
-          Translating…
-        </p>
-      )}
+      <div className="mt-6">
+        <ResultComponent
+          handleLangChange={handleLangChange}
+          selectedLang={selectedLang}
+          output={result}
+        />
 
-      <TranslationForm
-        handleLangChange={handleLangChange}
-        selectedLang={selectedLang}
-        handleTranslation={handleTranslation}
-        setTextToTranslate={setTextToTranslate}
-        textToTranslate={textToTranslate}
-      />
+        {error && (
+          <p className="mt-3 text-center text-sm text-destructive">{error}</p>
+        )}
+        {isLoading && (
+          <p className="mt-3 text-center text-sm text-muted-foreground">
+            Translating…
+          </p>
+        )}
+
+        <TranslationForm
+          handleLangChange={handleLangChange}
+          selectedLang={selectedLang}
+          handleTranslation={handleTranslation}
+          setTextToTranslate={setTextToTranslate}
+          textToTranslate={textToTranslate}
+        />
+      </div>
     </div>
   );
 };

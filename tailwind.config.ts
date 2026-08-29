@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "ui-serif", "Georgia", "serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -53,23 +57,16 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        
       },
-      backgroundImage: {
-        "primary-gradient":
-          "linear-gradient(229deg, rgba(76,190,225,1) 0%, rgba(45,98,114,1) 35%, rgba(17,17,17,1) 60%, rgba(76,190,225,1) 100%)",
-        "secondary-gradient":
-          "linear-gradient(180deg, hsla(194,63%,59%,1) 0%, hsla(0,0%,7%,1) 100%)",
-        "landing-gradient":
-          "linear-gradient(225deg, hsla(0,0%,7%,1) 48%, hsla(194,43%,31%,1) 75%, hsla(194,71%,59%,1) 100%)",
+      boxShadow: {
+        soft: "0 1px 2px rgb(28 27 25 / 0.04), 0 12px 32px rgb(28 27 25 / 0.05)",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-      },
-      perspective: {
-        "600": "600px",
+        xl: "calc(var(--radius) + 0.5rem)",
+        "2xl": "calc(var(--radius) + 1rem)",
       },
     },
   },
