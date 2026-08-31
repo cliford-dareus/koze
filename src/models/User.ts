@@ -7,6 +7,8 @@ const ProgressSchema = new Schema(
         readingSessions: { type: Number, default: 0 },
         quizCorrect: { type: Number, default: 0 },
         streak: { type: Number, default: 0 },
+        currentWord: { type: String, default: null },
+        currentWordDate: { type: String, default: null },
         lastActiveDate: { type: String, default: null },
         lastTopic: { type: String, default: null },
     },

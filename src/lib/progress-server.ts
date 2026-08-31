@@ -48,6 +48,8 @@ export function mergeProgress(local: ProgressState, cloud: ProgressState): Progr
         readingSessions: Math.max(a.readingSessions, b.readingSessions),
         quizCorrect: Math.max(a.quizCorrect, b.quizCorrect),
         streak: Math.max(a.streak, b.streak),
+        currentWord: a.currentWord || b.currentWord,
+        currentWordDate: a.currentWordDate || b.currentWordDate,
         lastActiveDate:
             (a.lastActiveDate || "") > (b.lastActiveDate || "")
                 ? a.lastActiveDate

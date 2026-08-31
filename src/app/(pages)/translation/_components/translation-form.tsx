@@ -1,52 +1,22 @@
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectTrigger,
-} from "@/app/_components/ui/select";
 import { Button } from "@/app/_components/ui/button";
 import { LucideArrowRight, LucideFolder } from "lucide-react";
 import { Dispatch, FormEvent, SetStateAction } from "react";
 import MicrophoneComponent from "./ microphone-component";
 import CameraComponent from "./camera-component";
-import { LANGUAGES } from "@/lib/languages";
-
+    
 type Props = {
-    handleLangChange: (type: "from" | "to", value: string) => void;
-    selectedLang: { from: string; to: string };
     handleTranslation: (e: FormEvent) => Promise<void>;
     setTextToTranslate: Dispatch<SetStateAction<string>>;
     textToTranslate: string;
 };
 
 const TranslationForm = ({
-    handleLangChange,
-    selectedLang,
     handleTranslation,
     setTextToTranslate,
     textToTranslate,
 }: Props) => {
     return (
         <div className="relative mt-4 rounded-xl border border-border bg-card p-4 shadow-soft">
-            <Select
-                value={selectedLang.from}
-                onValueChange={(value) => handleLangChange("from", value)}
-            >
-                <SelectTrigger className="h-9 w-auto rounded-full border-border bg-muted px-4">
-                    From · {selectedLang.from.toUpperCase()}
-                </SelectTrigger>
-                <SelectContent className="border-border bg-card">
-                    <SelectGroup>
-                        {LANGUAGES.map((lang) => (
-                            <SelectItem key={lang.id} value={lang.value}>
-                                {lang.name}
-                            </SelectItem>
-                        ))}
-                    </SelectGroup>
-                </SelectContent>
-            </Select>
-
             <form onSubmit={handleTranslation} className="mt-4">
                 <input
                     value={textToTranslate}

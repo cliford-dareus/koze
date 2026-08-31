@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import ProgressSummary from "@/app/_components/progress-summary";
 import AuthMenu from "@/app/_components/auth-menu";
+import { getRandomWord } from "./_actions/translate";
+import WordOfTheDay from "./_components/word-of-the-day";
 
 const ACTIVITIES = [
     {
@@ -36,16 +38,8 @@ const ACTIVITIES = [
     },
 ];
 
-const WORD = {
-    word: "douceur",
-    lang: "FR",
-    meaning: "gentleness, sweetness",
-    example: "Parle avec douceur.",
-};
-
 export default async function Home() {
-    const WordOfTheDay = await getRandomWord();
-    
+    const Word = await getRandomWord();
     return (
         <div className="app-shell">
             <header className="mb-8 flex items-center justify-between gap-3">
@@ -73,18 +67,7 @@ export default async function Home() {
 
             <ProgressSummary />
 
-            <div className="mt-8 rounded-xl border border-border bg-card p-5 shadow-soft">
-                <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                    Word of the day
-                </p>
-                <p className="mt-3 font-display text-3xl font-medium">{WORD.word}</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                    {WORD.lang} · {WORD.meaning}
-                </p>
-                <p className="mt-4 border-t border-border pt-4 text-sm italic">
-                    {WORD.example}
-                </p>
-            </div>
+            <WordOfTheDay word={Word} />
 
             <div className="mt-8 grid grid-cols-2 gap-3">
                 {ACTIVITIES.map((item) => {

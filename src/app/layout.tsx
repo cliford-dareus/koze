@@ -255,9 +255,7 @@ export default function RootLayout({
                     <TooltipProvider>
                         <div className="app-frame">
                             <main className="h-full overflow-y-auto overscroll-y-contain">
-                                <Suspense fallback={null}>
                                     {children}
-                                </Suspense>
                             </main>
                             <MainNavigation />
                         </div>
