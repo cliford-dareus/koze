@@ -6,6 +6,9 @@ import TranslationForm from "./translation-form";
 import { translate } from "@/app/_actions/translate";
 import { LANGUAGES } from "@/lib/languages";
 import { recordActivity } from "@/lib/progress";
+import { Button } from "@/app/_components/ui/button";
+import { ArrowLeftRight } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/app/_components/ui/select";
 
 const TranslationManager = () => {
     const [result, setResult] = useState("");
@@ -23,6 +26,16 @@ const TranslationManager = () => {
             [type]: value,
         }));
     };
+
+    function swap() {
+        setSelectedLang((prevState) => ({
+            ...prevState,
+            from: selectedLang.to,
+            to: selectedLang.from,
+        }));
+        setTextToTranslate(result);
+        setResult(textToTranslate);
+    }
 
     const handleTranslation = async (e: FormEvent) => {
         e.preventDefault();
@@ -67,12 +80,44 @@ const TranslationManager = () => {
                 From one tongue to another.
             </h1>
 
+            <div className="mt-6 flex items-center gap-2">
+                <Select value={selectedLang.from} onValueChange={(value) => handleLangChange("from", value)}>
+                    <SelectTrigger className="flex-1">
+                        <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {LANGUAGES.map((l) => (
+                            <SelectItem key={l.value} value={l.value}>
+                                {l.name}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+                <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    onClick={swap}
+                    aria-label="Swap languages"
+                >
+                    <ArrowLeftRight />
+                </Button>
+                <Select value={selectedLang.to} onValueChange={(value) => handleLangChange("to", value)}>
+                    <SelectTrigger className="flex-1">
+                        <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {LANGUAGES.map((l) => (
+                            <SelectItem key={l.value} value={l.value}>
+                                {l.name}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+            </div>
+
             <div className="mt-6">
-                <ResultComponent
-                    handleLangChange={handleLangChange}
-                    selectedLang={selectedLang}
-                    output={result}
-                />
+                <ResultComponent output={result} selectedLang={selectedLang} />
 
                 {error && (
                     <p className="mt-3 text-center text-sm text-destructive">{error}</p>
@@ -84,8 +129,6 @@ const TranslationManager = () => {
                 )}
 
                 <TranslationForm
-                    handleLangChange={handleLangChange}
-                    selectedLang={selectedLang}
                     handleTranslation={handleTranslation}
                     setTextToTranslate={setTextToTranslate}
                     textToTranslate={textToTranslate}

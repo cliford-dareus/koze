@@ -1,46 +1,21 @@
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectTrigger,
-} from "@/app/_components/ui/select";
 import TypewriterEffect from "@/app/_components/typewriter-text";
-import { LANGUAGES } from "@/lib/languages";
+import { Button } from "@/app/_components/ui/button";
+import { voiceFor } from "@/lib/languages";
+import { speak } from "@/lib/speech";
+import { Mic, Volume2 } from "lucide-react";
+import { useState } from "react";
 
 type Props = {
-    handleLangChange: (type: "from" | "to", value: string) => void;
-    selectedLang: { from: string; to: string };
     output: string;
+    listen: () => void;
+    selectedLang: { to: string; from: string };
 };
 
-const ResultComponent = ({
-    handleLangChange,
-    selectedLang,
-    output,
-}: Props) => {
+const ResultComponent = ({ output, listen, selectedLang }: Props) => {
+    const [listening, setListening] = useState(false);
+
     return (
         <div className="relative min-h-[32vh] rounded-xl border border-border bg-card p-5 shadow-soft">
-            <div className="absolute right-4 top-4">
-                <Select
-                    value={selectedLang.to}
-                    onValueChange={(value) => handleLangChange("to", value)}
-                >
-                    <SelectTrigger className="h-9 rounded-full border-border bg-muted px-4">
-                        To · {selectedLang.to.toUpperCase()}
-                    </SelectTrigger>
-                    <SelectContent className="border-border bg-card">
-                        <SelectGroup>
-                            {LANGUAGES.map((lang) => (
-                                <SelectItem key={lang.id} value={lang.value}>
-                                    {lang.name}
-                                </SelectItem>
-                            ))}
-                        </SelectGroup>
-                    </SelectContent>
-                </Select>
-            </div>
-
             {!output ? (
                 <div className="flex h-full min-h-[28vh] flex-col items-center justify-end pb-2 text-center">
                     <h1 className="font-display text-2xl font-medium">
@@ -62,6 +37,21 @@ const ResultComponent = ({
                     </div>
                 </div>
             )}
+
+            {output ? (
+                <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="mt-4"
+                    onClick={() => speak(output, voiceFor(selectedLang.to))}
+                >
+                    <Volume2 />
+                    Hear translation
+                </Button>
+            ) : null}
+
+
         </div>
     );
 };

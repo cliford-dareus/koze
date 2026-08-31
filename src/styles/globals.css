@@ -43,7 +43,6 @@
 
     --radius: 0.75rem;
 
-    /* App shell metrics (nav height ≈ 3.5rem + gap) */
     --nav-clearance: 5.5rem;
     --safe-top: env(safe-area-inset-top, 0px);
     --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -91,7 +90,6 @@
     background: hsl(170 28% 23% / 0.16);
   }
 
-  /* Avoid rubber-band overscroll flash on iOS standalone */
   @supports (-webkit-touch-callout: none) {
     body {
       overscroll-behavior-y: none;
@@ -110,14 +108,12 @@
       radial-gradient(circle at 88% 0%, hsl(40 8% 10% / 0.04), transparent 28%);
   }
 
-  /** Full-height scroll column inside the app frame */
   .app-frame {
     @apply relative mx-auto h-full max-w-lg md:max-w-3xl;
     padding-left: var(--safe-left);
     padding-right: var(--safe-right);
   }
 
-  /** Standard page padding: top safe area + bottom above tab bar */
   .app-shell {
     display: flex;
     min-height: 100%;
@@ -128,7 +124,6 @@
     padding-bottom: calc(var(--nav-clearance) + var(--safe-bottom));
   }
 
-  /** Nested activity pages already under (pages) layout */
   .app-shell-nested {
     display: flex;
     height: 100%;
@@ -140,7 +135,6 @@
     padding-bottom: calc(var(--nav-clearance) + var(--safe-bottom));
   }
 
-  /** Auth / onboarding when bottom nav is hidden */
   .app-shell-auth {
     display: flex;
     min-height: 100%;

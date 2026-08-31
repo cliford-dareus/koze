@@ -23,9 +23,7 @@ const PageTopSection = () => {
   const pathname = usePathname();
   const title = titleFromPath(pathname);
   const parent =
-    pathname.startsWith("/chat/") && pathname !== "/chat"
-      ? "/chat"
-      : "/";
+    pathname.startsWith("/chat/") && pathname !== "/chat" ? "/chat" : "/";
 
   return (
     <div className="flex shrink-0 items-center justify-between py-1">
