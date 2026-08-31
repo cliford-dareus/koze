@@ -44,8 +44,8 @@ const WORD = {
 
 export default function Home() {
   return (
-    <div className="flex min-h-full flex-col px-5 pb-28 pt-8">
-      <header className="mb-8 flex items-center justify-between">
+    <div className="app-shell">
+      <header className="mb-8 flex items-center justify-between gap-3">
         <div className="inline-flex items-center gap-2">
           <span className="flex size-7 items-center justify-center rounded-lg bg-primary text-xs font-semibold text-primary-foreground">
             K
@@ -90,7 +90,7 @@ export default function Home() {
           const Icon = item.icon;
           return (
             <Link key={item.href} href={item.href} className="group">
-              <div className="flex h-full flex-col rounded-xl border border-border bg-card p-4 shadow-soft transition-transform duration-150 group-hover:-translate-y-0.5">
+              <div className="flex h-full flex-col rounded-xl border border-border bg-card p-4 shadow-soft transition-transform duration-150 group-hover:-translate-y-0.5 active:translate-y-0">
                 <span className="flex size-9 items-center justify-center rounded-md bg-accent text-accent-foreground">
                   <Icon size={16} strokeWidth={1.75} />
                 </span>

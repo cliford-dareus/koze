@@ -5,9 +5,9 @@ import { Transcriber } from "@/app/_components/providers/transcribe-provider";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <Transcriber>
-      <section className="flex h-full flex-col gap-4 px-5 pb-28 pt-4">
+      <section className="app-shell-nested">
         <PageTopSection />
-        {children}
+        <div className="min-h-0 flex-1">{children}</div>
       </section>
     </Transcriber>
   );
