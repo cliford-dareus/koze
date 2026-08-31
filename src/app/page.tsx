@@ -7,6 +7,7 @@ import {
   LucideMessageCircle,
 } from "lucide-react";
 import ProgressSummary from "@/app/_components/progress-summary";
+import AuthMenu from "@/app/_components/auth-menu";
 
 const ACTIVITIES = [
   {
@@ -45,7 +46,7 @@ const WORD = {
 export default function Home() {
   return (
     <div className="flex min-h-full flex-col px-5 pb-28 pt-8">
-      <header className="mb-8 flex items-center justify-between">
+      <header className="mb-8 flex items-center justify-between gap-3">
         <div className="inline-flex items-center gap-2">
           <span className="flex size-7 items-center justify-center rounded-lg bg-primary text-xs font-semibold text-primary-foreground">
             K
@@ -54,9 +55,7 @@ export default function Home() {
             Koze
           </span>
         </div>
-        <span className="rounded-full bg-accent px-2.5 py-1 text-xs font-medium text-accent-foreground">
-          Language studio
-        </span>
+        <AuthMenu />
       </header>
 
       <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
@@ -66,8 +65,8 @@ export default function Home() {
         Learn in the quiet hours.
       </h1>
       <p className="mt-3 max-w-prose text-muted-foreground">
-        Four small practices. Your progress stays on this device — no account
-        required.
+        Four small practices. Sign in to sync progress across devices — or keep
+        practicing as a guest on this device.
       </p>
 
       <ProgressSummary />
