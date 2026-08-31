@@ -1,14 +1,9 @@
-import Loader from '@/app/_components/ui/spinner'
-import React from 'react'
+import Loader from "@/app/_components/ui/spinner";
 
-type Props = {}
-
-const Loading = (props: Props) => {
+export default function Loading() {
   return (
-    <div className="h-full w-full flex justify-center items-center">
-        <Loader />
+    <div className="flex h-full w-full items-center justify-center pb-nav pt-safe">
+      <Loader />
     </div>
-  )
+  );
 }
-
-export default Loading

@@ -25,6 +25,12 @@ const splash = (file: string, media: string) => ({
     media,
 });
 
+/** Absolute paths so iOS resolves splash assets from the site root. */
+const splash = (file: string, media: string) => ({
+  url: `/${file}`,
+  media,
+});
+
 export const metadata: Metadata = {
     applicationName: "Koze",
     title: {
