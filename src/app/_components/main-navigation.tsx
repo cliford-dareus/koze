@@ -16,8 +16,14 @@ const NAV = [
   { href: "/chat", label: "Practice", icon: LucideMessageCircle },
 ] as const;
 
+const HIDDEN_PREFIXES = ["/login", "/register", "/onboarding"];
+
 const MainNavigation = () => {
   const pathname = usePathname();
+
+  if (HIDDEN_PREFIXES.some((p) => pathname.startsWith(p))) {
+    return null;
+  }
 
   return (
     <nav className="pointer-events-none fixed inset-x-0 bottom-0 z-20">
