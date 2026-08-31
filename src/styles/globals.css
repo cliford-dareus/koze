@@ -42,6 +42,12 @@
     --ring: 170 28% 23%;
 
     --radius: 0.75rem;
+
+    --nav-clearance: 5.5rem;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-left: env(safe-area-inset-left, 0px);
+    --safe-right: env(safe-area-inset-right, 0px);
   }
 }
 
@@ -53,10 +59,13 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    height: 100%;
   }
 
   body {
     @apply bg-background text-foreground;
+    min-height: 100%;
+    min-height: 100dvh;
   }
 
   h1,
@@ -80,14 +89,71 @@
   ::selection {
     background: hsl(170 28% 23% / 0.16);
   }
+
+  @supports (-webkit-touch-callout: none) {
+    body {
+      overscroll-behavior-y: none;
+    }
+  }
 }
 
-.font-display {
-  font-family: var(--font-display), ui-serif, Georgia, serif;
-}
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+  }
 
-.paper-grain {
-  background-image:
-    radial-gradient(circle at 18% 12%, hsl(170 28% 23% / 0.05), transparent 32%),
-    radial-gradient(circle at 88% 0%, hsl(40 8% 10% / 0.04), transparent 28%);
+  .paper-grain {
+    background-image:
+      radial-gradient(circle at 18% 12%, hsl(170 28% 23% / 0.05), transparent 32%),
+      radial-gradient(circle at 88% 0%, hsl(40 8% 10% / 0.04), transparent 28%);
+  }
+
+  .app-frame {
+    @apply relative mx-auto h-full max-w-lg md:max-w-3xl;
+    padding-left: var(--safe-left);
+    padding-right: var(--safe-right);
+  }
+
+  .app-shell {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: max(1.5rem, var(--safe-top));
+    padding-bottom: calc(var(--nav-clearance) + var(--safe-bottom));
+  }
+
+  .app-shell-nested {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: max(0.75rem, var(--safe-top));
+    padding-bottom: calc(var(--nav-clearance) + var(--safe-bottom));
+  }
+
+  .app-shell-auth {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: max(2rem, var(--safe-top));
+    padding-bottom: max(2rem, var(--safe-bottom));
+  }
+
+  .pb-nav {
+    padding-bottom: calc(var(--nav-clearance) + var(--safe-bottom));
+  }
+
+  .pt-safe {
+    padding-top: max(0px, var(--safe-top));
+  }
+
+  .pb-safe {
+    padding-bottom: max(0px, var(--safe-bottom));
+  }
 }
