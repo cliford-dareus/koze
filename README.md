@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Koze
 
-## Getting Started
+A calm language studio for translation, reading, listening, and short practice quizzes.
 
-First, run the development server:
+Progress can stay on-device (guest mode) or sync to **MongoDB** when you sign in.
+
+## Stack
+
+- Next.js 14 (App Router) + TypeScript + Tailwind
+- Auth.js (`next-auth` v5) — email/password credentials; optional Google
+- MongoDB via Mongoose (users, onboarding, progress)
+- Gemini quizzes, RapidAPI translate, VoiceRSS TTS (existing features)
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local
+# fill MONGODB_URI, AUTH_SECRET, and existing API keys
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Required env
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+| Variable | Purpose |
+|----------|---------|
+| `MONGODB_URI` | MongoDB connection string |
+| `AUTH_SECRET` | Auth.js secret (`openssl rand -base64 32`) |
+| `NEXTAUTH_URL` / `NEXT_PUBLIC_APP_URL` | App origin (e.g. `http://localhost:3000`) |
+| `GOOGLE_API_KEY` | Gemini quizzes |
+| `API_KEY` | RapidAPI Deep Translate |
+| `VOICERS_API_KEY` | VoiceRSS TTS |
+| `NINJA_API_KEY` | Quotes for reading |
 
-## Learn More
+Optional Google sign-in: `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`, and set `NEXT_PUBLIC_GOOGLE_AUTH=true`.
 
-To learn more about Next.js, take a look at the following resources:
+## Auth & onboarding
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Guest** — use the app with `localStorage` progress only.
+2. **Register / Sign in** — `/register`, `/login`.
+3. **Onboarding** (required once after account creation) — display name, native language, learning language, goal, daily minutes.
+4. Progress is written to MongoDB on each activity and merged with any prior guest data on login.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Main routes
 
-## Deploy on Vercel
+| Path | Description |
+|------|-------------|
+| `/` | Home + progress summary |
+| `/translation` | Translate (+ camera OCR) |
+| `/reading` | Quote + guided reading |
+| `/listening` | TTS + multiple choice |
+| `/chat` | Topic quizzes (Gemini) |
+| `/onboarding` | Post-signup setup |
+| `/login`, `/register` | Auth |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Set all env vars on Vercel (or your host).
+- MongoDB Atlas: allow your deployment IPs / `0.0.0.0/0` for serverless if needed.
+- Auth.js needs a stable `AUTH_SECRET` and correct public URL.
