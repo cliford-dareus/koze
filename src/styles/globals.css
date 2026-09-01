@@ -146,7 +146,7 @@
   }
 
   .pb-nav {
-    padding-bottom: calc(var(--nav-clearance) + var(--safe-bottom));
+    /*padding-bottom: calc(var(--nav-clearance) + var(--safe-bottom));*/
   }
 
   .pt-safe {
