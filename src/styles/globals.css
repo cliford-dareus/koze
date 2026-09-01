@@ -109,7 +109,7 @@
   }
 
   .app-frame {
-    @apply relative mx-auto h-dvh max-w-lg md:max-w-3xl;
+    @apply relative mx-auto h-full max-w-lg md:max-w-3xl;
     padding-left: var(--safe-left);
     padding-right: var(--safe-right);
   }

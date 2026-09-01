@@ -247,7 +247,7 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${outfit.variable} ${fraunces.variable}`}>
             <body
-                className={`${outfit.className} h-[100dvh] overflow-hidden paper-grain`}
+                className={`${outfit.className} h-screen overflow-hidden paper-grain`}
             >
                 <AuthSessionProvider>
                     <AnimatedSplash />
