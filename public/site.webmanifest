@@ -2,7 +2,7 @@
   "id": "/",
   "name": "Koze",
   "short_name": "Koze",
-  "description": "A calm language studio for translation, reading, listening, and practice.",
+  "description": "A calm language studio for translation, reading, listening, and practice. Progress stays on this device.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
