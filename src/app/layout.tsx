@@ -247,14 +247,14 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${outfit.variable} ${fraunces.variable}`}>
             <body
-                className={`${outfit.className} h-[100dvh] overflow-hidden paper-grain`}
+                className={`${outfit.className} h-screen overflow-hidden paper-grain`}
             >
                 <AuthSessionProvider>
                     <AnimatedSplash />
                     <TooltipProvider>
                         <div className="app-frame">
-                            <main className="h-full overflow-y-auto overscroll-y-contain">
-                                    {children}
+                            <main className="h-full overflow-y-auto">
+                                {children}
                             </main>
                             <MainNavigation />
                         </div>
