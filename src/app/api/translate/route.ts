@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const URL = "https://deep-translate1.p.rapidapi.com/language/translate/v2";
+const apiKey = process.env.API_KEY!;
 
 export async function POST(req: NextRequest) {
     const { from, to, text } = await req.json();
-    const apiKey = process.env.API_KEY!;
 
     const headers = new Headers();
     headers.set("Content-Type", "application/json");
