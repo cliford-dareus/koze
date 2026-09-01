@@ -7,11 +7,10 @@ import { useState } from "react";
 
 type Props = {
     output: string;
-    listen: () => void;
     selectedLang: { to: string; from: string };
 };
 
-const ResultComponent = ({ output, listen, selectedLang }: Props) => {
+const ResultComponent = ({ output, selectedLang }: Props) => {
     const [listening, setListening] = useState(false);
 
     return (

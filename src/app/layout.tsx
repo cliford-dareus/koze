@@ -5,7 +5,6 @@ import MainNavigation from "@/app/_components/main-navigation";
 import { TooltipProvider } from "@/app/_components/ui/tooltip";
 import AuthSessionProvider from "@/app/_components/providers/session-provider";
 import AnimatedSplash from "@/app/_components/animated-splash";
-import { Suspense } from "react";
 
 const outfit = Outfit({
     subsets: ["latin"],
@@ -23,12 +22,6 @@ const fraunces = Fraunces({
 const splash = (file: string, media: string) => ({
     url: `/${file}`,
     media,
-});
-
-/** Absolute paths so iOS resolves splash assets from the site root. */
-const splash = (file: string, media: string) => ({
-  url: `/${file}`,
-  media,
 });
 
 export const metadata: Metadata = {
