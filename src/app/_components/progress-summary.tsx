@@ -11,6 +11,7 @@ import {
   ensureTodayCounters,
   levelProgress,
 } from "@/lib/gamification";
+import BadgesPanel from "@/app/_components/badges-panel";
 
 export default function ProgressSummary() {
   const [progress, setProgress] = useState<ProgressState>(defaultProgress());
@@ -120,6 +121,8 @@ export default function ProgressSummary() {
         <Stat label="Lessons" value={String(lessons)} />
         <Stat label="Today XP" value={String(progress.todayXp ?? 0)} />
       </div>
+
+      <BadgesPanel />
     </div>
   );
 }

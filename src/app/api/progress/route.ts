@@ -33,6 +33,7 @@ function normalizeProgress(raw: unknown): ProgressState {
     todayXp: typeof p.todayXp === "number" ? p.todayXp : 0,
     todayDate: typeof p.todayDate === "string" ? p.todayDate : null,
     dailyGoalMet: Boolean(p.dailyGoalMet),
+    badges: Array.isArray(p.badges) ? (p.badges as string[]) : [],
   } as ProgressState;
 }
 
@@ -72,6 +73,7 @@ const mergeSchema = z.object({
     todayXp: z.number().optional(),
     todayDate: z.string().nullable().optional(),
     dailyGoalMet: z.boolean().optional(),
+    badges: z.array(z.string()).optional(),
   }),
 });
 

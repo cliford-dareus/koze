@@ -33,6 +33,7 @@ const ProgressSchema = new Schema(
     todayXp: { type: Number, default: 0 },
     todayDate: { type: String, default: null },
     dailyGoalMet: { type: Boolean, default: false },
+    badges: { type: [String], default: [] },
   },
   { _id: false },
 );

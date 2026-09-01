@@ -1,6 +1,7 @@
 import type { ActivityKind, ProgressState } from "@/lib/progress";
 import { defaultProgress } from "@/lib/progress";
 import { applyXpAndDailyGoal, DEFAULT_DAILY_GOAL } from "@/lib/gamification";
+import { applyBadgeUnlocks } from "@/data/badges";
 
 function todayKey() {
   return new Date().toISOString().slice(0, 10);
@@ -68,7 +69,8 @@ export function applyActivity(
     lessonCompleted: extra?.lessonCompleted,
   });
 
-  return next;
+  const { progress } = applyBadgeUnlocks(next);
+  return progress;
 }
 
 function mergeLessonProgress(
@@ -105,6 +107,10 @@ export function mergeProgress(
     new Set([...(a.lessonsCompleted || []), ...(b.lessonsCompleted || [])]),
   );
 
+  const badges = Array.from(
+    new Set([...(a.badges || []), ...(b.badges || [])]),
+  );
+
   const today = todayKey();
   const aToday = a.todayDate === today;
   const bToday = b.todayDate === today;
@@ -125,7 +131,7 @@ export function mergeProgress(
       (aToday && a.dailyGoalMet) || (bToday && b.dailyGoalMet);
   }
 
-  return {
+  const merged: ProgressState = {
     translations: Math.max(a.translations, b.translations),
     listeningCorrect: Math.max(a.listeningCorrect, b.listeningCorrect),
     readingSessions: Math.max(a.readingSessions, b.readingSessions),
@@ -151,5 +157,9 @@ export function mergeProgress(
     todayXp,
     todayDate,
     dailyGoalMet,
+    badges,
   };
+
+  // Re-evaluate in case merged stats unlock more badges
+  return applyBadgeUnlocks(merged).progress;
 }

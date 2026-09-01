@@ -3,6 +3,7 @@ import {
   DEFAULT_DAILY_GOAL,
   levelFromXp,
 } from "@/lib/gamification";
+import { applyBadgeUnlocks } from "@/data/badges";
 
 export type LessonProgressEntry = {
   currentStep: number;
@@ -23,18 +24,14 @@ export type ProgressState = {
   lastLessonId: string | null;
   lessonProgress: Record<string, LessonProgressEntry>;
   lessonsCompleted: string[];
-  /** Lifetime XP */
   xp: number;
-  /** Target actions per day */
   dailyGoal: number;
-  /** Actions completed today (toward goal) */
   todayActions: number;
-  /** XP earned today */
   todayXp: number;
-  /** YYYY-MM-DD for today counters */
   todayDate: string | null;
-  /** Whether daily goal bonus already granted today */
   dailyGoalMet: boolean;
+  /** Earned badge ids */
+  badges: string[];
 };
 
 export const PROGRESS_KEY = "koze-progress-v1";
@@ -59,6 +56,7 @@ export const defaultProgress = (): ProgressState => ({
   todayXp: 0,
   todayDate: null,
   dailyGoalMet: false,
+  badges: [],
 });
 
 function todayKey() {
@@ -88,6 +86,7 @@ export function loadProgress(): ProgressState {
       todayXp: parsed.todayXp ?? 0,
       todayDate: parsed.todayDate ?? null,
       dailyGoalMet: parsed.dailyGoalMet ?? false,
+      badges: parsed.badges ?? [],
     };
   } catch {
     return defaultProgress();
@@ -167,6 +166,15 @@ export function recordActivity(
   next = applyXpAndDailyGoal(next, kind, {
     lessonCompleted: extra?.lessonCompleted,
   });
+
+  const { progress: withBadges, unlocked } = applyBadgeUnlocks(next);
+  next = withBadges;
+
+  if (unlocked.length && typeof window !== "undefined") {
+    window.dispatchEvent(
+      new CustomEvent("koze-badges", { detail: { unlocked } }),
+    );
+  }
 
   saveProgress(next);
 
