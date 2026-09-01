@@ -23,11 +23,6 @@ const splash = (file: string, media: string) => ({
     media,
 });
 
-const splash = (file: string, media: string) => ({
-  url: `/${file}`,
-  media,
-});
-
 export const metadata: Metadata = {
     applicationName: "Koze",
     title: {
