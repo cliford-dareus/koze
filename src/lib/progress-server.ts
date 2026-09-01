@@ -1,5 +1,6 @@
 import type { ActivityKind, ProgressState } from "@/lib/progress";
 import { defaultProgress } from "@/lib/progress";
+import { applyXpAndDailyGoal, DEFAULT_DAILY_GOAL } from "@/lib/gamification";
 
 function todayKey() {
   return new Date().toISOString().slice(0, 10);
@@ -63,6 +64,10 @@ export function applyActivity(
 
   if (extra?.topic) next = { ...next, lastTopic: extra.topic };
 
+  next = applyXpAndDailyGoal(next, kind, {
+    lessonCompleted: extra?.lessonCompleted,
+  });
+
   return next;
 }
 
@@ -100,6 +105,26 @@ export function mergeProgress(
     new Set([...(a.lessonsCompleted || []), ...(b.lessonsCompleted || [])]),
   );
 
+  const today = todayKey();
+  const aToday = a.todayDate === today;
+  const bToday = b.todayDate === today;
+
+  let todayActions = 0;
+  let todayXp = 0;
+  let dailyGoalMet = false;
+  let todayDate: string | null = null;
+
+  if (aToday || bToday) {
+    todayDate = today;
+    todayActions = Math.max(
+      aToday ? a.todayActions : 0,
+      bToday ? b.todayActions : 0,
+    );
+    todayXp = Math.max(aToday ? a.todayXp : 0, bToday ? b.todayXp : 0);
+    dailyGoalMet =
+      (aToday && a.dailyGoalMet) || (bToday && b.dailyGoalMet);
+  }
+
   return {
     translations: Math.max(a.translations, b.translations),
     listeningCorrect: Math.max(a.listeningCorrect, b.listeningCorrect),
@@ -117,5 +142,14 @@ export function mergeProgress(
     lastLessonId: a.lastLessonId || b.lastLessonId,
     lessonProgress: mergeLessonProgress(a.lessonProgress, b.lessonProgress),
     lessonsCompleted,
+    xp: Math.max(a.xp ?? 0, b.xp ?? 0),
+    dailyGoal: Math.max(
+      a.dailyGoal ?? DEFAULT_DAILY_GOAL,
+      b.dailyGoal ?? DEFAULT_DAILY_GOAL,
+    ),
+    todayActions,
+    todayXp,
+    todayDate,
+    dailyGoalMet,
   };
 }

@@ -5,6 +5,7 @@ import { connectDB } from "@/lib/db";
 import { User } from "@/models/User";
 import { defaultProgress, type ProgressState } from "@/lib/progress";
 import { applyActivity, mergeProgress } from "@/lib/progress-server";
+import { DEFAULT_DAILY_GOAL } from "@/lib/gamification";
 
 function normalizeProgress(raw: unknown): ProgressState {
   const base = { ...defaultProgress() };
@@ -25,6 +26,13 @@ function normalizeProgress(raw: unknown): ProgressState {
     lessonsCompleted: Array.isArray(p.lessonsCompleted)
       ? (p.lessonsCompleted as string[])
       : [],
+    xp: typeof p.xp === "number" ? p.xp : 0,
+    dailyGoal:
+      typeof p.dailyGoal === "number" ? p.dailyGoal : DEFAULT_DAILY_GOAL,
+    todayActions: typeof p.todayActions === "number" ? p.todayActions : 0,
+    todayXp: typeof p.todayXp === "number" ? p.todayXp : 0,
+    todayDate: typeof p.todayDate === "string" ? p.todayDate : null,
+    dailyGoalMet: Boolean(p.dailyGoalMet),
   } as ProgressState;
 }
 
@@ -58,6 +66,12 @@ const mergeSchema = z.object({
         }),
       )
       .optional(),
+    xp: z.number().optional(),
+    dailyGoal: z.number().optional(),
+    todayActions: z.number().optional(),
+    todayXp: z.number().optional(),
+    todayDate: z.string().nullable().optional(),
+    dailyGoalMet: z.boolean().optional(),
   }),
 });
 

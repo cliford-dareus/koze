@@ -27,6 +27,12 @@ const ProgressSchema = new Schema(
       of: LessonProgressEntrySchema,
       default: () => new Map(),
     },
+    xp: { type: Number, default: 0 },
+    dailyGoal: { type: Number, default: 3 },
+    todayActions: { type: Number, default: 0 },
+    todayXp: { type: Number, default: 0 },
+    todayDate: { type: String, default: null },
+    dailyGoalMet: { type: Boolean, default: false },
   },
   { _id: false },
 );

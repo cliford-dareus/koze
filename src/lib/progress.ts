@@ -1,3 +1,9 @@
+import {
+  applyXpAndDailyGoal,
+  DEFAULT_DAILY_GOAL,
+  levelFromXp,
+} from "@/lib/gamification";
+
 export type LessonProgressEntry = {
   currentStep: number;
   completed: boolean;
@@ -15,10 +21,20 @@ export type ProgressState = {
   lastActiveDate: string | null;
   lastTopic: string | null;
   lastLessonId: string | null;
-  /** lessonId → step progress */
   lessonProgress: Record<string, LessonProgressEntry>;
-  /** completed lesson ids */
   lessonsCompleted: string[];
+  /** Lifetime XP */
+  xp: number;
+  /** Target actions per day */
+  dailyGoal: number;
+  /** Actions completed today (toward goal) */
+  todayActions: number;
+  /** XP earned today */
+  todayXp: number;
+  /** YYYY-MM-DD for today counters */
+  todayDate: string | null;
+  /** Whether daily goal bonus already granted today */
+  dailyGoalMet: boolean;
 };
 
 export const PROGRESS_KEY = "koze-progress-v1";
@@ -37,6 +53,12 @@ export const defaultProgress = (): ProgressState => ({
   lastLessonId: null,
   lessonProgress: {},
   lessonsCompleted: [],
+  xp: 0,
+  dailyGoal: DEFAULT_DAILY_GOAL,
+  todayActions: 0,
+  todayXp: 0,
+  todayDate: null,
+  dailyGoalMet: false,
 });
 
 function todayKey() {
@@ -60,6 +82,12 @@ export function loadProgress(): ProgressState {
       ...parsed,
       lessonProgress: parsed.lessonProgress ?? {},
       lessonsCompleted: parsed.lessonsCompleted ?? [],
+      xp: parsed.xp ?? 0,
+      dailyGoal: parsed.dailyGoal ?? DEFAULT_DAILY_GOAL,
+      todayActions: parsed.todayActions ?? 0,
+      todayXp: parsed.todayXp ?? 0,
+      todayDate: parsed.todayDate ?? null,
+      dailyGoalMet: parsed.dailyGoalMet ?? false,
     };
   } catch {
     return defaultProgress();
@@ -136,6 +164,10 @@ export function recordActivity(
 
   if (extra?.topic) next = { ...next, lastTopic: extra.topic };
 
+  next = applyXpAndDailyGoal(next, kind, {
+    lessonCompleted: extra?.lessonCompleted,
+  });
+
   saveProgress(next);
 
   if (typeof window !== "undefined") {
@@ -171,6 +203,10 @@ export function totalActivities(p: ProgressState) {
     p.quizCorrect +
     (p.lessonsCompletedCount || p.lessonsCompleted?.length || 0)
   );
+}
+
+export function getLevel(p: ProgressState) {
+  return levelFromXp(p.xp ?? 0);
 }
 
 export async function syncProgressFromCloud() {
