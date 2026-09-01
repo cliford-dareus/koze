@@ -3,6 +3,7 @@
 import { PROGRESS_KEY } from "@/lib/progress";
 import { useEffect, useState } from "react";
 import { getDefinition } from "../_actions/translate";
+import { Meaning, WordLookupResult } from "@/lib/merriam-webster";
 
 const WORD = {
     word: "douceur",
@@ -13,7 +14,7 @@ const WORD = {
 
 export default function WordOfTheDay({ word }: { word: { ok: boolean; text?: string | undefined; error?: string | undefined; } }) {
     const [currentWord, setCurrentWord] = useState("");
-    const [definition, setDefinition] = useState({});
+    const [definition, setDefinition] = useState<Meaning[]>([]);
 
     useEffect(() => {
         const refresh = async () => {
@@ -34,12 +35,12 @@ export default function WordOfTheDay({ word }: { word: { ok: boolean; text?: str
             window.removeEventListener("koze-progress", refresh);
         };
     }, [word]);
-    
+
     useEffect(() => {
         const fetchDefinition = async () => {
             const definition = await getDefinition(currentWord);
-            console.log(definition);
-            setDefinition(definition);
+            if (!definition.ok) return;
+            setDefinition(definition.meanings);
         };
         if (!currentWord) return;
         fetchDefinition();
@@ -52,10 +53,10 @@ export default function WordOfTheDay({ word }: { word: { ok: boolean; text?: str
             </p>
             <p className="mt-3 font-display text-3xl font-medium">{currentWord}</p>
             <p className="mt-1 text-sm text-muted-foreground">
-                {WORD.lang} · {WORD.meaning}
+                {WORD.lang} · {definition[0]?.synonyms.slice(0, 3).join(", ")}
             </p>
             <p className="mt-4 border-t border-border pt-4 text-sm italic">
-                {WORD.example}
+                {definition[0]?.definitions[0]?.definition}
             </p>
         </div>
     );
