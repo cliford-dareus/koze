@@ -232,7 +232,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
     width: "device-width",
     initialScale: 1,
-    maximumScale: 1,
+    // maximumScale: 1,
     userScalable: false,
     viewportFit: "cover",
     themeColor: "#F4F1EB",
@@ -253,8 +253,8 @@ export default function RootLayout({
                     <AnimatedSplash />
                     <TooltipProvider>
                         <div className="app-frame">
-                            <main className="h-full overflow-y-auto overscroll-y-contain">
-                                    {children}
+                            <main className="h-full overflow-y-auto">
+                                {children}
                             </main>
                             <MainNavigation />
                         </div>
