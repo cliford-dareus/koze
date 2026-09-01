@@ -3,7 +3,6 @@ import { Fraunces, Outfit } from "next/font/google";
 import "../styles/globals.css";
 import MainNavigation from "@/app/_components/main-navigation";
 import { TooltipProvider } from "@/app/_components/ui/tooltip";
-import AuthSessionProvider from "@/app/_components/providers/session-provider";
 import AnimatedSplash from "@/app/_components/animated-splash";
 
 const outfit = Outfit({
@@ -244,23 +243,21 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en" className={`${outfit.variable} ${fraunces.variable}`}>
-            <body
-                className={`${outfit.className} h-[100dvh] overflow-hidden paper-grain`}
-            >
-                <AuthSessionProvider>
-                    <AnimatedSplash />
-                    <TooltipProvider>
-                        <div className="app-frame">
-                            <main className="h-full overflow-y-auto overscroll-y-contain">
-                                    {children}
-                            </main>
-                            <MainNavigation />
-                        </div>
-                    </TooltipProvider>
-                </AuthSessionProvider>
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en" className={`${outfit.variable} ${fraunces.variable}`}>
+      <body
+        className={`${outfit.className} h-[100dvh] overflow-hidden paper-grain`}
+      >
+        <AnimatedSplash />
+        <TooltipProvider>
+          <div className="app-frame">
+            <main className="h-full overflow-y-auto overscroll-y-contain">
+              {children}
+            </main>
+            <MainNavigation />
+          </div>
+        </TooltipProvider>
+      </body>
+    </html>
+  );
 }
