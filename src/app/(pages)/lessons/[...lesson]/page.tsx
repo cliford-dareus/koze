@@ -1,10 +1,12 @@
+import { redirect } from "next/navigation";
 
-const Lesson = ({params} : {params: {lesson: string}}) => {
-  console.log(params);
-  return(
-    <div className="">Single Lesson</div>
-  )
+type Props = {
+  params: { lesson: string[] };
 };
 
-
-export default Lesson;
+/** Legacy `/lessons/lesson-1` style paths → `/lessons/{slug}` */
+export default function LegacyLessonCatchAll({ params }: Props) {
+  const segment = params.lesson?.[0];
+  if (!segment) redirect("/lessons");
+  redirect(`/lessons/${segment}`);
+}

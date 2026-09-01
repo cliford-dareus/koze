@@ -115,8 +115,8 @@ export default function LessonPlayer({
             Well done.
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            You finished “{lesson.title}”. Progress is saved
-            {typeof window !== "undefined" ? "" : ""}.
+            You finished “{lesson.title}”. Progress is saved on this device
+            and syncs when you are signed in.
           </p>
           <div className="mt-6 flex flex-col gap-2 sm:flex-row">
             <Button asChild variant="default">
@@ -151,7 +151,6 @@ export default function LessonPlayer({
             selected={selected}
             checked={checked}
             onSelect={setSelected}
-            onCheck={() => setChecked(true)}
           />
 
           <div className="mt-8 flex items-center justify-between gap-3">
@@ -200,13 +199,11 @@ function StepBody({
   selected,
   checked,
   onSelect,
-  onCheck,
 }: {
   step: LessonStep;
   selected: number | null;
   checked: boolean;
   onSelect: (i: number) => void;
-  onCheck: () => void;
 }) {
   if (step.type === "intro") {
     return (
@@ -262,7 +259,6 @@ function StepBody({
     );
   }
 
-  // check
   return (
     <div>
       <h2 className="font-display text-xl font-medium">{step.title}</h2>
@@ -298,8 +294,6 @@ function StepBody({
       {checked && step.explanation ? (
         <p className="mt-3 text-sm text-muted-foreground">{step.explanation}</p>
       ) : null}
-      {/* onCheck kept for future auto-check UX */}
-      <span className="sr-only">{String(onCheck)}</span>
     </div>
   );
 }
