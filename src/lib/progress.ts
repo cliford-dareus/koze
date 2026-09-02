@@ -73,7 +73,10 @@ export function loadProgress(): ProgressState {
     if (typeof window === "undefined") return defaultProgress();
     try {
         const raw = localStorage.getItem(PROGRESS_KEY);
-        if (!raw) return defaultProgress();
+        if (!raw) {
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(defaultProgress()));
+            return defaultProgress();
+        }
         const parsed = JSON.parse(raw) as Partial<ProgressState>;
         return {
             ...defaultProgress(),
