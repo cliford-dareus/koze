@@ -27,7 +27,7 @@ export default function LessonPlayer({
 
   useEffect(() => {
     const p = loadProgress();
-    const entry = p.lessonProgress?.[lesson.id];
+    const entry = p.lessonProgress.get(lesson.id);
     if (entry?.completed) {
       setFinished(true);
       setStepIndex(Math.max(0, steps.length - 1));

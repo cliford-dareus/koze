@@ -91,9 +91,9 @@ export default function LessonsPage() {
                 {unitLessons.map((lesson, index) => {
                   const done = completedSet.has(lesson.id);
                   const inProgress =
-                    !done && progress.lessonProgress?.[lesson.id];
+                    !done && progress.lessonProgress?.get(lesson.id);
                   const step =
-                    progress.lessonProgress?.[lesson.id]?.currentStep ?? 0;
+                    progress.lessonProgress?.get(lesson.id)?.currentStep ?? 0;
 
                   return (
                     <li key={lesson.id}>
