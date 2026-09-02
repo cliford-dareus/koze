@@ -50,7 +50,7 @@ export function directionForLearningLanguage(
 ): LessonDirection {
   const code = (learningLanguage || "fr").toLowerCase();
   if (code === "en" || code.startsWith("en-")) return "fr-en";
-  if (code conf === "fr" || code.startsWith("fr-")) return "en-fr";
+  if (code === "fr" || code.startsWith("fr-")) return "en-fr";
   return "en-fr";
 }
 
