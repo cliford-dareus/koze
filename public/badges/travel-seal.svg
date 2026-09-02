@@ -1,0 +1,15 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <!-- ribbon tails -->
+                <path d="M 42 96 L 30 120 L 44 114 L 52 122 L 50 98 Z" fill="#B9862F"/>
+                <path d="M 78 96 L 90 120 L 76 114 L 68 122 L 70 98 Z" fill="#B9862F"/>
+                <circle cx="62" cy="64" r="46" fill="#1F362C" opacity="0.35"/>
+                <circle cx="60" cy="58" r="46" fill="#2B4A3D" stroke="#D9A441" stroke-width="5"/>
+                <circle cx="60" cy="58" r="38" fill="none" stroke="#D9A441" stroke-width="1.5" opacity="0.4"
+                        stroke-dasharray="3 4"/>
+                <circle cx="60" cy="54" r="18" fill="none" stroke="white" stroke-width="5"/>
+                <line x1="60" y1="32" x2="60" y2="38" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <line x1="60" y1="70" x2="60" y2="76" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <line x1="38" y1="54" x2="44" y2="54" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <line x1="76" y1="54" x2="82" y2="54" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <path d="M60 45 L65 54 L60 63 L55 54 Z" fill="#D9A441" stroke="none"/>
+            </svg>

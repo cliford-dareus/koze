@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {
+    Badge,
     LucideArrowUpRight,
     LucideBookOpen,
     LucideEar,
@@ -10,6 +11,8 @@ import ProgressSummary from "@/app/_components/progress-summary";
 import AuthMenu from "@/app/_components/auth-menu";
 import { getRandomWord } from "./_actions/translate";
 import WordOfTheDay from "./_components/word-of-the-day";
+import KOZE_LOGO from "../../public/koze-logo.png";
+import Image from "next/image";
 
 const ACTIVITIES = [
     {
@@ -36,6 +39,12 @@ const ACTIVITIES = [
         copy: "Pick a topic and take a short quiz.",
         icon: LucideMessageCircle,
     },
+    {
+        title: "Lessons",
+        href: "/lessons",
+        copy: "Learn from structured lessons.",
+        icon: LucideBookOpen,
+    },
 ];
 
 export default async function Home() {
@@ -44,14 +53,19 @@ export default async function Home() {
         <div className="app-shell">
             <header className="mb-8 flex items-center justify-between gap-3">
                 <div className="inline-flex items-center gap-2">
-                    <span className="flex size-7 items-center justify-center rounded-lg bg-primary text-xs font-semibold text-primary-foreground">
-                        K
+                    <span className="flex size-7 items-center justify-center">
+                        <Image src={KOZE_LOGO} width={20} height={20} alt="Koze" className="size-7" />
                     </span>
                     <span className="font-display text-xl font-medium tracking-tight">
                         Koze
                     </span>
                 </div>
-                <AuthMenu />
+                <div className="flex items-center gap-2">
+                    <span>
+                        <Badge />
+                    </span>
+                    <AuthMenu />
+                </div>
             </header>
 
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
