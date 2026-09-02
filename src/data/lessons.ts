@@ -20,7 +20,6 @@ export type LessonStep =
   | {
       type: "phrase";
       title: string;
-      /** Label above source line, e.g. English / Français */
       sourceLabel?: string;
       targetLabel?: string;
       phrases: { source: string; target: string }[];
@@ -51,7 +50,6 @@ export type Unit = {
   title: string;
   description: string;
   order: number;
-  /** Primary learning direction for the unit */
   direction: LessonDirection;
 };
 
@@ -87,7 +85,7 @@ export const UNITS: Unit[] = [
   {
     id: "fr-en-basics",
     title: "Basics (FR → EN)",
-    description: "Read French, say it in English — for francophones or reverse practice.",
+    description: "Read French, say it in English — reverse practice.",
     order: 5,
     direction: "fr-en",
   },
@@ -107,7 +105,6 @@ function dirLabels(direction: LessonDirection) {
 }
 
 export const LESSONS: Lesson[] = [
-  // ——— Foundations EN→FR ———
   {
     id: "greetings-1",
     slug: "greetings",
@@ -194,7 +191,7 @@ export const LESSONS: Lesson[] = [
       },
       {
         type: "tip",
-        title: "Te vs vous in “please”",
+        title: "Te vs vous in please",
         body: "S’il te plaît is for people you tutoyer. S’il vous plaît is the default with staff and strangers.",
         bullets: [
           "Merci beaucoup = thank you very much.",
@@ -265,8 +262,8 @@ export const LESSONS: Lesson[] = [
         body: "Liaison and silent letters matter more than perfect accent at this stage.",
         bullets: [
           "Un / une agree with gender (un livre, une pomme).",
-          "Six and dix often end in a soft sound before a vowel or pause — listen in context.",
-          "Quatre can sound like “cat” + soft r.",
+          "Six and dix change slightly before a vowel or pause — listen in context.",
+          "Learn numbers in short phrases, not only as a list.",
         ],
       },
       {
@@ -316,7 +313,7 @@ export const LESSONS: Lesson[] = [
     id: "introduce-yourself-1",
     slug: "introduce-yourself",
     title: "Introduce yourself",
-    description: "Name, origin, and a simple “nice to meet you.”",
+    description: "Name, origin, and a simple nice-to-meet-you.",
     unitId: "foundations",
     direction: "en-fr",
     level: "beginner",
@@ -342,41 +339,24 @@ export const LESSONS: Lesson[] = [
       {
         type: "tip",
         title: "Enchanté vs enchantée",
-        body: "The spoken difference is subtle; in writing, agreement follows the speaker’s gender in formal French. Many learners just say Enchanté.",
+        body: "In writing, agreement can follow the speaker’s gender. In speech, Enchanté is widely used.",
       },
       {
         type: "phrase",
         title: "Model intros",
         ...dirLabels("en-fr"),
         phrases: [
-          {
-            source: "Hello, my name is Alex.",
-            target: "Bonjour, je m’appelle Alex.",
-          },
-          {
-            source: "I’m from Canada.",
-            target: "Je viens du Canada.",
-          },
-          {
-            source: "I live in Lyon.",
-            target: "J’habite à Lyon.",
-          },
-          {
-            source: "Nice to meet you.",
-            target: "Enchanté.",
-          },
+          { source: "Hello, my name is Alex.", target: "Bonjour, je m’appelle Alex." },
+          { source: "I’m from Canada.", target: "Je viens du Canada." },
+          { source: "I live in Lyon.", target: "J’habite à Lyon." },
+          { source: "Nice to meet you.", target: "Enchanté." },
         ],
       },
       {
         type: "check",
         title: "Check",
         prompt: "“Je m’appelle Sam” means…",
-        options: [
-          "I live in Sam",
-          "My name is Sam",
-          "I am from Sam",
-          "See you Sam",
-        ],
+        options: ["I live in Sam", "My name is Sam", "I am from Sam", "See you Sam"],
         answerIndex: 1,
       },
       {
@@ -394,8 +374,6 @@ export const LESSONS: Lesson[] = [
       },
     ],
   },
-
-  // ——— Everyday EN→FR ———
   {
     id: "cafe-1",
     slug: "at-the-cafe",
@@ -415,11 +393,7 @@ export const LESSONS: Lesson[] = [
         type: "tip",
         title: "Café vocabulary culture",
         body: "Un café often means an espresso. Un café allongé is longer; un crème is coffee with milk.",
-        bullets: [
-          "Sur place = for here",
-          "À emporter = to go",
-          "L’addition = the bill",
-        ],
+        bullets: ["Sur place = for here", "À emporter = to go", "L’addition = the bill"],
       },
       {
         type: "vocab",
@@ -440,22 +414,10 @@ export const LESSONS: Lesson[] = [
         title: "Ordering",
         ...dirLabels("en-fr"),
         phrases: [
-          {
-            source: "I would like a coffee, please.",
-            target: "Je voudrais un café, s’il vous plaît.",
-          },
-          {
-            source: "A tea to go, please.",
-            target: "Un thé à emporter, s’il vous plaît.",
-          },
-          {
-            source: "The bill, please.",
-            target: "L’addition, s’il vous plaît.",
-          },
-          {
-            source: "For here or to go?",
-            target: "Sur place ou à emporter ?",
-          },
+          { source: "I would like a coffee, please.", target: "Je voudrais un café, s’il vous plaît." },
+          { source: "A tea to go, please.", target: "Un thé à emporter, s’il vous plaît." },
+          { source: "The bill, please.", target: "L’addition, s’il vous plaît." },
+          { source: "For here or to go?", target: "Sur place ou à emporter ?" },
         ],
       },
       {
@@ -503,7 +465,6 @@ export const LESSONS: Lesson[] = [
           { term: "du pain", meaning: "some bread" },
           { term: "du fromage", meaning: "some cheese" },
           { term: "un kilo de…", meaning: "a kilo of…" },
-          { term: "une livre de…", meaning: "about half a kilo of…" },
           { term: "C’est combien ?", meaning: "How much is it?" },
         ],
       },
@@ -512,18 +473,9 @@ export const LESSONS: Lesson[] = [
         title: "At the stall",
         ...dirLabels("en-fr"),
         phrases: [
-          {
-            source: "I’d like three apples, please.",
-            target: "Je voudrais trois pommes, s’il vous plaît.",
-          },
-          {
-            source: "A kilo of tomatoes, please.",
-            target: "Un kilo de tomates, s’il vous plaît.",
-          },
-          {
-            source: "How much is it?",
-            target: "C’est combien ?",
-          },
+          { source: "I’d like three apples, please.", target: "Je voudrais trois pommes, s’il vous plaît." },
+          { source: "A kilo of tomatoes, please.", target: "Un kilo de tomates, s’il vous plaît." },
+          { source: "How much is it?", target: "C’est combien ?" },
         ],
       },
       {
@@ -561,7 +513,7 @@ export const LESSONS: Lesson[] = [
       {
         type: "intro",
         title: "Beyond bonjour",
-        body: "Weather and “how is work/weekend” are safe bridges after greetings.",
+        body: "Weather and weekend questions are safe bridges after greetings.",
       },
       {
         type: "vocab",
@@ -572,7 +524,6 @@ export const LESSONS: Lesson[] = [
           { term: "Il fait froid", meaning: "It’s cold" },
           { term: "Il fait chaud", meaning: "It’s hot" },
           { term: "Le week-end", meaning: "The weekend" },
-          { term: "Au travail", meaning: "At work" },
         ],
       },
       {
@@ -594,8 +545,6 @@ export const LESSONS: Lesson[] = [
       },
     ],
   },
-
-  // ——— Travel EN→FR ———
   {
     id: "directions-1",
     slug: "simple-directions",
@@ -609,7 +558,7 @@ export const LESSONS: Lesson[] = [
       {
         type: "intro",
         title: "Finding your way",
-        body: "Combine où est… ? with a few direction words and you can handle short walks in a new city.",
+        body: "Combine où est… ? with a few direction words for short walks in a new city.",
       },
       {
         type: "vocab",
@@ -629,11 +578,6 @@ export const LESSONS: Lesson[] = [
         title: "Asking the way",
         ...dirLabels("en-fr"),
         phrases: [
-          { source: "Where is the station?", target: "Où est la gare ?" },
-          { source: "Is it far?", target: "C’est loin ?" },
-          { source: "Go straight ahead, then left.", target: "Allez tout droit, puis à gauche." },
-        ],
-: [
           { source: "Where is the station?", target: "Où est la gare ?" },
           { source: "Is it far?", target: "C’est loin ?" },
           { source: "Go straight ahead, then left.", target: "Allez tout droit, puis à gauche." },
@@ -689,19 +633,10 @@ export const LESSONS: Lesson[] = [
         title: "At the counter",
         ...dirLabels("en-fr"),
         phrases: [
-          {
-            source: "A ticket to Lyon, please.",
-            target: "Un billet pour Lyon, s’il vous plaît.",
-          },
-          {
-            source: "A round trip to Paris.",
-            target: "Un aller-retour pour Paris.",
-          },
+          { source: "A ticket to Lyon, please.", target: "Un billet pour Lyon, s’il vous plaît." },
+          { source: "A round trip to Paris.", target: "Un aller-retour pour Paris." },
           { source: "Which platform?", target: "Quel quai ?" },
-          {
-            source: "Is the train delayed?",
-            target: "Le train est-il en retard ?",
-          },
+          { source: "Is the train delayed?", target: "Le train est-il en retard ?" },
         ],
       },
       {
@@ -752,18 +687,9 @@ export const LESSONS: Lesson[] = [
         title: "Check-in",
         ...dirLabels("en-fr"),
         phrases: [
-          {
-            source: "I have a reservation.",
-            target: "J’ai une réservation.",
-          },
-          {
-            source: "Two nights, please.",
-            target: "Deux nuits, s’il vous plaît.",
-          },
-          {
-            source: "Is breakfast included?",
-            target: "Le petit-déjeuner est-il inclus ?",
-          },
+          { source: "I have a reservation.", target: "J’ai une réservation." },
+          { source: "Two nights, please.", target: "Deux nuits, s’il vous plaît." },
+          { source: "Is breakfast included?", target: "Le petit-déjeuner est-il inclus ?" },
         ],
       },
       {
@@ -780,8 +706,6 @@ export const LESSONS: Lesson[] = [
       },
     ],
   },
-
-  // ——— Grammar EN→FR ———
   {
     id: "articles-gender-1",
     slug: "articles-and-gender",
@@ -795,12 +719,12 @@ export const LESSONS: Lesson[] = [
       {
         type: "intro",
         title: "Every noun has a gender",
-        body: "French nouns are masculine or feminine. Articles (le/la, un/une) show that gender. Memorize new nouns with their article.",
+        body: "French nouns are masculine or feminine. Articles show that gender. Memorize new nouns with their article.",
       },
       {
         type: "tip",
         title: "Learning habit",
-        body: "Don’t learn “maison = house”. Learn “la maison = the house”. The article is part of the word for you as a learner.",
+        body: "Don’t learn maison = house. Learn la maison = the house. The article is part of the word for you as a learner.",
         bullets: [
           "le / un → masculine",
           "la / une → feminine",
@@ -822,7 +746,7 @@ export const LESSONS: Lesson[] = [
       {
         type: "check",
         title: "Check",
-        prompt: "Which article fits with “pomme” (apple)?",
+        prompt: "Which article fits with pomme (apple)?",
         options: ["le", "la", "les only", "No article ever"],
         answerIndex: 1,
         explanation: "Une/la pomme — feminine.",
@@ -849,7 +773,7 @@ export const LESSONS: Lesson[] = [
       {
         type: "intro",
         title: "Workhorses",
-        body: "Être (to be) and avoir (to have) appear in descriptions, ages, and many perfect tenses later. Learn the present forms early.",
+        body: "Être (to be) and avoir (to have) appear in descriptions, ages, and many perfect tenses later.",
       },
       {
         type: "vocab",
@@ -902,13 +826,11 @@ export const LESSONS: Lesson[] = [
       },
     ],
   },
-
-  // ——— FR → EN basics ———
   {
     id: "fr-en-greetings",
     slug: "fr-en-greetings",
     title: "Salutations → English",
-    description: "Hear common French greetings; answer in natural English.",
+    description: "Common French greetings into natural English.",
     unitId: "fr-en-basics",
     direction: "fr-en",
     level: "beginner",
@@ -917,7 +839,7 @@ export const LESSONS: Lesson[] = [
       {
         type: "intro",
         title: "Sens inverse",
-        body: "This track starts from French. Read or imagine hearing the French line, then choose or recall the English meaning. Ideal if French is stronger, or to deepen recognition.",
+        body: "This track starts from French. Read the French line, then map it to English. Ideal for reverse practice or francophone learners of English.",
       },
       {
         type: "tip",
@@ -947,15 +869,9 @@ export const LESSONS: Lesson[] = [
         title: "Match the sense",
         ...dirLabels("fr-en"),
         phrases: [
-          {
-            source: "Bonjour, comment allez-vous ?",
-            target: "Hello, how are you?",
-          },
+          { source: "Bonjour, comment allez-vous ?", target: "Hello, how are you?" },
           { source: "Salut, ça va ?", target: "Hi, how’s it going?" },
-          {
-            source: "Ça va bien, merci. Et vous ?",
-            target: "I’m fine, thanks. And you?",
-          },
+          { source: "Ça va bien, merci. Et vous ?", target: "I’m fine, thanks. And you?" },
           { source: "À demain !", target: "See you tomorrow!" },
         ],
       },
@@ -993,7 +909,7 @@ export const LESSONS: Lesson[] = [
       {
         type: "intro",
         title: "Formules de politesse",
-        body: "Recognizing these quickly helps you respond naturally when someone speaks French to you.",
+        body: "Recognizing these quickly helps you respond when someone speaks French to you.",
       },
       {
         type: "vocab",
@@ -1013,10 +929,7 @@ export const LESSONS: Lesson[] = [
         title: "From French lines",
         ...dirLabels("fr-en"),
         phrases: [
-          {
-            source: "Un café, s’il vous plaît.",
-            target: "A coffee, please.",
-          },
+          { source: "Un café, s’il vous plaît.", target: "A coffee, please." },
           { source: "Merci beaucoup !", target: "Thank you very much!" },
           { source: "Pardon, excusez-moi.", target: "Sorry — excuse me." },
           { source: "De rien.", target: "You’re welcome." },
@@ -1032,7 +945,7 @@ export const LESSONS: Lesson[] = [
       {
         type: "check",
         title: "Check · reply",
-        prompt: "Someone says “Merci.” A natural English reply to “De rien” is…",
+        prompt: "A natural English meaning of “De rien” is…",
         options: ["Please", "You’re welcome", "Good morning", "See you"],
         answerIndex: 1,
       },
@@ -1042,7 +955,7 @@ export const LESSONS: Lesson[] = [
     id: "fr-en-numbers",
     slug: "fr-en-numbers",
     title: "Nombres → English",
-    description: "Recognize spoken/written French numbers 0–10.",
+    description: "Recognize French numbers 0–10 in English.",
     unitId: "fr-en-basics",
     direction: "fr-en",
     level: "beginner",
@@ -1051,7 +964,7 @@ export const LESSONS: Lesson[] = [
       {
         type: "intro",
         title: "Comprendre les chiffres",
-        body: "Train recognition: when you see sept, you should think seven without translating word-by-word every time.",
+        body: "When you see sept, think seven without translating word-by-word every time.",
       },
       {
         type: "vocab",
@@ -1096,8 +1009,6 @@ export const LESSONS: Lesson[] = [
       },
     ],
   },
-
-  // ——— FR → EN daily ———
   {
     id: "fr-en-cafe",
     slug: "fr-en-at-the-cafe",
@@ -1130,18 +1041,9 @@ export const LESSONS: Lesson[] = [
         title: "What they said",
         ...dirLabels("fr-en"),
         phrases: [
-          {
-            source: "Je voudrais un café, s’il vous plaît.",
-            target: "I would like a coffee, please.",
-          },
-          {
-            source: "Sur place ou à emporter ?",
-            target: "For here or to go?",
-          },
-          {
-            source: "L’addition, s’il vous plaît.",
-            target: "The bill, please.",
-          },
+          { source: "Je voudrais un café, s’il vous plaît.", target: "I would like a coffee, please." },
+          { source: "Sur place ou à emporter ?", target: "For here or to go?" },
+          { source: "L’addition, s’il vous plaît.", target: "The bill, please." },
         ],
       },
       {
@@ -1173,7 +1075,7 @@ export const LESSONS: Lesson[] = [
       {
         type: "intro",
         title: "Dans la rue",
-        body: "Someone answers your question in French — pick out tout droit, à gauche, à droite.",
+        body: "Someone answers in French — pick out tout droit, à gauche, à droite.",
       },
       {
         type: "vocab",
@@ -1183,7 +1085,7 @@ export const LESSONS: Lesson[] = [
           { term: "à droite", meaning: "to the right" },
           { term: "tout droit", meaning: "straight ahead" },
           { term: "C’est loin ?", meaning: "Is it far?" },
-          { term: "C’est à côté", meaning: "It’s next door / right nearby" },
+          { term: "C’est à côté", meaning: "It’s nearby / next door" },
           { term: "au bout de la rue", meaning: "at the end of the street" },
         ],
       },
@@ -1192,18 +1094,9 @@ export const LESSONS: Lesson[] = [
         title: "What you might hear",
         ...dirLabels("fr-en"),
         phrases: [
-          {
-            source: "Allez tout droit, puis à gauche.",
-            target: "Go straight ahead, then left.",
-          },
-          {
-            source: "C’est à côté de la gare.",
-            target: "It’s next to the station.",
-          },
-          {
-            source: "Ce n’est pas loin.",
-            target: "It’s not far.",
-          },
+          { source: "Allez tout droit, puis à gauche.", target: "Go straight ahead, then left." },
+          { source: "C’est à côté de la gare.", target: "It’s next to the station." },
+          { source: "Ce n’est pas loin.", target: "It’s not far." },
         ],
       },
       {
@@ -1228,7 +1121,7 @@ export const LESSONS: Lesson[] = [
       {
         type: "intro",
         title: "Gare & aéroport",
-        body: "Announcements and counters recycle billet, quai, en retard. Map them to English automatically.",
+        body: "Announcements recycle billet, quai, en retard. Map them to English automatically.",
       },
       {
         type: "vocab",
@@ -1247,18 +1140,9 @@ export const LESSONS: Lesson[] = [
         title: "Counter & board",
         ...dirLabels("fr-en"),
         phrases: [
-          {
-            source: "Un billet pour Lyon, s’il vous plaît.",
-            target: "A ticket to Lyon, please.",
-          },
-          {
-            source: "Le train est en retard.",
-            target: "The train is delayed.",
-          },
-          {
-            source: "Quel quai ?",
-            target: "Which platform?",
-          },
+          { source: "Un billet pour Lyon, s’il vous plaît.", target: "A ticket to Lyon, please." },
+          { source: "Le train est en retard.", target: "The train is delayed." },
+          { source: "Quel quai ?", target: "Which platform?" },
         ],
       },
       {
