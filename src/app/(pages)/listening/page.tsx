@@ -3,8 +3,7 @@ import { getRandomFacts } from "@/app/_actions/translate";
 import TextToSpeechWithVirsual from "@/app/_components/text-to-speech-with-virsual";
 
 const Listening = async () => {
-    const randomFact = await getRandomFacts();
-
+    const randomFact = await getRandomFacts();    
     if (randomFact === null) return null;
 
     return (
