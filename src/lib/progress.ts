@@ -5,6 +5,8 @@ import {
 } from "@/lib/gamification";
 import { applyBadgeUnlocks } from "@/data/badges";
 
+export type LessonDirection = "en-fr" | "fr-en";
+
 export type LessonProgressEntry = {
     currentStep: number;
     completed: boolean;
@@ -22,8 +24,12 @@ export type ProgressState = {
     lastActiveDate: string | null;
     lastTopic: string | null;
     lastLessonId: string | null;
+    /** Nested: direction → lessonId → step progress */
     lessonProgress: Map<string, Map<string, LessonProgressEntry>>;
+    /** Nested: direction → completed lesson ids */
     lessonsCompleted: Map<string, string[]>;
+    /** Active lesson track for this device / account */
+    lessonDirection: LessonDirection;
     xp: number;
     dailyGoal: number;
     todayActions: number;
@@ -50,6 +56,7 @@ export const defaultProgress = (): ProgressState => ({
     lastLessonId: null,
     lessonProgress: new Map(),
     lessonsCompleted: new Map(),
+    lessonDirection: "en-fr",
     xp: 0,
     dailyGoal: DEFAULT_DAILY_GOAL,
     todayActions: 0,
@@ -59,10 +66,6 @@ export const defaultProgress = (): ProgressState => ({
     badges: [],
 });
 
-// --- Date helpers -----------------------------------------------------
-// Use LOCAL calendar date, not UTC. `toISOString()` is UTC-based, which
-// can put users on the wrong side of a day boundary depending on their
-// timezone offset and silently break streak tracking.
 function dateKey(d: Date) {
     const year = d.getFullYear();
     const month = String(d.getMonth() + 1).padStart(2, "0");
@@ -80,7 +83,9 @@ function yesterdayKey() {
     return dateKey(d);
 }
 
-// --- Map <-> plain object helpers --------------------------------------
+function isLessonDirection(v: unknown): v is LessonDirection {
+    return v === "en-fr" || v === "fr-en";
+}
 
 function mapToObject(
     map: Map<string, Map<string, LessonProgressEntry>>,
@@ -93,16 +98,7 @@ function mapToObject(
 }
 
 /**
- * Turn a raw, JSON-shaped progress object (as it comes out of
- * localStorage.getItem or a server response) into a well-formed
- * ProgressState with real Maps.
- *
- * This is the single place that understands the "wire format" vs the
- * "in-memory format". Both loadProgress() and anything that receives
- * progress from the server (recordActivity's fetch callback,
- * syncProgressFromCloud) must go through this before calling
- * saveProgress — otherwise saveProgress's mapToObject/Object.fromEntries
- * calls will throw on a plain object and fail silently.
+ * Turn a raw JSON-shaped progress object into a ProgressState with real Maps.
  */
 function hydrateProgress(raw: unknown): ProgressState {
     const base = defaultProgress();
@@ -112,8 +108,6 @@ function hydrateProgress(raw: unknown): ProgressState {
 
     const lessonProgress = new Map<string, Map<string, LessonProgressEntry>>();
     if (parsed.lessonProgress && typeof parsed.lessonProgress === "object") {
-        // lessonProgress may already be a Map (e.g. re-hydrating in-memory
-        // state) or a plain object (from JSON). Handle both.
         const entries =
             parsed.lessonProgress instanceof Map
                 ? parsed.lessonProgress.entries()
@@ -123,7 +117,11 @@ function hydrateProgress(raw: unknown): ProgressState {
                 lessons instanceof Map ? Object.fromEntries(lessons) : lessons;
             lessonProgress.set(
                 direction,
-                new Map(Object.entries(lessonsObj as Record<string, LessonProgressEntry>)),
+                new Map(
+                    Object.entries(
+                        lessonsObj as Record<string, LessonProgressEntry>,
+                    ),
+                ),
             );
         }
     }
@@ -133,7 +131,6 @@ function hydrateProgress(raw: unknown): ProgressState {
         if (parsed.lessonsCompleted instanceof Map) {
             lessonsCompleted = new Map(parsed.lessonsCompleted);
         } else if (Array.isArray(parsed.lessonsCompleted)) {
-            // Already an array of [direction, ids[]] entries.
             lessonsCompleted = new Map(parsed.lessonsCompleted);
         } else if (typeof parsed.lessonsCompleted === "object") {
             lessonsCompleted = new Map(Object.entries(parsed.lessonsCompleted));
@@ -145,6 +142,9 @@ function hydrateProgress(raw: unknown): ProgressState {
         ...parsed,
         lessonProgress,
         lessonsCompleted,
+        lessonDirection: isLessonDirection(parsed.lessonDirection)
+            ? parsed.lessonDirection
+            : base.lessonDirection,
         xp: parsed.xp ?? 0,
         dailyGoal: parsed.dailyGoal ?? DEFAULT_DAILY_GOAL,
         todayActions: parsed.todayActions ?? 0,
@@ -160,8 +160,16 @@ export function loadProgress(): ProgressState {
     try {
         const raw = localStorage.getItem(PROGRESS_KEY);
         if (!raw) {
-            localStorage.setItem(PROGRESS_KEY, JSON.stringify(defaultProgress()));
-            return defaultProgress();
+            const initial = defaultProgress();
+            localStorage.setItem(
+                PROGRESS_KEY,
+                JSON.stringify({
+                    ...initial,
+                    lessonProgress: {},
+                    lessonsCompleted: {},
+                }),
+            );
+            return initial;
         }
         const parsed = JSON.parse(raw);
         return hydrateProgress(parsed);
@@ -184,11 +192,19 @@ export function saveProgress(state: ProgressState) {
         localStorage.setItem(PROGRESS_KEY, JSON.stringify(serializableState));
         window.dispatchEvent(new CustomEvent("koze-progress"));
     } catch (err) {
-        // quota / private mode / malformed state
         if (process.env.NODE_ENV !== "production") {
             console.error("saveProgress failed:", err);
         }
     }
+}
+
+/** Update active lesson track and persist (local + optional cloud sync on next activity). */
+export function setLessonDirection(direction: LessonDirection): ProgressState {
+    const prev = loadProgress();
+    if (prev.lessonDirection === direction) return prev;
+    const next = { ...prev, lessonDirection: direction };
+    saveProgress(next);
+    return next;
 }
 
 function bumpStreak(state: ProgressState): ProgressState {
@@ -232,7 +248,10 @@ export function recordActivity(
         const lessonId = extra.lessonId;
         const stepIndex = extra.stepIndex ?? 0;
         const completed = Boolean(extra.lessonCompleted);
-        const direction = extra.direction ?? "en-fr";
+        const direction =
+            (isLessonDirection(extra.direction)
+                ? extra.direction
+                : next.lessonDirection) || "en-fr";
         const entry: LessonProgressEntry = {
             currentStep: stepIndex,
             completed,
@@ -258,6 +277,7 @@ export function recordActivity(
             ...next,
             lessonProgress,
             lessonsCompleted,
+            lessonDirection: direction,
             lessonsCompletedCount: Array.from(lessonsCompleted.values()).reduce(
                 (sum, arr) => sum + arr.length,
                 0,
@@ -293,16 +313,13 @@ export function recordActivity(
                 lessonId: extra?.lessonId,
                 stepIndex: extra?.stepIndex,
                 lessonCompleted: extra?.lessonCompleted,
+                direction: extra?.direction ?? next.lessonDirection,
             }),
         })
             .then(async (res) => {
                 if (!res.ok) return;
                 const data = await res.json();
                 if (data?.success && data.progress) {
-                    // data.progress is raw JSON from the server — hydrate it
-                    // into real Maps before saving, or saveProgress's
-                    // mapToObject/Object.fromEntries calls will throw and be
-                    // silently swallowed, discarding the synced progress.
                     saveProgress(hydrateProgress(data.progress));
                 }
             })
@@ -339,7 +356,13 @@ export async function syncProgressFromCloud() {
         const mergeRes = await fetch("/api/progress", {
             method: "POST",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify({ local }),
+            body: JSON.stringify({
+                local: {
+                    ...local,
+                    lessonProgress: mapToObject(local.lessonProgress),
+                    lessonsCompleted: Object.fromEntries(local.lessonsCompleted),
+                },
+            }),
         });
 
         if (mergeRes.ok) {

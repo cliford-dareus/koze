@@ -21,11 +21,12 @@ const ProgressSchema = new Schema(
         lastActiveDate: { type: String, default: null },
         lastTopic: { type: String, default: null },
         lastLessonId: { type: String, default: null },
-        lessonsCompleted: { type: [String], default: [] },
-        lessonProgress: {
-            type: Map,
-            of: LessonProgressEntrySchema,
-            default: () => new Map(),
+        lessonsCompleted: { type: Schema.Types.Mixed, default: {} },
+        lessonProgress: { type: Schema.Types.Mixed, default: {} },
+        lessonDirection: {
+            type: String,
+            enum: ["en-fr", "fr-en"],
+            default: "en-fr",
         },
         xp: { type: Number, default: 0 },
         dailyGoal: { type: Number, default: 3 },

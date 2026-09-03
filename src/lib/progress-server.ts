@@ -1,4 +1,8 @@
-import type { ActivityKind, ProgressState } from "@/lib/progress";
+import type {
+    ActivityKind,
+    LessonDirection,
+    ProgressState,
+} from "@/lib/progress";
 import { defaultProgress } from "@/lib/progress";
 import { applyXpAndDailyGoal, DEFAULT_DAILY_GOAL } from "@/lib/gamification";
 import { applyBadgeUnlocks } from "@/data/badges";
@@ -11,6 +15,10 @@ function yesterdayKey() {
     const d = new Date();
     d.setDate(d.getDate() - 1);
     return d.toISOString().slice(0, 10);
+}
+
+function isLessonDirection(v: unknown): v is LessonDirection {
+    return v === "en-fr" || v === "fr-en";
 }
 
 export function bumpStreak(state: ProgressState): ProgressState {
@@ -30,6 +38,7 @@ export function applyActivity(
         lessonId?: string;
         stepIndex?: number;
         lessonCompleted?: boolean;
+        direction?: string;
     },
 ): ProgressState {
     let next = bumpStreak({ ...defaultProgress(), ...prev });
@@ -46,19 +55,33 @@ export function applyActivity(
         const lessonId = extra.lessonId;
         const stepIndex = extra.stepIndex ?? 0;
         const completed = Boolean(extra.lessonCompleted);
-        const lessonProgress = {
-            ...(next.lessonProgress || {}),
-            [lessonId]: { currentStep: stepIndex, completed },
-        };
-        let lessonsCompleted = [...(next.lessonsCompleted || [])];
-        if (completed && !lessonsCompleted.includes(lessonId)) {
-            lessonsCompleted.push(lessonId);
+        const direction: LessonDirection = isLessonDirection(extra.direction)
+            ? extra.direction
+            : isLessonDirection(next.lessonDirection)
+              ? next.lessonDirection
+              : "en-fr";
+
+        const lessonProgress = new Map(next.lessonProgress || []);
+        const directionProgress = new Map(lessonProgress.get(direction) || []);
+        directionProgress.set(lessonId, { currentStep: stepIndex, completed });
+        lessonProgress.set(direction, directionProgress);
+
+        const lessonsCompleted = new Map(next.lessonsCompleted || []);
+        const list = [...(lessonsCompleted.get(direction) ?? [])];
+        if (completed && !list.includes(lessonId)) {
+            list.push(lessonId);
+            lessonsCompleted.set(direction, list);
         }
+
         next = {
             ...next,
             lessonProgress,
             lessonsCompleted,
-            lessonsCompletedCount: lessonsCompleted.length,
+            lessonDirection: direction,
+            lessonsCompletedCount: Array.from(lessonsCompleted.values()).reduce(
+                (sum, arr) => sum + arr.length,
+                0,
+            ),
             lastLessonId: lessonId,
         };
     }
@@ -73,25 +96,55 @@ export function applyActivity(
     return progress;
 }
 
-function mergeLessonProgress(
+function mergeNestedLessonProgress(
     a: ProgressState["lessonProgress"],
     b: ProgressState["lessonProgress"],
 ): ProgressState["lessonProgress"] {
-    const keys = Array.from(
-        new Set([...Object.keys(a || {}), ...Object.keys(b || {})]),
-    );
-    const out: ProgressState["lessonProgress"] = new Map();
-    for (const key of keys) {
-        const left = a?.get(key);
-        const right = b?.get(key);
-        if (!left) out.set(key, right!);
-        else if (!right) out.set(key, left);
-        else {
-            out.set(key, {
-                completed: left.completed || right.completed,
-                currentStep: Math.max(left.currentStep, right.currentStep),
-            });
+    const out = new Map<string, Map<string, { currentStep: number; completed: boolean }>>();
+    const directions = new Set<string>([
+        ...Array.from(a?.keys?.() ?? []),
+        ...Array.from(b?.keys?.() ?? []),
+    ]);
+
+    for (const dir of directions) {
+        const left = a?.get?.(dir);
+        const right = b?.get?.(dir);
+        const merged = new Map(left || []);
+        if (right) {
+            for (const [lessonId, entry] of right) {
+                const existing = merged.get(lessonId);
+                if (!existing) {
+                    merged.set(lessonId, entry);
+                } else {
+                    merged.set(lessonId, {
+                        completed: existing.completed || entry.completed,
+                        currentStep: Math.max(
+                            existing.currentStep,
+                            entry.currentStep,
+                        ),
+                    });
+                }
+            }
         }
+        out.set(dir, merged);
+    }
+    return out;
+}
+
+function mergeLessonsCompleted(
+    a: ProgressState["lessonsCompleted"],
+    b: ProgressState["lessonsCompleted"],
+): ProgressState["lessonsCompleted"] {
+    const out = new Map<string, string[]>();
+    const directions = new Set<string>([
+        ...Array.from(a?.keys?.() ?? []),
+        ...Array.from(b?.keys?.() ?? []),
+    ]);
+    for (const dir of directions) {
+        const ids = Array.from(
+            new Set([...(a?.get?.(dir) ?? []), ...(b?.get?.(dir) ?? [])]),
+        );
+        out.set(dir, ids);
     }
     return out;
 }
@@ -103,8 +156,9 @@ export function mergeProgress(
     const a = { ...defaultProgress(), ...local };
     const b = { ...defaultProgress(), ...cloud };
 
-    const lessonsCompleted = Array.from(
-        new Set([...(a.lessonsCompleted || []), ...(b.lessonsCompleted || [])]),
+    const lessonsCompleted = mergeLessonsCompleted(
+        a.lessonsCompleted,
+        b.lessonsCompleted,
     );
 
     const badges = Array.from(
@@ -131,12 +185,22 @@ export function mergeProgress(
             (aToday && a.dailyGoalMet) || (bToday && b.dailyGoalMet);
     }
 
+    // Prefer local lessonDirection when set; otherwise cloud; default en-fr
+    const lessonDirection: LessonDirection = isLessonDirection(a.lessonDirection)
+        ? a.lessonDirection
+        : isLessonDirection(b.lessonDirection)
+          ? b.lessonDirection
+          : "en-fr";
+
     const merged: ProgressState = {
         translations: Math.max(a.translations, b.translations),
         listeningCorrect: Math.max(a.listeningCorrect, b.listeningCorrect),
         readingSessions: Math.max(a.readingSessions, b.readingSessions),
         quizCorrect: Math.max(a.quizCorrect, b.quizCorrect),
-        lessonsCompletedCount: lessonsCompleted.length,
+        lessonsCompletedCount: Array.from(lessonsCompleted.values()).reduce(
+            (sum, arr) => sum + arr.length,
+            0,
+        ),
         streak: Math.max(a.streak, b.streak),
         currentWord: a.currentWord || b.currentWord,
         currentWordDate: a.currentWordDate || b.currentWordDate,
@@ -146,8 +210,12 @@ export function mergeProgress(
                 : b.lastActiveDate,
         lastTopic: a.lastTopic || b.lastTopic,
         lastLessonId: a.lastLessonId || b.lastLessonId,
-        lessonProgress: mergeLessonProgress(a.lessonProgress, b.lessonProgress),
+        lessonProgress: mergeNestedLessonProgress(
+            a.lessonProgress,
+            b.lessonProgress,
+        ),
         lessonsCompleted,
+        lessonDirection,
         xp: Math.max(a.xp ?? 0, b.xp ?? 0),
         dailyGoal: Math.max(
             a.dailyGoal ?? DEFAULT_DAILY_GOAL,
@@ -160,6 +228,5 @@ export function mergeProgress(
         badges,
     };
 
-    // Re-evaluate in case merged stats unlock more badges
     return applyBadgeUnlocks(merged).progress;
 }

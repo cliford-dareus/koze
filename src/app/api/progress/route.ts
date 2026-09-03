@@ -8,7 +8,7 @@ import { applyActivity, mergeProgress } from "@/lib/progress-server";
 import { DEFAULT_DAILY_GOAL } from "@/lib/gamification";
 
 function normalizeProgress(raw: unknown): ProgressState {
-    const base = { ...defaultProgress() };
+    const base = defaultProgress();
     if (!raw || typeof raw !== "object") return base;
     const p = raw as Record<string, unknown>;
 
@@ -16,16 +16,50 @@ function normalizeProgress(raw: unknown): ProgressState {
     if (p.lessonProgress instanceof Map) {
         lessonProgress = p.lessonProgress as ProgressState["lessonProgress"];
     } else if (p.lessonProgress && typeof p.lessonProgress === "object") {
-        lessonProgress = p.lessonProgress as ProgressState["lessonProgress"];
+        for (const [dir, lessons] of Object.entries(
+            p.lessonProgress as Record<string, unknown>,
+        )) {
+            if (lessons && typeof lessons === "object") {
+                lessonProgress.set(
+                    dir,
+                    new Map(
+                        Object.entries(
+                            lessons as Record<
+                                string,
+                                { currentStep: number; completed: boolean }
+                            >,
+                        ),
+                    ),
+                );
+            }
+        }
     }
+
+    let lessonsCompleted: ProgressState["lessonsCompleted"] = new Map();
+    if (p.lessonsCompleted instanceof Map) {
+        lessonsCompleted = p.lessonsCompleted as ProgressState["lessonsCompleted"];
+    } else if (p.lessonsCompleted && typeof p.lessonsCompleted === "object") {
+        if (Array.isArray(p.lessonsCompleted)) {
+            // legacy flat list — stash under default direction
+            lessonsCompleted.set("en-fr", p.lessonsCompleted as string[]);
+        } else {
+            lessonsCompleted = new Map(
+                Object.entries(p.lessonsCompleted as Record<string, string[]>),
+            );
+        }
+    }
+
+    const lessonDirection =
+        p.lessonDirection === "fr-en" || p.lessonDirection === "en-fr"
+            ? p.lessonDirection
+            : base.lessonDirection;
 
     return {
         ...base,
         ...p,
         lessonProgress,
-        lessonsCompleted: Array.isArray(p.lessonsCompleted)
-            ? (p.lessonsCompleted as string[])
-            : [],
+        lessonsCompleted,
+        lessonDirection,
         xp: typeof p.xp === "number" ? p.xp : 0,
         dailyGoal:
             typeof p.dailyGoal === "number" ? p.dailyGoal : DEFAULT_DAILY_GOAL,
@@ -43,38 +77,35 @@ const activitySchema = z.object({
     lessonId: z.string().optional(),
     stepIndex: z.number().int().min(0).optional(),
     lessonCompleted: z.boolean().optional(),
+    direction: z.enum(["en-fr", "fr-en"]).optional(),
 });
 
 const mergeSchema = z.object({
-    local: z.object({
-        translations: z.number().optional(),
-        listeningCorrect: z.number().optional(),
-        readingSessions: z.number().optional(),
-        quizCorrect: z.number().optional(),
-        lessonsCompletedCount: z.number().optional(),
-        streak: z.number().optional(),
-        currentWord: z.string().nullable().optional(),
-        currentWordDate: z.string().nullable().optional(),
-        lastActiveDate: z.string().nullable().optional(),
-        lastTopic: z.string().nullable().optional(),
-        lastLessonId: z.string().nullable().optional(),
-        lessonsCompleted: z.array(z.string()).optional(),
-        lessonProgress: z
-            .record(
-                z.object({
-                    currentStep: z.number(),
-                    completed: z.boolean(),
-                }),
-            )
-            .optional(),
-        xp: z.number().optional(),
-        dailyGoal: z.number().optional(),
-        todayActions: z.number().optional(),
-        todayXp: z.number().optional(),
-        todayDate: z.string().nullable().optional(),
-        dailyGoalMet: z.boolean().optional(),
-        badges: z.array(z.string()).optional(),
-    }),
+    local: z
+        .object({
+            translations: z.number().optional(),
+            listeningCorrect: z.number().optional(),
+            readingSessions: z.number().optional(),
+            quizCorrect: z.number().optional(),
+            lessonsCompletedCount: z.number().optional(),
+            streak: z.number().optional(),
+            currentWord: z.string().nullable().optional(),
+            currentWordDate: z.string().nullable().optional(),
+            lastActiveDate: z.string().nullable().optional(),
+            lastTopic: z.string().nullable().optional(),
+            lastLessonId: z.string().nullable().optional(),
+            lessonsCompleted: z.any().optional(),
+            lessonProgress: z.any().optional(),
+            lessonDirection: z.enum(["en-fr", "fr-en"]).optional(),
+            xp: z.number().optional(),
+            dailyGoal: z.number().optional(),
+            todayActions: z.number().optional(),
+            todayXp: z.number().optional(),
+            todayDate: z.string().nullable().optional(),
+            dailyGoalMet: z.boolean().optional(),
+            badges: z.array(z.string()).optional(),
+        })
+        .passthrough(),
 });
 
 export async function GET() {
@@ -134,8 +165,9 @@ export async function POST(req: NextRequest) {
                 lessonId: parsed.data.lessonId,
                 stepIndex: parsed.data.stepIndex,
                 lessonCompleted: parsed.data.lessonCompleted,
+                direction: parsed.data.direction,
             });
-            user.progress = next;
+            user.progress = next as never;
             await user.save();
             return NextResponse.json({ success: true, progress: next });
         }
@@ -148,11 +180,12 @@ export async function POST(req: NextRequest) {
                     { status: 400 },
                 );
             }
-            const next = mergeProgress(
-                { ...defaultProgress(), ...parsed.data.local } as ProgressState,
-                current,
-            );
-            user.progress = next;
+            const localNorm = normalizeProgress({
+                ...defaultProgress(),
+                ...parsed.data.local,
+            });
+            const next = mergeProgress(localNorm, current);
+            user.progress = next as never;
             await user.save();
             return NextResponse.json({ success: true, progress: next });
         }
