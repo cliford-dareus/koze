@@ -48,7 +48,7 @@ export type Lesson = {
     steps: LessonStep[];
 };
 
-const LESSONS_PATH_MAP = {
+export const LESSONS_PATH_MAP = {
     "en-fr": EN_FR,
     "fr-en": FR_EN
 };
@@ -118,7 +118,7 @@ export function getLessonBySlug(slug: string, direction: LessonDirection): Lesso
 }
 
 export function getLessonsByDirection(direction: LessonDirection): Lesson[] {
-    const lessons = LESSONS_PATH_MAP[direction];  
+    const lessons = LESSONS_PATH_MAP[direction];
     return lessons as Lesson[];
 }
 

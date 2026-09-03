@@ -45,7 +45,7 @@ export default function ProgressSummary() {
     const goalMet = progress.dailyGoalMet || todayActions >= goal;
     const lessons =
         progress.lessonsCompletedCount ||
-        progress.lessonsCompleted?.length ||
+        progress.lessonsCompleted?.get(progress.lessonDirection!)?.length ||
         0;
 
     return (
