@@ -71,6 +71,34 @@ function normalizeProgress(raw: unknown): ProgressState {
     } as ProgressState;
 }
 
+
+/**
+ * The inverse of normalizeProgress: turn a ProgressState with real Map
+ * fields into a plain-object shape that's safe to JSON.stringify and safe
+ * to store via Mongoose.
+ *
+ * This matters a lot more than it looks: JSON.stringify(new Map(...))
+ * serializes to "{}" — Maps have no own enumerable properties, so
+ * NextResponse.json() was silently returning empty lessonProgress and
+ * lessonsCompleted on every request, no matter what was actually stored.
+ * The same shape is used for the Mongoose write so what's in the DB
+ * matches what's returned, instead of depending on how the driver happens
+ * to (or doesn't) serialize a Map for a Mixed-type field.
+ */
+function serializeProgress(state: ProgressState) {
+    return {
+        ...state,
+        lessonProgress: Object.fromEntries(
+            Array.from(state.lessonProgress.entries()).map(([dir, lessons]) => [
+                dir,
+                Object.fromEntries(lessons),
+            ]),
+        ),
+        lessonsCompleted: Object.fromEntries(state.lessonsCompleted),
+    };
+}
+
+
 const activitySchema = z.object({
     kind: z.enum(["translation", "listening", "reading", "quiz", "lesson"]),
     topic: z.string().optional(),
@@ -167,9 +195,11 @@ export async function POST(req: NextRequest) {
                 lessonCompleted: parsed.data.lessonCompleted,
                 direction: parsed.data.direction,
             });
-            user.progress = next as never;
+            console.log(current);
+            const serialized = serializeProgress(next);
+            user.progress = serialized as never;
             await user.save();
-            return NextResponse.json({ success: true, progress: next });
+            return NextResponse.json({ success: true, progress: serialized });
         }
 
         if (body.local) {
@@ -185,9 +215,11 @@ export async function POST(req: NextRequest) {
                 ...parsed.data.local,
             });
             const next = mergeProgress(localNorm, current);
-            user.progress = next as never;
+            console.log("localNorm", next)
+            const serialized = serializeProgress(next);
+            user.progress = serialized as never;
             await user.save();
-            return NextResponse.json({ success: true, progress: next });
+            return NextResponse.json({ success: true, progress: serialized });
         }
 
         return NextResponse.json(

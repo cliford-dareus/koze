@@ -1,11 +1,11 @@
 import type {
     ActivityKind,
-    LessonDirection,
     ProgressState,
 } from "@/lib/progress";
 import { defaultProgress } from "@/lib/progress";
 import { applyXpAndDailyGoal, DEFAULT_DAILY_GOAL } from "@/lib/gamification";
 import { applyBadgeUnlocks } from "@/data/badges";
+import { LessonDirection } from "@/data/lessons";
 
 function todayKey() {
     return new Date().toISOString().slice(0, 10);
@@ -58,8 +58,8 @@ export function applyActivity(
         const direction: LessonDirection = isLessonDirection(extra.direction)
             ? extra.direction
             : isLessonDirection(next.lessonDirection)
-              ? next.lessonDirection
-              : "en-fr";
+                ? next.lessonDirection
+                : "en-fr";
 
         const lessonProgress = new Map(next.lessonProgress || []);
         const directionProgress = new Map(lessonProgress.get(direction) || []);
@@ -101,15 +101,13 @@ function mergeNestedLessonProgress(
     b: ProgressState["lessonProgress"],
 ): ProgressState["lessonProgress"] {
     const out = new Map<string, Map<string, { currentStep: number; completed: boolean }>>();
-    const directions = new Set<string>([
-        ...Array.from(a?.keys?.() ?? []),
-        ...Array.from(b?.keys?.() ?? []),
-    ]);
+    const directions = new Set([...(a?.keys() ?? []), ...(b?.keys() ?? [])]);
 
     for (const dir of directions) {
         const left = a?.get?.(dir);
         const right = b?.get?.(dir);
         const merged = new Map(left || []);
+
         if (right) {
             for (const [lessonId, entry] of right) {
                 const existing = merged.get(lessonId);
@@ -136,10 +134,8 @@ function mergeLessonsCompleted(
     b: ProgressState["lessonsCompleted"],
 ): ProgressState["lessonsCompleted"] {
     const out = new Map<string, string[]>();
-    const directions = new Set<string>([
-        ...Array.from(a?.keys?.() ?? []),
-        ...Array.from(b?.keys?.() ?? []),
-    ]);
+    const directions = new Set([...(a?.keys() ?? []), ...(b?.keys() ?? [])]);
+
     for (const dir of directions) {
         const ids = Array.from(
             new Set([...(a?.get?.(dir) ?? []), ...(b?.get?.(dir) ?? [])]),
@@ -189,10 +185,11 @@ export function mergeProgress(
     const lessonDirection: LessonDirection = isLessonDirection(a.lessonDirection)
         ? a.lessonDirection
         : isLessonDirection(b.lessonDirection)
-          ? b.lessonDirection
-          : "en-fr";
+            ? b.lessonDirection
+            : "en-fr";
 
     const merged: ProgressState = {
+        ...a,
         translations: Math.max(a.translations, b.translations),
         listeningCorrect: Math.max(a.listeningCorrect, b.listeningCorrect),
         readingSessions: Math.max(a.readingSessions, b.readingSessions),
@@ -204,10 +201,7 @@ export function mergeProgress(
         streak: Math.max(a.streak, b.streak),
         currentWord: a.currentWord || b.currentWord,
         currentWordDate: a.currentWordDate || b.currentWordDate,
-        lastActiveDate:
-            (a.lastActiveDate || "") > (b.lastActiveDate || "")
-                ? a.lastActiveDate
-                : b.lastActiveDate,
+        lastActiveDate: (a.lastActiveDate || "") > (b.lastActiveDate || "") ? a.lastActiveDate : b.lastActiveDate,
         lastTopic: a.lastTopic || b.lastTopic,
         lastLessonId: a.lastLessonId || b.lastLessonId,
         lessonProgress: mergeNestedLessonProgress(

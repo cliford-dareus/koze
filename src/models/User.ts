@@ -26,7 +26,7 @@ const ProgressSchema = new Schema(
         lessonDirection: {
             type: String,
             enum: ["en-fr", "fr-en"],
-            default: "en-fr",
+            default: "fr-en",
         },
         xp: { type: Number, default: 0 },
         dailyGoal: { type: Number, default: 3 },
