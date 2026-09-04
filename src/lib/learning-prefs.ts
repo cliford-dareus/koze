@@ -1,5 +1,4 @@
 import type { LessonDirection } from "@/data/lessons";
-import { setLessonDirection } from "@/lib/progress";
 
 export const LEARNING_PREFS_KEY = "koze-learning-prefs-v1";
 
@@ -36,7 +35,6 @@ export function saveLearningPrefs(prefs: LearningPrefs) {
         localStorage.setItem(LEARNING_PREFS_KEY, JSON.stringify(prefs));
         // Keep progress.lessonDirection in sync for easy reads from progress storage
         const direction = directionForLearningLanguage(prefs.learningLanguage);
-        setLessonDirection(direction);
         window.dispatchEvent(new CustomEvent("koze-learning-prefs"));
     } catch {
         // ignore
