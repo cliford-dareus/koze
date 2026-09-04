@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import type { Lesson, LessonStep } from "@/data/lessons";
+import type { Lesson, LessonDirection, LessonStep } from "@/data/lessons";
 import { directionLabel } from "@/data/lessons";
 import { loadProgress, recordActivity } from "@/lib/progress";
 import { Button } from "@/app/_components/ui/button";
@@ -12,7 +12,7 @@ type Props = {
     unitTitle: string;
     nextSlug?: string;
     nextTitle?: string;
-    direction: string;
+    direction: LessonDirection;
 };
 
 export default function LessonPlayer({
