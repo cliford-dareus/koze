@@ -48,7 +48,6 @@ export const config = {
     "/register",
     "/onboarding",
     "/onboarding/:path*",
-    // Soft-guard app pages so incomplete onboarding is redirected
     "/",
     "/translation",
     "/translation/:path*",
@@ -60,5 +59,7 @@ export const config = {
     "/chat/:path*",
     "/lessons",
     "/lessons/:path*",
+    "/profile",
+    "/profile/:path*",
   ],
 };

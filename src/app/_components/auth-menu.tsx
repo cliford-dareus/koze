@@ -26,6 +26,12 @@ export default function AuthMenu() {
     return (
       <div className="flex items-center gap-2">
         <Link
+          href="/profile"
+          className="rounded-full border border-border bg-card px-2.5 py-1 text-xs font-medium"
+        >
+          Profile
+        </Link>
+        <Link
           href="/login"
           className="rounded-full bg-accent px-2.5 py-1 text-xs font-medium text-accent-foreground"
         >
@@ -39,7 +45,12 @@ export default function AuthMenu() {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="max-w-[8rem] truncate text-xs text-muted-foreground">{label}</span>
+      <Link
+        href="/profile"
+        className="max-w-[8rem] truncate text-xs font-medium text-primary"
+      >
+        {label}
+      </Link>
       <button
         type="button"
         onClick={() => signOut({ callbackUrl: "/" })}
