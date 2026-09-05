@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import MainNavigation from "@/app/_components/main-navigation";
 import { TooltipProvider } from "@/app/_components/ui/tooltip";
 import AuthSessionProvider from "@/app/_components/providers/session-provider";
+import { ThemeProvider } from "@/app/_components/providers/theme-provider";
 import AnimatedSplash from "@/app/_components/animated-splash";
 
 const outfit = Outfit({
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     appleWebApp: {
         capable: true,
         title: "Koze",
-        statusBarStyle: "default",
+        statusBarStyle: "black-translucent",
         startupImage: [
             splash(
                 "apple-splash-2048-2732.jpg",
@@ -235,9 +236,28 @@ export const viewport: Viewport = {
     maximumScale: 1,
     userScalable: false,
     viewportFit: "cover",
-    themeColor: "#F4F1EB",
-    colorScheme: "light",
+    themeColor: [
+        { media: "(prefers-color-scheme: light)", color: "#F4F1EB" },
+        { media: "(prefers-color-scheme: dark)", color: "#161412" },
+    ],
+    colorScheme: "light dark",
 };
+
+/** Inline script runs before paint to avoid a light flash when dark is preferred. */
+const themeInitScript = `
+(function(){
+  try {
+    var key = 'koze-theme-v1';
+    var stored = localStorage.getItem(key);
+    var mode = (stored === 'light' || stored === 'dark' || stored === 'system') ? stored : 'system';
+    var dark = mode === 'dark' || (mode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var root = document.documentElement;
+    if (dark) root.classList.add('dark');
+    else root.classList.remove('dark');
+    root.style.colorScheme = dark ? 'dark' : 'light';
+  } catch (e) {}
+})();
+`;
 
 export default function RootLayout({
     children,
@@ -245,21 +265,26 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${outfit.variable} ${fraunces.variable}`}>
+        <html lang="en" className={`${outfit.variable} ${fraunces.variable}`} suppressHydrationWarning>
+            <head>
+                <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+            </head>
             <body
                 className={`${outfit.className} h-screen overflow-hidden paper-grain`}
             >
-                <AuthSessionProvider>
-                    <AnimatedSplash />
-                    <TooltipProvider>
-                        <div className="app-frame">
-                            <main className="h-full overflow-y-auto">
-                                {children}
-                            </main>
-                            <MainNavigation />
-                        </div>
-                    </TooltipProvider>
-                </AuthSessionProvider>
+                <ThemeProvider>
+                    <AuthSessionProvider>
+                        <AnimatedSplash />
+                        <TooltipProvider>
+                            <div className="app-frame">
+                                <main className="h-full overflow-y-auto">
+                                    {children}
+                                </main>
+                                <MainNavigation />
+                            </div>
+                        </TooltipProvider>
+                    </AuthSessionProvider>
+                </ThemeProvider>
             </body>
         </html>
     );
