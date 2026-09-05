@@ -4,6 +4,7 @@ import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { syncProgressFromCloud } from "@/lib/progress";
+import ThemeToggle from "@/app/_components/theme-toggle";
 
 export default function AuthMenu() {
   const { data: session, status } = useSession();
@@ -25,6 +26,7 @@ export default function AuthMenu() {
   if (!session?.user) {
     return (
       <div className="flex items-center gap-2">
+        <ThemeToggle compact />
         <Link
           href="/profile"
           className="rounded-full border border-border bg-card px-2.5 py-1 text-xs font-medium"
@@ -45,6 +47,7 @@ export default function AuthMenu() {
 
   return (
     <div className="flex items-center gap-2">
+      <ThemeToggle compact />
       <Link
         href="/profile"
         className="max-w-[8rem] truncate text-xs font-medium text-primary"
