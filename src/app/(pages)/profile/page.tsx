@@ -22,6 +22,7 @@ import {
   loadLearningPrefs,
 } from "@/lib/learning-prefs";
 import { Button } from "@/app/_components/ui/button";
+import ThemeToggle from "@/app/_components/theme-toggle";
 
 export default function ProfilePage() {
   const { data: session, status } = useSession();
@@ -134,8 +135,18 @@ export default function ProfilePage() {
         </Button>
       </div>
 
+      <section className="mt-8">
+        <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+          Appearance
+        </p>
+        <ThemeToggle />
+        <p className="mt-2 text-xs text-muted-foreground">
+          System follows your device setting. Choice is saved on this device.
+        </p>
+      </section>
+
       {/* Level */}
-      <section className="mt-8 rounded-xl border border-border bg-card p-4 shadow-soft">
+      <section className="mt-6 rounded-xl border border-border bg-card p-4 shadow-soft">
         <div className="flex items-center justify-between gap-3">
           <div>
             <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
