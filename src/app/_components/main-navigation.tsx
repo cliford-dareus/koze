@@ -4,6 +4,7 @@ import {
     LucideBookOpen,
     LucideHome,
     LucideLanguages,
+    LucideMessageCircle,
     LucideUser,
 } from "lucide-react";
 import Link from "next/link";
@@ -12,8 +13,9 @@ import { usePathname } from "next/navigation";
 const NAV = [
     { href: "/", label: "Home", icon: LucideHome },
     { href: "/translation", label: "Translate", icon: LucideLanguages },
+    { href: "/listening", label: "Listen", icon: LucideBookOpen },
     { href: "/lessons", label: "Lessons", icon: LucideBookOpen },
-    { href: "/profile", label: "Profile", icon: LucideUser },
+    { href: "/chat", label: "Practice", icon: LucideMessageCircle },
 ] as const;
 
 const HIDDEN_PREFIXES = ["/login", "/register", "/onboarding"];

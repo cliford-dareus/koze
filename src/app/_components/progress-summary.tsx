@@ -122,7 +122,7 @@ export default function ProgressSummary() {
                 <Stat label="Today XP" value={String(progress.todayXp ?? 0)} />
             </div>
 
-            <BadgesPanel />
+            {/*<BadgesPanel />*/}
         </div>
     );
 }
