@@ -1,16 +1,40 @@
 import { Schema, model, models, type InferSchemaType, type Model } from "mongoose";
 
+const LessonProgressEntrySchema = new Schema(
+    {
+        currentStep: { type: Number, default: 0 },
+        completed: { type: Boolean, default: false },
+    },
+    { _id: false },
+);
+
 const ProgressSchema = new Schema(
     {
         translations: { type: Number, default: 0 },
         listeningCorrect: { type: Number, default: 0 },
         readingSessions: { type: Number, default: 0 },
         quizCorrect: { type: Number, default: 0 },
+        lessonsCompletedCount: { type: Number, default: 0 },
         streak: { type: Number, default: 0 },
         currentWord: { type: String, default: null },
         currentWordDate: { type: String, default: null },
         lastActiveDate: { type: String, default: null },
         lastTopic: { type: String, default: null },
+        lastLessonId: { type: String, default: null },
+        lessonsCompleted: { type: Schema.Types.Mixed, default: {} },
+        lessonProgress: { type: Schema.Types.Mixed, default: {} },
+        lessonDirection: {
+            type: String,
+            enum: ["en-fr", "fr-en"],
+            default: "fr-en",
+        },
+        xp: { type: Number, default: 0 },
+        dailyGoal: { type: Number, default: 3 },
+        todayActions: { type: Number, default: 0 },
+        todayXp: { type: Number, default: 0 },
+        todayDate: { type: String, default: null },
+        dailyGoalMet: { type: Boolean, default: false },
+        badges: { type: [String], default: [] },
     },
     { _id: false },
 );
@@ -57,4 +81,5 @@ export type UserDocument = InferSchemaType<typeof UserSchema> & {
 };
 
 export const User: Model<UserDocument> =
-    (models.User as Model<UserDocument>) || model<UserDocument>("User", UserSchema);
+    (models.User as Model<UserDocument>) ||
+    model<UserDocument>("User", UserSchema);

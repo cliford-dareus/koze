@@ -1,0 +1,3088 @@
+[
+    {
+        "id": "greetings-1",
+        "slug": "greetings",
+        "title": "Greetings",
+        "description": "Hello and goodbye across the day, with formality notes.",
+        "unitId": "foundations",
+        "direction": "en-fr",
+        "level": "beginner",
+        "estimatedMinutes": 10,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "A soft start",
+                "body": "French greetings shift with time of day and how well you know someone. Learn a small set well rather than many poorly."
+            },
+            {
+                "type": "tip",
+                "title": "Form vs. familiarity",
+                "body": "Use vous with strangers, older people, and formal situations. Use tu with friends, family, and peers when invited.",
+                "bullets": [
+                    "Bonjour works almost all day until evening.",
+                    "Bonsoir from late afternoon onward.",
+                    "Salut is friendly and informal — both hi and bye.",
+                    "Coucou is even more casual than salut, used with close friends or kids."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Core greetings",
+                "items": [
+                    {
+                        "term": "Bonjour",
+                        "meaning": "Hello / good morning",
+                        "note": "Safe default"
+                    },
+                    {
+                        "term": "Bonsoir",
+                        "meaning": "Good evening"
+                    },
+                    {
+                        "term": "Salut",
+                        "meaning": "Hi / bye",
+                        "note": "Informal"
+                    },
+                    {
+                        "term": "Coucou",
+                        "meaning": "Hey there",
+                        "note": "Very informal"
+                    },
+                    {
+                        "term": "Au revoir",
+                        "meaning": "Goodbye"
+                    },
+                    {
+                        "term": "À bientôt",
+                        "meaning": "See you soon"
+                    },
+                    {
+                        "term": "À demain",
+                        "meaning": "See you tomorrow"
+                    },
+                    {
+                        "term": "À tout à l'heure",
+                        "meaning": "See you later (same day)"
+                    },
+                    {
+                        "term": "Bonne journée",
+                        "meaning": "Have a good day"
+                    },
+                    {
+                        "term": "Bonne soirée",
+                        "meaning": "Have a good evening"
+                    },
+                    {
+                        "term": "Bonne nuit",
+                        "meaning": "Good night",
+                        "note": "Only when someone is going to sleep"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Useful lines",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "Hello, how are you? (formal)",
+                        "target": "Bonjour, comment allez-vous ?"
+                    },
+                    {
+                        "source": "Hi, how are you? (informal)",
+                        "target": "Salut, ça va ?"
+                    },
+                    {
+                        "source": "I'm fine, thanks. And you?",
+                        "target": "Ça va bien, merci. Et vous ?"
+                    },
+                    {
+                        "source": "See you soon.",
+                        "target": "À bientôt."
+                    },
+                    {
+                        "source": "Have a good day.",
+                        "target": "Bonne journée."
+                    },
+                    {
+                        "source": "See you tomorrow!",
+                        "target": "À demain !"
+                    },
+                    {
+                        "source": "Good night.",
+                        "target": "Bonne nuit."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · time of day",
+                "prompt": "Which greeting fits late afternoon into evening?",
+                "options": [
+                    "Bonjour",
+                    "Bonsoir",
+                    "Au revoir",
+                    "Merci"
+                ],
+                "answerIndex": 1,
+                "explanation": "Bonsoir is the natural evening greeting."
+            },
+            {
+                "type": "check",
+                "title": "Check · formality",
+                "prompt": "You meet your friend's parent for the first time. Best choice?",
+                "options": [
+                    "Salut !",
+                    "Bonjour, comment allez-vous ?",
+                    "Ça va, mec ?",
+                    "À demain"
+                ],
+                "answerIndex": 1,
+                "explanation": "Bonjour + vous keeps things respectful with someone new and older."
+            },
+            {
+                "type": "check",
+                "title": "Check · going to sleep",
+                "prompt": "You're heading to bed and want to say good night. You say…",
+                "options": [
+                    "Bonsoir",
+                    "Bonne nuit",
+                    "Bonne journée",
+                    "À tout à l'heure"
+                ],
+                "answerIndex": 1,
+                "explanation": "Bonne nuit is reserved for when someone is actually going to sleep, unlike bonsoir which is a general evening greeting."
+            }
+        ]
+    },
+    {
+        "id": "polite-1",
+        "slug": "please-and-thank-you",
+        "title": "Please & thank you",
+        "description": "Politeness formulas that open every exchange.",
+        "unitId": "foundations",
+        "direction": "en-fr",
+        "level": "beginner",
+        "estimatedMinutes": 9,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Small words, big difference",
+                "body": "French service and street interactions expect s'il vous plaît and merci. Skipping them can sound abrupt even when you don't mean it."
+            },
+            {
+                "type": "tip",
+                "title": "Te vs vous in please",
+                "body": "S'il te plaît is for people you tutoyer. S'il vous plaît is the default with staff and strangers.",
+                "bullets": [
+                    "Merci beaucoup = thank you very much.",
+                    "Je vous en prie / De rien = you're welcome (formal / casual).",
+                    "Pardon can mean excuse me or sorry, depending on tone.",
+                    "Désolé(e) is a stronger apology than pardon."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Politeness set",
+                "items": [
+                    {
+                        "term": "S'il vous plaît",
+                        "meaning": "Please",
+                        "note": "Formal / plural"
+                    },
+                    {
+                        "term": "S'il te plaît",
+                        "meaning": "Please",
+                        "note": "Informal"
+                    },
+                    {
+                        "term": "Merci",
+                        "meaning": "Thank you"
+                    },
+                    {
+                        "term": "Merci beaucoup",
+                        "meaning": "Thank you very much"
+                    },
+                    {
+                        "term": "Merci mille fois",
+                        "meaning": "Thanks a million",
+                        "note": "Emphatic"
+                    },
+                    {
+                        "term": "De rien",
+                        "meaning": "You're welcome",
+                        "note": "Casual"
+                    },
+                    {
+                        "term": "Je vous en prie",
+                        "meaning": "You're welcome",
+                        "note": "Polite"
+                    },
+                    {
+                        "term": "Pardon",
+                        "meaning": "Excuse me / sorry"
+                    },
+                    {
+                        "term": "Excusez-moi",
+                        "meaning": "Excuse me"
+                    },
+                    {
+                        "term": "Désolé(e)",
+                        "meaning": "Sorry",
+                        "note": "Agrees with speaker's gender in writing"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "In context",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "A coffee, please.",
+                        "target": "Un café, s'il vous plaît."
+                    },
+                    {
+                        "source": "Thank you very much.",
+                        "target": "Merci beaucoup."
+                    },
+                    {
+                        "source": "Excuse me (to pass).",
+                        "target": "Pardon."
+                    },
+                    {
+                        "source": "Sorry I'm late.",
+                        "target": "Pardon pour le retard."
+                    },
+                    {
+                        "source": "I'm so sorry.",
+                        "target": "Je suis vraiment désolé(e)."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · shop",
+                "prompt": "How do you say “please” to a shop clerk?",
+                "options": [
+                    "S'il te plaît",
+                    "S'il vous plaît",
+                    "De rien",
+                    "Salut"
+                ],
+                "answerIndex": 1,
+                "explanation": "Use s'il vous plaît with strangers and in shops."
+            },
+            {
+                "type": "check",
+                "title": "Check · reply",
+                "prompt": "Someone says merci. A casual reply is…",
+                "options": [
+                    "Bonjour",
+                    "De rien",
+                    "Au revoir",
+                    "S'il vous plaît"
+                ],
+                "answerIndex": 1,
+                "explanation": "De rien is the everyday, casual way to say you're welcome."
+            }
+        ]
+    },
+    {
+        "id": "numbers-1",
+        "slug": "numbers-1-to-10",
+        "title": "Numbers 1–10",
+        "description": "Count clearly for prices, times, and quantities.",
+        "unitId": "foundations",
+        "direction": "en-fr",
+        "level": "beginner",
+        "estimatedMinutes": 10,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Count slowly",
+                "body": "French numbers are used constantly — café prices, platform numbers, ages. Rhythm first; speed later."
+            },
+            {
+                "type": "tip",
+                "title": "Pronunciation notes",
+                "body": "Liaison and silent letters matter more than perfect accent at this stage.",
+                "bullets": [
+                    "Un / une agree with gender (un livre, une pomme).",
+                    "Six and dix change slightly before a vowel or pause — listen in context.",
+                    "Learn numbers in short phrases, not only as a list."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "1 to 10",
+                "items": [
+                    {
+                        "term": "zéro",
+                        "meaning": "0"
+                    },
+                    {
+                        "term": "un / une",
+                        "meaning": "1"
+                    },
+                    {
+                        "term": "deux",
+                        "meaning": "2"
+                    },
+                    {
+                        "term": "trois",
+                        "meaning": "3"
+                    },
+                    {
+                        "term": "quatre",
+                        "meaning": "4"
+                    },
+                    {
+                        "term": "cinq",
+                        "meaning": "5"
+                    },
+                    {
+                        "term": "six",
+                        "meaning": "6"
+                    },
+                    {
+                        "term": "sept",
+                        "meaning": "7"
+                    },
+                    {
+                        "term": "huit",
+                        "meaning": "8"
+                    },
+                    {
+                        "term": "neuf",
+                        "meaning": "9"
+                    },
+                    {
+                        "term": "dix",
+                        "meaning": "10"
+                    }
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "11 to 20 (bonus)",
+                "items": [
+                    {
+                        "term": "onze",
+                        "meaning": "11"
+                    },
+                    {
+                        "term": "douze",
+                        "meaning": "12"
+                    },
+                    {
+                        "term": "treize",
+                        "meaning": "13"
+                    },
+                    {
+                        "term": "quatorze",
+                        "meaning": "14"
+                    },
+                    {
+                        "term": "quinze",
+                        "meaning": "15"
+                    },
+                    {
+                        "term": "seize",
+                        "meaning": "16"
+                    },
+                    {
+                        "term": "dix-sept",
+                        "meaning": "17"
+                    },
+                    {
+                        "term": "dix-huit",
+                        "meaning": "18"
+                    },
+                    {
+                        "term": "dix-neuf",
+                        "meaning": "19"
+                    },
+                    {
+                        "term": "vingt",
+                        "meaning": "20"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Mini uses",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "Two coffees, please.",
+                        "target": "Deux cafés, s'il vous plaît."
+                    },
+                    {
+                        "source": "It costs five euros.",
+                        "target": "Ça coûte cinq euros."
+                    },
+                    {
+                        "source": "Platform three.",
+                        "target": "Quai numéro trois."
+                    },
+                    {
+                        "source": "I am twenty years old.",
+                        "target": "J'ai vingt ans."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · seven",
+                "prompt": "What is “seven” in French?",
+                "options": [
+                    "six",
+                    "sept",
+                    "huit",
+                    "cinq"
+                ],
+                "answerIndex": 1,
+                "explanation": "Sept is seven; six is six, huit is eight, cinq is five."
+            },
+            {
+                "type": "check",
+                "title": "Check · phrase",
+                "prompt": "“Deux cafés” means…",
+                "options": [
+                    "Ten coffees",
+                    "Two coffees",
+                    "Twelve coffees",
+                    "No coffee"
+                ],
+                "answerIndex": 1,
+                "explanation": "Deux means two."
+            },
+            {
+                "type": "check",
+                "title": "Check · age",
+                "prompt": "How do the French literally say “I am twenty years old”?",
+                "options": [
+                    "Je suis vingt ans",
+                    "J'ai vingt ans",
+                    "Je vais vingt ans",
+                    "J'ai vingt heures"
+                ],
+                "answerIndex": 1,
+                "explanation": "Age uses avoir (to have): j'ai vingt ans, literally 'I have twenty years'."
+            }
+        ]
+    },
+    {
+        "id": "introduce-yourself-1",
+        "slug": "introduce-yourself",
+        "title": "Introduce yourself",
+        "description": "Name, origin, and a simple nice-to-meet-you.",
+        "unitId": "foundations",
+        "direction": "en-fr",
+        "level": "beginner",
+        "estimatedMinutes": 12,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "First contact",
+                "body": "A short self-introduction is enough: name, where you're from, and a polite close."
+            },
+            {
+                "type": "vocab",
+                "title": "Building blocks",
+                "items": [
+                    {
+                        "term": "Je m'appelle…",
+                        "meaning": "My name is…"
+                    },
+                    {
+                        "term": "Je suis…",
+                        "meaning": "I am…"
+                    },
+                    {
+                        "term": "Je viens de…",
+                        "meaning": "I come from…"
+                    },
+                    {
+                        "term": "J'habite à…",
+                        "meaning": "I live in…"
+                    },
+                    {
+                        "term": "J'ai … ans",
+                        "meaning": "I am … years old"
+                    },
+                    {
+                        "term": "Enchanté(e)",
+                        "meaning": "Nice to meet you"
+                    },
+                    {
+                        "term": "Et vous ?",
+                        "meaning": "And you? (formal)"
+                    },
+                    {
+                        "term": "Et toi ?",
+                        "meaning": "And you? (informal)"
+                    }
+                ]
+            },
+            {
+                "type": "tip",
+                "title": "Enchanté vs enchantée",
+                "body": "In writing, agreement can follow the speaker's gender. In speech, Enchanté is widely used."
+            },
+            {
+                "type": "phrase",
+                "title": "Model intros",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "Hello, my name is Alex.",
+                        "target": "Bonjour, je m'appelle Alex."
+                    },
+                    {
+                        "source": "I'm from Canada.",
+                        "target": "Je viens du Canada."
+                    },
+                    {
+                        "source": "I live in Lyon.",
+                        "target": "J'habite à Lyon."
+                    },
+                    {
+                        "source": "Nice to meet you.",
+                        "target": "Enchanté."
+                    },
+                    {
+                        "source": "What's your name?",
+                        "target": "Comment vous appelez-vous ?"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“Je m'appelle Sam” means…",
+                "options": [
+                    "I live in Sam",
+                    "My name is Sam",
+                    "I am from Sam",
+                    "See you Sam"
+                ],
+                "answerIndex": 1,
+                "explanation": "S'appeler means 'to be called', so je m'appelle = my name is."
+            },
+            {
+                "type": "check",
+                "title": "Check · origin",
+                "prompt": "Best line for I come from Belgium?",
+                "options": [
+                    "J'habite Belgique",
+                    "Je viens de Belgique",
+                    "Je m'appelle Belgique",
+                    "Au revoir Belgique"
+                ],
+                "answerIndex": 1,
+                "explanation": "Venir de + country expresses origin."
+            }
+        ]
+    },
+    {
+        "id": "colors-1",
+        "slug": "colors-and-descriptions",
+        "title": "Colors & simple descriptions",
+        "description": "Name colors and describe everyday objects.",
+        "unitId": "foundations",
+        "direction": "en-fr",
+        "level": "beginner",
+        "estimatedMinutes": 10,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Painting with words",
+                "body": "Colors are adjectives, so most agree in gender and number with the noun they describe."
+            },
+            {
+                "type": "tip",
+                "title": "Agreement basics",
+                "body": "Add -e for feminine and -s for plural, with some irregular colors that never change.",
+                "bullets": [
+                    "un pull bleu → une robe bleue",
+                    "des chaussures noires",
+                    "marron and orange are invariable — they never add -e or -s."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Colors",
+                "items": [
+                    {
+                        "term": "rouge",
+                        "meaning": "red"
+                    },
+                    {
+                        "term": "bleu(e)",
+                        "meaning": "blue"
+                    },
+                    {
+                        "term": "vert(e)",
+                        "meaning": "green"
+                    },
+                    {
+                        "term": "jaune",
+                        "meaning": "yellow"
+                    },
+                    {
+                        "term": "noir(e)",
+                        "meaning": "black"
+                    },
+                    {
+                        "term": "blanc / blanche",
+                        "meaning": "white"
+                    },
+                    {
+                        "term": "gris(e)",
+                        "meaning": "grey"
+                    },
+                    {
+                        "term": "marron",
+                        "meaning": "brown",
+                        "note": "Invariable"
+                    },
+                    {
+                        "term": "orange",
+                        "meaning": "orange",
+                        "note": "Invariable"
+                    },
+                    {
+                        "term": "rose",
+                        "meaning": "pink"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Describing things",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "The sky is blue.",
+                        "target": "Le ciel est bleu."
+                    },
+                    {
+                        "source": "I'd like the red one.",
+                        "target": "Je voudrais le rouge."
+                    },
+                    {
+                        "source": "She has a green bag.",
+                        "target": "Elle a un sac vert."
+                    },
+                    {
+                        "source": "Black shoes.",
+                        "target": "Des chaussures noires."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · agreement",
+                "prompt": "How do you say “a blue dress” (une robe)?",
+                "options": [
+                    "un robe bleu",
+                    "une robe bleue",
+                    "une robe bleu",
+                    "une robe bleus"
+                ],
+                "answerIndex": 1,
+                "explanation": "Robe is feminine, so bleu takes an -e: une robe bleue."
+            },
+            {
+                "type": "check",
+                "title": "Check · invariable",
+                "prompt": "Which color never changes form regardless of gender or number?",
+                "options": [
+                    "bleu",
+                    "vert",
+                    "marron",
+                    "noir"
+                ],
+                "answerIndex": 2,
+                "explanation": "Marron (and orange) stay the same in every context: des yeux marron, une veste marron."
+            }
+        ]
+    },
+    {
+        "id": "cafe-1",
+        "slug": "at-the-cafe",
+        "title": "At the café",
+        "description": "Order drinks and ask for the bill with confidence.",
+        "unitId": "everyday",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 12,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "A quiet table",
+                "body": "Je voudrais… plus s'il vous plaît covers most orders. Add numbers and sizes when you need them."
+            },
+            {
+                "type": "tip",
+                "title": "Café vocabulary culture",
+                "body": "Un café often means an espresso. Un café allongé is longer; un crème is coffee with milk.",
+                "bullets": [
+                    "Sur place = for here",
+                    "À emporter = to go",
+                    "L'addition = the bill",
+                    "Tipping isn't required — service is included in the price."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Drinks & service",
+                "items": [
+                    {
+                        "term": "un café",
+                        "meaning": "a coffee (often espresso)"
+                    },
+                    {
+                        "term": "un café allongé",
+                        "meaning": "a long coffee"
+                    },
+                    {
+                        "term": "un crème",
+                        "meaning": "coffee with milk"
+                    },
+                    {
+                        "term": "un thé",
+                        "meaning": "a tea"
+                    },
+                    {
+                        "term": "un chocolat chaud",
+                        "meaning": "a hot chocolate"
+                    },
+                    {
+                        "term": "un jus d'orange",
+                        "meaning": "an orange juice"
+                    },
+                    {
+                        "term": "de l'eau",
+                        "meaning": "some water"
+                    },
+                    {
+                        "term": "une carafe d'eau",
+                        "meaning": "a jug of tap water"
+                    },
+                    {
+                        "term": "l'addition",
+                        "meaning": "the bill"
+                    },
+                    {
+                        "term": "Je voudrais...",
+                        "meaning": "I would like..."
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Ordering",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "I would like a coffee, please.",
+                        "target": "Je voudrais un café, s'il vous plaît."
+                    },
+                    {
+                        "source": "A tea to go, please.",
+                        "target": "Un thé à emporter, s'il vous plaît."
+                    },
+                    {
+                        "source": "The bill, please.",
+                        "target": "L'addition, s'il vous plaît."
+                    },
+                    {
+                        "source": "For here or to go?",
+                        "target": "Sur place ou à emporter ?"
+                    },
+                    {
+                        "source": "Can I get some tap water?",
+                        "target": "Je peux avoir une carafe d'eau ?"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · bill",
+                "prompt": "How do you ask for the bill?",
+                "options": [
+                    "Un café, s'il vous plaît.",
+                    "L'addition, s'il vous plaît.",
+                    "À bientôt.",
+                    "Comment allez-vous ?"
+                ],
+                "answerIndex": 1,
+                "explanation": "L'addition is the standard word for a restaurant or café bill."
+            },
+            {
+                "type": "check",
+                "title": "Check · to go",
+                "prompt": "“À emporter” means…",
+                "options": [
+                    "For here",
+                    "To go",
+                    "Very hot",
+                    "With sugar"
+                ],
+                "answerIndex": 1,
+                "explanation": "À emporter literally means 'to carry away', i.e. to go."
+            }
+        ]
+    },
+    {
+        "id": "food-market-1",
+        "slug": "at-the-market",
+        "title": "At the market",
+        "description": "Fruit, quantities, and polite requests at a stall.",
+        "unitId": "everyday",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 12,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Market pace",
+                "body": "Markets reward clear numbers and je voudrais. Pointing plus a word still works — language makes it smoother."
+            },
+            {
+                "type": "vocab",
+                "title": "Food words",
+                "items": [
+                    {
+                        "term": "une pomme",
+                        "meaning": "an apple"
+                    },
+                    {
+                        "term": "une banane",
+                        "meaning": "a banana"
+                    },
+                    {
+                        "term": "une tomate",
+                        "meaning": "a tomato"
+                    },
+                    {
+                        "term": "une carotte",
+                        "meaning": "a carrot"
+                    },
+                    {
+                        "term": "du pain",
+                        "meaning": "some bread"
+                    },
+                    {
+                        "term": "du fromage",
+                        "meaning": "some cheese"
+                    },
+                    {
+                        "term": "un kilo de…",
+                        "meaning": "a kilo of…"
+                    },
+                    {
+                        "term": "une livre de…",
+                        "meaning": "half a kilo of…",
+                        "note": "Common in casual speech"
+                    },
+                    {
+                        "term": "C'est combien ?",
+                        "meaning": "How much is it?"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "At the stall",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "I'd like three apples, please.",
+                        "target": "Je voudrais trois pommes, s'il vous plaît."
+                    },
+                    {
+                        "source": "A kilo of tomatoes, please.",
+                        "target": "Un kilo de tomates, s'il vous plaît."
+                    },
+                    {
+                        "source": "How much is it?",
+                        "target": "C'est combien ?"
+                    },
+                    {
+                        "source": "That's all, thank you.",
+                        "target": "C'est tout, merci."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“C'est combien ?” asks for…",
+                "options": [
+                    "The time",
+                    "The price",
+                    "Directions",
+                    "A table"
+                ],
+                "answerIndex": 1,
+                "explanation": "Combien means 'how much/many', so c'est combien asks about price."
+            },
+            {
+                "type": "check",
+                "title": "Check · order",
+                "prompt": "Best for “three apples, please”?",
+                "options": [
+                    "Trois pommes, s'il vous plaît",
+                    "Trois cafés, merci",
+                    "Au revoir pommes",
+                    "Je m'appelle pomme"
+                ],
+                "answerIndex": 0,
+                "explanation": "Trois pommes, s'il vous plaît directly matches the request."
+            }
+        ]
+    },
+    {
+        "id": "small-talk-1",
+        "slug": "small-talk-weather",
+        "title": "Small talk & weather",
+        "description": "Light conversation beyond hello.",
+        "unitId": "everyday",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 11,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Beyond bonjour",
+                "body": "Weather and weekend questions are safe bridges after greetings."
+            },
+            {
+                "type": "vocab",
+                "title": "Weather & chat",
+                "items": [
+                    {
+                        "term": "Il fait beau",
+                        "meaning": "The weather is nice"
+                    },
+                    {
+                        "term": "Il pleut",
+                        "meaning": "It's raining"
+                    },
+                    {
+                        "term": "Il fait froid",
+                        "meaning": "It's cold"
+                    },
+                    {
+                        "term": "Il fait chaud",
+                        "meaning": "It's hot"
+                    },
+                    {
+                        "term": "Il y a du soleil",
+                        "meaning": "It's sunny"
+                    },
+                    {
+                        "term": "Il neige",
+                        "meaning": "It's snowing"
+                    },
+                    {
+                        "term": "Le week-end",
+                        "meaning": "The weekend"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Light exchanges",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "Nice weather today.",
+                        "target": "Il fait beau aujourd'hui."
+                    },
+                    {
+                        "source": "It's raining a lot.",
+                        "target": "Il pleut beaucoup."
+                    },
+                    {
+                        "source": "How was your weekend?",
+                        "target": "Comment était votre week-end ?"
+                    },
+                    {
+                        "source": "It's freezing outside!",
+                        "target": "Il fait un froid de canard !",
+                        "note": "Idiom: 'duck cold'"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“Il pleut” means…",
+                "options": [
+                    "It's sunny",
+                    "It's raining",
+                    "It's windy",
+                    "It's late"
+                ],
+                "answerIndex": 1,
+                "explanation": "Pleuvoir means to rain, so il pleut = it's raining."
+            },
+            {
+                "type": "check",
+                "title": "Check · weekend",
+                "prompt": "How do you ask “How was your weekend?” politely?",
+                "options": [
+                    "Comment était votre week-end ?",
+                    "Il fait beau ?",
+                    "Vous êtes fatigué ?",
+                    "C'est combien le week-end ?"
+                ],
+                "answerIndex": 0,
+                "explanation": "This uses était (was) from être to ask about a past event."
+            }
+        ]
+    },
+    {
+        "id": "restaurant-1",
+        "slug": "at-the-restaurant",
+        "title": "At the restaurant",
+        "description": "Reservations, ordering a meal, and dietary needs.",
+        "unitId": "everyday",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 13,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "From table to bill",
+                "body": "A French meal follows a rhythm: greeting, being seated, ordering, and eventually asking for the bill — nobody rushes you."
+            },
+            {
+                "type": "tip",
+                "title": "Menu know-how",
+                "body": "Le menu is a fixed-price set meal, not the list of dishes — that's la carte.",
+                "bullets": [
+                    "L'entrée is the starter, not the main course.",
+                    "Le plat (principal) is the main course.",
+                    "Say Bon appétit before others start eating."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Restaurant words",
+                "items": [
+                    {
+                        "term": "une table pour deux",
+                        "meaning": "a table for two"
+                    },
+                    {
+                        "term": "la carte",
+                        "meaning": "the menu"
+                    },
+                    {
+                        "term": "le menu",
+                        "meaning": "the fixed-price set menu"
+                    },
+                    {
+                        "term": "l'entrée",
+                        "meaning": "the starter"
+                    },
+                    {
+                        "term": "le plat",
+                        "meaning": "the main course"
+                    },
+                    {
+                        "term": "le dessert",
+                        "meaning": "dessert"
+                    },
+                    {
+                        "term": "végétarien(ne)",
+                        "meaning": "vegetarian"
+                    },
+                    {
+                        "term": "une allergie",
+                        "meaning": "an allergy"
+                    },
+                    {
+                        "term": "l'addition",
+                        "meaning": "the bill"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Ordering a meal",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "A table for two, please.",
+                        "target": "Une table pour deux, s'il vous plaît."
+                    },
+                    {
+                        "source": "What do you recommend?",
+                        "target": "Qu'est-ce que vous recommandez ?"
+                    },
+                    {
+                        "source": "I'll have the fish.",
+                        "target": "Je vais prendre le poisson."
+                    },
+                    {
+                        "source": "I'm vegetarian.",
+                        "target": "Je suis végétarien(ne)."
+                    },
+                    {
+                        "source": "I have a peanut allergy.",
+                        "target": "J'ai une allergie aux cacahuètes."
+                    },
+                    {
+                        "source": "Enjoy your meal!",
+                        "target": "Bon appétit !"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · carte vs menu",
+                "prompt": "In a French restaurant, “le menu” usually refers to…",
+                "options": [
+                    "The full list of every dish available",
+                    "A fixed-price set meal",
+                    "The wine list",
+                    "The bill"
+                ],
+                "answerIndex": 1,
+                "explanation": "Le menu is a set-price combination; the full list of dishes is la carte."
+            },
+            {
+                "type": "check",
+                "title": "Check · vegetarian",
+                "prompt": "How would a woman say “I'm vegetarian”?",
+                "options": [
+                    "Je suis végétarien",
+                    "Je suis végétarienne",
+                    "J'ai végétarien",
+                    "Je fais végétarien"
+                ],
+                "answerIndex": 1,
+                "explanation": "Végétarien agrees with gender: végétarienne for a female speaker."
+            }
+        ]
+    },
+    {
+        "id": "weekend-plans-1",
+        "slug": "talking-about-plans",
+        "title": "Talking about plans",
+        "description": "Use aller + infinitive to say what you're about to do.",
+        "unitId": "everyday",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 12,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "The near future",
+                "body": "French has a simple way to talk about the near future: aller (to go) conjugated, plus an infinitive verb."
+            },
+            {
+                "type": "tip",
+                "title": "Pattern",
+                "body": "Subject + aller (conjugated) + infinitive verb.",
+                "bullets": [
+                    "Je vais manger = I am going to eat",
+                    "Tu vas partir = You are going to leave",
+                    "Nous allons voyager = We are going to travel"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Aller — present",
+                "items": [
+                    {
+                        "term": "je vais",
+                        "meaning": "I go / I am going"
+                    },
+                    {
+                        "term": "tu vas",
+                        "meaning": "you go (informal)"
+                    },
+                    {
+                        "term": "il / elle / on va",
+                        "meaning": "he / she / one goes"
+                    },
+                    {
+                        "term": "nous allons",
+                        "meaning": "we go"
+                    },
+                    {
+                        "term": "vous allez",
+                        "meaning": "you go (formal/plural)"
+                    },
+                    {
+                        "term": "ils / elles vont",
+                        "meaning": "they go"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Making plans",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "What are you going to do this weekend?",
+                        "target": "Qu'est-ce que tu vas faire ce week-end ?"
+                    },
+                    {
+                        "source": "I'm going to visit my parents.",
+                        "target": "Je vais rendre visite à mes parents."
+                    },
+                    {
+                        "source": "We're going to watch a film.",
+                        "target": "Nous allons regarder un film."
+                    },
+                    {
+                        "source": "She's going to travel to Nice.",
+                        "target": "Elle va voyager à Nice."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · structure",
+                "prompt": "Which sentence correctly uses the near future?",
+                "options": [
+                    "Je vais mangez",
+                    "Je vais manger",
+                    "Je vais mange",
+                    "Je suis manger"
+                ],
+                "answerIndex": 1,
+                "explanation": "Aller + infinitive: je vais + manger (unconjugated infinitive)."
+            },
+            {
+                "type": "check",
+                "title": "Check · translate",
+                "prompt": "“Nous allons voyager” means…",
+                "options": [
+                    "We travelled",
+                    "We are going to travel",
+                    "We travel every day",
+                    "We want to travel"
+                ],
+                "answerIndex": 1,
+                "explanation": "Allons (from aller) + infinitive voyager describes a near-future plan."
+            }
+        ]
+    },
+    {
+        "id": "directions-1",
+        "slug": "simple-directions",
+        "title": "Simple directions",
+        "description": "Left, right, straight — and asking where something is.",
+        "unitId": "travel",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 11,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Finding your way",
+                "body": "Combine où est… ? with a few direction words for short walks in a new city."
+            },
+            {
+                "type": "vocab",
+                "title": "Directions",
+                "items": [
+                    {
+                        "term": "à gauche",
+                        "meaning": "to the left"
+                    },
+                    {
+                        "term": "à droite",
+                        "meaning": "to the right"
+                    },
+                    {
+                        "term": "tout droit",
+                        "meaning": "straight ahead"
+                    },
+                    {
+                        "term": "près de",
+                        "meaning": "near"
+                    },
+                    {
+                        "term": "loin de",
+                        "meaning": "far from"
+                    },
+                    {
+                        "term": "au coin",
+                        "meaning": "at the corner"
+                    },
+                    {
+                        "term": "en face de",
+                        "meaning": "across from"
+                    },
+                    {
+                        "term": "entre",
+                        "meaning": "between"
+                    },
+                    {
+                        "term": "Où est… ?",
+                        "meaning": "Where is…?"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Asking the way",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "Where is the station?",
+                        "target": "Où est la gare ?"
+                    },
+                    {
+                        "source": "Is it far?",
+                        "target": "C'est loin ?"
+                    },
+                    {
+                        "source": "Go straight ahead, then left.",
+                        "target": "Allez tout droit, puis à gauche."
+                    },
+                    {
+                        "source": "It's across from the pharmacy.",
+                        "target": "C'est en face de la pharmacie."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“Tout droit” means…",
+                "options": [
+                    "to the left",
+                    "to the right",
+                    "straight ahead",
+                    "near"
+                ],
+                "answerIndex": 2,
+                "explanation": "Tout droit means straight ahead; à gauche/à droite are left/right."
+            },
+            {
+                "type": "check",
+                "title": "Check · ask",
+                "prompt": "“Où est la gare ?” asks for…",
+                "options": [
+                    "The price of a ticket",
+                    "Where the station is",
+                    "The time",
+                    "A taxi"
+                ],
+                "answerIndex": 1,
+                "explanation": "Où est means 'where is', and la gare is the station."
+            }
+        ]
+    },
+    {
+        "id": "travel-phrases-1",
+        "slug": "travel-phrases",
+        "title": "Travel phrases",
+        "description": "Tickets, platforms, and delays.",
+        "unitId": "travel",
+        "direction": "en-fr",
+        "level": "intermediate",
+        "estimatedMinutes": 12,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "On the move",
+                "body": "Stations and airports repeat the same patterns: destination, platform, delay, seat."
+            },
+            {
+                "type": "vocab",
+                "title": "Travel words",
+                "items": [
+                    {
+                        "term": "un billet",
+                        "meaning": "a ticket"
+                    },
+                    {
+                        "term": "aller-retour",
+                        "meaning": "round trip"
+                    },
+                    {
+                        "term": "aller simple",
+                        "meaning": "one-way"
+                    },
+                    {
+                        "term": "le train",
+                        "meaning": "the train"
+                    },
+                    {
+                        "term": "le quai",
+                        "meaning": "the platform"
+                    },
+                    {
+                        "term": "le vol",
+                        "meaning": "the flight"
+                    },
+                    {
+                        "term": "la correspondance",
+                        "meaning": "the connection / transfer"
+                    },
+                    {
+                        "term": "en retard",
+                        "meaning": "delayed / late"
+                    },
+                    {
+                        "term": "à l'heure",
+                        "meaning": "on time"
+                    },
+                    {
+                        "term": "annulé(e)",
+                        "meaning": "cancelled"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "At the counter",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "A ticket to Lyon, please.",
+                        "target": "Un billet pour Lyon, s'il vous plaît."
+                    },
+                    {
+                        "source": "A round trip to Paris.",
+                        "target": "Un aller-retour pour Paris."
+                    },
+                    {
+                        "source": "Which platform?",
+                        "target": "Quel quai ?"
+                    },
+                    {
+                        "source": "Is the train delayed?",
+                        "target": "Le train est-il en retard ?"
+                    },
+                    {
+                        "source": "Where do I change trains?",
+                        "target": "Où est-ce que je change de train ?"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“Un billet” means…",
+                "options": [
+                    "a platform",
+                    "a ticket",
+                    "a train",
+                    "a delay"
+                ],
+                "answerIndex": 1,
+                "explanation": "Un billet is a ticket."
+            },
+            {
+                "type": "check",
+                "title": "Check · delay",
+                "prompt": "“En retard” means…",
+                "options": [
+                    "On time",
+                    "Cancelled",
+                    "Delayed / late",
+                    "Full"
+                ],
+                "answerIndex": 2,
+                "explanation": "En retard describes being late or delayed; à l'heure is on time."
+            }
+        ]
+    },
+    {
+        "id": "hotel-1",
+        "slug": "at-the-hotel",
+        "title": "At the hotel",
+        "description": "Check-in lines and simple room requests.",
+        "unitId": "travel",
+        "direction": "en-fr",
+        "level": "intermediate",
+        "estimatedMinutes": 11,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Front desk",
+                "body": "Reservation, nights, and room type cover most check-ins."
+            },
+            {
+                "type": "vocab",
+                "title": "Hotel words",
+                "items": [
+                    {
+                        "term": "une réservation",
+                        "meaning": "a reservation"
+                    },
+                    {
+                        "term": "une chambre",
+                        "meaning": "a room"
+                    },
+                    {
+                        "term": "une chambre double",
+                        "meaning": "a double room"
+                    },
+                    {
+                        "term": "une nuit",
+                        "meaning": "a night"
+                    },
+                    {
+                        "term": "le passeport",
+                        "meaning": "passport"
+                    },
+                    {
+                        "term": "la clé / la carte",
+                        "meaning": "the key / key card"
+                    },
+                    {
+                        "term": "le petit-déjeuner",
+                        "meaning": "breakfast"
+                    },
+                    {
+                        "term": "l'ascenseur",
+                        "meaning": "the elevator"
+                    },
+                    {
+                        "term": "la réception",
+                        "meaning": "the front desk"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Check-in",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "I have a reservation.",
+                        "target": "J'ai une réservation."
+                    },
+                    {
+                        "source": "Two nights, please.",
+                        "target": "Deux nuits, s'il vous plaît."
+                    },
+                    {
+                        "source": "Is breakfast included?",
+                        "target": "Le petit-déjeuner est-il inclus ?"
+                    },
+                    {
+                        "source": "What time is checkout?",
+                        "target": "À quelle heure est le départ ?"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“J'ai une réservation” means…",
+                "options": [
+                    "I need a taxi",
+                    "I have a reservation",
+                    "The room is ready",
+                    "Where is breakfast?"
+                ],
+                "answerIndex": 1,
+                "explanation": "J'ai (I have) + une réservation (a reservation)."
+            },
+            {
+                "type": "check",
+                "title": "Check · checkout",
+                "prompt": "How do you ask what time checkout is?",
+                "options": [
+                    "À quelle heure est le départ ?",
+                    "Où est la réception ?",
+                    "C'est combien la nuit ?",
+                    "J'ai une réservation"
+                ],
+                "answerIndex": 0,
+                "explanation": "Le départ refers to checkout time in a hotel context."
+            }
+        ]
+    },
+    {
+        "id": "getting-around-1",
+        "slug": "getting-around-town",
+        "title": "Getting around town",
+        "description": "Buses, metro, taxis, and buying tickets.",
+        "unitId": "travel",
+        "direction": "en-fr",
+        "level": "intermediate",
+        "estimatedMinutes": 12,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Moving through the city",
+                "body": "Most cities run on a mix of metro, bus, and tram — one word (un ticket, un forfait) covers most fare questions."
+            },
+            {
+                "type": "vocab",
+                "title": "Transport words",
+                "items": [
+                    {
+                        "term": "le métro",
+                        "meaning": "the subway/metro"
+                    },
+                    {
+                        "term": "le bus",
+                        "meaning": "the bus"
+                    },
+                    {
+                        "term": "le tram",
+                        "meaning": "the tram"
+                    },
+                    {
+                        "term": "un ticket",
+                        "meaning": "a ticket (single fare)"
+                    },
+                    {
+                        "term": "un forfait",
+                        "meaning": "a pass (day/week)"
+                    },
+                    {
+                        "term": "un arrêt",
+                        "meaning": "a stop"
+                    },
+                    {
+                        "term": "une station",
+                        "meaning": "a (metro) station"
+                    },
+                    {
+                        "term": "un taxi",
+                        "meaning": "a taxi"
+                    },
+                    {
+                        "term": "Je descends ici",
+                        "meaning": "I'm getting off here"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "On the way",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "Where's the nearest metro station?",
+                        "target": "Où est la station de métro la plus proche ?"
+                    },
+                    {
+                        "source": "One ticket, please.",
+                        "target": "Un ticket, s'il vous plaît."
+                    },
+                    {
+                        "source": "Does this bus go to the center?",
+                        "target": "Ce bus va-t-il au centre-ville ?"
+                    },
+                    {
+                        "source": "I'm getting off at the next stop.",
+                        "target": "Je descends au prochain arrêt."
+                    },
+                    {
+                        "source": "Can you call me a taxi?",
+                        "target": "Pouvez-vous m'appeler un taxi ?"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“Un forfait” usually refers to…",
+                "options": [
+                    "A single bus ticket",
+                    "A day or week transport pass",
+                    "A taxi receipt",
+                    "A train delay"
+                ],
+                "answerIndex": 1,
+                "explanation": "Un forfait is a bundled pass, unlike un ticket, which is a single fare."
+            },
+            {
+                "type": "check",
+                "title": "Check · getting off",
+                "prompt": "How do you say “I'm getting off here”?",
+                "options": [
+                    "Je monte ici",
+                    "Je descends ici",
+                    "Je pars ici",
+                    "J'arrive ici"
+                ],
+                "answerIndex": 1,
+                "explanation": "Descendre means to get off/go down; monter is to get on/go up."
+            }
+        ]
+    },
+    {
+        "id": "pharmacy-health-1",
+        "slug": "pharmacy-and-feeling-unwell",
+        "title": "Pharmacy & feeling unwell",
+        "description": "Describe symptoms and get help at a pharmacy or doctor's.",
+        "unitId": "health-safety",
+        "direction": "en-fr",
+        "level": "intermediate",
+        "estimatedMinutes": 13,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Green cross, calm help",
+                "body": "French pharmacies (marked with a green cross) can advise on minor issues before you need a doctor."
+            },
+            {
+                "type": "tip",
+                "title": "J'ai mal à…",
+                "body": "The most useful pattern for pain is j'ai mal à + body part, with à becoming au/à la/aux depending on gender and number.",
+                "bullets": [
+                    "J'ai mal à la tête = I have a headache",
+                    "J'ai mal au ventre = I have a stomach ache",
+                    "J'ai mal aux dents = my teeth hurt"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Health words",
+                "items": [
+                    {
+                        "term": "une pharmacie",
+                        "meaning": "a pharmacy"
+                    },
+                    {
+                        "term": "un médecin",
+                        "meaning": "a doctor"
+                    },
+                    {
+                        "term": "malade",
+                        "meaning": "sick"
+                    },
+                    {
+                        "term": "la fièvre",
+                        "meaning": "fever"
+                    },
+                    {
+                        "term": "un médicament",
+                        "meaning": "a medicine"
+                    },
+                    {
+                        "term": "une ordonnance",
+                        "meaning": "a prescription"
+                    },
+                    {
+                        "term": "la tête",
+                        "meaning": "the head"
+                    },
+                    {
+                        "term": "le ventre",
+                        "meaning": "the stomach"
+                    },
+                    {
+                        "term": "la gorge",
+                        "meaning": "the throat"
+                    },
+                    {
+                        "term": "Au secours !",
+                        "meaning": "Help!",
+                        "note": "Emergency use"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Explaining symptoms",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "I don't feel well.",
+                        "target": "Je ne me sens pas bien."
+                    },
+                    {
+                        "source": "I have a headache.",
+                        "target": "J'ai mal à la tête."
+                    },
+                    {
+                        "source": "I have a fever.",
+                        "target": "J'ai de la fièvre."
+                    },
+                    {
+                        "source": "Do you have something for a sore throat?",
+                        "target": "Avez-vous quelque chose pour la gorge ?"
+                    },
+                    {
+                        "source": "Call an ambulance!",
+                        "target": "Appelez une ambulance !"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · pattern",
+                "prompt": "How do you say “I have a stomach ache”?",
+                "options": [
+                    "J'ai mal à la ventre",
+                    "J'ai mal au ventre",
+                    "J'ai mal les ventre",
+                    "Je suis mal ventre"
+                ],
+                "answerIndex": 1,
+                "explanation": "Ventre is masculine, so à + le contracts to au: j'ai mal au ventre."
+            },
+            {
+                "type": "check",
+                "title": "Check · emergency",
+                "prompt": "Which phrase calls for urgent help?",
+                "options": [
+                    "Bonne journée",
+                    "Au secours !",
+                    "C'est combien ?",
+                    "Enchanté"
+                ],
+                "answerIndex": 1,
+                "explanation": "Au secours! is the standard exclamation for calling for help."
+            }
+        ]
+    },
+    {
+        "id": "telling-time-1",
+        "slug": "telling-time",
+        "title": "Telling time",
+        "description": "Ask for and give the time, on the hour and beyond.",
+        "unitId": "time-dates",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 12,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Quelle heure est-il ?",
+                "body": "French often uses the 24-hour clock for schedules, but everyday speech mixes in et quart, et demie, and moins le quart."
+            },
+            {
+                "type": "tip",
+                "title": "Minute expressions",
+                "body": "Learn these fixed chunks rather than translating word for word.",
+                "bullets": [
+                    "et quart = quarter past",
+                    "et demie = half past",
+                    "moins le quart = quarter to",
+                    "midi / minuit = noon / midnight (no 'heures' needed)"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Time words",
+                "items": [
+                    {
+                        "term": "Quelle heure est-il ?",
+                        "meaning": "What time is it?"
+                    },
+                    {
+                        "term": "Il est … heures",
+                        "meaning": "It is … o'clock"
+                    },
+                    {
+                        "term": "et quart",
+                        "meaning": "quarter past"
+                    },
+                    {
+                        "term": "et demie",
+                        "meaning": "half past"
+                    },
+                    {
+                        "term": "moins le quart",
+                        "meaning": "quarter to"
+                    },
+                    {
+                        "term": "midi",
+                        "meaning": "noon"
+                    },
+                    {
+                        "term": "minuit",
+                        "meaning": "midnight"
+                    },
+                    {
+                        "term": "du matin",
+                        "meaning": "in the morning (a.m.)"
+                    },
+                    {
+                        "term": "de l'après-midi",
+                        "meaning": "in the afternoon (p.m.)"
+                    },
+                    {
+                        "term": "du soir",
+                        "meaning": "in the evening (p.m.)"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Giving the time",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "What time is it?",
+                        "target": "Quelle heure est-il ?"
+                    },
+                    {
+                        "source": "It's three o'clock.",
+                        "target": "Il est trois heures."
+                    },
+                    {
+                        "source": "It's half past seven.",
+                        "target": "Il est sept heures et demie."
+                    },
+                    {
+                        "source": "It's a quarter to nine.",
+                        "target": "Il est neuf heures moins le quart."
+                    },
+                    {
+                        "source": "The train leaves at 14:30.",
+                        "target": "Le train part à quatorze heures trente."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · quarter to",
+                "prompt": "How do you say “quarter to nine”?",
+                "options": [
+                    "neuf heures et quart",
+                    "neuf heures moins le quart",
+                    "neuf heures et demie",
+                    "quart de neuf heures"
+                ],
+                "answerIndex": 1,
+                "explanation": "Moins le quart subtracts a quarter hour from the stated hour."
+            },
+            {
+                "type": "check",
+                "title": "Check · noon",
+                "prompt": "“Il est midi” means…",
+                "options": [
+                    "It's midnight",
+                    "It's noon",
+                    "It's morning",
+                    "It's late"
+                ],
+                "answerIndex": 1,
+                "explanation": "Midi is noon; minuit is midnight."
+            }
+        ]
+    },
+    {
+        "id": "days-months-1",
+        "slug": "days-months-and-dates",
+        "title": "Days, months & dates",
+        "description": "The calendar in French, and how to say a date.",
+        "unitId": "time-dates",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 13,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "The week starts on Monday",
+                "body": "French calendars typically start the week with lundi (Monday), not Sunday."
+            },
+            {
+                "type": "vocab",
+                "title": "Days of the week",
+                "items": [
+                    {
+                        "term": "lundi",
+                        "meaning": "Monday"
+                    },
+                    {
+                        "term": "mardi",
+                        "meaning": "Tuesday"
+                    },
+                    {
+                        "term": "mercredi",
+                        "meaning": "Wednesday"
+                    },
+                    {
+                        "term": "jeudi",
+                        "meaning": "Thursday"
+                    },
+                    {
+                        "term": "vendredi",
+                        "meaning": "Friday"
+                    },
+                    {
+                        "term": "samedi",
+                        "meaning": "Saturday"
+                    },
+                    {
+                        "term": "dimanche",
+                        "meaning": "Sunday"
+                    }
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Months",
+                "items": [
+                    {
+                        "term": "janvier",
+                        "meaning": "January"
+                    },
+                    {
+                        "term": "février",
+                        "meaning": "February"
+                    },
+                    {
+                        "term": "mars",
+                        "meaning": "March"
+                    },
+                    {
+                        "term": "avril",
+                        "meaning": "April"
+                    },
+                    {
+                        "term": "mai",
+                        "meaning": "May"
+                    },
+                    {
+                        "term": "juin",
+                        "meaning": "June"
+                    },
+                    {
+                        "term": "juillet",
+                        "meaning": "July"
+                    },
+                    {
+                        "term": "août",
+                        "meaning": "August"
+                    },
+                    {
+                        "term": "septembre",
+                        "meaning": "September"
+                    },
+                    {
+                        "term": "octobre",
+                        "meaning": "October"
+                    },
+                    {
+                        "term": "novembre",
+                        "meaning": "November"
+                    },
+                    {
+                        "term": "décembre",
+                        "meaning": "December"
+                    }
+                ]
+            },
+            {
+                "type": "tip",
+                "title": "Saying a date",
+                "body": "French dates use le + number + month, with premier (1st) as the only ordinal used.",
+                "bullets": [
+                    "le premier mai = May 1st",
+                    "le deux mai = May 2nd",
+                    "Days and months are not capitalized in French."
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Talking about dates",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "What day is it today?",
+                        "target": "Quel jour sommes-nous ?"
+                    },
+                    {
+                        "source": "Today is Monday.",
+                        "target": "Aujourd'hui, c'est lundi."
+                    },
+                    {
+                        "source": "My birthday is May 1st.",
+                        "target": "Mon anniversaire est le premier mai."
+                    },
+                    {
+                        "source": "See you on Friday.",
+                        "target": "À vendredi."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · order",
+                "prompt": "Which day comes right after mercredi?",
+                "options": [
+                    "mardi",
+                    "vendredi",
+                    "jeudi",
+                    "samedi"
+                ],
+                "answerIndex": 2,
+                "explanation": "The order is lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche."
+            },
+            {
+                "type": "check",
+                "title": "Check · capitalization",
+                "prompt": "In French, days and months are…",
+                "options": [
+                    "Always capitalized",
+                    "Never capitalized",
+                    "Capitalized only in titles",
+                    "Capitalized only on Mondays"
+                ],
+                "answerIndex": 1,
+                "explanation": "Unlike English, French days and months are lowercase: lundi, janvier, etc."
+            }
+        ]
+    },
+    {
+        "id": "family-1",
+        "slug": "talking-about-family",
+        "title": "Talking about family",
+        "description": "Name family members and describe relationships.",
+        "unitId": "family-friends",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 12,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Who's who",
+                "body": "Family vocabulary combines nicely with avoir (to have) and possessive adjectives like mon/ma/mes."
+            },
+            {
+                "type": "tip",
+                "title": "Possessives",
+                "body": "Mon/ma/mes change with the gender and number of the noun that follows, not the owner's gender.",
+                "bullets": [
+                    "mon frère (masculine) = my brother",
+                    "ma sœur (feminine) = my sister",
+                    "mes parents (plural) = my parents"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Family members",
+                "items": [
+                    {
+                        "term": "la famille",
+                        "meaning": "the family"
+                    },
+                    {
+                        "term": "le père",
+                        "meaning": "the father"
+                    },
+                    {
+                        "term": "la mère",
+                        "meaning": "the mother"
+                    },
+                    {
+                        "term": "le frère",
+                        "meaning": "the brother"
+                    },
+                    {
+                        "term": "la sœur",
+                        "meaning": "the sister"
+                    },
+                    {
+                        "term": "le fils",
+                        "meaning": "the son"
+                    },
+                    {
+                        "term": "la fille",
+                        "meaning": "the daughter"
+                    },
+                    {
+                        "term": "les grands-parents",
+                        "meaning": "the grandparents"
+                    },
+                    {
+                        "term": "le mari / la femme",
+                        "meaning": "the husband / the wife"
+                    },
+                    {
+                        "term": "un(e) ami(e)",
+                        "meaning": "a friend"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Describing your family",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "I have two brothers.",
+                        "target": "J'ai deux frères."
+                    },
+                    {
+                        "source": "This is my sister.",
+                        "target": "Voici ma sœur."
+                    },
+                    {
+                        "source": "My parents live in Paris.",
+                        "target": "Mes parents habitent à Paris."
+                    },
+                    {
+                        "source": "Do you have children?",
+                        "target": "Avez-vous des enfants ?"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · possessive",
+                "prompt": "How do you say “my sister”?",
+                "options": [
+                    "mon sœur",
+                    "ma sœur",
+                    "mes sœur",
+                    "le sœur"
+                ],
+                "answerIndex": 1,
+                "explanation": "Sœur is feminine singular, so it takes ma."
+            },
+            {
+                "type": "check",
+                "title": "Check · plural",
+                "prompt": "“Mes parents” means…",
+                "options": [
+                    "My parent",
+                    "My parents",
+                    "Your parents",
+                    "Their parent"
+                ],
+                "answerIndex": 1,
+                "explanation": "Mes is the plural possessive for both genders: mes parents = my parents."
+            }
+        ]
+    },
+    {
+        "id": "shopping-clothes-1",
+        "slug": "shopping-for-clothes",
+        "title": "Shopping for clothes",
+        "description": "Sizes, trying things on, and asking about price.",
+        "unitId": "shopping",
+        "direction": "en-fr",
+        "level": "intermediate",
+        "estimatedMinutes": 12,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Trying it on",
+                "body": "Clothes shopping mixes size, color, and a few polite requests to try things on or ask for a different size."
+            },
+            {
+                "type": "vocab",
+                "title": "Clothing words",
+                "items": [
+                    {
+                        "term": "un vêtement",
+                        "meaning": "a piece of clothing"
+                    },
+                    {
+                        "term": "une chemise",
+                        "meaning": "a shirt"
+                    },
+                    {
+                        "term": "un pantalon",
+                        "meaning": "trousers/pants"
+                    },
+                    {
+                        "term": "une robe",
+                        "meaning": "a dress"
+                    },
+                    {
+                        "term": "des chaussures",
+                        "meaning": "shoes"
+                    },
+                    {
+                        "term": "la taille",
+                        "meaning": "the size"
+                    },
+                    {
+                        "term": "la cabine d'essayage",
+                        "meaning": "the fitting room"
+                    },
+                    {
+                        "term": "en solde",
+                        "meaning": "on sale"
+                    },
+                    {
+                        "term": "trop grand / trop petit",
+                        "meaning": "too big / too small"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "At the shop",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "Do you have this in a size 40?",
+                        "target": "Avez-vous cela en taille quarante ?"
+                    },
+                    {
+                        "source": "Can I try it on?",
+                        "target": "Puis-je l'essayer ?"
+                    },
+                    {
+                        "source": "Where is the fitting room?",
+                        "target": "Où est la cabine d'essayage ?"
+                    },
+                    {
+                        "source": "It's too small.",
+                        "target": "C'est trop petit."
+                    },
+                    {
+                        "source": "Do you have a bigger size?",
+                        "target": "Avez-vous une taille plus grande ?"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · size",
+                "prompt": "How do you ask “do you have this in a size 40?”",
+                "options": [
+                    "Avez-vous cela en taille quarante ?",
+                    "C'est trop grand ?",
+                    "Où est la cabine d'essayage ?",
+                    "En solde, s'il vous plaît."
+                ],
+                "answerIndex": 0,
+                "explanation": "Taille means size, so en taille quarante specifies size 40."
+            },
+            {
+                "type": "check",
+                "title": "Check · too small",
+                "prompt": "“C'est trop petit” means…",
+                "options": [
+                    "It's too big",
+                    "It's too small",
+                    "It's too expensive",
+                    "It's on sale"
+                ],
+                "answerIndex": 1,
+                "explanation": "Trop petit = too small; trop grand = too big."
+            }
+        ]
+    },
+    {
+        "id": "articles-gender-1",
+        "slug": "articles-and-gender",
+        "title": "Articles & gender",
+        "description": "Le, la, un, une — why nouns feel gendered.",
+        "unitId": "grammar-core",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 14,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Every noun has a gender",
+                "body": "French nouns are masculine or feminine. Articles show that gender. Memorize new nouns with their article."
+            },
+            {
+                "type": "tip",
+                "title": "Learning habit",
+                "body": "Don't learn maison = house. Learn la maison = the house. The article is part of the word for you as a learner.",
+                "bullets": [
+                    "le / un → masculine",
+                    "la / une → feminine",
+                    "l' before a vowel sound (l'hôtel, l'eau)",
+                    "les / des → plural, for both genders"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Pairs to notice",
+                "items": [
+                    {
+                        "term": "le livre",
+                        "meaning": "the book",
+                        "note": "masculine"
+                    },
+                    {
+                        "term": "la table",
+                        "meaning": "the table",
+                        "note": "feminine"
+                    },
+                    {
+                        "term": "un café",
+                        "meaning": "a coffee"
+                    },
+                    {
+                        "term": "une pomme",
+                        "meaning": "an apple"
+                    },
+                    {
+                        "term": "l'eau (f)",
+                        "meaning": "water"
+                    },
+                    {
+                        "term": "l'hôtel (m)",
+                        "meaning": "hotel"
+                    },
+                    {
+                        "term": "les enfants",
+                        "meaning": "the children",
+                        "note": "plural"
+                    },
+                    {
+                        "term": "des amis",
+                        "meaning": "some friends",
+                        "note": "plural"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "Which article fits with pomme (apple)?",
+                "options": [
+                    "le",
+                    "la",
+                    "les only",
+                    "No article ever"
+                ],
+                "answerIndex": 1,
+                "explanation": "Une/la pomme — feminine."
+            },
+            {
+                "type": "check",
+                "title": "Check · vowel",
+                "prompt": "Before a vowel sound, le/la often become…",
+                "options": [
+                    "du",
+                    "l'",
+                    "des",
+                    "au"
+                ],
+                "answerIndex": 1,
+                "explanation": "L'hôtel, l'eau — the apostrophe replaces le/la before a vowel sound."
+            },
+            {
+                "type": "check",
+                "title": "Check · plural",
+                "prompt": "The plural definite article (the) for both genders is…",
+                "options": [
+                    "des",
+                    "les",
+                    "aux",
+                    "de"
+                ],
+                "answerIndex": 1,
+                "explanation": "Les is used for all plural nouns regardless of gender."
+            }
+        ]
+    },
+    {
+        "id": "etre-avoir-1",
+        "slug": "etre-and-avoir",
+        "title": "Être & avoir (present)",
+        "description": "The two verbs you'll use every day.",
+        "unitId": "grammar-core",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 15,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Workhorses",
+                "body": "Être (to be) and avoir (to have) appear in descriptions, ages, and many perfect tenses later."
+            },
+            {
+                "type": "vocab",
+                "title": "Être — present",
+                "items": [
+                    {
+                        "term": "je suis",
+                        "meaning": "I am"
+                    },
+                    {
+                        "term": "tu es",
+                        "meaning": "you are (informal)"
+                    },
+                    {
+                        "term": "il / elle / on est",
+                        "meaning": "he / she / one is"
+                    },
+                    {
+                        "term": "nous sommes",
+                        "meaning": "we are"
+                    },
+                    {
+                        "term": "vous êtes",
+                        "meaning": "you are (formal/plural)"
+                    },
+                    {
+                        "term": "ils / elles sont",
+                        "meaning": "they are"
+                    }
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Avoir — present",
+                "items": [
+                    {
+                        "term": "j'ai",
+                        "meaning": "I have"
+                    },
+                    {
+                        "term": "tu as",
+                        "meaning": "you have"
+                    },
+                    {
+                        "term": "il / elle / on a",
+                        "meaning": "he / she / one has"
+                    },
+                    {
+                        "term": "nous avons",
+                        "meaning": "we have"
+                    },
+                    {
+                        "term": "vous avez",
+                        "meaning": "you have"
+                    },
+                    {
+                        "term": "ils / elles ont",
+                        "meaning": "they have"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "In sentences",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "I am tired.",
+                        "target": "Je suis fatigué(e)."
+                    },
+                    {
+                        "source": "She is French.",
+                        "target": "Elle est française."
+                    },
+                    {
+                        "source": "I have a reservation.",
+                        "target": "J'ai une réservation."
+                    },
+                    {
+                        "source": "We have time.",
+                        "target": "Nous avons le temps."
+                    },
+                    {
+                        "source": "They are hungry.",
+                        "target": "Ils ont faim.",
+                        "note": "Idiom: avoir faim = to be hungry"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · être",
+                "prompt": "“Je suis” means…",
+                "options": [
+                    "I have",
+                    "I am",
+                    "I go",
+                    "I want"
+                ],
+                "answerIndex": 1,
+                "explanation": "Je suis comes from être (to be)."
+            },
+            {
+                "type": "check",
+                "title": "Check · avoir",
+                "prompt": "“J'ai une réservation” uses…",
+                "options": [
+                    "être",
+                    "avoir",
+                    "aller",
+                    "faire"
+                ],
+                "answerIndex": 1,
+                "explanation": "J'ai comes from avoir (to have)."
+            },
+            {
+                "type": "check",
+                "title": "Check · idiom",
+                "prompt": "“Ils ont faim” literally means “they have hunger”, i.e....",
+                "options": [
+                    "They are hungry",
+                    "They are thirsty",
+                    "They are tired",
+                    "They have food"
+                ],
+                "answerIndex": 0,
+                "explanation": "Avoir faim is an idiom meaning to be hungry — French uses 'have' where English uses 'be'."
+            }
+        ]
+    },
+    {
+        "id": "regular-er-verbs-1",
+        "slug": "regular-er-verbs",
+        "title": "Regular -ER verbs",
+        "description": "Conjugate the largest family of French verbs.",
+        "unitId": "grammar-core",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 14,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "The biggest group",
+                "body": "Most French verbs end in -er, and they nearly all follow the same pattern in the present tense — learn parler once, unlock hundreds of verbs."
+            },
+            {
+                "type": "tip",
+                "title": "The pattern",
+                "body": "Drop -er from the infinitive, then add the ending for each subject.",
+                "bullets": [
+                    "je -e, tu -es, il/elle/on -e",
+                    "nous -ons, vous -ez, ils/elles -ent",
+                    "The je/tu/il/elle/on/ils/elles forms often sound identical."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Parler (to speak) — present",
+                "items": [
+                    {
+                        "term": "je parle",
+                        "meaning": "I speak"
+                    },
+                    {
+                        "term": "tu parles",
+                        "meaning": "you speak"
+                    },
+                    {
+                        "term": "il / elle / on parle",
+                        "meaning": "he / she / one speaks"
+                    },
+                    {
+                        "term": "nous parlons",
+                        "meaning": "we speak"
+                    },
+                    {
+                        "term": "vous parlez",
+                        "meaning": "you speak"
+                    },
+                    {
+                        "term": "ils / elles parlent",
+                        "meaning": "they speak"
+                    }
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "More -er verbs",
+                "items": [
+                    {
+                        "term": "aimer",
+                        "meaning": "to like / love"
+                    },
+                    {
+                        "term": "habiter",
+                        "meaning": "to live (in a place)"
+                    },
+                    {
+                        "term": "travailler",
+                        "meaning": "to work"
+                    },
+                    {
+                        "term": "regarder",
+                        "meaning": "to watch/look at"
+                    },
+                    {
+                        "term": "manger",
+                        "meaning": "to eat",
+                        "note": "Adds an 'e' before -ons: nous mangeons"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "In use",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "I speak a little French.",
+                        "target": "Je parle un peu français."
+                    },
+                    {
+                        "source": "We work in Paris.",
+                        "target": "Nous travaillons à Paris."
+                    },
+                    {
+                        "source": "They love French cheese.",
+                        "target": "Elles aiment le fromage français."
+                    },
+                    {
+                        "source": "We eat at eight.",
+                        "target": "Nous mangeons à huit heures."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · ending",
+                "prompt": "What ending goes with nous for -er verbs?",
+                "options": [
+                    "-e",
+                    "-es",
+                    "-ons",
+                    "-ent"
+                ],
+                "answerIndex": 2,
+                "explanation": "Nous takes -ons: nous parlons, nous mangeons."
+            },
+            {
+                "type": "check",
+                "title": "Check · manger",
+                "prompt": "Why does “nous mangeons” keep the extra e?",
+                "options": [
+                    "To keep the soft 'g' sound before -ons",
+                    "It's a spelling mistake",
+                    "Because manger is irregular in all forms",
+                    "Only formal French uses the e"
+                ],
+                "answerIndex": 0,
+                "explanation": "Verbs ending in -ger insert an e before -ons to preserve the soft 'j' sound of the g."
+            }
+        ]
+    },
+    {
+        "id": "adjective-agreement-1",
+        "slug": "adjective-agreement",
+        "title": "Adjective agreement",
+        "description": "Make descriptive words match the noun they describe.",
+        "unitId": "grammar-core",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 13,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Adjectives follow nouns — in more ways than one",
+                "body": "Most French adjectives go after the noun and change form to match its gender and number."
+            },
+            {
+                "type": "tip",
+                "title": "The default rule",
+                "body": "Add -e for feminine, -s for plural, -es for feminine plural — unless the adjective already ends in -e or is irregular.",
+                "bullets": [
+                    "grand → grande → grands → grandes",
+                    "Adjectives already ending in -e (comme rouge) don't change for gender.",
+                    "A handful of common adjectives (beau, nouveau, vieux) go before the noun."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Common adjectives",
+                "items": [
+                    {
+                        "term": "grand(e)",
+                        "meaning": "tall / big"
+                    },
+                    {
+                        "term": "petit(e)",
+                        "meaning": "small"
+                    },
+                    {
+                        "term": "content(e)",
+                        "meaning": "happy"
+                    },
+                    {
+                        "term": "intéressant(e)",
+                        "meaning": "interesting"
+                    },
+                    {
+                        "term": "beau / belle",
+                        "meaning": "beautiful",
+                        "note": "Irregular; goes before the noun"
+                    },
+                    {
+                        "term": "nouveau / nouvelle",
+                        "meaning": "new",
+                        "note": "Irregular; goes before the noun"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Describing people and things",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "He is tall.",
+                        "target": "Il est grand."
+                    },
+                    {
+                        "source": "She is tall.",
+                        "target": "Elle est grande."
+                    },
+                    {
+                        "source": "They are happy. (mixed/masc.)",
+                        "target": "Ils sont contents."
+                    },
+                    {
+                        "source": "It's a beautiful city.",
+                        "target": "C'est une belle ville."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · feminine",
+                "prompt": "How do you say “she is small” (petite)?",
+                "options": [
+                    "Elle est petit",
+                    "Elle est petite",
+                    "Elle est petits",
+                    "Elle est petites"
+                ],
+                "answerIndex": 1,
+                "explanation": "Elle (feminine singular) needs the -e ending: petite."
+            },
+            {
+                "type": "check",
+                "title": "Check · position",
+                "prompt": "Which adjective typically goes before the noun?",
+                "options": [
+                    "intéressant",
+                    "content",
+                    "beau",
+                    "grand"
+                ],
+                "answerIndex": 2,
+                "explanation": "Beau, like nouveau and vieux, is a common irregular adjective placed before the noun: une belle ville."
+            }
+        ]
+    },
+    {
+        "id": "negation-1",
+        "slug": "saying-no-ne-pas",
+        "title": "Saying no: ne...pas",
+        "description": "Turn any sentence negative with the basic French negation pattern.",
+        "unitId": "grammar-core",
+        "direction": "en-fr",
+        "level": "elementary",
+        "estimatedMinutes": 11,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Sandwiching the verb",
+                "body": "French wraps the conjugated verb between ne and pas to make a sentence negative."
+            },
+            {
+                "type": "tip",
+                "title": "Pattern & shortcuts",
+                "body": "Subject + ne + verb + pas.",
+                "bullets": [
+                    "Ne becomes n' before a vowel sound: je n'aime pas.",
+                    "In casual spoken French, ne is often dropped entirely: 'j'aime pas' — but keep it in writing.",
+                    "Other negatives follow the same frame: ne...jamais (never), ne...plus (no longer), ne...rien (nothing)."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Negation words",
+                "items": [
+                    {
+                        "term": "ne...pas",
+                        "meaning": "not"
+                    },
+                    {
+                        "term": "ne...jamais",
+                        "meaning": "never"
+                    },
+                    {
+                        "term": "ne...plus",
+                        "meaning": "no longer / not anymore"
+                    },
+                    {
+                        "term": "ne...rien",
+                        "meaning": "nothing"
+                    },
+                    {
+                        "term": "ne...personne",
+                        "meaning": "nobody"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Negative sentences",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "I don't speak Spanish.",
+                        "target": "Je ne parle pas espagnol."
+                    },
+                    {
+                        "source": "I don't like coffee.",
+                        "target": "Je n'aime pas le café."
+                    },
+                    {
+                        "source": "I never eat meat.",
+                        "target": "Je ne mange jamais de viande."
+                    },
+                    {
+                        "source": "There's nothing here.",
+                        "target": "Il n'y a rien ici."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · placement",
+                "prompt": "Where does pas go in a simple negative sentence?",
+                "options": [
+                    "Before ne",
+                    "Right after the conjugated verb",
+                    "At the very end of the sentence only",
+                    "Before the subject"
+                ],
+                "answerIndex": 1,
+                "explanation": "The verb sits between ne and pas: ne + verb + pas."
+            },
+            {
+                "type": "check",
+                "title": "Check · vowel sound",
+                "prompt": "How do you say “I don't like coffee”?",
+                "options": [
+                    "Je ne aime pas le café",
+                    "Je n'aime pas le café",
+                    "Je ne aimes pas le café",
+                    "Je pas aime le café"
+                ],
+                "answerIndex": 1,
+                "explanation": "Ne elides to n' before a vowel sound: aime starts with a vowel, so n'aime."
+            }
+        ]
+    },
+    {
+        "id": "asking-questions-1",
+        "slug": "asking-questions",
+        "title": "Asking questions",
+        "description": "Three ways to ask yes/no and information questions.",
+        "unitId": "grammar-core",
+        "direction": "en-fr",
+        "level": "intermediate",
+        "estimatedMinutes": 13,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Three registers, one meaning",
+                "body": "French offers a casual, neutral, and formal way to ask the same yes/no question — useful to recognize even before you use all three."
+            },
+            {
+                "type": "tip",
+                "title": "Three patterns",
+                "body": "Same question, three levels of formality.",
+                "bullets": [
+                    "Rising intonation: Tu aimes le café ? (casual, spoken)",
+                    "Est-ce que: Est-ce que tu aimes le café ? (neutral, most common)",
+                    "Inversion: Aimes-tu le café ? (more formal/written)"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Question words",
+                "items": [
+                    {
+                        "term": "qui",
+                        "meaning": "who"
+                    },
+                    {
+                        "term": "que / quoi",
+                        "meaning": "what"
+                    },
+                    {
+                        "term": "où",
+                        "meaning": "where"
+                    },
+                    {
+                        "term": "quand",
+                        "meaning": "when"
+                    },
+                    {
+                        "term": "pourquoi",
+                        "meaning": "why"
+                    },
+                    {
+                        "term": "comment",
+                        "meaning": "how"
+                    },
+                    {
+                        "term": "combien",
+                        "meaning": "how much / how many"
+                    },
+                    {
+                        "term": "est-ce que",
+                        "meaning": "(turns a statement into a question)"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Sample questions",
+                "sourceLabel": "en-fr",
+                "phrases": [
+                    {
+                        "source": "Do you speak English?",
+                        "target": "Est-ce que vous parlez anglais ?"
+                    },
+                    {
+                        "source": "Where do you live?",
+                        "target": "Où habitez-vous ?"
+                    },
+                    {
+                        "source": "Why are you laughing?",
+                        "target": "Pourquoi tu ris ?"
+                    },
+                    {
+                        "source": "How much does it cost?",
+                        "target": "Combien ça coûte ?"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · neutral question",
+                "prompt": "Which is the neutral, everyday way to ask “Do you like coffee?”",
+                "options": [
+                    "Aimes-tu le café ?",
+                    "Est-ce que tu aimes le café ?",
+                    "Le café tu aimes ?",
+                    "Café tu aime ?"
+                ],
+                "answerIndex": 1,
+                "explanation": "Est-ce que + statement is the most common, neutral question form in spoken and written French."
+            },
+            {
+                "type": "check",
+                "title": "Check · word meaning",
+                "prompt": "“Pourquoi” means…",
+                "options": [
+                    "When",
+                    "How",
+                    "Why",
+                    "Who"
+                ],
+                "answerIndex": 2,
+                "explanation": "Pourquoi asks 'why'; quand is 'when', comment is 'how', qui is 'who'."
+            }
+        ]
+    }
+]

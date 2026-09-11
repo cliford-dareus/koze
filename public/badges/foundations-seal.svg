@@ -1,0 +1,12 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <!-- ribbon tails -->
+                <path d="M 42 96 L 30 120 L 44 114 L 52 122 L 50 98 Z" fill="#B9862F"/>
+                <path d="M 78 96 L 90 120 L 76 114 L 68 122 L 70 98 Z" fill="#B9862F"/>
+                <circle cx="62" cy="64" r="46" fill="#1F362C" opacity="0.35"/>
+                <circle cx="60" cy="58" r="46" fill="#2B4A3D" stroke="#D9A441" stroke-width="5"/>
+                <circle cx="60" cy="58" r="38" fill="none" stroke="#D9A441" stroke-width="1.5" opacity="0.4"
+                        stroke-dasharray="3 4"/>
+                <line x1="60" y1="72" x2="60" y2="52" stroke="white" stroke-width="6" stroke-linecap="round"/>
+                <ellipse cx="49" cy="46" rx="11" ry="7" fill="white" stroke="none" transform="rotate(-28 49 46)"/>
+                <ellipse cx="71" cy="46" rx="11" ry="7" fill="white" stroke="none" transform="rotate(28 71 46)"/>
+            </svg>

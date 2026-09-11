@@ -7,6 +7,7 @@ import { Button } from "@/app/_components/ui/button";
 import { Input } from "@/app/_components/ui/input";
 import { LANGUAGES } from "@/lib/languages";
 import { syncProgressFromCloud } from "@/lib/progress";
+import { saveLearningPrefs } from "@/lib/learning-prefs";
 
 const GOALS = [
   { id: "travel", label: "Travel" },
@@ -39,10 +40,23 @@ export default function OnboardingPage() {
     return "How much time each day?";
   }, [step]);
 
+  const lessonHint = useMemo(() => {
+    if (learningLanguage === "en") {
+      return "Lessons will use French → English (you’re learning English).";
+    }
+    if (learningLanguage === "fr") {
+      return "Lessons will use English → French (you’re learning French).";
+    }
+    return "Structured lessons currently focus on English ↔ French; other languages still work in Translate.";
+  }, [learningLanguage]);
+
   const finish = async () => {
     setLoading(true);
     setError("");
     try {
+      // Always persist locally so Lessons works for this device immediately
+      saveLearningPrefs({ learningLanguage, nativeLanguage });
+
       const res = await fetch("/api/onboarding", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -165,6 +179,7 @@ export default function OnboardingPage() {
                 ))}
               </select>
             </div>
+            <p className="text-xs text-muted-foreground">{lessonHint}</p>
           </div>
         )}
 

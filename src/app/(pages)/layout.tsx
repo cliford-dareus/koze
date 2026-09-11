@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Transcriber>
             <section className="app-shell-nested">
                 <PageTopSection />
-                <div className="min-h-0 flex-1">{children}</div>
+                <div className="min-h-0 flex-1 overflow-auto">{children}</div>
             </section>
         </Transcriber>
     );

@@ -1,0 +1,14 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <!-- soft drop shadow disc -->
+                <circle cx="62" cy="64" r="50" fill="#1F362C" opacity="0.35"/>
+                <!-- tail (nods to logo speech-bubble) -->
+                <path d="M 38 104 Q 34 116 24 120 Q 40 118 46 108 Z" fill="#B9862F"/>
+                <!-- main disc -->
+                <circle cx="60" cy="60" r="50" fill="#2B4A3D" stroke="#D9A441" stroke-width="5"/>
+                <circle cx="60" cy="60" r="42" fill="none" stroke="#D9A441" stroke-width="1.5" opacity="0.35"/>
+                <g fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M60 48 C54 42 44 41 38 43 L38 74 C44 72 54 73 60 79 C66 73 76 72 82 74 L82 43 C76 41 66 42 60 48 Z"/>
+                </g>
+                <path d="M60 48 L60 79" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+                <path d="M70 30 L70 46 L75 41 L80 46 L80 30 Z" fill="#D9A441" stroke="none"/>
+            </svg>

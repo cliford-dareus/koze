@@ -60,22 +60,24 @@ export async function getQuote() {
 export async function getRandomFacts() {
     try {
         const response = await fetch(
-            "https://uselessfacts.jsph.pl/random.json?language=en",
+            "https://api.api-ninjas.com/v2/randomquotes?categories=success,wisdom",
             {
                 method: "GET",
                 cache: "no-store",
+                headers: {
+                    "X-Api-Key": process.env.NINJA_API_KEY!,
+                },
             },
         );
         const result = await response.json();
         return {
-            text:
-                result.text ||
-                result.text_short ||
-                result.text_long ||
-                result.text,
-            author: result.source || result.author,
+            text: result[0].quote,
+            author: result[0].author,
         };
-    } catch (error) { }
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
 
 /**
