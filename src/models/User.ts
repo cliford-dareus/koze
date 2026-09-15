@@ -14,6 +14,8 @@ const ProgressSchema = new Schema(
         listeningCorrect: { type: Number, default: 0 },
         readingSessions: { type: Number, default: 0 },
         quizCorrect: { type: Number, default: 0 },
+        practiceSessions: { type: Number, default: 0 },
+        savedPhrases: { type: Schema.Types.Mixed, default: [] },
         lessonsCompletedCount: { type: Number, default: 0 },
         streak: { type: Number, default: 0 },
         currentWord: { type: String, default: null },
