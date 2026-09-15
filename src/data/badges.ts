@@ -23,7 +23,6 @@ export type BadgeDef = {
     title: string;
     description: string;
     emoji: string;
-    /** Return true when the learner has earned this badge. */
     isEarned: (p: ProgressState, direction?: LessonDirection) => boolean;
 };
 
@@ -54,10 +53,11 @@ export const BADGES: BadgeDef[] = [
         emoji: "🌱",
         isEarned: (p, direction) =>
             p.translations +
-            p.listeningCorrect +
-            p.readingSessions +
-            p.quizCorrect +
-            (p.lessonsCompleted?.get(direction!)?.length || 0) >=
+                p.listeningCorrect +
+                p.readingSessions +
+                p.quizCorrect +
+                (p.practiceSessions || 0) +
+                (p.lessonsCompleted?.get(direction!)?.length || 0) >=
             1,
     },
     {
@@ -65,91 +65,99 @@ export const BADGES: BadgeDef[] = [
         title: "Lesson learned",
         description: "Finish your first structured lesson.",
         emoji: "📖",
-        isEarned: (p, direction) => (p.lessonsCompleted?.get(direction!)?.length || 0) >= 1,
+        isEarned: (p, direction) =>
+            (p.lessonsCompleted?.get(direction!)?.length || 0) >= 1,
     },
     {
         id: "streak-3",
         title: "Three quiet days",
         description: "Keep a 3-day streak.",
         emoji: "🕯️",
-        isEarned: (p, direction) => (p.streak || 0) >= 3,
+        isEarned: (p) => (p.streak || 0) >= 3,
     },
     {
         id: "streak-7",
         title: "Week of practice",
         description: "Keep a 7-day streak.",
         emoji: "🌙",
-        isEarned: (p, direction) => (p.streak || 0) >= 7,
+        isEarned: (p) => (p.streak || 0) >= 7,
     },
     {
         id: "ear-tuned",
         title: "Ear tuned",
         description: "Get 10 listening answers right.",
         emoji: "🎧",
-        isEarned: (p, direction) => (p.listeningCorrect || 0) >= 10,
+        isEarned: (p) => (p.listeningCorrect || 0) >= 10,
     },
     {
         id: "polyglot-desk",
         title: "Polyglot desk",
         description: "Complete 25 translations.",
         emoji: "✍️",
-        isEarned: (p, direction) => (p.translations || 0) >= 25,
+        isEarned: (p) => (p.translations || 0) >= 25,
     },
     {
         id: "reader",
         title: "Quiet reader",
         description: "Finish 10 reading sessions.",
         emoji: "📕",
-        isEarned: (p, direction) => (p.readingSessions || 0) >= 10,
+        isEarned: (p) => (p.readingSessions || 0) >= 10,
     },
     {
         id: "quiz-mind",
         title: "Quiz mind",
         description: "Answer 20 quiz questions correctly.",
         emoji: "🧩",
-        isEarned: (p, direction) => (p.quizCorrect || 0) >= 20,
+        isEarned: (p) => (p.quizCorrect || 0) >= 20,
+    },
+    {
+        id: "conversation-starter",
+        title: "Conversation starter",
+        description: "Finish 5 tutor roleplay sessions.",
+        emoji: "💬",
+        isEarned: (p) => (p.practiceSessions || 0) >= 5,
     },
     {
         id: "foundations-seal",
         title: "Foundations seal",
         description: "Complete every Foundations lesson.",
         emoji: "🏛️",
-        isEarned: (p, direction) => unitComplete(p, "foundations"),
+        isEarned: (p) => unitComplete(p, "foundations"),
     },
     {
         id: "everyday-seal",
         title: "Everyday seal",
         description: "Complete every Everyday life lesson.",
         emoji: "☕",
-        isEarned: (p, direction) => unitComplete(p, "everyday"),
+        isEarned: (p) => unitComplete(p, "everyday"),
     },
     {
         id: "travel-seal",
         title: "Travel seal",
         description: "Complete every Travel lesson.",
         emoji: "🚂",
-        isEarned: (p, direction) => unitComplete(p, "travel"),
+        isEarned: (p) => unitComplete(p, "travel"),
     },
     {
         id: "level-3",
         title: "Rising steady",
         description: "Reach level 3.",
         emoji: "✨",
-        isEarned: (p, direction) => levelFromXp(p.xp || 0) >= 3,
+        isEarned: (p) => levelFromXp(p.xp || 0) >= 3,
     },
     {
         id: "level-5",
         title: "Steady light",
         description: "Reach level 5.",
         emoji: "🔆",
-        isEarned: (p, direction) => levelFromXp(p.xp || 0) >= 5,
+        isEarned: (p) => levelFromXp(p.xp || 0) >= 5,
     },
     {
         id: "daily-devotee",
         title: "Daily devotee",
         description: "Meet your daily goal.",
         emoji: "🎯",
-        isEarned: (p, direction) => Boolean(p.dailyGoalMet),
+        isEarned: (p) => Boolean(p.dailyGoalMet),
     },
     {
         id: "curriculum",
@@ -158,7 +166,9 @@ export const BADGES: BadgeDef[] = [
         emoji: "🏅",
         isEarned: (p, direction) =>
             LESSONS_PATH_MAP[direction!].length > 0 &&
-            LESSONS_PATH_MAP[direction!].every((l) => (p.lessonsCompleted.get(direction!) || []).includes(l.id)),
+            LESSONS_PATH_MAP[direction!].every((l) =>
+                (p.lessonsCompleted.get(direction!) || []).includes(l.id),
+            ),
     },
 ];
 
@@ -168,7 +178,8 @@ export const BADGES_ICON_MAP: Record<string, string> = {
     "streak-3": STREAK_3,
     "polyglot-desk": POLYGLOT_DESK,
     "quiz-mind": QUIZ_MIND,
-    "reader": READER,
+    "conversation-starter": QUIZ_MIND,
+    reader: READER,
     "streak-7": STREAK_7,
     "ear-tuned": EAR_TUNED,
     "travel-seal": TRAVEL_SEAL,
@@ -177,14 +188,13 @@ export const BADGES_ICON_MAP: Record<string, string> = {
     "level-3": LEVEL_3,
     "level-5": LEVEL_5,
     "daily-devotee": DAILY_DEVOTEE,
-    "curriculum": CURRICULUM,
+    curriculum: CURRICULUM,
 };
 
 export function getBadge(id: string): BadgeDef | undefined {
     return BADGES.find((b) => b.id === id);
 }
 
-/** Newly earned badge ids not yet stored on progress. */
 export function evaluateNewBadges(p: ProgressState): string[] {
     const have = new Set(p.badges || []);
     const earned: string[] = [];
@@ -193,7 +203,7 @@ export function evaluateNewBadges(p: ProgressState): string[] {
         try {
             if (badge.isEarned(p)) earned.push(badge.id);
         } catch {
-            // ignore bad evaluators
+            // ignore
         }
     }
     return earned;
@@ -212,5 +222,5 @@ export function applyBadgeUnlocks(p: ProgressState): {
     };
 }
 
-// Keep UNITS referenced so tree-shaking doesn’t drop unit helpers in some builds
 void UNITS;
+void defaultProgress;
