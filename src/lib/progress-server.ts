@@ -50,6 +50,8 @@ export function applyActivity(
     if (kind === "reading")
         next = { ...next, readingSessions: next.readingSessions + 1 };
     if (kind === "quiz") next = { ...next, quizCorrect: next.quizCorrect + 1 };
+    if (kind === "practice")
+        next = { ...next, practiceSessions: (next.practiceSessions || 0) + 1 };
 
     if (kind === "lesson" && extra?.lessonId) {
         const lessonId = extra.lessonId;
@@ -58,8 +60,8 @@ export function applyActivity(
         const direction: LessonDirection = isLessonDirection(extra.direction)
             ? extra.direction
             : isLessonDirection(next.lessonDirection)
-                ? next.lessonDirection
-                : "en-fr";
+              ? next.lessonDirection
+              : "en-fr";
 
         const lessonProgress = new Map(next.lessonProgress || []);
         const directionProgress = new Map(lessonProgress.get(direction) || []);
@@ -100,7 +102,10 @@ function mergeNestedLessonProgress(
     a: ProgressState["lessonProgress"],
     b: ProgressState["lessonProgress"],
 ): ProgressState["lessonProgress"] {
-    const out = new Map<string, Map<string, { currentStep: number; completed: boolean }>>();
+    const out = new Map<
+        string,
+        Map<string, { currentStep: number; completed: boolean }>
+    >();
     const directions = new Set([...(a?.keys() ?? []), ...(b?.keys() ?? [])]);
 
     for (const dir of directions) {
@@ -181,12 +186,19 @@ export function mergeProgress(
             (aToday && a.dailyGoalMet) || (bToday && b.dailyGoalMet);
     }
 
-    // Prefer local lessonDirection when set; otherwise cloud; default en-fr
     const lessonDirection: LessonDirection = isLessonDirection(a.lessonDirection)
         ? a.lessonDirection
         : isLessonDirection(b.lessonDirection)
-            ? b.lessonDirection
-            : "en-fr";
+          ? b.lessonDirection
+          : "en-fr";
+
+    const byId = new Map<
+        string,
+        NonNullable<ProgressState["savedPhrases"]>[number]
+    >();
+    for (const ph of [...(a.savedPhrases || []), ...(b.savedPhrases || [])]) {
+        if (ph?.id && !byId.has(ph.id)) byId.set(ph.id, ph);
+    }
 
     const merged: ProgressState = {
         ...a,
@@ -194,6 +206,11 @@ export function mergeProgress(
         listeningCorrect: Math.max(a.listeningCorrect, b.listeningCorrect),
         readingSessions: Math.max(a.readingSessions, b.readingSessions),
         quizCorrect: Math.max(a.quizCorrect, b.quizCorrect),
+        practiceSessions: Math.max(
+            a.practiceSessions || 0,
+            b.practiceSessions || 0,
+        ),
+        savedPhrases: Array.from(byId.values()).slice(0, 50),
         lessonsCompletedCount: Array.from(lessonsCompleted.values()).reduce(
             (sum, arr) => sum + arr.length,
             0,
@@ -201,7 +218,10 @@ export function mergeProgress(
         streak: Math.max(a.streak, b.streak),
         currentWord: a.currentWord || b.currentWord,
         currentWordDate: a.currentWordDate || b.currentWordDate,
-        lastActiveDate: (a.lastActiveDate || "") > (b.lastActiveDate || "") ? a.lastActiveDate : b.lastActiveDate,
+        lastActiveDate:
+            (a.lastActiveDate || "") > (b.lastActiveDate || "")
+                ? a.lastActiveDate
+                : b.lastActiveDate,
         lastTopic: a.lastTopic || b.lastTopic,
         lastLessonId: a.lastLessonId || b.lastLessonId,
         lessonProgress: mergeNestedLessonProgress(
