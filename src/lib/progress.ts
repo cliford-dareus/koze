@@ -15,11 +15,23 @@ function isLessonDirection(v: unknown): v is LessonDirection {
     return v === "en-fr" || v === "fr-en";
 }
 
+export type SavedPhrase = {
+    id: string;
+    text: string;
+    hint?: string;
+    scenarioId?: string;
+    savedAt: string;
+};
+
 export type ProgressState = {
     translations: number;
     listeningCorrect: number;
     readingSessions: number;
     quizCorrect: number;
+    /** Completed conversation-tutor sessions */
+    practiceSessions: number;
+    /** Phrases pinned from tutor sessions for later review */
+    savedPhrases: SavedPhrase[];
     lessonsCompletedCount: number;
     streak: number;
     currentWord: string | null;
@@ -47,6 +59,8 @@ export const defaultProgress = (): ProgressState => ({
     listeningCorrect: 0,
     readingSessions: 0,
     quizCorrect: 0,
+    practiceSessions: 0,
+    savedPhrases: [],
     lessonsCompletedCount: 0,
     streak: 0,
     currentWord: null,
@@ -66,10 +80,6 @@ export const defaultProgress = (): ProgressState => ({
     badges: [],
 });
 
-// --- Date helpers -----------------------------------------------------
-// Use LOCAL calendar date, not UTC. `toISOString()` is UTC-based, which
-// can put users on the wrong side of a day boundary depending on their
-// timezone offset and silently break streak tracking.
 function dateKey(d: Date) {
     const year = d.getFullYear();
     const month = String(d.getMonth() + 1).padStart(2, "0");
@@ -87,8 +97,6 @@ function yesterdayKey() {
     return dateKey(d);
 }
 
-// --- Map <-> plain object helpers --------------------------------------
-
 function mapToObject(
     map: Map<string, Map<string, LessonProgressEntry>>,
 ): Record<string, Record<string, LessonProgressEntry>> {
@@ -99,18 +107,6 @@ function mapToObject(
     return obj;
 }
 
-/**
- * Turn a raw, JSON-shaped progress object (as it comes out of
- * localStorage.getItem or a server response) into a well-formed
- * ProgressState with real Maps.
- *
- * This is the single place that understands the "wire format" vs the
- * "in-memory format". Both loadProgress() and anything that receives
- * progress from the server (recordActivity's fetch callback,
- * syncProgressFromCloud) must go through this before calling
- * saveProgress — otherwise saveProgress's mapToObject/Object.fromEntries
- * calls will throw on a plain object and fail silently.
- */
 function hydrateProgress(raw: unknown): ProgressState {
     const base = defaultProgress();
     if (!raw || typeof raw !== "object") return base;
@@ -119,8 +115,6 @@ function hydrateProgress(raw: unknown): ProgressState {
 
     const lessonProgress = new Map<string, Map<string, LessonProgressEntry>>();
     if (parsed.lessonProgress && typeof parsed.lessonProgress === "object") {
-        // lessonProgress may already be a Map (e.g. re-hydrating in-memory
-        // state) or a plain object (from JSON). Handle both.
         const entries =
             parsed.lessonProgress instanceof Map
                 ? parsed.lessonProgress.entries()
@@ -130,7 +124,11 @@ function hydrateProgress(raw: unknown): ProgressState {
                 lessons instanceof Map ? Object.fromEntries(lessons) : lessons;
             lessonProgress.set(
                 direction,
-                new Map(Object.entries(lessonsObj as Record<string, LessonProgressEntry>)),
+                new Map(
+                    Object.entries(
+                        lessonsObj as Record<string, LessonProgressEntry>,
+                    ),
+                ),
             );
         }
     }
@@ -140,7 +138,6 @@ function hydrateProgress(raw: unknown): ProgressState {
         if (parsed.lessonsCompleted instanceof Map) {
             lessonsCompleted = new Map(parsed.lessonsCompleted);
         } else if (Array.isArray(parsed.lessonsCompleted)) {
-            // Already an array of [direction, ids[]] entries.
             lessonsCompleted = new Map(parsed.lessonsCompleted);
         } else if (typeof parsed.lessonsCompleted === "object") {
             lessonsCompleted = new Map(Object.entries(parsed.lessonsCompleted));
@@ -158,6 +155,13 @@ function hydrateProgress(raw: unknown): ProgressState {
         todayXp: parsed.todayXp ?? 0,
         todayDate: parsed.todayDate ?? null,
         dailyGoalMet: parsed.dailyGoalMet ?? false,
+        practiceSessions:
+            typeof parsed.practiceSessions === "number"
+                ? parsed.practiceSessions
+                : 0,
+        savedPhrases: Array.isArray(parsed.savedPhrases)
+            ? (parsed.savedPhrases as SavedPhrase[])
+            : [],
         badges: parsed.badges ?? [],
     };
 }
@@ -167,14 +171,20 @@ export function loadProgress(): ProgressState {
     try {
         const raw = localStorage.getItem(PROGRESS_KEY);
         if (!raw) {
-            localStorage.setItem(PROGRESS_KEY, JSON.stringify(defaultProgress()));
+            localStorage.setItem(
+                PROGRESS_KEY,
+                JSON.stringify(defaultProgress()),
+            );
             return defaultProgress();
         }
         const parsed = JSON.parse(raw);
         return hydrateProgress(parsed);
     } catch (err) {
         if (process.env.NODE_ENV !== "production") {
-            console.error("loadProgress failed, falling back to defaults:", err);
+            console.error(
+                "loadProgress failed, falling back to defaults:",
+                err,
+            );
         }
         return defaultProgress();
     }
@@ -191,7 +201,6 @@ export function saveProgress(state: ProgressState) {
         localStorage.setItem(PROGRESS_KEY, JSON.stringify(serializableState));
         window.dispatchEvent(new CustomEvent("koze-progress"));
     } catch (err) {
-        // quota / private mode / malformed state
         if (process.env.NODE_ENV !== "production") {
             console.error("saveProgress failed:", err);
         }
@@ -212,6 +221,7 @@ export type ActivityKind =
     | "listening"
     | "reading"
     | "quiz"
+    | "practice"
     | "lesson";
 
 export function recordActivity(
@@ -234,6 +244,8 @@ export function recordActivity(
     if (kind === "reading")
         next = { ...next, readingSessions: next.readingSessions + 1 };
     if (kind === "quiz") next = { ...next, quizCorrect: next.quizCorrect + 1 };
+    if (kind === "practice")
+        next = { ...next, practiceSessions: (next.practiceSessions || 0) + 1 };
 
     if (kind === "lesson" && extra?.lessonId) {
         const lessonId = extra.lessonId;
@@ -249,10 +261,8 @@ export function recordActivity(
         };
 
         const lessonProgress = new Map(next.lessonProgress);
-
         const existingDirectionMap = lessonProgress.get(direction);
         const directionProgress = new Map(existingDirectionMap || []);
-
         directionProgress.set(lessonId, entry);
         lessonProgress.set(direction, directionProgress);
 
@@ -309,10 +319,6 @@ export function recordActivity(
                 if (!res.ok) return;
                 const data = await res.json();
                 if (data?.success && data.progress) {
-                    // data.progress is raw JSON from the server — hydrate it
-                    // into real Maps before saving, or saveProgress's
-                    // mapToObject/Object.fromEntries calls will throw and be
-                    // silently swallowed, discarding the synced progress.
                     saveProgress(hydrateProgress(data.progress));
                 }
             })
@@ -326,12 +332,57 @@ export function recordActivity(
     return next;
 }
 
+/** Pin a phrase from a tutor session into the review list. */
+export function savePhrase(input: {
+    text: string;
+    hint?: string;
+    scenarioId?: string;
+}): SavedPhrase | null {
+    const text = input.text.trim();
+    if (!text) return null;
+    const prev = loadProgress();
+    const existing = prev.savedPhrases || [];
+    const found = existing.find((ph) => ph.text === text);
+    if (found) return found;
+
+    const phrase: SavedPhrase = {
+        id: `${Date.now()}-${text.slice(0, 24).replace(/\s+/g, "-")}`,
+        text,
+        hint: input.hint?.trim() || undefined,
+        scenarioId: input.scenarioId,
+        savedAt: new Date().toISOString(),
+    };
+    const next: ProgressState = {
+        ...prev,
+        savedPhrases: [phrase, ...existing].slice(0, 50),
+    };
+    saveProgress(next);
+
+    if (typeof window !== "undefined") {
+        void fetch("/api/progress", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ action: "savePhrase", phrase }),
+        }).catch(() => {});
+    }
+    return phrase;
+}
+
+export function removeSavedPhrase(id: string) {
+    const prev = loadProgress();
+    saveProgress({
+        ...prev,
+        savedPhrases: (prev.savedPhrases || []).filter((ph) => ph.id !== id),
+    });
+}
+
 export function totalActivities(p: ProgressState) {
     return (
         p.translations +
         p.listeningCorrect +
         p.readingSessions +
         p.quizCorrect +
+        (p.practiceSessions || 0) +
         (p.lessonsCompletedCount || 0)
     );
 }
@@ -370,7 +421,10 @@ export async function syncProgressFromCloud() {
         }
     } catch (err) {
         if (process.env.NODE_ENV !== "production") {
-            console.error("syncProgressFromCloud failed, using local copy:", err);
+            console.error(
+                "syncProgressFromCloud failed, using local copy:",
+                err,
+            );
         }
     }
 

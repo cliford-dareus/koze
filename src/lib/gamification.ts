@@ -6,6 +6,7 @@ export const XP_REWARDS: Record<ActivityKind, number> = {
     listening: 5,
     reading: 8,
     quiz: 5,
+    practice: 12,
     lesson: 25,
 };
 
@@ -38,18 +39,40 @@ export function levelProgress(xp: number): {
     needForNext: number;
     ratio: number;
 } {
-    const level = levelFromXp(xp);
-    let spent = 0;
-    for (let l = 1; l < level; l++) {
-        spent += l * 100;
+    let level = 1;
+    let need = 100;
+    let remaining = Math.max(0, xp);
+    while (remaining >= need) {
+        remaining -= need;
+        level += 1;
+        need = level * 100;
     }
-    const intoLevel = Math.max(0, xp - spent);
-    const needForNext = level * 100;
     return {
         level,
-        intoLevel,
-        needForNext,
-        ratio: needForNext === 0 ? 0 : Math.min(1, intoLevel / needForNext),
+        intoLevel: remaining,
+        needForNext: need,
+        ratio: need > 0 ? remaining / need : 0,
+    };
+}
+
+function todayKey() {
+    const d = new Date();
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+}
+
+/** Reset daily counters when the local calendar day changes. */
+export function ensureTodayCounters(state: ProgressState): ProgressState {
+    const today = todayKey();
+    if (state.todayDate === today) return state;
+    return {
+        ...state,
+        todayDate: today,
+        todayActions: 0,
+        todayXp: 0,
+        dailyGoalMet: false,
     };
 }
 
@@ -63,26 +86,10 @@ export function xpForActivity(
     return XP_REWARDS[kind] ?? 0;
 }
 
-/** Minutes-based goal from onboarding mapped to activity count (gentle). */
-export function dailyGoalFromMinutes(minutes?: number | null): number {
-    if (!minutes || minutes <= 5) return 2;
-    if (minutes <= 10) return 3;
-    if (minutes <= 20) return 4;
-    return 5;
-}
-
-export function ensureTodayCounters(state: ProgressState): ProgressState {
-    const today = new Date().toISOString().slice(0, 10);
-    if (state.todayDate === today) return state;
-    return {
-        ...state,
-        todayDate: today,
-        todayXp: 0,
-        todayActions: 0,
-        dailyGoalMet: false,
-    };
-}
-
+/**
+ * Apply XP and daily-goal bookkeeping for one activity.
+ * Lesson steps that are not completions grant 0 XP and do not count toward the goal.
+ */
 export function applyXpAndDailyGoal(
     state: ProgressState,
     kind: ActivityKind,
@@ -94,7 +101,6 @@ export function applyXpAndDailyGoal(
         return next;
     }
 
-    // Count meaningful actions toward the daily goal
     const countsTowardGoal =
         kind !== "lesson" || Boolean(extra?.lessonCompleted);
 
