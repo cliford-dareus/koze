@@ -1,13 +1,13 @@
 import ReadingManager from "./_components/reading-manager";
 import { getQuote } from "@/app/_actions/translate";
 import TextToSpeechWithVirsual from "@/app/_components/text-to-speech-with-virsual";
+import MicAudioVisualizer from "@/app/_components/mic-audio-visualizer";
 import {
     Drawer,
     DrawerContent,
     DrawerTrigger,
 } from "@/app/_components/ui/drawer";
 import { Button } from "@/app/_components/ui/button";
-import { speak } from "@/lib/speech";
 import { SplitText } from "./_components/split-text";
 
 const Reading = async () => {
@@ -44,6 +44,17 @@ const Reading = async () => {
                         randomFact={randomQuote?.quote}
                     />
                 </div>
+            </div>
+
+            <div className="mt-4">
+                <MicAudioVisualizer
+                    label="Practice aloud"
+                    barCount={40}
+                    canvasClassName="h-24"
+                />
+                <p className="mt-2 text-xs text-muted-foreground">
+                    Open the mic and read the line — the bars follow your voice.
+                </p>
             </div>
 
             <div className="mt-8 flex w-full justify-center">
