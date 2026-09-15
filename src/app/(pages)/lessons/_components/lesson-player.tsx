@@ -243,14 +243,6 @@ export default function LessonPlayer({
                                         : "Continue"
                                     : "Check"}
                             </Button>
-                        ) : step.type === "speak" ? (
-                            <Button type="button" onClick={goNext}>
-                                {spoke || true
-                                    ? stepIndex >= steps.length - 1
-                                        ? "Finish"
-                                        : "Continue"
-                                    : "I said it"}
-                            </Button>
                         ) : (
                             <Button type="button" onClick={goNext}>
                                 {stepIndex >= steps.length - 1
@@ -412,7 +404,6 @@ function StepBody({
         );
     }
 
-    // check
     return (
         <div>
             <div className="flex flex-wrap items-center gap-2">
