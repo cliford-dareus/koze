@@ -221,6 +221,3 @@ export function applyBadgeUnlocks(p: ProgressState): {
         unlocked,
     };
 }
-
-void UNITS;
-void defaultProgress;
