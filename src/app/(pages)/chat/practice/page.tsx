@@ -11,7 +11,6 @@ import {
     type TutorUnit,
 } from "@/data/tutor-scenarios";
 import { Button } from "@/app/_components/ui/button";
-import MicAudioVisualizer from "@/app/_components/mic-audio-visualizer";
 import { recordActivity } from "@/lib/progress";
 import {
     directionForLearningLanguage,
@@ -40,7 +39,6 @@ type TutorApiOk = {
 function targetLangFromPrefs(): LangCode {
     const prefs = loadLearningPrefs();
     const dir = directionForLearningLanguage(prefs.learningLanguage);
-    // Learning French → speak French; learning English → speak English
     return dir === "en-fr" ? "fr" : "en";
 }
 
@@ -57,7 +55,6 @@ export default function PracticePage() {
     const [busy, setBusy] = useState(false);
     const [error, setError] = useState("");
     const [listening, setListening] = useState(false);
-    const [showMicViz, setShowMicViz] = useState(false);
     const [userTurns, setUserTurns] = useState(0);
     const [summaryHint, setSummaryHint] = useState<string | null>(null);
     const [lastBetter, setLastBetter] = useState<string | null>(null);
@@ -118,12 +115,7 @@ export default function PracticePage() {
                 messages: [],
                 start: true,
             });
-            setMessages([
-                {
-                    role: "assistant",
-                    content: data.reply,
-                },
-            ]);
+            setMessages([{ role: "assistant", content: data.reply }]);
             void speak(data.reply, voiceLang);
         } catch (e) {
             setError(e instanceof Error ? e.message : "Could not start.");
@@ -138,9 +130,7 @@ export default function PracticePage() {
         setSummaryHint(hint);
         setLastBetter(better);
         setPhase("summary");
-        recordActivity("quiz", {
-            topic: scenario?.id ?? "practice",
-        });
+        recordActivity("quiz", { topic: scenario?.id ?? "practice" });
     };
 
     const send = async (text: string) => {
@@ -194,23 +184,17 @@ export default function PracticePage() {
     const listen = () => {
         if (listening || busy) return;
         setListening(true);
-        setShowMicViz(true);
         const stop = startListening(
             voiceLang,
             (text) => {
                 setDraft(text);
                 setListening(false);
-                setShowMicViz(false);
             },
-            () => {
-                setListening(false);
-                setShowMicViz(false);
-            },
+            () => setListening(false),
         );
         stopListenRef.current = stop;
         if (!stop) {
             setListening(false);
-            setShowMicViz(false);
             setError("Voice input is not available in this browser.");
         }
     };
@@ -225,7 +209,7 @@ export default function PracticePage() {
         setUserTurns(0);
         setSummaryHint(null);
         setLastBetter(null);
-        setShowMicViz(false);
+        setListening(false);
     };
 
     if (phase === "pick") {
@@ -356,7 +340,6 @@ export default function PracticePage() {
         );
     }
 
-    // chat phase
     return (
         <div className="flex flex-col pb-4">
             <div className="flex items-start justify-between gap-3">
@@ -419,16 +402,11 @@ export default function PracticePage() {
                 ) : null}
             </div>
 
-            {showMicViz ? (
-                <div className="mt-4">
-                    <MicAudioVisualizer
-                        controlled
-                        active={listening}
-                        label="Listening"
-                        canvasClassName="h-16"
-                        barCount={28}
-                    />
-                </div>
+            {listening ? (
+                <p className="mt-4 flex items-center gap-2 text-xs font-medium text-primary">
+                    <span className="size-2 animate-pulse rounded-full bg-primary" />
+                    Listening — speak clearly, then pause
+                </p>
             ) : null}
 
             {error ? (
