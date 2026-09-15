@@ -17,32 +17,45 @@ const ReadingManager = ({ quote }: Props) => {
 
     return (
         <div className="px-4">
-            <div className="">
-                <h1 className="font-bold text-slate-300 leading-4">
-                    Reapeat <br /> Pronunciation
-                </h1>
-
-                <p className="font-bold text-xl leading-5 text-center mt-16">{quote}</p>
+            <div>
+                <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                    Pronunciation
+                </p>
+                <h2 className="mt-2 font-display text-2xl font-medium">
+                    Read it back
+                </h2>
+                <p className="mt-6 text-center font-display text-xl leading-snug">
+                    {quote}
+                </p>
+                <p className="mt-3 text-center text-xs text-muted-foreground">
+                    Record yourself — the bars move with your voice.
+                </p>
             </div>
 
-            <div className="mt-16 w-full flex justify-center">
+            <div className="mt-10 flex w-full justify-center">
                 <SpeechToText setAudioData={setAudioData} />
             </div>
 
-            {audioData && (
-                <div>
+            {audioData ? (
+                <div className="mt-6 flex justify-center">
                     <Button
+                        type="button"
+                        size="lg"
+                        className="min-w-[10rem]"
                         onClick={() => {
-                            console.log("Check");
                             start(audioData.buffer);
                         }}
                     >
                         Check
                     </Button>
                 </div>
-            )}
+            ) : null}
 
-            {output && <div>{output.text}</div>}
+            {output ? (
+                <p className="mt-4 rounded-xl border border-border bg-card p-3 text-center text-sm shadow-soft">
+                    {output.text}
+                </p>
+            ) : null}
         </div>
     );
 };

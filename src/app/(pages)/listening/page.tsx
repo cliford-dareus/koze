@@ -1,9 +1,10 @@
 import MultiChoice from "./_components/multi-choice";
 import { getRandomFacts } from "@/app/_actions/translate";
 import TextToSpeechWithVirsual from "@/app/_components/text-to-speech-with-virsual";
+import MicAudioVisualizer from "@/app/_components/mic-audio-visualizer";
 
 const Listening = async () => {
-    const randomFact = await getRandomFacts();    
+    const randomFact = await getRandomFacts();
     if (randomFact === null) return null;
 
     return (
@@ -23,6 +24,18 @@ const Listening = async () => {
                     classname="h-[80px]"
                     randomFact={randomFact?.text}
                 />
+            </div>
+
+            <div className="mt-4">
+                <MicAudioVisualizer
+                    label="Echo practice"
+                    barCount={40}
+                    canvasClassName="h-24"
+                />
+                <p className="mt-2 text-xs text-muted-foreground">
+                    Optional: open the mic and repeat what you heard — the
+                    visualizer reacts to your voice.
+                </p>
             </div>
 
             <div className="mt-6">

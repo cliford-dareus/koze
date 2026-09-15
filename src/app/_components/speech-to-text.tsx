@@ -4,12 +4,12 @@ import { Button } from "@/app/_components/ui/button";
 import { getMimeType } from "@/lib/get-mimetype";
 import React, {
     Dispatch,
-    ReactNode,
     SetStateAction,
     useEffect,
     useRef,
     useState,
 } from "react";
+import MicAudioVisualizer from "@/app/_components/mic-audio-visualizer";
 
 type Props = {
     setAudioData: Dispatch<SetStateAction<AudioDataType | undefined>>;
@@ -32,11 +32,11 @@ const SpeechToText = ({ setAudioData }: Props) => {
     const [recording, setRecording] = useState(false);
     const [duration, setDuration] = useState(0);
     const [blobRecorded, setBlobRecorded] = useState<Blob | null>(null);
+    const [liveStream, setLiveStream] = useState<MediaStream | null>(null);
 
     const streamRef = useRef<MediaStream | null>(null);
     const mediaRecordRef = useRef<MediaRecorder | null>(null);
     const chunksRef = useRef<Blob[]>([]);
-    // const audioRef = useRef<HTMLAudioElement | null>(null);
 
     const startRecording = async () => {
         setBlobRecorded(null);
@@ -45,9 +45,15 @@ const SpeechToText = ({ setAudioData }: Props) => {
         try {
             if (!streamRef.current) {
                 streamRef.current = await navigator.mediaDevices.getUserMedia({
-                    audio: true,
+                    audio: {
+                        echoCancellation: true,
+                        noiseSuppression: true,
+                        autoGainControl: true,
+                    },
                 });
             }
+
+            setLiveStream(streamRef.current);
 
             const mimeType = getMimeType();
             const mediaRecorder = new MediaRecorder(streamRef.current);
@@ -58,15 +64,10 @@ const SpeechToText = ({ setAudioData }: Props) => {
                     chunksRef.current.push(event.data);
                 }
                 if (mediaRecorder.state === "inactive") {
-                    const duration = Date.now() - startTime;
+                    void duration;
+                    void startTime;
 
-                    // Received a stop event
                     let blob = new Blob(chunksRef.current, { type: mimeType });
-
-                    if (mimeType === "audio/webm") {
-                        // blob = await webmFixDuration(blob, duration, blob.type);
-                    }
-
                     setBlobRecorded(blob);
                     onRecordingComplete(blob);
                     chunksRef.current = [];
@@ -77,6 +78,7 @@ const SpeechToText = ({ setAudioData }: Props) => {
             setRecording(true);
         } catch (err) {
             console.error("Error accessing microphone:", err);
+            setLiveStream(null);
         }
     };
 
@@ -85,9 +87,10 @@ const SpeechToText = ({ setAudioData }: Props) => {
             mediaRecordRef.current &&
             mediaRecordRef.current.state === "recording"
         ) {
-            mediaRecordRef.current.stop(); // set state to inactive
+            mediaRecordRef.current.stop();
             setDuration(0);
             setRecording(false);
+            setLiveStream(null);
         }
     };
 
@@ -96,9 +99,6 @@ const SpeechToText = ({ setAudioData }: Props) => {
 
         const blobUrl = URL.createObjectURL(data);
         const fileReader = new FileReader();
-        fileReader.onprogress = (event) => {
-            // setProgress(event.loaded / event.total || 0);
-        };
 
         fileReader.onloadend = async () => {
             const audioCTX = new AudioContext({
@@ -106,7 +106,6 @@ const SpeechToText = ({ setAudioData }: Props) => {
             });
             const arrayBuffer = fileReader.result as ArrayBuffer;
             const decoded = await audioCTX.decodeAudioData(arrayBuffer);
-            // setProgress(undefined);
             setAudioData({
                 buffer: decoded,
                 url: blobUrl,
@@ -118,8 +117,6 @@ const SpeechToText = ({ setAudioData }: Props) => {
     };
 
     useEffect(() => {
-        let stream: MediaStream | null = null;
-
         if (recording) {
             const timer = setInterval(() => {
                 setDuration((prevDuration) => prevDuration + 1);
@@ -129,27 +126,55 @@ const SpeechToText = ({ setAudioData }: Props) => {
                 clearInterval(timer);
             };
         }
+    }, [recording]);
 
+    useEffect(() => {
         return () => {
-            if (stream) {
-                (stream as MediaStream).getTracks().forEach((track) => track.stop());
+            if (streamRef.current) {
+                streamRef.current.getTracks().forEach((track) => track.stop());
+                streamRef.current = null;
             }
         };
-    }, [recording]);
+    }, []);
 
     const handleRecorder = () => {
         if (recording) {
             stopRecording();
         } else {
-            startRecording();
+            void startRecording();
         }
     };
 
     return (
-        <div className="w-[70%]" onClick={() => handleRecorder()}>
-            <Button className="font-bold">
-                {!recording ? "Start Recording" : "Stop Recording"}
-            </Button>
+        <div className="flex w-full max-w-md flex-col items-center gap-4">
+            {recording || liveStream ? (
+                <MicAudioVisualizer
+                    stream={liveStream}
+                    controlled
+                    active={recording}
+                    label="Your voice"
+                    className="w-full"
+                    canvasClassName="h-24"
+                    barCount={36}
+                />
+            ) : null}
+
+            <div className="flex flex-col items-center gap-2">
+                <Button
+                    type="button"
+                    className="min-w-[10rem] font-medium"
+                    size="lg"
+                    variant={recording ? "default" : "outline"}
+                    onClick={handleRecorder}
+                >
+                    {!recording ? "Start recording" : `Stop · ${duration}s`}
+                </Button>
+                {blobRecorded ? (
+                    <p className="text-xs text-muted-foreground">
+                        Recording ready · {Math.round(blobRecorded.size / 1024)} KB
+                    </p>
+                ) : null}
+            </div>
         </div>
     );
 };
