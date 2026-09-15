@@ -40,7 +40,6 @@ function normalizeProgress(raw: unknown): ProgressState {
         lessonsCompleted = p.lessonsCompleted as ProgressState["lessonsCompleted"];
     } else if (p.lessonsCompleted && typeof p.lessonsCompleted === "object") {
         if (Array.isArray(p.lessonsCompleted)) {
-            // legacy flat list — stash under default direction
             lessonsCompleted.set("en-fr", p.lessonsCompleted as string[]);
         } else {
             lessonsCompleted = new Map(
@@ -68,23 +67,12 @@ function normalizeProgress(raw: unknown): ProgressState {
         todayDate: typeof p.todayDate === "string" ? p.todayDate : null,
         dailyGoalMet: Boolean(p.dailyGoalMet),
         badges: Array.isArray(p.badges) ? (p.badges as string[]) : [],
+        practiceSessions:
+            typeof p.practiceSessions === "number" ? p.practiceSessions : 0,
+        savedPhrases: Array.isArray(p.savedPhrases) ? p.savedPhrases : [],
     } as ProgressState;
 }
 
-
-/**
- * The inverse of normalizeProgress: turn a ProgressState with real Map
- * fields into a plain-object shape that's safe to JSON.stringify and safe
- * to store via Mongoose.
- *
- * This matters a lot more than it looks: JSON.stringify(new Map(...))
- * serializes to "{}" — Maps have no own enumerable properties, so
- * NextResponse.json() was silently returning empty lessonProgress and
- * lessonsCompleted on every request, no matter what was actually stored.
- * The same shape is used for the Mongoose write so what's in the DB
- * matches what's returned, instead of depending on how the driver happens
- * to (or doesn't) serialize a Map for a Mixed-type field.
- */
 function serializeProgress(state: ProgressState) {
     return {
         ...state,
@@ -98,9 +86,15 @@ function serializeProgress(state: ProgressState) {
     };
 }
 
-
 const activitySchema = z.object({
-    kind: z.enum(["translation", "listening", "reading", "quiz", "lesson"]),
+    kind: z.enum([
+        "translation",
+        "listening",
+        "reading",
+        "quiz",
+        "practice",
+        "lesson",
+    ]),
     topic: z.string().optional(),
     lessonId: z.string().optional(),
     stepIndex: z.number().int().min(0).optional(),
@@ -115,6 +109,8 @@ const mergeSchema = z.object({
             listeningCorrect: z.number().optional(),
             readingSessions: z.number().optional(),
             quizCorrect: z.number().optional(),
+            practiceSessions: z.number().optional(),
+            savedPhrases: z.array(z.any()).optional(),
             lessonsCompletedCount: z.number().optional(),
             streak: z.number().optional(),
             currentWord: z.string().nullable().optional(),
@@ -195,7 +191,6 @@ export async function POST(req: NextRequest) {
                 lessonCompleted: parsed.data.lessonCompleted,
                 direction: parsed.data.direction,
             });
-            console.log(current);
             const serialized = serializeProgress(next);
             user.progress = serialized as never;
             await user.save();
@@ -215,7 +210,44 @@ export async function POST(req: NextRequest) {
                 ...parsed.data.local,
             });
             const next = mergeProgress(localNorm, current);
-            console.log("localNorm", next)
+            const serialized = serializeProgress(next);
+            user.progress = serialized as never;
+            await user.save();
+            return NextResponse.json({ success: true, progress: serialized });
+        }
+
+        if (body.action === "savePhrase" && body.phrase) {
+            const phrase = body.phrase as {
+                id?: string;
+                text?: string;
+                hint?: string;
+                scenarioId?: string;
+                savedAt?: string;
+            };
+            if (!phrase?.text || !phrase?.id) {
+                return NextResponse.json(
+                    { success: false, error: "Invalid phrase" },
+                    { status: 400 },
+                );
+            }
+            const list = [...(current.savedPhrases || [])];
+            if (
+                !list.some(
+                    (p) => p.id === phrase.id || p.text === phrase.text,
+                )
+            ) {
+                list.unshift({
+                    id: phrase.id,
+                    text: phrase.text,
+                    hint: phrase.hint,
+                    scenarioId: phrase.scenarioId,
+                    savedAt: phrase.savedAt || new Date().toISOString(),
+                });
+            }
+            const next = {
+                ...current,
+                savedPhrases: list.slice(0, 50),
+            };
             const serialized = serializeProgress(next);
             user.progress = serialized as never;
             await user.save();
