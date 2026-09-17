@@ -7,12 +7,12 @@ import {
     LucideLanguages,
     LucideMessageCircle,
 } from "lucide-react";
-import ProgressSummary from "@/app/_components/progress-summary";
-import AuthMenu from "@/app/_components/auth-menu";
 import { getRandomWord } from "./_actions/translate";
 import WordOfTheDay from "./_components/word-of-the-day";
-import KOZE_LOGO from "../../public/koze-logo.png";
-import Image from "next/image";
+import MainHeader from "./_components/main-header";
+import ProgressSummary from "./_components/progress-summary";
+import Hero from "./_components/hero";
+import { LandingPage } from "./_components/landing-page";
 
 const ACTIVITIES = [
     {
@@ -51,39 +51,8 @@ export default async function Home() {
     const Word = await getRandomWord();
     return (
         <div className="app-shell">
-            <header className="mb-8 flex items-center justify-between gap-3">
-                <div className="inline-flex items-center gap-2">
-                    <span className="flex size-7 items-center justify-center">
-                        <Image src={KOZE_LOGO} width={20} height={20} alt="Koze" className="size-7" />
-                    </span>
-                    <span className="font-display text-xl font-medium tracking-tight">
-                        Koze
-                    </span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <span>
-                        <Badge />
-                    </span>
-                    <AuthMenu />
-                </div>
-            </header>
-
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                Today
-            </p>
-            <h1 className="mt-3 max-w-[14ch] font-display text-4xl font-medium">
-                Learn in the quiet hours.
-            </h1>
-            <p className="mt-3 max-w-prose text-muted-foreground">
-                Four small practices. Sign in to sync progress across devices — or keep
-                practicing as a guest on this device.
-            </p>
-
-            <ProgressSummary />
-
-            <WordOfTheDay word={Word} />
-
-            <div className="mt-8 grid grid-cols-2 gap-3">
+            <LandingPage word={Word} />
+            <div className="mt-6 grid grid-cols-2 gap-3">
                 {ACTIVITIES.map((item) => {
                     const Icon = item.icon;
                     return (

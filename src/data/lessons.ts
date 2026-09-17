@@ -23,62 +23,137 @@ export type LessonTag =
     | "work"
     | "basics";
 
+export type BaseType =
+    | "vocab"
+    | "phrase"
+    | "tip"
+    | "intro"
+    | "check"
+    | 'sentence-builder'
+    | 'pair-matching'
+    | 'listen'
+    | 'context-dialogue';
+
+
+export type BaseLessonStep = {
+    type: BaseType;
+    prompt: string;
+    promptTranslation?: string;
+    audioText?: string;
+    explanation?: string;
+    cultureTip?: string;
+}
+export interface PairItem {
+    id: string;
+    foreign: string;
+    native: string;
+    phonetic?: string;
+}
+
+export interface PairMatchingQuestion extends BaseLessonStep {
+    type: 'pair-matching';
+    pairs: PairItem[];
+}
+
+export interface SentenceBuilderQuestion extends BaseLessonStep {
+    type: 'sentence-builder';
+    targetSentence: string;
+    targetTranslation: string;
+    scrambledTokens: string[];
+    correctTokens: string[];
+}
+
+export interface ContextDialogueQuestion extends BaseLessonStep {
+    type: 'context-dialogue';
+    dialoguePartner: string;
+    partnerSays: string;
+    partnerSaysPhonetic?: string;
+    partnerSaysTranslation: string;
+    prompt: string;
+    options: string[];
+    correctAnswer: string;
+    explanation: string;
+}
+
 export type LessonStep =
     | {
-          type: "intro";
-          title: string;
-          body: string;
-      }
+        type: "intro";
+        title: string;
+        body: string;
+        explanation?: string;
+    }
     | {
-          type: "tip";
-          title: string;
-          body: string;
-          bullets?: string[];
-      }
+        type: "tip";
+        title: string;
+        body: string;
+        bullets?: string[];
+        explanation?: string;
+    }
     | {
-          type: "vocab";
-          title: string;
-          items: {
-              term: string;
-              meaning: string;
-              note?: string;
-              tags?: LessonTag[];
-          }[];
-      }
+        type: "vocab";
+        title: string;
+        items: {
+            term: string;
+            meaning: string;
+            note?: string;
+            tags?: LessonTag[];
+        }[];
+        explanation?: string;
+    }
     | {
-          type: "phrase";
-          title: string;
-          sourceLabel?: string;
-          targetLabel?: string;
-          phrases: {
-              source: string;
-              target: string;
-              tags?: LessonTag[];
-          }[];
-      }
+        type: "phrase";
+        title: string;
+        sourceLabel?: string;
+        targetLabel?: string;
+        phrases: {
+            source: string;
+            target: string;
+            tags?: LessonTag[];
+        }[];
+        explanation?: string;
+    }
     | {
-          type: "check";
-          title: string;
-          prompt: string;
-          options: string[];
-          answerIndex: number;
-          explanation?: string;
-          /** Spaced review from an earlier lesson */
-          isReview?: boolean;
-          reviewFromLessonId?: string;
-          tags?: LessonTag[];
-      }
+        type: "check";
+        title: string;
+        prompt: string;
+        options: string[];
+        answerIndex: number;
+        explanation?: string;
+        /** Spaced review from an earlier lesson */
+        isReview?: boolean;
+        reviewFromLessonId?: string;
+        tags?: LessonTag[];
+    }
     | {
-          /** Spoken production: say the target line aloud */
-          type: "speak";
-          title: string;
-          prompt: string;
-          /** Line the learner should produce (target language) */
-          targetLine: string;
-          /** Optional L1 / support hint */
-          hint?: string;
-          tags?: LessonTag[];
-      };
+        /** Spoken production: say the target line aloud */
+        type: "speak";
+        title: string;
+        prompt: string;
+        explanation?: string;
+        /** Line the learner should produce (target language) */
+        targetLine: string;
+        /** Optional L1 / support hint */
+        hint?: string;
+        tags?: LessonTag[];
+    }
+    | {
+        /** Spoken production: say the target line aloud */
+        type: "listen";
+        title: string;
+        prompt: string;
+        options: string[];
+        answerIndex: number;
+        phoneticAnswers?: Record<string, string>;
+        explanation?: string;
+        /** Line the learner should produce (target language) */
+        targetLine: string;
+        /** Optional L1 / support hint */
+        hint?: string;
+        tags?: LessonTag[];
+    }
+    | PairMatchingQuestion
+    | SentenceBuilderQuestion
+    | ContextDialogueQuestion;
 
 export type Lesson = {
     id: string;
@@ -89,6 +164,7 @@ export type Lesson = {
     direction: LessonDirection;
     level: "beginner" | "elementary" | "intermediate";
     estimatedMinutes: number;
+    xp: number;
     steps: LessonStep[];
     /** Optional explicit tags; otherwise inferred from unit / slug */
     tags?: LessonTag[];
@@ -111,7 +187,7 @@ export type Unit = {
 export const UNITS: Unit[] = [
     {
         id: "foundations",
-        title: "Foundations (EN → FR)",
+        title: "Foundations",
         description: "Greetings, politeness, numbers — English into French.",
         order: 1,
         direction: "en-fr",
@@ -119,7 +195,7 @@ export const UNITS: Unit[] = [
     },
     {
         id: "everyday",
-        title: "Everyday life (EN → FR)",
+        title: "Everyday life",
         description: "Café, food, and small talk in French.",
         order: 2,
         direction: "en-fr",
@@ -127,7 +203,7 @@ export const UNITS: Unit[] = [
     },
     {
         id: "travel",
-        title: "Travel (EN → FR)",
+        title: "Travel",
         description: "Directions, tickets, and getting around.",
         order: 3,
         direction: "en-fr",
@@ -135,7 +211,7 @@ export const UNITS: Unit[] = [
     },
     {
         id: "grammar-core",
-        title: "Grammar core (EN → FR)",
+        title: "Grammar core",
         description: "Gender, articles, and present-tense essentials.",
         order: 4,
         direction: "en-fr",
@@ -143,7 +219,7 @@ export const UNITS: Unit[] = [
     },
     {
         id: "fr-en-basics",
-        title: "Basics (FR → EN)",
+        title: "Basics",
         description: "Read French, say it in English — reverse practice.",
         order: 5,
         direction: "fr-en",
@@ -151,7 +227,7 @@ export const UNITS: Unit[] = [
     },
     {
         id: "fr-en-daily",
-        title: "Daily French → English",
+        title: "Daily life",
         description: "Everyday French lines decoded into natural English.",
         order: 6,
         direction: "fr-en",

@@ -3,6 +3,7 @@
         "id": "greetings-1",
         "slug": "greetings",
         "title": "Greetings",
+        "xp": 25,
         "description": "Hello and goodbye across the day, with formality notes.",
         "unitId": "foundations",
         "direction": "fr-en",
@@ -162,6 +163,7 @@
         "description": "Politeness formulas that open every exchange.",
         "unitId": "foundations",
         "direction": "fr-en",
+        "xp": 25,
         "level": "beginner",
         "estimatedMinutes": 9,
         "steps": [
@@ -295,6 +297,7 @@
         "description": "Count clearly for prices, times, and quantities.",
         "unitId": "foundations",
         "direction": "fr-en",
+        "xp": 25,
         "level": "beginner",
         "estimatedMinutes": 10,
         "steps": [
@@ -470,6 +473,62 @@
                 ],
                 "answerIndex": 1,
                 "explanation": "Age uses avoir (to have): j'ai vingt ans, literally 'I have twenty years'."
+            },
+            {
+                "type": "pair-matching",
+                "prompt": "Match the French with the English.",
+                "pairs": [
+                    {
+                        "id": "esp-1",
+                        "foreign": "Hola",
+                        "native": "Hello",
+                        "phonetic": "OH-lah"
+                    },
+                    {
+                        "id": "esp-2",
+                        "foreign": "Adios",
+                        "native": "Goodbye",
+                        "phonetic": "A-dios"
+                    },
+                    {
+                        "id": "esp-3",
+                        "foreign": "Gracias",
+                        "native": "Thanks",
+                        "phonetic": "Gra-tas"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "prompt": "Arrange the stones to say: (Hello, good morning):",
+                "targetSentence": "Hola, buenos días",
+                "targetTranslation": "Hello, good morning",
+                "scrambledTokens": [
+                    "días",
+                    "Hola,",
+                    "noches",
+                    "buenos"
+                ],
+                "correctTokens": [
+                    "Hola",
+                    "buenos",
+                    "días"
+                ],
+                "explanation": "A classic, heart-opening start to any peaceful morning conversation."
+            },
+            {
+                "type": "context-dialogue",
+                "dialoguePartner": "Mateo (Neighborhood Baker)",
+                "partnerSays": "¡Hola! Buenos días, ¿cómo estás?",
+                "partnerSaysTranslation": "Hello! Good morning, how are you?",
+                "prompt": "Reply in a calm, friendly voice:",
+                "options": [
+                  "Muy bien, gracias. ¿Y tú?",
+                  "Adiós para siempre.",
+                  "No entiendo nada."
+                ],
+                "correctAnswer": "Muy bien, gracias. ¿Y tú?",
+                "explanation": "\"Muy bien, gracias. ¿Y tú?\" returns the warmth and invites ongoing connection."
             }
         ]
     },
@@ -480,6 +539,7 @@
         "description": "Name, origin, and a simple nice-to-meet-you.",
         "unitId": "foundations",
         "direction": "fr-en",
+        "xp": 25,
         "level": "beginner",
         "estimatedMinutes": 12,
         "steps": [
@@ -592,6 +652,7 @@
         "title": "Colors & simple descriptions",
         "description": "Name colors and describe everyday objects.",
         "unitId": "foundations",
+        "xp": 25,
         "direction": "fr-en",
         "level": "beginner",
         "estimatedMinutes": 10,
@@ -716,6 +777,7 @@
         "title": "At the café",
         "description": "Order drinks and ask for the bill with confidence.",
         "unitId": "everyday",
+        "xp": 35,
         "direction": "fr-en",
         "level": "elementary",
         "estimatedMinutes": 12,
@@ -844,6 +906,7 @@
         "description": "Fruit, quantities, and polite requests at a stall.",
         "unitId": "everyday",
         "direction": "fr-en",
+        "xp": 35,
         "level": "elementary",
         "estimatedMinutes": 12,
         "steps": [
@@ -953,6 +1016,7 @@
         "description": "Light conversation beyond hello.",
         "unitId": "everyday",
         "direction": "fr-en",
+        "xp": 35,
         "level": "elementary",
         "estimatedMinutes": 11,
         "steps": [
@@ -1053,6 +1117,7 @@
         "title": "At the restaurant",
         "description": "Reservations, ordering a meal, and dietary needs.",
         "unitId": "everyday",
+        "xp": 35,
         "direction": "fr-en",
         "level": "elementary",
         "estimatedMinutes": 13,
@@ -1180,6 +1245,7 @@
         "description": "Use aller + infinitive to say what you're about to do.",
         "unitId": "everyday",
         "direction": "fr-en",
+        "xp": 35,
         "level": "elementary",
         "estimatedMinutes": 12,
         "steps": [
@@ -1286,6 +1352,7 @@
         "description": "Left, right, straight — and asking where something is.",
         "unitId": "travel",
         "direction": "fr-en",
+        "xp": 35,
         "level": "elementary",
         "estimatedMinutes": 11,
         "steps": [
@@ -1393,6 +1460,7 @@
         "title": "Travel phrases",
         "description": "Tickets, platforms, and delays.",
         "unitId": "travel",
+        "xp": 45,
         "direction": "fr-en",
         "level": "intermediate",
         "estimatedMinutes": 12,
@@ -1510,6 +1578,7 @@
         "description": "Check-in lines and simple room requests.",
         "unitId": "travel",
         "direction": "fr-en",
+        "xp": 45,
         "level": "intermediate",
         "estimatedMinutes": 11,
         "steps": [
@@ -1618,6 +1687,7 @@
         "description": "Buses, metro, taxis, and buying tickets.",
         "unitId": "travel",
         "direction": "fr-en",
+        "xp": 45,
         "level": "intermediate",
         "estimatedMinutes": 12,
         "steps": [
@@ -1730,6 +1800,7 @@
         "description": "Describe symptoms and get help at a pharmacy or doctor's.",
         "unitId": "health-safety",
         "direction": "fr-en",
+        "xp": 45,
         "level": "intermediate",
         "estimatedMinutes": 13,
         "steps": [
@@ -1857,6 +1928,7 @@
         "description": "Ask for and give the time, on the hour and beyond.",
         "unitId": "time-dates",
         "direction": "fr-en",
+        "xp": 35,
         "level": "elementary",
         "estimatedMinutes": 12,
         "steps": [
@@ -1984,6 +2056,7 @@
         "description": "The calendar in French, and how to say a date.",
         "unitId": "time-dates",
         "direction": "fr-en",
+        "xp": 35,
         "level": "elementary",
         "estimatedMinutes": 13,
         "steps": [
@@ -2148,6 +2221,7 @@
         "description": "Name family members and describe relationships.",
         "unitId": "family-friends",
         "direction": "fr-en",
+        "xp": 35,
         "level": "elementary",
         "estimatedMinutes": 12,
         "steps": [
@@ -2270,6 +2344,7 @@
         "description": "Sizes, trying things on, and asking about price.",
         "unitId": "shopping",
         "direction": "fr-en",
+        "xp": 45,
         "level": "intermediate",
         "estimatedMinutes": 12,
         "steps": [
@@ -2382,6 +2457,7 @@
         "description": "Le, la, un, une — why nouns feel gendered.",
         "unitId": "grammar-core",
         "direction": "fr-en",
+        "xp": 35,
         "level": "elementary",
         "estimatedMinutes": 14,
         "steps": [
@@ -2491,6 +2567,7 @@
         "description": "The two verbs you'll use every day.",
         "unitId": "grammar-core",
         "direction": "fr-en",
+        "xp": 35,
         "level": "elementary",
         "estimatedMinutes": 15,
         "steps": [
@@ -2635,6 +2712,7 @@
         "description": "Conjugate the largest family of French verbs.",
         "unitId": "grammar-core",
         "direction": "fr-en",
+        "xp": 35,
         "level": "elementary",
         "estimatedMinutes": 14,
         "steps": [
@@ -2768,6 +2846,7 @@
         "description": "Make descriptive words match the noun they describe.",
         "unitId": "grammar-core",
         "direction": "fr-en",
+        "xp": 35,
         "level": "elementary",
         "estimatedMinutes": 13,
         "steps": [
@@ -2876,6 +2955,7 @@
         "description": "Turn any sentence negative with the basic French negation pattern.",
         "unitId": "grammar-core",
         "direction": "fr-en",
+        "xp": 35,
         "level": "elementary",
         "estimatedMinutes": 11,
         "steps": [
@@ -2978,6 +3058,7 @@
         "description": "Three ways to ask yes/no and information questions.",
         "unitId": "grammar-core",
         "direction": "fr-en",
+        "xp": 45,
         "level": "intermediate",
         "estimatedMinutes": 13,
         "steps": [
@@ -3082,6 +3163,24 @@
                 ],
                 "answerIndex": 2,
                 "explanation": "Pourquoi asks 'why'; quand is 'when', comment is 'how', qui is 'who'."
+            },
+            {
+                "id": "ja-q1-3",
+                "type": "listen",
+                "prompt": "Listen to the calm tone and identify what is being said:",
+                "audioText": "ありがとう",
+                "options": [
+                    "ありがとう",
+                    "おはよう",
+                    "こんにちは"
+                ],
+                "correctAnswer": "ありがとう",
+                "phoneticAnswers": {
+                    "ありがとう": "Arigatou (Thank you)",
+                    "おはよう": "Ohayou (Good morning)",
+                    "こんにちは": "Konnichiwa (Hello)"
+                },
+                "explanation": "ありがとう (Arigatou) is derived from (arigatai), meaning (it is rare and precious to have this kindness)."
             }
         ]
     }

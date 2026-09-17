@@ -47,7 +47,7 @@ export default function WordOfTheDay({ word }: { word: { ok: boolean; text?: str
     }, [currentWord]);
 
     return (
-        <div className="mt-8 rounded-xl border border-border bg-card p-5 shadow-soft">
+        <div className="mt-6 rounded-xl border border-border bg-card p-6 shadow-soft">
             <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 Word of the day
             </p>

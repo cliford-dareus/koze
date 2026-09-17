@@ -50,6 +50,9 @@ export type ProgressState = {
     dailyGoalMet: boolean;
     /** Earned badge ids */
     badges: string[];
+    cairnStonesCount: number;
+    soundEnabled: boolean;
+    ambientSoundEnabled: boolean;
 };
 
 export const PROGRESS_KEY = "koze-progress-v1";
@@ -78,6 +81,9 @@ export const defaultProgress = (): ProgressState => ({
     todayDate: null,
     dailyGoalMet: false,
     badges: [],
+    cairnStonesCount: 0,
+    soundEnabled: true,
+    ambientSoundEnabled: false,
 });
 
 function dateKey(d: Date) {
@@ -232,6 +238,7 @@ export function recordActivity(
         stepIndex?: number;
         lessonCompleted?: boolean;
         direction?: LessonDirection;
+        xpEarned?: number;
     },
 ) {
     const prev = loadProgress();
@@ -278,6 +285,7 @@ export function recordActivity(
             ...next,
             lessonProgress,
             lessonsCompleted,
+            cairnStonesCount: next.cairnStonesCount + (completed ? 1 : 0),
             lessonsCompletedCount: Array.from(lessonsCompleted.values()).reduce(
                 (sum, arr) => sum + arr.length,
                 0,
@@ -290,6 +298,7 @@ export function recordActivity(
 
     next = applyXpAndDailyGoal(next, kind, {
         lessonCompleted: extra?.lessonCompleted,
+        xpEarned: extra?.xpEarned,
     });
 
     const { progress: withBadges, unlocked } = applyBadgeUnlocks(next);
@@ -363,7 +372,7 @@ export function savePhrase(input: {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ action: "savePhrase", phrase }),
-        }).catch(() => {});
+        }).catch(() => { });
     }
     return phrase;
 }

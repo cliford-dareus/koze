@@ -78,10 +78,10 @@ export function ensureTodayCounters(state: ProgressState): ProgressState {
 
 export function xpForActivity(
     kind: ActivityKind,
-    extra?: { lessonCompleted?: boolean },
+    extra?: { lessonCompleted?: boolean, xpEarned?: number },
 ): number {
     if (kind === "lesson") {
-        return extra?.lessonCompleted ? XP_REWARDS.lesson : 0;
+        return extra?.lessonCompleted ? extra.xpEarned ?? 0 : 0;
     }
     return XP_REWARDS[kind] ?? 0;
 }
@@ -93,7 +93,7 @@ export function xpForActivity(
 export function applyXpAndDailyGoal(
     state: ProgressState,
     kind: ActivityKind,
-    extra?: { lessonCompleted?: boolean },
+    extra?: { lessonCompleted?: boolean, xpEarned?: number },
 ): ProgressState {
     let next = ensureTodayCounters(state);
     const gained = xpForActivity(kind, extra);

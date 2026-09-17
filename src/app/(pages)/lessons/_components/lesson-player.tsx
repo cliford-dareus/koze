@@ -2,12 +2,15 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import type { Lesson, LessonDirection, LessonStep } from "@/data/lessons";
+import type { Lesson, LessonDirection, LessonStep, PairItem } from "@/data/lessons";
 import { directionLabel } from "@/data/lessons";
 import { enhanceLesson, tagLabel } from "@/lib/lesson-pedagogy";
 import { loadProgress, recordActivity } from "@/lib/progress";
 import { Button } from "@/app/_components/ui/button";
 import MicAudioVisualizer from "@/app/_components/mic-audio-visualizer";
+import { sound } from "@/lib/sound";
+import { speak } from "@/lib/speech";
+import { ArrowRight, Check, MessageCircle, RotateCcw, Volume2 } from "lucide-react";
 
 type Props = {
     lesson: Lesson;
@@ -31,6 +34,19 @@ export default function LessonPlayer({
     const [checked, setChecked] = useState(false);
     const [finished, setFinished] = useState(false);
     const [spoke, setSpoke] = useState(false);
+
+    const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+    // Sentence builder state
+    const [selectedTokens, setSelectedTokens] = useState<string[]>([]);
+    const [availableTokens, setAvailableTokens] = useState<string[]>([]);
+
+    // Pair matching state
+    const [matchedPairIds, setMatchedPairIds] = useState<string[]>([]);
+
+    // Evaluation states
+    const [evaluation, setEvaluation] = useState<'idle' | 'correct' | 'review'>('idle');
+    const [feedbackExplanation, setFeedbackExplanation] = useState<string>('');
 
     useEffect(() => {
         const p = loadProgress();
@@ -59,6 +75,9 @@ export default function LessonPlayer({
             setStepIndex(0);
             setFinished(false);
         }
+
+        setEvaluation('idle');
+        setFeedbackExplanation('');
         setSelected(null);
         setChecked(false);
         setSpoke(false);
@@ -71,13 +90,14 @@ export default function LessonPlayer({
         return Math.round((stepIndex / steps.length) * 100);
     }, [finished, stepIndex, steps.length]);
 
-    const persist = (index: number, completed: boolean) => {
+    const persist = (index: number, completed: boolean, xpEarned?: number) => {
         recordActivity("lesson", {
             lessonId: lesson.id,
             stepIndex: index,
             lessonCompleted: completed,
             topic: lesson.slug,
             direction: direction,
+            xpEarned: xpEarned
         });
     };
 
@@ -106,6 +126,89 @@ export default function LessonPlayer({
         const prev = stepIndex - 1;
         setStepIndex(prev);
         persist(prev, false);
+    };
+
+    // Check Answer Handler
+    const handleCheck = () => {
+        let isCorrect = false;
+        let explanationText = step?.explanation || '';
+
+        if (step.type === 'listen') {
+            const mc = step;
+            // isCorrect = selectedOption === mc.correctAnswer;
+        } else if (step.type === 'check') {
+            const mc = step;
+            isCorrect = selected === mc.answerIndex;
+        } else if (step.type === 'context-dialogue') {
+            const cd = step;
+            isCorrect = selectedOption === cd.correctAnswer;
+        } else if (step.type === 'sentence-builder') {
+            const sb = step
+            isCorrect =
+                selectedTokens.length === sb.correctTokens.length &&
+                selectedTokens.every((val, i) => val === sb.correctTokens[i]);
+            if (!isCorrect) {
+                explanationText = `Target phrasing: "${sb.targetSentence}" (${sb.targetTranslation})`;
+            }
+        } else if (step.type === 'pair-matching') {
+            const pm = step;
+            isCorrect = matchedPairIds.length === pm.pairs.length;
+        }
+
+        if (isCorrect) {
+            sound.playGentleChime(true);
+            setEvaluation('correct');
+            // setCorrectCount((prev) => prev + 1);
+            setFeedbackExplanation(explanationText || 'Wonderful clarity and focus.');
+        } else {
+            sound.playReflectionTone(true);
+            setEvaluation('review');
+            setFeedbackExplanation(
+                explanationText || 'Take a gentle breath. We will revisit this phrase shortly.'
+            );
+            // Re-queue this question at the end for positive, pressure-free mastery
+            // setQuestionQueue((prev) => [...prev, currentQ]);
+        }
+    };
+
+    const handleContinue = () => {
+        sound.playPebbleTap(true);
+
+        setSelected(null);
+        setChecked(false);
+        setSpoke(false);
+
+        if (stepIndex + 1 < steps.length) {
+            const next = stepIndex + 1;
+            setStepIndex(next);
+            setEvaluation('idle');
+            persist(next, false);
+        } else if (stepIndex >= steps.length - 1) {
+            // Completed all questions in the queue!
+            setFinished(true);
+            persist(steps.length - 1, true, lesson.xp);
+            sound.playMilestoneHarp(true);
+            return;
+        }
+    };
+
+    const canSubmit = () => {
+        if (evaluation !== 'idle') return false;
+
+        if (step.type === 'check') {
+            return selected !== null;
+        }
+        if (step.type === 'listen' || step.type === 'context-dialogue') {
+            return !!selectedOption;
+        }
+        if (step.type === 'sentence-builder') {
+            return selectedTokens.length > 0;
+        }
+        if (step.type === 'pair-matching') {
+            const pm = step;
+            return matchedPairIds.length === pm.pairs.length;
+        }
+        return false;
     };
 
     if (!step) {
@@ -212,44 +315,120 @@ export default function LessonPlayer({
                         spoke={spoke}
                         onSelect={setSelected}
                         onSpoke={() => setSpoke(true)}
+                        matchedPairIds={matchedPairIds}
+                        setMatchedPairIds={setMatchedPairIds}
+                        evaluation={evaluation}
+                        selectedTokens={selectedTokens}
+                        setSelectedTokens={setSelectedTokens}
+                        availableTokens={availableTokens}
+                        setAvailableTokens={setAvailableTokens}
+                        selectedOption={selectedOption}
+                        setSelectedOption={setSelectedOption}
                     />
 
-                    <div className="mt-8 flex items-center justify-between gap-3">
-                        <Button
-                            type="button"
-                            variant="ghost"
-                            onClick={goBack}
-                            disabled={stepIndex === 0}
-                        >
-                            Back
-                        </Button>
+                    <div
+                        id="lesson-bottom-bar"
+                        className={`w-full border-t transition-colors duration-200 py-5 px-4 sm:px-6 ${evaluation === 'correct'
+                            ? 'bg-[#EAF3ED] border-[#C3DCB0]'
+                            : evaluation === 'review'
+                                ? 'bg-[#F9F4EC] border-[#E8DDCF]'
+                                : 'bg-[#FAF8F5] border-[#EAE5DC]'
+                            }`}
+                    >
+                        {
+                            (step.type === 'check'
+                                || step.type === 'listen'
+                                || step.type === 'context-dialogue'
+                                || step.type === 'pair-matching'
+                                || step.type === 'sentence-builder'
+                            ) ? (<div className="max-w-2xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                {evaluation === 'idle' ? (
+                                    <>
+                                        <div className="text-xs text-[#7A867C]">
+                                            Take your time. Mindful learning thrives on presence.
+                                        </div>
+                                        <button
+                                            id="check-answer-btn"
+                                            type="button"
+                                            disabled={!canSubmit()}
+                                            onClick={handleCheck}
+                                            className={`px-7 py-3 rounded-full text-sm font-semibold transition-all shadow-xs ${canSubmit()
+                                                ? 'bg-[#3F614C] hover:bg-[#34513F] text-white cursor-pointer hover:shadow-md'
+                                                : 'bg-[#E3DFD4] text-[#9AA39B] cursor-not-allowed'
+                                                }`}
+                                        >
+                                            Check Answer
+                                        </button>
+                                    </>
+                                ) : evaluation === 'correct' ? (
+                                    <>
+                                        <div className="flex items-start gap-3">
+                                            <div className="w-8 h-8 rounded-full bg-[#3F614C] text-white flex items-center justify-center shrink-0 mt-0.5">
+                                                <Check className="w-5 h-5" />
+                                            </div>
+                                            <div>
+                                                <div className="text-sm font-bold text-[#2A4B36]">
+                                                    Serene Understanding
+                                                </div>
+                                                <div className="text-xs text-[#486350] mt-0.5 leading-relaxed">
+                                                    {feedbackExplanation}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button
+                                            id="continue-correct-btn"
+                                            type="button"
+                                            onClick={handleContinue}
+                                            className="px-7 py-3 rounded-full bg-[#3F614C] hover:bg-[#34513F] text-white text-sm font-semibold transition-all shadow-xs hover:shadow-md flex items-center justify-center gap-2"
+                                        >
+                                            <span>Continue</span>
+                                            <ArrowRight className="w-4 h-4" />
+                                        </button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div className="flex items-start gap-3">
+                                            <div className="w-8 h-8 rounded-full bg-[#B86E40] text-white flex items-center justify-center shrink-0 mt-0.5">
+                                                <RotateCcw className="w-4 h-4" />
+                                            </div>
+                                            <div>
+                                                <div className="text-sm font-bold text-[#8C4A21]">
+                                                    Mindful Reflection
+                                                </div>
+                                                <div className="text-xs text-[#70523C] mt-0.5 leading-relaxed">
+                                                    {feedbackExplanation}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button
+                                            id="continue-review-btn"
+                                            type="button"
+                                            onClick={handleContinue}
+                                            className="px-7 py-3 rounded-full bg-[#B86E40] hover:bg-[#9F5B32] text-white text-sm font-semibold transition-all shadow-xs hover:shadow-md flex items-center justify-center gap-2"
+                                        >
+                                            <span>Understood</span>
+                                            <ArrowRight className="w-4 h-4" />
+                                        </button>
+                                    </>
+                                )}
+                            </div>)
+                                : (
+                                    <div className="mt-8 flex items-center justify-between gap-3">
+                                        <Button
+                                            type="button"
+                                            variant="ghost"
+                                            onClick={goBack}
+                                            disabled={stepIndex === 0}
+                                        >
+                                            Back
+                                        </Button>
 
-                        {step.type === "check" ? (
-                            <Button
-                                type="button"
-                                onClick={() => {
-                                    if (!checked) {
-                                        if (selected === null) return;
-                                        setChecked(true);
-                                        return;
-                                    }
-                                    goNext();
-                                }}
-                                disabled={selected === null}
-                            >
-                                {checked
-                                    ? stepIndex >= steps.length - 1
-                                        ? "Finish"
-                                        : "Continue"
-                                    : "Check"}
-                            </Button>
-                        ) : (
-                            <Button type="button" onClick={goNext}>
-                                {stepIndex >= steps.length - 1
-                                    ? "Finish"
-                                    : "Continue"}
-                            </Button>
-                        )}
+                                        <Button type="button" onClick={goNext}>
+                                            {stepIndex >= steps.length - 1
+                                                ? "Finish"
+                                                : "Continue"}
+                                        </Button>
+                                    </div>)}
                     </div>
                 </div>
             )}
@@ -264,6 +443,15 @@ function StepBody({
     spoke,
     onSelect,
     onSpoke,
+    matchedPairIds,
+    setMatchedPairIds,
+    evaluation,
+    selectedTokens,
+    setSelectedTokens,
+    availableTokens,
+    setAvailableTokens,
+    selectedOption,
+    setSelectedOption
 }: {
     step: LessonStep;
     selected: number | null;
@@ -271,7 +459,106 @@ function StepBody({
     spoke: boolean;
     onSelect: (i: number) => void;
     onSpoke: () => void;
+    matchedPairIds: string[];
+    setMatchedPairIds: (ids: string[]) => void;
+    evaluation?: "correct" | "review" | "idle";
+    selectedTokens: string[];
+    setSelectedTokens: (tokens: string[]) => void;
+    availableTokens: string[];
+    setAvailableTokens: (tokens: string[]) => void;
+    selectedOption: string | null;
+    setSelectedOption: (option: string | null) => void;
 }) {
+    // Pair matching state
+    const [selectedForeignId, setSelectedForeignId] = useState<string | null>(null);
+    const [selectedNativeId, setSelectedNativeId] = useState<string | null>(null);
+
+    // Initialize per question
+    useEffect(() => {
+        if (!step) return;
+
+        if (step.type === 'sentence-builder') {
+            const sb = step;
+            setAvailableTokens([...sb.scrambledTokens]);
+            setSelectedTokens([]);
+        } else if (step.type === 'pair-matching') {
+            setMatchedPairIds([]);
+            setSelectedForeignId(null);
+            setSelectedNativeId(null);
+        }
+
+        // Auto-play speech for listening questions
+        // if (step.type === 'listening' && step.audioText) {
+        //     setTimeout(() => {
+        //         speech.speak(currentQ.audioText!, speechLang);
+        //     }, 400);
+        // }
+    }, [step]);
+
+    // Handle Token Tap in Sentence Builder
+    const handleAddToken = (token: string, idx: number) => {
+        sound.playPebbleTap(true);
+        setSelectedTokens([...selectedTokens, token]);
+        const nextAvail = [...availableTokens];
+        nextAvail.splice(idx, 1);
+        setAvailableTokens(nextAvail);
+        if (nextAvail.length < 2) {
+            onSelect(1);
+        }
+    };
+
+    const handleRemoveToken = (token: string, idx: number) => {
+        sound.playPebbleTap(true);
+        const nextSelected = [...selectedTokens];
+        nextSelected.splice(idx, 1);
+        setSelectedTokens(nextSelected);
+        setAvailableTokens([...availableTokens, token]);
+    };
+
+    // Handle Pair Matching Selection
+    const handleSelectForeign = (item: PairItem) => {
+        sound.playPebbleTap(true);
+        if (matchedPairIds.includes(item.id)) return;
+        // speak(item.foreign, speechLang);
+
+        if (selectedNativeId) {
+            // Check if match
+            if (selectedNativeId === item.id) {
+                sound.playGentleChime(true);
+                setMatchedPairIds([...matchedPairIds, item.id]);
+                setSelectedForeignId(null);
+                setSelectedNativeId(null);
+            } else {
+                sound.playReflectionTone(true);
+                setSelectedForeignId(null);
+                setSelectedNativeId(null);
+            }
+        } else {
+            setSelectedForeignId(item.id);
+        }
+    };
+
+    const handleSelectNative = (item: PairItem) => {
+        sound.playPebbleTap(true);
+        if (matchedPairIds.includes(item.id)) return;
+
+        if (selectedForeignId) {
+            if (selectedForeignId === item.id) {
+                sound.playGentleChime(true);
+                setMatchedPairIds([...matchedPairIds, item.id]);
+                onSelect(1);
+                setSelectedForeignId(null);
+                setSelectedNativeId(null);
+            } else {
+                sound.playReflectionTone(true);
+                setSelectedForeignId(null);
+                setSelectedNativeId(null);
+            }
+        } else {
+            setSelectedNativeId(item.id);
+        }
+    };
+
     if (step.type === "intro") {
         return (
             <div>
@@ -404,11 +691,199 @@ function StepBody({
         );
     }
 
+    if (step.type === 'pair-matching') {
+        return (
+            <div className="space-y-4">
+                <div className="text-xs text-[#738075] text-center mb-2">
+                    Match the harmonious pairs ({matchedPairIds.length} of{' '}
+                    {(step).pairs.length} paired)
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                    {/* Foreign Words Column */}
+                    <div className="space-y-2.5">
+                        {(step).pairs.map((pair) => {
+                            const isMatched = matchedPairIds.includes(pair.id);
+                            const isSelected = selectedForeignId === pair.id;
+
+                            return (
+                                <button
+                                    key={pair.id}
+                                    type="button"
+                                    disabled={isMatched || evaluation !== 'idle'}
+                                    onClick={() => handleSelectForeign(pair)}
+                                    className={`w-full p-3.5 rounded-xl border-2 text-left transition-all ${isMatched
+                                        ? 'bg-[#EBF2EE] border-transparent opacity-40 cursor-default'
+                                        : isSelected
+                                            ? 'bg-[#E3EEE6] border-[#4D6F5A] scale-102 shadow-xs'
+                                            : 'bg-[#FCFAF6] border-[#E7E2D8] hover:border-[#CDC6B6]'
+                                        }`}
+                                >
+                                    <div className="font-semibold text-sm text-[#253328]">
+                                        {pair.foreign}
+                                    </div>
+                                    {pair.phonetic && (
+                                        <div className="text-[11px] text-[#717E73]">{pair.phonetic}</div>
+                                    )}
+                                </button>
+                            );
+                        })}
+                    </div>
+
+                    {/* Native Meaning Column */}
+                    <div className="space-y-2.5">
+                        {step.pairs.map((pair) => {
+                            const isMatched = matchedPairIds.includes(pair.id);
+                            const isSelected = selectedNativeId === pair.id;
+
+                            return (
+                                <button
+                                    key={pair.id}
+                                    type="button"
+                                    disabled={isMatched || evaluation !== 'idle'}
+                                    onClick={() => handleSelectNative(pair)}
+                                    className={`w-full p-3.5 rounded-xl border-2 text-left transition-all ${isMatched
+                                        ? 'bg-[#EBF2EE] border-transparent opacity-40 cursor-default'
+                                        : isSelected
+                                            ? 'bg-[#E3EEE6] border-[#4D6F5A] scale-102 shadow-xs'
+                                            : 'bg-[#FCFAF6] border-[#E7E2D8] hover:border-[#CDC6B6]'
+                                        }`}
+                                >
+                                    <div className="font-medium text-sm text-[#253328]">
+                                        {pair.native}
+                                    </div>
+                                </button>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    if (step.type === 'sentence-builder') {
+        return (
+            <div className="space-y-6">
+                {/* Target Meaning */}
+                <div className="text-center p-3 bg-[#F5F2EB] rounded-xl text-sm font-serif italic text-[#556358]">
+                    "{step.targetTranslation}"
+                </div>
+
+                {/* Answer Assembled Slot */}
+                <div className="min-h-20 p-4 bg-[#FCFAF6] border-2 border-dashed border-[#DED7CA] rounded-2xl flex flex-wrap items-center gap-2">
+                    {selectedTokens.length === 0 ? (
+                        <span className="text-xs text-[#9DA79F] italic mx-auto">
+                            Tap word pebbles below to weave your sentence
+                        </span>
+                    ) : (
+                        selectedTokens.map((token, idx) => (
+                            <button
+                                key={idx}
+                                type="button"
+                                disabled={evaluation !== 'idle'}
+                                onClick={() => handleRemoveToken(token, idx)}
+                                className="px-3.5 py-2 rounded-xl bg-[#E6EFE9] border border-[#BFD6C6] text-[#2C4A37] text-sm font-medium shadow-xs hover:bg-[#DBE9DF] transition-transform active:scale-95"
+                            >
+                                {token}
+                            </button>
+                        ))
+                    )}
+                </div>
+
+                {/* Available Tokens Pebble Bank */}
+                <div className="flex flex-wrap items-center justify-center gap-2.5 pt-2">
+                    {availableTokens.map((token, idx) => (
+                        <button
+                            key={idx}
+                            type="button"
+                            disabled={evaluation !== 'idle'}
+                            onClick={() => handleAddToken(token, idx)}
+                            className="px-4 py-2.5 rounded-xl bg-[#EFECE4] border border-[#DDD7CD] text-[#344037] text-sm font-medium hover:bg-[#E5E0D5] hover:scale-105 transition-all active:scale-95 shadow-xs"
+                        >
+                            {token}
+                        </button>
+                    ))}
+                </div>
+            </div>
+        )
+    }
+
+    if (step.type === 'context-dialogue') {
+        return (
+            <div className="space-y-6">
+                {/* Dialogue bubble */}
+                <div className="bg-[#FAF6EE] border border-[#E7E0D3] rounded-2xl p-5 relative">
+                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#637265] mb-2">
+                        <MessageCircle className="w-3.5 h-3.5 text-[#4D6F5A]" />
+                        <span>{step.dialoguePartner}</span>
+                    </div>
+                    <div className="flex items-start justify-between gap-3">
+                        <div>
+                            <div className="font-serif text-xl text-[#243327]">
+                                {step.partnerSays}
+                            </div>
+                            {step.partnerSaysPhonetic && (
+                                <div className="text-xs text-[#778379] mt-0.5">
+                                    {step.partnerSaysPhonetic}
+                                </div>
+                            )}
+                            <div className="text-xs text-[#636E65] mt-1 italic">
+                                "{step.partnerSaysTranslation}"
+                            </div>
+                        </div>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                // speak(
+                                //     step.partnerSays,
+                                //     speechLang
+                                // );
+                            }}
+                            className="p-2 rounded-full bg-[#EFECE4] text-[#3D4C40] hover:bg-[#E6E1D7] transition-colors shrink-0"
+                            title="Listen to partner"
+                        >
+                            <Volume2 className="w-4 h-4" />
+                        </button>
+                    </div>
+                </div>
+
+                {/* Response Options */}
+                <div className="space-y-3">
+                    {step.options.map((option, idx) => {
+                        const isSelected = selectedOption === option;
+                        return (
+                            <button
+                                key={idx}
+                                id={`dialogue-option-${idx}`}
+                                type="button"
+                                disabled={evaluation !== 'idle'}
+                                onClick={() => {
+                                    sound.playPebbleTap(true);
+                                    setSelectedOption(option);
+                                    // speech.speak(option, speechLang);
+                                }}
+                                className={`w-full p-4 rounded-2xl text-left border-2 transition-all ${isSelected
+                                    ? 'bg-[#EBF2EE] border-[#4D6F5A] shadow-xs'
+                                    : 'bg-[#FCFAF6] border-[#E8E3D8] hover:border-[#CDC6B6]'
+                                    }`}
+                            >
+                                <span className="text-sm sm:text-base font-medium text-[#243327]">
+                                    {option}
+                                </span>
+                            </button>
+                        );
+                    })}
+                </div>
+            </div>
+        )
+    }
+
+
     return (
         <div>
             <div className="flex flex-wrap items-center gap-2">
                 <h2 className="font-display text-xl font-medium">{step.title}</h2>
-                {step.isReview ? (
+                {step.type === "check" && step.isReview ? (
                     <span className="rounded-full bg-primary/15 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-primary">
                         Review
                     </span>
@@ -419,6 +894,8 @@ function StepBody({
                 {step.options.map((opt, i) => {
                     const isCorrect = i === step.answerIndex;
                     const isSelected = selected === i;
+                    const phonetic = step.type === "listen" ? step?.phoneticAnswers?.[opt] : null;
+
                     let style =
                         "border-border bg-background hover:bg-muted/50 text-foreground";
                     if (checked && isCorrect) {
@@ -434,17 +911,25 @@ function StepBody({
                         <li key={opt}>
                             <button
                                 type="button"
-                                disabled={checked}
-                                onClick={() => onSelect(i)}
+                                disabled={evaluation !== 'idle' || checked}
+                                onClick={() => {
+                                    sound.playPebbleTap(true);
+                                    onSelect(i);
+                                    setSelectedOption(opt);
+                                    // speak(option, speechLang);
+                                }}
                                 className={`w-full rounded-lg border px-3 py-2.5 text-left text-sm transition-colors ${style}`}
                             >
-                                {opt}
+                                <div className="font-medium text-base text-[#243327]">{opt}</div>
+                                {phonetic && (
+                                    <div className="text-xs text-[#717E73] mt-0.5">{phonetic}</div>
+                                )}
                             </button>
                         </li>
                     );
                 })}
             </ul>
-            {checked && step.explanation ? (
+            {checked && step?.explanation ? (
                 <p className="mt-3 text-sm text-muted-foreground">
                     {step.explanation}
                 </p>
