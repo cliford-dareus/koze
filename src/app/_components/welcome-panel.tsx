@@ -14,22 +14,18 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
     const [nativeLanguage, setNativeLanguage] = useState(progress.nativeLanguage);
     const [nativeDropdownOpen, setNativeDropdownOpen] = useState(false);
     const [learningDropdownOpen, setLearningDropdownOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
 
     const nativeRef = useRef<HTMLDivElement>(null);
     const learningRef = useRef<HTMLDivElement>(null);
 
-    // Find currently selected native language
-    const currentNativeCode = nativeLanguage || 'en';
+    const currentNativeCode = nativeLanguage || "en";
     const currentNative =
         LANGUAGES.find((l) => l.value === currentNativeCode) || LANGUAGES[0];
 
-    // Find currently selected learning language
     const currentLearning =
-        LANGUAGES.find((l) => l.value === learningLanguage) ||
-        LANGUAGES[0];
+        LANGUAGES.find((l) => l.value === learningLanguage) || LANGUAGES[0];
 
-    // Close dropdowns on outside click
     useEffect(() => {
         function handleClickOutside(e: MouseEvent) {
             if (nativeRef.current && !nativeRef.current.contains(e.target as Node)) {
@@ -39,8 +35,8 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                 setLearningDropdownOpen(false);
             }
         }
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     const persist = () => {
@@ -50,76 +46,66 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
             learningLanguage,
             lessonDirection: `${currentNativeCode}-${learningLanguage}` as LessonDirection,
         };
-        // setProgress(updated);
         saveProgress(updated);
         setIsNativeLanguage(updated.nativeLanguage);
     };
 
-    // Filter native languages by search query
     const filteredNatives = LANGUAGES.filter(
         (lang) =>
             lang.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            lang?.nativeName?.toLowerCase().includes(searchQuery.toLowerCase())
+            lang?.nativeName?.toLowerCase().includes(searchQuery.toLowerCase()),
     );
 
-    const handleSelectNative = (lang) => {
+    const handleSelectNative = (lang: LanguageOption) => {
         sound.playPebbleTap(progress.soundEnabled);
         setNativeLanguage(lang.value);
         setNativeDropdownOpen(false);
-        setSearchQuery('');
+        setSearchQuery("");
     };
 
-    const handleSelectLearning = (lang) => {
+    const handleSelectLearning = (lang: LanguageOption) => {
         sound.playPebbleTap(progress.soundEnabled);
         setLearningLanguage(lang.value);
         setLearningDropdownOpen(false);
     };
 
-    const onContinue = () => {
-        persist()
-    };
-
     return (
         <Drawer open={!isNativeLanguage}>
             <DrawerContent className="min-h-[100%]">
-                <div className="min-h-screen bg-background text-foreground flex flex-col justify-between items-center py-6 px-4 selection:bg-[#2C332A] selection:text-[#F3F2EE]">
-                    <div className="w-full max-w-[430px] mx-auto flex flex-col">
-                        {/* Top subtle grab pill indicator */}
-                        <div className="pt-2 pb-5 flex justify-center">
+                <div className="flex min-h-screen flex-col items-center justify-between bg-background px-4 py-6 text-foreground selection:bg-primary/20">
+                    <div className="mx-auto flex w-full max-w-[430px] flex-col">
+                        <div className="flex justify-center pb-5 pt-2">
                             <div
                                 id="top-drag-handle"
-                                className="w-12 h-1 bg-[#2C2D2A] rounded-full"
+                                className="h-1 w-12 rounded-full bg-muted-foreground/40"
                                 aria-hidden="true"
                             />
                         </div>
 
-                        {/* Elegant Serif Title */}
                         <h1
                             id="welcome-title"
-                            className="font-serif text-[34px] sm:text-[37px] font-normal tracking-tight text-[#F3F2EE] text-center"
+                            className="text-center font-serif text-[34px] font-normal tracking-tight text-foreground sm:text-[37px]"
                         >
                             Welcome
                         </h1>
 
-                        {/* Muted Sage / Olive Subtitle Paragraph */}
                         <p
                             id="welcome-subtitle"
-                            className="text-[15px] sm:text-[16px] text-[#70756F] leading-[1.65] text-left mt-5 mb-7 px-1"
+                            className="mb-7 mt-5 px-1 text-left text-[15px] leading-[1.65] text-muted-foreground sm:text-[16px]"
                         >
-                            Begin your journey with peaceful greetings, humble bows, and basic gratitude. Please set your native language to start.
+                            Begin your journey with peaceful greetings, humble bows, and basic
+                            gratitude. Please set your native language to start.
                         </p>
 
-                        {/* Card 1: I speak */}
                         <div
                             id="card-i-speak"
                             ref={nativeRef}
-                            className="relative bg-[#1C1D1B] border border-[#2A2C29] rounded-[26px] p-5 sm:p-6 mb-3.5 shadow-xs transition-colors"
+                            className="relative mb-3.5 rounded-[26px] border border-border bg-card p-5 shadow-xs transition-colors sm:p-6"
                         >
-                            <h2 className="text-[16px] font-medium text-[#ECEBE6] mb-3">
+                            <h2 className="mb-3 text-[16px] font-medium text-foreground">
                                 I speak
                             </h2>
 
-                            {/* Native Language Pill Selector */}
                             <button
                                 id="native-lang-selector"
                                 type="button"
@@ -128,60 +114,72 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                                     setNativeDropdownOpen((prev) => !prev);
                                     setLearningDropdownOpen(false);
                                 }}
-                                className="w-full bg-[#161715] border border-[#272825] hover:border-[#3A3C38] focus:border-[#4A4D47] rounded-full h-12 px-4 flex items-center justify-between text-sm text-[#E2E1DC] transition-all cursor-pointer outline-none"
+                                className="flex h-12 w-full cursor-pointer items-center justify-between rounded-full border border-border bg-background px-4 text-sm text-foreground outline-none transition-all hover:border-primary/40 focus:border-primary"
                             >
                                 <div className="flex items-center gap-2.5 overflow-hidden">
-                                    <span className="text-base leading-none">{currentNative.flag}</span>
-                                    <span className="font-normal truncate">{currentNative.name}</span>
+                                    <span className="text-base leading-none">
+                                        {currentNative.flag}
+                                    </span>
+                                    <span className="truncate font-normal">
+                                        {currentNative.name}
+                                    </span>
                                     {currentNative.nativeName !== currentNative.name && (
-                                        <span className="text-xs text-[#70756F]">({currentNative.nativeName})</span>
+                                        <span className="text-xs text-muted-foreground">
+                                            ({currentNative.nativeName})
+                                        </span>
                                     )}
                                 </div>
                                 <ChevronDown
-                                    className={`w-4 h-4 text-[#757973] transition-transform duration-200 ${nativeDropdownOpen ? 'rotate-180' : ''
-                                        }`}
+                                    className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${
+                                        nativeDropdownOpen ? "rotate-180" : ""
+                                    }`}
                                 />
                             </button>
 
-                            {/* Native Language Dropdown Menu */}
                             {nativeDropdownOpen && (
                                 <div
                                     id="native-dropdown-menu"
-                                    className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 bg-[#1A1B19] border border-[#2E302D] rounded-2xl shadow-2xl p-3 max-h-72 overflow-hidden flex flex-col backdrop-blur-md"
+                                    className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 flex max-h-72 flex-col overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-2xl backdrop-blur-md"
                                 >
                                     <div className="relative mb-2">
-                                        <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#70756F]" />
+                                        <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
                                         <input
                                             id="search-native-language"
                                             type="text"
                                             placeholder="Search languages..."
                                             value={searchQuery}
                                             onChange={(e) => setSearchQuery(e.target.value)}
-                                            className="w-full bg-card border border-border focus:border-[#4D524A] rounded-xl pl-8 pr-3 py-1.5 text-xs text-[#ECEBE6] placeholder-[#646862] outline-none"
+                                            className="w-full rounded-xl border border-border bg-background py-1.5 pl-8 pr-3 text-xs text-foreground outline-none placeholder:text-muted-foreground focus:border-primary"
                                             autoFocus
                                         />
                                     </div>
 
-                                    <div className="overflow-y-auto space-y-1 pr-1 custom-scrollbar">
+                                    <div className="custom-scrollbar space-y-1 overflow-y-auto pr-1">
                                         {filteredNatives.map((lang) => {
-                                            const isSelected = lang.value === currentNative.value;
+                                            const isSelected =
+                                                lang.value === currentNative.value;
                                             return (
                                                 <button
                                                     key={lang.value}
                                                     id={`select-native-${lang.value}`}
                                                     type="button"
                                                     onClick={() => handleSelectNative(lang)}
-                                                    className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-xs transition-colors cursor-pointer ${isSelected
-                                                        ? 'bg-[#262824] text-[#F3F2EE] font-medium'
-                                                        : 'hover:bg-[#222320] text-[#B5B9B2]'
-                                                        }`}
+                                                    className={`flex w-full cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-left text-xs transition-colors ${
+                                                        isSelected
+                                                            ? "bg-accent font-medium text-primary"
+                                                            : "text-foreground hover:bg-muted"
+                                                    }`}
                                                 >
                                                     <div className="flex items-center gap-2">
                                                         <span>{lang.flag}</span>
                                                         <span>{lang.name}</span>
-                                                        <span className="text-[11px] text-[#70756F]">{lang.nativeName}</span>
+                                                        <span className="text-[11px] text-muted-foreground">
+                                                            {lang.nativeName}
+                                                        </span>
                                                     </div>
-                                                    {isSelected && <Check className="w-3.5 h-3.5 text-[#A5C9B1]" />}
+                                                    {isSelected && (
+                                                        <Check className="h-3.5 w-3.5 text-primary" />
+                                                    )}
                                                 </button>
                                             );
                                         })}
@@ -190,19 +188,16 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                             )}
                         </div>
 
-                        {/* Card 2: I am learning */}
                         <div
                             id="card-i-am-learning"
                             ref={learningRef}
-                            className="relative bg-card border border-border rounded-[26px] p-5 sm:p-6 shadow-xs transition-colors"
+                            className="relative rounded-[26px] border border-border bg-card p-5 shadow-xs transition-colors sm:p-6"
                         >
-                            <h2 className="text-[16px] font-medium text-[#ECEBE6] mb-3">
+                            <h2 className="mb-3 text-[16px] font-medium text-foreground">
                                 I am learning
                             </h2>
 
-                            {/* Selector matching the screenshot with round button */}
                             <div className="flex items-center gap-3">
-                                {/* Round pill chevron button matching the screenshot */}
                                 <button
                                     id="learning-lang-circle-btn"
                                     type="button"
@@ -212,15 +207,15 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                                         setNativeDropdownOpen(false);
                                     }}
                                     title="Choose language to learn"
-                                    className="w-9 h-9 rounded-full bg-[#EAE8E0] hover:bg-[#FAF9F5] text-[#1D1E1B] flex items-center justify-center transition-all shadow-xs active:scale-95 cursor-pointer shrink-0"
+                                    className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-secondary text-foreground shadow-xs transition-all hover:bg-muted active:scale-95"
                                 >
                                     <ChevronDown
-                                        className={`w-4 h-4 text-[#1C1D1B] stroke-[2.5] transition-transform duration-200 ${learningDropdownOpen ? 'rotate-180' : ''
-                                            }`}
+                                        className={`h-4 w-4 stroke-[2.5] text-foreground transition-transform duration-200 ${
+                                            learningDropdownOpen ? "rotate-180" : ""
+                                        }`}
                                     />
                                 </button>
 
-                                {/* Subtle selected language tag */}
                                 <button
                                     type="button"
                                     onClick={() => {
@@ -228,21 +223,24 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                                         setLearningDropdownOpen((prev) => !prev);
                                         setNativeDropdownOpen(false);
                                     }}
-                                    className="text-xs text-[#8E948B] hover:text-[#ECEBE6] transition-colors cursor-pointer flex items-center gap-1.5"
+                                    className="flex cursor-pointer items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
                                 >
                                     <span>{currentLearning.flag}</span>
-                                    <span className="font-medium text-[#D8DED5]">{currentLearning.name}</span>
-                                    <span className="text-[#646861]">({currentLearning.nativeName})</span>
+                                    <span className="font-medium text-foreground">
+                                        {currentLearning.name}
+                                    </span>
+                                    <span className="text-muted-foreground">
+                                        ({currentLearning.nativeName})
+                                    </span>
                                 </button>
                             </div>
 
-                            {/* Learning Language Dropdown / Modal */}
                             {learningDropdownOpen && (
                                 <div
                                     id="learning-dropdown-menu"
-                                    className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 bg-[#1A1B19] border border-[#2E302D] rounded-2xl shadow-2xl p-3 flex flex-col backdrop-blur-md space-y-1.5"
+                                    className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 flex flex-col space-y-1.5 rounded-2xl border border-border bg-card p-3 shadow-2xl backdrop-blur-md"
                                 >
-                                    <div className="text-[11px] uppercase tracking-wider text-[#70756F] font-semibold px-2 py-1">
+                                    <div className="px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                                         Select Language Path
                                     </div>
 
@@ -254,31 +252,34 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                                                 id={`select-learning-${lang.id}`}
                                                 type="button"
                                                 onClick={() => handleSelectLearning(lang)}
-                                                className={`w-full flex items-center justify-between p-2.5 rounded-xl text-left transition-all cursor-pointer ${isSelected
-                                                    ? 'bg-[#262824] border border-[#3A3D36] text-[#F3F2EE]'
-                                                    : 'hover:bg-[#222320] text-[#B5B9B2] border border-transparent'
-                                                    }`}
+                                                className={`flex w-full cursor-pointer items-center justify-between rounded-xl border p-2.5 text-left transition-all ${
+                                                    isSelected
+                                                        ? "border-border bg-accent text-primary"
+                                                        : "border-transparent text-foreground hover:bg-muted"
+                                                }`}
                                             >
                                                 <div className="flex items-center gap-3">
                                                     <span className="text-lg">{lang.flag}</span>
                                                     <div>
                                                         <div className="flex items-center gap-2">
-                                                            <span className="text-xs font-semibold text-[#ECEBE6]">
+                                                            <span className="text-xs font-semibold">
                                                                 {lang.name}
                                                             </span>
-                                                            <span className="text-[11px] text-[#70756F]">
+                                                            <span className="text-[11px] text-muted-foreground">
                                                                 {lang.nativeName}
                                                             </span>
                                                         </div>
-                                                        <p className="text-[11px] text-[#757A73] line-clamp-1">
+                                                        <p className="line-clamp-1 text-[11px] text-muted-foreground">
                                                             {lang.description}
                                                         </p>
                                                     </div>
                                                 </div>
                                                 {isSelected ? (
-                                                    <Check className="w-4 h-4 text-[#A5C9B1] shrink-0" />
+                                                    <Check className="h-4 w-4 shrink-0 text-primary" />
                                                 ) : (
-                                                    <span className="text-[11px] text-[#555953]">Select</span>
+                                                    <span className="text-[11px] text-muted-foreground">
+                                                        Select
+                                                    </span>
                                                 )}
                                             </button>
                                         );
@@ -287,29 +288,23 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                             )}
                         </div>
 
-                        {/* Serene Action Button */}
                         <div className="mt-8 space-y-3">
                             <button
                                 id="begin-journey-btn"
                                 type="button"
                                 onClick={() => {
                                     sound.playPebbleTap(progress.soundEnabled);
-                                    onContinue();
+                                    persist();
                                 }}
-                                className="w-full h-12 rounded-full bg-[#EAE8E0] hover:bg-[#FAF9F5] active:scale-[0.99] text-[#161715] font-semibold text-sm transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer"
+                                className="flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-xs transition-all hover:bg-primary/90 active:scale-[0.99]"
                             >
                                 <span>Begin Learning {currentLearning.name}</span>
-                                <ArrowRight className="w-4 h-4 text-[#161715]" />
+                                <ArrowRight className="h-4 w-4" />
                             </button>
-
-                            <p className="text-center text-[12px] text-[#5A5E59]">
-                                {/*{currentCourse.units[0]?.lessons.length || 3} mindful stepping stones ready in Unit 1*/}
-                            </p>
                         </div>
                     </div>
 
-                    {/* Gentle bottom note */}
-                    <div className="text-center pt-8 pb-2 text-[11px] text-[#4A4E48]">
+                    <div className="pb-2 pt-8 text-center text-[11px] text-muted-foreground">
                         A calm language learning space designed for peace and presence.
                     </div>
                 </div>
