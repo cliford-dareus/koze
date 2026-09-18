@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
 import {
-    UNITS,
     directionLabel,
     getLessonsByDirection,
+    getUnitsForDirection,
     type LessonDirection,
 } from "@/data/lessons";
 import {
@@ -126,7 +126,7 @@ export default function LessonsPage() {
             </div>
 
             <UnitList
-                units={UNITS}
+                units={getUnitsForDirection(primaryDirection)}
                 direction={primaryDirection}
                 completedSet={completedSet}
                 progress={progress}
@@ -141,7 +141,7 @@ function UnitList({
     completedSet,
     progress,
 }: {
-    units: typeof UNITS;
+    units: ReturnType<typeof getUnitsForDirection>;
     direction: LessonDirection;
     completedSet: Set<string>;
     progress: ProgressState;
@@ -154,7 +154,7 @@ function UnitList({
                 const unitDone = unitLessons.filter((l) =>
                     completedSet.has(l.id),
                 ).length;
-                const isUnitCompleted = unitDone === unitLessons.length;
+                const isUnitCompleted = unitDone === unitLessons.length && unitLessons.length > 0;
 
                 return (
                     <section key={unit.id}>
@@ -255,7 +255,7 @@ function UnitList({
                                                                     : 'bg-secondary text-muted-foreground'
                                                         }`}
                                                     >
-                                                        +{lesson.xp} XP
+                                                        +{lesson.xp ?? 25} XP
                                                     </div>
                                                 </button>
 
