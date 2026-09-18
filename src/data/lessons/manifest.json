@@ -1,1 +1,28 @@
-PLACEHOLDER_MANIFEST
+{
+  "version": 2,
+  "packs": [
+    {"id": "en-fr", "direction": "en-fr", "source": "en", "target": "fr", "label": "EN → FR", "title": "English to French", "description": "Learn French from English.", "file": "../en-fr.json", "lessonCount": 25},
+    {"id": "fr-en", "direction": "fr-en", "source": "fr", "target": "en", "label": "FR → EN", "title": "French to English", "description": "Decode French into English.", "file": "../fr-en.json", "lessonCount": 25},
+    {"id": "en-es", "direction": "en-es", "source": "en", "target": "es", "label": "EN → ES", "title": "English to Spanish", "description": "Learn Spanish from English.", "file": "../en-es.json", "lessonCount": 25},
+    {"id": "es-en", "direction": "es-en", "source": "es", "target": "en", "label": "ES → EN", "title": "Spanish to English", "description": "Decode Spanish into English.", "file": "../es-en.json", "lessonCount": 25},
+    {"id": "en-ht", "direction": "en-ht", "source": "en", "target": "ht", "label": "EN → HT", "title": "English to Haitian Creole", "description": "Learn Haitian Creole from English.", "file": "../en-ht.json", "lessonCount": 25},
+    {"id": "ht-en", "direction": "ht-en", "source": "ht", "target": "en", "label": "HT → EN", "title": "Haitian Creole to English", "description": "Decode Haitian Creole into English.", "file": "../ht-en.json", "lessonCount": 25},
+    {"id": "en-pt", "direction": "en-pt", "source": "en", "target": "pt", "label": "EN → PT", "title": "English to Portuguese", "description": "Learn Portuguese from English.", "file": "../en-pt.json", "lessonCount": 25},
+    {"id": "pt-en", "direction": "pt-en", "source": "pt", "target": "en", "label": "PT → EN", "title": "Portuguese to English", "description": "Decode Portuguese into English.", "file": "../pt-en.json", "lessonCount": 25},
+    {"id": "en-de", "direction": "en-de", "source": "en", "target": "de", "label": "EN → DE", "title": "English to German", "description": "Learn German from English.", "file": "../en-de.json", "lessonCount": 25},
+    {"id": "de-en", "direction": "de-en", "source": "de", "target": "en", "label": "DE → EN", "title": "German to English", "description": "Decode German into English.", "file": "../de-en.json", "lessonCount": 25},
+    {"id": "en-it", "direction": "en-it", "source": "en", "target": "it", "label": "EN → IT", "title": "English to Italian", "description": "Learn Italian from English.", "file": "../en-it.json", "lessonCount": 25},
+    {"id": "it-en", "direction": "it-en", "source": "it", "target": "en", "label": "IT → EN", "title": "Italian to English", "description": "Decode Italian into English.", "file": "../it-en.json", "lessonCount": 25},
+    {"id": "en-zh", "direction": "en-zh", "source": "en", "target": "zh", "label": "EN → ZH", "title": "English to Chinese", "description": "Learn Chinese from English.", "file": "../en-zh.json", "lessonCount": 25},
+    {"id": "zh-en", "direction": "zh-en", "source": "zh", "target": "en", "label": "ZH → EN", "title": "Chinese to English", "description": "Decode Chinese into English.", "file": "../zh-en.json", "lessonCount": 25},
+    {"id": "en-ja", "direction": "en-ja", "source": "en", "target": "ja", "label": "EN → JA", "title": "English to Japanese", "description": "Learn Japanese from English.", "file": "../en-ja.json", "lessonCount": 25},
+    {"id": "ja-en", "direction": "ja-en", "source": "ja", "target": "en", "label": "JA → EN", "title": "Japanese to English", "description": "Decode Japanese into English.", "file": "../ja-en.json", "lessonCount": 25},
+    {"id": "en-ko", "direction": "en-ko", "source": "en", "target": "ko", "label": "EN → KO", "title": "English to Korean", "description": "Learn Korean from English.", "file": "../en-ko.json", "lessonCount": 25},
+    {"id": "ko-en", "direction": "ko-en", "source": "ko", "target": "en", "label": "KO → EN", "title": "Korean to English", "description": "Decode Korean into English.", "file": "../ko-en.json", "lessonCount": 25},
+    {"id": "en-ar", "direction": "en-ar", "source": "en", "target": "ar", "label": "EN → AR", "title": "English to Arabic", "description": "Learn Arabic from English.", "file": "../en-ar.json", "lessonCount": 25},
+    {"id": "ar-en", "direction": "ar-en", "source": "ar", "target": "en", "label": "AR → EN", "title": "Arabic to English", "description": "Decode Arabic into English.", "file": "../ar-en.json", "lessonCount": 25},
+    {"id": "en-hi", "direction": "en-hi", "source": "en", "target": "hi", "label": "EN → HI", "title": "English to Hindi", "description": "Learn Hindi from English.", "file": "../en-hi.json", "lessonCount": 25},
+    {"id": "hi-en", "direction": "hi-en", "source": "hi", "target": "en", "label": "HI → EN", "title": "Hindi to English", "description": "Decode Hindi into English.", "file": "../hi-en.json", "lessonCount": 25}
+  ],
+  "supportedDirections": ["en-fr", "fr-en", "en-es", "es-en", "en-ht", "ht-en", "en-pt", "pt-en", "en-de", "de-en", "en-it", "it-en", "en-zh", "zh-en", "en-ja", "ja-en", "en-ko", "ko-en", "en-ar", "ar-en", "en-hi", "hi-en"]
+}

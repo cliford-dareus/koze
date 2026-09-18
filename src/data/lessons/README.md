@@ -1,41 +1,29 @@
 # Lesson language packs
 
-Curriculum ships **in the app** as JSON (not Mongo). Progress/XP stay in the database.
+Curriculum ships **in the app** as JSON. Progress stays in Mongo / localStorage.
 
-## Layout
+## Packs (22 directions)
+
+| Pattern | Example | Meaning |
+|---------|---------|--------|
+| `en-fr` / `fr-en` | French track | Original high-detail packs |
+| `en-{lang}` | `en-es`, `en-ja` | Learn that language from English |
+| `{lang}-en` | `es-en`, `ja-en` | Learn English from that language |
+
+**Languages:** `fr`, `es`, `ht`, `pt`, `de`, `it`, `zh`, `ja`, `ko`, `ar`, `hi`
+
+Each pack has **25 lessons** across 8 units (foundations → grammar-core), same `id` / `slug` / `unitId` so progress keys stay stable.
+
+## Files
 
 ```
-src/data/lessons/
-  units.json          # shared unit map (ids used by every pack)
-  manifest.json       # which direction packs exist
-  packs/
-    en-fr.json        # 25 lessons, English → French
-    fr-en.json        # 25 lessons, French → English
+src/data/lessons/units.json
+src/data/lessons/manifest.json
+src/data/en-fr.json
+src/data/fr-en.json
+src/data/en-es.json … en-hi.json
+src/data/es-en.json … hi-en.json
 ```
 
-Types and loaders live in `src/data/lessons.ts`.
-
-## Add a language pack
-
-1. Copy an existing pack (e.g. `packs/en-fr.json`).
-2. Translate prompts/terms for the new direction (e.g. `en-es`).
-3. Keep the same `id`, `slug`, and `unitId` so progress keys stay stable.
-4. Register the pack in `manifest.json` and in `LESSONS_PATH_MAP` inside `lessons.ts`.
-5. Extend `LessonDirection` if you add a new direction code.
-
-## Lesson shape
-
-Each lesson:
-
-- `id`, `slug`, `title`, `description`
-- `unitId` (must exist in `units.json`)
-- `direction` (`en-fr` | `fr-en` | …)
-- `level`, `estimatedMinutes`, `xp`
-- `steps[]` (`intro` | `tip` | `vocab` | `phrase` | `check` | …)
-
-## Supported packs today
-
-| Pack | Direction | Lessons |
-|------|-----------|--------|
-| English → French | `en-fr` | 25 |
-| French → English | `fr-en` | 25 |
+Loader: `src/data/lessons.ts`  
+Direction mapping: `src/lib/learning-prefs.ts` → `directionForLearningLanguage()`
