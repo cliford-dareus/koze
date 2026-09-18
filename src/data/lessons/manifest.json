@@ -9,7 +9,7 @@
       "label": "EN → FR",
       "title": "English to French",
       "description": "Learn French from English prompts and explanations.",
-      "file": "packs/en-fr.json",
+      "file": "../en-fr.json",
       "lessonCount": 25
     },
     {
@@ -20,7 +20,7 @@
       "label": "FR → EN",
       "title": "French to English",
       "description": "Decode French into natural English.",
-      "file": "packs/fr-en.json",
+      "file": "../fr-en.json",
       "lessonCount": 25
     }
   ],

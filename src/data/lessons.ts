@@ -1,3 +1,5 @@
+import UNITS_JSON from "./lessons/units.json";
+import MANIFEST_JSON from "./lessons/manifest.json";
 import EN_FR from "./en-fr.json";
 import FR_EN from "./fr-en.json";
 
@@ -29,11 +31,11 @@ export type BaseType =
     | "tip"
     | "intro"
     | "check"
-    | 'sentence-builder'
-    | 'pair-matching'
-    | 'listen'
-    | 'context-dialogue';
-
+    | "sentence-builder"
+    | "pair-matching"
+    | "listen"
+    | "context-dialogue"
+    | "speak";
 
 export type BaseLessonStep = {
     type: BaseType;
@@ -42,7 +44,8 @@ export type BaseLessonStep = {
     audioText?: string;
     explanation?: string;
     cultureTip?: string;
-}
+};
+
 export interface PairItem {
     id: string;
     foreign: string;
@@ -51,12 +54,12 @@ export interface PairItem {
 }
 
 export interface PairMatchingQuestion extends BaseLessonStep {
-    type: 'pair-matching';
+    type: "pair-matching";
     pairs: PairItem[];
 }
 
 export interface SentenceBuilderQuestion extends BaseLessonStep {
-    type: 'sentence-builder';
+    type: "sentence-builder";
     targetSentence: string;
     targetTranslation: string;
     scrambledTokens: string[];
@@ -64,7 +67,7 @@ export interface SentenceBuilderQuestion extends BaseLessonStep {
 }
 
 export interface ContextDialogueQuestion extends BaseLessonStep {
-    type: 'context-dialogue';
+    type: "context-dialogue";
     dialoguePartner: string;
     partnerSays: string;
     partnerSaysPhonetic?: string;
@@ -77,80 +80,73 @@ export interface ContextDialogueQuestion extends BaseLessonStep {
 
 export type LessonStep =
     | {
-        type: "intro";
-        title: string;
-        body: string;
-        explanation?: string;
-    }
+          type: "intro";
+          title: string;
+          body: string;
+          explanation?: string;
+      }
     | {
-        type: "tip";
-        title: string;
-        body: string;
-        bullets?: string[];
-        explanation?: string;
-    }
+          type: "tip";
+          title: string;
+          body: string;
+          bullets?: string[];
+          explanation?: string;
+      }
     | {
-        type: "vocab";
-        title: string;
-        items: {
-            term: string;
-            meaning: string;
-            note?: string;
-            tags?: LessonTag[];
-        }[];
-        explanation?: string;
-    }
+          type: "vocab";
+          title: string;
+          items: {
+              term: string;
+              meaning: string;
+              note?: string;
+              tags?: LessonTag[];
+          }[];
+          explanation?: string;
+      }
     | {
-        type: "phrase";
-        title: string;
-        sourceLabel?: string;
-        targetLabel?: string;
-        phrases: {
-            source: string;
-            target: string;
-            tags?: LessonTag[];
-        }[];
-        explanation?: string;
-    }
+          type: "phrase";
+          title: string;
+          sourceLabel?: string;
+          targetLabel?: string;
+          phrases: {
+              source: string;
+              target: string;
+              tags?: LessonTag[];
+          }[];
+          explanation?: string;
+      }
     | {
-        type: "check";
-        title: string;
-        prompt: string;
-        options: string[];
-        answerIndex: number;
-        explanation?: string;
-        /** Spaced review from an earlier lesson */
-        isReview?: boolean;
-        reviewFromLessonId?: string;
-        tags?: LessonTag[];
-    }
+          type: "check";
+          title: string;
+          prompt: string;
+          options: string[];
+          answerIndex: number;
+          explanation?: string;
+          isReview?: boolean;
+          reviewFromLessonId?: string;
+          tags?: LessonTag[];
+      }
     | {
-        /** Spoken production: say the target line aloud */
-        type: "speak";
-        title: string;
-        prompt: string;
-        explanation?: string;
-        /** Line the learner should produce (target language) */
-        targetLine: string;
-        /** Optional L1 / support hint */
-        hint?: string;
-        tags?: LessonTag[];
-    }
+          type: "speak";
+          title: string;
+          prompt: string;
+          explanation?: string;
+          targetLine: string;
+          hint?: string;
+          tags?: LessonTag[];
+      }
     | {
-        /** Spoken production: say the target line aloud */
-        type: "listen";
-        title: string;
-        prompt: string;
-        options: string[];
-        answerIndex: number;
-        phoneticAnswers?: Record<string, string>;
-        explanation?: string;
-        /** Line the learner should produce (target language) */
-        targetLine: string;
-        /** Optional L1 / support hint */
-        hint?: string;
-        tags?: LessonTag[];
-    }
+          type: "listen";
+          title: string;
+          prompt: string;
+          options: string[];
+          answerIndex: number;
+          phoneticAnswers?: Record<string, string>;
+          explanation?: string;
+          targetLine?: string;
+          hint?: string;
+          tags?: LessonTag[];
+      }
     | PairMatchingQuestion
     | SentenceBuilderQuestion
     | ContextDialogueQuestion;
@@ -162,17 +158,10 @@ export type Lesson = {
     description: string;
     unitId: string;
     direction: LessonDirection;
-    level: "beginner" | "elementary" | "intermediate";
+    level: string;
     estimatedMinutes: number;
-    xp: number;
+    xp?: number;
     steps: LessonStep[];
-    /** Optional explicit tags; otherwise inferred from unit / slug */
-    tags?: LessonTag[];
-};
-
-export const LESSONS_PATH_MAP = {
-    "en-fr": EN_FR as Lesson[],
-    "fr-en": FR_EN as Lesson[],
 };
 
 export type Unit = {
@@ -180,89 +169,77 @@ export type Unit = {
     title: string;
     description: string;
     order: number;
-    direction: LessonDirection;
     tags?: LessonTag[];
 };
 
-export const UNITS: Unit[] = [
-    {
-        id: "foundations",
-        title: "Foundations",
-        description: "Greetings, politeness, numbers — English into French.",
-        order: 1,
-        direction: "en-fr",
-        tags: ["basics", "greetings", "politeness", "numbers"],
-    },
-    {
-        id: "everyday",
-        title: "Everyday life",
-        description: "Café, food, and small talk in French.",
-        order: 2,
-        direction: "en-fr",
-        tags: ["food", "cafe", "social", "shopping"],
-    },
-    {
-        id: "travel",
-        title: "Travel",
-        description: "Directions, tickets, and getting around.",
-        order: 3,
-        direction: "en-fr",
-        tags: ["travel", "directions", "transport"],
-    },
-    {
-        id: "grammar-core",
-        title: "Grammar core",
-        description: "Gender, articles, and present-tense essentials.",
-        order: 4,
-        direction: "en-fr",
-        tags: ["grammar", "basics"],
-    },
-    {
-        id: "fr-en-basics",
-        title: "Basics",
-        description: "Read French, say it in English — reverse practice.",
-        order: 5,
-        direction: "fr-en",
-        tags: ["basics", "greetings", "politeness"],
-    },
-    {
-        id: "fr-en-daily",
-        title: "Daily life",
-        description: "Everyday French lines decoded into natural English.",
-        order: 6,
-        direction: "fr-en",
-        tags: ["food", "cafe", "social", "travel"],
-    },
-];
+export type LessonPackManifest = {
+    id: string;
+    direction: LessonDirection;
+    source: string;
+    target: string;
+    label: string;
+    title: string;
+    description: string;
+    file: string;
+    lessonCount: number;
+};
+
+/** Shared unit map (same ids in every language pack). */
+export const UNITS: Unit[] = UNITS_JSON as Unit[];
+
+/** Supported direction packs shipped in-app as JSON. */
+export const LESSON_PACKS = MANIFEST_JSON.packs as LessonPackManifest[];
+export const SUPPORTED_DIRECTIONS = MANIFEST_JSON.supportedDirections as Exclude<
+    LessonDirection,
+    null
+>[];
+
+export const LESSONS_PATH_MAP: Record<
+    Exclude<LessonDirection, null>,
+    Lesson[]
+> = {
+    "en-fr": EN_FR as Lesson[],
+    "fr-en": FR_EN as Lesson[],
+};
 
 export function getLessonBySlug(
     slug: string,
     direction: LessonDirection,
 ): Lesson | undefined {
+    if (!direction) return undefined;
     const lessons = LESSONS_PATH_MAP[direction];
     return lessons.find((l) => l.slug === slug || l.id === slug);
 }
 
 export function getLessonsByDirection(direction: LessonDirection): Lesson[] {
-    return LESSONS_PATH_MAP[direction];
+    if (!direction) return [];
+    return LESSONS_PATH_MAP[direction] ?? [];
 }
 
 export async function getLessonsByUnit(
     unitId: string,
     direction: LessonDirection,
 ): Promise<Lesson[]> {
-    return LESSONS_PATH_MAP[direction].filter((l) => l.unitId === unitId);
+    return getLessonsByDirection(direction).filter((l) => l.unitId === unitId);
 }
 
 export function getUnit(unitId: string): Unit | undefined {
     return UNITS.find((u) => u.id === unitId);
 }
 
+export function getUnitsForDirection(direction: LessonDirection): Unit[] {
+    if (!direction) return [];
+    const used = new Set(
+        getLessonsByDirection(direction).map((l) => l.unitId),
+    );
+    return UNITS.filter((u) => used.has(u.id)).sort((a, b) => a.order - b.order);
+}
+
 export function getNextLesson(
     currentId: string,
     direction: LessonDirection,
 ): Lesson | undefined {
-    const lessons = LESSONS_PATH_MAP[direction];
+    const lessons = getLessonsByDirection(direction);
     const idx = lessons.findIndex((l) => l.id === currentId);
     if (idx < 0 || idx >= lessons.length - 1) return undefined;
     return lessons[idx + 1];
@@ -272,12 +249,24 @@ export function getPreviousLesson(
     currentId: string,
     direction: LessonDirection,
 ): Lesson | undefined {
-    const lessons = LESSONS_PATH_MAP[direction];
+    const lessons = getLessonsByDirection(direction);
     const idx = lessons.findIndex((l) => l.id === currentId);
     if (idx <= 0) return undefined;
     return lessons[idx - 1];
 }
 
 export function directionLabel(direction: LessonDirection): string {
-    return direction === "en-fr" ? "EN → FR" : "FR → EN";
+    if (!direction) return "";
+    const pack = LESSON_PACKS.find((p) => p.direction === direction);
+    return pack?.label ?? direction.toUpperCase();
+}
+
+export function isSupportedDirection(
+    direction: string | null | undefined,
+): direction is Exclude<LessonDirection, null> {
+    return (
+        direction === "en-fr" ||
+        direction === "fr-en" ||
+        SUPPORTED_DIRECTIONS.includes(direction as Exclude<LessonDirection, null>)
+    );
 }
