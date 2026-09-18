@@ -70,11 +70,11 @@ export default function LessonsPage() {
         [learningLanguage],
     );
 
-    const completedSet = new Set(progress.lessonsCompleted.get(primaryDirection) || []);
+    const completedSet = new Set(progress.lessonsCompleted.get(primaryDirection!) || []);
 
     const countFor = (direction: LessonDirection) => {
         const lessons = getLessonsByDirection(direction);
-        const completedIds = progress.lessonsCompleted.get(direction) || [];
+        const completedIds = progress.lessonsCompleted.get(direction!) || [];
         const done = lessons.filter((l) => completedIds.includes(l.id)).length;
         return { done, total: lessons.length };
     };
@@ -204,8 +204,8 @@ function UnitList({
 
                             <div className="w-full space-y-8 relative z-10">
                                 {unitLessons.map((lesson, index) => {
-                                    const lessonProgress = progress.lessonProgress.get(direction) ?? new Map<string, LessonProgressEntry>();
-                                    const lessonCompleted = progress.lessonsCompleted.get(direction) ?? [];
+                                    const lessonProgress = progress.lessonProgress.get(direction!) ?? new Map<string, LessonProgressEntry>();
+                                    const lessonCompleted = progress.lessonsCompleted.get(direction!) ?? [];
                                     const isCompleted = lessonProgress.has(lesson.id) && lessonProgress.get(lesson.id)?.completed;
                                     const inProgress = !isCompleted && lessonProgress.get(lesson.id)?.completed === false;
                                     const step = lessonProgress.get(lesson.id)?.currentStep ?? 0;
