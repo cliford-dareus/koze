@@ -84,28 +84,19 @@ export default function LessonsPage() {
         ? Math.round((primaryStats.done / primaryStats.total) * 100)
         : 0;
 
-    const onPickLearning = (code: "en" | "fr") => {
-        setLearningLanguage(code);
-        const local = loadLearningPrefs();
-        saveLearningPrefs({
-            learningLanguage: code,
-            nativeLanguage: code === "en" ? "fr" : local.nativeLanguage || "en",
-        });
-    };
-
     return (
         <div className="flex flex-col">
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
                 Lessons
             </p>
             <div className="my-6">
-                <div className="text-xs font-semibold uppercase tracking-wider text-[#79887C]">
+                <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     Your Learning Path
                 </div>
-                <h1 className="font-serif text-2xl sm:text-3xl font-semibold text-[#243327] tracking-tight mt-0.5">
+                <h1 className="font-serif text-2xl sm:text-3xl font-semibold text-primary tracking-tight mt-0.5">
                     Stepping Stones of {currentLang.name}
                 </h1>
-                <p className="text-xs sm:text-sm text-[#6C786E] mt-1">
+                <p className="text-xs sm:text-sm text-foreground mt-1">
                     Step from stone to stone with quiet curiosity. Lessons unlock as you walk.
                 </p>
             </div>
@@ -167,39 +158,35 @@ function UnitList({
 
                 return (
                     <section key={unit.id}>
-                        {/* Unit Header Card */}
-                        <div className="bg-card border border-[#E7E2D8] rounded-2xl p-5 sm:p-6">
+                        <div className="bg-card border border-border rounded-2xl p-5 sm:p-6">
                             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                                 <div>
-                                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#68756A]">
-                                        <Compass className="w-4 h-4 text-[#4D6D5A]" />
+                                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-foreground">
+                                        <Compass className="w-4 h-4 text-primary" />
                                         <span>Unit {unit.order}</span>
-                                        <span className="text-[#C0B9AA]">•</span>
+                                        <span className="text-muted-foreground">•</span>
                                         <span>
                                             {unitDone} of {unitLessons.length} lessons explored
                                         </span>
                                     </div>
-                                    <h3 className="font-serif text-2xl font-semibold text-[#253328] mt-1 tracking-tight">
+                                    <h3 className="font-serif text-2xl font-semibold text-primary mt-1 tracking-tight">
                                         {unit.title}
                                     </h3>
-                                    <p className="text-sm text-[#616E63] mt-1 leading-relaxed">
+                                    <p className="text-sm text-foreground mt-1 leading-relaxed">
                                         {unit.description}
                                     </p>
                                 </div>
 
                                 {isUnitCompleted && (
-                                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E3EDE6] text-[#2F523C] text-xs font-semibold border border-[#C5DACB] self-start sm:self-center">
-                                        <Sparkles className="w-3.5 h-3.5 text-[#4D705B]" />
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent text-primary text-xs font-semibold border border-primary/30 self-start sm:self-center">
+                                        <Sparkles className="w-3.5 h-3.5 text-primary" />
                                         Unit Mastered
                                     </div>
                                 )}
                             </div>
                         </div>
 
-
-                        {/* Stepping Stone Nodes Path */}
                         <div className="relative py-4 flex flex-col items-center">
-                            {/* Stepping stone path connector line */}
                             <div className="absolute top-6 bottom-6 w-0.5 bg-secondary -z-0" />
 
                             <div className="w-full space-y-8 relative z-10">
@@ -208,10 +195,8 @@ function UnitList({
                                     const lessonCompleted = progress.lessonsCompleted.get(direction!) ?? [];
                                     const isCompleted = lessonProgress.has(lesson.id) && lessonProgress.get(lesson.id)?.completed;
                                     const inProgress = !isCompleted && lessonProgress.get(lesson.id)?.completed === false;
-                                    const step = lessonProgress.get(lesson.id)?.currentStep ?? 0;
 
-                                    // Active if previous lesson is completed OR it's the very first lesson of first unit
-                                    const prevLesson = index > 0 ? unit.order === 1 ? null : unitLessons[index - 1] : null;
+                                    const prevLesson = index > 0 ? unitLessons[index - 1] : null;
                                     const isUnlocked =
                                         index === 0 ||
                                         (prevLesson
@@ -221,7 +206,6 @@ function UnitList({
 
                                     const isActive = isUnlocked && !isCompleted;
 
-                                    // Alternating left/center/right organic stepping stone placement
                                     const alignmentClasses = [
                                         'sm:translate-x-0',
                                         'sm:-translate-x-12',
@@ -234,7 +218,6 @@ function UnitList({
                                             className={`flex flex-col items-center transition-all ${alignmentClasses}`}
                                         >
                                             <div className="flex flex-col items-center">
-                                                {/* Stepping Stone Node Button */}
                                                 <button
                                                     id={`lesson-node-${lesson.id}`}
                                                     type="button"
@@ -245,52 +228,53 @@ function UnitList({
                                                             router.push(`/lessons/${lesson.slug}?direction=${direction}`);
                                                         }
                                                     }}
-                                                    className={`group relative w-18 h-18! sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center transition-all duration-300 ${isCompleted
-                                                        ? 'bg-[#E4ECE6] text-[#2E4E3A] border-2 border-[#BFD5C6] hover:bg-[#D7E3DA] hover:scale-105 shadow-xs cursor-pointer'
-                                                        : isActive
-                                                            ? 'bg-[#3F614C] text-white border-4 border-[#C7DACF] ring-4 ring-[#3F614C]/15 hover:scale-105 shadow-md cursor-pointer'
-                                                            : 'bg-[#EAE5DA] text-[#9EA79F] border-2 border-[#DCD6C9] cursor-not-allowed'
-                                                        }`}
+                                                    className={`group relative w-18 h-18! sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center transition-all duration-300 ${
+                                                        isCompleted
+                                                            ? 'bg-accent text-primary border-2 border-primary/30 hover:bg-accent hover:scale-105 shadow-xs cursor-pointer'
+                                                            : isActive
+                                                                ? 'bg-primary text-primary-foreground border-4 border-primary/30 ring-4 ring-primary/15 hover:scale-105 shadow-md cursor-pointer'
+                                                                : 'bg-secondary text-muted-foreground border-2 border-border cursor-not-allowed'
+                                                    }`}
                                                 >
                                                     {isCompleted ? (
-                                                        <Check className="w-8 h-8 text-[#365D46] stroke-[2.5]" />
+                                                        <Check className="w-8 h-8 text-primary stroke-[2.5]" />
                                                     ) : isActive ? (
                                                         <div className="flex flex-col items-center">
-                                                            <Play className="w-7 h-7 fill-white translate-x-0.5" />
+                                                            <Play className="w-7 h-7 fill-primary-foreground translate-x-0.5" />
                                                         </div>
                                                     ) : (
-                                                        <Lock className="w-6 h-6 text-[#9CA69E]" />
+                                                        <Lock className="w-6 h-6 text-muted-foreground" />
                                                     )}
 
-                                                    {/* XP Pill Floating Above */}
                                                     <div
-                                                        className={`absolute -top-3 px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider transition-colors ${isCompleted
-                                                            ? 'bg-[#E3EFE7] text-[#345942] border border-[#C6DDD0]'
-                                                            : isActive
-                                                                ? 'bg-[#FAF3EB] text-[#A25327] border border-[#E9DACD]'
-                                                                : 'bg-[#E3DFD4] text-[#868F87]'
-                                                            }`}
+                                                        className={`absolute -top-3 px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider transition-colors ${
+                                                            isCompleted
+                                                                ? 'bg-accent text-primary border border-primary/30'
+                                                                : isActive
+                                                                    ? 'bg-card text-destructive border border-border'
+                                                                    : 'bg-secondary text-muted-foreground'
+                                                        }`}
                                                     >
                                                         +{lesson.xp} XP
                                                     </div>
                                                 </button>
 
-                                                {/* Lesson Title & Brief details */}
                                                 <div className="mt-3 text-center max-w-xs px-2">
                                                     <h4
-                                                        className={`text-sm font-semibold tracking-tight ${isActive
-                                                            ? 'text-[#223326] font-bold'
-                                                            : isCompleted
-                                                                ? 'text-[#3E4F42]'
-                                                                : 'text-[#879088]'
-                                                            }`}
+                                                        className={`text-sm font-semibold tracking-tight ${
+                                                            isActive
+                                                                ? 'text-primary font-bold'
+                                                                : isCompleted
+                                                                    ? 'text-primary'
+                                                                    : 'text-muted-foreground'
+                                                        }`}
                                                     >
                                                         {lesson.title}
                                                     </h4>
-                                                    <p className="text-xs text-[#6F7A71] line-clamp-1 mt-0.5">
+                                                    <p className="text-xs text-muted-foreground line-clamp-1 mt-0.5">
                                                         {lesson.description}
                                                     </p>
-                                                    <div className="flex items-center justify-center gap-2 mt-1 text-[11px] text-[#7C887E]">
+                                                    <div className="flex items-center justify-center gap-2 mt-1 text-[11px] text-muted-foreground">
                                                         <span>{lesson.estimatedMinutes} min</span>
                                                         <span>•</span>
                                                         <span className="flex items-center gap-0.5">
@@ -301,7 +285,7 @@ function UnitList({
                                                 </div>
                                             </div>
                                         </div>
-                                    )
+                                    );
                                 })}
                             </div>
                         </div>
