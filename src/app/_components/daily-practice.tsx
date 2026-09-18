@@ -15,12 +15,8 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
 
     const course = getLessonsByDirection(progress.lessonDirection);
 
-    // Gather a mix of questions from the current course
     const [practiceQuestions] = useState<LessonStep[]>(() => {
         const allQuestions: any[] = [];
-
-        // loop through the course and collect check questions
-        //  from different units]
         const isCheck = (step: LessonStep) => step.type === 'check';
         const isContextDialogue = (step: LessonStep) => step.type === 'context-dialogue';
 
@@ -33,10 +29,7 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                 }
             }
         }
-        // Shuffle the questions
         allQuestions.sort(() => Math.random() - 0.5);
-
-        // Pick 3 or 4 questions
         return allQuestions.slice(0, 4);
     });
 
@@ -53,10 +46,6 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
         sound.playPebbleTap(progress.soundEnabled);
         setSelectedOption(option);
         speak(option, currentLang.voice);
-    };
-    
-    const persistProgress = () => {
-        
     };
 
     const handleCheck = () => {
@@ -94,12 +83,6 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
         }
     };
 
-    const onCompletePractice = (time: number, xpEarned: number) => {
-        sound.playMilestoneHarp(progress.soundEnabled);
-        setIsFinished(true);
-        // persistProgress(time, xpEarned);
-    };
-
     return (
         <div
             id="daily-practice-modal"
@@ -108,21 +91,19 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
             <div className="w-full max-w-xl bg-card p-6 sm:p-8 shadow-2xl space-y-6 relative">
                 {!isFinished ? (
                     <>
-                        {/* Header */}
                         <div>
-                            <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#557A66]">
+                            <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
                                 <Sparkles className="w-3.5 h-3.5" />
                                 <span>Mindful Daily Practice (3 min)</span>
                             </div>
-                            <h2 className="font-serif text-2xl font-semibold text-[#243327] tracking-tight mt-1">
+                            <h2 className="font-serif text-2xl font-semibold text-primary tracking-tight mt-1">
                                 Gentle Recall ({currentIndex + 1} of {practiceQuestions.length})
                             </h2>
                         </div>
 
-                        {/* Question */}
                         {currentQ && (
                             <div className="space-y-4">
-                                <div className="text-lg font-medium text-[#223326]">
+                                <div className="text-lg font-medium text-primary">
                                     {"prompt" in currentQ && currentQ.prompt}
                                 </div>
 
@@ -130,14 +111,13 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                                     <button
                                         type="button"
                                         onClick={() => speak(currentQ.audioText!, currentLang.voice)}
-                                        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EFECE4] text-xs font-medium text-[#2C382E]"
+                                        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary text-xs font-medium text-primary"
                                     >
-                                        <Volume2 className="w-3.5 h-3.5 text-[#4D6D5A]" />
+                                        <Volume2 className="w-3.5 h-3.5 text-primary" />
                                         <span>Listen audio</span>
                                     </button>
                                 )}
 
-                                {/* Options if MC/listening */}
                                 {'options' in currentQ && (
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
                                         {currentQ.options.map((opt: string, i: number) => {
@@ -148,10 +128,11 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                                                     type="button"
                                                     disabled={isAnswerChecked}
                                                     onClick={() => handleSelect(opt)}
-                                                    className={`p-3.5 rounded-xl border text-left text-sm font-medium transition-all ${isSelected
-                                                        ? 'bg-[#EAF2ED] border-[#4D6F5A] text-[#243527]'
-                                                        : 'bg-[#FAF7F0] border-[#E6E0D4] hover:border-[#CDC5B5]'
-                                                        }`}
+                                                    className={`p-3.5 rounded-xl border text-left text-sm font-medium transition-all ${
+                                                        isSelected
+                                                            ? 'bg-accent border-primary text-primary'
+                                                            : 'bg-card border-border hover:border-border'
+                                                    }`}
                                                 >
                                                     {opt}
                                                 </button>
@@ -162,9 +143,8 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                             </div>
                         )}
 
-                        {/* Bottom Bar */}
-                        <div className="pt-4 border-t border-[#EAE5DC] flex items-center justify-between">
-                            <span className="text-xs text-[#7B877E]">
+                        <div className="pt-4 border-t border-border flex items-center justify-between">
+                            <span className="text-xs text-muted-foreground">
                                 {isAnswerChecked
                                     ? isCorrect
                                         ? 'Serene and accurate.'
@@ -177,10 +157,11 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                                     type="button"
                                     disabled={!selectedOption}
                                     onClick={handleCheck}
-                                    className={`px-5 py-2 rounded-full text-xs font-semibold transition-all ${selectedOption
-                                        ? 'bg-[#3F614C] text-white hover:bg-[#34513F]'
-                                        : 'bg-[#E3DFD4] text-[#9EA79F] cursor-not-allowed'
-                                        }`}
+                                    className={`px-5 py-2 rounded-full text-xs font-semibold transition-all ${
+                                        selectedOption
+                                            ? 'bg-primary text-primary-foreground hover:bg-primary/90'
+                                            : 'bg-secondary text-muted-foreground cursor-not-allowed'
+                                    }`}
                                 >
                                     Check
                                 </button>
@@ -188,7 +169,7 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                                 <button
                                     type="button"
                                     onClick={handleNext}
-                                    className="px-5 py-2 rounded-full bg-[#3F614C] hover:bg-[#34513F] text-white text-xs font-semibold flex items-center gap-1.5"
+                                    className="px-5 py-2 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-semibold flex items-center gap-1.5"
                                 >
                                     <span>Continue</span>
                                     <ArrowRight className="w-3.5 h-3.5" />
@@ -197,30 +178,29 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                         </div>
                     </>
                 ) : (
-                    /* Finished Screen */
                     <div className="text-center py-4 space-y-5">
-                        <div className="w-16 h-16 rounded-full bg-[#E5EFE7] border-2 border-[#C5DDD0] flex items-center justify-center text-[#3D664D] mx-auto">
+                        <div className="w-16 h-16 rounded-full bg-accent border-2 border-primary/30 flex items-center justify-center text-primary mx-auto">
                             <Check className="w-8 h-8" />
                         </div>
 
                         <div>
-                            <div className="text-xs font-semibold uppercase tracking-wider text-[#52745F]">
+                            <div className="text-xs font-semibold uppercase tracking-wider text-primary">
                                 Mindful Intention Fulfilled
                             </div>
-                            <h3 className="font-serif text-2xl font-semibold text-[#243327] mt-1">
+                            <h3 className="font-serif text-2xl font-semibold text-primary mt-1">
                                 Daily Rhythm Preserved
                             </h3>
-                            <p className="text-xs sm:text-sm text-[#6A786E] mt-1">
+                            <p className="text-xs sm:text-sm text-foreground mt-1">
                                 You dedicated 3 quiet minutes to language and peace today.
                             </p>
                         </div>
 
                         <div className="flex items-center justify-center gap-4 py-2">
-                            <div className="px-4 py-2 bg-[#F3EFE6] rounded-xl border border-[#E7E0D3] text-xs font-semibold text-[#8E4922] flex items-center gap-1.5">
-                                <Flame className="w-4 h-4 fill-[#8E4922]/30" />
+                            <div className="px-4 py-2 bg-card rounded-xl border border-border text-xs font-semibold text-destructive flex items-center gap-1.5">
+                                <Flame className="w-4 h-4 fill-destructive/30" />
                                 <span>Streak Protected</span>
                             </div>
-                            <div className="px-4 py-2 bg-[#EBF2EE] rounded-xl border border-[#D2E2D7] text-xs font-semibold text-[#375B44]">
+                            <div className="px-4 py-2 bg-accent rounded-xl border border-primary/30 text-xs font-semibold text-primary">
                                 +25 Lotus XP
                             </div>
                         </div>
@@ -229,9 +209,8 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                             type="button"
                             onClick={() => {
                                 sound.playPebbleTap(progress.soundEnabled);
-                                // onCompletePractice(3, 25);
                             }}
-                            className="w-full py-3 rounded-full bg-[#3F614C] hover:bg-[#34513F] text-white text-sm font-semibold transition-all"
+                            className="w-full py-3 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-semibold transition-all"
                         >
                             Return with Peace
                         </button>
