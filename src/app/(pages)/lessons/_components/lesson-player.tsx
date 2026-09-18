@@ -51,7 +51,7 @@ export default function LessonPlayer({
     useEffect(() => {
         const p = loadProgress();
         const completed =
-            p.lessonsCompleted?.get?.(direction) ??
+            p.lessonsCompleted?.get?.(direction!) ??
             (Array.isArray(p.lessonsCompleted) ? p.lessonsCompleted : []);
         const completedIds = Array.isArray(completed)
             ? completed
@@ -64,7 +64,7 @@ export default function LessonPlayer({
         });
         setLesson(enhanced);
 
-        const directionLesson = p.lessonProgress?.get?.(direction);
+        const directionLesson = p.lessonProgress?.get?.(direction!);
         const entry = directionLesson?.get?.(rawLesson.id);
         if (entry?.completed) {
             setFinished(true);
