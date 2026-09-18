@@ -4,9 +4,7 @@ import { isSupportedDirection } from "@/data/lessons";
 export const LEARNING_PREFS_KEY = "koze-learning-prefs-v1";
 
 export type LearningPrefs = {
-    /** Language the user wants to learn (e.g. en, fr, es) */
     learningLanguage: string;
-    /** Language they already speak */
     nativeLanguage: string;
 };
 
@@ -21,10 +19,7 @@ export function loadLearningPrefs(): LearningPrefs {
         const raw = localStorage.getItem(LEARNING_PREFS_KEY);
         if (!raw) return defaultLearningPrefs();
         const parsed = JSON.parse(raw) as Partial<LearningPrefs>;
-        return {
-            ...defaultLearningPrefs(),
-            ...parsed,
-        };
+        return { ...defaultLearningPrefs(), ...parsed };
     } catch {
         return defaultLearningPrefs();
     }
@@ -41,10 +36,8 @@ export function saveLearningPrefs(prefs: LearningPrefs) {
 }
 
 /**
- * Map “I am learning X” (+ native language) → lesson pack direction.
- * - Learning English → `{native}-en` (e.g. fr-en, es-en)
- * - Learning another language from English → `en-{code}` (e.g. en-fr, en-es)
- * - Falls back to en-fr / fr-en when a pack is missing
+ * Map learning + native language → lesson pack direction.
+ * Prefers en-{code} / {native}-en when those packs are registered in LESSONS_PATH_MAP.
  */
 export function directionForLearningLanguage(
     learningLanguage: string,
@@ -54,13 +47,15 @@ export function directionForLearningLanguage(
     const native = (nativeLanguage || "en").toLowerCase().split("-")[0];
 
     if (learn === "en") {
-        const dir = `${native}-en`;
+        const dir = `${native}-en` as LessonDirection;
         if (isSupportedDirection(dir)) return dir;
         return "fr-en";
     }
 
-    const dir = `en-${learn}`;
+    const dir = `en-${learn}` as LessonDirection;
     if (isSupportedDirection(dir)) return dir;
+    // French is always available
+    if (learn === "fr") return "en-fr";
     return "en-fr";
 }
 

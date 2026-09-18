@@ -2,27 +2,12 @@ import UNITS_JSON from "./lessons/units.json";
 import MANIFEST_JSON from "./lessons/manifest.json";
 import EN_FR from "./en-fr.json";
 import FR_EN from "./fr-en.json";
-import EN_ES from "./en-es.json";
-import ES_EN from "./es-en.json";
-import EN_HT from "./en-ht.json";
-import HT_EN from "./ht-en.json";
-import EN_PT from "./en-pt.json";
-import PT_EN from "./pt-en.json";
-import EN_DE from "./en-de.json";
-import DE_EN from "./de-en.json";
-import EN_IT from "./en-it.json";
-import IT_EN from "./it-en.json";
-import EN_ZH from "./en-zh.json";
-import ZH_EN from "./zh-en.json";
-import EN_JA from "./en-ja.json";
-import JA_EN from "./ja-en.json";
-import EN_KO from "./en-ko.json";
-import KO_EN from "./ko-en.json";
-import EN_AR from "./en-ar.json";
-import AR_EN from "./ar-en.json";
-import EN_HI from "./en-hi.json";
-import HI_EN from "./hi-en.json";
 
+/**
+ * Directions that currently have JSON on disk.
+ * Additional packs (en-es, es-en, …) are generated via
+ * `node scripts/generate-lesson-packs.mjs` and registered below.
+ */
 export type LessonDirection =
     | "en-fr"
     | "fr-en"
@@ -214,29 +199,16 @@ export const SUPPORTED_DIRECTIONS = MANIFEST_JSON.supportedDirections as Exclude
     null
 >[];
 
-export const LESSONS_PATH_MAP: Record<Exclude<LessonDirection, null>, Lesson[]> = {
+/**
+ * Only packs that are committed under src/data/*.json are listed here.
+ * After running `node scripts/generate-lesson-packs.mjs`, extend this map
+ * (and the static imports above) for each new file.
+ */
+export const LESSONS_PATH_MAP: Partial<
+    Record<Exclude<LessonDirection, null>, Lesson[]>
+> = {
     "en-fr": EN_FR as Lesson[],
     "fr-en": FR_EN as Lesson[],
-    "en-es": EN_ES as Lesson[],
-    "es-en": ES_EN as Lesson[],
-    "en-ht": EN_HT as Lesson[],
-    "ht-en": HT_EN as Lesson[],
-    "en-pt": EN_PT as Lesson[],
-    "pt-en": PT_EN as Lesson[],
-    "en-de": EN_DE as Lesson[],
-    "de-en": DE_EN as Lesson[],
-    "en-it": EN_IT as Lesson[],
-    "it-en": IT_EN as Lesson[],
-    "en-zh": EN_ZH as Lesson[],
-    "zh-en": ZH_EN as Lesson[],
-    "en-ja": EN_JA as Lesson[],
-    "ja-en": JA_EN as Lesson[],
-    "en-ko": EN_KO as Lesson[],
-    "ko-en": KO_EN as Lesson[],
-    "en-ar": EN_AR as Lesson[],
-    "ar-en": AR_EN as Lesson[],
-    "en-hi": EN_HI as Lesson[],
-    "hi-en": HI_EN as Lesson[],
 };
 
 export function getLessonBySlug(
@@ -300,5 +272,5 @@ export function isSupportedDirection(
     direction: string | null | undefined,
 ): direction is Exclude<LessonDirection, null> {
     if (!direction) return false;
-    return SUPPORTED_DIRECTIONS.includes(direction as Exclude<LessonDirection, null>);
+    return direction in LESSONS_PATH_MAP;
 }
