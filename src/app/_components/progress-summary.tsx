@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import {
-    defaultProgress,
-    loadProgress,
     type ProgressState,
 } from "@/lib/progress";
 import {
@@ -11,31 +9,15 @@ import {
     ensureTodayCounters,
     levelProgress,
 } from "@/lib/gamification";
-import BadgesPanel from "@/app/_components/badges-panel";
-import { ArrowRight, Check, Flame } from "lucide-react";
+import { ArrowRight, Check, Clock, Flame } from "lucide-react";
+import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
+import { sound } from "@/lib/sound";
+import DailyPractice from "./daily-practice";
 
-export default function ProgressSummary() {
+export default function ProgressSummary({ progress, ready }: { progress: ProgressState; ready: boolean; }) {
     const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     const today = new Date();
     const todayDayIndex = (today.getDay() + 6) % 7;
-
-    const [progress, setProgress] = useState<ProgressState>(defaultProgress());
-    const [ready, setReady] = useState(false);
-
-    useEffect(() => {
-        const refresh = () => {
-            const p = ensureTodayCounters(loadProgress());
-            setProgress(p);
-        };
-        refresh();
-        setReady(true);
-        window.addEventListener("storage", refresh);
-        window.addEventListener("koze-progress", refresh);
-        return () => {
-            window.removeEventListener("storage", refresh);
-            window.removeEventListener("koze-progress", refresh);
-        };
-    }, []);
 
     const levelInfo = useMemo(
         () => levelProgress(progress.xp ?? 0),
@@ -52,6 +34,15 @@ export default function ProgressSummary() {
         progress.lessonsCompletedCount ||
         progress.lessonsCompleted?.get(progress.lessonDirection!)?.length ||
         0;
+
+    const percentComplete = Math.min(
+        100,
+        Math.round((progress.todayMinutesPracticed / progress.dailyGoalMinutes) * 100)
+    );
+
+    const onUpdateDailyGoal = (mins: number) => {
+
+    };
 
     return (
         <div className="mt-6 space-y-3">
@@ -75,18 +66,25 @@ export default function ProgressSummary() {
                 </div>
 
                 {/* Daily Practice CTA */}
-                <button
-                    id="start-daily-practice-cta-btn"
-                    type="button"
-                    onClick={() => {
-                        // sound.playPebbleTap(progress.soundEnabled);
-                        // onStartDailyPractice();
-                    }}
-                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#3F614C] hover:bg-[#34513F] text-white text-sm font-medium transition-all shadow-xs hover:shadow-md cursor-pointer whitespace-nowrap"
-                >
-                    <span>{goalMet ? 'Bonus Practice' : 'Practice Today (3 actions)'}</span>
-                    <ArrowRight className="w-4 h-4" />
-                </button>
+                <Drawer>
+                    <DrawerTrigger asChild>
+                        <button
+                            id="start-daily-practice-cta-btn"
+                            type="button"
+                            onClick={() => {
+                                sound.playPebbleTap(progress.soundEnabled);
+                            }}
+                            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#3F614C] hover:bg-[#34513F] text-white text-sm font-medium transition-all shadow-xs hover:shadow-md cursor-pointer whitespace-nowrap"
+                        >
+                            <span>{goalMet ? 'Bonus Practice' : 'Practice Today (3 actions)'}</span>
+                            <ArrowRight className="w-4 h-4" />
+                        </button>
+                    </DrawerTrigger>
+                    <DrawerContent>
+                        <DailyPractice progress={progress} />
+                    </DrawerContent>
+                </Drawer>
+
                 {goalMet ? (
                     <p className="mt-2 text-xs text-muted-foreground">
                         Daily goal met · +15 XP bonus applied
@@ -144,8 +142,51 @@ export default function ProgressSummary() {
                     </div>
                 </div>
 
+                {/* Today's Goal Progress & Setting */}
+                <div className="mt-4 pt-5 border-t border-[#EDE8DE] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex-1 max-w-sm">
+                        <div className="flex items-center justify-between text-xs text-[#5C665F] mb-1.5">
+                            <span className="flex items-center gap-1 font-medium">
+                                <Clock className="w-3.5 h-3.5 text-[#557A66]" />
+                                Today's Focus: {progress.todayMinutesPracticed} of {progress.dailyGoalMinutes} min
+                            </span>
+                            <span className="font-semibold text-[#3D5C49]">{percentComplete}%</span>
+                        </div>
+                        <div className="w-full h-2.5 bg-[#EAE5DA] rounded-full overflow-hidden">
+                            <div
+                                className="h-full bg-[#4D6F5A] rounded-full transition-all duration-500"
+                                style={{ width: `${percentComplete}%` }}
+                            />
+                        </div>
+                    </div>
+
+                    {/* Adjust Daily Goal Presets */}
+                    <div className="flex items-center gap-2">
+                        <span className="text-xs text-[#717C73] whitespace-nowrap">Daily target:</span>
+                        {[5, 10, 15].map((mins) => {
+                            const isSelected = progress.dailyGoalMinutes === mins;
+                            return (
+                                <button
+                                    key={mins}
+                                    type="button"
+                                    onClick={() => {
+                                        sound.playPebbleTap(progress.soundEnabled);
+                                        onUpdateDailyGoal(mins);
+                                    }}
+                                    className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${isSelected
+                                        ? 'bg-[#3F614C] text-white'
+                                        : 'bg-[#EFECE4] text-[#4E5950] hover:bg-[#E5E1D6]'
+                                        }`}
+                                >
+                                    {mins}m
+                                </button>
+                            );
+                        })}
+                    </div>
+                </div>
+
                 {/* USERS LEVEL */}
-                <div className="">
+                <div className="mt-4">
                     <div className="flex items-center justify-between gap-3">
                         <div>
                             <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">

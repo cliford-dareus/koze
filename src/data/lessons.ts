@@ -1,7 +1,7 @@
 import EN_FR from "./en-fr.json";
 import FR_EN from "./fr-en.json";
 
-export type LessonDirection = "en-fr" | "fr-en";
+export type LessonDirection = "en-fr" | "fr-en" | null;
 
 /** Function / topic tags for review and curriculum filtering. */
 export type LessonTag =

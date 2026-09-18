@@ -6,18 +6,30 @@ import KOZE_LOGO from "../../../public/koze-logo.png";
 import AuthMenu from "./auth-menu";
 import { useEffect, useRef, useState } from "react";
 import { LanguageOption, LANGUAGES } from "../../lib/languages";
-import { loadProgress, ProgressState } from "../../lib/progress";
+import { loadProgress, ProgressState, saveProgress } from "../../lib/progress";
 import { sound } from "@/lib/sound";
 import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
 import ZenGarden from "./zen-garden";
+import { LessonDirection } from "@/data/lessons";
 
 export default function MainHeader({ progress, ready }: { progress: ProgressState; ready: boolean; }) {
     const [langDropdownOpen, setLangDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const currentLang =
-        LANGUAGES.find((l) => l.value === progress.lessonDirection.split('-')[1]) ||
+        LANGUAGES.find((l) => l.value === progress.learningLanguage) ||
         LANGUAGES[0];
+
+    // Language Change Handler
+    const handleSelectLanguage = (langId: string) => {
+        const updated: ProgressState = {
+            ...progress,
+            learningLanguage: langId,
+            lessonDirection: `${progress.lessonDirection?.split("-")[0]}-${langId}` as LessonDirection
+        };
+        // setProgress(updated);
+        saveProgress(updated);
+    };
 
     useEffect(() => {
         function handleClickOutside(e: MouseEvent) {
@@ -80,7 +92,7 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
                                     Select Path
                                 </div>
                                 {LANGUAGES.map((lang: LanguageOption) => {
-                                    const isSelected = lang.value === progress.lessonDirection.split('-')[1];
+                                    const isSelected = lang.value === progress.learningLanguage;
                                     return (
                                         <button
                                             key={lang.id}
@@ -88,7 +100,7 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
                                             type="button"
                                             onClick={() => {
                                                 sound.playPebbleTap(progress.soundEnabled);
-                                                // onSelectLanguage(lang.id);
+                                                handleSelectLanguage(lang.value);
                                                 setLangDropdownOpen(false);
                                             }}
                                             className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-left transition-colors ${isSelected

@@ -1,5 +1,5 @@
 export type LanguageOption = {
-    id: number;
+    id: string;
     name: string;
     value: string;
     voice: string;
@@ -13,7 +13,7 @@ export type LanguageOption = {
 /** Languages offered in the translate UI (codes match common APIs). */
 export const LANGUAGES: LanguageOption[] = [
     {
-        id: 1, name: "English", value: "en", voice: "en-US",
+        id: "english", name: "English", value: "en", voice: "en-US",
         nativeName: 'English',
         flag: '🇬🇧',
         themeColor: '#4A6FA5', // Steel Blue
@@ -21,7 +21,7 @@ export const LANGUAGES: LanguageOption[] = [
         description: 'Embrace warm connections, heartfelt conversations, and relaxed daily rhythms.',
     },
     {
-        id: 2, name: "French", value: "fr", voice: "fr-FR",
+        id: "french", name: "French", value: "fr", voice: "fr-FR",
         nativeName: 'Français',
         flag: '🇫🇷',
         themeColor: '#3B5998', // Classic Blue
@@ -29,7 +29,7 @@ export const LANGUAGES: LanguageOption[] = [
         description: 'Savor refined elegance, poetic expression, and the art of everyday conversation.',
     },
     {
-        id: 3, name: "Spanish", value: "es", voice: "es-ES",
+        id: "spanish", name: "Spanish", value: "es", voice: "es-ES",
         nativeName: 'Español',
         flag: '🇪🇸',
         themeColor: '#B86F50', // Warm Terracotta
@@ -37,7 +37,7 @@ export const LANGUAGES: LanguageOption[] = [
         description: 'Embrace warm connections, heartfelt conversations, and relaxed daily rhythms.',
     },
     {
-        id: 4, name: "Haitian Creole", value: "ht", voice: "ht-HT",
+        id: "haitian-creole", name: "Haitian Creole", value: "ht", voice: "ht-HT",
         nativeName: 'Kreyòl Ayisyen',
         flag: '🇭🇹',
         themeColor: '#1E88A8', // Caribbean Teal
@@ -45,7 +45,7 @@ export const LANGUAGES: LanguageOption[] = [
         description: 'Celebrate vibrant culture, resilient spirit, and close-knit community bonds.',
     },
     {
-        id: 5, name: "Portuguese", value: "pt", voice: "pt-PT",
+        id: "portuguese", name: "Portuguese", value: "pt", voice: "pt-PT",
         nativeName: 'Português',
         flag: '🇵🇹',
         themeColor: '#2E7D5B', // Coastal Green
@@ -53,7 +53,7 @@ export const LANGUAGES: LanguageOption[] = [
         description: 'Discover coastal charm, lively storytelling, and unhurried, sociable days.',
     },
     {
-        id: 6, name: "German", value: "de", voice: "de-DE",
+        id: "german", name: "German", value: "de", voice: "de-DE",
         nativeName: 'Deutsch',
         flag: '🇩🇪',
         themeColor: '#4B4B4B', // Slate Grey
@@ -61,7 +61,7 @@ export const LANGUAGES: LanguageOption[] = [
         description: 'Value precision, honest dialogue, and dependable structure in daily life.',
     },
     {
-        id: 7, name: "Italian", value: "it", voice: "it-IT",
+        id: "italian", name: "Italian", value: "it", voice: "it-IT",
         nativeName: 'Italiano',
         flag: '🇮🇹',
         themeColor: '#C0443A', // Tuscan Red
@@ -69,7 +69,7 @@ export const LANGUAGES: LanguageOption[] = [
         description: 'Indulge in expressive gestures, good food, and passionate conversation.',
     },
     {
-        id: 8, name: "Chinese", value: "zh", voice: "zh-CN",
+        id: "chinese", name: "Chinese", value: "zh", voice: "zh-CN",
         nativeName: '中文',
         flag: '🇨🇳',
         themeColor: '#C0392B', // Lucky Red
@@ -77,7 +77,7 @@ export const LANGUAGES: LanguageOption[] = [
         description: 'Honor deep tradition, family harmony, and thoughtful, layered communication.',
     },
     {
-        id: 9, name: "Japanese", value: "ja", voice: "ja-JP",
+        id: "japanese", name: "Japanese", value: "ja", voice: "ja-JP",
         nativeName: '日本語',
         flag: '🇯🇵',
         themeColor: '#D65A5A', // Soft Vermillion
@@ -85,7 +85,7 @@ export const LANGUAGES: LanguageOption[] = [
         description: 'Appreciate quiet respect, subtle nuance, and mindful daily rituals.',
     },
     {
-        id: 10, name: "Korean", value: "ko", voice: "ko-KR",
+        id: "korean", name: "Korean", value: "ko", voice: "ko-KR",
         nativeName: '한국어',
         flag: '🇰🇷',
         themeColor: '#5B7FBA', // Cool Sky Blue
@@ -93,7 +93,7 @@ export const LANGUAGES: LanguageOption[] = [
         description: 'Blend modern energy with deep respect, warmth, and close community ties.',
     },
     {
-        id: 11, name: "Arabic", value: "ar", voice: "ar-SA",
+        id: "arabic", name: "Arabic", value: "ar", voice: "ar-SA",
         nativeName: 'العربية',
         flag: '🇸🇦',
         themeColor: '#1F7A5C', // Deep Emerald
@@ -101,7 +101,7 @@ export const LANGUAGES: LanguageOption[] = [
         description: 'Cherish generous hospitality, rich storytelling, and strong family ties.',
     },
     {
-        id: 12, name: "Hindi", value: "hi", voice: "hi-IN",
+        id: "hindi", name: "Hindi", value: "hi", voice: "hi-IN",
         nativeName: 'हिन्दी',
         flag: '🇮🇳',
         themeColor: '#D97B2E', // Saffron Orange

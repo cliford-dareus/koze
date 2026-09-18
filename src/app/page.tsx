@@ -8,10 +8,6 @@ import {
     LucideMessageCircle,
 } from "lucide-react";
 import { getRandomWord } from "./_actions/translate";
-import WordOfTheDay from "./_components/word-of-the-day";
-import MainHeader from "./_components/main-header";
-import ProgressSummary from "./_components/progress-summary";
-import Hero from "./_components/hero";
 import { LandingPage } from "./_components/landing-page";
 
 const ACTIVITIES = [

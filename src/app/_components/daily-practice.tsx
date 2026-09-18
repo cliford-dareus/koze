@@ -54,6 +54,10 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
         setSelectedOption(option);
         speak(option, currentLang.voice);
     };
+    
+    const persistProgress = () => {
+        
+    };
 
     const handleCheck = () => {
         if (!currentQ || !selectedOption) return;
@@ -88,6 +92,12 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
             sound.playMilestoneHarp(progress.soundEnabled);
             setIsFinished(true);
         }
+    };
+
+    const onCompletePractice = (time: number, xpEarned: number) => {
+        sound.playMilestoneHarp(progress.soundEnabled);
+        setIsFinished(true);
+        // persistProgress(time, xpEarned);
     };
 
     return (

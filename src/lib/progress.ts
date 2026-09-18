@@ -42,12 +42,18 @@ export type ProgressState = {
     lessonProgress: Map<string, Map<string, LessonProgressEntry>>;
     lessonsCompleted: Map<string, string[]>;
     lessonDirection: LessonDirection;
+    nativeLanguage: string | null;
+    learningLanguage: string | null;
     xp: number;
     dailyGoal: number;
     todayActions: number;
     todayXp: number;
     todayDate: string | null;
     dailyGoalMet: boolean;
+    
+    todayMinutesPracticed: number;
+    dailyGoalMinutes: number;
+    
     /** Earned badge ids */
     badges: string[];
     cairnStonesCount: number;
@@ -73,13 +79,17 @@ export const defaultProgress = (): ProgressState => ({
     lastLessonId: null,
     lessonProgress: new Map(),
     lessonsCompleted: new Map(),
-    lessonDirection: "fr-en",
+    lessonDirection: null,
+    nativeLanguage: null,
+    learningLanguage: null,
     xp: 0,
     dailyGoal: DEFAULT_DAILY_GOAL,
     todayActions: 0,
     todayXp: 0,
     todayDate: null,
     dailyGoalMet: false,
+    todayMinutesPracticed: 0,
+    dailyGoalMinutes: DEFAULT_DAILY_GOAL,
     badges: [],
     cairnStonesCount: 0,
     soundEnabled: true,
@@ -252,7 +262,7 @@ export function recordActivity(
         next = { ...next, readingSessions: next.readingSessions + 1 };
     if (kind === "quiz") next = { ...next, quizCorrect: next.quizCorrect + 1 };
     if (kind === "practice")
-        next = { ...next, practiceSessions: (next.practiceSessions || 0) + 1 };
+        next = { ...next, practiceSessions: (next.practiceSessions || 0) + 1 };    
 
     if (kind === "lesson" && extra?.lessonId) {
         const lessonId = extra.lessonId;
