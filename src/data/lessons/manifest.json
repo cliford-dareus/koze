@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "packs": [
+    {
+      "id": "en-fr",
+      "direction": "en-fr",
+      "source": "en",
+      "target": "fr",
+      "label": "EN → FR",
+      "title": "English to French",
+      "description": "Learn French from English prompts and explanations.",
+      "file": "packs/en-fr.json",
+      "lessonCount": 25
+    },
+    {
+      "id": "fr-en",
+      "direction": "fr-en",
+      "source": "fr",
+      "target": "en",
+      "label": "FR → EN",
+      "title": "French to English",
+      "description": "Decode French into natural English.",
+      "file": "packs/fr-en.json",
+      "lessonCount": 25
+    }
+  ],
+  "supportedDirections": ["en-fr", "fr-en"]
+}

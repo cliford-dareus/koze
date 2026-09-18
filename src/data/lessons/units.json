@@ -1,0 +1,58 @@
+[
+  {
+    "id": "foundations",
+    "title": "Foundations",
+    "description": "Greetings, politeness, numbers, and first introductions.",
+    "order": 1,
+    "tags": ["basics", "greetings", "politeness", "numbers"]
+  },
+  {
+    "id": "everyday",
+    "title": "Everyday life",
+    "description": "Café, food, small talk, and daily plans.",
+    "order": 2,
+    "tags": ["food", "cafe", "social", "shopping"]
+  },
+  {
+    "id": "travel",
+    "title": "Travel",
+    "description": "Directions, tickets, hotels, and getting around.",
+    "order": 3,
+    "tags": ["travel", "directions", "transport"]
+  },
+  {
+    "id": "health-safety",
+    "title": "Health & safety",
+    "description": "Pharmacy, feeling unwell, and asking for help.",
+    "order": 4,
+    "tags": ["basics"]
+  },
+  {
+    "id": "time-dates",
+    "title": "Time & dates",
+    "description": "Telling time, days, months, and dates.",
+    "order": 5,
+    "tags": ["time", "basics"]
+  },
+  {
+    "id": "family-friends",
+    "title": "Family & friends",
+    "description": "Talking about the people closest to you.",
+    "order": 6,
+    "tags": ["social", "home"]
+  },
+  {
+    "id": "shopping",
+    "title": "Shopping",
+    "description": "Clothes, sizes, and store conversations.",
+    "order": 7,
+    "tags": ["shopping"]
+  },
+  {
+    "id": "grammar-core",
+    "title": "Grammar core",
+    "description": "Gender, articles, present tense, and questions.",
+    "order": 8,
+    "tags": ["grammar", "basics"]
+  }
+]
