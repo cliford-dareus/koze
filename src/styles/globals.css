@@ -98,6 +98,7 @@
     -moz-osx-font-smoothing: grayscale;
     height: 100%;
     color-scheme: light;
+    background-color: hsl(var(--background));
   }
 
   html.dark {
@@ -167,6 +168,7 @@
   }
 
   .app-shell {
+    @apply bg-background text-foreground;
     display: flex;
     min-height: 100%;
     flex-direction: column;
@@ -177,6 +179,7 @@
   }
 
   .app-shell-nested {
+    @apply bg-background text-foreground;
     display: flex;
     min-height: 100%;
     flex-direction: column;
@@ -188,6 +191,7 @@
   }
 
   .app-shell-auth {
+    @apply bg-background text-foreground;
     display: flex;
     min-height: 100%;
     flex-direction: column;
