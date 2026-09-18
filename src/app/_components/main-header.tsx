@@ -20,14 +20,12 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
         LANGUAGES.find((l) => l.value === progress.learningLanguage) ||
         LANGUAGES[0];
 
-    // Language Change Handler
     const handleSelectLanguage = (langId: string) => {
         const updated: ProgressState = {
             ...progress,
             learningLanguage: langId,
             lessonDirection: `${progress.lessonDirection?.split("-")[0]}-${langId}` as LessonDirection
         };
-        // setProgress(updated);
         saveProgress(updated);
     };
 
@@ -44,27 +42,25 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
     return (
         <header className="mb-8 flex items-center justify-between gap-3">
             <div className="w-full h-18 flex items-center justify-between">
-                {/* Left: Brand & Language Switcher */}
                 <div className="flex items-center gap-3 sm:gap-4">
                     <div
                         id="brand-mark"
                         className="flex items-center gap-2.5 cursor-pointer select-none"
                         onClick={() => sound.playPebbleTap(progress.soundEnabled)}
                     >
-                        <div className="w-9 h-9 rounded-xl  text-white flex items-center justify-center shadow-xs">
+                        <div className="w-9 h-9 rounded-xl text-primary flex items-center justify-center shadow-xs">
                             <Image src={KOZE_LOGO} width={20} height={20} alt="Koze" className="size-7" />
                         </div>
                         <div className="hidden sm:block leading-tight">
-                            <div className="font-serif text-lg font-semibold tracking-tight text-[#223326]">
+                            <div className="font-serif text-lg font-semibold tracking-tight text-primary">
                                 Komorebi
                             </div>
-                            <div className="text-[11px] text-[#717E73] font-medium tracking-wide uppercase">
+                            <div className="text-[11px] text-muted-foreground font-medium tracking-wide uppercase">
                                 Mindful Language
                             </div>
                         </div>
                     </div>
 
-                    {/* Language Selector Dropdown */}
                     <div className="relative" ref={dropdownRef}>
                         <button
                             id="language-selector-btn"
@@ -73,22 +69,21 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
                                 sound.playPebbleTap(progress.soundEnabled);
                                 setLangDropdownOpen(!langDropdownOpen);
                             }}
-                            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#EFECE4] hover:bg-[#E6E2D8] text-[#2C332D] text-sm font-medium transition-colors border border-[#DDD8CD]"
+                            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary hover:bg-secondary text-foreground text-sm font-medium transition-colors border border-border"
                         >
                             <span className="text-base leading-none">{currentLang.flag}</span>
                             <span className="font-medium">{currentLang.name}</span>
                             <ChevronDown
-                                className={`w-3.5 h-3.5 text-[#6D776F] transition-transform duration-200 ${langDropdownOpen ? 'rotate-180' : ''
-                                    }`}
+                                className={`w-3.5 h-3.5 text-foreground transition-transform duration-200 ${langDropdownOpen ? 'rotate-180' : ''}`}
                             />
                         </button>
 
                         {langDropdownOpen && (
                             <div
                                 id="language-dropdown-menu"
-                                className="absolute left-0 mt-2 w-56 bg-[#FCFAF6] rounded-2xl shadow-xl border border-[#E5E0D4] p-1.5 z-40 animate-in fade-in zoom-in-95 duration-150"
+                                className="absolute left-0 mt-2 w-56 bg-card rounded-2xl shadow-xl border border-border p-1.5 z-40 animate-in fade-in zoom-in-95 duration-150"
                             >
-                                <div className="px-3 py-1.5 text-[11px] font-semibold text-[#808C82] tracking-wider uppercase">
+                                <div className="px-3 py-1.5 text-[11px] font-semibold text-muted-foreground tracking-wider uppercase">
                                     Select Path
                                 </div>
                                 {LANGUAGES.map((lang: LanguageOption) => {
@@ -103,21 +98,22 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
                                                 handleSelectLanguage(lang.value);
                                                 setLangDropdownOpen(false);
                                             }}
-                                            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-left transition-colors ${isSelected
-                                                ? 'bg-[#EBF2EE] text-[#2F4D3C] font-semibold'
-                                                : 'text-[#3E4740] hover:bg-[#F2EFE8]'
-                                                }`}
+                                            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-left transition-colors ${
+                                                isSelected
+                                                    ? 'bg-accent text-primary font-semibold'
+                                                    : 'text-foreground hover:bg-card'
+                                            }`}
                                         >
                                             <div className="flex items-center gap-2.5">
                                                 <span className="text-lg">{lang.flag}</span>
                                                 <div>
                                                     <div className="leading-snug">{lang.name}</div>
-                                                    <div className="text-[11px] text-[#78857B] font-normal">
+                                                    <div className="text-[11px] text-muted-foreground font-normal">
                                                         {lang.nativeName}
                                                     </div>
                                                 </div>
                                             </div>
-                                            {isSelected && <Check className="w-4 h-4 text-[#4D6D5A]" />}
+                                            {isSelected && <Check className="w-4 h-4 text-primary" />}
                                         </button>
                                     );
                                 })}
@@ -126,9 +122,7 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
                     </div>
                 </div>
 
-                {/* Right: Gamified Stats & Tranquil Toggles */}
                 <div className="flex items-center gap-2 sm:gap-3">
-                    {/* Daily Streak Rhythm */}
                     <Drawer>
                         <DrawerTrigger asChild>
                             <button
@@ -136,22 +130,18 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
                                 type="button"
                                 onClick={() => {
                                     sound.playPebbleTap(progress.soundEnabled);
-                                    // onOpenRhythm();
                                 }}
-                                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-[#FAF3EB] hover:bg-[#F4E9DC] border border-[#E8DACB] text-[#8C4A28] text-xs sm:text-sm font-medium transition-colors"
+                                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-card hover:bg-secondary border border-border text-destructive text-xs sm:text-sm font-medium transition-colors"
                                 title="Mindful Daily Rhythm"
                             >
-                                <Flame className="w-4 h-4 text-[#C26236] fill-[#C26236]/30" />
+                                <Flame className="w-4 h-4 text-destructive fill-destructive/30" />
                                 <span className="font-semibold">{progress.streak}</span>
-                                <span className="hidden sm:inline text-[#8C4A28]/80 text-xs">day rhythm</span>
+                                <span className="hidden sm:inline text-destructive/80 text-xs">day rhythm</span>
                             </button>
                         </DrawerTrigger>
-                        <DrawerContent className="border-border bg-background pb-20 pt-8">
-
-                        </DrawerContent>
+                        <DrawerContent className="border-border bg-background pb-20 pt-8" />
                     </Drawer>
 
-                    {/* Zen Cairn Stones (Mindful Milestone) */}
                     <Drawer>
                         <DrawerTrigger asChild>
                             <button
@@ -159,14 +149,13 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
                                 type="button"
                                 onClick={() => {
                                     sound.playPebbleTap(progress.soundEnabled);
-                                    // onOpenZenGarden();
                                 }}
-                                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-[#EFECE4] hover:bg-[#E6E2D8] border border-[#DDD8CD] text-[#3E4740] text-xs sm:text-sm font-medium transition-colors"
+                                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-secondary hover:bg-secondary border border-border text-foreground text-xs sm:text-sm font-medium transition-colors"
                                 title="Zen Garden Cairn"
                             >
-                                <Sparkles className="w-3.5 h-3.5 text-[#5C7A68]" />
+                                <Sparkles className="w-3.5 h-3.5 text-primary" />
                                 <span className="font-medium">{progress.cairnStonesCount}</span>
-                                <span className="hidden sm:inline text-[#6C776E] text-xs">pebbles</span>
+                                <span className="hidden sm:inline text-foreground text-xs">pebbles</span>
                             </button>
                         </DrawerTrigger>
                         <DrawerContent>
@@ -174,32 +163,29 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
                         </DrawerContent>
                     </Drawer>
 
-                    {/* Word Garden */}
                     <button
                         id="word-garden-btn"
                         type="button"
                         onClick={() => {
                             sound.playPebbleTap(progress.soundEnabled);
-                            //     onOpenWordGarden();
                         }}
-                        className="p-2 rounded-full text-[#4E5950] hover:bg-[#EFECE4] border border-transparent hover:border-[#DDD8CD] transition-colors"
+                        className="p-2 rounded-full text-foreground hover:bg-secondary border border-transparent hover:border-border transition-colors"
                         title="Word Garden & Vocabulary"
                     >
                         <BookOpen className="w-4 h-4" />
                     </button>
 
-                    {/* Ambient Study Hum (Optional gentle focus soundscape) */}
                     <button
                         id="toggle-ambient-btn"
                         type="button"
                         onClick={() => {
                             sound.playPebbleTap(progress.soundEnabled);
-                            // onToggleAmbient();
                         }}
-                        className={`p-2 rounded-full transition-colors border ${progress.ambientSoundEnabled
-                            ? 'bg-[#EBF2EE] text-[#3D664E] border-[#C8DBD0]'
-                            : 'text-[#6C776E] hover:bg-[#EFECE4] border-transparent'
-                            }`}
+                        className={`p-2 rounded-full transition-colors border ${
+                            progress.ambientSoundEnabled
+                                ? 'bg-accent text-primary border-primary/30'
+                                : 'text-foreground hover:bg-secondary border-transparent'
+                        }`}
                         title={
                             progress.ambientSoundEnabled
                                 ? 'Mute ambient soundscape'
@@ -209,17 +195,15 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
                         <Wind className="w-4 h-4" />
                     </button>
 
-                    {/* Sound Chimes Toggle */}
                     <button
                         id="toggle-sound-btn"
                         type="button"
-                        onClick={() => {
-                            // onToggleSound();
-                        }}
-                        className={`p-2 rounded-full transition-colors border ${progress.soundEnabled
-                            ? 'text-[#3E4740] hover:bg-[#EFECE4] border-transparent'
-                            : 'text-[#A0A8A2] hover:bg-[#EFECE4] border-transparent'
-                            }`}
+                        onClick={() => {}}
+                        className={`p-2 rounded-full transition-colors border ${
+                            progress.soundEnabled
+                                ? 'text-foreground hover:bg-secondary border-transparent'
+                                : 'text-muted-foreground hover:bg-secondary border-transparent'
+                        }`}
                         title={progress.soundEnabled ? 'Mute sound chimes' : 'Unmute sound chimes'}
                     >
                         {progress.soundEnabled ? (
@@ -229,7 +213,6 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
                         )}
                     </button>
                 </div>
-
             </div>
         </header>
     );
