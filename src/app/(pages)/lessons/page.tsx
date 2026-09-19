@@ -17,7 +17,7 @@ import {
     directionForLearningLanguage,
 } from "@/lib/learning-prefs";
 import { LANGUAGES } from "../../../lib/languages";
-import { BookOpen, Check, Compass, Lock, Play, Sparkles } from "lucide-react";
+import { BookOpen, Check, Compass, Leaf, Lock, Play, Sparkles } from "lucide-react";
 import { sound } from "@/lib/sound";
 import { useRouter } from "next/navigation";
 
@@ -67,7 +67,8 @@ export default function LessonsPage() {
 
     return (
         <div className="flex flex-col">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="flex items-center gap-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                <Leaf className="w-3 h-3 text-[#A5C9B1]" />                
                 Lessons
             </p>
             <div className="my-6">

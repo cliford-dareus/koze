@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { QUIZ_TOPICS } from "@/lib/quiz-topics";
-import { MessageSquare } from "lucide-react";
+import { Leaf, MessageSquare } from "lucide-react";
 
 export default function AiChat() {
     return (
         <div className="flex flex-col">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="flex items-center gap-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                <Leaf className="w-3 h-3 text-[#A5C9B1]" />
                 Practice
             </p>
 

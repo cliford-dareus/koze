@@ -2,6 +2,7 @@ import MultiChoice from "./_components/multi-choice";
 import { getRandomFacts } from "@/app/_actions/translate";
 import TextToSpeechWithVirsual from "@/app/_components/text-to-speech-with-virsual";
 import MicAudioVisualizer from "@/app/_components/mic-audio-visualizer";
+import { Leaf } from "lucide-react";
 
 const Listening = async () => {
     const randomFact = await getRandomFacts();
@@ -9,7 +10,8 @@ const Listening = async () => {
 
     return (
         <div className="relative w-full">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="flex items-center gap-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                <Leaf className="w-3 h-3 text-[#A5C9B1]" />                
                 Listening
             </p>
             <h1 className="mt-2 font-display text-3xl font-medium">

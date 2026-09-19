@@ -7,7 +7,7 @@ import { translate } from "@/app/_actions/translate";
 import { LANGUAGES } from "@/lib/languages";
 import { recordActivity } from "@/lib/progress";
 import { Button } from "@/app/_components/ui/button";
-import { ArrowLeftRight } from "lucide-react";
+import { ArrowLeftRight, Leaf } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/app/_components/ui/select";
 
 const TranslationManager = () => {
@@ -73,7 +73,8 @@ const TranslationManager = () => {
 
     return (
         <div>
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="flex items-center gap-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                <Leaf className="w-3 h-3 text-[#A5C9B1]" />
                 Translate
             </p>
             <h1 className="mt-2 font-display text-3xl font-medium">

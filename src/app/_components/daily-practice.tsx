@@ -10,7 +10,7 @@ import { useState } from "react";
 
 export default function DailyPractice({ progress }: { progress: ProgressState }) {
     const currentLang =
-        LANGUAGES.find((l) => l.value === progress.lessonDirection.split('-')[1]) ||
+        LANGUAGES.find((l) => l.value === progress.learningLanguage) ||
         LANGUAGES[0];
 
     const course = getLessonsByDirection(progress.lessonDirection);
