@@ -10,6 +10,7 @@ type Props = {
 export default async function LessonPage({ params, searchParams }: Props) {
     const direction = (await searchParams).direction as string as LessonDirection;
     const lesson = getLessonBySlug(params.slug, direction);
+    console.log(direction)
     if (!lesson) notFound();
 
     const unit = getUnit(lesson.unitId);

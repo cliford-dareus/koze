@@ -98,11 +98,10 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
                                                 handleSelectLanguage(lang.value);
                                                 setLangDropdownOpen(false);
                                             }}
-                                            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-left transition-colors ${
-                                                isSelected
+                                            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-left transition-colors ${isSelected
                                                     ? 'bg-accent text-primary font-semibold'
                                                     : 'text-foreground hover:bg-card'
-                                            }`}
+                                                }`}
                                         >
                                             <div className="flex items-center gap-2.5">
                                                 <span className="text-lg">{lang.flag}</span>
@@ -175,43 +174,7 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
                         <BookOpen className="w-4 h-4" />
                     </button>
 
-                    <button
-                        id="toggle-ambient-btn"
-                        type="button"
-                        onClick={() => {
-                            sound.playPebbleTap(progress.soundEnabled);
-                        }}
-                        className={`p-2 rounded-full transition-colors border ${
-                            progress.ambientSoundEnabled
-                                ? 'bg-accent text-primary border-primary/30'
-                                : 'text-foreground hover:bg-secondary border-transparent'
-                        }`}
-                        title={
-                            progress.ambientSoundEnabled
-                                ? 'Mute ambient soundscape'
-                                : 'Enable calming ambient soundscape'
-                        }
-                    >
-                        <Wind className="w-4 h-4" />
-                    </button>
-
-                    <button
-                        id="toggle-sound-btn"
-                        type="button"
-                        onClick={() => {}}
-                        className={`p-2 rounded-full transition-colors border ${
-                            progress.soundEnabled
-                                ? 'text-foreground hover:bg-secondary border-transparent'
-                                : 'text-muted-foreground hover:bg-secondary border-transparent'
-                        }`}
-                        title={progress.soundEnabled ? 'Mute sound chimes' : 'Unmute sound chimes'}
-                    >
-                        {progress.soundEnabled ? (
-                            <Volume2 className="w-4 h-4" />
-                        ) : (
-                            <VolumeX className="w-4 h-4" />
-                        )}
-                    </button>
+                  <AuthMenu progress={progress} />
                 </div>
             </div>
         </header>

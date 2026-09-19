@@ -36,15 +36,13 @@ export const translate = async (text: string, from: string, to: string) => {
     }
 };
 
-export async function getQuote() {
-    const category = "happiness";
-
+export async function getQuote(category: string) {
     try {
         const response = await fetch(
             `https://api.api-ninjas.com/v2/quotes?category=${category}`,
             {
                 method: "GET",
-                cache: "no-store",
+                // cache: "no-store",
                 headers: {
                     "X-Api-Key": process.env.NINJA_API_KEY!,
                 },

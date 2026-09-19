@@ -1,11 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
 import {
     UNITS,
-    directionLabel,
     getLessonsByDirection,
     type LessonDirection,
 } from "@/data/lessons";
@@ -17,9 +15,6 @@ import {
 } from "@/lib/progress";
 import {
     directionForLearningLanguage,
-    learningTrackLabel,
-    loadLearningPrefs,
-    saveLearningPrefs,
 } from "@/lib/learning-prefs";
 import { LANGUAGES } from "../../../lib/languages";
 import { BookOpen, Check, Compass, Lock, Play, Sparkles } from "lucide-react";
@@ -29,7 +24,7 @@ import { useRouter } from "next/navigation";
 export default function LessonsPage() {
     const { data: session } = useSession();
     const [progress, setProgress] = useState<ProgressState>(defaultProgress());
-    const [learningLanguage, setLearningLanguage] = useState("en");
+    const [learningLanguage, setLearningLanguage] = useState(progress.learningLanguage || "en");
 
     const currentLang =
         LANGUAGES.find((l) => l.voice === progress.lessonDirection) ||
@@ -41,29 +36,15 @@ export default function LessonsPage() {
         window.addEventListener("koze-progress", refreshProgress);
         window.addEventListener("storage", refreshProgress);
 
-        const applyPrefs = () => {
-            const local = loadLearningPrefs();
-            const fromSession = session?.user?.learningLanguage;
-            if (fromSession) {
-                setLearningLanguage(fromSession);
-                saveLearningPrefs({
-                    learningLanguage: fromSession,
-                    nativeLanguage:
-                        session?.user?.nativeLanguage || local.nativeLanguage || "en",
-                });
-            } else {
-                setLearningLanguage(local.learningLanguage);
-            }
-        };
-        applyPrefs();
-        window.addEventListener("koze-learning-prefs", applyPrefs);
-
         return () => {
             window.removeEventListener("koze-progress", refreshProgress);
-            window.removeEventListener("koze-learning-prefs", applyPrefs);
             window.removeEventListener("storage", refreshProgress);
         };
     }, [session?.user?.learningLanguage, session?.user?.nativeLanguage]);
+
+    useEffect(() => {
+        setLearningLanguage(progress.learningLanguage!);
+    }, [progress]);
 
     const primaryDirection: LessonDirection = useMemo(
         () => directionForLearningLanguage(learningLanguage),
@@ -228,13 +209,12 @@ function UnitList({
                                                             router.push(`/lessons/${lesson.slug}?direction=${direction}`);
                                                         }
                                                     }}
-                                                    className={`group relative w-18 h-18! sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center transition-all duration-300 ${
-                                                        isCompleted
+                                                    className={`group relative w-18 h-18! sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center transition-all duration-300 ${isCompleted
                                                             ? 'bg-accent text-primary border-2 border-primary/30 hover:bg-accent hover:scale-105 shadow-xs cursor-pointer'
                                                             : isActive
                                                                 ? 'bg-primary text-primary-foreground border-4 border-primary/30 ring-4 ring-primary/15 hover:scale-105 shadow-md cursor-pointer'
                                                                 : 'bg-secondary text-muted-foreground border-2 border-border cursor-not-allowed'
-                                                    }`}
+                                                        }`}
                                                 >
                                                     {isCompleted ? (
                                                         <Check className="w-8 h-8 text-primary stroke-[2.5]" />
@@ -247,13 +227,12 @@ function UnitList({
                                                     )}
 
                                                     <div
-                                                        className={`absolute -top-3 px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider transition-colors ${
-                                                            isCompleted
+                                                        className={`absolute -top-3 px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider transition-colors ${isCompleted
                                                                 ? 'bg-accent text-primary border border-primary/30'
                                                                 : isActive
                                                                     ? 'bg-card text-destructive border border-border'
                                                                     : 'bg-secondary text-muted-foreground'
-                                                        }`}
+                                                            }`}
                                                     >
                                                         +{lesson.xp} XP
                                                     </div>
@@ -261,13 +240,12 @@ function UnitList({
 
                                                 <div className="mt-3 text-center max-w-xs px-2">
                                                     <h4
-                                                        className={`text-sm font-semibold tracking-tight ${
-                                                            isActive
+                                                        className={`text-sm font-semibold tracking-tight ${isActive
                                                                 ? 'text-primary font-bold'
                                                                 : isCompleted
                                                                     ? 'text-primary'
                                                                     : 'text-muted-foreground'
-                                                        }`}
+                                                            }`}
                                                     >
                                                         {lesson.title}
                                                     </h4>

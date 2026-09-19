@@ -9,21 +9,30 @@ import {
 } from "@/app/_components/ui/drawer";
 import { Button } from "@/app/_components/ui/button";
 import { SplitText } from "./_components/split-text";
+import { Leaf } from "lucide-react";
+import { ReadingPage } from "./_components/reading-page";
 
 const Reading = async () => {
-    const randomQuote = await getQuote();
+    const randomQuote = await getQuote('happiness');
     if (randomQuote === null) return null;
 
     return (
         <div className="flex flex-col">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="flex items-center gap-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                <Leaf className="w-3 h-3 text-[#A5C9B1]" />
                 Reading
             </p>
             <h1 className="mt-2 font-display text-3xl font-medium">
-                One line, given time.
+                Quiet Passages
             </h1>
 
-            <div className="mt-6 rounded-xl border border-border bg-card p-6 shadow-soft">
+            <p className="text-xs sm:text-sm text-[#70756F] max-w-md mx-auto mt-2 leading-relaxed">
+                Immerse your spirit in peaceful native prose, bilingual reflections, and authentic cultural vignettes.
+            </p>
+            
+            <ReadingPage />
+
+            {/*<div className="mt-6 rounded-xl border border-border bg-card p-6 shadow-soft">
                 <p className="font-display text-2xl leading-snug">
                     {randomQuote?.quote}
                 </p>
@@ -69,7 +78,7 @@ const Reading = async () => {
                         <ReadingManager quote={randomQuote?.quote} />
                     </DrawerContent>
                 </Drawer>
-            </div>
+            </div>*/}
         </div>
     );
 };
