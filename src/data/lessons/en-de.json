@@ -1,0 +1,1060 @@
+[
+  {
+    "id": "greetings-1",
+    "slug": "greetings",
+    "title": "Greetings",
+    "xp": 25,
+    "description": "Hello and goodbye across the day, with formality notes.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "A soft start",
+        "body": "German greetings shift with time of day and formality. Learn a small set well."
+      },
+      {
+        "type": "tip",
+        "title": "Form vs. familiarity",
+        "body": "Use Sie with strangers and formal situations. Use du with friends and family when invited.",
+        "bullets": [
+          "Guten Morgen in the morning.",
+          "Guten Tag during the day.",
+          "Guten Abend in the evening.",
+          "Hallo is friendly and casual."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Core greetings",
+        "items": [
+          {
+            "term": "Hallo",
+            "meaning": "Hello / hi"
+          },
+          {
+            "term": "Guten Morgen",
+            "meaning": "Good morning"
+          },
+          {
+            "term": "Guten Tag",
+            "meaning": "Good day / hello"
+          },
+          {
+            "term": "Guten Abend",
+            "meaning": "Good evening"
+          },
+          {
+            "term": "Gute Nacht",
+            "meaning": "Good night"
+          },
+          {
+            "term": "Auf Wiedersehen",
+            "meaning": "Goodbye (formal)"
+          },
+          {
+            "term": "Tschüss",
+            "meaning": "Bye (casual)"
+          },
+          {
+            "term": "Bis bald",
+            "meaning": "See you soon"
+          },
+          {
+            "term": "Bis morgen",
+            "meaning": "See you tomorrow"
+          },
+          {
+            "term": "Schönen Tag noch",
+            "meaning": "Have a nice day"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Useful lines",
+        "sourceLabel": "en-de",
+        "phrases": [
+          {
+            "source": "Hello, how are you? (formal)",
+            "target": "Guten Tag, wie geht es Ihnen?"
+          },
+          {
+            "source": "Hi, how are you? (informal)",
+            "target": "Hallo, wie geht’s?"
+          },
+          {
+            "source": "I'm fine, thanks. And you?",
+            "target": "Mir geht’s gut, danke. Und dir?"
+          },
+          {
+            "source": "See you soon.",
+            "target": "Bis bald."
+          },
+          {
+            "source": "Have a good day.",
+            "target": "Schönen Tag noch."
+          },
+          {
+            "source": "See you tomorrow!",
+            "target": "Bis morgen!"
+          },
+          {
+            "source": "Good night.",
+            "target": "Gute Nacht."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the greetings",
+        "pairs": [
+          {
+            "left": "Hallo",
+            "right": "Hello / hi"
+          },
+          {
+            "left": "Guten Morgen",
+            "right": "Good morning"
+          },
+          {
+            "left": "Guten Tag",
+            "right": "Good day"
+          },
+          {
+            "left": "Auf Wiedersehen",
+            "right": "Goodbye"
+          },
+          {
+            "left": "Tschüss",
+            "right": "Bye (casual)"
+          },
+          {
+            "left": "Gute Nacht",
+            "right": "Good night"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the greeting",
+        "prompt": "Build: “Hello, how are you?” (formal)",
+        "words": [
+          "Guten",
+          "Tag",
+          ",",
+          "wie",
+          "geht",
+          "es",
+          "Ihnen",
+          "?"
+        ],
+        "answer": "Guten Tag, wie geht es Ihnen?"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · evening",
+        "prompt": "You hear this in the evening. What does it mean?",
+        "audioText": "Guten Abend",
+        "options": [
+          "Good morning",
+          "Good day",
+          "Good evening",
+          "Good night"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "title": "A first meeting",
+        "context": "You meet a colleague’s parent for the first time.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "Guten Tag, wie geht es Ihnen?"
+          },
+          {
+            "speaker": "Parent",
+            "text": "Sehr gut, danke. Und Ihnen?"
+          },
+          {
+            "speaker": "You",
+            "text": "Mir geht’s gut, danke."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · time of day",
+        "prompt": "Which greeting fits the evening?",
+        "options": [
+          "Guten Morgen",
+          "Guten Tag",
+          "Guten Abend",
+          "Tschüss"
+        ],
+        "answerIndex": 2,
+        "explanation": "Guten Abend is the evening greeting."
+      },
+      {
+        "type": "check",
+        "title": "Check · formality",
+        "prompt": "You meet your friend’s parent for the first time. Best choice?",
+        "options": [
+          "Hallo!",
+          "Guten Tag, wie geht es Ihnen?",
+          "Wie geht’s, Alter?",
+          "Bis morgen"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sie keeps things respectful."
+      },
+      {
+        "type": "check",
+        "title": "Check · going to sleep",
+        "prompt": "You’re heading to bed. You say…",
+        "options": [
+          "Guten Abend",
+          "Gute Nacht",
+          "Guten Tag",
+          "Bis bald"
+        ],
+        "answerIndex": 1,
+        "explanation": "Gute Nacht is for going to sleep."
+      }
+    ],
+    "direction": "en-de"
+  },
+  {
+    "id": "polite-1",
+    "slug": "please-and-thank-you",
+    "title": "Please & thank you",
+    "description": "Politeness formulas that open every exchange.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 13,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Small words, big difference",
+        "body": "German interactions expect bitte and danke. Skipping them can sound abrupt."
+      },
+      {
+        "type": "tip",
+        "title": "Please & thanks",
+        "body": "Bitte means both “please” and “you’re welcome.”",
+        "bullets": [
+          "Vielen Dank = thank you very much.",
+          "Bitte / Gern geschehen = you’re welcome.",
+          "Entschuldigung = excuse me / sorry.",
+          "Es tut mir leid is a stronger apology."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Politeness set",
+        "items": [
+          {
+            "term": "Bitte",
+            "meaning": "Please / you’re welcome"
+          },
+          {
+            "term": "Danke",
+            "meaning": "Thank you"
+          },
+          {
+            "term": "Vielen Dank",
+            "meaning": "Thank you very much"
+          },
+          {
+            "term": "Gern geschehen",
+            "meaning": "You’re welcome"
+          },
+          {
+            "term": "Entschuldigung",
+            "meaning": "Excuse me / sorry"
+          },
+          {
+            "term": "Es tut mir leid",
+            "meaning": "I’m sorry"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "In context",
+        "sourceLabel": "en-de",
+        "phrases": [
+          {
+            "source": "A coffee, please.",
+            "target": "Einen Kaffee, bitte."
+          },
+          {
+            "source": "Thank you very much.",
+            "target": "Vielen Dank."
+          },
+          {
+            "source": "Excuse me (to pass).",
+            "target": "Entschuldigung."
+          },
+          {
+            "source": "Sorry I’m late.",
+            "target": "Entschuldigung für die Verspätung."
+          },
+          {
+            "source": "I’m so sorry.",
+            "target": "Es tut mir wirklich leid."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the polite phrases",
+        "pairs": [
+          {
+            "left": "Bitte",
+            "right": "Please / you’re welcome"
+          },
+          {
+            "left": "Danke",
+            "right": "Thank you"
+          },
+          {
+            "left": "Vielen Dank",
+            "right": "Thank you very much"
+          },
+          {
+            "left": "Entschuldigung",
+            "right": "Excuse me / sorry"
+          },
+          {
+            "left": "Es tut mir leid",
+            "right": "I’m sorry"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the request",
+        "prompt": "Build: “A coffee, please.”",
+        "words": [
+          "Einen",
+          "Kaffee",
+          ",",
+          "bitte",
+          "."
+        ],
+        "answer": "Einen Kaffee, bitte."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · reply",
+        "prompt": "Someone says Danke. A common reply is…",
+        "audioText": "Bitte",
+        "options": [
+          "Please",
+          "You’re welcome",
+          "Excuse me",
+          "Goodbye"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the counter",
+        "context": "Ordering and thanking.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "Einen Kaffee, bitte."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Hier bitte. Drei Euro."
+          },
+          {
+            "speaker": "You",
+            "text": "Vielen Dank."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Bitte."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · shop",
+        "prompt": "How do you say “please” when ordering?",
+        "options": [
+          "Danke",
+          "Bitte",
+          "Entschuldigung",
+          "Hallo"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bitte is the standard polite request word."
+      },
+      {
+        "type": "check",
+        "title": "Check · reply",
+        "prompt": "Someone says Danke. A common reply is…",
+        "options": [
+          "Hallo",
+          "Bitte",
+          "Tschüss",
+          "Guten Tag"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bitte also means “you’re welcome.”"
+      }
+    ],
+    "direction": "en-de"
+  },
+  {
+    "id": "numbers-1",
+    "slug": "numbers-1-to-10",
+    "title": "Numbers 1–10",
+    "description": "Count clearly for prices, times, and quantities.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Count slowly",
+        "body": "German numbers are used constantly. Rhythm first; speed later."
+      },
+      {
+        "type": "tip",
+        "title": "Notes",
+        "body": "Eins becomes ein before masculine/neuter nouns.",
+        "bullets": [
+          "ein Buch, eine Apfel",
+          "Learn numbers in short phrases."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "1 to 10",
+        "items": [
+          {
+            "term": "null",
+            "meaning": "0"
+          },
+          {
+            "term": "eins / ein",
+            "meaning": "1"
+          },
+          {
+            "term": "zwei",
+            "meaning": "2"
+          },
+          {
+            "term": "drei",
+            "meaning": "3"
+          },
+          {
+            "term": "vier",
+            "meaning": "4"
+          },
+          {
+            "term": "fünf",
+            "meaning": "5"
+          },
+          {
+            "term": "sechs",
+            "meaning": "6"
+          },
+          {
+            "term": "sieben",
+            "meaning": "7"
+          },
+          {
+            "term": "acht",
+            "meaning": "8"
+          },
+          {
+            "term": "neun",
+            "meaning": "9"
+          },
+          {
+            "term": "zehn",
+            "meaning": "10"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "11 to 20 (bonus)",
+        "items": [
+          {
+            "term": "elf",
+            "meaning": "11"
+          },
+          {
+            "term": "zwölf",
+            "meaning": "12"
+          },
+          {
+            "term": "dreizehn",
+            "meaning": "13"
+          },
+          {
+            "term": "vierzehn",
+            "meaning": "14"
+          },
+          {
+            "term": "fünfzehn",
+            "meaning": "15"
+          },
+          {
+            "term": "sechzehn",
+            "meaning": "16"
+          },
+          {
+            "term": "siebzehn",
+            "meaning": "17"
+          },
+          {
+            "term": "achtzehn",
+            "meaning": "18"
+          },
+          {
+            "term": "neunzehn",
+            "meaning": "19"
+          },
+          {
+            "term": "zwanzig",
+            "meaning": "20"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Mini uses",
+        "sourceLabel": "en-de",
+        "phrases": [
+          {
+            "source": "Two coffees, please.",
+            "target": "Zwei Kaffee, bitte."
+          },
+          {
+            "source": "It costs five euros.",
+            "target": "Das kostet fünf Euro."
+          },
+          {
+            "source": "Platform three.",
+            "target": "Gleis drei."
+          },
+          {
+            "source": "I am twenty years old.",
+            "target": "Ich bin zwanzig Jahre alt."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the numbers",
+        "pairs": [
+          {
+            "left": "eins",
+            "right": "1"
+          },
+          {
+            "left": "zwei",
+            "right": "2"
+          },
+          {
+            "left": "drei",
+            "right": "3"
+          },
+          {
+            "left": "fünf",
+            "right": "5"
+          },
+          {
+            "left": "sieben",
+            "right": "7"
+          },
+          {
+            "left": "zehn",
+            "right": "10"
+          },
+          {
+            "left": "zwanzig",
+            "right": "20"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the order",
+        "prompt": "Build: “Two coffees, please.”",
+        "words": [
+          "Zwei",
+          "Kaffee",
+          ",",
+          "bitte",
+          "."
+        ],
+        "answer": "Zwei Kaffee, bitte."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · age",
+        "prompt": "Someone says this. How old are they?",
+        "audioText": "Ich bin zwanzig Jahre alt",
+        "options": [
+          "12 years old",
+          "20 years old",
+          "7 years old",
+          "2 years old"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the ticket window",
+        "context": "Buying tickets.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "Zwei Tickets?"
+          },
+          {
+            "speaker": "You",
+            "text": "Ja, zwei. Ich bin zwanzig Jahre alt."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "In Ordnung. Fünfzehn Euro."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · seven",
+        "prompt": "What is “seven” in German?",
+        "options": [
+          "sechs",
+          "sieben",
+          "acht",
+          "fünf"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sieben is seven."
+      },
+      {
+        "type": "check",
+        "title": "Check · phrase",
+        "prompt": "“Zwei Kaffee” means…",
+        "options": [
+          "Ten coffees",
+          "Two coffees",
+          "Twelve coffees",
+          "No coffee"
+        ],
+        "answerIndex": 1,
+        "explanation": "Zwei means two."
+      },
+      {
+        "type": "check",
+        "title": "Check · age",
+        "prompt": "How do Germans say “I am twenty years old”?",
+        "options": [
+          "Ich habe zwanzig Jahre",
+          "Ich bin zwanzig Jahre alt",
+          "Ich gehe zwanzig Jahre",
+          "Ich bin zwanzig Stunden"
+        ],
+        "answerIndex": 1,
+        "explanation": "Age uses sein + … Jahre alt."
+      }
+    ],
+    "direction": "en-de"
+  },
+  {
+    "id": "introduce-yourself-1",
+    "slug": "introduce-yourself",
+    "title": "Introduce yourself",
+    "description": "Name, origin, and a simple nice-to-meet-you.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "First contact",
+        "body": "A short self-introduction is enough: name, origin, and a polite close."
+      },
+      {
+        "type": "vocab",
+        "title": "Building blocks",
+        "items": [
+          {
+            "term": "Ich heiße…",
+            "meaning": "My name is…"
+          },
+          {
+            "term": "Ich komme aus…",
+            "meaning": "I come from…"
+          },
+          {
+            "term": "Ich wohne in…",
+            "meaning": "I live in…"
+          },
+          {
+            "term": "Ich bin … Jahre alt",
+            "meaning": "I am … years old"
+          },
+          {
+            "term": "Freut mich",
+            "meaning": "Nice to meet you"
+          },
+          {
+            "term": "Und Sie?",
+            "meaning": "And you? (formal)"
+          },
+          {
+            "term": "Und du?",
+            "meaning": "And you? (informal)"
+          }
+        ]
+      },
+      {
+        "type": "tip",
+        "title": "Freut mich",
+        "body": "Freut mich (or Es freut mich) is the standard “nice to meet you.”"
+      },
+      {
+        "type": "phrase",
+        "title": "Model intros",
+        "sourceLabel": "en-de",
+        "phrases": [
+          {
+            "source": "Hello, my name is Alex.",
+            "target": "Hallo, ich heiße Alex."
+          },
+          {
+            "source": "I’m from Canada.",
+            "target": "Ich komme aus Kanada."
+          },
+          {
+            "source": "I live in Berlin.",
+            "target": "Ich wohne in Berlin."
+          },
+          {
+            "source": "Nice to meet you.",
+            "target": "Freut mich."
+          },
+          {
+            "source": "What’s your name?",
+            "target": "Wie heißen Sie?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the building blocks",
+        "pairs": [
+          {
+            "left": "Ich heiße…",
+            "right": "My name is…"
+          },
+          {
+            "left": "Ich komme aus…",
+            "right": "I come from…"
+          },
+          {
+            "left": "Ich wohne in…",
+            "right": "I live in…"
+          },
+          {
+            "left": "Freut mich",
+            "right": "Nice to meet you"
+          },
+          {
+            "left": "Und Sie?",
+            "right": "And you? (formal)"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the introduction",
+        "prompt": "Build: “Hello, my name is Alex.”",
+        "words": [
+          "Hallo",
+          ",",
+          "ich",
+          "heiße",
+          "Alex",
+          "."
+        ],
+        "answer": "Hallo, ich heiße Alex."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · origin",
+        "prompt": "What does this person say?",
+        "audioText": "Ich komme aus Kanada",
+        "options": [
+          "I live in Canada",
+          "I come from Canada",
+          "My name is Canada",
+          "I am going to Canada"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Meeting someone new",
+        "context": "A short self-introduction.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "Hallo, ich heiße Sam."
+          },
+          {
+            "speaker": "Other",
+            "text": "Freut mich. Ich heiße Lea."
+          },
+          {
+            "speaker": "You",
+            "text": "Ich komme aus den USA. Und Sie?"
+          },
+          {
+            "speaker": "Léa",
+            "text": "Ich komme aus Berlin."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "“Ich heiße Sam” means…",
+        "options": [
+          "I live in Sam",
+          "My name is Sam",
+          "I am from Sam",
+          "See you Sam"
+        ],
+        "answerIndex": 1,
+        "explanation": "Heißen = to be called."
+      },
+      {
+        "type": "check",
+        "title": "Check · origin",
+        "prompt": "Best line for “I come from Belgium”?",
+        "options": [
+          "Ich wohne in Belgien",
+          "Ich komme aus Belgien",
+          "Ich heiße Belgien",
+          "Auf Wiedersehen Belgien"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kommen aus + country expresses origin."
+      }
+    ],
+    "direction": "en-de"
+  },
+  {
+    "id": "colors-1",
+    "slug": "colors-and-descriptions",
+    "title": "Colors & simple descriptions",
+    "description": "Name colors and describe everyday objects.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Painting with words",
+        "body": "Colors are adjectives and agree in gender, number, and case with the noun."
+      },
+      {
+        "type": "tip",
+        "title": "Agreement basics",
+        "body": "In predicative position (after sein) colors stay uninflected. Attributive forms take endings.",
+        "bullets": [
+          "Das Auto ist rot.",
+          "ein rotes Auto",
+          "Most beginners start with predicative forms."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Colors",
+        "items": [
+          {
+            "term": "rot",
+            "meaning": "red"
+          },
+          {
+            "term": "blau",
+            "meaning": "blue"
+          },
+          {
+            "term": "grün",
+            "meaning": "green"
+          },
+          {
+            "term": "gelb",
+            "meaning": "yellow"
+          },
+          {
+            "term": "schwarz",
+            "meaning": "black"
+          },
+          {
+            "term": "weiß",
+            "meaning": "white"
+          },
+          {
+            "term": "grau",
+            "meaning": "grey"
+          },
+          {
+            "term": "braun",
+            "meaning": "brown"
+          },
+          {
+            "term": "orange",
+            "meaning": "orange"
+          },
+          {
+            "term": "rosa",
+            "meaning": "pink"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Describing things",
+        "sourceLabel": "en-de",
+        "phrases": [
+          {
+            "source": "The sky is blue.",
+            "target": "Der Himmel ist blau."
+          },
+          {
+            "source": "I’d like the red one.",
+            "target": "Ich hätte gerne das Rote."
+          },
+          {
+            "source": "She has a green bag.",
+            "target": "Sie hat eine grüne Tasche."
+          },
+          {
+            "source": "Black shoes.",
+            "target": "Schwarze Schuhe."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the colors",
+        "pairs": [
+          {
+            "left": "rot",
+            "right": "red"
+          },
+          {
+            "left": "blau",
+            "right": "blue"
+          },
+          {
+            "left": "grün",
+            "right": "green"
+          },
+          {
+            "left": "schwarz",
+            "right": "black"
+          },
+          {
+            "left": "weiß",
+            "right": "white"
+          },
+          {
+            "left": "braun",
+            "right": "brown"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the description",
+        "prompt": "Build: “The sky is blue.”",
+        "words": [
+          "Der",
+          "Himmel",
+          "ist",
+          "blau",
+          "."
+        ],
+        "answer": "Der Himmel ist blau."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · color",
+        "prompt": "You hear “Der Himmel ist blau”. What is being described?",
+        "audioText": "Der Himmel ist blau",
+        "options": [
+          "a blue book",
+          "the sky is blue",
+          "blue shoes",
+          "a green dress"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Choosing a color",
+        "context": "In a clothing shop.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "Welche Farbe möchten Sie?"
+          },
+          {
+            "speaker": "You",
+            "text": "Ich hätte gerne das Rote."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Hier ist ein rotes Kleid."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · predicative",
+        "prompt": "How do you say “The sky is blue”?",
+        "options": [
+          "Der Himmel blau ist",
+          "Der Himmel ist blau",
+          "Der blaue Himmel",
+          "Himmel blau"
+        ],
+        "answerIndex": 1,
+        "explanation": "Predicative adjectives stay uninflected after sein."
+      },
+      {
+        "type": "check",
+        "title": "Check · color",
+        "prompt": "What is “black” in German?",
+        "options": [
+          "weiß",
+          "schwarz",
+          "grau",
+          "braun"
+        ],
+        "answerIndex": 1,
+        "explanation": "Schwarz = black."
+      }
+    ],
+    "direction": "en-de"
+  }
+]

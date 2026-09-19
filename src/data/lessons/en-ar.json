@@ -1,0 +1,1033 @@
+[
+  {
+    "id": "greetings-1",
+    "slug": "greetings",
+    "title": "Greetings",
+    "xp": 25,
+    "description": "Hello and goodbye across the day, with formality notes.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "A soft start",
+        "body": "Arabic greetings are warm and formulaic. مرحبا and السلام عليكم are the essentials."
+      },
+      {
+        "type": "tip",
+        "title": "Form vs. familiarity",
+        "body": "السلام عليكم is the classic Islamic greeting; the reply is وعليكم السلام.",
+        "bullets": [
+          "صباح الخير = good morning.",
+          "مساء الخير = good evening.",
+          "مع السلامة = goodbye.",
+          "تصبح على خير = good night."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Core greetings",
+        "items": [
+          {
+            "term": "مرحبا",
+            "meaning": "Hello"
+          },
+          {
+            "term": "السلام عليكم",
+            "meaning": "Peace be upon you"
+          },
+          {
+            "term": "صباح الخير",
+            "meaning": "Good morning"
+          },
+          {
+            "term": "مساء الخير",
+            "meaning": "Good evening"
+          },
+          {
+            "term": "مع السلامة",
+            "meaning": "Goodbye"
+          },
+          {
+            "term": "إلى اللقاء",
+            "meaning": "See you later"
+          },
+          {
+            "term": "تصبح على خير",
+            "meaning": "Good night"
+          },
+          {
+            "term": "إلى الغد",
+            "meaning": "See you tomorrow"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Useful lines",
+        "sourceLabel": "en-ar",
+        "phrases": [
+          {
+            "source": "Hello, how are you?",
+            "target": "مرحبا، كيف حالك؟"
+          },
+          {
+            "source": "I’m fine, thanks. And you?",
+            "target": "بخير، شكراً. وأنت؟"
+          },
+          {
+            "source": "See you soon.",
+            "target": "إلى اللقاء."
+          },
+          {
+            "source": "Have a good day.",
+            "target": "يوم سعيد."
+          },
+          {
+            "source": "See you tomorrow!",
+            "target": "إلى الغد!"
+          },
+          {
+            "source": "Good night.",
+            "target": "تصبح على خير."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the greetings",
+        "pairs": [
+          {
+            "left": "مرحبا",
+            "right": "Hello"
+          },
+          {
+            "left": "صباح الخير",
+            "right": "Good morning"
+          },
+          {
+            "left": "مساء الخير",
+            "right": "Good evening"
+          },
+          {
+            "left": "مع السلامة",
+            "right": "Goodbye"
+          },
+          {
+            "left": "تصبح على خير",
+            "right": "Good night"
+          },
+          {
+            "left": "إلى الغد",
+            "right": "See you tomorrow"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the greeting",
+        "prompt": "Build: “Hello, how are you?”",
+        "words": [
+          "مرحبا",
+          "،",
+          "كيف",
+          "حالك",
+          "؟"
+        ],
+        "answer": "مرحبا، كيف حالك؟"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · morning",
+        "prompt": "You hear this in the morning. What does it mean?",
+        "audioText": "صباح الخير",
+        "options": [
+          "Good evening",
+          "Good morning",
+          "Good night",
+          "Goodbye"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "A first meeting",
+        "context": "You meet someone for the first time.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "السلام عليكم، كيف حالك؟"
+          },
+          {
+            "speaker": "Other",
+            "text": "وعليكم السلام، بخير شكراً. وأنت؟"
+          },
+          {
+            "speaker": "You",
+            "text": "بخير، شكراً."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · hello",
+        "prompt": "Which is a standard hello?",
+        "options": [
+          "مع السلامة",
+          "مرحبا",
+          "تصبح على خير",
+          "إلى الغد"
+        ],
+        "answerIndex": 1,
+        "explanation": "مرحبا is a common hello."
+      },
+      {
+        "type": "check",
+        "title": "Check · morning",
+        "prompt": "Which greeting fits the morning?",
+        "options": [
+          "مساء الخير",
+          "صباح الخير",
+          "تصبح على خير",
+          "مع السلامة"
+        ],
+        "answerIndex": 1,
+        "explanation": "صباح الخير = good morning."
+      },
+      {
+        "type": "check",
+        "title": "Check · good night",
+        "prompt": "You’re heading to bed. You say…",
+        "options": [
+          "مساء الخير",
+          "تصبح على خير",
+          "صباح الخير",
+          "مرحبا"
+        ],
+        "answerIndex": 1,
+        "explanation": "تصبح على خير is good night."
+      }
+    ],
+    "direction": "en-ar"
+  },
+  {
+    "id": "polite-1",
+    "slug": "please-and-thank-you",
+    "title": "Please & thank you",
+    "description": "Politeness formulas that open every exchange.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 13,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Small words, big difference",
+        "body": "Arabic interactions expect من فضلك and شكراً."
+      },
+      {
+        "type": "tip",
+        "title": "Please & thanks",
+        "body": "من فضلك = please. شكراً = thank you.",
+        "bullets": [
+          "شكراً جزيلاً = thank you very much.",
+          "عفواً = you’re welcome / excuse me.",
+          "آسف / آسفة = sorry."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Politeness set",
+        "items": [
+          {
+            "term": "من فضلك",
+            "meaning": "Please"
+          },
+          {
+            "term": "شكراً",
+            "meaning": "Thank you"
+          },
+          {
+            "term": "شكراً جزيلاً",
+            "meaning": "Thank you very much"
+          },
+          {
+            "term": "عفواً",
+            "meaning": "You’re welcome / excuse me"
+          },
+          {
+            "term": "آسف / آسفة",
+            "meaning": "Sorry"
+          },
+          {
+            "term": "المعذرة",
+            "meaning": "Excuse me / sorry"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "In context",
+        "sourceLabel": "en-ar",
+        "phrases": [
+          {
+            "source": "A coffee, please.",
+            "target": "قهوة من فضلك."
+          },
+          {
+            "source": "Thank you very much.",
+            "target": "شكراً جزيلاً."
+          },
+          {
+            "source": "Excuse me (to pass).",
+            "target": "عفواً."
+          },
+          {
+            "source": "Sorry I’m late.",
+            "target": "آسف على التأخير."
+          },
+          {
+            "source": "I’m so sorry.",
+            "target": "أنا آسف جداً."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the polite phrases",
+        "pairs": [
+          {
+            "left": "من فضلك",
+            "right": "Please"
+          },
+          {
+            "left": "شكراً",
+            "right": "Thank you"
+          },
+          {
+            "left": "شكراً جزيلاً",
+            "right": "Thank you very much"
+          },
+          {
+            "left": "عفواً",
+            "right": "You’re welcome"
+          },
+          {
+            "left": "آسف",
+            "right": "Sorry"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the request",
+        "prompt": "Build: “A coffee, please.”",
+        "words": [
+          "قهوة",
+          "من",
+          "فضلك",
+          "."
+        ],
+        "answer": "قهوة من فضلك."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · reply",
+        "prompt": "Someone says شكراً. A common reply is…",
+        "audioText": "عفواً",
+        "options": [
+          "Please",
+          "You’re welcome",
+          "Excuse me",
+          "Goodbye"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the counter",
+        "context": "Ordering and thanking.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "قهوة من فضلك."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "تفضل. ثلاثة ريال."
+          },
+          {
+            "speaker": "You",
+            "text": "شكراً جزيلاً."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "عفواً."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · shop",
+        "prompt": "How do you say “please” when ordering?",
+        "options": [
+          "شكراً",
+          "من فضلك",
+          "عفواً",
+          "مرحبا"
+        ],
+        "answerIndex": 1,
+        "explanation": "من فضلك is the standard please."
+      },
+      {
+        "type": "check",
+        "title": "Check · reply",
+        "prompt": "Someone says شكراً. A common reply is…",
+        "options": [
+          "مرحبا",
+          "عفواً",
+          "مع السلامة",
+          "من فضلك"
+        ],
+        "answerIndex": 1,
+        "explanation": "عفواً means “you’re welcome.”"
+      }
+    ],
+    "direction": "en-ar"
+  },
+  {
+    "id": "numbers-1",
+    "slug": "numbers-1-to-10",
+    "title": "Numbers 1–10",
+    "description": "Count clearly for prices, times, and quantities.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Count slowly",
+        "body": "Arabic numbers have gender agreement in some forms. Start with the basic set."
+      },
+      {
+        "type": "tip",
+        "title": "Notes",
+        "body": "Numbers 1 and 2 agree with the noun; 3–10 reverse gender in classical style, but modern usage varies.",
+        "bullets": [
+          "Learn the base forms first.",
+          "Practice with prices and ages."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "1 to 10",
+        "items": [
+          {
+            "term": "صفر",
+            "meaning": "0"
+          },
+          {
+            "term": "واحد / واحدة",
+            "meaning": "1"
+          },
+          {
+            "term": "اثنان / اثنتان",
+            "meaning": "2"
+          },
+          {
+            "term": "ثلاثة",
+            "meaning": "3"
+          },
+          {
+            "term": "أربعة",
+            "meaning": "4"
+          },
+          {
+            "term": "خمسة",
+            "meaning": "5"
+          },
+          {
+            "term": "ستة",
+            "meaning": "6"
+          },
+          {
+            "term": "سبعة",
+            "meaning": "7"
+          },
+          {
+            "term": "ثمانية",
+            "meaning": "8"
+          },
+          {
+            "term": "تسعة",
+            "meaning": "9"
+          },
+          {
+            "term": "عشرة",
+            "meaning": "10"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "11 to 20 (bonus)",
+        "items": [
+          {
+            "term": "أحد عشر",
+            "meaning": "11"
+          },
+          {
+            "term": "اثنا عشر",
+            "meaning": "12"
+          },
+          {
+            "term": "ثلاثة عشر",
+            "meaning": "13"
+          },
+          {
+            "term": "أربعة عشر",
+            "meaning": "14"
+          },
+          {
+            "term": "خمسة عشر",
+            "meaning": "15"
+          },
+          {
+            "term": "ستة عشر",
+            "meaning": "16"
+          },
+          {
+            "term": "سبعة عشر",
+            "meaning": "17"
+          },
+          {
+            "term": "ثمانية عشر",
+            "meaning": "18"
+          },
+          {
+            "term": "تسعة عشر",
+            "meaning": "19"
+          },
+          {
+            "term": "عشرون",
+            "meaning": "20"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Mini uses",
+        "sourceLabel": "en-ar",
+        "phrases": [
+          {
+            "source": "Two coffees, please.",
+            "target": "قهوتان من فضلك."
+          },
+          {
+            "source": "It costs five riyals.",
+            "target": "يكلف خمسة ريالات."
+          },
+          {
+            "source": "Platform three.",
+            "target": "الرصيف رقم ثلاثة."
+          },
+          {
+            "source": "I am twenty years old.",
+            "target": "عمري عشرون سنة."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the numbers",
+        "pairs": [
+          {
+            "left": "واحد",
+            "right": "1"
+          },
+          {
+            "left": "اثنان",
+            "right": "2"
+          },
+          {
+            "left": "ثلاثة",
+            "right": "3"
+          },
+          {
+            "left": "خمسة",
+            "right": "5"
+          },
+          {
+            "left": "سبعة",
+            "right": "7"
+          },
+          {
+            "left": "عشرة",
+            "right": "10"
+          },
+          {
+            "left": "عشرون",
+            "right": "20"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the order",
+        "prompt": "Build: “Two coffees, please.”",
+        "words": [
+          "قهوتان",
+          "من",
+          "فضلك",
+          "."
+        ],
+        "answer": "قهوتان من فضلك."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · age",
+        "prompt": "Someone says this. How old are they?",
+        "audioText": "عمري عشرون سنة",
+        "options": [
+          "12 years old",
+          "20 years old",
+          "7 years old",
+          "2 years old"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the ticket window",
+        "context": "Buying tickets.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "تذكرتان؟"
+          },
+          {
+            "speaker": "You",
+            "text": "نعم، اثنتان. عمري عشرون سنة."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "حسناً. خمسة عشر ريالاً."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · seven",
+        "prompt": "What is “seven” in Arabic?",
+        "options": [
+          "ستة",
+          "سبعة",
+          "ثمانية",
+          "خمسة"
+        ],
+        "answerIndex": 1,
+        "explanation": "سبعة is seven."
+      },
+      {
+        "type": "check",
+        "title": "Check · phrase",
+        "prompt": "“قهوتان” means…",
+        "options": [
+          "Ten coffees",
+          "Two coffees",
+          "Twelve coffees",
+          "No coffee"
+        ],
+        "answerIndex": 1,
+        "explanation": "قهوتان = two coffees."
+      },
+      {
+        "type": "check",
+        "title": "Check · age",
+        "prompt": "How do Arabic speakers say “I am twenty years old”?",
+        "options": [
+          "أنا عشرون",
+          "عمري عشرون سنة",
+          "أذهب عشرون",
+          "عندي عشرون ساعة"
+        ],
+        "answerIndex": 1,
+        "explanation": "عمري … سنة = my age is … years."
+      }
+    ],
+    "direction": "en-ar"
+  },
+  {
+    "id": "introduce-yourself-1",
+    "slug": "introduce-yourself",
+    "title": "Introduce yourself",
+    "description": "Name, origin, and a simple nice-to-meet-you.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "First contact",
+        "body": "A short self-introduction is enough: name, origin, and a polite close."
+      },
+      {
+        "type": "vocab",
+        "title": "Building blocks",
+        "items": [
+          {
+            "term": "اسمي…",
+            "meaning": "My name is…"
+          },
+          {
+            "term": "أنا من…",
+            "meaning": "I am from…"
+          },
+          {
+            "term": "أسكن في…",
+            "meaning": "I live in…"
+          },
+          {
+            "term": "عمري … سنة",
+            "meaning": "I am … years old"
+          },
+          {
+            "term": "تشرفنا",
+            "meaning": "Nice to meet you"
+          },
+          {
+            "term": "وأنت؟",
+            "meaning": "And you?"
+          }
+        ]
+      },
+      {
+        "type": "tip",
+        "title": "تشرفنا",
+        "body": "تشرفنا (or سررت بلقائك) is a polite “nice to meet you.”"
+      },
+      {
+        "type": "phrase",
+        "title": "Model intros",
+        "sourceLabel": "en-ar",
+        "phrases": [
+          {
+            "source": "Hello, my name is Alex.",
+            "target": "مرحبا، اسمي أليكس."
+          },
+          {
+            "source": "I’m from Canada.",
+            "target": "أنا من كندا."
+          },
+          {
+            "source": "I live in Riyadh.",
+            "target": "أسكن في الرياض."
+          },
+          {
+            "source": "Nice to meet you.",
+            "target": "تشرفنا."
+          },
+          {
+            "source": "What’s your name?",
+            "target": "ما اسمك؟"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the building blocks",
+        "pairs": [
+          {
+            "left": "اسمي…",
+            "right": "My name is…"
+          },
+          {
+            "left": "أنا من…",
+            "right": "I am from…"
+          },
+          {
+            "left": "أسكن في…",
+            "right": "I live in…"
+          },
+          {
+            "left": "تشرفنا",
+            "right": "Nice to meet you"
+          },
+          {
+            "left": "وأنت؟",
+            "right": "And you?"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the introduction",
+        "prompt": "Build: “Hello, my name is Alex.”",
+        "words": [
+          "مرحبا",
+          "،",
+          "اسمي",
+          "أليكس",
+          "."
+        ],
+        "answer": "مرحبا، اسمي أليكس."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · origin",
+        "prompt": "What does this person say?",
+        "audioText": "أنا من كندا",
+        "options": [
+          "I live in Canada",
+          "I come from Canada",
+          "My name is Canada",
+          "I am going to Canada"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Meeting someone new",
+        "context": "A short self-introduction.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "مرحبا، اسمي سام."
+          },
+          {
+            "speaker": "Other",
+            "text": "تشرفنا. اسمي ليا."
+          },
+          {
+            "speaker": "You",
+            "text": "أنا من الولايات المتحدة. وأنت؟"
+          },
+          {
+            "speaker": "Léa",
+            "text": "أنا من الرياض."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "“اسمي سام” means…",
+        "options": [
+          "I live in Sam",
+          "My name is Sam",
+          "I am from Sam",
+          "See you Sam"
+        ],
+        "answerIndex": 1,
+        "explanation": "اسمي… = my name is…"
+      },
+      {
+        "type": "check",
+        "title": "Check · origin",
+        "prompt": "Best line for “I come from Belgium”?",
+        "options": [
+          "أسكن في بلجيكا",
+          "أنا من بلجيكا",
+          "اسمي بلجيكا",
+          "مع السلامة بلجيكا"
+        ],
+        "answerIndex": 1,
+        "explanation": "أنا من… expresses origin."
+      }
+    ],
+    "direction": "en-ar"
+  },
+  {
+    "id": "colors-1",
+    "slug": "colors-and-descriptions",
+    "title": "Colors & simple descriptions",
+    "description": "Name colors and describe everyday objects.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Painting with words",
+        "body": "Arabic colors agree in gender with the noun they describe."
+      },
+      {
+        "type": "tip",
+        "title": "Agreement basics",
+        "body": "Masculine and feminine forms differ.",
+        "bullets": [
+          "كتاب أحمر = red book (m)",
+          "سيارة حمراء = red car (f)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Colors",
+        "items": [
+          {
+            "term": "أحمر / حمراء",
+            "meaning": "red"
+          },
+          {
+            "term": "أزرق / زرقاء",
+            "meaning": "blue"
+          },
+          {
+            "term": "أخضر / خضراء",
+            "meaning": "green"
+          },
+          {
+            "term": "أصفر / صفراء",
+            "meaning": "yellow"
+          },
+          {
+            "term": "أسود / سوداء",
+            "meaning": "black"
+          },
+          {
+            "term": "أبيض / بيضاء",
+            "meaning": "white"
+          },
+          {
+            "term": "رمادي",
+            "meaning": "grey"
+          },
+          {
+            "term": "بني",
+            "meaning": "brown"
+          },
+          {
+            "term": "برتقالي",
+            "meaning": "orange"
+          },
+          {
+            "term": "وردي",
+            "meaning": "pink"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Describing things",
+        "sourceLabel": "en-ar",
+        "phrases": [
+          {
+            "source": "The sky is blue.",
+            "target": "السماء زرقاء."
+          },
+          {
+            "source": "I’d like the red one.",
+            "target": "أريد الأحمر."
+          },
+          {
+            "source": "She has a green bag.",
+            "target": "لديها حقيبة خضراء."
+          },
+          {
+            "source": "Black shoes.",
+            "target": "أحذية سوداء."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the colors",
+        "pairs": [
+          {
+            "left": "أحمر",
+            "right": "red"
+          },
+          {
+            "left": "أزرق",
+            "right": "blue"
+          },
+          {
+            "left": "أخضر",
+            "right": "green"
+          },
+          {
+            "left": "أسود",
+            "right": "black"
+          },
+          {
+            "left": "أبيض",
+            "right": "white"
+          },
+          {
+            "left": "بني",
+            "right": "brown"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the description",
+        "prompt": "Build: “a blue dress”",
+        "words": [
+          "فستان",
+          "أزرق"
+        ],
+        "answer": "فستان أزرق"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · color",
+        "prompt": "You hear “سيارة حمراء”. What is being described?",
+        "audioText": "سيارة حمراء",
+        "options": [
+          "a blue book",
+          "a red car",
+          "blue shoes",
+          "a green dress"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Choosing a color",
+        "context": "In a clothing shop.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "أي لون تفضل؟"
+          },
+          {
+            "speaker": "You",
+            "text": "أريد الأحمر."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "هذا فستان أحمر."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · color",
+        "prompt": "How do you say “red” (masculine)?",
+        "options": [
+          "أزرق",
+          "أحمر",
+          "أسود",
+          "أبيض"
+        ],
+        "answerIndex": 1,
+        "explanation": "أحمر = red (m)."
+      },
+      {
+        "type": "check",
+        "title": "Check · black",
+        "prompt": "What is “black” (masculine) in Arabic?",
+        "options": [
+          "أبيض",
+          "أسود",
+          "رمادي",
+          "بني"
+        ],
+        "answerIndex": 1,
+        "explanation": "أسود = black."
+      }
+    ],
+    "direction": "en-ar"
+  }
+]

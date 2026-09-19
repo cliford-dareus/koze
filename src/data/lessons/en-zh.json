@@ -1,0 +1,1040 @@
+[
+  {
+    "id": "greetings-1",
+    "slug": "greetings",
+    "title": "Greetings",
+    "xp": 25,
+    "description": "Hello and goodbye across the day, with formality notes.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "A soft start",
+        "body": "Chinese greetings are relatively simple. 你好 is the universal starting point."
+      },
+      {
+        "type": "tip",
+        "title": "Form vs. familiarity",
+        "body": "您好 is more respectful than 你好. Time-specific greetings are also common.",
+        "bullets": [
+          "早上好 = good morning.",
+          "下午好 = good afternoon.",
+          "晚上好 = good evening.",
+          "再见 = goodbye."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Core greetings",
+        "items": [
+          {
+            "term": "你好",
+            "meaning": "Hello"
+          },
+          {
+            "term": "您好",
+            "meaning": "Hello (polite)"
+          },
+          {
+            "term": "早上好",
+            "meaning": "Good morning"
+          },
+          {
+            "term": "下午好",
+            "meaning": "Good afternoon"
+          },
+          {
+            "term": "晚上好",
+            "meaning": "Good evening"
+          },
+          {
+            "term": "再见",
+            "meaning": "Goodbye"
+          },
+          {
+            "term": "拜拜",
+            "meaning": "Bye (casual)"
+          },
+          {
+            "term": "明天见",
+            "meaning": "See you tomorrow"
+          },
+          {
+            "term": "晚安",
+            "meaning": "Good night"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Useful lines",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "Hello, how are you?",
+            "target": "你好，你好吗？"
+          },
+          {
+            "source": "I’m fine, thanks. And you?",
+            "target": "我很好，谢谢。你呢？"
+          },
+          {
+            "source": "See you soon.",
+            "target": "一会儿见。"
+          },
+          {
+            "source": "Have a good day.",
+            "target": "祝你今天愉快。"
+          },
+          {
+            "source": "See you tomorrow!",
+            "target": "明天见！"
+          },
+          {
+            "source": "Good night.",
+            "target": "晚安。"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the greetings",
+        "pairs": [
+          {
+            "left": "你好",
+            "right": "Hello"
+          },
+          {
+            "left": "早上好",
+            "right": "Good morning"
+          },
+          {
+            "left": "晚上好",
+            "right": "Good evening"
+          },
+          {
+            "left": "再见",
+            "right": "Goodbye"
+          },
+          {
+            "left": "明天见",
+            "right": "See you tomorrow"
+          },
+          {
+            "left": "晚安",
+            "right": "Good night"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the greeting",
+        "prompt": "Build: “Hello, how are you?”",
+        "words": [
+          "你好",
+          "，",
+          "你好吗",
+          "？"
+        ],
+        "answer": "你好，你好吗？"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · evening",
+        "prompt": "You hear this in the evening. What does it mean?",
+        "audioText": "晚上好",
+        "options": [
+          "Good morning",
+          "Good afternoon",
+          "Good evening",
+          "Good night"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "title": "A first meeting",
+        "context": "You meet someone for the first time.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "您好，你好吗？"
+          },
+          {
+            "speaker": "Other",
+            "text": "我很好，谢谢。你呢？"
+          },
+          {
+            "speaker": "You",
+            "text": "我也很好。"
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · hello",
+        "prompt": "Which is the standard hello?",
+        "options": [
+          "再见",
+          "你好",
+          "晚安",
+          "早上好"
+        ],
+        "answerIndex": 1,
+        "explanation": "你好 is the universal hello."
+      },
+      {
+        "type": "check",
+        "title": "Check · polite",
+        "prompt": "Which is more respectful?",
+        "options": [
+          "你好",
+          "您好",
+          "拜拜",
+          "再见"
+        ],
+        "answerIndex": 1,
+        "explanation": "您好 is the polite form."
+      },
+      {
+        "type": "check",
+        "title": "Check · good night",
+        "prompt": "You’re heading to bed. You say…",
+        "options": [
+          "晚上好",
+          "晚安",
+          "早上好",
+          "再见"
+        ],
+        "answerIndex": 1,
+        "explanation": "晚安 is good night."
+      }
+    ],
+    "direction": "en-zh"
+  },
+  {
+    "id": "polite-1",
+    "slug": "please-and-thank-you",
+    "title": "Please & thank you",
+    "description": "Politeness formulas that open every exchange.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 13,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Small words, big difference",
+        "body": "Chinese interactions expect 请 and 谢谢."
+      },
+      {
+        "type": "tip",
+        "title": "Please & thanks",
+        "body": "请 is “please.” 谢谢 is “thank you.”",
+        "bullets": [
+          "非常感谢 = thank you very much.",
+          "不客气 = you’re welcome.",
+          "对不起 / 抱歉 = sorry.",
+          "请 is also used before verbs to soften requests."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Politeness set",
+        "items": [
+          {
+            "term": "请",
+            "meaning": "Please"
+          },
+          {
+            "term": "谢谢",
+            "meaning": "Thank you"
+          },
+          {
+            "term": "非常感谢",
+            "meaning": "Thank you very much"
+          },
+          {
+            "term": "不客气",
+            "meaning": "You’re welcome"
+          },
+          {
+            "term": "对不起",
+            "meaning": "Sorry"
+          },
+          {
+            "term": "抱歉",
+            "meaning": "Sorry / I apologize"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "In context",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "A coffee, please.",
+            "target": "请给我一杯咖啡。"
+          },
+          {
+            "source": "Thank you very much.",
+            "target": "非常感谢。"
+          },
+          {
+            "source": "Excuse me (to pass).",
+            "target": "不好意思。"
+          },
+          {
+            "source": "Sorry I’m late.",
+            "target": "对不起，我迟到了。"
+          },
+          {
+            "source": "I’m so sorry.",
+            "target": "非常抱歉。"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the polite phrases",
+        "pairs": [
+          {
+            "left": "请",
+            "right": "Please"
+          },
+          {
+            "left": "谢谢",
+            "right": "Thank you"
+          },
+          {
+            "left": "非常感谢",
+            "right": "Thank you very much"
+          },
+          {
+            "left": "不客气",
+            "right": "You’re welcome"
+          },
+          {
+            "left": "对不起",
+            "right": "Sorry"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the request",
+        "prompt": "Build: “A coffee, please.”",
+        "words": [
+          "请",
+          "给我",
+          "一杯",
+          "咖啡",
+          "。"
+        ],
+        "answer": "请给我一杯咖啡。"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · reply",
+        "prompt": "Someone says 谢谢. A common reply is…",
+        "audioText": "不客气",
+        "options": [
+          "Please",
+          "You’re welcome",
+          "Excuse me",
+          "Goodbye"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the counter",
+        "context": "Ordering and thanking.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "请给我一杯咖啡。"
+          },
+          {
+            "speaker": "Clerk",
+            "text": "好的。三块。"
+          },
+          {
+            "speaker": "You",
+            "text": "谢谢。"
+          },
+          {
+            "speaker": "Clerk",
+            "text": "不客气。"
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · shop",
+        "prompt": "How do you say “please” in a request?",
+        "options": [
+          "谢谢",
+          "请",
+          "不客气",
+          "你好"
+        ],
+        "answerIndex": 1,
+        "explanation": "请 softens requests."
+      },
+      {
+        "type": "check",
+        "title": "Check · reply",
+        "prompt": "Someone says 谢谢. A common reply is…",
+        "options": [
+          "你好",
+          "不客气",
+          "再见",
+          "请"
+        ],
+        "answerIndex": 1,
+        "explanation": "不客气 means “you’re welcome.”"
+      }
+    ],
+    "direction": "en-zh"
+  },
+  {
+    "id": "numbers-1",
+    "slug": "numbers-1-to-10",
+    "title": "Numbers 1–10",
+    "description": "Count clearly for prices, times, and quantities.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Count slowly",
+        "body": "Chinese numbers are regular and logical. Master 1–10 first."
+      },
+      {
+        "type": "tip",
+        "title": "Notes",
+        "body": "Measure words (classifiers) are required when counting nouns.",
+        "bullets": [
+          "一本书 = one book",
+          "两杯咖啡 = two cups of coffee",
+          "Learn numbers with common measure words."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "1 to 10",
+        "items": [
+          {
+            "term": "零",
+            "meaning": "0"
+          },
+          {
+            "term": "一",
+            "meaning": "1"
+          },
+          {
+            "term": "二 / 两",
+            "meaning": "2"
+          },
+          {
+            "term": "三",
+            "meaning": "3"
+          },
+          {
+            "term": "四",
+            "meaning": "4"
+          },
+          {
+            "term": "五",
+            "meaning": "5"
+          },
+          {
+            "term": "六",
+            "meaning": "6"
+          },
+          {
+            "term": "七",
+            "meaning": "7"
+          },
+          {
+            "term": "八",
+            "meaning": "8"
+          },
+          {
+            "term": "九",
+            "meaning": "9"
+          },
+          {
+            "term": "十",
+            "meaning": "10"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "11 to 20 (bonus)",
+        "items": [
+          {
+            "term": "十一",
+            "meaning": "11"
+          },
+          {
+            "term": "十二",
+            "meaning": "12"
+          },
+          {
+            "term": "十三",
+            "meaning": "13"
+          },
+          {
+            "term": "十四",
+            "meaning": "14"
+          },
+          {
+            "term": "十五",
+            "meaning": "15"
+          },
+          {
+            "term": "十六",
+            "meaning": "16"
+          },
+          {
+            "term": "十七",
+            "meaning": "17"
+          },
+          {
+            "term": "十八",
+            "meaning": "18"
+          },
+          {
+            "term": "十九",
+            "meaning": "19"
+          },
+          {
+            "term": "二十",
+            "meaning": "20"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Mini uses",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "Two coffees, please.",
+            "target": "请给我两杯咖啡。"
+          },
+          {
+            "source": "It costs five yuan.",
+            "target": "五块钱。"
+          },
+          {
+            "source": "Platform three.",
+            "target": "三号站台。"
+          },
+          {
+            "source": "I am twenty years old.",
+            "target": "我二十岁。"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the numbers",
+        "pairs": [
+          {
+            "left": "一",
+            "right": "1"
+          },
+          {
+            "left": "二",
+            "right": "2"
+          },
+          {
+            "left": "三",
+            "right": "3"
+          },
+          {
+            "left": "五",
+            "right": "5"
+          },
+          {
+            "left": "七",
+            "right": "7"
+          },
+          {
+            "left": "十",
+            "right": "10"
+          },
+          {
+            "left": "二十",
+            "right": "20"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the order",
+        "prompt": "Build: “Two coffees, please.”",
+        "words": [
+          "请",
+          "给我",
+          "两杯",
+          "咖啡",
+          "。"
+        ],
+        "answer": "请给我两杯咖啡。"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · age",
+        "prompt": "Someone says this. How old are they?",
+        "audioText": "我二十岁",
+        "options": [
+          "12 years old",
+          "20 years old",
+          "7 years old",
+          "2 years old"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the ticket window",
+        "context": "Buying tickets.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "两张票？"
+          },
+          {
+            "speaker": "You",
+            "text": "对，两张。我二十岁。"
+          },
+          {
+            "speaker": "Clerk",
+            "text": "好的。十五块。"
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · seven",
+        "prompt": "What is “seven” in Chinese?",
+        "options": [
+          "六",
+          "七",
+          "八",
+          "五"
+        ],
+        "answerIndex": 1,
+        "explanation": "七 is seven."
+      },
+      {
+        "type": "check",
+        "title": "Check · phrase",
+        "prompt": "“两杯咖啡” means…",
+        "options": [
+          "Ten coffees",
+          "Two coffees",
+          "Twelve coffees",
+          "No coffee"
+        ],
+        "answerIndex": 1,
+        "explanation": "两 = two (when counting)."
+      },
+      {
+        "type": "check",
+        "title": "Check · age",
+        "prompt": "How do Chinese speakers say “I am twenty years old”?",
+        "options": [
+          "我是二十",
+          "我二十岁",
+          "我去二十",
+          "我二十小时"
+        ],
+        "answerIndex": 1,
+        "explanation": "Age uses 岁: 我二十岁。"
+      }
+    ],
+    "direction": "en-zh"
+  },
+  {
+    "id": "introduce-yourself-1",
+    "slug": "introduce-yourself",
+    "title": "Introduce yourself",
+    "description": "Name, origin, and a simple nice-to-meet-you.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "First contact",
+        "body": "A short self-introduction is enough: name, origin, and a polite close."
+      },
+      {
+        "type": "vocab",
+        "title": "Building blocks",
+        "items": [
+          {
+            "term": "我叫…",
+            "meaning": "My name is…"
+          },
+          {
+            "term": "我来自…",
+            "meaning": "I come from…"
+          },
+          {
+            "term": "我住在…",
+            "meaning": "I live in…"
+          },
+          {
+            "term": "我…岁",
+            "meaning": "I am … years old"
+          },
+          {
+            "term": "很高兴认识你",
+            "meaning": "Nice to meet you"
+          },
+          {
+            "term": "你呢？",
+            "meaning": "And you?"
+          }
+        ]
+      },
+      {
+        "type": "tip",
+        "title": "很高兴认识你",
+        "body": "This is the standard “nice to meet you.”"
+      },
+      {
+        "type": "phrase",
+        "title": "Model intros",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "Hello, my name is Alex.",
+            "target": "你好，我叫Alex。"
+          },
+          {
+            "source": "I’m from Canada.",
+            "target": "我来自加拿大。"
+          },
+          {
+            "source": "I live in Beijing.",
+            "target": "我住在北京。"
+          },
+          {
+            "source": "Nice to meet you.",
+            "target": "很高兴认识你。"
+          },
+          {
+            "source": "What’s your name?",
+            "target": "你叫什么名字？"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the building blocks",
+        "pairs": [
+          {
+            "left": "我叫…",
+            "right": "My name is…"
+          },
+          {
+            "left": "我来自…",
+            "right": "I come from…"
+          },
+          {
+            "left": "我住在…",
+            "right": "I live in…"
+          },
+          {
+            "left": "很高兴认识你",
+            "right": "Nice to meet you"
+          },
+          {
+            "left": "你呢？",
+            "right": "And you?"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the introduction",
+        "prompt": "Build: “Hello, my name is Alex.”",
+        "words": [
+          "你好",
+          "，",
+          "我叫",
+          "Alex",
+          "。"
+        ],
+        "answer": "你好，我叫Alex。"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · origin",
+        "prompt": "What does this person say?",
+        "audioText": "我来自加拿大",
+        "options": [
+          "I live in Canada",
+          "I come from Canada",
+          "My name is Canada",
+          "I am going to Canada"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Meeting someone new",
+        "context": "A short self-introduction.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "你好，我叫Sam。"
+          },
+          {
+            "speaker": "Other",
+            "text": "很高兴认识你。我叫Lea。"
+          },
+          {
+            "speaker": "You",
+            "text": "我来自美国。你呢？"
+          },
+          {
+            "speaker": "Léa",
+            "text": "我来自北京。"
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "“我叫Sam” means…",
+        "options": [
+          "I live in Sam",
+          "My name is Sam",
+          "I am from Sam",
+          "See you Sam"
+        ],
+        "answerIndex": 1,
+        "explanation": "我叫… = my name is…"
+      },
+      {
+        "type": "check",
+        "title": "Check · origin",
+        "prompt": "Best line for “I come from Belgium”?",
+        "options": [
+          "我住在比利时",
+          "我来自比利时",
+          "我叫比利时",
+          "再见比利时"
+        ],
+        "answerIndex": 1,
+        "explanation": "我来自… expresses origin."
+      }
+    ],
+    "direction": "en-zh"
+  },
+  {
+    "id": "colors-1",
+    "slug": "colors-and-descriptions",
+    "title": "Colors & simple descriptions",
+    "description": "Name colors and describe everyday objects.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Painting with words",
+        "body": "Colors in Chinese are straightforward nouns or adjectives."
+      },
+      {
+        "type": "tip",
+        "title": "Color forms",
+        "body": "Colors usually come before the noun, often with 的.",
+        "bullets": [
+          "红色的车 = red car",
+          "蓝色的天空 = blue sky"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Colors",
+        "items": [
+          {
+            "term": "红色",
+            "meaning": "red"
+          },
+          {
+            "term": "蓝色",
+            "meaning": "blue"
+          },
+          {
+            "term": "绿色",
+            "meaning": "green"
+          },
+          {
+            "term": "黄色",
+            "meaning": "yellow"
+          },
+          {
+            "term": "黑色",
+            "meaning": "black"
+          },
+          {
+            "term": "白色",
+            "meaning": "white"
+          },
+          {
+            "term": "灰色",
+            "meaning": "grey"
+          },
+          {
+            "term": "棕色",
+            "meaning": "brown"
+          },
+          {
+            "term": "橙色",
+            "meaning": "orange"
+          },
+          {
+            "term": "粉色",
+            "meaning": "pink"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Describing things",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "The sky is blue.",
+            "target": "天空是蓝色的。"
+          },
+          {
+            "source": "I’d like the red one.",
+            "target": "我想要红色的。"
+          },
+          {
+            "source": "She has a green bag.",
+            "target": "她有一个绿色的包。"
+          },
+          {
+            "source": "Black shoes.",
+            "target": "黑色的鞋。"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the colors",
+        "pairs": [
+          {
+            "left": "红色",
+            "right": "red"
+          },
+          {
+            "left": "蓝色",
+            "right": "blue"
+          },
+          {
+            "left": "绿色",
+            "right": "green"
+          },
+          {
+            "left": "黑色",
+            "right": "black"
+          },
+          {
+            "left": "白色",
+            "right": "white"
+          },
+          {
+            "left": "棕色",
+            "right": "brown"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the description",
+        "prompt": "Build: “a blue dress”",
+        "words": [
+          "蓝色的",
+          "裙子"
+        ],
+        "answer": "蓝色的裙子"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · color",
+        "prompt": "You hear “红色的裙子”. What is being described?",
+        "audioText": "红色的裙子",
+        "options": [
+          "a blue book",
+          "a red skirt",
+          "blue shoes",
+          "a green dress"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Choosing a color",
+        "context": "In a clothing shop.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "您喜欢什么颜色？"
+          },
+          {
+            "speaker": "You",
+            "text": "我想要红色的。"
+          },
+          {
+            "speaker": "Clerk",
+            "text": "这是红色的裙子。"
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · color",
+        "prompt": "How do you say “red”?",
+        "options": [
+          "蓝色",
+          "红色",
+          "黑色",
+          "白色"
+        ],
+        "answerIndex": 1,
+        "explanation": "红色 = red."
+      },
+      {
+        "type": "check",
+        "title": "Check · black",
+        "prompt": "What is “black” in Chinese?",
+        "options": [
+          "白色",
+          "黑色",
+          "灰色",
+          "棕色"
+        ],
+        "answerIndex": 1,
+        "explanation": "黑色 = black."
+      }
+    ],
+    "direction": "en-zh"
+  }
+]

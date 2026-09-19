@@ -1,0 +1,1032 @@
+[
+    {
+        "id": "greetings-1",
+        "slug": "greetings",
+        "title": "Greetings",
+        "xp": 25,
+        "description": "Hello and goodbye across the day, with formality notes.",
+        "unitId": "foundations",
+        "level": "beginner",
+        "estimatedMinutes": 14,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "A soft start",
+                "body": "Korean greetings are strongly tied to formality and respect. Learn the polite set first."
+            },
+            {
+                "type": "tip",
+                "title": "Form vs. familiarity",
+                "body": "Use 존댓말 (polite speech) with strangers and elders. Casual speech is for close friends.",
+                "bullets": [
+                    "안녕하세요 is the all-purpose polite hello.",
+                    "안녕히 가세요 when the other person is leaving.",
+                    "안녕히 계세요 when you are leaving.",
+                    "안녕 is casual hi/bye."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Core greetings",
+                "items": [
+                    {
+                        "term": "안녕하세요",
+                        "meaning": "Hello (polite)"
+                    },
+                    {
+                        "term": "안녕",
+                        "meaning": "Hi / bye (casual)"
+                    },
+                    {
+                        "term": "안녕히 가세요",
+                        "meaning": "Goodbye (to someone leaving)"
+                    },
+                    {
+                        "term": "안녕히 계세요",
+                        "meaning": "Goodbye (when you leave)"
+                    },
+                    {
+                        "term": "좋은 아침이에요",
+                        "meaning": "Good morning"
+                    },
+                    {
+                        "term": "좋은 저녁이에요",
+                        "meaning": "Good evening"
+                    },
+                    {
+                        "term": "잘 자요",
+                        "meaning": "Good night (polite)"
+                    },
+                    {
+                        "term": "내일 봐요",
+                        "meaning": "See you tomorrow"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Useful lines",
+                "sourceLabel": "en-ko",
+                "phrases": [
+                    {
+                        "source": "Hello, how are you? (polite)",
+                        "target": "안녕하세요, 잘 지내세요?"
+                    },
+                    {
+                        "source": "Hi, how are you? (casual)",
+                        "target": "안녕, 잘 지내?"
+                    },
+                    {
+                        "source": "I'm fine, thanks. And you?",
+                        "target": "네, 잘 지내요. 당신은요?"
+                    },
+                    {
+                        "source": "See you soon.",
+                        "target": "곧 봐요."
+                    },
+                    {
+                        "source": "Have a good day.",
+                        "target": "좋은 하루 보내세요."
+                    },
+                    {
+                        "source": "See you tomorrow!",
+                        "target": "내일 봐요!"
+                    },
+                    {
+                        "source": "Good night.",
+                        "target": "잘 자요."
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the greetings",
+                "pairs": [
+                    {
+                        "left": "안녕하세요",
+                        "right": "Hello (polite)"
+                    },
+                    {
+                        "left": "안녕",
+                        "right": "Hi / bye (casual)"
+                    },
+                    {
+                        "left": "안녕히 가세요",
+                        "right": "Goodbye (to someone leaving)"
+                    },
+                    {
+                        "left": "잘 자요",
+                        "right": "Good night"
+                    },
+                    {
+                        "left": "내일 봐요",
+                        "right": "See you tomorrow"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the greeting",
+                "prompt": "Build: “Hello, how are you?” (polite)",
+                "words": [
+                    "안녕하세요",
+                    ",",
+                    "잘",
+                    "지내세요",
+                    "?"
+                ],
+                "answer": "안녕하세요, 잘 지내세요?"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · polite hello",
+                "prompt": "You hear this greeting. What does it mean?",
+                "audioText": "안녕하세요",
+                "options": [
+                    "Good night",
+                    "Hello (polite)",
+                    "See you tomorrow",
+                    "Thank you"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "A first meeting",
+                "context": "You meet a colleague’s parent for the first time.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "안녕하세요, 잘 지내세요?"
+                    },
+                    {
+                        "speaker": "Parent",
+                        "text": "네, 잘 지내요. 당신은요?"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "네, 잘 지내요."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · polite",
+                "prompt": "Which is the standard polite hello?",
+                "options": [
+                    "안녕",
+                    "안녕하세요",
+                    "잘 자요",
+                    "내일 봐요"
+                ],
+                "answerIndex": 1,
+                "explanation": "안녕하세요 is the safe polite greeting."
+            },
+            {
+                "type": "check",
+                "title": "Check · formality",
+                "prompt": "You meet your friend’s parent for the first time. Best choice?",
+                "options": [
+                    "안녕!",
+                    "안녕하세요",
+                    "야!",
+                    "내일 봐"
+                ],
+                "answerIndex": 1,
+                "explanation": "Polite speech is required with elders and strangers."
+            },
+            {
+                "type": "check",
+                "title": "Check · good night",
+                "prompt": "You’re heading to bed. You say…",
+                "options": [
+                    "안녕하세요",
+                    "잘 자요",
+                    "안녕히 가세요",
+                    "좋은 아침이에요"
+                ],
+                "answerIndex": 1,
+                "explanation": "잘 자요 is the polite good night."
+            }
+        ],
+        "direction": "en-ko"
+    },
+    {
+        "id": "polite-1",
+        "slug": "please-and-thank-you",
+        "title": "Please & thank you",
+        "description": "Politeness formulas that open every exchange.",
+        "unitId": "foundations",
+        "level": "beginner",
+        "estimatedMinutes": 13,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Small words, big difference",
+                "body": "Korean interactions expect 주세요 and 감사합니다."
+            },
+            {
+                "type": "tip",
+                "title": "Please & thanks",
+                "body": "주세요 is the everyday “please (give me).” 감사합니다 is polite thanks.",
+                "bullets": [
+                    "감사합니다 / 고맙습니다 = thank you.",
+                    "천만에요 / 아니에요 = you’re welcome.",
+                    "죄송합니다 = I’m sorry (formal).",
+                    "미안해요 is softer."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Politeness set",
+                "items": [
+                    {
+                        "term": "주세요",
+                        "meaning": "Please (give me)"
+                    },
+                    {
+                        "term": "감사합니다",
+                        "meaning": "Thank you (polite)"
+                    },
+                    {
+                        "term": "고맙습니다",
+                        "meaning": "Thank you"
+                    },
+                    {
+                        "term": "천만에요",
+                        "meaning": "You’re welcome"
+                    },
+                    {
+                        "term": "죄송합니다",
+                        "meaning": "I’m sorry (formal)"
+                    },
+                    {
+                        "term": "미안해요",
+                        "meaning": "Sorry (softer)"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "In context",
+                "sourceLabel": "en-ko",
+                "phrases": [
+                    {
+                        "source": "A coffee, please.",
+                        "target": "커피 주세요."
+                    },
+                    {
+                        "source": "Thank you very much.",
+                        "target": "정말 감사합니다."
+                    },
+                    {
+                        "source": "Excuse me (to pass).",
+                        "target": "죄송합니다."
+                    },
+                    {
+                        "source": "Sorry I’m late.",
+                        "target": "늦어서 죄송합니다."
+                    },
+                    {
+                        "source": "I’m so sorry.",
+                        "target": "정말 미안해요."
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the polite phrases",
+                "pairs": [
+                    {
+                        "left": "주세요",
+                        "right": "Please (give me)"
+                    },
+                    {
+                        "left": "감사합니다",
+                        "right": "Thank you"
+                    },
+                    {
+                        "left": "천만에요",
+                        "right": "You’re welcome"
+                    },
+                    {
+                        "left": "죄송합니다",
+                        "right": "I’m sorry (formal)"
+                    },
+                    {
+                        "left": "미안해요",
+                        "right": "Sorry (softer)"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the request",
+                "prompt": "Build: “A coffee, please.”",
+                "words": [
+                    "커피",
+                    "주세요",
+                    "."
+                ],
+                "answer": "커피 주세요."
+            },
+            {
+                "type": "listen",
+                "title": "Listen · reply",
+                "prompt": "Someone says 감사합니다. A common reply is…",
+                "audioText": "천만에요",
+                "options": [
+                    "Please",
+                    "You’re welcome",
+                    "Excuse me",
+                    "Goodbye"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "At the counter",
+                "context": "Ordering and thanking.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "커피 주세요."
+                    },
+                    {
+                        "speaker": "Clerk",
+                        "text": "여기요. 삼천 원입니다."
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "감사합니다."
+                    },
+                    {
+                        "speaker": "Clerk",
+                        "text": "천만에요."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · shop",
+                "prompt": "How do you say “please” when ordering?",
+                "options": [
+                    "감사합니다",
+                    "주세요",
+                    "천만에요",
+                    "안녕하세요"
+                ],
+                "answerIndex": 1,
+                "explanation": "주세요 is the standard request ending."
+            },
+            {
+                "type": "check",
+                "title": "Check · reply",
+                "prompt": "Someone says 감사합니다. A common reply is…",
+                "options": [
+                    "안녕하세요",
+                    "천만에요",
+                    "안녕히 가세요",
+                    "주세요"
+                ],
+                "answerIndex": 1,
+                "explanation": "천만에요 means “you’re welcome.”"
+            }
+        ],
+        "direction": "en-ko"
+    },
+    {
+        "id": "numbers-1",
+        "slug": "numbers-1-to-10",
+        "title": "Numbers 1–10",
+        "description": "Count clearly for prices, times, and quantities.",
+        "unitId": "foundations",
+        "level": "beginner",
+        "estimatedMinutes": 14,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Count slowly",
+                "body": "Korean has two number systems: native and Sino-Korean. Both are essential."
+            },
+            {
+                "type": "tip",
+                "title": "Two systems",
+                "body": "Native Korean numbers (하나, 둘…) are used for small quantities and age. Sino-Korean (일, 이…) for money, dates, phone numbers.",
+                "bullets": [
+                    "하나, 둘, 셋… (native)",
+                    "일, 이, 삼… (Sino)",
+                    "Beginners need both."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Native 1 to 10",
+                "items": [
+                    {
+                        "term": "영 / 공",
+                        "meaning": "0"
+                    },
+                    {
+                        "term": "하나",
+                        "meaning": "1"
+                    },
+                    {
+                        "term": "둘",
+                        "meaning": "2"
+                    },
+                    {
+                        "term": "셋",
+                        "meaning": "3"
+                    },
+                    {
+                        "term": "넷",
+                        "meaning": "4"
+                    },
+                    {
+                        "term": "다섯",
+                        "meaning": "5"
+                    },
+                    {
+                        "term": "여섯",
+                        "meaning": "6"
+                    },
+                    {
+                        "term": "일곱",
+                        "meaning": "7"
+                    },
+                    {
+                        "term": "여덟",
+                        "meaning": "8"
+                    },
+                    {
+                        "term": "아홉",
+                        "meaning": "9"
+                    },
+                    {
+                        "term": "열",
+                        "meaning": "10"
+                    }
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Sino-Korean 1 to 10",
+                "items": [
+                    {
+                        "term": "일",
+                        "meaning": "1"
+                    },
+                    {
+                        "term": "이",
+                        "meaning": "2"
+                    },
+                    {
+                        "term": "삼",
+                        "meaning": "3"
+                    },
+                    {
+                        "term": "사",
+                        "meaning": "4"
+                    },
+                    {
+                        "term": "오",
+                        "meaning": "5"
+                    },
+                    {
+                        "term": "육",
+                        "meaning": "6"
+                    },
+                    {
+                        "term": "칠",
+                        "meaning": "7"
+                    },
+                    {
+                        "term": "팔",
+                        "meaning": "8"
+                    },
+                    {
+                        "term": "구",
+                        "meaning": "9"
+                    },
+                    {
+                        "term": "십",
+                        "meaning": "10"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Mini uses",
+                "sourceLabel": "en-ko",
+                "phrases": [
+                    {
+                        "source": "Two coffees, please.",
+                        "target": "커피 둘 주세요."
+                    },
+                    {
+                        "source": "It costs five thousand won.",
+                        "target": "오천 원입니다."
+                    },
+                    {
+                        "source": "Platform three.",
+                        "target": "삼 번 타는 곳입니다."
+                    },
+                    {
+                        "source": "I am twenty years old.",
+                        "target": "스무 살입니다."
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the numbers",
+                "pairs": [
+                    {
+                        "left": "하나",
+                        "right": "1 (native)"
+                    },
+                    {
+                        "left": "둘",
+                        "right": "2 (native)"
+                    },
+                    {
+                        "left": "셋",
+                        "right": "3 (native)"
+                    },
+                    {
+                        "left": "일",
+                        "right": "1 (Sino)"
+                    },
+                    {
+                        "left": "이",
+                        "right": "2 (Sino)"
+                    },
+                    {
+                        "left": "십",
+                        "right": "10 (Sino)"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the order",
+                "prompt": "Build: “Two coffees, please.”",
+                "words": [
+                    "커피",
+                    "둘",
+                    "주세요",
+                    "."
+                ],
+                "answer": "커피 둘 주세요."
+            },
+            {
+                "type": "listen",
+                "title": "Listen · age",
+                "prompt": "Someone says this. How old are they?",
+                "audioText": "스무 살입니다",
+                "options": [
+                    "12 years old",
+                    "20 years old",
+                    "7 years old",
+                    "2 years old"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "At the ticket window",
+                "context": "Buying tickets.",
+                "turns": [
+                    {
+                        "speaker": "Clerk",
+                        "text": "표 두 장이요?"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "네, 둘요. 스무 살입니다."
+                    },
+                    {
+                        "speaker": "Clerk",
+                        "text": "알겠습니다. 만오천 원입니다."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · native seven",
+                "prompt": "What is native Korean “seven”?",
+                "options": [
+                    "여섯",
+                    "일곱",
+                    "여덟",
+                    "다섯"
+                ],
+                "answerIndex": 1,
+                "explanation": "일곱 is native Korean seven."
+            },
+            {
+                "type": "check",
+                "title": "Check · phrase",
+                "prompt": "“커피 둘” means…",
+                "options": [
+                    "Ten coffees",
+                    "Two coffees",
+                    "Twelve coffees",
+                    "No coffee"
+                ],
+                "answerIndex": 1,
+                "explanation": "둘 means two (native)."
+            },
+            {
+                "type": "check",
+                "title": "Check · age",
+                "prompt": "How do Koreans say “I am twenty years old”?",
+                "options": [
+                    "이십입니다",
+                    "스무 살입니다",
+                    "스물입니다",
+                    "이십 살이에요"
+                ],
+                "answerIndex": 1,
+                "explanation": "Age often uses native numbers + 살."
+            }
+        ],
+        "direction": "en-ko"
+    },
+    {
+        "id": "introduce-yourself-1",
+        "slug": "introduce-yourself",
+        "title": "Introduce yourself",
+        "description": "Name, origin, and a simple nice-to-meet-you.",
+        "unitId": "foundations",
+        "level": "beginner",
+        "estimatedMinutes": 16,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "First contact",
+                "body": "A short self-introduction is enough: name, origin, and a polite close."
+            },
+            {
+                "type": "vocab",
+                "title": "Building blocks",
+                "items": [
+                    {
+                        "term": "제 이름은 …입니다",
+                        "meaning": "My name is…"
+                    },
+                    {
+                        "term": "…에서 왔습니다",
+                        "meaning": "I come from…"
+                    },
+                    {
+                        "term": "…에 살아요",
+                        "meaning": "I live in…"
+                    },
+                    {
+                        "term": "…살입니다",
+                        "meaning": "I am … years old"
+                    },
+                    {
+                        "term": "만나서 반갑습니다",
+                        "meaning": "Nice to meet you"
+                    },
+                    {
+                        "term": "당신은요?",
+                        "meaning": "And you?"
+                    }
+                ]
+            },
+            {
+                "type": "tip",
+                "title": "만나서 반갑습니다",
+                "body": "This is the standard polite “nice to meet you.”"
+            },
+            {
+                "type": "phrase",
+                "title": "Model intros",
+                "sourceLabel": "en-ko",
+                "phrases": [
+                    {
+                        "source": "Hello, my name is Alex.",
+                        "target": "안녕하세요, 제 이름은 알렉스입니다."
+                    },
+                    {
+                        "source": "I’m from Canada.",
+                        "target": "캐나다에서 왔습니다."
+                    },
+                    {
+                        "source": "I live in Seoul.",
+                        "target": "서울에 살아요."
+                    },
+                    {
+                        "source": "Nice to meet you.",
+                        "target": "만나서 반갑습니다."
+                    },
+                    {
+                        "source": "What’s your name?",
+                        "target": "성함이 어떻게 되세요?"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the building blocks",
+                "pairs": [
+                    {
+                        "left": "제 이름은 …입니다",
+                        "right": "My name is…"
+                    },
+                    {
+                        "left": "…에서 왔습니다",
+                        "right": "I come from…"
+                    },
+                    {
+                        "left": "…에 살아요",
+                        "right": "I live in…"
+                    },
+                    {
+                        "left": "만나서 반갑습니다",
+                        "right": "Nice to meet you"
+                    },
+                    {
+                        "left": "당신은요?",
+                        "right": "And you?"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the introduction",
+                "prompt": "Build: “Hello, my name is Alex.”",
+                "words": [
+                    "안녕하세요",
+                    ",",
+                    "제",
+                    "이름은",
+                    "알렉스입니다",
+                    "."
+                ],
+                "answer": "안녕하세요, 제 이름은 알렉스입니다."
+            },
+            {
+                "type": "listen",
+                "title": "Listen · origin",
+                "prompt": "What does this person say?",
+                "audioText": "캐나다에서 왔습니다",
+                "options": [
+                    "I live in Canada",
+                    "I come from Canada",
+                    "My name is Canada",
+                    "I am going to Canada"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Meeting someone new",
+                "context": "A short self-introduction.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "안녕하세요, 제 이름은 샘입니다."
+                    },
+                    {
+                        "speaker": "Other",
+                        "text": "만나서 반갑습니다. 제 이름은 레아입니다."
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "미국에서 왔습니다. 당신은요?"
+                    },
+                    {
+                        "speaker": "Léa",
+                        "text": "서울에서 왔습니다."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“제 이름은 샘입니다” means…",
+                "options": [
+                    "I live in Sam",
+                    "My name is Sam",
+                    "I am from Sam",
+                    "See you Sam"
+                ],
+                "answerIndex": 1,
+                "explanation": "제 이름은 …입니다 = my name is…"
+            },
+            {
+                "type": "check",
+                "title": "Check · origin",
+                "prompt": "Best line for “I come from Belgium”?",
+                "options": [
+                    "벨기에에 살아요",
+                    "벨기에에서 왔습니다",
+                    "제 이름은 벨기에입니다",
+                    "안녕히 가세요 벨기에"
+                ],
+                "answerIndex": 1,
+                "explanation": "…에서 왔습니다 expresses origin."
+            }
+        ],
+        "direction": "en-ko"
+    },
+    {
+        "id": "colors-1",
+        "slug": "colors-and-descriptions",
+        "title": "Colors & simple descriptions",
+        "description": "Name colors and describe everyday objects.",
+        "unitId": "foundations",
+        "level": "beginner",
+        "estimatedMinutes": 14,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Painting with words",
+                "body": "Korean colors are often descriptive verbs or nouns + 색."
+            },
+            {
+                "type": "tip",
+                "title": "Color forms",
+                "body": "Many colors end in 색 (color) or use 이다.",
+                "bullets": [
+                    "빨간색 = red",
+                    "파란색 = blue",
+                    "검은색 = black"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Colors",
+                "items": [
+                    {
+                        "term": "빨간색",
+                        "meaning": "red"
+                    },
+                    {
+                        "term": "파란색",
+                        "meaning": "blue"
+                    },
+                    {
+                        "term": "초록색 / 녹색",
+                        "meaning": "green"
+                    },
+                    {
+                        "term": "노란색",
+                        "meaning": "yellow"
+                    },
+                    {
+                        "term": "검은색",
+                        "meaning": "black"
+                    },
+                    {
+                        "term": "하얀색 / 흰색",
+                        "meaning": "white"
+                    },
+                    {
+                        "term": "회색",
+                        "meaning": "grey"
+                    },
+                    {
+                        "term": "갈색",
+                        "meaning": "brown"
+                    },
+                    {
+                        "term": "주황색",
+                        "meaning": "orange"
+                    },
+                    {
+                        "term": "분홍색",
+                        "meaning": "pink"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Describing things",
+                "sourceLabel": "en-ko",
+                "phrases": [
+                    {
+                        "source": "The sky is blue.",
+                        "target": "하늘이 파래요."
+                    },
+                    {
+                        "source": "I’d like the red one.",
+                        "target": "빨간색으로 주세요."
+                    },
+                    {
+                        "source": "She has a green bag.",
+                        "target": "그녀는 초록색 가방을 가지고 있어요."
+                    },
+                    {
+                        "source": "Black shoes.",
+                        "target": "검은색 신발."
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the colors",
+                "pairs": [
+                    {
+                        "left": "빨간색",
+                        "right": "red"
+                    },
+                    {
+                        "left": "파란색",
+                        "right": "blue"
+                    },
+                    {
+                        "left": "초록색",
+                        "right": "green"
+                    },
+                    {
+                        "left": "검은색",
+                        "right": "black"
+                    },
+                    {
+                        "left": "하얀색",
+                        "right": "white"
+                    },
+                    {
+                        "left": "갈색",
+                        "right": "brown"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the description",
+                "prompt": "Build: “a blue dress”",
+                "words": [
+                    "파란색",
+                    "드레스"
+                ],
+                "answer": "파란색 드레스"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · color",
+                "prompt": "You hear “빨간색 치마”. What is being described?",
+                "audioText": "빨간색 치마",
+                "options": [
+                    "a blue book",
+                    "a red skirt",
+                    "blue shoes",
+                    "a green dress"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Choosing a color",
+                "context": "In a clothing shop.",
+                "turns": [
+                    {
+                        "speaker": "Clerk",
+                        "text": "어떤 색이 좋아요?"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "빨간색으로 주세요."
+                    },
+                    {
+                        "speaker": "Clerk",
+                        "text": "여기 빨간색 드레스입니다."
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · color",
+                "prompt": "How do you say “red”?",
+                "options": [
+                    "파란색",
+                    "빨간색",
+                    "검은색",
+                    "하얀색"
+                ],
+                "answerIndex": 1,
+                "explanation": "빨간색 = red."
+            },
+            {
+                "type": "check",
+                "title": "Check · black",
+                "prompt": "What is “black” in Korean?",
+                "options": [
+                    "하얀색",
+                    "검은색",
+                    "회색",
+                    "갈색"
+                ],
+                "answerIndex": 1,
+                "explanation": "검은색 = black."
+            }
+        ],
+        "direction": "en-ko"
+    }
+]

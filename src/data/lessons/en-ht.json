@@ -1,0 +1,1040 @@
+[
+  {
+    "id": "greetings-1",
+    "slug": "greetings",
+    "title": "Greetings",
+    "xp": 25,
+    "description": "Hello and goodbye across the day, with formality notes.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "A soft start",
+        "body": "Haitian Creole greetings are warm and straightforward. Bonjou and Bonswa cover most of the day."
+      },
+      {
+        "type": "tip",
+        "title": "Time of day",
+        "body": "Bonjou is used in the morning; Bonswa from afternoon onward.",
+        "bullets": [
+          "Bonjou = good morning / hello (daytime).",
+          "Bonswa = good evening.",
+          "Orevwa = goodbye.",
+          "Bon nui = good night."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Core greetings",
+        "items": [
+          {
+            "term": "Bonjou",
+            "meaning": "Good morning / hello"
+          },
+          {
+            "term": "Bonswa",
+            "meaning": "Good evening"
+          },
+          {
+            "term": "Orevwa",
+            "meaning": "Goodbye"
+          },
+          {
+            "term": "N a wè",
+            "meaning": "See you"
+          },
+          {
+            "term": "N a wè demen",
+            "meaning": "See you tomorrow"
+          },
+          {
+            "term": "Bon nui",
+            "meaning": "Good night"
+          },
+          {
+            "term": "Ki jan ou ye?",
+            "meaning": "How are you?"
+          },
+          {
+            "term": "M byen",
+            "meaning": "I’m fine"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Useful lines",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "Hello, how are you?",
+            "target": "Bonjou, ki jan ou ye?"
+          },
+          {
+            "source": "I’m fine, thanks. And you?",
+            "target": "M byen, mèsi. E ou menm?"
+          },
+          {
+            "source": "See you soon.",
+            "target": "N a wè."
+          },
+          {
+            "source": "Have a good day.",
+            "target": "Pase yon bon jounen."
+          },
+          {
+            "source": "See you tomorrow!",
+            "target": "N a wè demen!"
+          },
+          {
+            "source": "Good night.",
+            "target": "Bon nui."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the greetings",
+        "pairs": [
+          {
+            "left": "Bonjou",
+            "right": "Good morning / hello"
+          },
+          {
+            "left": "Bonswa",
+            "right": "Good evening"
+          },
+          {
+            "left": "Orevwa",
+            "right": "Goodbye"
+          },
+          {
+            "left": "N a wè",
+            "right": "See you"
+          },
+          {
+            "left": "Bon nui",
+            "right": "Good night"
+          },
+          {
+            "left": "Ki jan ou ye?",
+            "right": "How are you?"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the greeting",
+        "prompt": "Build: “Hello, how are you?”",
+        "words": [
+          "Bonjou",
+          ",",
+          "ki",
+          "jan",
+          "ou",
+          "ye",
+          "?"
+        ],
+        "answer": "Bonjou, ki jan ou ye?"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · evening",
+        "prompt": "You hear this in the evening. What does it mean?",
+        "audioText": "Bonswa",
+        "options": [
+          "Good morning",
+          "Good afternoon",
+          "Good evening",
+          "Good night"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "title": "A first meeting",
+        "context": "You meet someone for the first time.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "Bonjou, ki jan ou ye?"
+          },
+          {
+            "speaker": "Other",
+            "text": "M byen, mèsi. E ou menm?"
+          },
+          {
+            "speaker": "You",
+            "text": "M byen tou."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · time of day",
+        "prompt": "Which greeting fits the morning?",
+        "options": [
+          "Bonswa",
+          "Bonjou",
+          "Bon nui",
+          "Orevwa"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bonjou is the daytime/morning greeting."
+      },
+      {
+        "type": "check",
+        "title": "Check · evening",
+        "prompt": "Which greeting fits the evening?",
+        "options": [
+          "Bonjou",
+          "Bonswa",
+          "N a wè",
+          "Ki jan ou ye?"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bonswa is the evening greeting."
+      },
+      {
+        "type": "check",
+        "title": "Check · good night",
+        "prompt": "You’re heading to bed. You say…",
+        "options": [
+          "Bonswa",
+          "Bon nui",
+          "Bonjou",
+          "Orevwa"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bon nui is good night."
+      }
+    ],
+    "direction": "en-ht"
+  },
+  {
+    "id": "polite-1",
+    "slug": "please-and-thank-you",
+    "title": "Please & thank you",
+    "description": "Politeness formulas that open every exchange.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 13,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Small words, big difference",
+        "body": "Haitian Creole interactions expect tanpri and mèsi."
+      },
+      {
+        "type": "tip",
+        "title": "Please & thanks",
+        "body": "Tanpri = please. Mèsi = thank you.",
+        "bullets": [
+          "Mèsi anpil = thank you very much.",
+          "Pa gen pwoblèm / De rien = you’re welcome.",
+          "Eskize m = excuse me / sorry."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Politeness set",
+        "items": [
+          {
+            "term": "Tanpri",
+            "meaning": "Please"
+          },
+          {
+            "term": "Mèsi",
+            "meaning": "Thank you"
+          },
+          {
+            "term": "Mèsi anpil",
+            "meaning": "Thank you very much"
+          },
+          {
+            "term": "Pa gen pwoblèm",
+            "meaning": "You’re welcome / no problem"
+          },
+          {
+            "term": "Eskize m",
+            "meaning": "Excuse me / sorry"
+          },
+          {
+            "term": "M regrèt",
+            "meaning": "I’m sorry"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "In context",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "A coffee, please.",
+            "target": "Yon kafe, tanpri."
+          },
+          {
+            "source": "Thank you very much.",
+            "target": "Mèsi anpil."
+          },
+          {
+            "source": "Excuse me (to pass).",
+            "target": "Eskize m."
+          },
+          {
+            "source": "Sorry I’m late.",
+            "target": "Eskize m pou reta a."
+          },
+          {
+            "source": "I’m so sorry.",
+            "target": "M regrèt anpil."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the polite phrases",
+        "pairs": [
+          {
+            "left": "Tanpri",
+            "right": "Please"
+          },
+          {
+            "left": "Mèsi",
+            "right": "Thank you"
+          },
+          {
+            "left": "Mèsi anpil",
+            "right": "Thank you very much"
+          },
+          {
+            "left": "Pa gen pwoblèm",
+            "right": "You’re welcome"
+          },
+          {
+            "left": "Eskize m",
+            "right": "Excuse me / sorry"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the request",
+        "prompt": "Build: “A coffee, please.”",
+        "words": [
+          "Yon",
+          "kafe",
+          ",",
+          "tanpri",
+          "."
+        ],
+        "answer": "Yon kafe, tanpri."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · reply",
+        "prompt": "Someone says Mèsi. A common reply is…",
+        "audioText": "Pa gen pwoblèm",
+        "options": [
+          "Please",
+          "You’re welcome",
+          "Excuse me",
+          "Goodbye"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the counter",
+        "context": "Ordering and thanking.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "Yon kafe, tanpri."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Men li. Twa goud."
+          },
+          {
+            "speaker": "You",
+            "text": "Mèsi anpil."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Pa gen pwoblèm."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · shop",
+        "prompt": "How do you say “please” when ordering?",
+        "options": [
+          "Mèsi",
+          "Tanpri",
+          "Pa gen pwoblèm",
+          "Bonjou"
+        ],
+        "answerIndex": 1,
+        "explanation": "Tanpri is the standard please."
+      },
+      {
+        "type": "check",
+        "title": "Check · reply",
+        "prompt": "Someone says Mèsi. A common reply is…",
+        "options": [
+          "Bonjou",
+          "Pa gen pwoblèm",
+          "Orevwa",
+          "Tanpri"
+        ],
+        "answerIndex": 1,
+        "explanation": "Pa gen pwoblèm means “you’re welcome / no problem.”"
+      }
+    ],
+    "direction": "en-ht"
+  },
+  {
+    "id": "numbers-1",
+    "slug": "numbers-1-to-10",
+    "title": "Numbers 1–10",
+    "description": "Count clearly for prices, times, and quantities.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Count slowly",
+        "body": "Haitian Creole numbers are close to French but with distinct pronunciation."
+      },
+      {
+        "type": "tip",
+        "title": "Notes",
+        "body": "Learn numbers in short phrases.",
+        "bullets": [
+          "yon liv",
+          "de kafe"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "1 to 10",
+        "items": [
+          {
+            "term": "zewo",
+            "meaning": "0"
+          },
+          {
+            "term": "en / yon",
+            "meaning": "1"
+          },
+          {
+            "term": "de",
+            "meaning": "2"
+          },
+          {
+            "term": "twa",
+            "meaning": "3"
+          },
+          {
+            "term": "kat",
+            "meaning": "4"
+          },
+          {
+            "term": "senk",
+            "meaning": "5"
+          },
+          {
+            "term": "sis",
+            "meaning": "6"
+          },
+          {
+            "term": "sèt",
+            "meaning": "7"
+          },
+          {
+            "term": "uit",
+            "meaning": "8"
+          },
+          {
+            "term": "nèf",
+            "meaning": "9"
+          },
+          {
+            "term": "dis",
+            "meaning": "10"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "11 to 20 (bonus)",
+        "items": [
+          {
+            "term": "onz",
+            "meaning": "11"
+          },
+          {
+            "term": "douz",
+            "meaning": "12"
+          },
+          {
+            "term": "trèz",
+            "meaning": "13"
+          },
+          {
+            "term": "katòz",
+            "meaning": "14"
+          },
+          {
+            "term": "kenz",
+            "meaning": "15"
+          },
+          {
+            "term": "sèz",
+            "meaning": "16"
+          },
+          {
+            "term": "disèt",
+            "meaning": "17"
+          },
+          {
+            "term": "dizuit",
+            "meaning": "18"
+          },
+          {
+            "term": "diznèf",
+            "meaning": "19"
+          },
+          {
+            "term": "ven",
+            "meaning": "20"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Mini uses",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "Two coffees, please.",
+            "target": "De kafe, tanpri."
+          },
+          {
+            "source": "It costs five gourdes.",
+            "target": "Li koute senk goud."
+          },
+          {
+            "source": "Platform three.",
+            "target": "Kè nimewo twa."
+          },
+          {
+            "source": "I am twenty years old.",
+            "target": "M gen ven an."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the numbers",
+        "pairs": [
+          {
+            "left": "yon",
+            "right": "1"
+          },
+          {
+            "left": "de",
+            "right": "2"
+          },
+          {
+            "left": "twa",
+            "right": "3"
+          },
+          {
+            "left": "senk",
+            "right": "5"
+          },
+          {
+            "left": "sèt",
+            "right": "7"
+          },
+          {
+            "left": "dis",
+            "right": "10"
+          },
+          {
+            "left": "ven",
+            "right": "20"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the order",
+        "prompt": "Build: “Two coffees, please.”",
+        "words": [
+          "De",
+          "kafe",
+          ",",
+          "tanpri",
+          "."
+        ],
+        "answer": "De kafe, tanpri."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · age",
+        "prompt": "Someone says this. How old are they?",
+        "audioText": "M gen ven an",
+        "options": [
+          "12 years old",
+          "20 years old",
+          "7 years old",
+          "2 years old"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the ticket window",
+        "context": "Buying tickets.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "De tikè?"
+          },
+          {
+            "speaker": "You",
+            "text": "Wi, de. M gen ven an."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Oke. Kenz goud."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · seven",
+        "prompt": "What is “seven” in Haitian Creole?",
+        "options": [
+          "sis",
+          "sèt",
+          "uit",
+          "senk"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sèt is seven."
+      },
+      {
+        "type": "check",
+        "title": "Check · phrase",
+        "prompt": "“De kafe” means…",
+        "options": [
+          "Ten coffees",
+          "Two coffees",
+          "Twelve coffees",
+          "No coffee"
+        ],
+        "answerIndex": 1,
+        "explanation": "De means two."
+      },
+      {
+        "type": "check",
+        "title": "Check · age",
+        "prompt": "How do you say “I am twenty years old”?",
+        "options": [
+          "M se ven",
+          "M gen ven an",
+          "M ale ven",
+          "M gen ven èdtan"
+        ],
+        "answerIndex": 1,
+        "explanation": "M gen … an = I have … years."
+      }
+    ],
+    "direction": "en-ht"
+  },
+  {
+    "id": "introduce-yourself-1",
+    "slug": "introduce-yourself",
+    "title": "Introduce yourself",
+    "description": "Name, origin, and a simple nice-to-meet-you.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "First contact",
+        "body": "A short self-introduction is enough: name, origin, and a polite close."
+      },
+      {
+        "type": "vocab",
+        "title": "Building blocks",
+        "items": [
+          {
+            "term": "Non mwen se…",
+            "meaning": "My name is…"
+          },
+          {
+            "term": "M soti…",
+            "meaning": "I come from…"
+          },
+          {
+            "term": "M rete…",
+            "meaning": "I live in…"
+          },
+          {
+            "term": "M gen … an",
+            "meaning": "I am … years old"
+          },
+          {
+            "term": "Se yon plezi",
+            "meaning": "Nice to meet you"
+          },
+          {
+            "term": "E ou menm?",
+            "meaning": "And you?"
+          }
+        ]
+      },
+      {
+        "type": "tip",
+        "title": "Se yon plezi",
+        "body": "Se yon plezi (or Kontan rankontre ou) is a friendly “nice to meet you.”"
+      },
+      {
+        "type": "phrase",
+        "title": "Model intros",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "Hello, my name is Alex.",
+            "target": "Bonjou, non mwen se Alex."
+          },
+          {
+            "source": "I’m from Canada.",
+            "target": "M soti Kanada."
+          },
+          {
+            "source": "I live in Port-au-Prince.",
+            "target": "M rete Pòtoprens."
+          },
+          {
+            "source": "Nice to meet you.",
+            "target": "Se yon plezi."
+          },
+          {
+            "source": "What’s your name?",
+            "target": "Kijan ou rele?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the building blocks",
+        "pairs": [
+          {
+            "left": "Non mwen se…",
+            "right": "My name is…"
+          },
+          {
+            "left": "M soti…",
+            "right": "I come from…"
+          },
+          {
+            "left": "M rete…",
+            "right": "I live in…"
+          },
+          {
+            "left": "Se yon plezi",
+            "right": "Nice to meet you"
+          },
+          {
+            "left": "E ou menm?",
+            "right": "And you?"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the introduction",
+        "prompt": "Build: “Hello, my name is Alex.”",
+        "words": [
+          "Bonjou",
+          ",",
+          "non",
+          "mwen",
+          "se",
+          "Alex",
+          "."
+        ],
+        "answer": "Bonjou, non mwen se Alex."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · origin",
+        "prompt": "What does this person say?",
+        "audioText": "M soti Kanada",
+        "options": [
+          "I live in Canada",
+          "I come from Canada",
+          "My name is Canada",
+          "I am going to Canada"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Meeting someone new",
+        "context": "A short self-introduction.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "Bonjou, non mwen se Sam."
+          },
+          {
+            "speaker": "Other",
+            "text": "Se yon plezi. Non mwen se Lea."
+          },
+          {
+            "speaker": "You",
+            "text": "M soti Etazini. E ou menm?"
+          },
+          {
+            "speaker": "Léa",
+            "text": "M soti Pòtoprens."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "“Non mwen se Sam” means…",
+        "options": [
+          "I live in Sam",
+          "My name is Sam",
+          "I am from Sam",
+          "See you Sam"
+        ],
+        "answerIndex": 1,
+        "explanation": "Non mwen se… = my name is…"
+      },
+      {
+        "type": "check",
+        "title": "Check · origin",
+        "prompt": "Best line for “I come from Belgium”?",
+        "options": [
+          "M rete Bèljik",
+          "M soti Bèljik",
+          "Non mwen se Bèljik",
+          "Orevwa Bèljik"
+        ],
+        "answerIndex": 1,
+        "explanation": "M soti… expresses origin."
+      }
+    ],
+    "direction": "en-ht"
+  },
+  {
+    "id": "colors-1",
+    "slug": "colors-and-descriptions",
+    "title": "Colors & simple descriptions",
+    "description": "Name colors and describe everyday objects.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Painting with words",
+        "body": "Haitian Creole colors are straightforward and usually follow the noun or come with se."
+      },
+      {
+        "type": "tip",
+        "title": "Color forms",
+        "body": "Colors are largely invariable.",
+        "bullets": [
+          "yon machin wouj = a red car",
+          "syèl la ble = the sky is blue"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Colors",
+        "items": [
+          {
+            "term": "wouj",
+            "meaning": "red"
+          },
+          {
+            "term": "ble",
+            "meaning": "blue"
+          },
+          {
+            "term": "vèt",
+            "meaning": "green"
+          },
+          {
+            "term": "jòn",
+            "meaning": "yellow"
+          },
+          {
+            "term": "nwa",
+            "meaning": "black"
+          },
+          {
+            "term": "blan",
+            "meaning": "white"
+          },
+          {
+            "term": "gri",
+            "meaning": "grey"
+          },
+          {
+            "term": "mawon",
+            "meaning": "brown"
+          },
+          {
+            "term": "oranj",
+            "meaning": "orange"
+          },
+          {
+            "term": "woz",
+            "meaning": "pink"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Describing things",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "The sky is blue.",
+            "target": "Syèl la ble."
+          },
+          {
+            "source": "I’d like the red one.",
+            "target": "M ta renmen sa ki wouj la."
+          },
+          {
+            "source": "She has a green bag.",
+            "target": "Li gen yon valiz vèt."
+          },
+          {
+            "source": "Black shoes.",
+            "target": "Soulye nwa."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the colors",
+        "pairs": [
+          {
+            "left": "wouj",
+            "right": "red"
+          },
+          {
+            "left": "ble",
+            "right": "blue"
+          },
+          {
+            "left": "vèt",
+            "right": "green"
+          },
+          {
+            "left": "nwa",
+            "right": "black"
+          },
+          {
+            "left": "blan",
+            "right": "white"
+          },
+          {
+            "left": "mawon",
+            "right": "brown"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the description",
+        "prompt": "Build: “a blue dress”",
+        "words": [
+          "yon",
+          "rad",
+          "ble"
+        ],
+        "answer": "yon rad ble"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · color",
+        "prompt": "You hear “yon jip wouj”. What is being described?",
+        "audioText": "yon jip wouj",
+        "options": [
+          "a blue book",
+          "a red skirt",
+          "blue shoes",
+          "a green dress"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Choosing a color",
+        "context": "In a clothing shop.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "Ki koulè ou prefere?"
+          },
+          {
+            "speaker": "You",
+            "text": "M ta renmen sa ki wouj la."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Men yon rad wouj."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · color",
+        "prompt": "How do you say “red”?",
+        "options": [
+          "ble",
+          "wouj",
+          "nwa",
+          "blan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Wouj = red."
+      },
+      {
+        "type": "check",
+        "title": "Check · black",
+        "prompt": "What is “black” in Haitian Creole?",
+        "options": [
+          "blan",
+          "nwa",
+          "gri",
+          "mawon"
+        ],
+        "answerIndex": 1,
+        "explanation": "Nwa = black."
+      }
+    ],
+    "direction": "en-ht"
+  }
+]

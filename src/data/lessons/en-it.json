@@ -1,0 +1,1053 @@
+[
+  {
+    "id": "greetings-1",
+    "slug": "greetings",
+    "title": "Greetings",
+    "xp": 25,
+    "description": "Hello and goodbye across the day, with formality notes.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "A soft start",
+        "body": "Italian greetings shift with time of day and formality. Learn a small set well."
+      },
+      {
+        "type": "tip",
+        "title": "Form vs. familiarity",
+        "body": "Use Lei with strangers and formal situations. Use tu with friends and family.",
+        "bullets": [
+          "Buongiorno in the morning and afternoon.",
+          "Buonasera from late afternoon.",
+          "Ciao is both hi and bye (informal).",
+          "Arrivederci is a polite goodbye."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Core greetings",
+        "items": [
+          {
+            "term": "Ciao",
+            "meaning": "Hi / bye (informal)"
+          },
+          {
+            "term": "Buongiorno",
+            "meaning": "Good morning / good day"
+          },
+          {
+            "term": "Buonasera",
+            "meaning": "Good evening"
+          },
+          {
+            "term": "Buonanotte",
+            "meaning": "Good night"
+          },
+          {
+            "term": "Arrivederci",
+            "meaning": "Goodbye (polite)"
+          },
+          {
+            "term": "A presto",
+            "meaning": "See you soon"
+          },
+          {
+            "term": "A domani",
+            "meaning": "See you tomorrow"
+          },
+          {
+            "term": "Buona giornata",
+            "meaning": "Have a good day"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Useful lines",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "Hello, how are you? (formal)",
+            "target": "Buongiorno, come sta?"
+          },
+          {
+            "source": "Hi, how are you? (informal)",
+            "target": "Ciao, come stai?"
+          },
+          {
+            "source": "I'm fine, thanks. And you?",
+            "target": "Sto bene, grazie. E tu?"
+          },
+          {
+            "source": "See you soon.",
+            "target": "A presto."
+          },
+          {
+            "source": "Have a good day.",
+            "target": "Buona giornata."
+          },
+          {
+            "source": "See you tomorrow!",
+            "target": "A domani!"
+          },
+          {
+            "source": "Good night.",
+            "target": "Buonanotte."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the greetings",
+        "pairs": [
+          {
+            "left": "Ciao",
+            "right": "Hi / bye (informal)"
+          },
+          {
+            "left": "Buongiorno",
+            "right": "Good morning / good day"
+          },
+          {
+            "left": "Buonasera",
+            "right": "Good evening"
+          },
+          {
+            "left": "Arrivederci",
+            "right": "Goodbye"
+          },
+          {
+            "left": "A presto",
+            "right": "See you soon"
+          },
+          {
+            "left": "Buonanotte",
+            "right": "Good night"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the greeting",
+        "prompt": "Build: “Hello, how are you?” (formal)",
+        "words": [
+          "Buongiorno",
+          ",",
+          "come",
+          "sta",
+          "?"
+        ],
+        "answer": "Buongiorno, come sta?"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · evening",
+        "prompt": "You hear this in the evening. What does it mean?",
+        "audioText": "Buonasera",
+        "options": [
+          "Good morning",
+          "Good afternoon",
+          "Good evening",
+          "Good night"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "title": "A first meeting",
+        "context": "You meet a colleague’s parent for the first time.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "Buongiorno, come sta?"
+          },
+          {
+            "speaker": "Parent",
+            "text": "Molto bene, grazie. E Lei?"
+          },
+          {
+            "speaker": "You",
+            "text": "Sto bene, grazie."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · time of day",
+        "prompt": "Which greeting fits the evening?",
+        "options": [
+          "Buongiorno",
+          "Buonasera",
+          "Ciao",
+          "A presto"
+        ],
+        "answerIndex": 1,
+        "explanation": "Buonasera is the evening greeting."
+      },
+      {
+        "type": "check",
+        "title": "Check · formality",
+        "prompt": "You meet your friend’s parent for the first time. Best choice?",
+        "options": [
+          "Ciao!",
+          "Buongiorno, come sta?",
+          "Come va, amico?",
+          "A domani"
+        ],
+        "answerIndex": 1,
+        "explanation": "Lei keeps things respectful."
+      },
+      {
+        "type": "check",
+        "title": "Check · going to sleep",
+        "prompt": "You’re heading to bed. You say…",
+        "options": [
+          "Buonasera",
+          "Buonanotte",
+          "Buongiorno",
+          "A presto"
+        ],
+        "answerIndex": 1,
+        "explanation": "Buonanotte is for going to sleep."
+      }
+    ],
+    "direction": "en-it"
+  },
+  {
+    "id": "polite-1",
+    "slug": "please-and-thank-you",
+    "title": "Please & thank you",
+    "description": "Politeness formulas that open every exchange.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 13,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Small words, big difference",
+        "body": "Italian interactions expect per favore and grazie."
+      },
+      {
+        "type": "tip",
+        "title": "Please & thanks",
+        "body": "Per favore / per piacere = please. Prego = you’re welcome.",
+        "bullets": [
+          "Grazie mille = thank you very much.",
+          "Prego = you’re welcome.",
+          "Scusi / Scusa = excuse me / sorry.",
+          "Mi dispiace is a stronger apology."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Politeness set",
+        "items": [
+          {
+            "term": "Per favore",
+            "meaning": "Please"
+          },
+          {
+            "term": "Grazie",
+            "meaning": "Thank you"
+          },
+          {
+            "term": "Grazie mille",
+            "meaning": "Thank you very much"
+          },
+          {
+            "term": "Prego",
+            "meaning": "You’re welcome"
+          },
+          {
+            "term": "Scusi",
+            "meaning": "Excuse me (formal)"
+          },
+          {
+            "term": "Mi dispiace",
+            "meaning": "I’m sorry"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "In context",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "A coffee, please.",
+            "target": "Un caffè, per favore."
+          },
+          {
+            "source": "Thank you very much.",
+            "target": "Grazie mille."
+          },
+          {
+            "source": "Excuse me (to pass).",
+            "target": "Scusi."
+          },
+          {
+            "source": "Sorry I’m late.",
+            "target": "Scusi per il ritardo."
+          },
+          {
+            "source": "I’m so sorry.",
+            "target": "Mi dispiace tanto."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the polite phrases",
+        "pairs": [
+          {
+            "left": "Per favore",
+            "right": "Please"
+          },
+          {
+            "left": "Grazie",
+            "right": "Thank you"
+          },
+          {
+            "left": "Grazie mille",
+            "right": "Thank you very much"
+          },
+          {
+            "left": "Prego",
+            "right": "You’re welcome"
+          },
+          {
+            "left": "Scusi",
+            "right": "Excuse me"
+          },
+          {
+            "left": "Mi dispiace",
+            "right": "I’m sorry"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the request",
+        "prompt": "Build: “A coffee, please.”",
+        "words": [
+          "Un",
+          "caffè",
+          ",",
+          "per",
+          "favore",
+          "."
+        ],
+        "answer": "Un caffè, per favore."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · reply",
+        "prompt": "Someone says Grazie. A common reply is…",
+        "audioText": "Prego",
+        "options": [
+          "Please",
+          "You’re welcome",
+          "Excuse me",
+          "Goodbye"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the counter",
+        "context": "Ordering and thanking.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "Un caffè, per favore."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Ecco. Tre euro."
+          },
+          {
+            "speaker": "You",
+            "text": "Grazie mille."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Prego."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · shop",
+        "prompt": "How do you say “please” when ordering?",
+        "options": [
+          "Grazie",
+          "Per favore",
+          "Prego",
+          "Ciao"
+        ],
+        "answerIndex": 1,
+        "explanation": "Per favore is the standard polite request."
+      },
+      {
+        "type": "check",
+        "title": "Check · reply",
+        "prompt": "Someone says Grazie. A common reply is…",
+        "options": [
+          "Ciao",
+          "Prego",
+          "Arrivederci",
+          "Buongiorno"
+        ],
+        "answerIndex": 1,
+        "explanation": "Prego means “you’re welcome.”"
+      }
+    ],
+    "direction": "en-it"
+  },
+  {
+    "id": "numbers-1",
+    "slug": "numbers-1-to-10",
+    "title": "Numbers 1–10",
+    "description": "Count clearly for prices, times, and quantities.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Count slowly",
+        "body": "Italian numbers are used constantly. Rhythm first; speed later."
+      },
+      {
+        "type": "tip",
+        "title": "Notes",
+        "body": "Uno becomes un before masculine nouns.",
+        "bullets": [
+          "un libro, una mela",
+          "Learn numbers in short phrases."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "1 to 10",
+        "items": [
+          {
+            "term": "zero",
+            "meaning": "0"
+          },
+          {
+            "term": "uno / una",
+            "meaning": "1"
+          },
+          {
+            "term": "due",
+            "meaning": "2"
+          },
+          {
+            "term": "tre",
+            "meaning": "3"
+          },
+          {
+            "term": "quattro",
+            "meaning": "4"
+          },
+          {
+            "term": "cinque",
+            "meaning": "5"
+          },
+          {
+            "term": "sei",
+            "meaning": "6"
+          },
+          {
+            "term": "sette",
+            "meaning": "7"
+          },
+          {
+            "term": "otto",
+            "meaning": "8"
+          },
+          {
+            "term": "nove",
+            "meaning": "9"
+          },
+          {
+            "term": "dieci",
+            "meaning": "10"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "11 to 20 (bonus)",
+        "items": [
+          {
+            "term": "undici",
+            "meaning": "11"
+          },
+          {
+            "term": "dodici",
+            "meaning": "12"
+          },
+          {
+            "term": "tredici",
+            "meaning": "13"
+          },
+          {
+            "term": "quattordici",
+            "meaning": "14"
+          },
+          {
+            "term": "quindici",
+            "meaning": "15"
+          },
+          {
+            "term": "sedici",
+            "meaning": "16"
+          },
+          {
+            "term": "diciassette",
+            "meaning": "17"
+          },
+          {
+            "term": "diciotto",
+            "meaning": "18"
+          },
+          {
+            "term": "diciannove",
+            "meaning": "19"
+          },
+          {
+            "term": "venti",
+            "meaning": "20"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Mini uses",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "Two coffees, please.",
+            "target": "Due caffè, per favore."
+          },
+          {
+            "source": "It costs five euros.",
+            "target": "Costa cinque euro."
+          },
+          {
+            "source": "Platform three.",
+            "target": "Binario tre."
+          },
+          {
+            "source": "I am twenty years old.",
+            "target": "Ho vent’anni."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the numbers",
+        "pairs": [
+          {
+            "left": "uno",
+            "right": "1"
+          },
+          {
+            "left": "due",
+            "right": "2"
+          },
+          {
+            "left": "tre",
+            "right": "3"
+          },
+          {
+            "left": "cinque",
+            "right": "5"
+          },
+          {
+            "left": "sette",
+            "right": "7"
+          },
+          {
+            "left": "dieci",
+            "right": "10"
+          },
+          {
+            "left": "venti",
+            "right": "20"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the order",
+        "prompt": "Build: “Two coffees, please.”",
+        "words": [
+          "Due",
+          "caffè",
+          ",",
+          "per",
+          "favore",
+          "."
+        ],
+        "answer": "Due caffè, per favore."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · age",
+        "prompt": "Someone says this. How old are they?",
+        "audioText": "Ho vent’anni",
+        "options": [
+          "12 years old",
+          "20 years old",
+          "7 years old",
+          "2 years old"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the ticket window",
+        "context": "Buying tickets.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "Due biglietti?"
+          },
+          {
+            "speaker": "You",
+            "text": "Sì, due. Ho vent’anni."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Va bene. Quindici euro."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · seven",
+        "prompt": "What is “seven” in Italian?",
+        "options": [
+          "sei",
+          "sette",
+          "otto",
+          "cinque"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sette is seven."
+      },
+      {
+        "type": "check",
+        "title": "Check · phrase",
+        "prompt": "“Due caffè” means…",
+        "options": [
+          "Ten coffees",
+          "Two coffees",
+          "Twelve coffees",
+          "No coffee"
+        ],
+        "answerIndex": 1,
+        "explanation": "Due means two."
+      },
+      {
+        "type": "check",
+        "title": "Check · age",
+        "prompt": "How do Italians say “I am twenty years old”?",
+        "options": [
+          "Sono vent’anni",
+          "Ho vent’anni",
+          "Vado vent’anni",
+          "Ho venti ore"
+        ],
+        "answerIndex": 1,
+        "explanation": "Age uses avere: ho vent’anni."
+      }
+    ],
+    "direction": "en-it"
+  },
+  {
+    "id": "introduce-yourself-1",
+    "slug": "introduce-yourself",
+    "title": "Introduce yourself",
+    "description": "Name, origin, and a simple nice-to-meet-you.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "First contact",
+        "body": "A short self-introduction is enough: name, origin, and a polite close."
+      },
+      {
+        "type": "vocab",
+        "title": "Building blocks",
+        "items": [
+          {
+            "term": "Mi chiamo…",
+            "meaning": "My name is…"
+          },
+          {
+            "term": "Vengo da…",
+            "meaning": "I come from…"
+          },
+          {
+            "term": "Abito a…",
+            "meaning": "I live in…"
+          },
+          {
+            "term": "Ho … anni",
+            "meaning": "I am … years old"
+          },
+          {
+            "term": "Piacere",
+            "meaning": "Nice to meet you"
+          },
+          {
+            "term": "E Lei?",
+            "meaning": "And you? (formal)"
+          },
+          {
+            "term": "E tu?",
+            "meaning": "And you? (informal)"
+          }
+        ]
+      },
+      {
+        "type": "tip",
+        "title": "Piacere",
+        "body": "Piacere (or Piacere di conoscerla) is the standard “nice to meet you.”"
+      },
+      {
+        "type": "phrase",
+        "title": "Model intros",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "Hello, my name is Alex.",
+            "target": "Ciao, mi chiamo Alex."
+          },
+          {
+            "source": "I’m from Canada.",
+            "target": "Vengo dal Canada."
+          },
+          {
+            "source": "I live in Rome.",
+            "target": "Abito a Roma."
+          },
+          {
+            "source": "Nice to meet you.",
+            "target": "Piacere."
+          },
+          {
+            "source": "What’s your name?",
+            "target": "Come si chiama?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the building blocks",
+        "pairs": [
+          {
+            "left": "Mi chiamo…",
+            "right": "My name is…"
+          },
+          {
+            "left": "Vengo da…",
+            "right": "I come from…"
+          },
+          {
+            "left": "Abito a…",
+            "right": "I live in…"
+          },
+          {
+            "left": "Piacere",
+            "right": "Nice to meet you"
+          },
+          {
+            "left": "E Lei?",
+            "right": "And you? (formal)"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the introduction",
+        "prompt": "Build: “Hello, my name is Alex.”",
+        "words": [
+          "Ciao",
+          ",",
+          "mi",
+          "chiamo",
+          "Alex",
+          "."
+        ],
+        "answer": "Ciao, mi chiamo Alex."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · origin",
+        "prompt": "What does this person say?",
+        "audioText": "Vengo dal Canada",
+        "options": [
+          "I live in Canada",
+          "I come from Canada",
+          "My name is Canada",
+          "I am going to Canada"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Meeting someone new",
+        "context": "A short self-introduction.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "Ciao, mi chiamo Sam."
+          },
+          {
+            "speaker": "Other",
+            "text": "Piacere. Mi chiamo Lea."
+          },
+          {
+            "speaker": "You",
+            "text": "Vengo dagli Stati Uniti. E Lei?"
+          },
+          {
+            "speaker": "Léa",
+            "text": "Vengo da Roma."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "“Mi chiamo Sam” means…",
+        "options": [
+          "I live in Sam",
+          "My name is Sam",
+          "I am from Sam",
+          "See you Sam"
+        ],
+        "answerIndex": 1,
+        "explanation": "Chiamarsi = to be called."
+      },
+      {
+        "type": "check",
+        "title": "Check · origin",
+        "prompt": "Best line for “I come from Belgium”?",
+        "options": [
+          "Abito in Belgio",
+          "Vengo dal Belgio",
+          "Mi chiamo Belgio",
+          "Arrivederci Belgio"
+        ],
+        "answerIndex": 1,
+        "explanation": "Venire da + country expresses origin."
+      }
+    ],
+    "direction": "en-it"
+  },
+  {
+    "id": "colors-1",
+    "slug": "colors-and-descriptions",
+    "title": "Colors & simple descriptions",
+    "description": "Name colors and describe everyday objects.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Painting with words",
+        "body": "Colors are adjectives and agree in gender and number with the noun."
+      },
+      {
+        "type": "tip",
+        "title": "Agreement basics",
+        "body": "Add -a for feminine and -i/-e for plural.",
+        "bullets": [
+          "una macchina rossa",
+          "scarpe nere",
+          "Most colors follow regular agreement."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Colors",
+        "items": [
+          {
+            "term": "rosso/a",
+            "meaning": "red"
+          },
+          {
+            "term": "blu",
+            "meaning": "blue"
+          },
+          {
+            "term": "verde",
+            "meaning": "green"
+          },
+          {
+            "term": "giallo/a",
+            "meaning": "yellow"
+          },
+          {
+            "term": "nero/a",
+            "meaning": "black"
+          },
+          {
+            "term": "bianco/a",
+            "meaning": "white"
+          },
+          {
+            "term": "grigio/a",
+            "meaning": "grey"
+          },
+          {
+            "term": "marrone",
+            "meaning": "brown"
+          },
+          {
+            "term": "arancione",
+            "meaning": "orange"
+          },
+          {
+            "term": "rosa",
+            "meaning": "pink"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Describing things",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "The sky is blue.",
+            "target": "Il cielo è blu."
+          },
+          {
+            "source": "I’d like the red one.",
+            "target": "Vorrei quello rosso."
+          },
+          {
+            "source": "She has a green bag.",
+            "target": "Ha una borsa verde."
+          },
+          {
+            "source": "Black shoes.",
+            "target": "Scarpe nere."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the colors",
+        "pairs": [
+          {
+            "left": "rosso",
+            "right": "red"
+          },
+          {
+            "left": "blu",
+            "right": "blue"
+          },
+          {
+            "left": "verde",
+            "right": "green"
+          },
+          {
+            "left": "nero",
+            "right": "black"
+          },
+          {
+            "left": "bianco",
+            "right": "white"
+          },
+          {
+            "left": "marrone",
+            "right": "brown"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the description",
+        "prompt": "Build: “a blue dress”",
+        "words": [
+          "un",
+          "vestito",
+          "blu"
+        ],
+        "answer": "un vestito blu"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · color",
+        "prompt": "You hear “una gonna rossa”. What is being described?",
+        "audioText": "una gonna rossa",
+        "options": [
+          "a blue book",
+          "a red skirt",
+          "blue shoes",
+          "a green dress"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Choosing a color",
+        "context": "In a clothing shop.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "Che colore preferisce?"
+          },
+          {
+            "speaker": "You",
+            "text": "Vorrei quello rosso."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Ecco un vestito rosso."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · agreement",
+        "prompt": "How do you say “a red skirt” (una gonna)?",
+        "options": [
+          "un gonna rosso",
+          "una gonna rossa",
+          "una gonna rosso",
+          "una gonna rossi"
+        ],
+        "answerIndex": 1,
+        "explanation": "Gonna is feminine, so rosso → rossa."
+      },
+      {
+        "type": "check",
+        "title": "Check · color",
+        "prompt": "What is “black” in Italian?",
+        "options": [
+          "bianco",
+          "nero",
+          "grigio",
+          "marrone"
+        ],
+        "answerIndex": 1,
+        "explanation": "Nero = black."
+      }
+    ],
+    "direction": "en-it"
+  }
+]

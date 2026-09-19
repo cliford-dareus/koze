@@ -1,0 +1,1055 @@
+[
+  {
+    "id": "greetings-1",
+    "slug": "greetings",
+    "title": "Greetings",
+    "xp": 25,
+    "description": "Hello and goodbye across the day, with formality notes.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "A soft start",
+        "body": "Portuguese greetings shift with time of day and formality."
+      },
+      {
+        "type": "tip",
+        "title": "Form vs. familiarity",
+        "body": "Use você / o senhor / a senhora in formal contexts. Tu is more common in Portugal informal speech; você dominates in Brazil.",
+        "bullets": [
+          "Bom dia in the morning.",
+          "Boa tarde from midday.",
+          "Boa noite in the evening.",
+          "Olá is friendly and all-purpose."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Core greetings",
+        "items": [
+          {
+            "term": "Olá",
+            "meaning": "Hello / hi"
+          },
+          {
+            "term": "Bom dia",
+            "meaning": "Good morning"
+          },
+          {
+            "term": "Boa tarde",
+            "meaning": "Good afternoon"
+          },
+          {
+            "term": "Boa noite",
+            "meaning": "Good evening / good night"
+          },
+          {
+            "term": "Adeus",
+            "meaning": "Goodbye"
+          },
+          {
+            "term": "Tchau",
+            "meaning": "Bye (casual)"
+          },
+          {
+            "term": "Até logo",
+            "meaning": "See you later"
+          },
+          {
+            "term": "Até amanhã",
+            "meaning": "See you tomorrow"
+          },
+          {
+            "term": "Tenha um bom dia",
+            "meaning": "Have a good day"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Useful lines",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "Hello, how are you? (formal)",
+            "target": "Olá, como está?"
+          },
+          {
+            "source": "Hi, how are you? (informal)",
+            "target": "Olá, tudo bem?"
+          },
+          {
+            "source": "I'm fine, thanks. And you?",
+            "target": "Estou bem, obrigado. E você?"
+          },
+          {
+            "source": "See you soon.",
+            "target": "Até logo."
+          },
+          {
+            "source": "Have a good day.",
+            "target": "Tenha um bom dia."
+          },
+          {
+            "source": "See you tomorrow!",
+            "target": "Até amanhã!"
+          },
+          {
+            "source": "Good night.",
+            "target": "Boa noite."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the greetings",
+        "pairs": [
+          {
+            "left": "Olá",
+            "right": "Hello / hi"
+          },
+          {
+            "left": "Bom dia",
+            "right": "Good morning"
+          },
+          {
+            "left": "Boa tarde",
+            "right": "Good afternoon"
+          },
+          {
+            "left": "Adeus",
+            "right": "Goodbye"
+          },
+          {
+            "left": "Até logo",
+            "right": "See you later"
+          },
+          {
+            "left": "Boa noite",
+            "right": "Good night"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the greeting",
+        "prompt": "Build: “Hello, how are you?”",
+        "words": [
+          "Olá",
+          ",",
+          "como",
+          "está",
+          "?"
+        ],
+        "answer": "Olá, como está?"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · evening",
+        "prompt": "You hear this in the evening. What does it mean?",
+        "audioText": "Boa noite",
+        "options": [
+          "Good morning",
+          "Good afternoon",
+          "Good evening / night",
+          "See you later"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "title": "A first meeting",
+        "context": "You meet a colleague’s parent for the first time.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "Olá, como está?"
+          },
+          {
+            "speaker": "Parent",
+            "text": "Muito bem, obrigado. E você?"
+          },
+          {
+            "speaker": "You",
+            "text": "Estou bem, obrigado."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · time of day",
+        "prompt": "Which greeting fits the evening?",
+        "options": [
+          "Bom dia",
+          "Boa tarde",
+          "Boa noite",
+          "Tchau"
+        ],
+        "answerIndex": 2,
+        "explanation": "Boa noite is the evening/night greeting."
+      },
+      {
+        "type": "check",
+        "title": "Check · formality",
+        "prompt": "You meet your friend’s parent for the first time. Best choice?",
+        "options": [
+          "Oi!",
+          "Olá, como está?",
+          "E aí, mano?",
+          "Até amanhã"
+        ],
+        "answerIndex": 1,
+        "explanation": "Como está keeps things respectful."
+      },
+      {
+        "type": "check",
+        "title": "Check · going to sleep",
+        "prompt": "You’re heading to bed. You say…",
+        "options": [
+          "Boa tarde",
+          "Boa noite",
+          "Bom dia",
+          "Até logo"
+        ],
+        "answerIndex": 1,
+        "explanation": "Boa noite is used when going to sleep."
+      }
+    ],
+    "direction": "en-pt"
+  },
+  {
+    "id": "polite-1",
+    "slug": "please-and-thank-you",
+    "title": "Please & thank you",
+    "description": "Politeness formulas that open every exchange.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 13,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Small words, big difference",
+        "body": "Portuguese interactions expect por favor and obrigado/a."
+      },
+      {
+        "type": "tip",
+        "title": "Please & thanks",
+        "body": "Obrigado (m) / Obrigada (f) agrees with the speaker’s gender.",
+        "bullets": [
+          "Muito obrigado/a = thank you very much.",
+          "De nada = you’re welcome.",
+          "Com licença / Desculpe = excuse me / sorry.",
+          "Sinto muito is a stronger apology."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Politeness set",
+        "items": [
+          {
+            "term": "Por favor",
+            "meaning": "Please"
+          },
+          {
+            "term": "Obrigado / Obrigada",
+            "meaning": "Thank you"
+          },
+          {
+            "term": "Muito obrigado/a",
+            "meaning": "Thank you very much"
+          },
+          {
+            "term": "De nada",
+            "meaning": "You’re welcome"
+          },
+          {
+            "term": "Com licença",
+            "meaning": "Excuse me"
+          },
+          {
+            "term": "Desculpe",
+            "meaning": "Sorry / excuse me"
+          },
+          {
+            "term": "Sinto muito",
+            "meaning": "I’m sorry"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "In context",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "A coffee, please.",
+            "target": "Um café, por favor."
+          },
+          {
+            "source": "Thank you very much.",
+            "target": "Muito obrigado."
+          },
+          {
+            "source": "Excuse me (to pass).",
+            "target": "Com licença."
+          },
+          {
+            "source": "Sorry I’m late.",
+            "target": "Desculpe pelo atraso."
+          },
+          {
+            "source": "I’m so sorry.",
+            "target": "Sinto muito."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the polite phrases",
+        "pairs": [
+          {
+            "left": "Por favor",
+            "right": "Please"
+          },
+          {
+            "left": "Obrigado",
+            "right": "Thank you"
+          },
+          {
+            "left": "Muito obrigado",
+            "right": "Thank you very much"
+          },
+          {
+            "left": "De nada",
+            "right": "You’re welcome"
+          },
+          {
+            "left": "Com licença",
+            "right": "Excuse me"
+          },
+          {
+            "left": "Sinto muito",
+            "right": "I’m sorry"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the request",
+        "prompt": "Build: “A coffee, please.”",
+        "words": [
+          "Um",
+          "café",
+          ",",
+          "por",
+          "favor",
+          "."
+        ],
+        "answer": "Um café, por favor."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · reply",
+        "prompt": "Someone says Obrigado. A common reply is…",
+        "audioText": "De nada",
+        "options": [
+          "Please",
+          "You’re welcome",
+          "Excuse me",
+          "Goodbye"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the counter",
+        "context": "Ordering and thanking.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "Um café, por favor."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Aqui está. Três euros."
+          },
+          {
+            "speaker": "You",
+            "text": "Muito obrigado."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "De nada."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · shop",
+        "prompt": "How do you say “please” when ordering?",
+        "options": [
+          "Obrigado",
+          "Por favor",
+          "De nada",
+          "Olá"
+        ],
+        "answerIndex": 1,
+        "explanation": "Por favor is the standard polite request."
+      },
+      {
+        "type": "check",
+        "title": "Check · reply",
+        "prompt": "Someone says Obrigado. A common reply is…",
+        "options": [
+          "Olá",
+          "De nada",
+          "Adeus",
+          "Bom dia"
+        ],
+        "answerIndex": 1,
+        "explanation": "De nada means “you’re welcome.”"
+      }
+    ],
+    "direction": "en-pt"
+  },
+  {
+    "id": "numbers-1",
+    "slug": "numbers-1-to-10",
+    "title": "Numbers 1–10",
+    "description": "Count clearly for prices, times, and quantities.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Count slowly",
+        "body": "Portuguese numbers are used constantly. Rhythm first; speed later."
+      },
+      {
+        "type": "tip",
+        "title": "Notes",
+        "body": "Um / uma agree with gender.",
+        "bullets": [
+          "um livro, uma maçã",
+          "Learn numbers in short phrases."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "1 to 10",
+        "items": [
+          {
+            "term": "zero",
+            "meaning": "0"
+          },
+          {
+            "term": "um / uma",
+            "meaning": "1"
+          },
+          {
+            "term": "dois / duas",
+            "meaning": "2"
+          },
+          {
+            "term": "três",
+            "meaning": "3"
+          },
+          {
+            "term": "quatro",
+            "meaning": "4"
+          },
+          {
+            "term": "cinco",
+            "meaning": "5"
+          },
+          {
+            "term": "seis",
+            "meaning": "6"
+          },
+          {
+            "term": "sete",
+            "meaning": "7"
+          },
+          {
+            "term": "oito",
+            "meaning": "8"
+          },
+          {
+            "term": "nove",
+            "meaning": "9"
+          },
+          {
+            "term": "dez",
+            "meaning": "10"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "11 to 20 (bonus)",
+        "items": [
+          {
+            "term": "onze",
+            "meaning": "11"
+          },
+          {
+            "term": "doze",
+            "meaning": "12"
+          },
+          {
+            "term": "treze",
+            "meaning": "13"
+          },
+          {
+            "term": "catorze",
+            "meaning": "14"
+          },
+          {
+            "term": "quinze",
+            "meaning": "15"
+          },
+          {
+            "term": "dezasseis",
+            "meaning": "16"
+          },
+          {
+            "term": "dezassete",
+            "meaning": "17"
+          },
+          {
+            "term": "dezoito",
+            "meaning": "18"
+          },
+          {
+            "term": "dezanove",
+            "meaning": "19"
+          },
+          {
+            "term": "vinte",
+            "meaning": "20"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Mini uses",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "Two coffees, please.",
+            "target": "Dois cafés, por favor."
+          },
+          {
+            "source": "It costs five euros.",
+            "target": "Custa cinco euros."
+          },
+          {
+            "source": "Platform three.",
+            "target": "Cais número três."
+          },
+          {
+            "source": "I am twenty years old.",
+            "target": "Tenho vinte anos."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the numbers",
+        "pairs": [
+          {
+            "left": "um",
+            "right": "1"
+          },
+          {
+            "left": "dois",
+            "right": "2"
+          },
+          {
+            "left": "três",
+            "right": "3"
+          },
+          {
+            "left": "cinco",
+            "right": "5"
+          },
+          {
+            "left": "sete",
+            "right": "7"
+          },
+          {
+            "left": "dez",
+            "right": "10"
+          },
+          {
+            "left": "vinte",
+            "right": "20"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the order",
+        "prompt": "Build: “Two coffees, please.”",
+        "words": [
+          "Dois",
+          "cafés",
+          ",",
+          "por",
+          "favor",
+          "."
+        ],
+        "answer": "Dois cafés, por favor."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · age",
+        "prompt": "Someone says this. How old are they?",
+        "audioText": "Tenho vinte anos",
+        "options": [
+          "12 years old",
+          "20 years old",
+          "7 years old",
+          "2 years old"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the ticket window",
+        "context": "Buying tickets.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "Dois bilhetes?"
+          },
+          {
+            "speaker": "You",
+            "text": "Sim, dois. Tenho vinte anos."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Certo. Quinze euros."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · seven",
+        "prompt": "What is “seven” in Portuguese?",
+        "options": [
+          "seis",
+          "sete",
+          "oito",
+          "cinco"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sete is seven."
+      },
+      {
+        "type": "check",
+        "title": "Check · phrase",
+        "prompt": "“Dois cafés” means…",
+        "options": [
+          "Ten coffees",
+          "Two coffees",
+          "Twelve coffees",
+          "No coffee"
+        ],
+        "answerIndex": 1,
+        "explanation": "Dois means two."
+      },
+      {
+        "type": "check",
+        "title": "Check · age",
+        "prompt": "How do Portuguese speakers say “I am twenty years old”?",
+        "options": [
+          "Sou vinte anos",
+          "Tenho vinte anos",
+          "Vou vinte anos",
+          "Tenho vinte horas"
+        ],
+        "answerIndex": 1,
+        "explanation": "Age uses ter: tenho vinte anos."
+      }
+    ],
+    "direction": "en-pt"
+  },
+  {
+    "id": "introduce-yourself-1",
+    "slug": "introduce-yourself",
+    "title": "Introduce yourself",
+    "description": "Name, origin, and a simple nice-to-meet-you.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "First contact",
+        "body": "A short self-introduction is enough: name, origin, and a polite close."
+      },
+      {
+        "type": "vocab",
+        "title": "Building blocks",
+        "items": [
+          {
+            "term": "Chamo-me… / Meu nome é…",
+            "meaning": "My name is…"
+          },
+          {
+            "term": "Sou de…",
+            "meaning": "I am from…"
+          },
+          {
+            "term": "Moro em…",
+            "meaning": "I live in…"
+          },
+          {
+            "term": "Tenho … anos",
+            "meaning": "I am … years old"
+          },
+          {
+            "term": "Prazer",
+            "meaning": "Nice to meet you"
+          },
+          {
+            "term": "E você?",
+            "meaning": "And you?"
+          }
+        ]
+      },
+      {
+        "type": "tip",
+        "title": "Prazer",
+        "body": "Prazer (or Prazer em conhecê-lo/la) is the standard “nice to meet you.”"
+      },
+      {
+        "type": "phrase",
+        "title": "Model intros",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "Hello, my name is Alex.",
+            "target": "Olá, chamo-me Alex."
+          },
+          {
+            "source": "I’m from Canada.",
+            "target": "Sou do Canadá."
+          },
+          {
+            "source": "I live in Lisbon.",
+            "target": "Moro em Lisboa."
+          },
+          {
+            "source": "Nice to meet you.",
+            "target": "Prazer."
+          },
+          {
+            "source": "What’s your name?",
+            "target": "Como se chama?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the building blocks",
+        "pairs": [
+          {
+            "left": "Chamo-me…",
+            "right": "My name is…"
+          },
+          {
+            "left": "Sou de…",
+            "right": "I am from…"
+          },
+          {
+            "left": "Moro em…",
+            "right": "I live in…"
+          },
+          {
+            "left": "Prazer",
+            "right": "Nice to meet you"
+          },
+          {
+            "left": "E você?",
+            "right": "And you?"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the introduction",
+        "prompt": "Build: “Hello, my name is Alex.”",
+        "words": [
+          "Olá",
+          ",",
+          "chamo-me",
+          "Alex",
+          "."
+        ],
+        "answer": "Olá, chamo-me Alex."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · origin",
+        "prompt": "What does this person say?",
+        "audioText": "Sou do Canadá",
+        "options": [
+          "I live in Canada",
+          "I come from Canada",
+          "My name is Canada",
+          "I am going to Canada"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Meeting someone new",
+        "context": "A short self-introduction.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "Olá, chamo-me Sam."
+          },
+          {
+            "speaker": "Other",
+            "text": "Prazer. Chamo-me Lea."
+          },
+          {
+            "speaker": "You",
+            "text": "Sou dos Estados Unidos. E você?"
+          },
+          {
+            "speaker": "Léa",
+            "text": "Sou de Lisboa."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "“Chamo-me Sam” means…",
+        "options": [
+          "I live in Sam",
+          "My name is Sam",
+          "I am from Sam",
+          "See you Sam"
+        ],
+        "answerIndex": 1,
+        "explanation": "Chamar-se = to be called."
+      },
+      {
+        "type": "check",
+        "title": "Check · origin",
+        "prompt": "Best line for “I come from Belgium”?",
+        "options": [
+          "Moro na Bélgica",
+          "Sou da Bélgica",
+          "Chamo-me Bélgica",
+          "Adeus Bélgica"
+        ],
+        "answerIndex": 1,
+        "explanation": "Ser de + country expresses origin."
+      }
+    ],
+    "direction": "en-pt"
+  },
+  {
+    "id": "colors-1",
+    "slug": "colors-and-descriptions",
+    "title": "Colors & simple descriptions",
+    "description": "Name colors and describe everyday objects.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Painting with words",
+        "body": "Colors are adjectives and agree in gender and number with the noun."
+      },
+      {
+        "type": "tip",
+        "title": "Agreement basics",
+        "body": "Add -a for feminine and -s for plural.",
+        "bullets": [
+          "um carro vermelho → uma saia vermelha",
+          "sapatos pretos"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Colors",
+        "items": [
+          {
+            "term": "vermelho/a",
+            "meaning": "red"
+          },
+          {
+            "term": "azul",
+            "meaning": "blue"
+          },
+          {
+            "term": "verde",
+            "meaning": "green"
+          },
+          {
+            "term": "amarelo/a",
+            "meaning": "yellow"
+          },
+          {
+            "term": "preto/a",
+            "meaning": "black"
+          },
+          {
+            "term": "branco/a",
+            "meaning": "white"
+          },
+          {
+            "term": "cinzento/a",
+            "meaning": "grey"
+          },
+          {
+            "term": "castanho/a",
+            "meaning": "brown"
+          },
+          {
+            "term": "laranja",
+            "meaning": "orange"
+          },
+          {
+            "term": "rosa",
+            "meaning": "pink"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Describing things",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "The sky is blue.",
+            "target": "O céu é azul."
+          },
+          {
+            "source": "I’d like the red one.",
+            "target": "Gostaria do vermelho."
+          },
+          {
+            "source": "She has a green bag.",
+            "target": "Ela tem uma mala verde."
+          },
+          {
+            "source": "Black shoes.",
+            "target": "Sapatos pretos."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the colors",
+        "pairs": [
+          {
+            "left": "vermelho",
+            "right": "red"
+          },
+          {
+            "left": "azul",
+            "right": "blue"
+          },
+          {
+            "left": "verde",
+            "right": "green"
+          },
+          {
+            "left": "preto",
+            "right": "black"
+          },
+          {
+            "left": "branco",
+            "right": "white"
+          },
+          {
+            "left": "castanho",
+            "right": "brown"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the description",
+        "prompt": "Build: “a blue dress”",
+        "words": [
+          "um",
+          "vestido",
+          "azul"
+        ],
+        "answer": "um vestido azul"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · color",
+        "prompt": "You hear “uma saia vermelha”. What is being described?",
+        "audioText": "uma saia vermelha",
+        "options": [
+          "a blue book",
+          "a red skirt",
+          "blue shoes",
+          "a green dress"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Choosing a color",
+        "context": "In a clothing shop.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "Que cor prefere?"
+          },
+          {
+            "speaker": "You",
+            "text": "Gostaria do vermelho."
+          },
+          {
+            "speaker": "Clerk",
+            "text": "Aqui tem um vestido vermelho."
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · agreement",
+        "prompt": "How do you say “a red skirt” (uma saia)?",
+        "options": [
+          "um saia vermelho",
+          "uma saia vermelha",
+          "uma saia vermelho",
+          "uma saia vermelhos"
+        ],
+        "answerIndex": 1,
+        "explanation": "Saia is feminine, so vermelho → vermelha."
+      },
+      {
+        "type": "check",
+        "title": "Check · color",
+        "prompt": "What is “black” in Portuguese?",
+        "options": [
+          "branco",
+          "preto",
+          "cinzento",
+          "castanho"
+        ],
+        "answerIndex": 1,
+        "explanation": "Preto = black."
+      }
+    ],
+    "direction": "en-pt"
+  }
+]

@@ -1,0 +1,1037 @@
+[
+  {
+    "id": "greetings-1",
+    "slug": "greetings",
+    "title": "Greetings",
+    "xp": 25,
+    "description": "Hello and goodbye across the day, with formality notes.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "A soft start",
+        "body": "Hindi greetings range from the universal नमस्ते to time-specific forms."
+      },
+      {
+        "type": "tip",
+        "title": "Form vs. familiarity",
+        "body": "नमस्ते works almost everywhere. आप is polite “you”; तुम is informal.",
+        "bullets": [
+          "सुप्रभात = good morning.",
+          "शुभ संध्या = good evening.",
+          "अलविदा = goodbye.",
+          "शुभ रात्रि = good night."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Core greetings",
+        "items": [
+          {
+            "term": "नमस्ते",
+            "meaning": "Hello / goodbye"
+          },
+          {
+            "term": "नमस्कार",
+            "meaning": "Hello (more formal)"
+          },
+          {
+            "term": "सुप्रभात",
+            "meaning": "Good morning"
+          },
+          {
+            "term": "शुभ संध्या",
+            "meaning": "Good evening"
+          },
+          {
+            "term": "अलविदा",
+            "meaning": "Goodbye"
+          },
+          {
+            "term": "फिर मिलेंगे",
+            "meaning": "See you later"
+          },
+          {
+            "term": "कल मिलते हैं",
+            "meaning": "See you tomorrow"
+          },
+          {
+            "term": "शुभ रात्रि",
+            "meaning": "Good night"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Useful lines",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "Hello, how are you?",
+            "target": "नमस्ते, आप कैसे हैं?"
+          },
+          {
+            "source": "I’m fine, thanks. And you?",
+            "target": "मैं ठीक हूँ, धन्यवाद। और आप?"
+          },
+          {
+            "source": "See you soon.",
+            "target": "फिर मिलेंगे।"
+          },
+          {
+            "source": "Have a good day.",
+            "target": "आपका दिन शुभ हो।"
+          },
+          {
+            "source": "See you tomorrow!",
+            "target": "कल मिलते हैं!"
+          },
+          {
+            "source": "Good night.",
+            "target": "शुभ रात्रि।"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the greetings",
+        "pairs": [
+          {
+            "left": "नमस्ते",
+            "right": "Hello"
+          },
+          {
+            "left": "सुप्रभात",
+            "right": "Good morning"
+          },
+          {
+            "left": "शुभ संध्या",
+            "right": "Good evening"
+          },
+          {
+            "left": "अलविदा",
+            "right": "Goodbye"
+          },
+          {
+            "left": "शुभ रात्रि",
+            "right": "Good night"
+          },
+          {
+            "left": "कल मिलते हैं",
+            "right": "See you tomorrow"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the greeting",
+        "prompt": "Build: “Hello, how are you?”",
+        "words": [
+          "नमस्ते",
+          ",",
+          "आप",
+          "कैसे",
+          "हैं",
+          "?"
+        ],
+        "answer": "नमस्ते, आप कैसे हैं?"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · morning",
+        "prompt": "You hear this in the morning. What does it mean?",
+        "audioText": "सुप्रभात",
+        "options": [
+          "Good evening",
+          "Good morning",
+          "Good night",
+          "Goodbye"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "A first meeting",
+        "context": "You meet someone for the first time.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "नमस्ते, आप कैसे हैं?"
+          },
+          {
+            "speaker": "Other",
+            "text": "मैं ठीक हूँ, धन्यवाद। और आप?"
+          },
+          {
+            "speaker": "You",
+            "text": "मैं भी ठीक हूँ।"
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · hello",
+        "prompt": "Which is the standard hello?",
+        "options": [
+          "अलविदा",
+          "नमस्ते",
+          "शुभ रात्रि",
+          "सुप्रभात"
+        ],
+        "answerIndex": 1,
+        "explanation": "नमस्ते is the universal greeting."
+      },
+      {
+        "type": "check",
+        "title": "Check · morning",
+        "prompt": "Which greeting fits the morning?",
+        "options": [
+          "शुभ संध्या",
+          "सुप्रभात",
+          "शुभ रात्रि",
+          "अलविदा"
+        ],
+        "answerIndex": 1,
+        "explanation": "सुप्रभात = good morning."
+      },
+      {
+        "type": "check",
+        "title": "Check · good night",
+        "prompt": "You’re heading to bed. You say…",
+        "options": [
+          "शुभ संध्या",
+          "शुभ रात्रि",
+          "सुप्रभात",
+          "नमस्ते"
+        ],
+        "answerIndex": 1,
+        "explanation": "शुभ रात्रि is good night."
+      }
+    ],
+    "direction": "en-hi"
+  },
+  {
+    "id": "polite-1",
+    "slug": "please-and-thank-you",
+    "title": "Please & thank you",
+    "description": "Politeness formulas that open every exchange.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 13,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Small words, big difference",
+        "body": "Hindi interactions expect कृपया and धन्यवाद."
+      },
+      {
+        "type": "tip",
+        "title": "Please & thanks",
+        "body": "कृपया = please. धन्यवाद = thank you.",
+        "bullets": [
+          "बहुत धन्यवाद = thank you very much.",
+          "आपका स्वागत है = you’re welcome.",
+          "माफ़ कीजिए = excuse me / sorry."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Politeness set",
+        "items": [
+          {
+            "term": "कृपया",
+            "meaning": "Please"
+          },
+          {
+            "term": "धन्यवाद",
+            "meaning": "Thank you"
+          },
+          {
+            "term": "बहुत धन्यवाद",
+            "meaning": "Thank you very much"
+          },
+          {
+            "term": "आपका स्वागत है",
+            "meaning": "You’re welcome"
+          },
+          {
+            "term": "माफ़ कीजिए",
+            "meaning": "Excuse me / sorry"
+          },
+          {
+            "term": "मुझे खेद है",
+            "meaning": "I’m sorry"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "In context",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "A coffee, please.",
+            "target": "कृपया एक कॉफ़ी दीजिए।"
+          },
+          {
+            "source": "Thank you very much.",
+            "target": "बहुत धन्यवाद।"
+          },
+          {
+            "source": "Excuse me (to pass).",
+            "target": "माफ़ कीजिए।"
+          },
+          {
+            "source": "Sorry I’m late.",
+            "target": "देर होने के लिए माफ़ कीजिए।"
+          },
+          {
+            "source": "I’m so sorry.",
+            "target": "मुझे बहुत खेद है।"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the polite phrases",
+        "pairs": [
+          {
+            "left": "कृपया",
+            "right": "Please"
+          },
+          {
+            "left": "धन्यवाद",
+            "right": "Thank you"
+          },
+          {
+            "left": "बहुत धन्यवाद",
+            "right": "Thank you very much"
+          },
+          {
+            "left": "आपका स्वागत है",
+            "right": "You’re welcome"
+          },
+          {
+            "left": "माफ़ कीजिए",
+            "right": "Excuse me / sorry"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the request",
+        "prompt": "Build: “A coffee, please.”",
+        "words": [
+          "कृपया",
+          "एक",
+          "कॉफ़ी",
+          "दीजिए",
+          "।"
+        ],
+        "answer": "कृपया एक कॉफ़ी दीजिए।"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · reply",
+        "prompt": "Someone says धन्यवाद. A common reply is…",
+        "audioText": "आपका स्वागत है",
+        "options": [
+          "Please",
+          "You’re welcome",
+          "Excuse me",
+          "Goodbye"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the counter",
+        "context": "Ordering and thanking.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "कृपया एक कॉफ़ी दीजिए।"
+          },
+          {
+            "speaker": "Clerk",
+            "text": "ये लीजिए। तीन रुपये।"
+          },
+          {
+            "speaker": "You",
+            "text": "बहुत धन्यवाद।"
+          },
+          {
+            "speaker": "Clerk",
+            "text": "आपका स्वागत है।"
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · shop",
+        "prompt": "How do you say “please” when ordering?",
+        "options": [
+          "धन्यवाद",
+          "कृपया",
+          "आपका स्वागत है",
+          "नमस्ते"
+        ],
+        "answerIndex": 1,
+        "explanation": "कृपया is the standard please."
+      },
+      {
+        "type": "check",
+        "title": "Check · reply",
+        "prompt": "Someone says धन्यवाद. A common reply is…",
+        "options": [
+          "नमस्ते",
+          "आपका स्वागत है",
+          "अलविदा",
+          "कृपया"
+        ],
+        "answerIndex": 1,
+        "explanation": "आपका स्वागत है means “you’re welcome.”"
+      }
+    ],
+    "direction": "en-hi"
+  },
+  {
+    "id": "numbers-1",
+    "slug": "numbers-1-to-10",
+    "title": "Numbers 1–10",
+    "description": "Count clearly for prices, times, and quantities.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Count slowly",
+        "body": "Hindi numbers are used constantly. Rhythm first; speed later."
+      },
+      {
+        "type": "tip",
+        "title": "Notes",
+        "body": "Learn numbers in short phrases, not only as a list.",
+        "bullets": [
+          "एक किताब",
+          "दो कॉफ़ी"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "1 to 10",
+        "items": [
+          {
+            "term": "शून्य",
+            "meaning": "0"
+          },
+          {
+            "term": "एक",
+            "meaning": "1"
+          },
+          {
+            "term": "दो",
+            "meaning": "2"
+          },
+          {
+            "term": "तीन",
+            "meaning": "3"
+          },
+          {
+            "term": "चार",
+            "meaning": "4"
+          },
+          {
+            "term": "पाँच",
+            "meaning": "5"
+          },
+          {
+            "term": "छह",
+            "meaning": "6"
+          },
+          {
+            "term": "सात",
+            "meaning": "7"
+          },
+          {
+            "term": "आठ",
+            "meaning": "8"
+          },
+          {
+            "term": "नौ",
+            "meaning": "9"
+          },
+          {
+            "term": "दस",
+            "meaning": "10"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "11 to 20 (bonus)",
+        "items": [
+          {
+            "term": "ग्यारह",
+            "meaning": "11"
+          },
+          {
+            "term": "बारह",
+            "meaning": "12"
+          },
+          {
+            "term": "तेरह",
+            "meaning": "13"
+          },
+          {
+            "term": "चौदह",
+            "meaning": "14"
+          },
+          {
+            "term": "पंद्रह",
+            "meaning": "15"
+          },
+          {
+            "term": "सोलह",
+            "meaning": "16"
+          },
+          {
+            "term": "सत्रह",
+            "meaning": "17"
+          },
+          {
+            "term": "अठारह",
+            "meaning": "18"
+          },
+          {
+            "term": "उन्नीस",
+            "meaning": "19"
+          },
+          {
+            "term": "बीस",
+            "meaning": "20"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Mini uses",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "Two coffees, please.",
+            "target": "दो कॉफ़ी दीजिए।"
+          },
+          {
+            "source": "It costs five rupees.",
+            "target": "पाँच रुपये।"
+          },
+          {
+            "source": "Platform three.",
+            "target": "प्लेटफ़ॉर्म नंबर तीन।"
+          },
+          {
+            "source": "I am twenty years old.",
+            "target": "मेरी उम्र बीस साल है।"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the numbers",
+        "pairs": [
+          {
+            "left": "एक",
+            "right": "1"
+          },
+          {
+            "left": "दो",
+            "right": "2"
+          },
+          {
+            "left": "तीन",
+            "right": "3"
+          },
+          {
+            "left": "पाँच",
+            "right": "5"
+          },
+          {
+            "left": "सात",
+            "right": "7"
+          },
+          {
+            "left": "दस",
+            "right": "10"
+          },
+          {
+            "left": "बीस",
+            "right": "20"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the order",
+        "prompt": "Build: “Two coffees, please.”",
+        "words": [
+          "दो",
+          "कॉफ़ी",
+          "दीजिए",
+          "।"
+        ],
+        "answer": "दो कॉफ़ी दीजिए।"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · age",
+        "prompt": "Someone says this. How old are they?",
+        "audioText": "मेरी उम्र बीस साल है",
+        "options": [
+          "12 years old",
+          "20 years old",
+          "7 years old",
+          "2 years old"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "At the ticket window",
+        "context": "Buying tickets.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "दो टिकट?"
+          },
+          {
+            "speaker": "You",
+            "text": "हाँ, दो। मेरी उम्र बीस साल है।"
+          },
+          {
+            "speaker": "Clerk",
+            "text": "ठीक है। पंद्रह रुपये।"
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · seven",
+        "prompt": "What is “seven” in Hindi?",
+        "options": [
+          "छह",
+          "सात",
+          "आठ",
+          "पाँच"
+        ],
+        "answerIndex": 1,
+        "explanation": "सात is seven."
+      },
+      {
+        "type": "check",
+        "title": "Check · phrase",
+        "prompt": "“दो कॉफ़ी” means…",
+        "options": [
+          "Ten coffees",
+          "Two coffees",
+          "Twelve coffees",
+          "No coffee"
+        ],
+        "answerIndex": 1,
+        "explanation": "दो means two."
+      },
+      {
+        "type": "check",
+        "title": "Check · age",
+        "prompt": "How do Hindi speakers say “I am twenty years old”?",
+        "options": [
+          "मैं बीस हूँ",
+          "मेरी उम्र बीस साल है",
+          "मैं बीस जाता हूँ",
+          "मेरे पास बीस घंटे हैं"
+        ],
+        "answerIndex": 1,
+        "explanation": "उम्र … साल = age … years."
+      }
+    ],
+    "direction": "en-hi"
+  },
+  {
+    "id": "introduce-yourself-1",
+    "slug": "introduce-yourself",
+    "title": "Introduce yourself",
+    "description": "Name, origin, and a simple nice-to-meet-you.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "First contact",
+        "body": "A short self-introduction is enough: name, origin, and a polite close."
+      },
+      {
+        "type": "vocab",
+        "title": "Building blocks",
+        "items": [
+          {
+            "term": "मेरा नाम … है",
+            "meaning": "My name is…"
+          },
+          {
+            "term": "मैं … से हूँ",
+            "meaning": "I am from…"
+          },
+          {
+            "term": "मैं … में रहता/रहती हूँ",
+            "meaning": "I live in…"
+          },
+          {
+            "term": "मेरी उम्र … साल है",
+            "meaning": "I am … years old"
+          },
+          {
+            "term": "आपसे मिलकर खुशी हुई",
+            "meaning": "Nice to meet you"
+          },
+          {
+            "term": "और आप?",
+            "meaning": "And you?"
+          }
+        ]
+      },
+      {
+        "type": "tip",
+        "title": "आपसे मिलकर खुशी हुई",
+        "body": "This is a polite “nice to meet you.”"
+      },
+      {
+        "type": "phrase",
+        "title": "Model intros",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "Hello, my name is Alex.",
+            "target": "नमस्ते, मेरा नाम एलेक्स है।"
+          },
+          {
+            "source": "I’m from Canada.",
+            "target": "मैं कनाडा से हूँ।"
+          },
+          {
+            "source": "I live in Delhi.",
+            "target": "मैं दिल्ली में रहता हूँ।"
+          },
+          {
+            "source": "Nice to meet you.",
+            "target": "आपसे मिलकर खुशी हुई।"
+          },
+          {
+            "source": "What’s your name?",
+            "target": "आपका नाम क्या है?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the building blocks",
+        "pairs": [
+          {
+            "left": "मेरा नाम … है",
+            "right": "My name is…"
+          },
+          {
+            "left": "मैं … से हूँ",
+            "right": "I am from…"
+          },
+          {
+            "left": "मैं … में रहता हूँ",
+            "right": "I live in…"
+          },
+          {
+            "left": "आपसे मिलकर खुशी हुई",
+            "right": "Nice to meet you"
+          },
+          {
+            "left": "और आप?",
+            "right": "And you?"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the introduction",
+        "prompt": "Build: “Hello, my name is Alex.”",
+        "words": [
+          "नमस्ते",
+          ",",
+          "मेरा",
+          "नाम",
+          "एलेक्स",
+          "है",
+          "।"
+        ],
+        "answer": "नमस्ते, मेरा नाम एलेक्स है।"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · origin",
+        "prompt": "What does this person say?",
+        "audioText": "मैं कनाडा से हूँ",
+        "options": [
+          "I live in Canada",
+          "I come from Canada",
+          "My name is Canada",
+          "I am going to Canada"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Meeting someone new",
+        "context": "A short self-introduction.",
+        "turns": [
+          {
+            "speaker": "You",
+            "text": "नमस्ते, मेरा नाम सैम है।"
+          },
+          {
+            "speaker": "Other",
+            "text": "आपसे मिलकर खुशी हुई। मेरा नाम लिया है।"
+          },
+          {
+            "speaker": "You",
+            "text": "मैं अमेरिका से हूँ। और आप?"
+          },
+          {
+            "speaker": "Léa",
+            "text": "मैं दिल्ली से हूँ।"
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "“मेरा नाम सैम है” means…",
+        "options": [
+          "I live in Sam",
+          "My name is Sam",
+          "I am from Sam",
+          "See you Sam"
+        ],
+        "answerIndex": 1,
+        "explanation": "मेरा नाम … है = my name is…"
+      },
+      {
+        "type": "check",
+        "title": "Check · origin",
+        "prompt": "Best line for “I come from Belgium”?",
+        "options": [
+          "मैं बेल्जियम में रहता हूँ",
+          "मैं बेल्जियम से हूँ",
+          "मेरा नाम बेल्जियम है",
+          "अलविदा बेल्जियम"
+        ],
+        "answerIndex": 1,
+        "explanation": "मैं … से हूँ expresses origin."
+      }
+    ],
+    "direction": "en-hi"
+  },
+  {
+    "id": "colors-1",
+    "slug": "colors-and-descriptions",
+    "title": "Colors & simple descriptions",
+    "description": "Name colors and describe everyday objects.",
+    "unitId": "foundations",
+    "level": "beginner",
+    "estimatedMinutes": 14,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Painting with words",
+        "body": "Hindi colors are adjectives and often come before the noun."
+      },
+      {
+        "type": "tip",
+        "title": "Agreement basics",
+        "body": "Some colors change for gender; many stay the same in common use.",
+        "bullets": [
+          "लाल गाड़ी = red car",
+          "नीला आसमान = blue sky"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Colors",
+        "items": [
+          {
+            "term": "लाल",
+            "meaning": "red"
+          },
+          {
+            "term": "नीला",
+            "meaning": "blue"
+          },
+          {
+            "term": "हरा",
+            "meaning": "green"
+          },
+          {
+            "term": "पीला",
+            "meaning": "yellow"
+          },
+          {
+            "term": "काला",
+            "meaning": "black"
+          },
+          {
+            "term": "सफ़ेद",
+            "meaning": "white"
+          },
+          {
+            "term": "धूसर / ग्रे",
+            "meaning": "grey"
+          },
+          {
+            "term": "भूरा",
+            "meaning": "brown"
+          },
+          {
+            "term": "नारंगी",
+            "meaning": "orange"
+          },
+          {
+            "term": "गुलाबी",
+            "meaning": "pink"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Describing things",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "The sky is blue.",
+            "target": "आसमान नीला है।"
+          },
+          {
+            "source": "I’d like the red one.",
+            "target": "मुझे लाल वाला चाहिए।"
+          },
+          {
+            "source": "She has a green bag.",
+            "target": "उसके पास हरा बैग है।"
+          },
+          {
+            "source": "Black shoes.",
+            "target": "काले जूते।"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "title": "Match the colors",
+        "pairs": [
+          {
+            "left": "लाल",
+            "right": "red"
+          },
+          {
+            "left": "नीला",
+            "right": "blue"
+          },
+          {
+            "left": "हरा",
+            "right": "green"
+          },
+          {
+            "left": "काला",
+            "right": "black"
+          },
+          {
+            "left": "सफ़ेद",
+            "right": "white"
+          },
+          {
+            "left": "भूरा",
+            "right": "brown"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "title": "Build the description",
+        "prompt": "Build: “a blue dress”",
+        "words": [
+          "नीली",
+          "पोशाक"
+        ],
+        "answer": "नीली पोशाक"
+      },
+      {
+        "type": "listen",
+        "title": "Listen · color",
+        "prompt": "You hear “लाल स्कर्ट”. What is being described?",
+        "audioText": "लाल स्कर्ट",
+        "options": [
+          "a blue book",
+          "a red skirt",
+          "blue shoes",
+          "a green dress"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "title": "Choosing a color",
+        "context": "In a clothing shop.",
+        "turns": [
+          {
+            "speaker": "Clerk",
+            "text": "कौन सा रंग पसंद है?"
+          },
+          {
+            "speaker": "You",
+            "text": "मुझे लाल वाला चाहिए।"
+          },
+          {
+            "speaker": "Clerk",
+            "text": "ये लीजिए, लाल पोशाक।"
+          }
+        ]
+      },
+      {
+        "type": "check",
+        "title": "Check · color",
+        "prompt": "How do you say “red”?",
+        "options": [
+          "नीला",
+          "लाल",
+          "काला",
+          "सफ़ेद"
+        ],
+        "answerIndex": 1,
+        "explanation": "लाल = red."
+      },
+      {
+        "type": "check",
+        "title": "Check · black",
+        "prompt": "What is “black” in Hindi?",
+        "options": [
+          "सफ़ेद",
+          "काला",
+          "धूसर",
+          "भूरा"
+        ],
+        "answerIndex": 1,
+        "explanation": "काला = black."
+      }
+    ],
+    "direction": "en-hi"
+  }
+]

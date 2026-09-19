@@ -1,0 +1,4913 @@
+[
+    {
+        "id": "greetings-1",
+        "slug": "greetings",
+        "title": "Greetings",
+        "xp": 25,
+        "description": "Hello and goodbye across the day, with formality notes.",
+        "unitId": "foundations",
+        "direction": "en-jp",
+        "level": "beginner",
+        "estimatedMinutes": 14,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "A soft start",
+                "body": "Japanese greetings shift with time of day and how well you know someone. Learn a small set well rather than many poorly."
+            },
+            {
+                "type": "tip",
+                "title": "Form vs. familiarity",
+                "body": "Use polite forms with strangers, older people, and formal situations. Casual forms are for friends, family, and peers.",
+                "bullets": [
+                    "おはようございます is the standard morning greeting.",
+                    "こんにちは works from late morning through afternoon.",
+                    "こんばんは is used in the evening.",
+                    "じゃあね / またね are friendly and informal — both hi/bye vibes."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Core greetings",
+                "items": [
+                    {
+                        "term": "おはようございます",
+                        "meaning": "Good morning (polite)",
+                        "note": "Safe default until ~10–11am"
+                    },
+                    {
+                        "term": "こんにちは",
+                        "meaning": "Hello / good afternoon"
+                    },
+                    {
+                        "term": "こんばんは",
+                        "meaning": "Good evening"
+                    },
+                    {
+                        "term": "おはよう",
+                        "meaning": "Morning (casual)"
+                    },
+                    {
+                        "term": "さようなら",
+                        "meaning": "Goodbye (somewhat formal)"
+                    },
+                    {
+                        "term": "じゃあね",
+                        "meaning": "See you / bye (casual)"
+                    },
+                    {
+                        "term": "またね",
+                        "meaning": "See you later (casual)"
+                    },
+                    {
+                        "term": "また明日",
+                        "meaning": "See you tomorrow"
+                    },
+                    {
+                        "term": "おやすみなさい",
+                        "meaning": "Good night",
+                        "note": "When someone is going to sleep"
+                    },
+                    {
+                        "term": "いってきます",
+                        "meaning": "I'm off (leaving home)"
+                    },
+                    {
+                        "term": "いってらっしゃい",
+                        "meaning": "Take care / see you later (to someone leaving)"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Useful lines",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "Hello, how are you? (polite)",
+                        "target": "こんにちは、お元気ですか？"
+                    },
+                    {
+                        "source": "Hi, how are you? (casual)",
+                        "target": "やあ、元気？"
+                    },
+                    {
+                        "source": "I'm fine, thanks. And you?",
+                        "target": "元気です、ありがとう。あなたは？"
+                    },
+                    {
+                        "source": "See you soon.",
+                        "target": "またね。"
+                    },
+                    {
+                        "source": "Have a good day.",
+                        "target": "良い一日を。"
+                    },
+                    {
+                        "source": "See you tomorrow!",
+                        "target": "また明日！"
+                    },
+                    {
+                        "source": "Good night.",
+                        "target": "おやすみなさい。"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the greetings",
+                "pairs": [
+                    {
+                        "left": "おはようございます",
+                        "right": "Good morning (polite)"
+                    },
+                    {
+                        "left": "こんにちは",
+                        "right": "Hello / good afternoon"
+                    },
+                    {
+                        "left": "こんばんは",
+                        "right": "Good evening"
+                    },
+                    {
+                        "left": "さようなら",
+                        "right": "Goodbye"
+                    },
+                    {
+                        "left": "おやすみなさい",
+                        "right": "Good night"
+                    },
+                    {
+                        "left": "またね",
+                        "right": "See you later (casual)"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the greeting",
+                "prompt": "Build: “Hello, how are you?” (polite)",
+                "words": [
+                    "こんにちは",
+                    "、",
+                    "お元気",
+                    "です",
+                    "か",
+                    "？"
+                ],
+                "answer": "こんにちは、お元気ですか？"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · evening",
+                "prompt": "You hear this in the evening. What does it mean?",
+                "audioText": "こんばんは",
+                "options": [
+                    "Good morning",
+                    "Good afternoon",
+                    "Good evening",
+                    "Good night"
+                ],
+                "answerIndex": 2,
+                "explanation": "こんばんは is the standard evening greeting."
+            },
+            {
+                "type": "context-dialogue",
+                "title": "A first meeting",
+                "context": "You meet a colleague’s parent for the first time.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "こんにちは、お元気ですか？"
+                    },
+                    {
+                        "speaker": "Parent",
+                        "text": "はい、元気です。あなたは？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "元気です、ありがとうございます。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · time of day",
+                "prompt": "Which greeting fits the evening?",
+                "options": [
+                    "おはようございます",
+                    "こんにちは",
+                    "こんばんは",
+                    "おやすみなさい"
+                ],
+                "answerIndex": 2,
+                "explanation": "こんばんは is the natural evening greeting."
+            },
+            {
+                "type": "check",
+                "title": "Check · formality",
+                "prompt": "You meet your friend’s parent for the first time. Best choice?",
+                "options": [
+                    "やあ！",
+                    "こんにちは、お元気ですか？",
+                    "元気？",
+                    "また明日"
+                ],
+                "answerIndex": 1,
+                "explanation": "Polite こんにちは + お元気ですか keeps things respectful with someone new and older."
+            },
+            {
+                "type": "check",
+                "title": "Check · going to sleep",
+                "prompt": "You’re heading to bed and want to say good night. You say…",
+                "options": [
+                    "こんばんは",
+                    "おやすみなさい",
+                    "こんにちは",
+                    "またね"
+                ],
+                "answerIndex": 1,
+                "explanation": "おやすみなさい is reserved for when someone is actually going to sleep."
+            }
+        ]
+    },
+    {
+        "id": "polite-1",
+        "slug": "please-and-thank-you",
+        "title": "Please & thank you",
+        "description": "Politeness formulas that open every exchange.",
+        "unitId": "foundations",
+        "direction": "en-jp",
+        "level": "beginner",
+        "estimatedMinutes": 13,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Small words, big difference",
+                "body": "Japanese service and street interactions expect ください and ありがとう. Skipping them can sound abrupt even when you don’t mean it."
+            },
+            {
+                "type": "tip",
+                "title": "Politeness levels",
+                "body": "ください is the everyday “please.” お願いします is a bit more formal/request-like.",
+                "bullets": [
+                    "ありがとうございます = thank you (polite).",
+                    "どうも = casual thanks / hi.",
+                    "すみません can mean excuse me or sorry, depending on tone.",
+                    "ごめんなさい is a clearer apology than すみません."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Politeness set",
+                "items": [
+                    {
+                        "term": "ください",
+                        "meaning": "Please (give me…)"
+                    },
+                    {
+                        "term": "お願いします",
+                        "meaning": "Please (request)"
+                    },
+                    {
+                        "term": "ありがとう",
+                        "meaning": "Thank you (casual)"
+                    },
+                    {
+                        "term": "ありがとうございます",
+                        "meaning": "Thank you (polite)"
+                    },
+                    {
+                        "term": "どうもありがとう",
+                        "meaning": "Thanks a lot"
+                    },
+                    {
+                        "term": "どういたしまして",
+                        "meaning": "You’re welcome"
+                    },
+                    {
+                        "term": "すみません",
+                        "meaning": "Excuse me / sorry"
+                    },
+                    {
+                        "term": "ごめんなさい",
+                        "meaning": "Sorry (apology)"
+                    },
+                    {
+                        "term": "失礼します",
+                        "meaning": "Excuse me (entering/leaving)"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "In context",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "A coffee, please.",
+                        "target": "コーヒーをください。"
+                    },
+                    {
+                        "source": "Thank you very much.",
+                        "target": "ありがとうございます。"
+                    },
+                    {
+                        "source": "Excuse me (to pass).",
+                        "target": "すみません。"
+                    },
+                    {
+                        "source": "Sorry I’m late.",
+                        "target": "遅れてごめんなさい。"
+                    },
+                    {
+                        "source": "I’m so sorry.",
+                        "target": "本当にごめんなさい。"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the polite phrases",
+                "pairs": [
+                    {
+                        "left": "ください",
+                        "right": "Please (give me…)"
+                    },
+                    {
+                        "left": "お願いします",
+                        "right": "Please (request)"
+                    },
+                    {
+                        "left": "ありがとうございます",
+                        "right": "Thank you (polite)"
+                    },
+                    {
+                        "left": "どういたしまして",
+                        "right": "You’re welcome"
+                    },
+                    {
+                        "left": "すみません",
+                        "right": "Excuse me / sorry"
+                    },
+                    {
+                        "left": "ごめんなさい",
+                        "right": "Sorry (apology)"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the request",
+                "prompt": "Build: “A coffee, please.”",
+                "words": [
+                    "コーヒー",
+                    "を",
+                    "ください",
+                    "。"
+                ],
+                "answer": "コーヒーをください。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · reply",
+                "prompt": "Someone says ありがとう. A polite reply is…",
+                "audioText": "どういたしまして",
+                "options": [
+                    "Please",
+                    "You’re welcome",
+                    "Excuse me",
+                    "Goodbye"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "At the counter",
+                "context": "Ordering and thanking in a shop.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "コーヒーをください。"
+                    },
+                    {
+                        "speaker": "Clerk",
+                        "text": "はい、どうぞ。三百円です。"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "ありがとうございます。"
+                    },
+                    {
+                        "speaker": "Clerk",
+                        "text": "どういたしまして。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · shop",
+                "prompt": "How do you say “please” when asking for something in a shop?",
+                "options": [
+                    "ありがとう",
+                    "ください",
+                    "すみません",
+                    "さようなら"
+                ],
+                "answerIndex": 1,
+                "explanation": "〜をください is the standard way to request an item."
+            },
+            {
+                "type": "check",
+                "title": "Check · reply",
+                "prompt": "Someone says ありがとう. A polite reply is…",
+                "options": [
+                    "こんにちは",
+                    "どういたしまして",
+                    "さようなら",
+                    "ください"
+                ],
+                "answerIndex": 1,
+                "explanation": "どういたしまして is the standard “you’re welcome.”"
+            }
+        ]
+    },
+    {
+        "id": "numbers-1",
+        "slug": "numbers-1-to-10",
+        "title": "Numbers 1–10",
+        "description": "Count clearly for prices, times, and quantities.",
+        "unitId": "foundations",
+        "direction": "en-jp",
+        "level": "beginner",
+        "estimatedMinutes": 14,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Count slowly",
+                "body": "Japanese numbers are used constantly — prices, platform numbers, ages. Rhythm first; speed later."
+            },
+            {
+                "type": "tip",
+                "title": "Counters & reading",
+                "body": "Native Japanese numbers (ひとつ, ふたつ…) are common for small quantities of objects. Sino-Japanese (いち, に…) dominate for time, money, and larger numbers.",
+                "bullets": [
+                    "いち, に, さん… for most counting.",
+                    "ひとつ, ふたつ, みっつ… for “how many things.”",
+                    "Learn numbers in short phrases, not only as a list."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "1 to 10",
+                "items": [
+                    {
+                        "term": "ゼロ / れい",
+                        "meaning": "0"
+                    },
+                    {
+                        "term": "いち",
+                        "meaning": "1"
+                    },
+                    {
+                        "term": "に",
+                        "meaning": "2"
+                    },
+                    {
+                        "term": "さん",
+                        "meaning": "3"
+                    },
+                    {
+                        "term": "よん / し",
+                        "meaning": "4"
+                    },
+                    {
+                        "term": "ご",
+                        "meaning": "5"
+                    },
+                    {
+                        "term": "ろく",
+                        "meaning": "6"
+                    },
+                    {
+                        "term": "なな / しち",
+                        "meaning": "7"
+                    },
+                    {
+                        "term": "はち",
+                        "meaning": "8"
+                    },
+                    {
+                        "term": "きゅう / く",
+                        "meaning": "9"
+                    },
+                    {
+                        "term": "じゅう",
+                        "meaning": "10"
+                    }
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "11 to 20 (bonus)",
+                "items": [
+                    {
+                        "term": "じゅういち",
+                        "meaning": "11"
+                    },
+                    {
+                        "term": "じゅうに",
+                        "meaning": "12"
+                    },
+                    {
+                        "term": "じゅうさん",
+                        "meaning": "13"
+                    },
+                    {
+                        "term": "じゅうよん",
+                        "meaning": "14"
+                    },
+                    {
+                        "term": "じゅうご",
+                        "meaning": "15"
+                    },
+                    {
+                        "term": "じゅうろく",
+                        "meaning": "16"
+                    },
+                    {
+                        "term": "じゅうなな",
+                        "meaning": "17"
+                    },
+                    {
+                        "term": "じゅうはち",
+                        "meaning": "18"
+                    },
+                    {
+                        "term": "じゅうきゅう",
+                        "meaning": "19"
+                    },
+                    {
+                        "term": "にじゅう",
+                        "meaning": "20"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Mini uses",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "Two coffees, please.",
+                        "target": "コーヒーを二つください。"
+                    },
+                    {
+                        "source": "It costs five hundred yen.",
+                        "target": "五百円です。"
+                    },
+                    {
+                        "source": "Platform three.",
+                        "target": "三番線です。"
+                    },
+                    {
+                        "source": "I am twenty years old.",
+                        "target": "二十歳です。"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the numbers",
+                "pairs": [
+                    {
+                        "left": "いち",
+                        "right": "1"
+                    },
+                    {
+                        "left": "に",
+                        "right": "2"
+                    },
+                    {
+                        "left": "さん",
+                        "right": "3"
+                    },
+                    {
+                        "left": "ご",
+                        "right": "5"
+                    },
+                    {
+                        "left": "なな",
+                        "right": "7"
+                    },
+                    {
+                        "left": "じゅう",
+                        "right": "10"
+                    },
+                    {
+                        "left": "にじゅう",
+                        "right": "20"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the order",
+                "prompt": "Build: “Two coffees, please.”",
+                "words": [
+                    "コーヒー",
+                    "を",
+                    "二つ",
+                    "ください",
+                    "。"
+                ],
+                "answer": "コーヒーを二つください。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · age",
+                "prompt": "Someone says this. How old are they?",
+                "audioText": "二十歳です",
+                "options": [
+                    "12 years old",
+                    "20 years old",
+                    "7 years old",
+                    "2 years old"
+                ],
+                "answerIndex": 1,
+                "explanation": "二十歳 (はたち) = twenty years old."
+            },
+            {
+                "type": "context-dialogue",
+                "title": "At the ticket window",
+                "context": "Buying tickets and giving age.",
+                "turns": [
+                    {
+                        "speaker": "Clerk",
+                        "text": "チケットは二枚ですか？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "はい、二つ。二十歳です。"
+                    },
+                    {
+                        "speaker": "Clerk",
+                        "text": "わかりました。千五百円です。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · seven",
+                "prompt": "What is “seven” in Japanese?",
+                "options": [
+                    "ろく",
+                    "なな",
+                    "はち",
+                    "ご"
+                ],
+                "answerIndex": 1,
+                "explanation": "なな (or しち) is seven."
+            },
+            {
+                "type": "check",
+                "title": "Check · phrase",
+                "prompt": "“コーヒーを二つ” means…",
+                "options": [
+                    "Ten coffees",
+                    "Two coffees",
+                    "Twelve coffees",
+                    "No coffee"
+                ],
+                "answerIndex": 1,
+                "explanation": "二つ means two (native counter)."
+            },
+            {
+                "type": "check",
+                "title": "Check · age",
+                "prompt": "How do you say “I am twenty years old”?",
+                "options": [
+                    "二十です",
+                    "二十歳です",
+                    "二十円です",
+                    "二十時です"
+                ],
+                "answerIndex": 1,
+                "explanation": "Age uses 〜歳: 二十歳です."
+            }
+        ]
+    },
+    {
+        "id": "introduce-yourself-1",
+        "slug": "introduce-yourself",
+        "title": "Introduce yourself",
+        "description": "Name, origin, and a simple nice-to-meet-you.",
+        "unitId": "foundations",
+        "direction": "en-jp",
+        "level": "beginner",
+        "estimatedMinutes": 16,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "First contact",
+                "body": "A short self-introduction is enough: name, where you’re from, and a polite close."
+            },
+            {
+                "type": "vocab",
+                "title": "Building blocks",
+                "items": [
+                    {
+                        "term": "〜と申します / 〜です",
+                        "meaning": "My name is…"
+                    },
+                    {
+                        "term": "〜から来ました",
+                        "meaning": "I come from…"
+                    },
+                    {
+                        "term": "〜に住んでいます",
+                        "meaning": "I live in…"
+                    },
+                    {
+                        "term": "〜歳です",
+                        "meaning": "I am … years old"
+                    },
+                    {
+                        "term": "はじめまして",
+                        "meaning": "Nice to meet you (first meeting)"
+                    },
+                    {
+                        "term": "よろしくお願いします",
+                        "meaning": "Please treat me well / Looking forward to working with you"
+                    },
+                    {
+                        "term": "あなたは？",
+                        "meaning": "And you?"
+                    }
+                ]
+            },
+            {
+                "type": "tip",
+                "title": "はじめまして & よろしくお願いします",
+                "body": "At a first meeting, はじめまして is almost always followed by よろしくお願いします. It softens the introduction and shows goodwill."
+            },
+            {
+                "type": "phrase",
+                "title": "Model intros",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "Hello, my name is Alex.",
+                        "target": "こんにちは、アレックスです。"
+                    },
+                    {
+                        "source": "I’m from Canada.",
+                        "target": "カナダから来ました。"
+                    },
+                    {
+                        "source": "I live in Tokyo.",
+                        "target": "東京に住んでいます。"
+                    },
+                    {
+                        "source": "Nice to meet you.",
+                        "target": "はじめまして。よろしくお願いします。"
+                    },
+                    {
+                        "source": "What’s your name?",
+                        "target": "お名前は何ですか？"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the building blocks",
+                "pairs": [
+                    {
+                        "left": "〜です",
+                        "right": "My name is… / I am…"
+                    },
+                    {
+                        "left": "〜から来ました",
+                        "right": "I come from…"
+                    },
+                    {
+                        "left": "〜に住んでいます",
+                        "right": "I live in…"
+                    },
+                    {
+                        "left": "はじめまして",
+                        "right": "Nice to meet you"
+                    },
+                    {
+                        "left": "よろしくお願いします",
+                        "right": "Please treat me well"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the introduction",
+                "prompt": "Build: “Hello, my name is Alex.”",
+                "words": [
+                    "こんにちは",
+                    "、",
+                    "アレックス",
+                    "です",
+                    "。"
+                ],
+                "answer": "こんにちは、アレックスです。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · origin",
+                "prompt": "What does this person say?",
+                "audioText": "カナダから来ました",
+                "options": [
+                    "I live in Canada",
+                    "I come from Canada",
+                    "My name is Canada",
+                    "I am going to Canada"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Meeting someone new",
+                "context": "A short self-introduction.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "こんにちは、サムです。"
+                    },
+                    {
+                        "speaker": "Other",
+                        "text": "はじめまして。レアです。"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "アメリカから来ました。あなたは？"
+                    },
+                    {
+                        "speaker": "Léa",
+                        "text": "東京から来ました。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“サムです” means…",
+                "options": [
+                    "I live in Sam",
+                    "My name is Sam",
+                    "I am from Sam",
+                    "See you Sam"
+                ],
+                "answerIndex": 1,
+                "explanation": "〜です after a name = my name is…"
+            },
+            {
+                "type": "check",
+                "title": "Check · origin",
+                "prompt": "Best line for “I come from Belgium”?",
+                "options": [
+                    "ベルギーに住んでいます",
+                    "ベルギーから来ました",
+                    "ベルギーです",
+                    "ベルギーをください"
+                ],
+                "answerIndex": 1,
+                "explanation": "〜から来ました expresses origin."
+            }
+        ]
+    },
+    {
+        "id": "colors-1",
+        "slug": "colors-and-descriptions",
+        "title": "Colors & simple descriptions",
+        "description": "Name colors and describe everyday objects.",
+        "unitId": "foundations",
+        "direction": "en-jp",
+        "level": "beginner",
+        "estimatedMinutes": 14,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Painting with words",
+                "body": "Colors in Japanese are often nouns or な-adjectives. Many take の when modifying a noun (赤い車 → 赤の車 is also heard, but the い-adjective form is standard)."
+            },
+            {
+                "type": "tip",
+                "title": "Color forms",
+                "body": "Most basic colors are い-adjectives (赤い, 青い…). A few are nouns (ピンク, オレンジ) and need の.",
+                "bullets": [
+                    "赤い車 = a red car",
+                    "青い空 = blue sky",
+                    "ピンクの服 = pink clothes"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Colors",
+                "items": [
+                    {
+                        "term": "赤 / 赤い",
+                        "meaning": "red"
+                    },
+                    {
+                        "term": "青 / 青い",
+                        "meaning": "blue"
+                    },
+                    {
+                        "term": "緑 / 緑の",
+                        "meaning": "green"
+                    },
+                    {
+                        "term": "黄色 / 黄色い",
+                        "meaning": "yellow"
+                    },
+                    {
+                        "term": "黒 / 黒い",
+                        "meaning": "black"
+                    },
+                    {
+                        "term": "白 / 白い",
+                        "meaning": "white"
+                    },
+                    {
+                        "term": "グレー / 灰色",
+                        "meaning": "grey"
+                    },
+                    {
+                        "term": "茶色 / 茶色い",
+                        "meaning": "brown"
+                    },
+                    {
+                        "term": "ピンク",
+                        "meaning": "pink"
+                    },
+                    {
+                        "term": "オレンジ",
+                        "meaning": "orange"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Describing things",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "The sky is blue.",
+                        "target": "空は青いです。"
+                    },
+                    {
+                        "source": "I’d like the red one.",
+                        "target": "赤いのが欲しいです。"
+                    },
+                    {
+                        "source": "She has a green bag.",
+                        "target": "彼女は緑のバッグを持っています。"
+                    },
+                    {
+                        "source": "Black shoes.",
+                        "target": "黒い靴。"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the colors",
+                "pairs": [
+                    {
+                        "left": "赤い",
+                        "right": "red"
+                    },
+                    {
+                        "left": "青い",
+                        "right": "blue"
+                    },
+                    {
+                        "left": "緑",
+                        "right": "green"
+                    },
+                    {
+                        "left": "黒い",
+                        "right": "black"
+                    },
+                    {
+                        "left": "白い",
+                        "right": "white"
+                    },
+                    {
+                        "left": "茶色い",
+                        "right": "brown"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the description",
+                "prompt": "Build: “a blue dress”",
+                "words": [
+                    "青い",
+                    "ドレス"
+                ],
+                "answer": "青いドレス"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · color",
+                "prompt": "You hear “青いドレス”. What is being described?",
+                "audioText": "青いドレス",
+                "options": [
+                    "a blue book",
+                    "a blue dress",
+                    "blue shoes",
+                    "a green dress"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Choosing a color",
+                "context": "In a clothing shop.",
+                "turns": [
+                    {
+                        "speaker": "Clerk",
+                        "text": "どの色がいいですか？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "赤いのが欲しいです。"
+                    },
+                    {
+                        "speaker": "Clerk",
+                        "text": "はい、赤いドレスです。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · color",
+                "prompt": "How do you say “a blue dress”?",
+                "options": [
+                    "青ドレス",
+                    "青いドレス",
+                    "青のドレスです",
+                    "ドレス青い"
+                ],
+                "answerIndex": 1,
+                "explanation": "青い is the い-adjective form that directly modifies the noun."
+            },
+            {
+                "type": "check",
+                "title": "Check · noun color",
+                "prompt": "Which color is typically used with の?",
+                "options": [
+                    "赤い",
+                    "青い",
+                    "ピンク",
+                    "黒い"
+                ],
+                "answerIndex": 2,
+                "explanation": "Loanword colors like ピンク and オレンジ usually take の: ピンクの服."
+            }
+        ]
+    },
+    {
+        "id": "cafe-1",
+        "slug": "at-the-cafe",
+        "title": "At the café",
+        "description": "Order drinks and ask for the bill with confidence.",
+        "unitId": "everyday",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 16,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "A quiet table",
+                "body": "〜をください plus a smile covers most orders. Add numbers and sizes when you need them."
+            },
+            {
+                "type": "tip",
+                "title": "Café vocabulary culture",
+                "body": "コーヒー often means a regular coffee. アイスコーヒー is iced; ホット is hot.",
+                "bullets": [
+                    "店内 = for here",
+                    "持ち帰り = to go",
+                    "お会計 = the bill",
+                    "Tipping is not expected in Japan."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Drinks & service",
+                "items": [
+                    {
+                        "term": "コーヒー",
+                        "meaning": "coffee"
+                    },
+                    {
+                        "term": "アイスコーヒー",
+                        "meaning": "iced coffee"
+                    },
+                    {
+                        "term": "紅茶",
+                        "meaning": "black tea"
+                    },
+                    {
+                        "term": "緑茶",
+                        "meaning": "green tea"
+                    },
+                    {
+                        "term": "ホットチョコレート",
+                        "meaning": "hot chocolate"
+                    },
+                    {
+                        "term": "オレンジジュース",
+                        "meaning": "orange juice"
+                    },
+                    {
+                        "term": "水",
+                        "meaning": "water"
+                    },
+                    {
+                        "term": "お会計",
+                        "meaning": "the bill"
+                    },
+                    {
+                        "term": "〜をください",
+                        "meaning": "… please (give me)"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Ordering",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "I would like a coffee, please.",
+                        "target": "コーヒーをください。"
+                    },
+                    {
+                        "source": "A tea to go, please.",
+                        "target": "お茶を持ち帰りでください。"
+                    },
+                    {
+                        "source": "The bill, please.",
+                        "target": "お会計をお願いします。"
+                    },
+                    {
+                        "source": "For here or to go?",
+                        "target": "店内ですか、持ち帰りですか？"
+                    },
+                    {
+                        "source": "Can I get some water?",
+                        "target": "水をもらえますか？"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the café words",
+                "pairs": [
+                    {
+                        "left": "コーヒー",
+                        "right": "coffee"
+                    },
+                    {
+                        "left": "持ち帰り",
+                        "right": "to go"
+                    },
+                    {
+                        "left": "店内",
+                        "right": "for here"
+                    },
+                    {
+                        "left": "お会計",
+                        "right": "the bill"
+                    },
+                    {
+                        "left": "水",
+                        "right": "water"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the order",
+                "prompt": "Build: “I would like a coffee, please.”",
+                "words": [
+                    "コーヒー",
+                    "を",
+                    "ください",
+                    "。"
+                ],
+                "answer": "コーヒーをください。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · bill",
+                "prompt": "What is being asked for?",
+                "audioText": "お会計をお願いします",
+                "options": [
+                    "A coffee",
+                    "The bill",
+                    "A table",
+                    "The menu"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Ordering and paying",
+                "context": "A typical café exchange.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "アイスコーヒーをください。"
+                    },
+                    {
+                        "speaker": "Server",
+                        "text": "店内ですか、持ち帰りですか？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "店内で。"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "お会計をお願いします。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · bill",
+                "prompt": "How do you ask for the bill?",
+                "options": [
+                    "コーヒーをください。",
+                    "お会計をお願いします。",
+                    "またね。",
+                    "お元気ですか？"
+                ],
+                "answerIndex": 1,
+                "explanation": "お会計 is the standard word for the bill in a café or restaurant."
+            },
+            {
+                "type": "check",
+                "title": "Check · to go",
+                "prompt": "“持ち帰り” means…",
+                "options": [
+                    "For here",
+                    "To go",
+                    "Very hot",
+                    "With sugar"
+                ],
+                "answerIndex": 1,
+                "explanation": "持ち帰り = takeaway / to go."
+            }
+        ]
+    },
+    {
+        "id": "food-market-1",
+        "slug": "at-the-market",
+        "title": "At the market",
+        "description": "Fruit, quantities, and polite requests at a stall.",
+        "unitId": "everyday",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 16,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Market pace",
+                "body": "Markets reward clear numbers and 〜をください. Pointing plus a word still works — language makes it smoother."
+            },
+            {
+                "type": "vocab",
+                "title": "Food words",
+                "items": [
+                    {
+                        "term": "りんご",
+                        "meaning": "apple"
+                    },
+                    {
+                        "term": "バナナ",
+                        "meaning": "banana"
+                    },
+                    {
+                        "term": "トマト",
+                        "meaning": "tomato"
+                    },
+                    {
+                        "term": "にんじん",
+                        "meaning": "carrot"
+                    },
+                    {
+                        "term": "パン",
+                        "meaning": "bread"
+                    },
+                    {
+                        "term": "チーズ",
+                        "meaning": "cheese"
+                    },
+                    {
+                        "term": "〜キロ",
+                        "meaning": "… kilo"
+                    },
+                    {
+                        "term": "いくらですか",
+                        "meaning": "How much is it?"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "At the stall",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "I’d like three apples, please.",
+                        "target": "りんごを三つください。"
+                    },
+                    {
+                        "source": "A kilo of tomatoes, please.",
+                        "target": "トマトを一キロください。"
+                    },
+                    {
+                        "source": "How much is it?",
+                        "target": "いくらですか？"
+                    },
+                    {
+                        "source": "That’s all, thank you.",
+                        "target": "以上です、ありがとう。"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the market words",
+                "pairs": [
+                    {
+                        "left": "りんご",
+                        "right": "apple"
+                    },
+                    {
+                        "left": "トマト",
+                        "right": "tomato"
+                    },
+                    {
+                        "left": "パン",
+                        "right": "bread"
+                    },
+                    {
+                        "left": "いくらですか",
+                        "right": "How much is it?"
+                    },
+                    {
+                        "left": "以上です",
+                        "right": "That’s all"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the request",
+                "prompt": "Build: “I’d like three apples, please.”",
+                "words": [
+                    "りんご",
+                    "を",
+                    "三つ",
+                    "ください",
+                    "。"
+                ],
+                "answer": "りんごを三つください。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · price",
+                "prompt": "What is the stallholder asking?",
+                "audioText": "いくらですか",
+                "options": [
+                    "How much is it?",
+                    "How many do you want?",
+                    "Is that all?",
+                    "Do you want bread?"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "type": "context-dialogue",
+                "title": "At the fruit stall",
+                "context": "Buying fruit at a market.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "トマトを一キロください。"
+                    },
+                    {
+                        "speaker": "Seller",
+                        "text": "他に何か？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "りんごも三つ。いくらですか？"
+                    },
+                    {
+                        "speaker": "Seller",
+                        "text": "五百円です。"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "以上です、ありがとう。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“いくらですか？” asks for…",
+                "options": [
+                    "The time",
+                    "The price",
+                    "Directions",
+                    "A table"
+                ],
+                "answerIndex": 1,
+                "explanation": "いくら means “how much,” so いくらですか asks about price."
+            },
+            {
+                "type": "check",
+                "title": "Check · order",
+                "prompt": "Best for “three apples, please”?",
+                "options": [
+                    "りんごを三つください",
+                    "コーヒーを三つください",
+                    "さようなら りんご",
+                    "りんごです"
+                ],
+                "answerIndex": 0,
+                "explanation": "りんごを三つください directly matches the request."
+            }
+        ]
+    },
+    {
+        "id": "small-talk-1",
+        "slug": "small-talk-weather",
+        "title": "Small talk & weather",
+        "description": "Light conversation beyond hello.",
+        "unitId": "everyday",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 15,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Beyond こんにちは",
+                "body": "Weather and weekend questions are safe bridges after greetings."
+            },
+            {
+                "type": "vocab",
+                "title": "Weather & chat",
+                "items": [
+                    {
+                        "term": "いい天気です",
+                        "meaning": "The weather is nice"
+                    },
+                    {
+                        "term": "雨が降っています",
+                        "meaning": "It’s raining"
+                    },
+                    {
+                        "term": "寒いです",
+                        "meaning": "It’s cold"
+                    },
+                    {
+                        "term": "暑いです",
+                        "meaning": "It’s hot"
+                    },
+                    {
+                        "term": "晴れです",
+                        "meaning": "It’s sunny / clear"
+                    },
+                    {
+                        "term": "雪が降っています",
+                        "meaning": "It’s snowing"
+                    },
+                    {
+                        "term": "週末",
+                        "meaning": "weekend"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Light exchanges",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "Nice weather today.",
+                        "target": "今日はいい天気ですね。"
+                    },
+                    {
+                        "source": "It’s raining a lot.",
+                        "target": "雨がたくさん降っています。"
+                    },
+                    {
+                        "source": "How was your weekend?",
+                        "target": "週末はどうでしたか？"
+                    },
+                    {
+                        "source": "It’s freezing outside!",
+                        "target": "外は凍えるように寒いです！"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the weather phrases",
+                "pairs": [
+                    {
+                        "left": "いい天気です",
+                        "right": "The weather is nice"
+                    },
+                    {
+                        "left": "雨が降っています",
+                        "right": "It’s raining"
+                    },
+                    {
+                        "left": "寒いです",
+                        "right": "It’s cold"
+                    },
+                    {
+                        "left": "暑いです",
+                        "right": "It’s hot"
+                    },
+                    {
+                        "left": "雪が降っています",
+                        "right": "It’s snowing"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the comment",
+                "prompt": "Build: “Nice weather today.”",
+                "words": [
+                    "今日",
+                    "は",
+                    "いい",
+                    "天気",
+                    "です",
+                    "ね",
+                    "。"
+                ],
+                "answer": "今日はいい天気ですね。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · rain",
+                "prompt": "What does this mean?",
+                "audioText": "雨がたくさん降っています",
+                "options": [
+                    "It’s very sunny",
+                    "It’s raining a lot",
+                    "It’s cold",
+                    "It’s the weekend"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Quick weather chat",
+                "context": "Light small talk after greeting.",
+                "turns": [
+                    {
+                        "speaker": "Colleague",
+                        "text": "今日はいい天気ですね！"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "はい、晴れです。週末はどうでしたか？"
+                    },
+                    {
+                        "speaker": "Colleague",
+                        "text": "とても良かったです。あなたは？"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“雨が降っています” means…",
+                "options": [
+                    "It’s sunny",
+                    "It’s raining",
+                    "It’s windy",
+                    "It’s late"
+                ],
+                "answerIndex": 1,
+                "explanation": "雨が降る = to rain."
+            },
+            {
+                "type": "check",
+                "title": "Check · weekend",
+                "prompt": "How do you ask “How was your weekend?” politely?",
+                "options": [
+                    "週末はどうでしたか？",
+                    "いい天気ですか？",
+                    "疲れていますか？",
+                    "週末はいくらですか？"
+                ],
+                "answerIndex": 0,
+                "explanation": "どうでしたか asks about a past event politely."
+            }
+        ]
+    },
+    {
+        "id": "restaurant-1",
+        "slug": "at-the-restaurant",
+        "title": "At the restaurant",
+        "description": "Reservations, ordering a meal, and dietary needs.",
+        "unitId": "everyday",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 17,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "From table to bill",
+                "body": "A Japanese meal follows a calm rhythm: greeting, being seated, ordering, and eventually asking for the bill — nobody rushes you."
+            },
+            {
+                "type": "tip",
+                "title": "Menu know-how",
+                "body": "メニュー is the list of dishes. 定食 is a set meal.",
+                "bullets": [
+                    "前菜 / サラダ is often the starter.",
+                    "メイン / 主菜 is the main course.",
+                    "Say いただきます before eating and ごちそうさまでした after."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Restaurant words",
+                "items": [
+                    {
+                        "term": "二人用のテーブル",
+                        "meaning": "a table for two"
+                    },
+                    {
+                        "term": "メニュー",
+                        "meaning": "the menu"
+                    },
+                    {
+                        "term": "定食",
+                        "meaning": "set meal"
+                    },
+                    {
+                        "term": "前菜",
+                        "meaning": "starter / appetizer"
+                    },
+                    {
+                        "term": "メイン",
+                        "meaning": "main course"
+                    },
+                    {
+                        "term": "デザート",
+                        "meaning": "dessert"
+                    },
+                    {
+                        "term": "ベジタリアン",
+                        "meaning": "vegetarian"
+                    },
+                    {
+                        "term": "アレルギー",
+                        "meaning": "allergy"
+                    },
+                    {
+                        "term": "お会計",
+                        "meaning": "the bill"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Ordering a meal",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "A table for two, please.",
+                        "target": "二人用のテーブルをお願いします。"
+                    },
+                    {
+                        "source": "What do you recommend?",
+                        "target": "おすすめは何ですか？"
+                    },
+                    {
+                        "source": "I’ll have the fish.",
+                        "target": "魚にします。"
+                    },
+                    {
+                        "source": "I’m vegetarian.",
+                        "target": "ベジタリアンです。"
+                    },
+                    {
+                        "source": "I have a peanut allergy.",
+                        "target": "ピーナッツアレルギーがあります。"
+                    },
+                    {
+                        "source": "Enjoy your meal!",
+                        "target": "いただきます！"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the restaurant words",
+                "pairs": [
+                    {
+                        "left": "メニュー",
+                        "right": "the menu"
+                    },
+                    {
+                        "left": "定食",
+                        "right": "set meal"
+                    },
+                    {
+                        "left": "前菜",
+                        "right": "starter"
+                    },
+                    {
+                        "left": "ベジタリアン",
+                        "right": "vegetarian"
+                    },
+                    {
+                        "left": "お会計",
+                        "right": "the bill"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the request",
+                "prompt": "Build: “A table for two, please.”",
+                "words": [
+                    "二人用",
+                    "の",
+                    "テーブル",
+                    "を",
+                    "お願いします",
+                    "。"
+                ],
+                "answer": "二人用のテーブルをお願いします。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · recommendation",
+                "prompt": "What is being asked?",
+                "audioText": "おすすめは何ですか",
+                "options": [
+                    "What do you recommend?",
+                    "Where is the toilet?",
+                    "How much is it?",
+                    "Is breakfast included?"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Ordering a meal",
+                "context": "Seated at a restaurant.",
+                "turns": [
+                    {
+                        "speaker": "Server",
+                        "text": "ご注文はお決まりですか？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "魚にします。ベジタリアンです。"
+                    },
+                    {
+                        "speaker": "Server",
+                        "text": "わかりました。前菜は？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "サラダをお願いします。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · set meal",
+                "prompt": "In a Japanese restaurant, “定食” usually refers to…",
+                "options": [
+                    "The full list of every dish",
+                    "A fixed-price set meal",
+                    "The wine list",
+                    "The bill"
+                ],
+                "answerIndex": 1,
+                "explanation": "定食 is a set meal; the full list is メニュー."
+            },
+            {
+                "type": "check",
+                "title": "Check · vegetarian",
+                "prompt": "How do you say “I’m vegetarian”?",
+                "options": [
+                    "ベジタリアンです",
+                    "ベジタリアンがあります",
+                    "ベジタリアンをください",
+                    "ベジタリアンにします"
+                ],
+                "answerIndex": 0,
+                "explanation": "〜です states what you are."
+            }
+        ]
+    },
+    {
+        "id": "weekend-plans-1",
+        "slug": "talking-about-plans",
+        "title": "Talking about plans",
+        "description": "Use 〜つもり / 〜予定 and the volitional to talk about near-future plans.",
+        "unitId": "everyday",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 16,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "The near future",
+                "body": "Japanese often uses 〜つもりです (intend to) or plain dictionary form + 予定 to talk about plans."
+            },
+            {
+                "type": "tip",
+                "title": "Pattern",
+                "body": "Subject + verb stem/dictionary form + つもりです / 予定です.",
+                "bullets": [
+                    "食べるつもりです = I intend to eat",
+                    "行く予定です = I plan to go",
+                    "映画を見ます = I’ll watch a movie (simple non-past)"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Plan expressions",
+                "items": [
+                    {
+                        "term": "〜つもりです",
+                        "meaning": "I intend to…"
+                    },
+                    {
+                        "term": "〜予定です",
+                        "meaning": "I plan to… / It is scheduled…"
+                    },
+                    {
+                        "term": "行きます",
+                        "meaning": "I will go"
+                    },
+                    {
+                        "term": "見ます",
+                        "meaning": "I will watch/see"
+                    },
+                    {
+                        "term": "会います",
+                        "meaning": "I will meet"
+                    },
+                    {
+                        "term": "旅行します",
+                        "meaning": "I will travel"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Making plans",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "What are you going to do this weekend?",
+                        "target": "今週末は何をするつもりですか？"
+                    },
+                    {
+                        "source": "I’m going to visit my parents.",
+                        "target": "両親に会うつもりです。"
+                    },
+                    {
+                        "source": "We’re going to watch a film.",
+                        "target": "映画を見る予定です。"
+                    },
+                    {
+                        "source": "She’s going to travel to Kyoto.",
+                        "target": "彼女は京都に旅行する予定です。"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the plan forms",
+                "pairs": [
+                    {
+                        "left": "〜つもりです",
+                        "right": "I intend to…"
+                    },
+                    {
+                        "left": "〜予定です",
+                        "right": "I plan to…"
+                    },
+                    {
+                        "left": "行きます",
+                        "right": "I will go"
+                    },
+                    {
+                        "left": "見ます",
+                        "right": "I will watch"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the plan",
+                "prompt": "Build: “I’m going to visit my parents.”",
+                "words": [
+                    "両親",
+                    "に",
+                    "会う",
+                    "つもり",
+                    "です",
+                    "。"
+                ],
+                "answer": "両親に会うつもりです。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · structure",
+                "prompt": "Which sentence correctly expresses intention?",
+                "audioText": "食べるつもりです",
+                "options": [
+                    "食べますつもり",
+                    "食べるつもりです",
+                    "食べたつもりです",
+                    "食べるです"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Weekend plans",
+                "context": "Asking a friend about the weekend.",
+                "turns": [
+                    {
+                        "speaker": "Friend",
+                        "text": "今週末は何をするつもり？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "両親に会うつもりです。"
+                    },
+                    {
+                        "speaker": "Friend",
+                        "text": "映画を見る予定だよ。来る？"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · structure",
+                "prompt": "Which sentence correctly uses “intend to”?",
+                "options": [
+                    "食べるつもり",
+                    "食べるつもりです",
+                    "食べますつもりです",
+                    "食べるですつもり"
+                ],
+                "answerIndex": 1,
+                "explanation": "Dictionary form + つもりです."
+            },
+            {
+                "type": "check",
+                "title": "Check · translate",
+                "prompt": "“映画を見る予定です” means…",
+                "options": [
+                    "We watched a film",
+                    "We are going to watch a film",
+                    "We watch films every day",
+                    "We want to watch a film"
+                ],
+                "answerIndex": 1,
+                "explanation": "〜予定です describes a plan."
+            }
+        ]
+    },
+    {
+        "id": "directions-1",
+        "slug": "simple-directions",
+        "title": "Simple directions",
+        "description": "Left, right, straight — and asking where something is.",
+        "unitId": "travel",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 15,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Finding your way",
+                "body": "Combine どこですか with a few direction words for short walks in a new city."
+            },
+            {
+                "type": "vocab",
+                "title": "Directions",
+                "items": [
+                    {
+                        "term": "左",
+                        "meaning": "left"
+                    },
+                    {
+                        "term": "右",
+                        "meaning": "right"
+                    },
+                    {
+                        "term": "まっすぐ",
+                        "meaning": "straight ahead"
+                    },
+                    {
+                        "term": "近く",
+                        "meaning": "near"
+                    },
+                    {
+                        "term": "遠い",
+                        "meaning": "far"
+                    },
+                    {
+                        "term": "角",
+                        "meaning": "corner"
+                    },
+                    {
+                        "term": "向かい",
+                        "meaning": "across from / opposite"
+                    },
+                    {
+                        "term": "〜の間",
+                        "meaning": "between"
+                    },
+                    {
+                        "term": "どこですか",
+                        "meaning": "Where is…?"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Asking the way",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "Where is the station?",
+                        "target": "駅はどこですか？"
+                    },
+                    {
+                        "source": "Is it far?",
+                        "target": "遠いですか？"
+                    },
+                    {
+                        "source": "Go straight ahead, then left.",
+                        "target": "まっすぐ行って、それから左です。"
+                    },
+                    {
+                        "source": "It’s across from the pharmacy.",
+                        "target": "薬局の向かいです。"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the direction words",
+                "pairs": [
+                    {
+                        "left": "左",
+                        "right": "left"
+                    },
+                    {
+                        "left": "右",
+                        "right": "right"
+                    },
+                    {
+                        "left": "まっすぐ",
+                        "right": "straight ahead"
+                    },
+                    {
+                        "left": "近く",
+                        "right": "near"
+                    },
+                    {
+                        "left": "どこですか",
+                        "right": "Where is…?"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the direction",
+                "prompt": "Build: “Go straight ahead, then left.”",
+                "words": [
+                    "まっすぐ",
+                    "行って",
+                    "、",
+                    "それから",
+                    "左",
+                    "です",
+                    "。"
+                ],
+                "answer": "まっすぐ行って、それから左です。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · where",
+                "prompt": "What is being asked?",
+                "audioText": "駅はどこですか",
+                "options": [
+                    "Where is the station?",
+                    "Is it far?",
+                    "How much is a ticket?",
+                    "Which platform?"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Asking the way",
+                "context": "Looking for the station.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "すみません、駅はどこですか？"
+                    },
+                    {
+                        "speaker": "Passer-by",
+                        "text": "まっすぐ行って、それから左です。薬局の向かいです。"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "遠いですか？"
+                    },
+                    {
+                        "speaker": "Passer-by",
+                        "text": "いいえ、歩いて五分です。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“まっすぐ” means…",
+                "options": [
+                    "to the left",
+                    "to the right",
+                    "straight ahead",
+                    "near"
+                ],
+                "answerIndex": 2,
+                "explanation": "まっすぐ means straight ahead."
+            },
+            {
+                "type": "check",
+                "title": "Check · ask",
+                "prompt": "“駅はどこですか？” asks for…",
+                "options": [
+                    "The price of a ticket",
+                    "Where the station is",
+                    "The time",
+                    "A taxi"
+                ],
+                "answerIndex": 1,
+                "explanation": "どこですか = where is…"
+            }
+        ]
+    },
+    {
+        "id": "travel-phrases-1",
+        "slug": "travel-phrases",
+        "title": "Travel phrases",
+        "description": "Tickets, platforms, and delays.",
+        "unitId": "travel",
+        "direction": "en-jp",
+        "level": "intermediate",
+        "estimatedMinutes": 16,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "On the move",
+                "body": "Stations and airports repeat the same patterns: destination, platform, delay, seat."
+            },
+            {
+                "type": "vocab",
+                "title": "Travel words",
+                "items": [
+                    {
+                        "term": "切符 / チケット",
+                        "meaning": "ticket"
+                    },
+                    {
+                        "term": "往復",
+                        "meaning": "round trip"
+                    },
+                    {
+                        "term": "片道",
+                        "meaning": "one-way"
+                    },
+                    {
+                        "term": "電車",
+                        "meaning": "train"
+                    },
+                    {
+                        "term": "ホーム / 番線",
+                        "meaning": "platform"
+                    },
+                    {
+                        "term": "飛行機",
+                        "meaning": "airplane / flight"
+                    },
+                    {
+                        "term": "乗り換え",
+                        "meaning": "transfer / connection"
+                    },
+                    {
+                        "term": "遅れ",
+                        "meaning": "delay"
+                    },
+                    {
+                        "term": "時間通り",
+                        "meaning": "on time"
+                    },
+                    {
+                        "term": "キャンセル",
+                        "meaning": "cancelled"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "At the counter",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "A ticket to Kyoto, please.",
+                        "target": "京都までの切符をください。"
+                    },
+                    {
+                        "source": "A round trip to Tokyo.",
+                        "target": "東京までの往復をお願いします。"
+                    },
+                    {
+                        "source": "Which platform?",
+                        "target": "何番線ですか？"
+                    },
+                    {
+                        "source": "Is the train delayed?",
+                        "target": "電車は遅れていますか？"
+                    },
+                    {
+                        "source": "Where do I change trains?",
+                        "target": "どこで乗り換えますか？"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the travel words",
+                "pairs": [
+                    {
+                        "left": "切符",
+                        "right": "ticket"
+                    },
+                    {
+                        "left": "往復",
+                        "right": "round trip"
+                    },
+                    {
+                        "left": "片道",
+                        "right": "one-way"
+                    },
+                    {
+                        "left": "番線",
+                        "right": "platform"
+                    },
+                    {
+                        "left": "遅れ",
+                        "right": "delay"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the request",
+                "prompt": "Build: “A ticket to Kyoto, please.”",
+                "words": [
+                    "京都",
+                    "まで",
+                    "の",
+                    "切符",
+                    "を",
+                    "ください",
+                    "。"
+                ],
+                "answer": "京都までの切符をください。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · delay",
+                "prompt": "What does this mean?",
+                "audioText": "電車は遅れています",
+                "options": [
+                    "The train is on time",
+                    "The train is cancelled",
+                    "The train is delayed",
+                    "The train is full"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "type": "context-dialogue",
+                "title": "At the ticket counter",
+                "context": "Buying a train ticket.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "京都までの切符をください。往復で。"
+                    },
+                    {
+                        "speaker": "Clerk",
+                        "text": "三番線から出ます。"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "電車は遅れていますか？"
+                    },
+                    {
+                        "speaker": "Clerk",
+                        "text": "いいえ、時間通りです。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“切符” means…",
+                "options": [
+                    "a platform",
+                    "a ticket",
+                    "a train",
+                    "a delay"
+                ],
+                "answerIndex": 1,
+                "explanation": "切符 is a ticket."
+            },
+            {
+                "type": "check",
+                "title": "Check · delay",
+                "prompt": "“遅れています” means…",
+                "options": [
+                    "On time",
+                    "Cancelled",
+                    "Delayed / late",
+                    "Full"
+                ],
+                "answerIndex": 2,
+                "explanation": "遅れ = delay; 遅れています = is delayed."
+            }
+        ]
+    },
+    {
+        "id": "hotel-1",
+        "slug": "at-the-hotel",
+        "title": "At the hotel",
+        "description": "Check-in lines and simple room requests.",
+        "unitId": "travel",
+        "direction": "en-jp",
+        "level": "intermediate",
+        "estimatedMinutes": 15,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Front desk",
+                "body": "Reservation, nights, and room type cover most check-ins."
+            },
+            {
+                "type": "vocab",
+                "title": "Hotel words",
+                "items": [
+                    {
+                        "term": "予約",
+                        "meaning": "reservation"
+                    },
+                    {
+                        "term": "部屋",
+                        "meaning": "room"
+                    },
+                    {
+                        "term": "ダブルルーム",
+                        "meaning": "double room"
+                    },
+                    {
+                        "term": "泊",
+                        "meaning": "night (stay)"
+                    },
+                    {
+                        "term": "パスポート",
+                        "meaning": "passport"
+                    },
+                    {
+                        "term": "鍵 / カードキー",
+                        "meaning": "key / key card"
+                    },
+                    {
+                        "term": "朝食",
+                        "meaning": "breakfast"
+                    },
+                    {
+                        "term": "エレベーター",
+                        "meaning": "elevator"
+                    },
+                    {
+                        "term": "フロント",
+                        "meaning": "front desk"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Check-in",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "I have a reservation.",
+                        "target": "予約しています。"
+                    },
+                    {
+                        "source": "Two nights, please.",
+                        "target": "二泊お願いします。"
+                    },
+                    {
+                        "source": "Is breakfast included?",
+                        "target": "朝食は含まれていますか？"
+                    },
+                    {
+                        "source": "What time is checkout?",
+                        "target": "チェックアウトは何時ですか？"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the hotel words",
+                "pairs": [
+                    {
+                        "left": "予約",
+                        "right": "reservation"
+                    },
+                    {
+                        "left": "部屋",
+                        "right": "room"
+                    },
+                    {
+                        "left": "朝食",
+                        "right": "breakfast"
+                    },
+                    {
+                        "left": "フロント",
+                        "right": "front desk"
+                    },
+                    {
+                        "left": "チェックアウト",
+                        "right": "checkout"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the check-in line",
+                "prompt": "Build: “I have a reservation.”",
+                "words": [
+                    "予約",
+                    "して",
+                    "います",
+                    "。"
+                ],
+                "answer": "予約しています。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · breakfast",
+                "prompt": "What is being asked?",
+                "audioText": "朝食は含まれていますか",
+                "options": [
+                    "Is breakfast included?",
+                    "What time is checkout?",
+                    "Do you have a double room?",
+                    "Where is the elevator?"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Check-in",
+                "context": "At the hotel front desk.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "こんにちは、予約しています。"
+                    },
+                    {
+                        "speaker": "Receptionist",
+                        "text": "二泊ですか？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "はい。朝食は含まれていますか？"
+                    },
+                    {
+                        "speaker": "Receptionist",
+                        "text": "はい。チェックアウトは十一時です。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“予約しています” means…",
+                "options": [
+                    "I need a taxi",
+                    "I have a reservation",
+                    "The room is ready",
+                    "Where is breakfast?"
+                ],
+                "answerIndex": 1,
+                "explanation": "予約しています = I have a reservation."
+            },
+            {
+                "type": "check",
+                "title": "Check · checkout",
+                "prompt": "How do you ask what time checkout is?",
+                "options": [
+                    "チェックアウトは何時ですか？",
+                    "フロントはどこですか？",
+                    "一泊いくらですか？",
+                    "予約しています"
+                ],
+                "answerIndex": 0,
+                "explanation": "チェックアウトは何時ですか is the standard question."
+            }
+        ]
+    },
+    {
+        "id": "getting-around-1",
+        "slug": "getting-around-town",
+        "title": "Getting around town",
+        "description": "Buses, metro, taxis, and buying tickets.",
+        "unitId": "travel",
+        "direction": "en-jp",
+        "level": "intermediate",
+        "estimatedMinutes": 16,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Moving through the city",
+                "body": "Most cities run on a mix of metro, bus, and train — one word (切符, 定期券) covers most fare questions."
+            },
+            {
+                "type": "vocab",
+                "title": "Transport words",
+                "items": [
+                    {
+                        "term": "地下鉄 / メトロ",
+                        "meaning": "subway / metro"
+                    },
+                    {
+                        "term": "バス",
+                        "meaning": "bus"
+                    },
+                    {
+                        "term": "電車",
+                        "meaning": "train"
+                    },
+                    {
+                        "term": "切符",
+                        "meaning": "single ticket"
+                    },
+                    {
+                        "term": "定期券",
+                        "meaning": "commuter pass"
+                    },
+                    {
+                        "term": "停留所 / バス停",
+                        "meaning": "bus stop"
+                    },
+                    {
+                        "term": "駅",
+                        "meaning": "station"
+                    },
+                    {
+                        "term": "タクシー",
+                        "meaning": "taxi"
+                    },
+                    {
+                        "term": "ここで降ります",
+                        "meaning": "I’m getting off here"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "On the way",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "Where’s the nearest metro station?",
+                        "target": "一番近い地下鉄の駅はどこですか？"
+                    },
+                    {
+                        "source": "One ticket, please.",
+                        "target": "切符を一枚ください。"
+                    },
+                    {
+                        "source": "Does this bus go to the center?",
+                        "target": "このバスは市内中心部に行きますか？"
+                    },
+                    {
+                        "source": "I’m getting off at the next stop.",
+                        "target": "次の停留所で降ります。"
+                    },
+                    {
+                        "source": "Can you call me a taxi?",
+                        "target": "タクシーを呼んでくれますか？"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the transport words",
+                "pairs": [
+                    {
+                        "left": "地下鉄",
+                        "right": "subway / metro"
+                    },
+                    {
+                        "left": "バス",
+                        "right": "bus"
+                    },
+                    {
+                        "left": "切符",
+                        "right": "single ticket"
+                    },
+                    {
+                        "left": "定期券",
+                        "right": "commuter pass"
+                    },
+                    {
+                        "left": "ここで降ります",
+                        "right": "I’m getting off here"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the question",
+                "prompt": "Build: “Where’s the nearest metro station?”",
+                "words": [
+                    "一番",
+                    "近い",
+                    "地下鉄",
+                    "の",
+                    "駅",
+                    "は",
+                    "どこ",
+                    "です",
+                    "か",
+                    "？"
+                ],
+                "answer": "一番近い地下鉄の駅はどこですか？"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · getting off",
+                "prompt": "What does this mean?",
+                "audioText": "ここで降ります",
+                "options": [
+                    "I’m getting on here",
+                    "I’m getting off here",
+                    "I’m staying here",
+                    "I’m lost"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "On the bus",
+                "context": "Asking about the route and getting off.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "このバスは市内中心部に行きますか？"
+                    },
+                    {
+                        "speaker": "Driver",
+                        "text": "はい。"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "次の停留所で降ります。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check",
+                "prompt": "“定期券” usually refers to…",
+                "options": [
+                    "A single bus ticket",
+                    "A day or week / month pass",
+                    "A taxi receipt",
+                    "A train delay"
+                ],
+                "answerIndex": 1,
+                "explanation": "定期券 is a commuter / period pass."
+            },
+            {
+                "type": "check",
+                "title": "Check · getting off",
+                "prompt": "How do you say “I’m getting off here”?",
+                "options": [
+                    "ここに乗ります",
+                    "ここで降ります",
+                    "ここで出発します",
+                    "ここに着きます"
+                ],
+                "answerIndex": 1,
+                "explanation": "降りる = to get off."
+            }
+        ]
+    },
+    {
+        "id": "pharmacy-health-1",
+        "slug": "pharmacy-and-feeling-unwell",
+        "title": "Pharmacy & feeling unwell",
+        "description": "Describe symptoms and get help at a pharmacy or doctor’s.",
+        "unitId": "health-safety",
+        "direction": "en-jp",
+        "level": "intermediate",
+        "estimatedMinutes": 17,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Green cross, calm help",
+                "body": "Japanese pharmacies (薬局) can advise on minor issues before you need a doctor."
+            },
+            {
+                "type": "tip",
+                "title": "〜が痛い",
+                "body": "The most useful pattern for pain is body part + が痛い.",
+                "bullets": [
+                    "頭が痛い = I have a headache",
+                    "お腹が痛い = I have a stomach ache",
+                    "歯が痛い = my teeth hurt"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Health words",
+                "items": [
+                    {
+                        "term": "薬局",
+                        "meaning": "pharmacy"
+                    },
+                    {
+                        "term": "医者",
+                        "meaning": "doctor"
+                    },
+                    {
+                        "term": "病気",
+                        "meaning": "illness / sick"
+                    },
+                    {
+                        "term": "熱",
+                        "meaning": "fever"
+                    },
+                    {
+                        "term": "薬",
+                        "meaning": "medicine"
+                    },
+                    {
+                        "term": "処方箋",
+                        "meaning": "prescription"
+                    },
+                    {
+                        "term": "頭",
+                        "meaning": "head"
+                    },
+                    {
+                        "term": "お腹",
+                        "meaning": "stomach"
+                    },
+                    {
+                        "term": "喉",
+                        "meaning": "throat"
+                    },
+                    {
+                        "term": "助けて！",
+                        "meaning": "Help!",
+                        "note": "Emergency use"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Explaining symptoms",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "I don’t feel well.",
+                        "target": "体調が悪いです。"
+                    },
+                    {
+                        "source": "I have a headache.",
+                        "target": "頭が痛いです。"
+                    },
+                    {
+                        "source": "I have a fever.",
+                        "target": "熱があります。"
+                    },
+                    {
+                        "source": "Do you have something for a sore throat?",
+                        "target": "喉の薬はありますか？"
+                    },
+                    {
+                        "source": "Call an ambulance!",
+                        "target": "救急車を呼んでください！"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the health phrases",
+                "pairs": [
+                    {
+                        "left": "頭が痛い",
+                        "right": "I have a headache"
+                    },
+                    {
+                        "left": "お腹が痛い",
+                        "right": "I have a stomach ache"
+                    },
+                    {
+                        "left": "熱があります",
+                        "right": "I have a fever"
+                    },
+                    {
+                        "left": "体調が悪い",
+                        "right": "I don’t feel well"
+                    },
+                    {
+                        "left": "助けて！",
+                        "right": "Help!"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the symptom",
+                "prompt": "Build: “I have a headache.”",
+                "words": [
+                    "頭",
+                    "が",
+                    "痛い",
+                    "です",
+                    "。"
+                ],
+                "answer": "頭が痛いです。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · stomach",
+                "prompt": "Which phrase means “I have a stomach ache”?",
+                "audioText": "お腹が痛いです",
+                "options": [
+                    "頭が痛いです",
+                    "お腹が痛いです",
+                    "熱があります",
+                    "体調が悪いです"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "At the pharmacy",
+                "context": "Describing symptoms.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "体調が悪いです。頭が痛いし、熱があります。"
+                    },
+                    {
+                        "speaker": "Pharmacist",
+                        "text": "処方箋はありますか？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "いいえ。喉の薬はありますか？"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · pattern",
+                "prompt": "How do you say “I have a stomach ache”?",
+                "options": [
+                    "お腹が痛いです",
+                    "お腹が熱です",
+                    "お腹があります",
+                    "お腹をください"
+                ],
+                "answerIndex": 0,
+                "explanation": "Body part + が痛い."
+            },
+            {
+                "type": "check",
+                "title": "Check · emergency",
+                "prompt": "Which phrase calls for urgent help?",
+                "options": [
+                    "良い一日を",
+                    "助けて！",
+                    "いくらですか？",
+                    "はじめまして"
+                ],
+                "answerIndex": 1,
+                "explanation": "助けて！ is the standard cry for help."
+            }
+        ]
+    },
+    {
+        "id": "telling-time-1",
+        "slug": "telling-time",
+        "title": "Telling time",
+        "description": "Ask for and give the time, on the hour and beyond.",
+        "unitId": "time-dates",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 16,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "今何時ですか？",
+                "body": "Japanese uses the 24-hour clock for schedules, but everyday speech uses 時 and 分 with 午前 / 午後 when needed."
+            },
+            {
+                "type": "tip",
+                "title": "Minute expressions",
+                "body": "Learn these fixed chunks.",
+                "bullets": [
+                    "〜時 = o’clock",
+                    "半 = half past",
+                    "〜分 = minutes",
+                    "正午 / 夜中 = noon / midnight"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Time words",
+                "items": [
+                    {
+                        "term": "今何時ですか",
+                        "meaning": "What time is it?"
+                    },
+                    {
+                        "term": "〜時です",
+                        "meaning": "It is … o’clock"
+                    },
+                    {
+                        "term": "半",
+                        "meaning": "half past"
+                    },
+                    {
+                        "term": "〜分",
+                        "meaning": "… minutes"
+                    },
+                    {
+                        "term": "正午",
+                        "meaning": "noon"
+                    },
+                    {
+                        "term": "夜中 / 真夜中",
+                        "meaning": "midnight"
+                    },
+                    {
+                        "term": "午前",
+                        "meaning": "a.m. / morning"
+                    },
+                    {
+                        "term": "午後",
+                        "meaning": "p.m. / afternoon"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Giving the time",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "What time is it?",
+                        "target": "今何時ですか？"
+                    },
+                    {
+                        "source": "It’s three o’clock.",
+                        "target": "三時です。"
+                    },
+                    {
+                        "source": "It’s half past seven.",
+                        "target": "七時半です。"
+                    },
+                    {
+                        "source": "It’s a quarter to nine.",
+                        "target": "九時十五分前です。"
+                    },
+                    {
+                        "source": "The train leaves at 14:30.",
+                        "target": "電車は十四時三十分に出ます。"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the time expressions",
+                "pairs": [
+                    {
+                        "left": "今何時ですか",
+                        "right": "What time is it?"
+                    },
+                    {
+                        "left": "半",
+                        "right": "half past"
+                    },
+                    {
+                        "left": "正午",
+                        "right": "noon"
+                    },
+                    {
+                        "left": "夜中",
+                        "right": "midnight"
+                    },
+                    {
+                        "left": "午後",
+                        "right": "p.m."
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the time",
+                "prompt": "Build: “It’s half past seven.”",
+                "words": [
+                    "七時",
+                    "半",
+                    "です",
+                    "。"
+                ],
+                "answer": "七時半です。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · half past",
+                "prompt": "What time is being said?",
+                "audioText": "七時半です",
+                "options": [
+                    "quarter past seven",
+                    "half past seven",
+                    "quarter to seven",
+                    "seven o’clock"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Asking the time",
+                "context": "At the station.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "すみません、今何時ですか？"
+                    },
+                    {
+                        "speaker": "Passer-by",
+                        "text": "十四時三十分です。"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "ありがとう。電車は十五時に出ます。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · half past",
+                "prompt": "How do you say “half past seven”?",
+                "options": [
+                    "七時十五分",
+                    "七時半",
+                    "七時四十五分",
+                    "八時"
+                ],
+                "answerIndex": 1,
+                "explanation": "半 after the hour = half past."
+            },
+            {
+                "type": "check",
+                "title": "Check · noon",
+                "prompt": "“正午です” means…",
+                "options": [
+                    "It’s midnight",
+                    "It’s noon",
+                    "It’s morning",
+                    "It’s late"
+                ],
+                "answerIndex": 1,
+                "explanation": "正午 is noon; 夜中 / 真夜中 is midnight."
+            }
+        ]
+    },
+    {
+        "id": "days-months-1",
+        "slug": "days-months-and-dates",
+        "title": "Days, months & dates",
+        "description": "The calendar in Japanese, and how to say a date.",
+        "unitId": "time-dates",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 17,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "The week starts on Monday",
+                "body": "Japanese calendars typically start the week with 月曜日 (Monday)."
+            },
+            {
+                "type": "vocab",
+                "title": "Days of the week",
+                "items": [
+                    {
+                        "term": "月曜日",
+                        "meaning": "Monday"
+                    },
+                    {
+                        "term": "火曜日",
+                        "meaning": "Tuesday"
+                    },
+                    {
+                        "term": "水曜日",
+                        "meaning": "Wednesday"
+                    },
+                    {
+                        "term": "木曜日",
+                        "meaning": "Thursday"
+                    },
+                    {
+                        "term": "金曜日",
+                        "meaning": "Friday"
+                    },
+                    {
+                        "term": "土曜日",
+                        "meaning": "Saturday"
+                    },
+                    {
+                        "term": "日曜日",
+                        "meaning": "Sunday"
+                    }
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Months",
+                "items": [
+                    {
+                        "term": "一月",
+                        "meaning": "January"
+                    },
+                    {
+                        "term": "二月",
+                        "meaning": "February"
+                    },
+                    {
+                        "term": "三月",
+                        "meaning": "March"
+                    },
+                    {
+                        "term": "四月",
+                        "meaning": "April"
+                    },
+                    {
+                        "term": "五月",
+                        "meaning": "May"
+                    },
+                    {
+                        "term": "六月",
+                        "meaning": "June"
+                    },
+                    {
+                        "term": "七月",
+                        "meaning": "July"
+                    },
+                    {
+                        "term": "八月",
+                        "meaning": "August"
+                    },
+                    {
+                        "term": "九月",
+                        "meaning": "September"
+                    },
+                    {
+                        "term": "十月",
+                        "meaning": "October"
+                    },
+                    {
+                        "term": "十一月",
+                        "meaning": "November"
+                    },
+                    {
+                        "term": "十二月",
+                        "meaning": "December"
+                    }
+                ]
+            },
+            {
+                "type": "tip",
+                "title": "Saying a date",
+                "body": "Japanese dates go year → month → day. For the day, special readings exist for 1–10 and a few others.",
+                "bullets": [
+                    "五月一日 = May 1st (ごがつついたち)",
+                    "五月二日 = May 2nd (ふつか)",
+                    "Days of the week are not capitalized."
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Talking about dates",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "What day is it today?",
+                        "target": "今日は何曜日ですか？"
+                    },
+                    {
+                        "source": "Today is Monday.",
+                        "target": "今日は月曜日です。"
+                    },
+                    {
+                        "source": "My birthday is May 1st.",
+                        "target": "誕生日は五月一日です。"
+                    },
+                    {
+                        "source": "See you on Friday.",
+                        "target": "金曜日に。"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the days",
+                "pairs": [
+                    {
+                        "left": "月曜日",
+                        "right": "Monday"
+                    },
+                    {
+                        "left": "火曜日",
+                        "right": "Tuesday"
+                    },
+                    {
+                        "left": "水曜日",
+                        "right": "Wednesday"
+                    },
+                    {
+                        "left": "木曜日",
+                        "right": "Thursday"
+                    },
+                    {
+                        "left": "金曜日",
+                        "right": "Friday"
+                    },
+                    {
+                        "left": "土曜日",
+                        "right": "Saturday"
+                    },
+                    {
+                        "left": "日曜日",
+                        "right": "Sunday"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the date",
+                "prompt": "Build: “My birthday is May 1st.”",
+                "words": [
+                    "誕生日",
+                    "は",
+                    "五月",
+                    "一日",
+                    "です",
+                    "。"
+                ],
+                "answer": "誕生日は五月一日です。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · day",
+                "prompt": "What day is mentioned?",
+                "audioText": "今日は月曜日です",
+                "options": [
+                    "Tuesday",
+                    "Monday",
+                    "Sunday",
+                    "Friday"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Talking about the week",
+                "context": "Making a plan.",
+                "turns": [
+                    {
+                        "speaker": "Friend",
+                        "text": "今日は何曜日？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "水曜日です。"
+                    },
+                    {
+                        "speaker": "Friend",
+                        "text": "じゃあ金曜日に。"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "金曜日に。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · order",
+                "prompt": "Which day comes right after 水曜日?",
+                "options": [
+                    "火曜日",
+                    "金曜日",
+                    "木曜日",
+                    "土曜日"
+                ],
+                "answerIndex": 2,
+                "explanation": "月火水木金土日."
+            },
+            {
+                "type": "check",
+                "title": "Check · capitalization",
+                "prompt": "In Japanese, days and months are…",
+                "options": [
+                    "Always written in capitals",
+                    "Written with kanji or kana, no English-style capitals",
+                    "Capitalized only in titles",
+                    "Capitalized only on Mondays"
+                ],
+                "answerIndex": 1,
+                "explanation": "Japanese does not use Latin capitals; days/months use kanji."
+            }
+        ]
+    },
+    {
+        "id": "family-1",
+        "slug": "talking-about-family",
+        "title": "Talking about family",
+        "description": "Name family members and describe relationships.",
+        "unitId": "family-friends",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 16,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Who’s who",
+                "body": "Family vocabulary combines with います / います and possessives like 私の."
+            },
+            {
+                "type": "tip",
+                "title": "My vs. your family",
+                "body": "Japanese often uses humble words for one’s own family and respectful words for others’.",
+                "bullets": [
+                    "父 / お父さん = my father / someone else’s father",
+                    "母 / お母さん = my mother / someone else’s mother",
+                    "兄弟 = siblings"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Family members",
+                "items": [
+                    {
+                        "term": "家族",
+                        "meaning": "family"
+                    },
+                    {
+                        "term": "父 / お父さん",
+                        "meaning": "father"
+                    },
+                    {
+                        "term": "母 / お母さん",
+                        "meaning": "mother"
+                    },
+                    {
+                        "term": "兄 / お兄さん",
+                        "meaning": "older brother"
+                    },
+                    {
+                        "term": "姉 / お姉さん",
+                        "meaning": "older sister"
+                    },
+                    {
+                        "term": "弟",
+                        "meaning": "younger brother"
+                    },
+                    {
+                        "term": "妹",
+                        "meaning": "younger sister"
+                    },
+                    {
+                        "term": "息子",
+                        "meaning": "son"
+                    },
+                    {
+                        "term": "娘",
+                        "meaning": "daughter"
+                    },
+                    {
+                        "term": "祖父母",
+                        "meaning": "grandparents"
+                    },
+                    {
+                        "term": "友達",
+                        "meaning": "friend"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Describing your family",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "I have two brothers.",
+                        "target": "兄弟が二人います。"
+                    },
+                    {
+                        "source": "This is my sister.",
+                        "target": "こちらは私の姉です。"
+                    },
+                    {
+                        "source": "My parents live in Tokyo.",
+                        "target": "両親は東京に住んでいます。"
+                    },
+                    {
+                        "source": "Do you have children?",
+                        "target": "お子さんはいますか？"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the family words",
+                "pairs": [
+                    {
+                        "left": "父",
+                        "right": "father"
+                    },
+                    {
+                        "left": "母",
+                        "right": "mother"
+                    },
+                    {
+                        "left": "兄",
+                        "right": "older brother"
+                    },
+                    {
+                        "left": "姉",
+                        "right": "older sister"
+                    },
+                    {
+                        "left": "友達",
+                        "right": "friend"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the sentence",
+                "prompt": "Build: “I have two brothers.”",
+                "words": [
+                    "兄弟",
+                    "が",
+                    "二人",
+                    "います",
+                    "。"
+                ],
+                "answer": "兄弟が二人います。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · sister",
+                "prompt": "What does “私の姉” mean?",
+                "audioText": "私の姉",
+                "options": [
+                    "my brother",
+                    "my sister",
+                    "my parents",
+                    "my friend"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Talking about family",
+                "context": "Introducing family members.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "こちらは私の姉です。"
+                    },
+                    {
+                        "speaker": "Friend",
+                        "text": "はじめまして。兄弟はいますか？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "はい、弟が二人います。両親は東京に住んでいます。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · possessive",
+                "prompt": "How do you say “my sister” (older)?",
+                "options": [
+                    "私の兄",
+                    "私の姉",
+                    "私の弟",
+                    "私の妹"
+                ],
+                "answerIndex": 1,
+                "explanation": "姉 = older sister."
+            },
+            {
+                "type": "check",
+                "title": "Check · plural",
+                "prompt": "“両親” means…",
+                "options": [
+                    "My parent",
+                    "My parents",
+                    "Your parents",
+                    "Their parent"
+                ],
+                "answerIndex": 1,
+                "explanation": "両親 = both parents."
+            }
+        ]
+    },
+    {
+        "id": "shopping-clothes-1",
+        "slug": "shopping-for-clothes",
+        "title": "Shopping for clothes",
+        "description": "Sizes, trying things on, and asking about price.",
+        "unitId": "shopping",
+        "direction": "en-jp",
+        "level": "intermediate",
+        "estimatedMinutes": 16,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Trying it on",
+                "body": "Clothes shopping mixes size, color, and a few polite requests to try things on or ask for a different size."
+            },
+            {
+                "type": "vocab",
+                "title": "Clothing words",
+                "items": [
+                    {
+                        "term": "服",
+                        "meaning": "clothes"
+                    },
+                    {
+                        "term": "シャツ",
+                        "meaning": "shirt"
+                    },
+                    {
+                        "term": "ズボン / パンツ",
+                        "meaning": "trousers / pants"
+                    },
+                    {
+                        "term": "ドレス / ワンピース",
+                        "meaning": "dress"
+                    },
+                    {
+                        "term": "靴",
+                        "meaning": "shoes"
+                    },
+                    {
+                        "term": "サイズ",
+                        "meaning": "size"
+                    },
+                    {
+                        "term": "試着室",
+                        "meaning": "fitting room"
+                    },
+                    {
+                        "term": "セール",
+                        "meaning": "sale"
+                    },
+                    {
+                        "term": "大きすぎる / 小さすぎる",
+                        "meaning": "too big / too small"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "At the shop",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "Do you have this in a size M?",
+                        "target": "Mサイズはありますか？"
+                    },
+                    {
+                        "source": "Can I try it on?",
+                        "target": "試着してもいいですか？"
+                    },
+                    {
+                        "source": "Where is the fitting room?",
+                        "target": "試着室はどこですか？"
+                    },
+                    {
+                        "source": "It’s too small.",
+                        "target": "小さすぎます。"
+                    },
+                    {
+                        "source": "Do you have a bigger size?",
+                        "target": "もっと大きいサイズはありますか？"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the shopping words",
+                "pairs": [
+                    {
+                        "left": "サイズ",
+                        "right": "size"
+                    },
+                    {
+                        "left": "試着室",
+                        "right": "fitting room"
+                    },
+                    {
+                        "left": "セール",
+                        "right": "sale"
+                    },
+                    {
+                        "left": "大きすぎる",
+                        "right": "too big"
+                    },
+                    {
+                        "left": "小さすぎる",
+                        "right": "too small"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the question",
+                "prompt": "Build: “Do you have this in a size M?”",
+                "words": [
+                    "M",
+                    "サイズ",
+                    "は",
+                    "あります",
+                    "か",
+                    "？"
+                ],
+                "answer": "Mサイズはありますか？"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · size",
+                "prompt": "What does this mean?",
+                "audioText": "小さすぎます",
+                "options": [
+                    "It’s too big",
+                    "It’s too small",
+                    "It’s on sale",
+                    "It’s perfect"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "In the fitting room",
+                "context": "Trying on clothes.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "試着してもいいですか？"
+                    },
+                    {
+                        "speaker": "Clerk",
+                        "text": "はい、試着室はあちらです。"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "小さすぎます。もっと大きいサイズはありますか？"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · size",
+                "prompt": "How do you ask “do you have this in a size M?”",
+                "options": [
+                    "Mサイズはありますか？",
+                    "大きすぎますか？",
+                    "試着室はどこですか？",
+                    "セールですか？"
+                ],
+                "answerIndex": 0,
+                "explanation": "〜サイズはありますか is the standard size question."
+            },
+            {
+                "type": "check",
+                "title": "Check · too small",
+                "prompt": "“小さすぎます” means…",
+                "options": [
+                    "It’s too big",
+                    "It’s too small",
+                    "It’s too expensive",
+                    "It’s on sale"
+                ],
+                "answerIndex": 1,
+                "explanation": "小さすぎる = too small."
+            }
+        ]
+    },
+    {
+        "id": "articles-gender-1",
+        "slug": "particles-and-basic-structure",
+        "title": "Particles & basic structure",
+        "description": "は, が, を, に — the glue of Japanese sentences.",
+        "unitId": "grammar-core",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 18,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Particles mark roles",
+                "body": "Japanese uses particles instead of word order or articles to show the role of each noun."
+            },
+            {
+                "type": "tip",
+                "title": "Core particles",
+                "body": "Memorize new nouns with a typical particle.",
+                "bullets": [
+                    "は = topic marker",
+                    "が = subject marker (often new info)",
+                    "を = direct object",
+                    "に / へ = direction / time / indirect object",
+                    "で = location of action / means"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Key particles",
+                "items": [
+                    {
+                        "term": "は",
+                        "meaning": "topic marker"
+                    },
+                    {
+                        "term": "が",
+                        "meaning": "subject marker"
+                    },
+                    {
+                        "term": "を",
+                        "meaning": "object marker"
+                    },
+                    {
+                        "term": "に",
+                        "meaning": "to / at (time, place, indirect object)"
+                    },
+                    {
+                        "term": "で",
+                        "meaning": "at (action location) / by (means)"
+                    },
+                    {
+                        "term": "の",
+                        "meaning": "possessive / modifier"
+                    },
+                    {
+                        "term": "と",
+                        "meaning": "and / with"
+                    },
+                    {
+                        "term": "も",
+                        "meaning": "also / too"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · topic",
+                "prompt": "Which particle marks the topic?",
+                "options": [
+                    "が",
+                    "は",
+                    "を",
+                    "に"
+                ],
+                "answerIndex": 1,
+                "explanation": "は is the topic marker."
+            },
+            {
+                "type": "check",
+                "title": "Check · object",
+                "prompt": "Which particle marks the direct object?",
+                "options": [
+                    "は",
+                    "が",
+                    "を",
+                    "で"
+                ],
+                "answerIndex": 2,
+                "explanation": "を marks the thing being acted on."
+            },
+            {
+                "type": "check",
+                "title": "Check · location of action",
+                "prompt": "“図書館で勉強します” — which particle shows where the action happens?",
+                "options": [
+                    "に",
+                    "で",
+                    "を",
+                    "は"
+                ],
+                "answerIndex": 1,
+                "explanation": "で marks the location where an action takes place."
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the particles",
+                "pairs": [
+                    {
+                        "left": "は",
+                        "right": "topic"
+                    },
+                    {
+                        "left": "が",
+                        "right": "subject"
+                    },
+                    {
+                        "left": "を",
+                        "right": "object"
+                    },
+                    {
+                        "left": "に",
+                        "right": "to / at (time)"
+                    },
+                    {
+                        "left": "で",
+                        "right": "at (action) / by"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build with particles",
+                "prompt": "Build: “I drink coffee.”",
+                "words": [
+                    "私",
+                    "は",
+                    "コーヒー",
+                    "を",
+                    "飲みます",
+                    "。"
+                ],
+                "answer": "私はコーヒーを飲みます。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · particle",
+                "prompt": "Which particle is used for the object in “本を読みます”?",
+                "audioText": "本を読みます",
+                "options": [
+                    "は",
+                    "が",
+                    "を",
+                    "に"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Noticing particles",
+                "context": "A quick practice exchange.",
+                "turns": [
+                    {
+                        "speaker": "Teacher",
+                        "text": "「本を読みます」の「を」は何ですか？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "目的語のマーカーです。"
+                    },
+                    {
+                        "speaker": "Teacher",
+                        "text": "そうですね。"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "etre-avoir-1",
+        "slug": "desu-and-imasu",
+        "title": "です & います / あります",
+        "description": "The two building blocks you’ll use every day.",
+        "unitId": "grammar-core",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 19,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Workhorses",
+                "body": "です links nouns/adjectives to a topic. います (animate) and あります (inanimate) express existence."
+            },
+            {
+                "type": "vocab",
+                "title": "です — present",
+                "items": [
+                    {
+                        "term": "〜です",
+                        "meaning": "is / am / are (polite)"
+                    },
+                    {
+                        "term": "〜ではありません / 〜じゃないです",
+                        "meaning": "is not"
+                    },
+                    {
+                        "term": "〜でした",
+                        "meaning": "was"
+                    },
+                    {
+                        "term": "〜ではありませんでした",
+                        "meaning": "was not"
+                    }
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "います / あります",
+                "items": [
+                    {
+                        "term": "います",
+                        "meaning": "there is / are (people, animals)"
+                    },
+                    {
+                        "term": "あります",
+                        "meaning": "there is / are (things)"
+                    },
+                    {
+                        "term": "いません",
+                        "meaning": "there isn’t / aren’t (animate)"
+                    },
+                    {
+                        "term": "ありません",
+                        "meaning": "there isn’t / aren’t (inanimate)"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "In sentences",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "I am tired.",
+                        "target": "疲れています。"
+                    },
+                    {
+                        "source": "She is Japanese.",
+                        "target": "彼女は日本人です。"
+                    },
+                    {
+                        "source": "I have a reservation.",
+                        "target": "予約があります。"
+                    },
+                    {
+                        "source": "We have time.",
+                        "target": "時間があります。"
+                    },
+                    {
+                        "source": "There is a book on the table.",
+                        "target": "テーブルの上に本があります。"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the forms",
+                "pairs": [
+                    {
+                        "left": "〜です",
+                        "right": "is / am / are"
+                    },
+                    {
+                        "left": "います",
+                        "right": "there is (animate)"
+                    },
+                    {
+                        "left": "あります",
+                        "right": "there is (inanimate)"
+                    },
+                    {
+                        "left": "いません",
+                        "right": "there isn’t (animate)"
+                    },
+                    {
+                        "left": "ありません",
+                        "right": "there isn’t (inanimate)"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the sentence",
+                "prompt": "Build: “I am tired.”",
+                "words": [
+                    "疲れ",
+                    "て",
+                    "います",
+                    "。"
+                ],
+                "answer": "疲れています。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · existence",
+                "prompt": "What does “本があります” mean?",
+                "audioText": "本があります",
+                "options": [
+                    "There is a book",
+                    "There is a person",
+                    "I am a book",
+                    "I have no book"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Using です and あります",
+                "context": "A short description.",
+                "turns": [
+                    {
+                        "speaker": "Friend",
+                        "text": "元気ですか？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "少し疲れています。お腹が空いています。"
+                    },
+                    {
+                        "speaker": "Friend",
+                        "text": "時間があります。食べに行きましょうか？"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · です",
+                "prompt": "“日本人です” means…",
+                "options": [
+                    "I have Japanese",
+                    "I am Japanese",
+                    "I go Japanese",
+                    "I want Japanese"
+                ],
+                "answerIndex": 1,
+                "explanation": "〜です after a noun = is / am."
+            },
+            {
+                "type": "check",
+                "title": "Check · existence",
+                "prompt": "“予約があります” uses…",
+                "options": [
+                    "います",
+                    "あります",
+                    "です",
+                    "します"
+                ],
+                "answerIndex": 1,
+                "explanation": "あります for inanimate things (a reservation)."
+            },
+            {
+                "type": "check",
+                "title": "Check · animate",
+                "prompt": "“猫がいます” means…",
+                "options": [
+                    "There is a cat",
+                    "There is a book",
+                    "I am a cat",
+                    "The cat is not here"
+                ],
+                "answerIndex": 0,
+                "explanation": "います is used for living things."
+            }
+        ]
+    },
+    {
+        "id": "regular-er-verbs-1",
+        "slug": "masu-form-verbs",
+        "title": "ます-form verbs",
+        "description": "The polite present/future form of Japanese verbs.",
+        "unitId": "grammar-core",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 18,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "The polite form",
+                "body": "Most beginner Japanese starts with the ます-form. It works for present and near-future and is polite by default."
+            },
+            {
+                "type": "tip",
+                "title": "The pattern",
+                "body": "Dictionary form → remove う-ending sound and add ます (group rules vary).",
+                "bullets": [
+                    "食べます = eat / will eat",
+                    "行きます = go / will go",
+                    "見ます = see / watch / will see"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Common ます verbs",
+                "items": [
+                    {
+                        "term": "食べます",
+                        "meaning": "eat"
+                    },
+                    {
+                        "term": "飲みます",
+                        "meaning": "drink"
+                    },
+                    {
+                        "term": "行きます",
+                        "meaning": "go"
+                    },
+                    {
+                        "term": "来ます",
+                        "meaning": "come"
+                    },
+                    {
+                        "term": "見ます",
+                        "meaning": "see / watch"
+                    },
+                    {
+                        "term": "します",
+                        "meaning": "do"
+                    },
+                    {
+                        "term": "話します",
+                        "meaning": "speak"
+                    },
+                    {
+                        "term": "読みます",
+                        "meaning": "read"
+                    },
+                    {
+                        "term": "書きます",
+                        "meaning": "write"
+                    },
+                    {
+                        "term": "買います",
+                        "meaning": "buy"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "In use",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "I speak a little Japanese.",
+                        "target": "日本語を少し話します。"
+                    },
+                    {
+                        "source": "We work in Tokyo.",
+                        "target": "東京で働きます。"
+                    },
+                    {
+                        "source": "They like Japanese food.",
+                        "target": "彼らは日本料理が好きです。"
+                    },
+                    {
+                        "source": "We eat at eight.",
+                        "target": "八時に食べます。"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the verbs",
+                "pairs": [
+                    {
+                        "left": "食べます",
+                        "right": "eat"
+                    },
+                    {
+                        "left": "行きます",
+                        "right": "go"
+                    },
+                    {
+                        "left": "見ます",
+                        "right": "see / watch"
+                    },
+                    {
+                        "left": "話します",
+                        "right": "speak"
+                    },
+                    {
+                        "left": "買います",
+                        "right": "buy"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the sentence",
+                "prompt": "Build: “I speak a little Japanese.”",
+                "words": [
+                    "日本語",
+                    "を",
+                    "少し",
+                    "話します",
+                    "。"
+                ],
+                "answer": "日本語を少し話します。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · verb",
+                "prompt": "What does “食べます” mean?",
+                "audioText": "食べます",
+                "options": [
+                    "drink",
+                    "eat",
+                    "go",
+                    "see"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Talking about routines",
+                "context": "Using ます-form verbs.",
+                "turns": [
+                    {
+                        "speaker": "You",
+                        "text": "日本語を少し話します。"
+                    },
+                    {
+                        "speaker": "Friend",
+                        "text": "東京で働きます。"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "日本料理が好きです。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · form",
+                "prompt": "What is the polite form of “eat”?",
+                "options": [
+                    "食べる",
+                    "食べます",
+                    "食べた",
+                    "食べて"
+                ],
+                "answerIndex": 1,
+                "explanation": "ます-form is the polite non-past."
+            },
+            {
+                "type": "check",
+                "title": "Check · meaning",
+                "prompt": "“八時に食べます” means…",
+                "options": [
+                    "I ate at eight",
+                    "I eat / will eat at eight",
+                    "I am eating at eight",
+                    "I want to eat at eight"
+                ],
+                "answerIndex": 1,
+                "explanation": "ます-form covers present and future."
+            }
+        ]
+    },
+    {
+        "id": "adjective-agreement-1",
+        "slug": "i-and-na-adjectives",
+        "title": "い- and な-adjectives",
+        "description": "Describe things with the two main adjective types.",
+        "unitId": "grammar-core",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 17,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Two families of adjectives",
+                "body": "Japanese adjectives split into い-adjectives and な-adjectives. Both can end a sentence with です or modify a noun."
+            },
+            {
+                "type": "tip",
+                "title": "The basic rules",
+                "body": "い-adjectives drop い and add くない for negative; な-adjectives use じゃない / ではありません.",
+                "bullets": [
+                    "高い → 高くない",
+                    "静か（な） → 静かじゃない",
+                    "Both take です in polite speech when predicative."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Common adjectives",
+                "items": [
+                    {
+                        "term": "大きい",
+                        "meaning": "big"
+                    },
+                    {
+                        "term": "小さい",
+                        "meaning": "small"
+                    },
+                    {
+                        "term": "高い",
+                        "meaning": "expensive / tall"
+                    },
+                    {
+                        "term": "安い",
+                        "meaning": "cheap"
+                    },
+                    {
+                        "term": "面白い",
+                        "meaning": "interesting / funny"
+                    },
+                    {
+                        "term": "楽しい",
+                        "meaning": "fun"
+                    },
+                    {
+                        "term": "静か（な）",
+                        "meaning": "quiet"
+                    },
+                    {
+                        "term": "きれい（な）",
+                        "meaning": "beautiful / clean"
+                    },
+                    {
+                        "term": "便利（な）",
+                        "meaning": "convenient"
+                    },
+                    {
+                        "term": "好き（な）",
+                        "meaning": "liked / favorite"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Describing people and things",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "He is tall.",
+                        "target": "彼は背が高いです。"
+                    },
+                    {
+                        "source": "She is small.",
+                        "target": "彼女は小さいです。"
+                    },
+                    {
+                        "source": "They are happy.",
+                        "target": "彼らは嬉しいです。"
+                    },
+                    {
+                        "source": "It’s a beautiful city.",
+                        "target": "きれいな街です。"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the adjectives",
+                "pairs": [
+                    {
+                        "left": "大きい",
+                        "right": "big"
+                    },
+                    {
+                        "left": "小さい",
+                        "right": "small"
+                    },
+                    {
+                        "left": "高い",
+                        "right": "expensive / tall"
+                    },
+                    {
+                        "left": "静か（な）",
+                        "right": "quiet"
+                    },
+                    {
+                        "left": "きれい（な）",
+                        "right": "beautiful / clean"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the description",
+                "prompt": "Build: “She is small.”",
+                "words": [
+                    "彼女",
+                    "は",
+                    "小さい",
+                    "です",
+                    "。"
+                ],
+                "answer": "彼女は小さいです。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · type",
+                "prompt": "Which is a な-adjective?",
+                "audioText": "静かな町",
+                "options": [
+                    "大きい",
+                    "小さい",
+                    "静か",
+                    "高い"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Describing people",
+                "context": "Agreement-style description (no gender agreement needed).",
+                "turns": [
+                    {
+                        "speaker": "Friend",
+                        "text": "彼は背が高いです。"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "彼女も大きいです。"
+                    },
+                    {
+                        "speaker": "Friend",
+                        "text": "きれいな街ですね。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · い-adjective",
+                "prompt": "How do you say “she is small”?",
+                "options": [
+                    "彼女は小さい",
+                    "彼女は小さいです",
+                    "彼女は小さくです",
+                    "彼女は小さなです"
+                ],
+                "answerIndex": 1,
+                "explanation": "い-adjective + です for polite predication."
+            },
+            {
+                "type": "check",
+                "title": "Check · な-adjective",
+                "prompt": "Which adjective needs な before a noun?",
+                "options": [
+                    "大きい",
+                    "小さい",
+                    "静か",
+                    "高い"
+                ],
+                "answerIndex": 2,
+                "explanation": "な-adjectives take な when modifying a noun: 静かな町."
+            }
+        ]
+    },
+    {
+        "id": "negation-1",
+        "slug": "saying-no",
+        "title": "Saying no",
+        "description": "Turn any sentence negative with the basic Japanese negation patterns.",
+        "unitId": "grammar-core",
+        "direction": "en-jp",
+        "level": "elementary",
+        "estimatedMinutes": 15,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Negative forms",
+                "body": "ます-form becomes ません. です becomes ではありません / じゃないです. い-adjectives become 〜くない."
+            },
+            {
+                "type": "tip",
+                "title": "Pattern & shortcuts",
+                "body": "Polite negative is preferred with strangers.",
+                "bullets": [
+                    "食べます → 食べません",
+                    "高いです → 高くないです",
+                    "学生です → 学生ではありません / 学生じゃないです",
+                    "In casual speech, ない and じゃない are common."
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Negation words",
+                "items": [
+                    {
+                        "term": "〜ません",
+                        "meaning": "do not / will not (verb)"
+                    },
+                    {
+                        "term": "〜ない",
+                        "meaning": "do not (casual)"
+                    },
+                    {
+                        "term": "〜くない",
+                        "meaning": "not (い-adjective)"
+                    },
+                    {
+                        "term": "〜ではありません",
+                        "meaning": "is not (polite)"
+                    },
+                    {
+                        "term": "〜じゃないです",
+                        "meaning": "is not (softer polite)"
+                    },
+                    {
+                        "term": "何も",
+                        "meaning": "nothing"
+                    },
+                    {
+                        "term": "誰も",
+                        "meaning": "nobody"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Negative sentences",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "I don’t speak Spanish.",
+                        "target": "スペイン語を話しません。"
+                    },
+                    {
+                        "source": "I don’t like coffee.",
+                        "target": "コーヒーが好きじゃないです。"
+                    },
+                    {
+                        "source": "I never eat meat.",
+                        "target": "肉は決して食べません。"
+                    },
+                    {
+                        "source": "There’s nothing here.",
+                        "target": "ここには何もありません。"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the negation patterns",
+                "pairs": [
+                    {
+                        "left": "〜ません",
+                        "right": "do not (polite verb)"
+                    },
+                    {
+                        "left": "〜くない",
+                        "right": "not (い-adjective)"
+                    },
+                    {
+                        "left": "〜ではありません",
+                        "right": "is not (polite)"
+                    },
+                    {
+                        "left": "何も",
+                        "right": "nothing"
+                    },
+                    {
+                        "left": "誰も",
+                        "right": "nobody"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the negative",
+                "prompt": "Build: “I don’t like coffee.”",
+                "words": [
+                    "コーヒー",
+                    "が",
+                    "好き",
+                    "じゃ",
+                    "ない",
+                    "です",
+                    "。"
+                ],
+                "answer": "コーヒーが好きじゃないです。"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · negative",
+                "prompt": "Which is the polite negative of “食べます”?",
+                "audioText": "食べません",
+                "options": [
+                    "食べない",
+                    "食べません",
+                    "食べました",
+                    "食べて"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Saying no",
+                "context": "Simple negative exchanges.",
+                "turns": [
+                    {
+                        "speaker": "Friend",
+                        "text": "コーヒーが好き？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "いいえ、好きじゃないです。"
+                    },
+                    {
+                        "speaker": "Friend",
+                        "text": "肉は食べる？"
+                    },
+                    {
+                        "speaker": "You",
+                        "text": "肉は決して食べません。"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · placement",
+                "prompt": "How do you make the polite negative of a ます verb?",
+                "options": [
+                    "Add ない after ます",
+                    "Replace ます with ません",
+                    "Add ありません before the verb",
+                    "Use only いいえ"
+                ],
+                "answerIndex": 1,
+                "explanation": "ます → ません."
+            },
+            {
+                "type": "check",
+                "title": "Check · adjective",
+                "prompt": "How do you say “it’s not expensive”?",
+                "options": [
+                    "高いありません",
+                    "高くないです",
+                    "高いじゃないです",
+                    "高くません"
+                ],
+                "answerIndex": 1,
+                "explanation": "い-adjective: drop い, add くないです."
+            }
+        ]
+    },
+    {
+        "id": "asking-questions-1",
+        "slug": "asking-questions",
+        "title": "Asking questions",
+        "description": "Yes/no and information questions in Japanese.",
+        "unitId": "grammar-core",
+        "direction": "en-jp",
+        "level": "intermediate",
+        "estimatedMinutes": 17,
+        "steps": [
+            {
+                "type": "intro",
+                "title": "Question particle か",
+                "body": "Add か at the end of a statement to make a polite question. Rising intonation alone also works in casual speech."
+            },
+            {
+                "type": "tip",
+                "title": "Three common patterns",
+                "body": "Same question, different levels of formality.",
+                "bullets": [
+                    "Rising intonation: コーヒーが好き？ (casual)",
+                    "か: コーヒーが好きですか？ (polite)",
+                    "Question word + か: どこですか？ / 何ですか？"
+                ]
+            },
+            {
+                "type": "vocab",
+                "title": "Question words",
+                "items": [
+                    {
+                        "term": "誰",
+                        "meaning": "who"
+                    },
+                    {
+                        "term": "何",
+                        "meaning": "what"
+                    },
+                    {
+                        "term": "どこ",
+                        "meaning": "where"
+                    },
+                    {
+                        "term": "いつ",
+                        "meaning": "when"
+                    },
+                    {
+                        "term": "なぜ / どうして",
+                        "meaning": "why"
+                    },
+                    {
+                        "term": "どう",
+                        "meaning": "how"
+                    },
+                    {
+                        "term": "いくら",
+                        "meaning": "how much"
+                    },
+                    {
+                        "term": "か",
+                        "meaning": "(question particle)"
+                    }
+                ]
+            },
+            {
+                "type": "phrase",
+                "title": "Sample questions",
+                "sourceLabel": "en-jp",
+                "phrases": [
+                    {
+                        "source": "Do you speak English?",
+                        "target": "英語を話しますか？"
+                    },
+                    {
+                        "source": "Where do you live?",
+                        "target": "どこに住んでいますか？"
+                    },
+                    {
+                        "source": "Why are you laughing?",
+                        "target": "なぜ笑っているんですか？"
+                    },
+                    {
+                        "source": "How much does it cost?",
+                        "target": "いくらですか？"
+                    }
+                ]
+            },
+            {
+                "type": "pair-matching",
+                "title": "Match the question words",
+                "pairs": [
+                    {
+                        "left": "誰",
+                        "right": "who"
+                    },
+                    {
+                        "left": "何",
+                        "right": "what"
+                    },
+                    {
+                        "left": "どこ",
+                        "right": "where"
+                    },
+                    {
+                        "left": "いつ",
+                        "right": "when"
+                    },
+                    {
+                        "left": "なぜ",
+                        "right": "why"
+                    },
+                    {
+                        "left": "どう",
+                        "right": "how"
+                    },
+                    {
+                        "left": "いくら",
+                        "right": "how much"
+                    }
+                ]
+            },
+            {
+                "type": "sentence-builder",
+                "title": "Build the polite question",
+                "prompt": "Build: “Do you speak English?”",
+                "words": [
+                    "英語",
+                    "を",
+                    "話します",
+                    "か",
+                    "？"
+                ],
+                "answer": "英語を話しますか？"
+            },
+            {
+                "type": "listen",
+                "title": "Listen · why",
+                "prompt": "What does “なぜ” mean?",
+                "audioText": "なぜ",
+                "options": [
+                    "When",
+                    "How",
+                    "Why",
+                    "Who"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "type": "context-dialogue",
+                "title": "Asking around",
+                "context": "Casual vs polite.",
+                "turns": [
+                    {
+                        "speaker": "Casual",
+                        "text": "コーヒーが好き？"
+                    },
+                    {
+                        "speaker": "Polite",
+                        "text": "コーヒーが好きですか？"
+                    },
+                    {
+                        "speaker": "Info",
+                        "text": "どこに住んでいますか？"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "title": "Check · polite question",
+                "prompt": "Which is the polite way to ask “Do you like coffee?”",
+                "options": [
+                    "コーヒーが好き？",
+                    "コーヒーが好きですか？",
+                    "コーヒー好き",
+                    "コーヒーは？"
+                ],
+                "answerIndex": 1,
+                "explanation": "Statement + か (or ですか) is the polite question form."
+            },
+            {
+                "type": "check",
+                "title": "Check · word meaning",
+                "prompt": "“なぜ” means…",
+                "options": [
+                    "When",
+                    "How",
+                    "Why",
+                    "Who"
+                ],
+                "answerIndex": 2,
+                "explanation": "なぜ / どうして = why."
+            }
+        ]
+    }
+]
