@@ -30,7 +30,7 @@ export function bumpStreak(state: ProgressState): ProgressState {
     return { ...state, streak: 1, lastActiveDate: today };
 }
 
-export function applyActivity(
+export async function applyActivity(
     prev: ProgressState,
     kind: ActivityKind,
     extra?: {
@@ -40,7 +40,7 @@ export function applyActivity(
         lessonCompleted?: boolean;
         direction?: string;
     },
-): ProgressState {
+): Promise<ProgressState> {
     let next = bumpStreak({ ...defaultProgress(), ...prev });
 
     if (kind === "translation")
@@ -64,15 +64,15 @@ export function applyActivity(
               : "en-fr";
 
         const lessonProgress = new Map(next.lessonProgress || []);
-        const directionProgress = new Map(lessonProgress.get(direction) || []);
+        const directionProgress = new Map(lessonProgress.get(direction!) || []);
         directionProgress.set(lessonId, { currentStep: stepIndex, completed });
-        lessonProgress.set(direction, directionProgress);
+        lessonProgress.set(direction!, directionProgress);
 
         const lessonsCompleted = new Map(next.lessonsCompleted || []);
-        const list = [...(lessonsCompleted.get(direction) ?? [])];
+        const list = [...(lessonsCompleted.get(direction!) ?? [])];
         if (completed && !list.includes(lessonId)) {
             list.push(lessonId);
-            lessonsCompleted.set(direction, list);
+            lessonsCompleted.set(direction!, list);
         }
 
         next = {
@@ -94,7 +94,7 @@ export function applyActivity(
         lessonCompleted: extra?.lessonCompleted,
     });
 
-    const { progress } = applyBadgeUnlocks(next);
+    const { progress } = await applyBadgeUnlocks(next);
     return progress;
 }
 
@@ -150,10 +150,10 @@ function mergeLessonsCompleted(
     return out;
 }
 
-export function mergeProgress(
+export async function mergeProgress(
     local: ProgressState,
     cloud: ProgressState,
-): ProgressState {
+): Promise<ProgressState> {
     const a = { ...defaultProgress(), ...local };
     const b = { ...defaultProgress(), ...cloud };
 
@@ -242,5 +242,5 @@ export function mergeProgress(
         badges,
     };
 
-    return applyBadgeUnlocks(merged).progress;
+    return (await applyBadgeUnlocks(merged)).progress;
 }

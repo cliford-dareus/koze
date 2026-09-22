@@ -77,7 +77,7 @@ export const LANGUAGES: LanguageOption[] = [
         description: 'Honor deep tradition, family harmony, and thoughtful, layered communication.',
     },
     {
-        id: "japanese", name: "Japanese", value: "ja", voice: "ja-JP",
+        id: "japanese", name: "Japanese", value: "jp", voice: "jp-JP",
         nativeName: '日本語',
         flag: '🇯🇵',
         themeColor: '#D65A5A', // Soft Vermillion

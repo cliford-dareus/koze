@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { directionLabel, PairItem, type Lesson, type LessonDirection, type LessonStep } from "@/data/lessons";
+import { directionLabel, PairItem, PairMatchingQuestion, type Lesson, type LessonDirection, type LessonStep } from "@/data/lessons";
 import { enhanceLesson, tagLabel } from "@/lib/lesson-pedagogy";
 import { loadProgress, recordActivity } from "@/lib/progress";
 import { Button } from "@/app/_components/ui/button";
@@ -11,6 +11,7 @@ import { sound } from "@/lib/sound";
 import { speak } from "@/lib/speech";
 import { ArrowRight, Check, MessageCircle, RotateCcw, Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { LanguageOption, LANGUAGES } from "@/lib/languages";
 
 type Props = {
     lesson: Lesson;
@@ -34,6 +35,8 @@ export default function LessonPlayer({
     const [checked, setChecked] = useState(false);
     const [finished, setFinished] = useState(false);
     const [spoke, setSpoke] = useState(false);
+
+    const currentLanguage = LANGUAGES.find(l => l.value === direction?.split('-')[1]);
 
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
@@ -324,6 +327,7 @@ export default function LessonPlayer({
                         setAvailableTokens={setAvailableTokens}
                         selectedOption={selectedOption}
                         setSelectedOption={setSelectedOption}
+                        currentLanguage={currentLanguage}
                     />
 
                     <div
@@ -451,7 +455,8 @@ function StepBody({
     availableTokens,
     setAvailableTokens,
     selectedOption,
-    setSelectedOption
+    setSelectedOption,
+    currentLanguage,
 }: {
     step: LessonStep;
     selected: number | null;
@@ -468,6 +473,7 @@ function StepBody({
     setAvailableTokens: (tokens: string[]) => void;
     selectedOption: string | null;
     setSelectedOption: (option: string | null) => void;
+    currentLanguage: LanguageOption | undefined;
 }) {
     // Pair matching state
     const [selectedForeignId, setSelectedForeignId] = useState<string | null>(null);
@@ -702,7 +708,7 @@ function StepBody({
                 <div className="grid grid-cols-2 gap-4">
                     {/* Foreign Words Column */}
                     <div className="space-y-2.5">
-                        {(step).pairs.map((pair) => {
+                        {(step as PairMatchingQuestion).pairs.map((pair) => {
                             const isMatched = matchedPairIds.includes(pair.id);
                             const isSelected = selectedForeignId === pair.id;
 
@@ -834,7 +840,7 @@ function StepBody({
                         <button
                             type="button"
                             onClick={() => {
-                                speak(step.partnerSays,);
+                                speak(step.partnerSays, currentLanguage?.voice);
                             }}
                             className="p-2 rounded-full bg-card text-foreground hover:bg-accent transition-colors shrink-0"
                             title="Listen to partner"
@@ -857,7 +863,7 @@ function StepBody({
                                 onClick={() => {
                                     sound.playPebbleTap(true);
                                     setSelectedOption(option);
-                                    // speech.speak(option, speechLang);
+                                    speak(option, currentLanguage?.voice);
                                 }}
                                 className={`w-full p-4 rounded-2xl text-left border-2 transition-all ${isSelected
                                     ? 'border-primary bg-accent text-primary shadow-xs'
@@ -912,7 +918,7 @@ function StepBody({
                                     sound.playPebbleTap(true);
                                     onSelect(i);
                                     setSelectedOption(opt);
-                                    // speak(option, speechLang);
+                                    speak(opt, currentLanguage?.voice);
                                 }}
                                 className={`w-full rounded-lg border px-3 py-2.5 text-left text-sm transition-colors ${style}`}
                             >

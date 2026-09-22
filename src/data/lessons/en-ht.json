@@ -96,48 +96,69 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the greetings",
+        "prompt": "Match each Haitian Creole greeting with its English meaning:",
         "pairs": [
           {
-            "left": "Bonjou",
-            "right": "Good morning / hello"
+            "id": "hat-1",
+            "foreign": "Bonjou",
+            "native": "Good morning / hello",
+            "phonetic": "bohn-ZHOO"
           },
           {
-            "left": "Bonswa",
-            "right": "Good evening"
+            "id": "hat-2",
+            "foreign": "Bonswa",
+            "native": "Good evening",
+            "phonetic": "bohn-SWAH"
           },
           {
-            "left": "Orevwa",
-            "right": "Goodbye"
+            "id": "hat-3",
+            "foreign": "Orevwa",
+            "native": "Goodbye",
+            "phonetic": "oh-reh-VWAH"
           },
           {
-            "left": "N a wè",
-            "right": "See you"
+            "id": "hat-4",
+            "foreign": "N a wè",
+            "native": "See you",
+            "phonetic": "nah WEH"
           },
           {
-            "left": "Bon nui",
-            "right": "Good night"
+            "id": "hat-5",
+            "foreign": "Bon nui",
+            "native": "Good night",
+            "phonetic": "bohn NWEE"
           },
           {
-            "left": "Ki jan ou ye?",
-            "right": "How are you?"
+            "id": "hat-6",
+            "foreign": "Ki jan ou ye?",
+            "native": "How are you?",
+            "phonetic": "kee zhahn oo YEH"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the greeting",
-        "prompt": "Build: “Hello, how are you?”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Hello, how are you?\":",
+        "targetSentence": "Bonjou, ki jan ou ye?",
+        "targetTranslation": "Hello, how are you?",
+        "scrambledTokens": [
+          "jan",
+          "ou",
+          "ye",
+          "Bonswa",
+          "Bonjou",
+          ",",
+          "ki"
+        ],
+        "correctTokens": [
           "Bonjou",
           ",",
           "ki",
           "jan",
           "ou",
-          "ye",
-          "?"
+          "ye"
         ],
-        "answer": "Bonjou, ki jan ou ye?"
+        "explanation": "A warm, time-appropriate greeting — the foundation of any first impression."
       },
       {
         "type": "listen",
@@ -154,22 +175,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "A first meeting",
-        "context": "You meet someone for the first time.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "Bonjou, ki jan ou ye?"
-          },
-          {
-            "speaker": "Other",
-            "text": "M byen, mèsi. E ou menm?"
-          },
-          {
-            "speaker": "You",
-            "text": "M byen tou."
-          }
-        ]
+        "dialoguePartner": "Madan Pierre (Neighbor)",
+        "partnerSays": "Bonjou! Ki jan ou ye?",
+        "partnerSaysTranslation": "Hello! How are you?",
+        "prompt": "Reply warmly and return the question:",
+        "options": [
+          "M byen, mèsi. E ou menm?",
+          "Orevwa, n a wè pita.",
+          "M pa konprann."
+        ],
+        "correctAnswer": "M byen, mèsi. E ou menm?",
+        "explanation": "\"M byen, mèsi. E ou menm?\" answers warmly and invites her to share too. \"Orevwa\" is a goodbye."
       },
       {
         "type": "check",
@@ -296,42 +312,59 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the polite phrases",
+        "prompt": "Match each Haitian Creole polite phrase with its English meaning:",
         "pairs": [
           {
-            "left": "Tanpri",
-            "right": "Please"
+            "id": "hat-1",
+            "foreign": "Tanpri",
+            "native": "Please",
+            "phonetic": "tahn-PREE"
           },
           {
-            "left": "Mèsi",
-            "right": "Thank you"
+            "id": "hat-2",
+            "foreign": "Mèsi",
+            "native": "Thank you",
+            "phonetic": "MEH-see"
           },
           {
-            "left": "Mèsi anpil",
-            "right": "Thank you very much"
+            "id": "hat-3",
+            "foreign": "Mèsi anpil",
+            "native": "Thank you very much",
+            "phonetic": "MEH-see ahn-PEEL"
           },
           {
-            "left": "Pa gen pwoblèm",
-            "right": "You’re welcome"
+            "id": "hat-4",
+            "foreign": "Pa gen pwoblèm",
+            "native": "You’re welcome",
+            "phonetic": "pah gehn pwoh-BLEHM"
           },
           {
-            "left": "Eskize m",
-            "right": "Excuse me / sorry"
+            "id": "hat-5",
+            "foreign": "Eskize m",
+            "native": "Excuse me / sorry",
+            "phonetic": "es-kee-ZEH m"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the request",
-        "prompt": "Build: “A coffee, please.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"A coffee, please.\":",
+        "targetSentence": "Yon kafe, tanpri.",
+        "targetTranslation": "A coffee, please.",
+        "scrambledTokens": [
+          ",",
+          "tanpri",
+          "Tanpri",
+          "Yon",
+          "kafe"
+        ],
+        "correctTokens": [
           "Yon",
           "kafe",
           ",",
-          "tanpri",
-          "."
+          "tanpri"
         ],
-        "answer": "Yon kafe, tanpri."
+        "explanation": "Combining a request with \"please\" — the cornerstone of polite interaction."
       },
       {
         "type": "listen",
@@ -348,26 +381,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "At the counter",
-        "context": "Ordering and thanking.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "Yon kafe, tanpri."
-          },
-          {
-            "speaker": "Clerk",
-            "text": "Men li. Twa goud."
-          },
-          {
-            "speaker": "You",
-            "text": "Mèsi anpil."
-          },
-          {
-            "speaker": "Clerk",
-            "text": "Pa gen pwoblèm."
-          }
-        ]
+        "dialoguePartner": "Jean (Café Clerk)",
+        "partnerSays": "Men kafe ou. Twa goud.",
+        "partnerSaysTranslation": "Here's your coffee. Three gourdes.",
+        "prompt": "Thank him as you pay:",
+        "options": [
+          "Mèsi anpil.",
+          "Yon kafe, tanpri.",
+          "Pa gen pwoblèm."
+        ],
+        "correctAnswer": "Mèsi anpil.",
+        "explanation": "\"Mèsi anpil\" (thanks a lot) is the natural response. \"Pa gen pwoblèm\" is what the clerk would say back."
       },
       {
         "type": "check",
@@ -542,50 +566,71 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the numbers",
+        "prompt": "Match each Haitian Creole number with its numeral:",
         "pairs": [
           {
-            "left": "yon",
-            "right": "1"
+            "id": "hat-1",
+            "foreign": "yon",
+            "native": "1",
+            "phonetic": "yohn"
           },
           {
-            "left": "de",
-            "right": "2"
+            "id": "hat-2",
+            "foreign": "de",
+            "native": "2",
+            "phonetic": "deh"
           },
           {
-            "left": "twa",
-            "right": "3"
+            "id": "hat-3",
+            "foreign": "twa",
+            "native": "3",
+            "phonetic": "twah"
           },
           {
-            "left": "senk",
-            "right": "5"
+            "id": "hat-4",
+            "foreign": "senk",
+            "native": "5",
+            "phonetic": "senk"
           },
           {
-            "left": "sèt",
-            "right": "7"
+            "id": "hat-5",
+            "foreign": "sèt",
+            "native": "7",
+            "phonetic": "set"
           },
           {
-            "left": "dis",
-            "right": "10"
+            "id": "hat-6",
+            "foreign": "dis",
+            "native": "10",
+            "phonetic": "dees"
           },
           {
-            "left": "ven",
-            "right": "20"
+            "id": "hat-7",
+            "foreign": "ven",
+            "native": "20",
+            "phonetic": "vehn"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the order",
-        "prompt": "Build: “Two coffees, please.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Two coffees, please.\":",
+        "targetSentence": "De kafe, tanpri.",
+        "targetTranslation": "Two coffees, please.",
+        "scrambledTokens": [
+          ",",
+          "tanpri",
+          "yon",
+          "De",
+          "kafe"
+        ],
+        "correctTokens": [
           "De",
           "kafe",
           ",",
-          "tanpri",
-          "."
+          "tanpri"
         ],
-        "answer": "De kafe, tanpri."
+        "explanation": "Numbers in context — the essential combination for real-world transactions."
       },
       {
         "type": "listen",
@@ -602,22 +647,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "At the ticket window",
-        "context": "Buying tickets.",
-        "turns": [
-          {
-            "speaker": "Clerk",
-            "text": "De tikè?"
-          },
-          {
-            "speaker": "You",
-            "text": "Wi, de. M gen ven an."
-          },
-          {
-            "speaker": "Clerk",
-            "text": "Oke. Kenz goud."
-          }
-        ]
+        "dialoguePartner": "Woudy (Ticket Clerk)",
+        "partnerSays": "Konbyen tikè ou vle?",
+        "partnerSaysTranslation": "How many tickets do you want?",
+        "prompt": "Ask for two tickets:",
+        "options": [
+          "De tikè, tanpri.",
+          "M gen ven an.",
+          "Kenz goud."
+        ],
+        "correctAnswer": "De tikè, tanpri.",
+        "explanation": "\"De tikè, tanpri\" answers with a number and a polite please. \"Kenz goud\" is the price the clerk would quote."
       },
       {
         "type": "check",
@@ -739,44 +779,63 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the building blocks",
+        "prompt": "Match each Haitian Creole introduction phrase with its English meaning:",
         "pairs": [
           {
-            "left": "Non mwen se…",
-            "right": "My name is…"
+            "id": "hat-1",
+            "foreign": "Non mwen se…",
+            "native": "My name is…",
+            "phonetic": "nohn mwen seh"
           },
           {
-            "left": "M soti…",
-            "right": "I come from…"
+            "id": "hat-2",
+            "foreign": "M soti…",
+            "native": "I come from…",
+            "phonetic": "m soh-TEE"
           },
           {
-            "left": "M rete…",
-            "right": "I live in…"
+            "id": "hat-3",
+            "foreign": "M rete…",
+            "native": "I live in…",
+            "phonetic": "m reh-TEH"
           },
           {
-            "left": "Se yon plezi",
-            "right": "Nice to meet you"
+            "id": "hat-4",
+            "foreign": "Se yon plezi",
+            "native": "Nice to meet you",
+            "phonetic": "seh yohn pleh-ZEE"
           },
           {
-            "left": "E ou menm?",
-            "right": "And you?"
+            "id": "hat-5",
+            "foreign": "E ou menm?",
+            "native": "And you?",
+            "phonetic": "eh oo MEM"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the introduction",
-        "prompt": "Build: “Hello, my name is Alex.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Hello, my name is Alex.\":",
+        "targetSentence": "Bonjou, non mwen se Alex.",
+        "targetTranslation": "Hello, my name is Alex.",
+        "scrambledTokens": [
+          "mwen",
+          "se",
+          "Alex",
+          "Se",
+          "Bonjou",
+          ",",
+          "non"
+        ],
+        "correctTokens": [
           "Bonjou",
           ",",
           "non",
           "mwen",
           "se",
-          "Alex",
-          "."
+          "Alex"
         ],
-        "answer": "Bonjou, non mwen se Alex."
+        "explanation": "Your origin in one clear sentence — the natural follow-up to sharing your name."
       },
       {
         "type": "listen",
@@ -793,26 +852,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "Meeting someone new",
-        "context": "A short self-introduction.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "Bonjou, non mwen se Sam."
-          },
-          {
-            "speaker": "Other",
-            "text": "Se yon plezi. Non mwen se Lea."
-          },
-          {
-            "speaker": "You",
-            "text": "M soti Etazini. E ou menm?"
-          },
-          {
-            "speaker": "Léa",
-            "text": "M soti Pòtoprens."
-          }
-        ]
+        "dialoguePartner": "Lea (New Acquaintance)",
+        "partnerSays": "Se yon plezi. Non mwen se Lea. Ki kote ou soti?",
+        "partnerSaysTranslation": "It's a pleasure. My name is Lea. Where are you from?",
+        "prompt": "Say where you're from and return the question:",
+        "options": [
+          "M soti Etazini. E ou menm?",
+          "Non mwen se Sam.",
+          "M byen, mèsi."
+        ],
+        "correctAnswer": "M soti Etazini. E ou menm?",
+        "explanation": "\"M soti Etazini. E ou menm?\" answers her question and keeps the conversation balanced."
       },
       {
         "type": "check",
@@ -937,44 +987,63 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the colors",
+        "prompt": "Match each Haitian Creole color with its English name:",
         "pairs": [
           {
-            "left": "wouj",
-            "right": "red"
+            "id": "hat-1",
+            "foreign": "wouj",
+            "native": "red",
+            "phonetic": "woozh"
           },
           {
-            "left": "ble",
-            "right": "blue"
+            "id": "hat-2",
+            "foreign": "ble",
+            "native": "blue",
+            "phonetic": "bleh"
           },
           {
-            "left": "vèt",
-            "right": "green"
+            "id": "hat-3",
+            "foreign": "vèt",
+            "native": "green",
+            "phonetic": "vet"
           },
           {
-            "left": "nwa",
-            "right": "black"
+            "id": "hat-4",
+            "foreign": "nwa",
+            "native": "black",
+            "phonetic": "nwah"
           },
           {
-            "left": "blan",
-            "right": "white"
+            "id": "hat-5",
+            "foreign": "blan",
+            "native": "white",
+            "phonetic": "blahn"
           },
           {
-            "left": "mawon",
-            "right": "brown"
+            "id": "hat-6",
+            "foreign": "mawon",
+            "native": "brown",
+            "phonetic": "mah-WOHN"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the description",
-        "prompt": "Build: “a blue dress”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"a blue dress\":",
+        "targetSentence": "yon rad ble",
+        "targetTranslation": "a blue dress",
+        "scrambledTokens": [
+          "ble",
+          "wouj",
+          "yon",
+          "rad"
+        ],
+        "correctTokens": [
           "yon",
           "rad",
           "ble"
         ],
-        "answer": "yon rad ble"
+        "explanation": "Color + polite form — everything needed to express a preference in any shop."
       },
       {
         "type": "listen",
@@ -991,22 +1060,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "Choosing a color",
-        "context": "In a clothing shop.",
-        "turns": [
-          {
-            "speaker": "Clerk",
-            "text": "Ki koulè ou prefere?"
-          },
-          {
-            "speaker": "You",
-            "text": "M ta renmen sa ki wouj la."
-          },
-          {
-            "speaker": "Clerk",
-            "text": "Men yon rad wouj."
-          }
-        ]
+        "dialoguePartner": "Nadège (Shop Clerk)",
+        "partnerSays": "Ki koulè ou prefere?",
+        "partnerSaysTranslation": "Which color do you prefer?",
+        "prompt": "Say you'd like the red one:",
+        "options": [
+          "M ta renmen sa ki wouj la.",
+          "Konbyen sa koute?",
+          "Li twò gwo."
+        ],
+        "correctAnswer": "M ta renmen sa ki wouj la.",
+        "explanation": "\"M ta renmen sa ki wouj la\" (I'd like the red one) answers the question about color politely."
       },
       {
         "type": "check",
@@ -1036,5 +1100,4157 @@
       }
     ],
     "direction": "en-ht"
+  },
+  {
+    "id": "cafe-1",
+    "slug": "at-the-cafe",
+    "title": "At the café",
+    "description": "Order drinks and ask for the bill with confidence.",
+    "unitId": "everyday",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "A quiet table",
+        "body": "A handful of drink words plus a polite request phrase is enough to order confidently anywhere."
+      },
+      {
+        "type": "tip",
+        "title": "Café culture",
+        "body": "Ask for the bill — servers rarely bring it unsolicited. Tipping customs vary by country.",
+        "bullets": [
+          "For here or to go? — learn both forms.",
+          "A jug of tap water is often free — always worth asking."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Bwason & sèvis",
+        "items": [
+          {
+            "term": "a coffee",
+            "meaning": "yon kafe"
+          },
+          {
+            "term": "coffee with milk",
+            "meaning": "yon kafe ak lèt"
+          },
+          {
+            "term": "a tea",
+            "meaning": "yon te"
+          },
+          {
+            "term": "a hot chocolate",
+            "meaning": "yon chokola cho"
+          },
+          {
+            "term": "an orange juice",
+            "meaning": "yon ji zoranj"
+          },
+          {
+            "term": "some water",
+            "meaning": "dlo"
+          },
+          {
+            "term": "the bill",
+            "meaning": "nòt la"
+          },
+          {
+            "term": "I would like…",
+            "meaning": "Mwen ta renmen…"
+          },
+          {
+            "term": "for here",
+            "meaning": "isit la"
+          },
+          {
+            "term": "to go",
+            "meaning": "pou pote ale"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Kòmande",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "I would like a coffee, please.",
+            "target": "Mwen ta renmen yon kafe, tanpri."
+          },
+          {
+            "source": "A tea to go, please.",
+            "target": "Yon te pou pote ale, tanpri."
+          },
+          {
+            "source": "The bill, please.",
+            "target": "Nòt la, tanpri."
+          },
+          {
+            "source": "For here or to go?",
+            "target": "Isit la ou pou pote ale?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "yon kafe",
+            "native": "a coffee",
+            "phonetic": "yohn kah-FAY"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "kafe ak lèt",
+            "native": "coffee with milk",
+            "phonetic": "kah-FAY ak let"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "pou pote ale",
+            "native": "to go",
+            "phonetic": "poo poh-TEH ah-LEH"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "isit la",
+            "native": "for here",
+            "phonetic": "ee-SEET lah"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "nòt la",
+            "native": "the bill",
+            "phonetic": "noht lah"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "dlo",
+            "native": "water",
+            "phonetic": "dloh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I would like a coffee, please.\":",
+        "targetSentence": "Mwen ta renmen yon kafe, tanpri.",
+        "targetTranslation": "I would like a coffee, please.",
+        "scrambledTokens": [
+          "kafe",
+          ",",
+          "tanpri",
+          "dlo",
+          "Mwen",
+          "ta",
+          "renmen",
+          "yon"
+        ],
+        "correctTokens": [
+          "Mwen",
+          "ta",
+          "renmen",
+          "yon",
+          "kafe",
+          ",",
+          "tanpri"
+        ],
+        "explanation": "A polite order that works in any café — commit it to memory for the first sip."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · bill",
+        "prompt": "How do you ask for the bill?",
+        "audioText": "Nòt la, tanpri",
+        "options": [
+          "Yon kafe, tanpri",
+          "Nòt la, tanpri",
+          "Pou pote ale",
+          "Yon te, tanpri"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Ti Jan (Café Clerk)",
+        "partnerSays": "Ou vle kisa?",
+        "partnerSaysTranslation": "What would you like?",
+        "prompt": "Order a coffee politely:",
+        "options": [
+          "Yon kafe, tanpri.",
+          "Nòt la, tanpri.",
+          "Pou pote ale."
+        ],
+        "correctAnswer": "Yon kafe, tanpri.",
+        "explanation": "\"Yon kafe, tanpri\" is the natural way to order a coffee."
+      },
+      {
+        "type": "check",
+        "title": "Check · bill",
+        "prompt": "How do you say \"the bill\" in Haitian Creole?",
+        "options": [
+          "meni an",
+          "nòt la",
+          "kafe a",
+          "tab la"
+        ],
+        "answerIndex": 1,
+        "explanation": "Nòt la is the bill; kafe is coffee; meni is menu."
+      },
+      {
+        "type": "check",
+        "title": "Check · to go",
+        "prompt": "How do you say \"to go\" when ordering?",
+        "options": [
+          "isit la",
+          "pou pote ale",
+          "ak lèt",
+          "cho"
+        ],
+        "answerIndex": 1,
+        "explanation": "Pou pote ale means \"to carry away\" = to go."
+      }
+    ]
+  },
+  {
+    "id": "food-market-1",
+    "slug": "at-the-market",
+    "title": "At the market",
+    "description": "Fruit, quantities, and polite requests at a stall.",
+    "unitId": "everyday",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Market pace",
+        "body": "Markets reward clear numbers and a polite request. Pointing plus a word works — language makes it smoother."
+      },
+      {
+        "type": "vocab",
+        "title": "Manje",
+        "items": [
+          {
+            "term": "an apple",
+            "meaning": "yon pòm"
+          },
+          {
+            "term": "a banana",
+            "meaning": "yon fig"
+          },
+          {
+            "term": "a tomato",
+            "meaning": "yon tomat"
+          },
+          {
+            "term": "a carrot",
+            "meaning": "yon kawòt"
+          },
+          {
+            "term": "some bread",
+            "meaning": "pen"
+          },
+          {
+            "term": "some cheese",
+            "meaning": "fwomaj"
+          },
+          {
+            "term": "a kilo of…",
+            "meaning": "yon kilo…"
+          },
+          {
+            "term": "How much is it?",
+            "meaning": "Konbyen sa koute?"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Nan mache a",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "I'd like three apples, please.",
+            "target": "Mwen ta renmen twa pòm, tanpri."
+          },
+          {
+            "source": "A kilo of tomatoes, please.",
+            "target": "Yon kilo tomat, tanpri."
+          },
+          {
+            "source": "How much is it?",
+            "target": "Konbyen sa koute?"
+          },
+          {
+            "source": "That's all, thank you.",
+            "target": "Sa a tout, mèsi."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "yon pòm",
+            "native": "an apple",
+            "phonetic": "yohn pohm"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "yon tomat",
+            "native": "a tomato",
+            "phonetic": "yohn toh-MAT"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "pen",
+            "native": "some bread",
+            "phonetic": "pen"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "yon kilo…",
+            "native": "a kilo of…",
+            "phonetic": "yohn KEY-loh"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "Konbyen sa koute?",
+            "native": "How much is it?",
+            "phonetic": "kon-BYAN sah koo-TEH"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "Sa a tout",
+            "native": "That's all",
+            "phonetic": "sah ah toot"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I'd like three apples, please.\":",
+        "targetSentence": "Mwen ta renmen twa pòm, tanpri.",
+        "targetTranslation": "I'd like three apples, please.",
+        "scrambledTokens": [
+          "pòm",
+          ",",
+          "tanpri",
+          "pen",
+          "Mwen",
+          "ta",
+          "renmen",
+          "twa"
+        ],
+        "correctTokens": [
+          "Mwen",
+          "ta",
+          "renmen",
+          "twa",
+          "pòm",
+          ",",
+          "tanpri"
+        ],
+        "explanation": "Quantity, item, price question — the complete phrase for any market stall."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · price",
+        "prompt": "How do you ask \"How much is it?\"",
+        "audioText": "Konbyen sa koute?",
+        "options": [
+          "Konbyen sa koute?",
+          "Konbyen ou vle?",
+          "Sa a tout?",
+          "Ou gen pòm?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Madame Rose (Market Vendor)",
+        "partnerSays": "Ou vle kisa?",
+        "partnerSaysTranslation": "What would you like?",
+        "prompt": "Ask for three apples and the price:",
+        "options": [
+          "Twa pòm. Konbyen sa koute?",
+          "Senk goud.",
+          "Tan an bèl jodi a."
+        ],
+        "correctAnswer": "Twa pòm. Konbyen sa koute?",
+        "explanation": "\"Twa pòm. Konbyen sa koute?\" adds to your order and asks the price."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you ask the price in Haitian Creole?",
+        "options": [
+          "Ki lè li ye?",
+          "Konbyen sa koute?",
+          "Ki kote li ye?",
+          "Kijan li rele?"
+        ],
+        "answerIndex": 1,
+        "explanation": "Konbyen sa koute? = How much does it cost? A core shopping phrase."
+      },
+      {
+        "type": "check",
+        "title": "Check · order",
+        "prompt": "Best for \"three apples, please\"?",
+        "options": [
+          "Twa pòm, tanpri",
+          "Twa kafe, mèsi",
+          "Orevwa pòm",
+          "Non mwen se pòm"
+        ],
+        "answerIndex": 0,
+        "explanation": "Twa pòm, tanpri directly matches the request."
+      }
+    ]
+  },
+  {
+    "id": "small-talk-1",
+    "slug": "small-talk-weather",
+    "title": "Small talk & weather",
+    "description": "Light conversation beyond hello.",
+    "unitId": "everyday",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Beyond hello",
+        "body": "Weather and weekend questions are safe bridges after greetings. A comment on the sun or rain opens doors."
+      },
+      {
+        "type": "vocab",
+        "title": "Tan ak konvèsasyon",
+        "items": [
+          {
+            "term": "The weather is nice",
+            "meaning": "Tan an bèl"
+          },
+          {
+            "term": "It's raining",
+            "meaning": "Lap pliv"
+          },
+          {
+            "term": "It's cold",
+            "meaning": "Li fè frèt"
+          },
+          {
+            "term": "It's hot",
+            "meaning": "Li fè cho"
+          },
+          {
+            "term": "It's sunny",
+            "meaning": "Solèy la ap klere"
+          },
+          {
+            "term": "It's snowing",
+            "meaning": "Lap neije"
+          },
+          {
+            "term": "the weekend",
+            "meaning": "wikenn nan"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Konvèsasyon lejè",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "Nice weather today.",
+            "target": "Tan an bèl jodi a."
+          },
+          {
+            "source": "It's raining a lot.",
+            "target": "Lap pliv anpil."
+          },
+          {
+            "source": "How was your weekend?",
+            "target": "Kijan te pase wikenn ou?"
+          },
+          {
+            "source": "It's really hot today!",
+            "target": "Li fè cho anpil jodi a!"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "Tan an bèl",
+            "native": "The weather is nice",
+            "phonetic": "tan an bel"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "Lap pliv",
+            "native": "It's raining",
+            "phonetic": "lap pleev"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "Li fè frèt",
+            "native": "It's cold",
+            "phonetic": "lee feh fret"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "Li fè cho",
+            "native": "It's hot",
+            "phonetic": "lee feh choh"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "Lap neije",
+            "native": "It's snowing",
+            "phonetic": "lap neh-EZHE"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "wikenn nan",
+            "native": "the weekend",
+            "phonetic": "wee-KEN nan"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Nice weather today.\":",
+        "targetSentence": "Tan an bèl jodi a.",
+        "targetTranslation": "Nice weather today.",
+        "scrambledTokens": [
+          "jodi",
+          "a",
+          "Lap",
+          "Tan",
+          "an",
+          "bèl"
+        ],
+        "correctTokens": [
+          "Tan",
+          "an",
+          "bèl",
+          "jodi",
+          "a"
+        ],
+        "explanation": "A light observation that opens the door to warm, easy conversation."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · rain",
+        "prompt": "How do you say \"It's raining\"?",
+        "audioText": "Lap pliv",
+        "options": [
+          "Tan an bèl",
+          "Lap pliv",
+          "Li fè frèt",
+          "Se wikenn nan"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Charles (Colleague)",
+        "partnerSays": "Tan an bèl jodi a!",
+        "partnerSaysTranslation": "The weather is nice today!",
+        "prompt": "Agree and keep the chat going:",
+        "options": [
+          "Wi, solèy la ap klere. Kijan te pase wikenn ou?",
+          "Non, mwen pa renmen kafe.",
+          "Nòt la, tanpri."
+        ],
+        "correctAnswer": "Wi, solèy la ap klere. Kijan te pase wikenn ou?",
+        "explanation": "Agreeing and asking about the weekend keeps the small talk flowing."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"It's raining\" in Haitian Creole?",
+        "options": [
+          "Li fè cho",
+          "Lap pliv",
+          "Solèy la klere",
+          "Li fè van"
+        ],
+        "answerIndex": 1,
+        "explanation": "Lap pliv = it is raining (ap + pliv, progressive aspect)."
+      },
+      {
+        "type": "check",
+        "title": "Check · weekend",
+        "prompt": "How do you ask \"How was your weekend?\"",
+        "options": [
+          "Kijan te pase wikenn ou?",
+          "Li fè frèt?",
+          "Eske ou fatige?",
+          "Konbyen wikenn lan?"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kijan te pase…? = How did…go? Using the past marker te."
+      }
+    ]
+  },
+  {
+    "id": "restaurant-1",
+    "slug": "at-the-restaurant",
+    "title": "At the restaurant",
+    "description": "Ordering a meal and dietary needs.",
+    "unitId": "everyday",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "From table to bill",
+        "body": "Ordering follows a clear rhythm: being seated, choosing, ordering, and asking for the bill."
+      },
+      {
+        "type": "tip",
+        "title": "Cultural notes",
+        "body": "Learn the word for \"Enjoy your meal!\" and the dietary vocabulary relevant to your needs.",
+        "bullets": [
+          "Vegetarian and vegan options are now widely available.",
+          "Stating allergies early is always wise."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Pawòl restoran",
+        "items": [
+          {
+            "term": "a table for two",
+            "meaning": "yon tab pou de"
+          },
+          {
+            "term": "the menu",
+            "meaning": "meni an"
+          },
+          {
+            "term": "the starter",
+            "meaning": "premye pla a"
+          },
+          {
+            "term": "the main course",
+            "meaning": "pla prensipal la"
+          },
+          {
+            "term": "dessert",
+            "meaning": "desè a"
+          },
+          {
+            "term": "vegetarian",
+            "meaning": "vèjitaryen/vèjitaryèn"
+          },
+          {
+            "term": "an allergy",
+            "meaning": "yon alèji"
+          },
+          {
+            "term": "the bill",
+            "meaning": "nòt la"
+          },
+          {
+            "term": "Enjoy your meal!",
+            "meaning": "Bon apeti!"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Kòmande",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "A table for two, please.",
+            "target": "Yon tab pou de, tanpri."
+          },
+          {
+            "source": "What do you recommend?",
+            "target": "Ki sa ou rekòmande?"
+          },
+          {
+            "source": "I'll have the fish.",
+            "target": "M pral pran pwason an."
+          },
+          {
+            "source": "I'm vegetarian.",
+            "target": "Mwen se vèjitaryen/vèjitaryèn."
+          },
+          {
+            "source": "Enjoy your meal!",
+            "target": "Bon apeti!"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "meni an",
+            "native": "the menu",
+            "phonetic": "meh-NEE an"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "premye pla a",
+            "native": "the starter",
+            "phonetic": "PREM-yeh plah ah"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "pla prensipal la",
+            "native": "the main course",
+            "phonetic": "plah pren-see-PAL lah"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "vèjitaryen/vèjitaryèn",
+            "native": "vegetarian",
+            "phonetic": "veh-zhee-tah-RYEN"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "Bon apeti!",
+            "native": "Enjoy your meal!",
+            "phonetic": "bon ah-peh-TEE"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "nòt la",
+            "native": "the bill",
+            "phonetic": "noht lah"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"A table for two, please.\":",
+        "targetSentence": "Yon tab pou de, tanpri.",
+        "targetTranslation": "A table for two, please.",
+        "scrambledTokens": [
+          "de",
+          ",",
+          "tanpri",
+          "vèjitaryen/vèjitaryèn",
+          "Yon",
+          "tab",
+          "pou"
+        ],
+        "correctTokens": [
+          "Yon",
+          "tab",
+          "pou",
+          "de",
+          ",",
+          "tanpri"
+        ],
+        "explanation": "The natural, confident way to place an order with any server."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · recommendation",
+        "prompt": "How do you ask \"What do you recommend?\"",
+        "audioText": "Ki sa ou rekòmande?",
+        "options": [
+          "Ki sa ou rekòmande?",
+          "Kote twalèt yo ye?",
+          "Konbyen sa koute?",
+          "Manje maten an enkli?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Mesye Paul (Waiter)",
+        "partnerSays": "Eske nou deja chwazi?",
+        "partnerSaysTranslation": "Have you already chosen?",
+        "prompt": "Order the fish:",
+        "options": [
+          "M pral pran pwason an, tanpri.",
+          "Ki kote estasyon an?",
+          "M ap desann nan pwochèn arè a."
+        ],
+        "correctAnswer": "M pral pran pwason an, tanpri.",
+        "explanation": "\"M pral pran…\" uses pral to express a near-future action."
+      },
+      {
+        "type": "check",
+        "title": "Check · menu",
+        "prompt": "In Haitian Creole, meni an refers to…",
+        "options": [
+          "The fixed-price set meal",
+          "The full list of every dish",
+          "The wine list",
+          "The bill"
+        ],
+        "answerIndex": 1,
+        "explanation": "Meni an is the menu with all available dishes."
+      },
+      {
+        "type": "check",
+        "title": "Check · vegetarian",
+        "prompt": "How would a woman say \"I'm vegetarian\"?",
+        "options": [
+          "Mwen se vèjitaryen",
+          "Mwen se vèjitaryèn",
+          "Mwen gen vèjitaryen",
+          "Mwen vèjitaryen"
+        ],
+        "answerIndex": 1,
+        "explanation": "Vèjitaryèn is the feminine form; vèjitaryen is masculine."
+      }
+    ]
+  },
+  {
+    "id": "weekend-plans-1",
+    "slug": "talking-about-plans",
+    "title": "Talking about plans",
+    "description": "Express what you're going to do.",
+    "unitId": "everyday",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "The near future",
+        "body": "Each language has a simple structure to talk about upcoming plans."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "Learn the future/plan marker for your language.",
+        "bullets": [
+          "Haitian Creole: pral + verb (no conjugation)",
+          "Korean: ~(으)ㄹ 거예요",
+          "Chinese: 打算 + verb or 要 + verb"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Planifye",
+        "items": [
+          {
+            "term": "I will go",
+            "meaning": "M pral ale"
+          },
+          {
+            "term": "I will eat",
+            "meaning": "M pral manje"
+          },
+          {
+            "term": "I will visit",
+            "meaning": "M pral vizite"
+          },
+          {
+            "term": "I will see",
+            "meaning": "M pral wè"
+          },
+          {
+            "term": "I will travel",
+            "meaning": "M pral vwayaje"
+          },
+          {
+            "term": "we will go",
+            "meaning": "Nou pral ale"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Fè plan",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "What are you going to do this weekend?",
+            "target": "Kisa ou pral fè wikenn sa?"
+          },
+          {
+            "source": "I'm going to visit my parents.",
+            "target": "Mwen pral vizite paran mwen."
+          },
+          {
+            "source": "We're going to watch a film.",
+            "target": "Nou pral gade yon fim."
+          },
+          {
+            "source": "She's going to travel to Cap-Haïtien.",
+            "target": "Li pral vwayaje nan Kap-Ayisyen."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "M pral ale",
+            "native": "I will go",
+            "phonetic": "m pral ah-LEH"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "M pral manje",
+            "native": "I will eat",
+            "phonetic": "m pral mahn-ZHEH"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "M pral vizite",
+            "native": "I will visit",
+            "phonetic": "m pral vee-zee-TEH"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "Nou pral ale",
+            "native": "we will go",
+            "phonetic": "noo pral ah-LEH"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "pral + vèb",
+            "native": "will + verb",
+            "phonetic": "pral"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I'm going to visit my parents.\":",
+        "targetSentence": "Mwen pral vizite paran mwen.",
+        "targetTranslation": "I'm going to visit my parents.",
+        "scrambledTokens": [
+          "paran",
+          "mwen",
+          "M",
+          "Mwen",
+          "pral",
+          "vizite"
+        ],
+        "correctTokens": [
+          "Mwen",
+          "pral",
+          "vizite",
+          "paran",
+          "mwen"
+        ],
+        "explanation": "Future marker + plan — two building blocks for any upcoming arrangement."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · structure",
+        "prompt": "Which sentence uses pral correctly?",
+        "audioText": "M pral manje",
+        "options": [
+          "M te manje",
+          "M pral manje",
+          "Mwen manje",
+          "M ap manje"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Lisette (Friend)",
+        "partnerSays": "Kisa ou pral fè wikenn sa?",
+        "partnerSaysTranslation": "What are you going to do this weekend?",
+        "prompt": "Say you're going to visit your parents:",
+        "options": [
+          "Mwen pral vizite paran mwen.",
+          "Li de è e mwatye.",
+          "Mwen ta renmen wouj la."
+        ],
+        "correctAnswer": "Mwen pral vizite paran mwen.",
+        "explanation": "\"Mwen pral vizite…\" uses pral + infinitive to express a near-future plan."
+      },
+      {
+        "type": "check",
+        "title": "Check · structure",
+        "prompt": "Which correctly uses pral + infinitive?",
+        "options": [
+          "M te manje",
+          "M pral manje",
+          "M manje",
+          "M ap manje"
+        ],
+        "answerIndex": 1,
+        "explanation": "Pral + verb = going to/will. M ap manje = I am eating (now). M te manje = I ate (past)."
+      },
+      {
+        "type": "check",
+        "title": "Check · translate",
+        "prompt": "How do you say \"We will travel\" in Haitian Creole?",
+        "options": [
+          "Nou te vwayaje",
+          "Nou pral vwayaje",
+          "Nou ap vwayaje",
+          "Nou vle vwayaje"
+        ],
+        "answerIndex": 1,
+        "explanation": "Nou pral vwayaje = We will travel (pral = future marker)."
+      }
+    ]
+  },
+  {
+    "id": "directions-1",
+    "slug": "simple-directions",
+    "title": "Simple directions",
+    "description": "Left, right, straight — and asking where something is.",
+    "unitId": "travel",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Finding your way",
+        "body": "Combine \"where is…?\" with a few direction words for short walks in a new city."
+      },
+      {
+        "type": "vocab",
+        "title": "Direksyon",
+        "items": [
+          {
+            "term": "to the left",
+            "meaning": "agòch"
+          },
+          {
+            "term": "to the right",
+            "meaning": "adwat"
+          },
+          {
+            "term": "straight ahead",
+            "meaning": "tou dwat"
+          },
+          {
+            "term": "near",
+            "meaning": "pre de"
+          },
+          {
+            "term": "far from",
+            "meaning": "lwen de"
+          },
+          {
+            "term": "at the corner",
+            "meaning": "nan kwen an"
+          },
+          {
+            "term": "across from",
+            "meaning": "anfas de"
+          },
+          {
+            "term": "between",
+            "meaning": "ant"
+          },
+          {
+            "term": "Where is…?",
+            "meaning": "Ki kote … ye?"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Mande wout la",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "Where is the station?",
+            "target": "Ki kote estasyon an ye?"
+          },
+          {
+            "source": "Is it far?",
+            "target": "Eske li lwen?"
+          },
+          {
+            "source": "Go straight ahead, then left.",
+            "target": "Ale tou dwat, apre sa vire agòch."
+          },
+          {
+            "source": "It's across from the pharmacy.",
+            "target": "Li anfas famasi a."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "agòch",
+            "native": "to the left",
+            "phonetic": "ah-GOHCH"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "adwat",
+            "native": "to the right",
+            "phonetic": "ah-DWAT"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "tou dwat",
+            "native": "straight ahead",
+            "phonetic": "too dwat"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "pre de",
+            "native": "near",
+            "phonetic": "preh deh"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "anfas de",
+            "native": "across from",
+            "phonetic": "an-FAS deh"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "Ki kote … ye?",
+            "native": "Where is…?",
+            "phonetic": "kee koh-TEH … yeh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Go straight ahead, then left.\":",
+        "targetSentence": "Ale tou dwat, apre sa vire agòch.",
+        "targetTranslation": "Go straight ahead, then left.",
+        "scrambledTokens": [
+          "apre",
+          "sa",
+          "vire",
+          "agòch",
+          "adwat",
+          "Ale",
+          "tou",
+          "dwat",
+          ","
+        ],
+        "correctTokens": [
+          "Ale",
+          "tou",
+          "dwat",
+          ",",
+          "apre",
+          "sa",
+          "vire",
+          "agòch"
+        ],
+        "explanation": "Left, right, and straight — three words that will get you anywhere in the city."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · where",
+        "prompt": "How do you ask \"Where is the station?\"",
+        "audioText": "Ki kote estasyon an ye?",
+        "options": [
+          "Ki kote estasyon an ye?",
+          "Eske li lwen?",
+          "Konbyen yon tikè?",
+          "Ki peron?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Msye Bòs (Passer-by)",
+        "partnerSays": "Ale tou dwat, apre sa vire agòch. Li anfas famasi a.",
+        "partnerSaysTranslation": "Go straight, then turn left. It's opposite the pharmacy.",
+        "prompt": "Ask whether it's far:",
+        "options": [
+          "Eske li lwen?",
+          "Ki kote estasyon an?",
+          "Isit la, tanpri."
+        ],
+        "correctAnswer": "Eske li lwen?",
+        "explanation": "\"Eske li lwen?\" is the natural follow-up after getting directions."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"straight ahead\" in Haitian Creole?",
+        "options": [
+          "agòch",
+          "adwat",
+          "tou dwat",
+          "pre anpil"
+        ],
+        "answerIndex": 2,
+        "explanation": "Tou dwat means straight ahead."
+      },
+      {
+        "type": "check",
+        "title": "Check · ask",
+        "prompt": "How do you ask where the station is?",
+        "options": [
+          "Konbyen yon tikè?",
+          "Ki kote estasyon an ye?",
+          "Ki lè li ye?",
+          "Yon taksi, tanpri"
+        ],
+        "answerIndex": 1,
+        "explanation": "Ki kote … ye? = Where is…? The essential navigation question."
+      }
+    ]
+  },
+  {
+    "id": "travel-phrases-1",
+    "slug": "travel-phrases",
+    "title": "Travel phrases",
+    "description": "Tickets, platforms, and delays.",
+    "unitId": "travel",
+    "direction": "en-ht",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "On the move",
+        "body": "Stations repeat the same patterns: destination, platform, delay. Learn them once."
+      },
+      {
+        "type": "vocab",
+        "title": "Pawòl vwayaj",
+        "items": [
+          {
+            "term": "a ticket",
+            "meaning": "yon tikè"
+          },
+          {
+            "term": "round trip",
+            "meaning": "ale-retounen"
+          },
+          {
+            "term": "one-way",
+            "meaning": "ale sèlman"
+          },
+          {
+            "term": "the train",
+            "meaning": "tren an"
+          },
+          {
+            "term": "the platform",
+            "meaning": "peron an"
+          },
+          {
+            "term": "the flight",
+            "meaning": "vòl la"
+          },
+          {
+            "term": "the connection",
+            "meaning": "korespondans lan"
+          },
+          {
+            "term": "delayed / late",
+            "meaning": "an reta"
+          },
+          {
+            "term": "on time",
+            "meaning": "alè"
+          },
+          {
+            "term": "cancelled",
+            "meaning": "anile"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Nan gichè a",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "A ticket to Port-au-Prince, please.",
+            "target": "Yon tikè pou Pòtoprens, tanpri."
+          },
+          {
+            "source": "A round trip to Cap-Haïtien.",
+            "target": "Yon tikè ale-retounen pou Kap-Ayisyen."
+          },
+          {
+            "source": "Which platform?",
+            "target": "Ki peron?"
+          },
+          {
+            "source": "Is the train delayed?",
+            "target": "Eske tren an an reta?"
+          },
+          {
+            "source": "Where do I transfer?",
+            "target": "Kote m chanje tren?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "yon tikè",
+            "native": "a ticket",
+            "phonetic": "yohn tee-KEH"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "ale-retounen",
+            "native": "round trip",
+            "phonetic": "ah-LEH reh-too-NEN"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "peron an",
+            "native": "the platform",
+            "phonetic": "peh-RON an"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "an reta",
+            "native": "delayed",
+            "phonetic": "an reh-TAH"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "alè",
+            "native": "on time",
+            "phonetic": "ah-LEH"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "anile",
+            "native": "cancelled",
+            "phonetic": "ah-NEE-leh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"A ticket to Port-au-Prince, please.\":",
+        "targetSentence": "Yon tikè pou Pòtoprens, tanpri.",
+        "targetTranslation": "A ticket to Port-au-Prince, please.",
+        "scrambledTokens": [
+          "Pòtoprens",
+          ",",
+          "tanpri",
+          "ale-retounen",
+          "Yon",
+          "tikè",
+          "pou"
+        ],
+        "correctTokens": [
+          "Yon",
+          "tikè",
+          "pou",
+          "Pòtoprens",
+          ",",
+          "tanpri"
+        ],
+        "explanation": "A direct question that instantly tells you if you're running on schedule."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · delay",
+        "prompt": "How do you say \"The train is delayed\"?",
+        "audioText": "Tren an an reta",
+        "options": [
+          "Tren an alè",
+          "Tren an anile",
+          "Tren an an reta",
+          "Tren an plen"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Madam Clerk (Ticket Clerk)",
+        "partnerSays": "Tren an pati nan peron nimewo twa.",
+        "partnerSaysTranslation": "The train leaves from platform three.",
+        "prompt": "Ask if the train is running late:",
+        "options": [
+          "Eske tren an an reta?",
+          "Yon tikè pou Pòtoprens, tanpri.",
+          "Tan an bèl jodi a."
+        ],
+        "correctAnswer": "Eske tren an an reta?",
+        "explanation": "\"Eske tren an an reta?\" asks about delays."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"a ticket\" in Haitian Creole?",
+        "options": [
+          "yon peron",
+          "yon tikè",
+          "yon tren",
+          "yon reta"
+        ],
+        "answerIndex": 1,
+        "explanation": "Yon tikè is a ticket."
+      },
+      {
+        "type": "check",
+        "title": "Check · delay",
+        "prompt": "How do you say \"delayed\" in Haitian Creole?",
+        "options": [
+          "alè",
+          "anile",
+          "an reta",
+          "plen"
+        ],
+        "answerIndex": 2,
+        "explanation": "An reta means late/delayed; alè means on time."
+      }
+    ]
+  },
+  {
+    "id": "hotel-1",
+    "slug": "at-the-hotel",
+    "title": "At the hotel",
+    "description": "Check-in lines and simple room requests.",
+    "unitId": "travel",
+    "direction": "en-ht",
+    "level": "intermediate",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Front desk",
+        "body": "Reservation, nights, and room type cover most check-ins."
+      },
+      {
+        "type": "vocab",
+        "title": "Pawòl otèl",
+        "items": [
+          {
+            "term": "a reservation",
+            "meaning": "yon rezèvasyon"
+          },
+          {
+            "term": "a room",
+            "meaning": "yon chanm"
+          },
+          {
+            "term": "a double room",
+            "meaning": "yon chanm doub"
+          },
+          {
+            "term": "a night",
+            "meaning": "yon nwit"
+          },
+          {
+            "term": "a passport",
+            "meaning": "pasepò a"
+          },
+          {
+            "term": "the key",
+            "meaning": "kle a"
+          },
+          {
+            "term": "breakfast",
+            "meaning": "manje maten an"
+          },
+          {
+            "term": "the elevator",
+            "meaning": "asansè a"
+          },
+          {
+            "term": "the reception",
+            "meaning": "akèy la"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Anrejistreman",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "I have a reservation.",
+            "target": "Mwen gen yon rezèvasyon."
+          },
+          {
+            "source": "Two nights, please.",
+            "target": "De nwit, tanpri."
+          },
+          {
+            "source": "Is breakfast included?",
+            "target": "Eske manje maten an enkli?"
+          },
+          {
+            "source": "What time is checkout?",
+            "target": "Ki lè pou m kite chanm nan?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "yon rezèvasyon",
+            "native": "a reservation",
+            "phonetic": "yohn reh-zehr-vah-SYON"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "yon chanm",
+            "native": "a room",
+            "phonetic": "yohn chahm"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "yon chanm doub",
+            "native": "a double room",
+            "phonetic": "yohn chahm doob"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "manje maten an",
+            "native": "breakfast",
+            "phonetic": "mahn-ZHEH mah-TEN an"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "akèy la",
+            "native": "the front desk",
+            "phonetic": "ah-KAY lah"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "kite chanm nan",
+            "native": "checkout",
+            "phonetic": "kee-TEH chahm nan"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have a reservation.\":",
+        "targetSentence": "Mwen gen yon rezèvasyon.",
+        "targetTranslation": "I have a reservation.",
+        "scrambledTokens": [
+          "yon",
+          "rezèvasyon",
+          "manje",
+          "Mwen",
+          "gen"
+        ],
+        "correctTokens": [
+          "Mwen",
+          "gen",
+          "yon",
+          "rezèvasyon"
+        ],
+        "explanation": "A short statement that confirms your booking and sets check-in in motion."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · breakfast",
+        "prompt": "How do you ask \"Is breakfast included?\"",
+        "audioText": "Eske manje maten an enkli?",
+        "options": [
+          "Eske manje maten an enkli?",
+          "Ki lè pou m kite chanm nan?",
+          "Eske ou gen chanm doub?",
+          "Ki kote asansè a ye?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Madam Réservation (Receptionist)",
+        "partnerSays": "Bonswa. De nwit, dakò?",
+        "partnerSaysTranslation": "Good evening. Two nights, right?",
+        "prompt": "Confirm and ask about breakfast:",
+        "options": [
+          "Wi. Eske manje maten an enkli?",
+          "Non, mwen pa renmen kafe.",
+          "Twa pòm, tanpri."
+        ],
+        "correctAnswer": "Wi. Eske manje maten an enkli?",
+        "explanation": "\"Wi. Eske manje maten an enkli?\" confirms and asks a key check-in question."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"I have a reservation\" in Haitian Creole?",
+        "options": [
+          "Mwen bezwen yon taksi",
+          "Mwen gen yon rezèvasyon",
+          "Chanm nan pare",
+          "Ki kote manje maten an?"
+        ],
+        "answerIndex": 1,
+        "explanation": "Gen = to have; yon rezèvasyon = a reservation."
+      },
+      {
+        "type": "check",
+        "title": "Check · checkout",
+        "prompt": "How do you ask what time checkout is?",
+        "options": [
+          "Ki lè pou m kite chanm nan?",
+          "Ki kote akèy la ye?",
+          "Konbyen yon nwit koute?",
+          "Mwen gen yon rezèvasyon"
+        ],
+        "answerIndex": 0,
+        "explanation": "Ki lè pou m kite chanm nan? = What time should I leave the room? = checkout time."
+      }
+    ]
+  },
+  {
+    "id": "getting-around-1",
+    "slug": "getting-around-town",
+    "title": "Getting around town",
+    "description": "Buses, metro, taxis, and buying tickets.",
+    "unitId": "travel",
+    "direction": "en-ht",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Moving through the city",
+        "body": "Most cities run on a mix of metro, bus, and taxi. A few words cover most fare questions."
+      },
+      {
+        "type": "vocab",
+        "title": "Transpò",
+        "items": [
+          {
+            "term": "the bus",
+            "meaning": "otobis la"
+          },
+          {
+            "term": "a tap-tap (minibus)",
+            "meaning": "yon tap-tap"
+          },
+          {
+            "term": "a taxi",
+            "meaning": "yon taksi"
+          },
+          {
+            "term": "a ticket (single fare)",
+            "meaning": "yon tikè"
+          },
+          {
+            "term": "a stop",
+            "meaning": "yon arè"
+          },
+          {
+            "term": "a station",
+            "meaning": "yon estasyon"
+          },
+          {
+            "term": "I'm getting off here",
+            "meaning": "M ap desann isit la"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Nan wout la",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "Where's the nearest bus stop?",
+            "target": "Ki kote pwochèn arè otobis la ye?"
+          },
+          {
+            "source": "One ticket, please.",
+            "target": "Yon tikè, tanpri."
+          },
+          {
+            "source": "Does this bus go to downtown?",
+            "target": "Eske otobis sa ale nan sant vil la?"
+          },
+          {
+            "source": "I'm getting off at the next stop.",
+            "target": "M ap desann nan pwochèn arè a."
+          },
+          {
+            "source": "Can you call me a taxi?",
+            "target": "Eske ou ka rele yon taksi pou mwen?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "otobis la",
+            "native": "the bus",
+            "phonetic": "oh-toh-BEES lah"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "yon tap-tap",
+            "native": "a shared minibus",
+            "phonetic": "yohn tap-tap"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "yon tikè",
+            "native": "a ticket",
+            "phonetic": "yohn tee-KEH"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "yon arè",
+            "native": "a stop",
+            "phonetic": "yohn ah-REH"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "yon estasyon",
+            "native": "a station",
+            "phonetic": "yohn ehs-tah-SYON"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "M ap desann isit la",
+            "native": "I'm getting off here",
+            "phonetic": "m ap deh-SAN ee-SEET lah"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Does this bus go to downtown?\":",
+        "targetSentence": "Eske otobis sa ale nan sant vil la?",
+        "targetTranslation": "Does this bus go to downtown?",
+        "scrambledTokens": [
+          "nan",
+          "sant",
+          "vil",
+          "la",
+          "yon",
+          "Eske",
+          "otobis",
+          "sa",
+          "ale"
+        ],
+        "correctTokens": [
+          "Eske",
+          "otobis",
+          "sa",
+          "ale",
+          "nan",
+          "sant",
+          "vil",
+          "la"
+        ],
+        "explanation": "The phrase that ends any bus or metro journey gracefully."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · getting off",
+        "prompt": "How do you say \"I'm getting off at the next stop\"?",
+        "audioText": "M ap desann nan pwochèn arè a",
+        "options": [
+          "M ap monte isit la",
+          "M ap desann nan pwochèn arè a",
+          "M ap rete isit la",
+          "Mwen pèdi"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Chofè (Bus Driver)",
+        "partnerSays": "Wi, otobis sa ale nan sant vil la.",
+        "partnerSaysTranslation": "Yes, this bus goes to the city center.",
+        "prompt": "Say you're getting off at the next stop:",
+        "options": [
+          "M ap desann nan pwochèn arè a.",
+          "Yon tikè pou Pòtoprens.",
+          "Mwen pral vizite paran mwen."
+        ],
+        "correctAnswer": "M ap desann nan pwochèn arè a.",
+        "explanation": "\"M ap desann nan pwochèn arè a\" tells the driver where you want to get off."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "A tap-tap in Haiti usually refers to…",
+        "options": [
+          "A single bus ticket",
+          "A shared minibus / pickup truck",
+          "A taxi receipt",
+          "A train delay"
+        ],
+        "answerIndex": 1,
+        "explanation": "A tap-tap is a colorfully decorated shared minibus or pickup truck used as public transport in Haiti."
+      },
+      {
+        "type": "check",
+        "title": "Check · getting off",
+        "prompt": "How do you say \"I'm getting off here\"?",
+        "options": [
+          "M ap monte isit la",
+          "M ap desann isit la",
+          "M ap rete isit la",
+          "M ap rive isit la"
+        ],
+        "answerIndex": 1,
+        "explanation": "Desann means to get off/go down; monte means to get on/go up."
+      }
+    ]
+  },
+  {
+    "id": "pharmacy-health-1",
+    "slug": "pharmacy-and-feeling-unwell",
+    "title": "Pharmacy & feeling unwell",
+    "description": "Describe symptoms and get help at a pharmacy.",
+    "unitId": "health-safety",
+    "direction": "en-ht",
+    "level": "intermediate",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Getting help",
+        "body": "Pharmacies are trained to advise on minor issues before you need a doctor."
+      },
+      {
+        "type": "tip",
+        "title": "Pain pattern",
+        "body": "Each language has a go-to pattern for expressing physical pain.",
+        "bullets": [
+          "Haitian Creole: mwen gen yon doulè nan… (I have pain in…)",
+          "Korean: …이/가 아파요 (… hurts)",
+          "Chinese: …疼 / 我…疼 (… hurts)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Sante",
+        "items": [
+          {
+            "term": "a pharmacy",
+            "meaning": "yon famasi"
+          },
+          {
+            "term": "a doctor",
+            "meaning": "yon doktè"
+          },
+          {
+            "term": "sick",
+            "meaning": "malad"
+          },
+          {
+            "term": "fever",
+            "meaning": "lafyèv"
+          },
+          {
+            "term": "a medicine",
+            "meaning": "yon medikaman"
+          },
+          {
+            "term": "a prescription",
+            "meaning": "yon òdonans"
+          },
+          {
+            "term": "the head",
+            "meaning": "tèt la"
+          },
+          {
+            "term": "the stomach",
+            "meaning": "vant lan"
+          },
+          {
+            "term": "the throat",
+            "meaning": "gòj la"
+          },
+          {
+            "term": "Help!",
+            "meaning": "Ede m!"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Eksplike sentòm yo",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "I don't feel well.",
+            "target": "Mwen pa santi m byen."
+          },
+          {
+            "source": "I have a headache.",
+            "target": "Mwen gen yon doulè nan tèt mwen."
+          },
+          {
+            "source": "I have a fever.",
+            "target": "Mwen gen lafyèv."
+          },
+          {
+            "source": "Do you have something for a sore throat?",
+            "target": "Eske ou gen yon bagay pou gòj?"
+          },
+          {
+            "source": "Call an ambulance!",
+            "target": "Rele yon anbilans!"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "Mwen gen doulè nan tèt",
+            "native": "I have a headache",
+            "phonetic": "mwen gen doo-LEH nan tet"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "Mwen gen doulè nan vant",
+            "native": "I have a stomach ache",
+            "phonetic": "mwen gen doo-LEH nan vant"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "Mwen gen lafyèv",
+            "native": "I have a fever",
+            "phonetic": "mwen gen lah-FYEV"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "malad",
+            "native": "sick",
+            "phonetic": "mah-LAD"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "yon òdonans",
+            "native": "a prescription",
+            "phonetic": "yohn oh-doh-NANS"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "Ede m!",
+            "native": "Help!",
+            "phonetic": "eh-DEH m"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have a headache.\":",
+        "targetSentence": "Mwen gen yon doulè nan tèt mwen.",
+        "targetTranslation": "I have a headache.",
+        "scrambledTokens": [
+          "nan",
+          "tèt",
+          "mwen",
+          "malad",
+          "Mwen",
+          "gen",
+          "yon",
+          "doulè"
+        ],
+        "correctTokens": [
+          "Mwen",
+          "gen",
+          "yon",
+          "doulè",
+          "nan",
+          "tèt",
+          "mwen"
+        ],
+        "explanation": "Describing the most common ache — clear and calm gets you the right remedy."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · stomach",
+        "prompt": "Which phrase means \"I have a stomach ache\"?",
+        "audioText": "Mwen gen doulè nan vant",
+        "options": [
+          "Mwen gen doulè nan tèt",
+          "Mwen gen doulè nan vant",
+          "Mwen gen lafyèv",
+          "Mwen pa santi m byen"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Enfimyè (Pharmacist)",
+        "partnerSays": "Eske ou gen òdonans?",
+        "partnerSaysTranslation": "Do you have a prescription?",
+        "prompt": "Say no and ask for something for your throat:",
+        "options": [
+          "Non. Eske ou gen yon bagay pou gòj?",
+          "Wi, de tikè.",
+          "Mwen se vèjitaryen."
+        ],
+        "correctAnswer": "Non. Eske ou gen yon bagay pou gòj?",
+        "explanation": "\"Non. Eske ou gen yon bagay pou gòj?\" answers and asks for a remedy."
+      },
+      {
+        "type": "check",
+        "title": "Check · pattern",
+        "prompt": "How do you say \"I have a headache\" in Haitian Creole?",
+        "options": [
+          "Mwen gen doulè nan tèt mwen",
+          "Mwen gen tèt la",
+          "Tèt mwen doulè pou mwen",
+          "Mwen nan tèt"
+        ],
+        "answerIndex": 0,
+        "explanation": "Mwen gen yon doulè nan tèt mwen = I have pain in my head."
+      },
+      {
+        "type": "check",
+        "title": "Check · emergency",
+        "prompt": "Which phrase calls for urgent help?",
+        "options": [
+          "Bon apeti",
+          "Ede m!",
+          "Konbyen sa koute?",
+          "Kontan konnen ou"
+        ],
+        "answerIndex": 1,
+        "explanation": "Ede m! is the standard exclamation for calling for help in Haitian Creole."
+      }
+    ]
+  },
+  {
+    "id": "telling-time-1",
+    "slug": "telling-time",
+    "title": "Telling time",
+    "description": "Ask for and give the time, on the hour and beyond.",
+    "unitId": "time-dates",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "What time is it?",
+        "body": "Each language has a key question for asking the time and a standard way to give it."
+      },
+      {
+        "type": "tip",
+        "title": "Minute expressions",
+        "body": "Learn the fixed time expressions for each language.",
+        "bullets": [
+          "Haitian Creole: è (o'clock), e mwatye (half past), e ka (quarter past)",
+          "Korean: 시 (hour), 분 (minute), 반 (half)",
+          "Chinese: 点 (hour), 分 (minute), 半 (half)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Mo pou tan an",
+        "items": [
+          {
+            "term": "What time is it?",
+            "meaning": "Ki lè li ye?"
+          },
+          {
+            "term": "It is … o'clock",
+            "meaning": "Li … è"
+          },
+          {
+            "term": "quarter past",
+            "meaning": "e ka"
+          },
+          {
+            "term": "half past",
+            "meaning": "e mwatye"
+          },
+          {
+            "term": "quarter to",
+            "meaning": "mwens ka"
+          },
+          {
+            "term": "noon",
+            "meaning": "midi"
+          },
+          {
+            "term": "midnight",
+            "meaning": "minui"
+          },
+          {
+            "term": "in the morning",
+            "meaning": "nan maten"
+          },
+          {
+            "term": "in the afternoon",
+            "meaning": "nan apremidi"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Di lè a",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "What time is it?",
+            "target": "Ki lè li ye?"
+          },
+          {
+            "source": "It's three o'clock.",
+            "target": "Li twa è."
+          },
+          {
+            "source": "It's half past seven.",
+            "target": "Li sèt è e mwatye."
+          },
+          {
+            "source": "It's a quarter to nine.",
+            "target": "Li nèf è mwens ka."
+          },
+          {
+            "source": "The train leaves at 2:30.",
+            "target": "Tren an pati a de è e mwatye."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "Ki lè li ye?",
+            "native": "What time is it?",
+            "phonetic": "kee leh lee yeh"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "e ka",
+            "native": "quarter past",
+            "phonetic": "eh kah"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "e mwatye",
+            "native": "half past",
+            "phonetic": "eh MWAH-tyeh"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "mwens ka",
+            "native": "quarter to",
+            "phonetic": "mwens kah"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "midi",
+            "native": "noon",
+            "phonetic": "mee-DEE"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "minui",
+            "native": "midnight",
+            "phonetic": "mee-NWEE"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"It's half past seven.\":",
+        "targetSentence": "Li sèt è e mwatye.",
+        "targetTranslation": "It's half past seven.",
+        "scrambledTokens": [
+          "e",
+          "mwatye",
+          "midi",
+          "Li",
+          "sèt",
+          "è"
+        ],
+        "correctTokens": [
+          "Li",
+          "sèt",
+          "è",
+          "e",
+          "mwatye"
+        ],
+        "explanation": "Hour + \"half\" — the most common time expression in everyday conversation."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · quarter to",
+        "prompt": "How do you say \"quarter to nine\"?",
+        "audioText": "li nèf è mwens ka",
+        "options": [
+          "li nèf è e ka",
+          "li nèf è e mwatye",
+          "li nèf è mwens ka",
+          "li nèf è pil"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Marie (Passer-by)",
+        "partnerSays": "Li de è e mwatye.",
+        "partnerSaysTranslation": "It's half past two.",
+        "prompt": "Thank her and say when your train leaves:",
+        "options": [
+          "Mèsi. Tren an pati a twa è.",
+          "Eskize m, ki lè li ye?",
+          "Sa a twò piti."
+        ],
+        "correctAnswer": "Mèsi. Tren an pati a twa è.",
+        "explanation": "\"Mèsi. Tren an pati a twa è\" thanks her and states the departure time."
+      },
+      {
+        "type": "check",
+        "title": "Check · quarter to",
+        "prompt": "How do you say \"quarter to nine\" in Haitian Creole?",
+        "options": [
+          "li nèf è e ka",
+          "li nèf è mwens ka",
+          "li nèf è e mwatye",
+          "ka de nèf è"
+        ],
+        "answerIndex": 1,
+        "explanation": "Mwens ka subtracts a quarter hour from the stated hour."
+      },
+      {
+        "type": "check",
+        "title": "Check · noon",
+        "prompt": "How do you say \"It's noon\" in Haitian Creole?",
+        "options": [
+          "Li minui",
+          "Li midi",
+          "Li nan maten",
+          "Li ta"
+        ],
+        "answerIndex": 1,
+        "explanation": "Midi is noon; minui is midnight."
+      }
+    ]
+  },
+  {
+    "id": "days-months-1",
+    "slug": "days-months-and-dates",
+    "title": "Days, months & dates",
+    "description": "The calendar and how to say a date.",
+    "unitId": "time-dates",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Calendar basics",
+        "body": "Learning days and months opens up conversations about plans, birthdays, and appointments."
+      },
+      {
+        "type": "vocab",
+        "title": "Jou nan semèn nan",
+        "items": [
+          {
+            "term": "Monday",
+            "meaning": "lendi"
+          },
+          {
+            "term": "Tuesday",
+            "meaning": "madi"
+          },
+          {
+            "term": "Wednesday",
+            "meaning": "mèkredi"
+          },
+          {
+            "term": "Thursday",
+            "meaning": "jedi"
+          },
+          {
+            "term": "Friday",
+            "meaning": "vandredi"
+          },
+          {
+            "term": "Saturday",
+            "meaning": "samdi"
+          },
+          {
+            "term": "Sunday",
+            "meaning": "dimanch"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Mwa yo",
+        "items": [
+          {
+            "term": "January",
+            "meaning": "janvye"
+          },
+          {
+            "term": "February",
+            "meaning": "fevriye"
+          },
+          {
+            "term": "March",
+            "meaning": "mas"
+          },
+          {
+            "term": "April",
+            "meaning": "avril"
+          },
+          {
+            "term": "May",
+            "meaning": "me"
+          },
+          {
+            "term": "June",
+            "meaning": "jen"
+          },
+          {
+            "term": "July",
+            "meaning": "jiyè"
+          },
+          {
+            "term": "August",
+            "meaning": "out"
+          },
+          {
+            "term": "September",
+            "meaning": "septanm"
+          },
+          {
+            "term": "October",
+            "meaning": "oktòb"
+          },
+          {
+            "term": "November",
+            "meaning": "novanm"
+          },
+          {
+            "term": "December",
+            "meaning": "desanm"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Pale de dat",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "What day is today?",
+            "target": "Ki jou nou ye jodi a?"
+          },
+          {
+            "source": "Today is Monday.",
+            "target": "Jodi a se lendi."
+          },
+          {
+            "source": "My birthday is May 1st.",
+            "target": "Dat nesans mwen se premye me."
+          },
+          {
+            "source": "See you on Friday.",
+            "target": "N a wè vandredi."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "lendi",
+            "native": "Monday",
+            "phonetic": "len-DEE"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "madi",
+            "native": "Tuesday",
+            "phonetic": "mah-DEE"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "mèkredi",
+            "native": "Wednesday",
+            "phonetic": "mek-reh-DEE"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "jedi",
+            "native": "Thursday",
+            "phonetic": "zheh-DEE"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "vandredi",
+            "native": "Friday",
+            "phonetic": "vahn-dreh-DEE"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "samdi",
+            "native": "Saturday",
+            "phonetic": "sahm-DEE"
+          },
+          {
+            "id": "hat-7",
+            "foreign": "dimanch",
+            "native": "Sunday",
+            "phonetic": "dee-MANCH"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"My birthday is May 1st.\":",
+        "targetSentence": "Dat nesans mwen se premye me.",
+        "targetTranslation": "My birthday is May 1st.",
+        "scrambledTokens": [
+          "se",
+          "premye",
+          "me",
+          "lendi",
+          "Dat",
+          "nesans",
+          "mwen"
+        ],
+        "correctTokens": [
+          "Dat",
+          "nesans",
+          "mwen",
+          "se",
+          "premye",
+          "me"
+        ],
+        "explanation": "A date in full — once you know the pattern, every date falls into place."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · day",
+        "prompt": "How do you say \"Today is Monday\"?",
+        "audioText": "Jodi a se lendi",
+        "options": [
+          "Jodi a se madi",
+          "Jodi a se lendi",
+          "Jodi a se dimanch",
+          "Jodi a se vandredi"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Pòl (Friend)",
+        "partnerSays": "Ki jou nou ye jodi a?",
+        "partnerSaysTranslation": "What day is today?",
+        "prompt": "Say it's Wednesday:",
+        "options": [
+          "Jodi a se mèkredi.",
+          "Li twa è.",
+          "Mwen gen ven an."
+        ],
+        "correctAnswer": "Jodi a se mèkredi.",
+        "explanation": "\"Jodi a se mèkredi\" answers with the day."
+      },
+      {
+        "type": "check",
+        "title": "Check · order",
+        "prompt": "Which day comes right after mèkredi?",
+        "options": [
+          "madi",
+          "vandredi",
+          "jedi",
+          "samdi"
+        ],
+        "answerIndex": 2,
+        "explanation": "The order: lendi, madi, mèkredi, jedi, vandredi, samdi, dimanch."
+      },
+      {
+        "type": "check",
+        "title": "Check · capitalization",
+        "prompt": "In Haitian Creole, days and months are…",
+        "options": [
+          "Always capitalized",
+          "Never capitalized",
+          "Capitalized only in titles",
+          "Capitalized only at sentence start"
+        ],
+        "answerIndex": 1,
+        "explanation": "Unlike English, Haitian Creole days and months are lowercase."
+      }
+    ]
+  },
+  {
+    "id": "family-1",
+    "slug": "talking-about-family",
+    "title": "Talking about family",
+    "description": "Name family members and describe relationships.",
+    "unitId": "family-friends",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Who's who",
+        "body": "Family vocabulary combines with \"to have\" and possessives for quick descriptions."
+      },
+      {
+        "type": "tip",
+        "title": "Age-relative terms",
+        "body": "Korean and Chinese use different words depending on whether a sibling is older or younger.",
+        "bullets": [
+          "Korean: 오빠/형 (older brother from woman/man's perspective), 언니/누나 (older sister), 남동생/여동생 (younger siblings)",
+          "Chinese: 哥哥/弟弟 (older/younger brother), 姐姐/妹妹 (older/younger sister)",
+          "Haitian Creole: frè (brother), sè (sister) — no age distinction"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Manm fanmi",
+        "items": [
+          {
+            "term": "the family",
+            "meaning": "fanmi an"
+          },
+          {
+            "term": "the father",
+            "meaning": "papa a"
+          },
+          {
+            "term": "the mother",
+            "meaning": "manman an"
+          },
+          {
+            "term": "the brother",
+            "meaning": "frè a"
+          },
+          {
+            "term": "the sister",
+            "meaning": "sè a"
+          },
+          {
+            "term": "the son",
+            "meaning": "pitit gason an"
+          },
+          {
+            "term": "the daughter",
+            "meaning": "pitit fi a"
+          },
+          {
+            "term": "the grandparents",
+            "meaning": "granparan yo"
+          },
+          {
+            "term": "the husband / the wife",
+            "meaning": "mari a / madam lan"
+          },
+          {
+            "term": "a friend",
+            "meaning": "yon zanmi"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Pale de fanmi ou",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "I have two brothers.",
+            "target": "Mwen gen de frè."
+          },
+          {
+            "source": "This is my sister.",
+            "target": "Sa a se sè mwen."
+          },
+          {
+            "source": "My parents live in Port-au-Prince.",
+            "target": "Paran mwen yo rete nan Pòtoprens."
+          },
+          {
+            "source": "Do you have children?",
+            "target": "Eske ou gen timoun?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "papa a",
+            "native": "the father",
+            "phonetic": "pah-PAH ah"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "manman an",
+            "native": "the mother",
+            "phonetic": "mahn-MAN an"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "frè a",
+            "native": "the brother",
+            "phonetic": "freh ah"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "sè a",
+            "native": "the sister",
+            "phonetic": "seh ah"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "granparan yo",
+            "native": "the grandparents",
+            "phonetic": "gran-pah-RAN yoh"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "yon zanmi",
+            "native": "a friend",
+            "phonetic": "yohn zahn-MEE"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have two brothers.\":",
+        "targetSentence": "Mwen gen de frè.",
+        "targetTranslation": "I have two brothers.",
+        "scrambledTokens": [
+          "de",
+          "frè",
+          "papa",
+          "Mwen",
+          "gen"
+        ],
+        "correctTokens": [
+          "Mwen",
+          "gen",
+          "de",
+          "frè"
+        ],
+        "explanation": "A warm, simple statement that naturally invites the other person to share too."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · possessive",
+        "prompt": "How do you say \"my sister\" in Haitian Creole?",
+        "audioText": "sè mwen",
+        "options": [
+          "frè mwen",
+          "sè mwen",
+          "paran mwen",
+          "zanmi mwen"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Jimon (Friend)",
+        "partnerSays": "Kontan konnen ou. Eske ou gen frè ak sè?",
+        "partnerSaysTranslation": "Nice to meet you. Do you have siblings?",
+        "prompt": "Say you have two brothers:",
+        "options": [
+          "Wi, mwen gen de frè.",
+          "Sa a se sè mwen.",
+          "Non, mwen pa grangou."
+        ],
+        "correctAnswer": "Wi, mwen gen de frè.",
+        "explanation": "\"Wi, mwen gen de frè\" answers directly using gen (have)."
+      },
+      {
+        "type": "check",
+        "title": "Check · possessive",
+        "prompt": "How do you say \"my sister\" in Haitian Creole?",
+        "options": [
+          "frè mwen",
+          "sè mwen",
+          "pitit mwen",
+          "zanmi mwen"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sè mwen = my sister. Possessives come after the noun in Haitian Creole."
+      },
+      {
+        "type": "check",
+        "title": "Check · plural",
+        "prompt": "How do you say \"my parents\" in Haitian Creole?",
+        "options": [
+          "papa mwen",
+          "paran mwen yo",
+          "vou paran",
+          "papa ak manman a"
+        ],
+        "answerIndex": 1,
+        "explanation": "Paran mwen yo — yo marks plural, mwen = my."
+      }
+    ]
+  },
+  {
+    "id": "shopping-clothes-1",
+    "slug": "shopping-for-clothes",
+    "title": "Shopping for clothes",
+    "description": "Sizes, trying things on, and asking about price.",
+    "unitId": "shopping",
+    "direction": "en-ht",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Trying it on",
+        "body": "Clothes shopping mixes size, color, and a few polite requests to try things on or ask for a different size."
+      },
+      {
+        "type": "vocab",
+        "title": "Rad",
+        "items": [
+          {
+            "term": "a piece of clothing",
+            "meaning": "yon rad"
+          },
+          {
+            "term": "a shirt",
+            "meaning": "yon chemiz"
+          },
+          {
+            "term": "trousers/pants",
+            "meaning": "yon pantalon"
+          },
+          {
+            "term": "a dress",
+            "meaning": "yon wòb"
+          },
+          {
+            "term": "shoes",
+            "meaning": "soulye"
+          },
+          {
+            "term": "the size",
+            "meaning": "tay la"
+          },
+          {
+            "term": "the fitting room",
+            "meaning": "kabinèt pou eseye a"
+          },
+          {
+            "term": "on sale",
+            "meaning": "an solde"
+          },
+          {
+            "term": "too big / too small",
+            "meaning": "twò gwo / twò piti"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Nan boutik la",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "Do you have this in a size 40?",
+            "target": "Eske ou gen sa nan tay karant?"
+          },
+          {
+            "source": "Can I try it on?",
+            "target": "Eske mwen ka eseye li?"
+          },
+          {
+            "source": "Where is the fitting room?",
+            "target": "Ki kote kabinèt pou eseye a ye?"
+          },
+          {
+            "source": "It's too small.",
+            "target": "Li twò piti."
+          },
+          {
+            "source": "Do you have a bigger size?",
+            "target": "Eske ou gen yon plis gwo tay?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "tay la",
+            "native": "the size",
+            "phonetic": "ty lah"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "kabinèt pou eseye a",
+            "native": "the fitting room",
+            "phonetic": "kah-bee-NEH poo eh-SEH-yeh ah"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "an solde",
+            "native": "on sale",
+            "phonetic": "an sol-DEH"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "twò gwo",
+            "native": "too big",
+            "phonetic": "twoh groh"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "twò piti",
+            "native": "too small",
+            "phonetic": "twoh pee-TEE"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "yon wòb",
+            "native": "a dress",
+            "phonetic": "yohn wohb"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Do you have this in a size 40?\":",
+        "targetSentence": "Eske ou gen sa nan tay karant?",
+        "targetTranslation": "Do you have this in a size 40?",
+        "scrambledTokens": [
+          "nan",
+          "tay",
+          "karant",
+          "kabinèt",
+          "Eske",
+          "ou",
+          "gen",
+          "sa"
+        ],
+        "correctTokens": [
+          "Eske",
+          "ou",
+          "gen",
+          "sa",
+          "nan",
+          "tay",
+          "karant"
+        ],
+        "explanation": "The one question that keeps a shopping trip moving in the right direction."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · size",
+        "prompt": "How do you say \"It's too small\"?",
+        "audioText": "Li twò piti",
+        "options": [
+          "Li twò gwo",
+          "Li twò piti",
+          "Li an solde",
+          "Li pafè"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Claudette (Shop Clerk)",
+        "partnerSays": "Oke. Kabinèt pou eseye a se la bò.",
+        "partnerSaysTranslation": "OK. The fitting room is over there.",
+        "prompt": "After trying it on, say it's too small and ask for a bigger size:",
+        "options": [
+          "Li twò piti. Eske ou gen yon plis gwo tay?",
+          "Eske mwen ka eseye li?",
+          "Mwen ta renmen wouj la."
+        ],
+        "correctAnswer": "Li twò piti. Eske ou gen yon plis gwo tay?",
+        "explanation": "\"Li twò piti. Eske ou gen yon plis gwo tay?\" describes the problem and asks for the next size."
+      },
+      {
+        "type": "check",
+        "title": "Check · size",
+        "prompt": "How do you ask \"do you have this in size 40?\"",
+        "options": [
+          "Eske ou gen sa nan tay karant?",
+          "Li twò gwo?",
+          "Ki kote kabinèt pou eseye a?",
+          "An solde, tanpri."
+        ],
+        "answerIndex": 0,
+        "explanation": "Tay means size; nan tay karant = in size 40."
+      },
+      {
+        "type": "check",
+        "title": "Check · too small",
+        "prompt": "How do you say \"It's too small\" in Haitian Creole?",
+        "options": [
+          "Li twò gwo",
+          "Li twò piti",
+          "Li an solde",
+          "Li pafè"
+        ],
+        "answerIndex": 1,
+        "explanation": "Twò piti = too small; twò gwo = too big."
+      }
+    ]
+  },
+  {
+    "id": "articles-gender-1",
+    "slug": "articles-and-grammar",
+    "title": "Grammar: articles & markers",
+    "description": "How these languages mark nouns and structure sentences.",
+    "unitId": "grammar-core",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 18,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Nouns and their markers",
+        "body": "Haitian Creole, Korean, and Chinese each handle definiteness and nouns very differently from European languages."
+      },
+      {
+        "type": "tip",
+        "title": "Key differences",
+        "body": "No language in this group has gender like French or Spanish.",
+        "bullets": [
+          "Haitian Creole: definite article la/a/an comes AFTER the noun; no gender",
+          "Korean: no articles; topic (은/는) and subject (이/가) markers do important grammar work",
+          "Chinese: no articles, no gender; measure words are required between numbers and nouns"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Atik an kreyòl",
+        "items": [
+          {
+            "term": "the table (definite)",
+            "meaning": "tab la"
+          },
+          {
+            "term": "a table (indefinite)",
+            "meaning": "yon tab"
+          },
+          {
+            "term": "the house (after vowel)",
+            "meaning": "kay la → kay a"
+          },
+          {
+            "term": "the water",
+            "meaning": "dlo a"
+          },
+          {
+            "term": "the children",
+            "meaning": "timoun yo"
+          },
+          {
+            "term": "some friends",
+            "meaning": "kèk zanmi"
+          },
+          {
+            "term": "the book",
+            "meaning": "liv la"
+          },
+          {
+            "term": "a book",
+            "meaning": "yon liv"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "la / a / an",
+            "native": "the (definite article, after noun)",
+            "phonetic": "lah / ah / an"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "yon",
+            "native": "a/an (indefinite article)",
+            "phonetic": "yohn"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "yo",
+            "native": "the (plural marker)",
+            "phonetic": "yoh"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "tab la",
+            "native": "the table",
+            "phonetic": "tab lah"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "yon tab",
+            "native": "a table",
+            "phonetic": "yohn tab"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"The table\":",
+        "targetSentence": "tab la",
+        "targetTranslation": "The table",
+        "scrambledTokens": [
+          "la",
+          "yon",
+          "tab"
+        ],
+        "correctTokens": [
+          "tab",
+          "la"
+        ],
+        "explanation": "A compact phrase that puts the article or gender rule into immediate practice."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · definite",
+        "prompt": "Which means \"the table\" (definite) in Haitian Creole?",
+        "audioText": "tab la",
+        "options": [
+          "yon tab",
+          "tab la",
+          "tab yo",
+          "tab"
+        ],
+        "answerIndex": 1,
+        "explanation": "The definite article la follows the noun: tab la = the table."
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Pwofesè Marc (Teacher)",
+        "partnerSays": "Ki jan ou di \"the table\" an kreyòl?",
+        "partnerSaysTranslation": "How do you say \"the table\" in Creole?",
+        "prompt": "Answer with the correct form:",
+        "options": [
+          "Tab la.",
+          "Tab.",
+          "Yon tab."
+        ],
+        "correctAnswer": "Tab la.",
+        "explanation": "In Haitian Creole, the definite article la/a/an comes AFTER the noun: tab la = the table. There is no gender."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "Where does the definite article go in Haitian Creole?",
+        "options": [
+          "Before the noun",
+          "After the noun",
+          "Before the verb",
+          "At the end of the sentence"
+        ],
+        "answerIndex": 1,
+        "explanation": "In Haitian Creole, the definite article (la/a/an) always follows the noun: tab la, kay a."
+      },
+      {
+        "type": "check",
+        "title": "Check · plural",
+        "prompt": "How do you make a noun plural and definite in Haitian Creole?",
+        "options": [
+          "Add la",
+          "Add yo",
+          "Add yon",
+          "Add an"
+        ],
+        "answerIndex": 1,
+        "explanation": "Yo marks plural definiteness: timoun yo = the children."
+      },
+      {
+        "type": "check",
+        "title": "Check · gender",
+        "prompt": "Which statement about Haitian Creole gender is correct?",
+        "options": [
+          "Has masculine and feminine gender like French",
+          "Has no grammatical gender",
+          "Has three genders like German",
+          "Has gender that changes adjective forms"
+        ],
+        "answerIndex": 1,
+        "explanation": "Haitian Creole has no grammatical gender. Tab and kay are just nouns with no gender."
+      }
+    ]
+  },
+  {
+    "id": "etre-avoir-1",
+    "slug": "to-be-and-to-have",
+    "title": "To be & to have",
+    "description": "The core verbs — and how they differ across languages.",
+    "unitId": "grammar-core",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 19,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Workhorses",
+        "body": "The concepts of \"to be\" and \"to have\" exist in all three languages but work quite differently."
+      },
+      {
+        "type": "vocab",
+        "title": "Se / Ye — to be",
+        "items": [
+          {
+            "term": "I am (equation)",
+            "meaning": "Mwen se…"
+          },
+          {
+            "term": "he / she is",
+            "meaning": "Li se…"
+          },
+          {
+            "term": "we are",
+            "meaning": "Nou se…"
+          },
+          {
+            "term": "I am (predicate, end)",
+            "meaning": "Mwen … ye"
+          },
+          {
+            "term": "is there / there is",
+            "meaning": "genyen (gen)"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Gen — to have",
+        "items": [
+          {
+            "term": "I have",
+            "meaning": "Mwen gen"
+          },
+          {
+            "term": "you have",
+            "meaning": "Ou gen"
+          },
+          {
+            "term": "he / she has",
+            "meaning": "Li gen"
+          },
+          {
+            "term": "we have",
+            "meaning": "Nou gen"
+          },
+          {
+            "term": "they have",
+            "meaning": "Yo gen"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Nan fraz",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "I am tired.",
+            "target": "Mwen fatige."
+          },
+          {
+            "source": "She is Haitian.",
+            "target": "Li se Ayisyen."
+          },
+          {
+            "source": "I have a reservation.",
+            "target": "Mwen gen yon rezèvasyon."
+          },
+          {
+            "source": "We have time.",
+            "target": "Nou gen tan."
+          },
+          {
+            "source": "They are hungry.",
+            "target": "Yo grangou."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "Mwen se…",
+            "native": "I am… (identity)",
+            "phonetic": "mwen seh"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "Mwen fatige",
+            "native": "I am tired",
+            "phonetic": "mwen fah-tee-GEH"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "Mwen gen",
+            "native": "I have",
+            "phonetic": "mwen gen"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "Nou gen",
+            "native": "we have",
+            "phonetic": "noo gen"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "Yo gen",
+            "native": "they have",
+            "phonetic": "yoh gen"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "grangou",
+            "native": "hungry (adjective)",
+            "phonetic": "gran-GOO"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I am tired.\":",
+        "targetSentence": "Mwen fatige.",
+        "targetTranslation": "I am tired.",
+        "scrambledTokens": [
+          "fatige",
+          "grangou",
+          "Mwen"
+        ],
+        "correctTokens": [
+          "Mwen",
+          "fatige"
+        ],
+        "explanation": "Two core verbs in a single sentence — a powerful combination to internalize."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · identity",
+        "prompt": "How do you say \"She is Haitian\"?",
+        "audioText": "Li se Ayisyen",
+        "options": [
+          "Li se Ayisyen",
+          "Li gen Ayisyen",
+          "Li fatige",
+          "Li pa Ayisyen"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Claudine (Friend)",
+        "partnerSays": "Ki jan ou ye?",
+        "partnerSaysTranslation": "How are you?",
+        "prompt": "Say you're tired and hungry:",
+        "options": [
+          "Mwen fatige e mwen grangou.",
+          "Mwen grangou e mwen fatige se.",
+          "Fatige mwen ye e grangou mwen gen."
+        ],
+        "correctAnswer": "Mwen fatige e mwen grangou.",
+        "explanation": "Both tiredness and hunger use the same structure with mwen + adjective in Haitian Creole."
+      },
+      {
+        "type": "check",
+        "title": "Check · se",
+        "prompt": "How do you say \"I am Haitian\" (identity)?",
+        "options": [
+          "Mwen gen Ayisyen",
+          "Mwen se Ayisyen",
+          "Mwen fatige Ayisyen",
+          "Mwen Ayisyen gen"
+        ],
+        "answerIndex": 1,
+        "explanation": "Se is used for identity: Mwen se Ayisyen = I am Haitian."
+      },
+      {
+        "type": "check",
+        "title": "Check · gen",
+        "prompt": "\"Mwen gen yon rezèvasyon\" means…",
+        "options": [
+          "I am a reservation",
+          "I have a reservation",
+          "I was a reservation",
+          "I want a reservation"
+        ],
+        "answerIndex": 1,
+        "explanation": "Gen = to have; Mwen gen yon rezèvasyon = I have a reservation."
+      },
+      {
+        "type": "check",
+        "title": "Check · adjective",
+        "prompt": "How do you say \"they are hungry\" in Haitian Creole?",
+        "options": [
+          "Yo gen grangou",
+          "Yo se grangou",
+          "Yo grangou",
+          "Yo ap grangou"
+        ],
+        "answerIndex": 2,
+        "explanation": "In Haitian Creole, adjectives follow the subject directly: Yo grangou (they hungry = they are hungry)."
+      }
+    ]
+  },
+  {
+    "id": "regular-er-verbs-1",
+    "slug": "verbs-and-patterns",
+    "title": "Verbs & patterns",
+    "description": "How verbs work in these three languages.",
+    "unitId": "grammar-core",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 18,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Verb patterns",
+        "body": "Haitian Creole verbs don't conjugate at all — the biggest advantage for learners! Korean and Chinese also avoid the complexity of European conjugation."
+      },
+      {
+        "type": "tip",
+        "title": "Verb patterns compared",
+        "body": "These languages express tense and aspect very differently.",
+        "bullets": [
+          "Haitian Creole: verbs never change. Aspect markers (ap, te, pral) are added.",
+          "Korean: verbs conjugate for politeness and tense, but not for person or gender.",
+          "Chinese: verbs never change. Tense is shown by time words and aspect particles (了, 过, 着)."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Vèb & aspè (aspect markers)",
+        "items": [
+          {
+            "term": "I speak (now)",
+            "meaning": "Mwen ap pale"
+          },
+          {
+            "term": "I spoke (past)",
+            "meaning": "Mwen te pale"
+          },
+          {
+            "term": "I will speak",
+            "meaning": "Mwen pral pale"
+          },
+          {
+            "term": "she eats (now)",
+            "meaning": "Li ap manje"
+          },
+          {
+            "term": "we worked (past)",
+            "meaning": "Nou te travay"
+          },
+          {
+            "term": "they will go",
+            "meaning": "Yo pral ale"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Vèb komen",
+        "items": [
+          {
+            "term": "to speak",
+            "meaning": "pale"
+          },
+          {
+            "term": "to eat",
+            "meaning": "manje"
+          },
+          {
+            "term": "to go",
+            "meaning": "ale"
+          },
+          {
+            "term": "to work",
+            "meaning": "travay"
+          },
+          {
+            "term": "to see",
+            "meaning": "wè"
+          },
+          {
+            "term": "to understand",
+            "meaning": "konprann"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Nan itilizasyon",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "I speak a little Creole.",
+            "target": "Mwen pale yon ti kreyòl."
+          },
+          {
+            "source": "We work in Port-au-Prince.",
+            "target": "Nou travay nan Pòtoprens."
+          },
+          {
+            "source": "She is eating now.",
+            "target": "Li ap manje kounye a."
+          },
+          {
+            "source": "They went home.",
+            "target": "Yo te ale lakay."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "ap + vèb",
+            "native": "progressive (now)",
+            "phonetic": "ap"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "te + vèb",
+            "native": "past tense",
+            "phonetic": "teh"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "pral + vèb",
+            "native": "future tense",
+            "phonetic": "pral"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "mwen pale",
+            "native": "I speak (simple)",
+            "phonetic": "mwen PAH-leh"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "mwen ap pale",
+            "native": "I am speaking",
+            "phonetic": "mwen ap PAH-leh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I speak a little Creole.\":",
+        "targetSentence": "Mwen pale yon ti kreyòl.",
+        "targetTranslation": "I speak a little Creole.",
+        "scrambledTokens": [
+          "ti",
+          "kreyòl",
+          "ap",
+          "Mwen",
+          "pale",
+          "yon"
+        ],
+        "correctTokens": [
+          "Mwen",
+          "pale",
+          "yon",
+          "ti",
+          "kreyòl"
+        ],
+        "explanation": "The verb pattern in action — master this form and unlock a whole verb family."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · aspect",
+        "prompt": "Which form means \"I am speaking right now\" (progressive)?",
+        "audioText": "Mwen ap pale",
+        "options": [
+          "Mwen te pale",
+          "Mwen pral pale",
+          "Mwen ap pale",
+          "Mwen pale"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Frantz (Friend)",
+        "partnerSays": "Eske ou pale kreyòl?",
+        "partnerSaysTranslation": "Do you speak Creole?",
+        "prompt": "Say yes, you speak a little Creole:",
+        "options": [
+          "Wi, mwen pale yon ti kreyòl.",
+          "Wi, ou pale yon ti kreyòl.",
+          "Wi, nou pale yon ti kreyòl."
+        ],
+        "correctAnswer": "Wi, mwen pale yon ti kreyòl.",
+        "explanation": "In Haitian Creole, verbs don't conjugate — mwen pale means \"I speak\". Pronouns show the subject."
+      },
+      {
+        "type": "check",
+        "title": "Check · no conjugation",
+        "prompt": "In Haitian Creole, do verbs change based on the subject (I, you, he…)?",
+        "options": [
+          "Yes, like French verbs",
+          "No, verbs never change form",
+          "Yes, for gender",
+          "Only in the past tense"
+        ],
+        "answerIndex": 1,
+        "explanation": "Haitian Creole verbs never conjugate. Mwen pale = I speak; Li pale = She speaks. Same verb form."
+      },
+      {
+        "type": "check",
+        "title": "Check · aspect",
+        "prompt": "What does \"ap\" signal before a verb in Haitian Creole?",
+        "options": [
+          "Past tense",
+          "Future tense",
+          "Present progressive (happening now)",
+          "Negative"
+        ],
+        "answerIndex": 2,
+        "explanation": "Ap marks the present progressive: mwen ap manje = I am eating right now."
+      }
+    ]
+  },
+  {
+    "id": "adjective-agreement-1",
+    "slug": "adjectives-and-descriptions",
+    "title": "Adjectives & descriptions",
+    "description": "How descriptive words work in these languages.",
+    "unitId": "grammar-core",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Describing things",
+        "body": "None of these three languages has the gender agreement of European Romance languages, which simplifies adjective use significantly."
+      },
+      {
+        "type": "tip",
+        "title": "Key rules",
+        "body": "Adjectives work simply in these languages.",
+        "bullets": [
+          "Haitian Creole: adjectives never change for gender or number",
+          "Korean: adjectives conjugate like verbs (for tense/politeness) but not for gender/number of the noun",
+          "Chinese: adjectives don't change form; predicative adjectives usually take 很 (hěn)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Adjektif komen",
+        "items": [
+          {
+            "term": "tall / big",
+            "meaning": "wo"
+          },
+          {
+            "term": "small",
+            "meaning": "piti"
+          },
+          {
+            "term": "happy",
+            "meaning": "kontan"
+          },
+          {
+            "term": "beautiful",
+            "meaning": "bèl"
+          },
+          {
+            "term": "good",
+            "meaning": "bon"
+          },
+          {
+            "term": "bad",
+            "meaning": "move"
+          },
+          {
+            "term": "new",
+            "meaning": "nouvo"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Dekri moun ak bagay",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "He is tall.",
+            "target": "Li wo."
+          },
+          {
+            "source": "She is tall.",
+            "target": "Li wo."
+          },
+          {
+            "source": "They are happy.",
+            "target": "Yo kontan."
+          },
+          {
+            "source": "It's a beautiful city.",
+            "target": "Se yon bèl vil."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "wo",
+            "native": "tall/big",
+            "phonetic": "woh"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "piti",
+            "native": "small",
+            "phonetic": "pee-TEE"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "kontan",
+            "native": "happy",
+            "phonetic": "kon-TAN"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "bèl",
+            "native": "beautiful",
+            "phonetic": "bel"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "bon",
+            "native": "good",
+            "phonetic": "bon"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "move",
+            "native": "bad/wrong",
+            "phonetic": "moo-VEH"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"She is small.\":",
+        "targetSentence": "Li piti.",
+        "targetTranslation": "She is small.",
+        "scrambledTokens": [
+          "piti",
+          "wo",
+          "Li"
+        ],
+        "correctTokens": [
+          "Li",
+          "piti"
+        ],
+        "explanation": "Agreement at work: the adjective shifts to match the noun it describes."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · adjective",
+        "prompt": "Which adjective form goes with \"sè\" (sister)?",
+        "audioText": "Li wo",
+        "options": [
+          "Li wo",
+          "Li wòz",
+          "Li bèl bèl",
+          "Li wos"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Yolande (Friend)",
+        "partnerSays": "Frè mwen wo. E sè ou?",
+        "partnerSaysTranslation": "My brother is tall. And your sister?",
+        "prompt": "Describe your sister the same way:",
+        "options": [
+          "Li wo tou.",
+          "Li wòz tou.",
+          "Li wo tous."
+        ],
+        "correctAnswer": "Li wo tou.",
+        "explanation": "In Haitian Creole, adjectives do NOT change for gender or number: wo works for everyone."
+      },
+      {
+        "type": "check",
+        "title": "Check · no agreement",
+        "prompt": "In Haitian Creole, how does \"tall\" (wo) change for a woman?",
+        "options": [
+          "Becomes wòz",
+          "Becomes wow",
+          "Stays as wo — no change",
+          "Becomes wos"
+        ],
+        "answerIndex": 2,
+        "explanation": "Haitian Creole adjectives never change for gender or number: wo works for everyone."
+      },
+      {
+        "type": "check",
+        "title": "Check · position",
+        "prompt": "Where do adjectives usually go in Haitian Creole?",
+        "options": [
+          "Before the noun",
+          "After the noun",
+          "Either position",
+          "At the end of sentence"
+        ],
+        "answerIndex": 1,
+        "explanation": "Haitian Creole adjectives typically follow the noun: yon gason wo (a tall man), but can precede: bèl bagay (beautiful thing)."
+      }
+    ]
+  },
+  {
+    "id": "negation-1",
+    "slug": "saying-no",
+    "title": "Saying no",
+    "description": "Turn any sentence negative with simple patterns.",
+    "unitId": "grammar-core",
+    "direction": "en-ht",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Negation patterns",
+        "body": "Each language has a characteristic way to negate a verb. Learn the pattern, apply it everywhere."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "Negation is relatively straightforward in all three languages.",
+        "bullets": [
+          "Haitian Creole: pa before the verb",
+          "Korean: 안 before verb/adjective, or -지 않다 after the stem",
+          "Chinese: 不 (bù) for general negation, 没 (méi) for past/existence"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Mo negatif",
+        "items": [
+          {
+            "term": "not",
+            "meaning": "pa"
+          },
+          {
+            "term": "never",
+            "meaning": "pa janm"
+          },
+          {
+            "term": "no longer",
+            "meaning": "pa ankò"
+          },
+          {
+            "term": "nothing",
+            "meaning": "anyen"
+          },
+          {
+            "term": "nobody",
+            "meaning": "pèsonn"
+          },
+          {
+            "term": "neither…nor…",
+            "meaning": "ni…ni…"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Fraz negatif",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "I don't speak French.",
+            "target": "Mwen pa pale fransè."
+          },
+          {
+            "source": "I don't like coffee.",
+            "target": "Mwen pa renmen kafe."
+          },
+          {
+            "source": "I never eat meat.",
+            "target": "Mwen pa janm manje vyann."
+          },
+          {
+            "source": "There's nothing here.",
+            "target": "Pa gen anyen isit la."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "pa",
+            "native": "not",
+            "phonetic": "pah"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "pa janm",
+            "native": "never",
+            "phonetic": "pah zhahm"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "pa ankò",
+            "native": "no longer",
+            "phonetic": "pah ahn-KOH"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "anyen",
+            "native": "nothing",
+            "phonetic": "ahn-YEN"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "pèsonn",
+            "native": "nobody",
+            "phonetic": "peh-SON"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "ni…ni…",
+            "native": "neither…nor…",
+            "phonetic": "nee…nee…"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I don't like coffee.\":",
+        "targetSentence": "Mwen pa renmen kafe.",
+        "targetTranslation": "I don't like coffee.",
+        "scrambledTokens": [
+          "renmen",
+          "kafe",
+          "anyen",
+          "Mwen",
+          "pa"
+        ],
+        "correctTokens": [
+          "Mwen",
+          "pa",
+          "renmen",
+          "kafe"
+        ],
+        "explanation": "The negation pattern in its simplest form — learn it once, use it everywhere."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · pa",
+        "prompt": "Which is the correct negative form?",
+        "audioText": "Mwen pa renmen kafe",
+        "options": [
+          "Mwen renmen pa kafe",
+          "Mwen pa renmen kafe",
+          "Pa mwen renmen kafe",
+          "Mwen renmen kafe pa"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Bernard (Friend)",
+        "partnerSays": "Eske ou renmen kafe?",
+        "partnerSaysTranslation": "Do you like coffee?",
+        "prompt": "Say no, you don't like coffee:",
+        "options": [
+          "Non, mwen pa renmen kafe.",
+          "Non, mwen renmen pa kafe.",
+          "Non, pa mwen renmen kafe."
+        ],
+        "correctAnswer": "Non, mwen pa renmen kafe.",
+        "explanation": "Haitian Creole negation: pa goes directly after the subject pronoun and before the verb."
+      },
+      {
+        "type": "check",
+        "title": "Check · placement",
+        "prompt": "Where does \"pa\" go in a Haitian Creole negative sentence?",
+        "options": [
+          "After the verb",
+          "Right before the verb",
+          "At the end",
+          "Before the subject"
+        ],
+        "answerIndex": 1,
+        "explanation": "Pa goes directly before the verb: mwen pa pale, mwen pa renmen."
+      },
+      {
+        "type": "check",
+        "title": "Check · never",
+        "prompt": "How do you say \"I never eat\" in Haitian Creole?",
+        "options": [
+          "Mwen pa manje",
+          "Mwen pa janm manje",
+          "Mwen pa ankò manje",
+          "Mwen pa anyen manje"
+        ],
+        "answerIndex": 1,
+        "explanation": "Pa janm = never: mwen pa janm manje = I never eat."
+      }
+    ]
+  },
+  {
+    "id": "asking-questions-1",
+    "slug": "asking-questions",
+    "title": "Asking questions",
+    "description": "Question words and patterns.",
+    "unitId": "grammar-core",
+    "direction": "en-ht",
+    "level": "intermediate",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Asking around",
+        "body": "Each language has its own set of question words and question-formation patterns."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "Yes/no and information questions each have their own structure.",
+        "bullets": [
+          "Haitian Creole: eske at the start for yes/no; question word replaces the unknown element",
+          "Korean: question words in place of what they ask; -요? at the end for polite questions",
+          "Chinese: question words in place of what they ask; 吗 (ma) at the end for yes/no questions"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Mo kesyon",
+        "items": [
+          {
+            "term": "who",
+            "meaning": "ki moun"
+          },
+          {
+            "term": "what",
+            "meaning": "kisa / ki sa"
+          },
+          {
+            "term": "where",
+            "meaning": "ki kote"
+          },
+          {
+            "term": "when",
+            "meaning": "ki lè"
+          },
+          {
+            "term": "why",
+            "meaning": "poukisa"
+          },
+          {
+            "term": "how",
+            "meaning": "kijan"
+          },
+          {
+            "term": "how much / how many",
+            "meaning": "konbyen"
+          },
+          {
+            "term": "which",
+            "meaning": "ki"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Kesyon egzanp",
+        "sourceLabel": "en-ht",
+        "phrases": [
+          {
+            "source": "Do you speak English?",
+            "target": "Eske ou pale anglè?"
+          },
+          {
+            "source": "Where do you live?",
+            "target": "Ki kote ou rete?"
+          },
+          {
+            "source": "Why are you laughing?",
+            "target": "Poukisa ou ap ri?"
+          },
+          {
+            "source": "How much does it cost?",
+            "target": "Konbyen sa koute?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Haitian Creole word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hat-1",
+            "foreign": "ki moun",
+            "native": "who",
+            "phonetic": "kee moon"
+          },
+          {
+            "id": "hat-2",
+            "foreign": "kisa",
+            "native": "what",
+            "phonetic": "kee-SAH"
+          },
+          {
+            "id": "hat-3",
+            "foreign": "ki kote",
+            "native": "where",
+            "phonetic": "kee koh-TEH"
+          },
+          {
+            "id": "hat-4",
+            "foreign": "ki lè",
+            "native": "when",
+            "phonetic": "kee leh"
+          },
+          {
+            "id": "hat-5",
+            "foreign": "poukisa",
+            "native": "why",
+            "phonetic": "poo-kee-SAH"
+          },
+          {
+            "id": "hat-6",
+            "foreign": "kijan",
+            "native": "how",
+            "phonetic": "kee-ZHAHN"
+          },
+          {
+            "id": "hat-7",
+            "foreign": "konbyen",
+            "native": "how much",
+            "phonetic": "kon-BYAN"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Do you speak English?\":",
+        "targetSentence": "Eske ou pale anglè?",
+        "targetTranslation": "Do you speak English?",
+        "scrambledTokens": [
+          "pale",
+          "anglè",
+          "kisa",
+          "Eske",
+          "ou"
+        ],
+        "correctTokens": [
+          "Eske",
+          "ou",
+          "pale",
+          "anglè"
+        ],
+        "explanation": "A well-formed question using the key structure — polite, clear, and natural."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · why",
+        "prompt": "How do you say \"why\" in Haitian Creole?",
+        "audioText": "poukisa",
+        "options": [
+          "ki lè",
+          "kijan",
+          "poukisa",
+          "ki moun"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Odette (Friend)",
+        "partnerSays": "Eske ou gen yon kesyon?",
+        "partnerSaysTranslation": "Do you have a question?",
+        "prompt": "Ask where she lives:",
+        "options": [
+          "Ki kote ou rete?",
+          "Ki kote rete ou?",
+          "Ou rete ki kote?"
+        ],
+        "correctAnswer": "Ki kote ou rete?",
+        "explanation": "Question word + subject + verb is the standard order in Haitian Creole questions."
+      },
+      {
+        "type": "check",
+        "title": "Check · word meaning",
+        "prompt": "How do you say \"why\" in Haitian Creole?",
+        "options": [
+          "ki lè",
+          "kijan",
+          "poukisa",
+          "ki moun"
+        ],
+        "answerIndex": 2,
+        "explanation": "Poukisa = why; it pairs with paske (because) in the answer."
+      },
+      {
+        "type": "check",
+        "title": "Check · yes/no question",
+        "prompt": "Which word forms yes/no questions in Haitian Creole?",
+        "options": [
+          "kisa",
+          "ki kote",
+          "eske",
+          "konbyen"
+        ],
+        "answerIndex": 2,
+        "explanation": "Eske at the start of a statement turns it into a yes/no question."
+      }
+    ]
   }
 ]

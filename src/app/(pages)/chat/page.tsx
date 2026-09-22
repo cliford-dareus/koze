@@ -20,7 +20,7 @@ export default function AiChat() {
 
             <Link
                 href="/chat/practice"
-                className="mt-6 w-full rounded-xl border border-border bg-card p-4 shadow-soft transition-transform duration-150 hover:-translate-y-0.5"
+                className="mt-6 w-full rounded-xl border border-border bg-background p-4 shadow-soft transition-transform duration-150 hover:-translate-y-0.5"
             >
                 <span className="text-2xl" aria-hidden>
                     <MessageSquare className="text-primary" />
@@ -48,7 +48,7 @@ export default function AiChat() {
                         <Link
                             key={topic.slug}
                             href={`/chat/${topic.slug}`}
-                            className="group rounded-xl border border-border bg-card p-4 shadow-soft transition-transform duration-150 hover:-translate-y-0.5"
+                            className="group rounded-xl border border-border bg-background p-4 shadow-soft transition-transform duration-150 hover:-translate-y-0.5"
                         >
                             <span className="text-2xl" aria-hidden>
                                 {topic.emoji}

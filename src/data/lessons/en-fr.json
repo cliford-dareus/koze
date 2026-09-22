@@ -119,46 +119,65 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the greetings",
+                "prompt": "Match each French greeting with its English meaning:",
                 "pairs": [
                     {
-                        "left": "Hello / good morning",
-                        "right": "Bonjour"
+                        "id": "fra-1",
+                        "foreign": "Bonjour",
+                        "native": "Hello / good morning",
+                        "phonetic": "bohn-ZHOOR"
                     },
                     {
-                        "left": "Good evening",
-                        "right": "Bonsoir"
+                        "id": "fra-2",
+                        "foreign": "Bonsoir",
+                        "native": "Good evening",
+                        "phonetic": "bohn-SWAHR"
                     },
                     {
-                        "left": "Hi / bye (informal)",
-                        "right": "Salut"
+                        "id": "fra-3",
+                        "foreign": "Salut",
+                        "native": "Hi / bye (informal)",
+                        "phonetic": "sah-LÜ"
                     },
                     {
-                        "left": "Goodbye",
-                        "right": "Au revoir"
+                        "id": "fra-4",
+                        "foreign": "Au revoir",
+                        "native": "Goodbye",
+                        "phonetic": "oh ruh-VWAHR"
                     },
                     {
-                        "left": "Good night",
-                        "right": "Bonne nuit"
+                        "id": "fra-5",
+                        "foreign": "Bonne nuit",
+                        "native": "Good night",
+                        "phonetic": "bun NWEE"
                     },
                     {
-                        "left": "See you soon",
-                        "right": "À bientôt"
+                        "id": "fra-6",
+                        "foreign": "À bientôt",
+                        "native": "See you soon",
+                        "phonetic": "ah byan-TOH"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “Hello, how are you?”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Hello, how are you?\":",
+                "targetSentence": "Bonjour, comment allez-vous ?",
+                "targetTranslation": "Hello, how are you?",
+                "scrambledTokens": [
+                    "comment",
+                    "allez-vous",
+                    "Bonsoir",
+                    "Bonjour",
+                    ","
+                ],
+                "correctTokens": [
                     "Bonjour",
                     ",",
                     "comment",
-                    "allez-vous",
-                    "?"
+                    "allez-vous"
                 ],
-                "answer": "Bonjour, comment allez-vous ?"
+                "explanation": "A warm, time-appropriate greeting — the foundation of any first impression."
             },
             {
                 "type": "listen",
@@ -176,22 +195,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "A first meeting",
-                "context": "You meet a colleague’s parent for the first time.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Bonjour, comment allez-vous ?"
-                    },
-                    {
-                        "speaker": "Parent",
-                        "text": "Très bien, merci. Et vous ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Ça va bien, merci."
-                    }
-                ]
+                "dialoguePartner": "Madame Dubois (Colleague's Mother)",
+                "partnerSays": "Bonjour, enchantée. Comment allez-vous ?",
+                "partnerSaysTranslation": "Hello, pleased to meet you. How are you?",
+                "prompt": "Reply politely, keeping the formal vous:",
+                "options": [
+                    "Très bien, merci. Et vous ?",
+                    "Salut, à plus !",
+                    "Non, merci."
+                ],
+                "correctAnswer": "Très bien, merci. Et vous ?",
+                "explanation": "\"Très bien, merci. Et vous ?\" answers warmly and returns the question with the formal vous. \"Salut\" is too casual for a first meeting."
             },
             {
                 "type": "check",
@@ -341,48 +355,69 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the polite phrases",
+                "prompt": "Match each French polite phrase with its English meaning:",
                 "pairs": [
                     {
-                        "left": "Please (formal)",
-                        "right": "S'il vous plaît"
+                        "id": "fra-1",
+                        "foreign": "S'il vous plaît",
+                        "native": "Please (formal)",
+                        "phonetic": "seel voo PLEH"
                     },
                     {
-                        "left": "Please (informal)",
-                        "right": "S'il te plaît"
+                        "id": "fra-2",
+                        "foreign": "S'il te plaît",
+                        "native": "Please (informal)",
+                        "phonetic": "seel tuh PLEH"
                     },
                     {
-                        "left": "Thank you very much",
-                        "right": "Merci beaucoup"
+                        "id": "fra-3",
+                        "foreign": "Merci beaucoup",
+                        "native": "Thank you very much",
+                        "phonetic": "mehr-SEE boh-KOO"
                     },
                     {
-                        "left": "You're welcome (casual)",
-                        "right": "De rien"
+                        "id": "fra-4",
+                        "foreign": "De rien",
+                        "native": "You're welcome (casual)",
+                        "phonetic": "duh RYAN"
                     },
                     {
-                        "left": "You're welcome (polite)",
-                        "right": "Je vous en prie"
+                        "id": "fra-5",
+                        "foreign": "Je vous en prie",
+                        "native": "You're welcome (polite)",
+                        "phonetic": "zhuh voo zahn PREE"
                     },
                     {
-                        "left": "Excuse me / sorry",
-                        "right": "Pardon"
+                        "id": "fra-6",
+                        "foreign": "Pardon",
+                        "native": "Excuse me / sorry",
+                        "phonetic": "pahr-DOHN"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “A coffee, please.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"A coffee, please.\":",
+                "targetSentence": "Un café, s'il vous plaît.",
+                "targetTranslation": "A coffee, please.",
+                "scrambledTokens": [
+                    "s'il",
+                    "vous",
+                    "plaît",
+                    "Pardon",
+                    "Un",
+                    "café",
+                    ","
+                ],
+                "correctTokens": [
                     "Un",
                     "café",
                     ",",
                     "s'il",
                     "vous",
-                    "plaît",
-                    "."
+                    "plaît"
                 ],
-                "answer": "Un café, s'il vous plaît."
+                "explanation": "Combining a request with \"please\" — the cornerstone of polite interaction."
             },
             {
                 "type": "listen",
@@ -399,26 +434,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "At the counter",
-                "context": "Ordering and thanking in a shop.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Un café, s'il vous plaît."
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "Voilà. Trois euros."
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Merci beaucoup."
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "Je vous en prie."
-                    }
-                ]
+                "dialoguePartner": "Julien (Café Clerk)",
+                "partnerSays": "Voilà votre café. Trois euros, s'il vous plaît.",
+                "partnerSaysTranslation": "Here's your coffee. Three euros, please.",
+                "prompt": "Thank him as you pay:",
+                "options": [
+                    "Merci beaucoup.",
+                    "Un café, s'il vous plaît.",
+                    "Je vous en prie."
+                ],
+                "correctAnswer": "Merci beaucoup.",
+                "explanation": "\"Merci beaucoup\" is the natural thank-you here. \"Je vous en prie\" is what the clerk would say back to you."
             },
             {
                 "type": "check",
@@ -594,52 +620,75 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the numbers",
+                "prompt": "Match each French number with its numeral:",
                 "pairs": [
                     {
-                        "left": "1",
-                        "right": "un / une"
+                        "id": "fra-1",
+                        "foreign": "un / une",
+                        "native": "1",
+                        "phonetic": "uhn / ün"
                     },
                     {
-                        "left": "2",
-                        "right": "deux"
+                        "id": "fra-2",
+                        "foreign": "deux",
+                        "native": "2",
+                        "phonetic": "duh"
                     },
                     {
-                        "left": "3",
-                        "right": "trois"
+                        "id": "fra-3",
+                        "foreign": "trois",
+                        "native": "3",
+                        "phonetic": "trwah"
                     },
                     {
-                        "left": "5",
-                        "right": "cinq"
+                        "id": "fra-4",
+                        "foreign": "cinq",
+                        "native": "5",
+                        "phonetic": "sank"
                     },
                     {
-                        "left": "7",
-                        "right": "sept"
+                        "id": "fra-5",
+                        "foreign": "sept",
+                        "native": "7",
+                        "phonetic": "set"
                     },
                     {
-                        "left": "10",
-                        "right": "dix"
+                        "id": "fra-6",
+                        "foreign": "dix",
+                        "native": "10",
+                        "phonetic": "dees"
                     },
                     {
-                        "left": "20",
-                        "right": "vingt"
+                        "id": "fra-7",
+                        "foreign": "vingt",
+                        "native": "20",
+                        "phonetic": "van"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “Two coffees, please.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Two coffees, please.\":",
+                "targetSentence": "Deux cafés, s'il vous plaît.",
+                "targetTranslation": "Two coffees, please.",
+                "scrambledTokens": [
+                    "s'il",
+                    "vous",
+                    "plaît",
+                    "deux",
+                    "Deux",
+                    "cafés",
+                    ","
+                ],
+                "correctTokens": [
                     "Deux",
                     "cafés",
                     ",",
                     "s'il",
                     "vous",
-                    "plaît",
-                    "."
+                    "plaît"
                 ],
-                "answer": "Deux cafés, s'il vous plaît."
+                "explanation": "Numbers in context — the essential combination for real-world transactions."
             },
             {
                 "type": "listen",
@@ -657,22 +706,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "At the ticket window",
-                "context": "Buying tickets and giving age.",
-                "turns": [
-                    {
-                        "speaker": "Clerk",
-                        "text": "Deux billets ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Oui, deux. J'ai vingt ans."
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "D'accord. Ça fait quinze euros."
-                    }
-                ]
+                "dialoguePartner": "Monsieur Martin (Ticket Clerk)",
+                "partnerSays": "Combien de billets voulez-vous ?",
+                "partnerSaysTranslation": "How many tickets would you like?",
+                "prompt": "Ask for two tickets:",
+                "options": [
+                    "Deux billets, s'il vous plaît.",
+                    "J'ai vingt ans.",
+                    "Ça fait quinze euros."
+                ],
+                "correctAnswer": "Deux billets, s'il vous plaît.",
+                "explanation": "\"Deux billets, s'il vous plaît\" answers the question with a number and a polite request."
             },
             {
                 "type": "check",
@@ -802,47 +846,67 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the building blocks",
+                "prompt": "Match each French introduction phrase with its English meaning:",
                 "pairs": [
                     {
-                        "left": "My name is…",
-                        "right": "Je m'appelle…"
+                        "id": "fra-1",
+                        "foreign": "Je m'appelle…",
+                        "native": "My name is…",
+                        "phonetic": "zhuh mah-PEL"
                     },
                     {
-                        "left": "I come from…",
-                        "right": "Je viens de…"
+                        "id": "fra-2",
+                        "foreign": "Je viens de…",
+                        "native": "I come from…",
+                        "phonetic": "zhuh vyan duh"
                     },
                     {
-                        "left": "I live in…",
-                        "right": "J'habite à…"
+                        "id": "fra-3",
+                        "foreign": "J'habite à…",
+                        "native": "I live in…",
+                        "phonetic": "zhah-BEET ah"
                     },
                     {
-                        "left": "Nice to meet you",
-                        "right": "Enchanté(e)"
+                        "id": "fra-4",
+                        "foreign": "Enchanté(e)",
+                        "native": "Nice to meet you",
+                        "phonetic": "ahn-shahn-TAY"
                     },
                     {
-                        "left": "And you? (formal)",
-                        "right": "Et vous ?"
+                        "id": "fra-5",
+                        "foreign": "Et vous ?",
+                        "native": "And you? (formal)",
+                        "phonetic": "ay VOO"
                     },
                     {
-                        "left": "And you? (informal)",
-                        "right": "Et toi ?"
+                        "id": "fra-6",
+                        "foreign": "Et toi ?",
+                        "native": "And you? (informal)",
+                        "phonetic": "ay TWAH"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “Hello, my name is Alex.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Hello, my name is Alex.\":",
+                "targetSentence": "Bonjour, je m'appelle Alex.",
+                "targetTranslation": "Hello, my name is Alex.",
+                "scrambledTokens": [
+                    "m'appelle",
+                    "Alex",
+                    "Enchanté(e)",
+                    "Bonjour",
+                    ",",
+                    "je"
+                ],
+                "correctTokens": [
                     "Bonjour",
                     ",",
                     "je",
                     "m'appelle",
-                    "Alex",
-                    "."
+                    "Alex"
                 ],
-                "answer": "Bonjour, je m'appelle Alex."
+                "explanation": "Your origin in one clear sentence — the natural follow-up to sharing your name."
             },
             {
                 "type": "listen",
@@ -859,26 +923,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Meeting someone new",
-                "context": "A short self-introduction.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Bonjour, je m'appelle Sam."
-                    },
-                    {
-                        "speaker": "Other",
-                        "text": "Enchanté. Je m'appelle Léa."
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Je viens des États-Unis. Et vous ?"
-                    },
-                    {
-                        "speaker": "Léa",
-                        "text": "Je viens de Lyon."
-                    }
-                ]
+                "dialoguePartner": "Léa (New Acquaintance)",
+                "partnerSays": "Enchantée. Je m'appelle Léa. Vous venez d'où ?",
+                "partnerSaysTranslation": "Nice to meet you. My name is Léa. Where are you from?",
+                "prompt": "Say where you're from and return the question:",
+                "options": [
+                    "Je viens des États-Unis. Et vous ?",
+                    "Je m'appelle Sam.",
+                    "Ça va bien, merci."
+                ],
+                "correctAnswer": "Je viens des États-Unis. Et vous ?",
+                "explanation": "\"Je viens des États-Unis. Et vous ?\" answers her question and keeps the conversation balanced."
             },
             {
                 "type": "check",
@@ -1006,44 +1061,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the colors",
+                "prompt": "Match each French color with its English name:",
                 "pairs": [
                     {
-                        "left": "red",
-                        "right": "rouge"
+                        "id": "fra-1",
+                        "foreign": "rouge",
+                        "native": "red",
+                        "phonetic": "roozh"
                     },
                     {
-                        "left": "blue",
-                        "right": "bleu(e)"
+                        "id": "fra-2",
+                        "foreign": "bleu(e)",
+                        "native": "blue",
+                        "phonetic": "bluh"
                     },
                     {
-                        "left": "green",
-                        "right": "vert(e)"
+                        "id": "fra-3",
+                        "foreign": "vert(e)",
+                        "native": "green",
+                        "phonetic": "vehr / vehrt"
                     },
                     {
-                        "left": "black",
-                        "right": "noir(e)"
+                        "id": "fra-4",
+                        "foreign": "noir(e)",
+                        "native": "black",
+                        "phonetic": "nwahr"
                     },
                     {
-                        "left": "white",
-                        "right": "blanc / blanche"
+                        "id": "fra-5",
+                        "foreign": "blanc / blanche",
+                        "native": "white",
+                        "phonetic": "blahn / blahnsh"
                     },
                     {
-                        "left": "brown (invariable)",
-                        "right": "marron"
+                        "id": "fra-6",
+                        "foreign": "marron",
+                        "native": "brown (invariable)",
+                        "phonetic": "mah-ROHN"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “a blue dress”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"a blue dress\":",
+                "targetSentence": "une robe bleue",
+                "targetTranslation": "a blue dress",
+                "scrambledTokens": [
+                    "bleue",
+                    "rouge",
+                    "une",
+                    "robe"
+                ],
+                "correctTokens": [
                     "une",
                     "robe",
                     "bleue"
                 ],
-                "answer": "une robe bleue"
+                "explanation": "Color + polite form — everything needed to express a preference in any shop."
             },
             {
                 "type": "listen",
@@ -1061,22 +1135,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Choosing a color",
-                "context": "In a clothing shop.",
-                "turns": [
-                    {
-                        "speaker": "Clerk",
-                        "text": "Vous préférez quelle couleur ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Je voudrais le rouge."
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "Voici une robe rouge."
-                    }
-                ]
+                "dialoguePartner": "Camille (Shop Clerk)",
+                "partnerSays": "Vous préférez quelle couleur ?",
+                "partnerSaysTranslation": "Which color do you prefer?",
+                "prompt": "Say you'd like the red one:",
+                "options": [
+                    "Je voudrais le rouge.",
+                    "C'est combien ?",
+                    "C'est trop grand."
+                ],
+                "correctAnswer": "Je voudrais le rouge.",
+                "explanation": "\"Je voudrais le rouge\" names the color politely with je voudrais."
             },
             {
                 "type": "check",
@@ -1207,39 +1276,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the café words",
+                "prompt": "Match each French café word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "a coffee (often espresso)",
-                        "right": "un café"
+                        "id": "fra-1",
+                        "foreign": "un café",
+                        "native": "a coffee (often espresso)",
+                        "phonetic": "uhn kah-FAY"
                     },
                     {
-                        "left": "coffee with milk",
-                        "right": "un crème"
+                        "id": "fra-2",
+                        "foreign": "un crème",
+                        "native": "coffee with milk",
+                        "phonetic": "uhn KREHM"
                     },
                     {
-                        "left": "to go",
-                        "right": "à emporter"
+                        "id": "fra-3",
+                        "foreign": "à emporter",
+                        "native": "to go",
+                        "phonetic": "ah ahn-por-TAY"
                     },
                     {
-                        "left": "for here",
-                        "right": "sur place"
+                        "id": "fra-4",
+                        "foreign": "sur place",
+                        "native": "for here",
+                        "phonetic": "sür PLAHS"
                     },
                     {
-                        "left": "the bill",
-                        "right": "l'addition"
+                        "id": "fra-5",
+                        "foreign": "l'addition",
+                        "native": "the bill",
+                        "phonetic": "lah-dee-SYOHN"
                     },
                     {
-                        "left": "a jug of tap water",
-                        "right": "une carafe d'eau"
+                        "id": "fra-6",
+                        "foreign": "une carafe d'eau",
+                        "native": "a jug of tap water",
+                        "phonetic": "ün kah-RAHF DOH"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “I would like a coffee, please.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I would like a coffee, please.\":",
+                "targetSentence": "Je voudrais un café, s'il vous plaît.",
+                "targetTranslation": "I would like a coffee, please.",
+                "scrambledTokens": [
+                    ",",
+                    "s'il",
+                    "vous",
+                    "plaît",
+                    "l'addition",
+                    "Je",
+                    "voudrais",
+                    "un",
+                    "café"
+                ],
+                "correctTokens": [
                     "Je",
                     "voudrais",
                     "un",
@@ -1247,10 +1340,9 @@
                     ",",
                     "s'il",
                     "vous",
-                    "plaît",
-                    "."
+                    "plaît"
                 ],
-                "answer": "Je voudrais un café, s'il vous plaît."
+                "explanation": "A polite order that works in any café — commit it to memory for the first sip."
             },
             {
                 "type": "listen",
@@ -1267,26 +1359,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Ordering and paying",
-                "context": "A typical café exchange.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Je voudrais un café allongé, s'il vous plaît."
-                    },
-                    {
-                        "speaker": "Server",
-                        "text": "Sur place ou à emporter ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Sur place."
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "L'addition, s'il vous plaît."
-                    }
-                ]
+                "dialoguePartner": "Antoine (Server)",
+                "partnerSays": "Sur place ou à emporter ?",
+                "partnerSaysTranslation": "For here or to go?",
+                "prompt": "You're staying at the café. Answer:",
+                "options": [
+                    "Sur place, s'il vous plaît.",
+                    "L'addition, s'il vous plaît.",
+                    "Un café allongé."
+                ],
+                "correctAnswer": "Sur place, s'il vous plaît.",
+                "explanation": "\"Sur place\" means you'll drink it here. \"L'addition\" is for asking for the bill later."
             },
             {
                 "type": "check",
@@ -1399,39 +1482,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the market words",
+                "prompt": "Match each French market word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "an apple",
-                        "right": "une pomme"
+                        "id": "fra-1",
+                        "foreign": "une pomme",
+                        "native": "an apple",
+                        "phonetic": "ün POM"
                     },
                     {
-                        "left": "a tomato",
-                        "right": "une tomate"
+                        "id": "fra-2",
+                        "foreign": "une tomate",
+                        "native": "a tomato",
+                        "phonetic": "ün toh-MAHT"
                     },
                     {
-                        "left": "some bread",
-                        "right": "du pain"
+                        "id": "fra-3",
+                        "foreign": "du pain",
+                        "native": "some bread",
+                        "phonetic": "dü PAN"
                     },
                     {
-                        "left": "a kilo of…",
-                        "right": "un kilo de…"
+                        "id": "fra-4",
+                        "foreign": "un kilo de…",
+                        "native": "a kilo of…",
+                        "phonetic": "uhn kee-LOH duh"
                     },
                     {
-                        "left": "How much is it?",
-                        "right": "C'est combien ?"
+                        "id": "fra-5",
+                        "foreign": "C'est combien ?",
+                        "native": "How much is it?",
+                        "phonetic": "seh kohm-BYAN"
                     },
                     {
-                        "left": "That's all",
-                        "right": "C'est tout"
+                        "id": "fra-6",
+                        "foreign": "C'est tout",
+                        "native": "That's all",
+                        "phonetic": "seh TOO"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “I'd like three apples, please.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I'd like three apples, please.\":",
+                "targetSentence": "Je voudrais trois pommes, s'il vous plaît.",
+                "targetTranslation": "I'd like three apples, please.",
+                "scrambledTokens": [
+                    ",",
+                    "s'il",
+                    "vous",
+                    "plaît",
+                    "une",
+                    "Je",
+                    "voudrais",
+                    "trois",
+                    "pommes"
+                ],
+                "correctTokens": [
                     "Je",
                     "voudrais",
                     "trois",
@@ -1439,10 +1546,9 @@
                     ",",
                     "s'il",
                     "vous",
-                    "plaît",
-                    "."
+                    "plaît"
                 ],
-                "answer": "Je voudrais trois pommes, s'il vous plaît."
+                "explanation": "Quantity, item, price question — the complete phrase for any market stall."
             },
             {
                 "type": "listen",
@@ -1459,30 +1565,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "At the fruit stall",
-                "context": "Buying fruit at a market.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Je voudrais un kilo de tomates, s'il vous plaît."
-                    },
-                    {
-                        "speaker": "Seller",
-                        "text": "Et avec ceci ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Trois pommes aussi. C'est combien ?"
-                    },
-                    {
-                        "speaker": "Seller",
-                        "text": "Cinq euros."
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "C'est tout, merci."
-                    }
-                ]
+                "dialoguePartner": "Madame Leroy (Fruit Seller)",
+                "partnerSays": "Et avec ceci ?",
+                "partnerSaysTranslation": "Anything else?",
+                "prompt": "Ask for three apples and the price:",
+                "options": [
+                    "Trois pommes aussi. C'est combien ?",
+                    "Cinq euros.",
+                    "Il fait beau aujourd'hui."
+                ],
+                "correctAnswer": "Trois pommes aussi. C'est combien ?",
+                "explanation": "\"Trois pommes aussi. C'est combien ?\" adds to your order and asks the total. \"Cinq euros\" is what the seller would say."
             },
             {
                 "type": "check",
@@ -1587,46 +1680,65 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the weather phrases",
+                "prompt": "Match each French weather phrase with its English meaning:",
                 "pairs": [
                     {
-                        "left": "The weather is nice",
-                        "right": "Il fait beau"
+                        "id": "fra-1",
+                        "foreign": "Il fait beau",
+                        "native": "The weather is nice",
+                        "phonetic": "eel feh BOH"
                     },
                     {
-                        "left": "It's raining",
-                        "right": "Il pleut"
+                        "id": "fra-2",
+                        "foreign": "Il pleut",
+                        "native": "It's raining",
+                        "phonetic": "eel PLUH"
                     },
                     {
-                        "left": "It's cold",
-                        "right": "Il fait froid"
+                        "id": "fra-3",
+                        "foreign": "Il fait froid",
+                        "native": "It's cold",
+                        "phonetic": "eel feh FRWAH"
                     },
                     {
-                        "left": "It's hot",
-                        "right": "Il fait chaud"
+                        "id": "fra-4",
+                        "foreign": "Il fait chaud",
+                        "native": "It's hot",
+                        "phonetic": "eel feh SHOH"
                     },
                     {
-                        "left": "It's snowing",
-                        "right": "Il neige"
+                        "id": "fra-5",
+                        "foreign": "Il neige",
+                        "native": "It's snowing",
+                        "phonetic": "eel NEZH"
                     },
                     {
-                        "left": "The weekend",
-                        "right": "Le week-end"
+                        "id": "fra-6",
+                        "foreign": "Le week-end",
+                        "native": "The weekend",
+                        "phonetic": "luh wee-KEND"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “Nice weather today.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Nice weather today.\":",
+                "targetSentence": "Il fait beau aujourd'hui.",
+                "targetTranslation": "Nice weather today.",
+                "scrambledTokens": [
+                    "beau",
+                    "aujourd'hui",
+                    "Le",
+                    "Il",
+                    "fait"
+                ],
+                "correctTokens": [
                     "Il",
                     "fait",
                     "beau",
-                    "aujourd'hui",
-                    "."
+                    "aujourd'hui"
                 ],
-                "answer": "Il fait beau aujourd'hui."
+                "explanation": "A light observation that opens the door to warm, easy conversation."
             },
             {
                 "type": "listen",
@@ -1643,22 +1755,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Quick weather chat",
-                "context": "Light small talk after greeting.",
-                "turns": [
-                    {
-                        "speaker": "Colleague",
-                        "text": "Il fait beau aujourd'hui !"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Oui, il y a du soleil. Comment était votre week-end ?"
-                    },
-                    {
-                        "speaker": "Colleague",
-                        "text": "Très bien, merci. Et le vôtre ?"
-                    }
-                ]
+                "dialoguePartner": "Nadia (Colleague)",
+                "partnerSays": "Il fait beau aujourd'hui !",
+                "partnerSaysTranslation": "The weather's nice today!",
+                "prompt": "Agree and keep the chat going:",
+                "options": [
+                    "Oui, il y a du soleil. Comment était votre week-end ?",
+                    "Non, je n'aime pas le café.",
+                    "L'addition, s'il vous plaît."
+                ],
+                "correctAnswer": "Oui, il y a du soleil. Comment était votre week-end ?",
+                "explanation": "Agreeing and asking about the weekend is classic small talk that keeps the exchange flowing."
             },
             {
                 "type": "check",
@@ -1788,39 +1895,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the restaurant words",
+                "prompt": "Match each French restaurant word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "the menu (full list)",
-                        "right": "la carte"
+                        "id": "fra-1",
+                        "foreign": "la carte",
+                        "native": "the menu (full list)",
+                        "phonetic": "lah KAHRT"
                     },
                     {
-                        "left": "the fixed-price set meal",
-                        "right": "le menu"
+                        "id": "fra-2",
+                        "foreign": "le menu",
+                        "native": "the fixed-price set meal",
+                        "phonetic": "luh muh-NÜ"
                     },
                     {
-                        "left": "the starter",
-                        "right": "l'entrée"
+                        "id": "fra-3",
+                        "foreign": "l'entrée",
+                        "native": "the starter",
+                        "phonetic": "lahn-TRAY"
                     },
                     {
-                        "left": "the main course",
-                        "right": "le plat"
+                        "id": "fra-4",
+                        "foreign": "le plat",
+                        "native": "the main course",
+                        "phonetic": "luh PLAH"
                     },
                     {
-                        "left": "vegetarian",
-                        "right": "végétarien(ne)"
+                        "id": "fra-5",
+                        "foreign": "végétarien(ne)",
+                        "native": "vegetarian",
+                        "phonetic": "vay-zhay-tah-RYAN / -RYEN"
                     },
                     {
-                        "left": "Enjoy your meal",
-                        "right": "Bon appétit"
+                        "id": "fra-6",
+                        "foreign": "Bon appétit",
+                        "native": "Enjoy your meal",
+                        "phonetic": "bohn ah-pay-TEE"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “A table for two, please.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"A table for two, please.\":",
+                "targetSentence": "Une table pour deux, s'il vous plaît.",
+                "targetTranslation": "A table for two, please.",
+                "scrambledTokens": [
+                    ",",
+                    "s'il",
+                    "vous",
+                    "plaît",
+                    "l'entrée",
+                    "Une",
+                    "table",
+                    "pour",
+                    "deux"
+                ],
+                "correctTokens": [
                     "Une",
                     "table",
                     "pour",
@@ -1828,10 +1959,9 @@
                     ",",
                     "s'il",
                     "vous",
-                    "plaît",
-                    "."
+                    "plaît"
                 ],
-                "answer": "Une table pour deux, s'il vous plaît."
+                "explanation": "The natural, confident way to place an order with any server."
             },
             {
                 "type": "listen",
@@ -1848,26 +1978,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Ordering a meal",
-                "context": "Seated at a restaurant.",
-                "turns": [
-                    {
-                        "speaker": "Server",
-                        "text": "Vous avez choisi ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Je vais prendre le poisson. Je suis végétarienne."
-                    },
-                    {
-                        "speaker": "Server",
-                        "text": "D'accord. Et comme entrée ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "La salade, s'il vous plaît."
-                    }
-                ]
+                "dialoguePartner": "Hugo (Server)",
+                "partnerSays": "Vous avez choisi ?",
+                "partnerSaysTranslation": "Have you decided?",
+                "prompt": "Order the fish:",
+                "options": [
+                    "Je vais prendre le poisson, s'il vous plaît.",
+                    "Où est la gare ?",
+                    "Je descends au prochain arrêt."
+                ],
+                "correctAnswer": "Je vais prendre le poisson, s'il vous plaît.",
+                "explanation": "\"Je vais prendre…\" is the standard way to order a dish in a restaurant."
             },
             {
                 "type": "check",
@@ -1977,45 +2098,65 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the near-future forms",
+                "prompt": "Match each form of aller with its English meaning:",
                 "pairs": [
                     {
-                        "left": "I am going",
-                        "right": "je vais"
+                        "id": "fra-1",
+                        "foreign": "je vais",
+                        "native": "I am going",
+                        "phonetic": "zhuh VEH"
                     },
                     {
-                        "left": "you are going (informal)",
-                        "right": "tu vas"
+                        "id": "fra-2",
+                        "foreign": "tu vas",
+                        "native": "you are going (informal)",
+                        "phonetic": "tü VAH"
                     },
                     {
-                        "left": "we are going",
-                        "right": "nous allons"
+                        "id": "fra-3",
+                        "foreign": "nous allons",
+                        "native": "we are going",
+                        "phonetic": "noo zah-LOHN"
                     },
                     {
-                        "left": "you are going (formal/plural)",
-                        "right": "vous allez"
+                        "id": "fra-4",
+                        "foreign": "vous allez",
+                        "native": "you are going (formal/plural)",
+                        "phonetic": "voo zah-LAY"
                     },
                     {
-                        "left": "they are going",
-                        "right": "ils / elles vont"
+                        "id": "fra-5",
+                        "foreign": "ils / elles vont",
+                        "native": "they are going",
+                        "phonetic": "eel / el VOHN"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “I'm going to visit my parents.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I'm going to visit my parents.\":",
+                "targetSentence": "Je vais rendre visite à mes parents.",
+                "targetTranslation": "I'm going to visit my parents.",
+                "scrambledTokens": [
+                    "à",
+                    "mes",
+                    "parents",
+                    "je",
+                    "Je",
+                    "vais",
+                    "rendre",
+                    "visite"
+                ],
+                "correctTokens": [
                     "Je",
                     "vais",
                     "rendre",
                     "visite",
                     "à",
                     "mes",
-                    "parents",
-                    "."
+                    "parents"
                 ],
-                "answer": "Je vais rendre visite à mes parents."
+                "explanation": "Future marker + plan — two building blocks for any upcoming arrangement."
             },
             {
                 "type": "listen",
@@ -2033,22 +2174,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Weekend plans",
-                "context": "Asking a friend about the weekend.",
-                "turns": [
-                    {
-                        "speaker": "Friend",
-                        "text": "Qu'est-ce que tu vas faire ce week-end ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Je vais rendre visite à mes parents."
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "Nous allons regarder un film. Tu viens ?"
-                    }
-                ]
+                "dialoguePartner": "Thomas (Friend)",
+                "partnerSays": "Qu'est-ce que tu vas faire ce week-end ?",
+                "partnerSaysTranslation": "What are you going to do this weekend?",
+                "prompt": "Say you're going to visit your parents:",
+                "options": [
+                    "Je vais rendre visite à mes parents.",
+                    "Il est quatorze heures trente.",
+                    "Je voudrais le rouge."
+                ],
+                "correctAnswer": "Je vais rendre visite à mes parents.",
+                "explanation": "\"Je vais rendre visite à mes parents\" uses aller + infinitive to talk about a plan."
             },
             {
                 "type": "check",
@@ -2082,7 +2218,7 @@
         "id": "directions-1",
         "slug": "simple-directions",
         "title": "Simple directions",
-        "description": "Left, right, straight — and asking where something is.",
+        "description": "left, right, straight — and asking where something is.",
         "unitId": "travel",
         "direction": "en-fr",
         "level": "elementary",
@@ -2160,49 +2296,71 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the direction words",
+                "prompt": "Match each French direction word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "to the left",
-                        "right": "à gauche"
+                        "id": "fra-1",
+                        "foreign": "à gauche",
+                        "native": "to the left",
+                        "phonetic": "ah GOHSH"
                     },
                     {
-                        "left": "to the right",
-                        "right": "à droite"
+                        "id": "fra-2",
+                        "foreign": "à droite",
+                        "native": "to the right",
+                        "phonetic": "ah DRWAHT"
                     },
                     {
-                        "left": "straight ahead",
-                        "right": "tout droit"
+                        "id": "fra-3",
+                        "foreign": "tout droit",
+                        "native": "straight ahead",
+                        "phonetic": "too DRWAH"
                     },
                     {
-                        "left": "near",
-                        "right": "près de"
+                        "id": "fra-4",
+                        "foreign": "près de",
+                        "native": "near",
+                        "phonetic": "preh duh"
                     },
                     {
-                        "left": "across from",
-                        "right": "en face de"
+                        "id": "fra-5",
+                        "foreign": "en face de",
+                        "native": "across from",
+                        "phonetic": "ahn FAHS duh"
                     },
                     {
-                        "left": "Where is…?",
-                        "right": "Où est… ?"
+                        "id": "fra-6",
+                        "foreign": "Où est… ?",
+                        "native": "Where is…?",
+                        "phonetic": "oo EH"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “Go straight ahead, then left.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Go straight ahead, then left.\":",
+                "targetSentence": "Allez tout droit, puis à gauche.",
+                "targetTranslation": "Go straight ahead, then left.",
+                "scrambledTokens": [
+                    "puis",
+                    "à",
+                    "gauche",
+                    "près",
+                    "Allez",
+                    "tout",
+                    "droit",
+                    ","
+                ],
+                "correctTokens": [
                     "Allez",
                     "tout",
                     "droit",
                     ",",
                     "puis",
                     "à",
-                    "gauche",
-                    "."
+                    "gauche"
                 ],
-                "answer": "Allez tout droit, puis à gauche."
+                "explanation": "Left, right, and straight — three words that will get you anywhere in the city."
             },
             {
                 "type": "listen",
@@ -2219,26 +2377,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Asking the way",
-                "context": "Looking for the station.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Pardon, où est la gare ?"
-                    },
-                    {
-                        "speaker": "Passer-by",
-                        "text": "Allez tout droit, puis à gauche. C'est en face de la pharmacie."
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "C'est loin ?"
-                    },
-                    {
-                        "speaker": "Passer-by",
-                        "text": "Non, cinq minutes à pied."
-                    }
-                ]
+                "dialoguePartner": "Monsieur Petit (Passer-by)",
+                "partnerSays": "Allez tout droit, puis à gauche. C'est en face de la pharmacie.",
+                "partnerSaysTranslation": "Go straight, then left. It's opposite the pharmacy.",
+                "prompt": "Ask whether it's far:",
+                "options": [
+                    "C'est loin ?",
+                    "Où est la gare ?",
+                    "Sur place, s'il vous plaît."
+                ],
+                "correctAnswer": "C'est loin ?",
+                "explanation": "\"C'est loin ?\" is the natural follow-up after getting directions."
             },
             {
                 "type": "check",
@@ -2358,39 +2507,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the travel words",
+                "prompt": "Match each French travel word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "a ticket",
-                        "right": "un billet"
+                        "id": "fra-1",
+                        "foreign": "un billet",
+                        "native": "a ticket",
+                        "phonetic": "uhn bee-YEH"
                     },
                     {
-                        "left": "round trip",
-                        "right": "aller-retour"
+                        "id": "fra-2",
+                        "foreign": "aller-retour",
+                        "native": "round trip",
+                        "phonetic": "ah-lay ruh-TOOR"
                     },
                     {
-                        "left": "one-way",
-                        "right": "aller simple"
+                        "id": "fra-3",
+                        "foreign": "aller simple",
+                        "native": "one-way",
+                        "phonetic": "ah-lay SAM-pluh"
                     },
                     {
-                        "left": "the platform",
-                        "right": "le quai"
+                        "id": "fra-4",
+                        "foreign": "le quai",
+                        "native": "the platform",
+                        "phonetic": "luh KAY"
                     },
                     {
-                        "left": "delayed / late",
-                        "right": "en retard"
+                        "id": "fra-5",
+                        "foreign": "en retard",
+                        "native": "delayed / late",
+                        "phonetic": "ahn ruh-TAHR"
                     },
                     {
-                        "left": "on time",
-                        "right": "à l'heure"
+                        "id": "fra-6",
+                        "foreign": "à l'heure",
+                        "native": "on time",
+                        "phonetic": "ah LUHR"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “A ticket to Lyon, please.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"A ticket to Lyon, please.\":",
+                "targetSentence": "Un billet pour Lyon, s'il vous plaît.",
+                "targetTranslation": "A ticket to Lyon, please.",
+                "scrambledTokens": [
+                    ",",
+                    "s'il",
+                    "vous",
+                    "plaît",
+                    "aller-retour",
+                    "Un",
+                    "billet",
+                    "pour",
+                    "Lyon"
+                ],
+                "correctTokens": [
                     "Un",
                     "billet",
                     "pour",
@@ -2398,10 +2571,9 @@
                     ",",
                     "s'il",
                     "vous",
-                    "plaît",
-                    "."
+                    "plaît"
                 ],
-                "answer": "Un billet pour Lyon, s'il vous plaît."
+                "explanation": "A direct question that instantly tells you if you're running on schedule."
             },
             {
                 "type": "listen",
@@ -2418,26 +2590,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "At the ticket counter",
-                "context": "Buying a train ticket.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Un billet pour Lyon, s'il vous plaît. Aller-retour."
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "Le train part du quai numéro trois."
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Le train est-il en retard ?"
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "Non, il est à l'heure."
-                    }
-                ]
+                "dialoguePartner": "Madame Girard (Ticket Clerk)",
+                "partnerSays": "Le train part du quai numéro trois.",
+                "partnerSaysTranslation": "The train leaves from platform three.",
+                "prompt": "Ask if the train is running late:",
+                "options": [
+                    "Le train est-il en retard ?",
+                    "Un billet pour Lyon, s'il vous plaît.",
+                    "Il fait beau aujourd'hui."
+                ],
+                "correctAnswer": "Le train est-il en retard ?",
+                "explanation": "\"Le train est-il en retard ?\" asks about delays using inversion, a polite question form."
             },
             {
                 "type": "check",
@@ -2549,45 +2712,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the hotel words",
+                "prompt": "Match each French hotel word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "a reservation",
-                        "right": "une réservation"
+                        "id": "fra-1",
+                        "foreign": "une réservation",
+                        "native": "a reservation",
+                        "phonetic": "ün ray-zehr-vah-SYOHN"
                     },
                     {
-                        "left": "a room",
-                        "right": "une chambre"
+                        "id": "fra-2",
+                        "foreign": "une chambre",
+                        "native": "a room",
+                        "phonetic": "ün SHAHM-bruh"
                     },
                     {
-                        "left": "a double room",
-                        "right": "une chambre double"
+                        "id": "fra-3",
+                        "foreign": "une chambre double",
+                        "native": "a double room",
+                        "phonetic": "ün SHAHM-bruh DOO-bluh"
                     },
                     {
-                        "left": "breakfast",
-                        "right": "le petit-déjeuner"
+                        "id": "fra-4",
+                        "foreign": "le petit-déjeuner",
+                        "native": "breakfast",
+                        "phonetic": "luh puh-tee day-zhuh-NAY"
                     },
                     {
-                        "left": "the front desk",
-                        "right": "la réception"
+                        "id": "fra-5",
+                        "foreign": "la réception",
+                        "native": "the front desk",
+                        "phonetic": "lah ray-sep-SYOHN"
                     },
                     {
-                        "left": "checkout",
-                        "right": "le départ"
+                        "id": "fra-6",
+                        "foreign": "le départ",
+                        "native": "checkout",
+                        "phonetic": "luh day-PAHR"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “I have a reservation.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I have a reservation.\":",
+                "targetSentence": "J'ai une réservation.",
+                "targetTranslation": "I have a reservation.",
+                "scrambledTokens": [
+                    "réservation",
+                    "le",
+                    "J'ai",
+                    "une"
+                ],
+                "correctTokens": [
                     "J'ai",
                     "une",
-                    "réservation",
-                    "."
+                    "réservation"
                 ],
-                "answer": "J'ai une réservation."
+                "explanation": "A short statement that confirms your booking and sets check-in in motion."
             },
             {
                 "type": "listen",
@@ -2604,26 +2785,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Check-in",
-                "context": "At the hotel front desk.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Bonjour, j'ai une réservation."
-                    },
-                    {
-                        "speaker": "Receptionist",
-                        "text": "Deux nuits ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Oui. Le petit-déjeuner est-il inclus ?"
-                    },
-                    {
-                        "speaker": "Receptionist",
-                        "text": "Oui. À quelle heure est le départ ? À onze heures."
-                    }
-                ]
+                "dialoguePartner": "Claire (Receptionist)",
+                "partnerSays": "Bonjour. Deux nuits, c'est bien ça ?",
+                "partnerSaysTranslation": "Hello. Two nights, is that right?",
+                "prompt": "Confirm and ask about breakfast:",
+                "options": [
+                    "Oui. Le petit-déjeuner est-il inclus ?",
+                    "Non, je n'aime pas le café.",
+                    "Trois pommes, s'il vous plaît."
+                ],
+                "correctAnswer": "Oui. Le petit-déjeuner est-il inclus ?",
+                "explanation": "\"Oui. Le petit-déjeuner est-il inclus ?\" confirms the booking and asks a useful check-in question."
             },
             {
                 "type": "check",
@@ -2739,39 +2911,64 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the transport words",
+                "prompt": "Match each French transport word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "the subway/metro",
-                        "right": "le métro"
+                        "id": "fra-1",
+                        "foreign": "le métro",
+                        "native": "the subway/metro",
+                        "phonetic": "luh may-TROH"
                     },
                     {
-                        "left": "the bus",
-                        "right": "le bus"
+                        "id": "fra-2",
+                        "foreign": "le bus",
+                        "native": "the bus",
+                        "phonetic": "luh BÜS"
                     },
                     {
-                        "left": "a single-fare ticket",
-                        "right": "un ticket"
+                        "id": "fra-3",
+                        "foreign": "un ticket",
+                        "native": "a single-fare ticket",
+                        "phonetic": "uhn tee-KEH"
                     },
                     {
-                        "left": "a day/week pass",
-                        "right": "un forfait"
+                        "id": "fra-4",
+                        "foreign": "un forfait",
+                        "native": "a day/week pass",
+                        "phonetic": "uhn for-FEH"
                     },
                     {
-                        "left": "a stop",
-                        "right": "un arrêt"
+                        "id": "fra-5",
+                        "foreign": "un arrêt",
+                        "native": "a stop",
+                        "phonetic": "uhn ah-REH"
                     },
                     {
-                        "left": "I'm getting off here",
-                        "right": "Je descends ici"
+                        "id": "fra-6",
+                        "foreign": "Je descends ici",
+                        "native": "I'm getting off here",
+                        "phonetic": "zhuh day-SAHN ee-SEE"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “Where's the nearest metro station?”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Where's the nearest metro station?\":",
+                "targetSentence": "Où est la station de métro la plus proche ?",
+                "targetTranslation": "Where's the nearest metro station?",
+                "scrambledTokens": [
+                    "métro",
+                    "la",
+                    "plus",
+                    "proche",
+                    "le",
+                    "Où",
+                    "est",
+                    "la",
+                    "station",
+                    "de"
+                ],
+                "correctTokens": [
                     "Où",
                     "est",
                     "la",
@@ -2780,10 +2977,9 @@
                     "métro",
                     "la",
                     "plus",
-                    "proche",
-                    "?"
+                    "proche"
                 ],
-                "answer": "Où est la station de métro la plus proche ?"
+                "explanation": "The phrase that ends any bus or metro journey gracefully."
             },
             {
                 "type": "listen",
@@ -2800,22 +2996,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "On the bus",
-                "context": "Asking about the route and getting off.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Ce bus va-t-il au centre-ville ?"
-                    },
-                    {
-                        "speaker": "Driver",
-                        "text": "Oui."
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Je descends au prochain arrêt."
-                    }
-                ]
+                "dialoguePartner": "Karim (Bus Driver)",
+                "partnerSays": "Oui, ce bus va au centre-ville.",
+                "partnerSaysTranslation": "Yes, this bus goes downtown.",
+                "prompt": "Say you're getting off at the next stop:",
+                "options": [
+                    "Je descends au prochain arrêt.",
+                    "Un billet pour Lyon.",
+                    "Je vais rendre visite à mes parents."
+                ],
+                "correctAnswer": "Je descends au prochain arrêt.",
+                "explanation": "\"Je descends au prochain arrêt\" tells the driver where you want to get off."
             },
             {
                 "type": "check",
@@ -2946,47 +3137,67 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the health phrases",
+                "prompt": "Match each French health phrase with its English meaning:",
                 "pairs": [
                     {
-                        "left": "I have a headache",
-                        "right": "J'ai mal à la tête"
+                        "id": "fra-1",
+                        "foreign": "J'ai mal à la tête",
+                        "native": "I have a headache",
+                        "phonetic": "zhay mahl ah lah TET"
                     },
                     {
-                        "left": "I have a stomach ache",
-                        "right": "J'ai mal au ventre"
+                        "id": "fra-2",
+                        "foreign": "J'ai mal au ventre",
+                        "native": "I have a stomach ache",
+                        "phonetic": "zhay mahl oh VAHN-truh"
                     },
                     {
-                        "left": "I have a fever",
-                        "right": "J'ai de la fièvre"
+                        "id": "fra-3",
+                        "foreign": "J'ai de la fièvre",
+                        "native": "I have a fever",
+                        "phonetic": "zhay duh lah FYEV-ruh"
                     },
                     {
-                        "left": "sick",
-                        "right": "malade"
+                        "id": "fra-4",
+                        "foreign": "malade",
+                        "native": "sick",
+                        "phonetic": "mah-LAHD"
                     },
                     {
-                        "left": "a prescription",
-                        "right": "une ordonnance"
+                        "id": "fra-5",
+                        "foreign": "une ordonnance",
+                        "native": "a prescription",
+                        "phonetic": "ün or-doh-NAHNS"
                     },
                     {
-                        "left": "Help!",
-                        "right": "Au secours !"
+                        "id": "fra-6",
+                        "foreign": "Au secours !",
+                        "native": "Help!",
+                        "phonetic": "oh suh-KOOR"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “I have a headache.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I have a headache.\":",
+                "targetSentence": "J'ai mal à la tête.",
+                "targetTranslation": "I have a headache.",
+                "scrambledTokens": [
+                    "la",
+                    "tête",
+                    "malade",
+                    "J'ai",
+                    "mal",
+                    "à"
+                ],
+                "correctTokens": [
                     "J'ai",
                     "mal",
                     "à",
                     "la",
-                    "tête",
-                    "."
+                    "tête"
                 ],
-                "answer": "J'ai mal à la tête."
+                "explanation": "Describing the most common ache — clear and calm gets you the right remedy."
             },
             {
                 "type": "listen",
@@ -3004,22 +3215,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "At the pharmacy",
-                "context": "Describing symptoms.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Je ne me sens pas bien. J'ai mal à la tête et de la fièvre."
-                    },
-                    {
-                        "speaker": "Pharmacist",
-                        "text": "Avez-vous une ordonnance ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Non. Avez-vous quelque chose pour la gorge ?"
-                    }
-                ]
+                "dialoguePartner": "Madame Roux (Pharmacist)",
+                "partnerSays": "Avez-vous une ordonnance ?",
+                "partnerSaysTranslation": "Do you have a prescription?",
+                "prompt": "Say no and ask for something for your throat:",
+                "options": [
+                    "Non. Avez-vous quelque chose pour la gorge ?",
+                    "Oui, deux billets.",
+                    "Je suis végétarienne."
+                ],
+                "correctAnswer": "Non. Avez-vous quelque chose pour la gorge ?",
+                "explanation": "\"Non. Avez-vous quelque chose pour la gorge ?\" answers the question and asks for an over-the-counter remedy."
             },
             {
                 "type": "check",
@@ -3150,48 +3356,69 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the time expressions",
+                "prompt": "Match each French time expression with its English meaning:",
                 "pairs": [
                     {
-                        "left": "What time is it?",
-                        "right": "Quelle heure est-il ?"
+                        "id": "fra-1",
+                        "foreign": "Quelle heure est-il ?",
+                        "native": "What time is it?",
+                        "phonetic": "kel UHR eh-TEEL"
                     },
                     {
-                        "left": "quarter past",
-                        "right": "et quart"
+                        "id": "fra-2",
+                        "foreign": "et quart",
+                        "native": "quarter past",
+                        "phonetic": "ay KAHR"
                     },
                     {
-                        "left": "half past",
-                        "right": "et demie"
+                        "id": "fra-3",
+                        "foreign": "et demie",
+                        "native": "half past",
+                        "phonetic": "ay duh-MEE"
                     },
                     {
-                        "left": "quarter to",
-                        "right": "moins le quart"
+                        "id": "fra-4",
+                        "foreign": "moins le quart",
+                        "native": "quarter to",
+                        "phonetic": "mwan luh KAHR"
                     },
                     {
-                        "left": "noon",
-                        "right": "midi"
+                        "id": "fra-5",
+                        "foreign": "midi",
+                        "native": "noon",
+                        "phonetic": "mee-DEE"
                     },
                     {
-                        "left": "midnight",
-                        "right": "minuit"
+                        "id": "fra-6",
+                        "foreign": "minuit",
+                        "native": "midnight",
+                        "phonetic": "mee-NWEE"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “It's half past seven.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"It's half past seven.\":",
+                "targetSentence": "Il est sept heures et demie.",
+                "targetTranslation": "It's half past seven.",
+                "scrambledTokens": [
+                    "heures",
+                    "et",
+                    "demie",
+                    "midi",
+                    "Il",
+                    "est",
+                    "sept"
+                ],
+                "correctTokens": [
                     "Il",
                     "est",
                     "sept",
                     "heures",
                     "et",
-                    "demie",
-                    "."
+                    "demie"
                 ],
-                "answer": "Il est sept heures et demie."
+                "explanation": "Hour + \"half\" — the most common time expression in everyday conversation."
             },
             {
                 "type": "listen",
@@ -3208,22 +3435,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Asking the time",
-                "context": "At the station.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Pardon, quelle heure est-il ?"
-                    },
-                    {
-                        "speaker": "Passer-by",
-                        "text": "Il est quatorze heures trente."
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Merci. Le train part à quinze heures."
-                    }
-                ]
+                "dialoguePartner": "Élodie (Passer-by)",
+                "partnerSays": "Il est quatorze heures trente.",
+                "partnerSaysTranslation": "It's 2:30 p.m.",
+                "prompt": "Thank her and say when your train leaves:",
+                "options": [
+                    "Merci. Le train part à quinze heures.",
+                    "Pardon, quelle heure est-il ?",
+                    "C'est trop petit."
+                ],
+                "correctAnswer": "Merci. Le train part à quinze heures.",
+                "explanation": "\"Merci. Le train part à quinze heures\" thanks her and uses the 24-hour clock, common in France."
             },
             {
                 "type": "check",
@@ -3391,52 +3613,75 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the days",
+                "prompt": "Match each French day with its English name:",
                 "pairs": [
                     {
-                        "left": "Monday",
-                        "right": "lundi"
+                        "id": "fra-1",
+                        "foreign": "lundi",
+                        "native": "Monday",
+                        "phonetic": "luhn-DEE"
                     },
                     {
-                        "left": "Tuesday",
-                        "right": "mardi"
+                        "id": "fra-2",
+                        "foreign": "mardi",
+                        "native": "Tuesday",
+                        "phonetic": "mahr-DEE"
                     },
                     {
-                        "left": "Wednesday",
-                        "right": "mercredi"
+                        "id": "fra-3",
+                        "foreign": "mercredi",
+                        "native": "Wednesday",
+                        "phonetic": "mehr-kruh-DEE"
                     },
                     {
-                        "left": "Thursday",
-                        "right": "jeudi"
+                        "id": "fra-4",
+                        "foreign": "jeudi",
+                        "native": "Thursday",
+                        "phonetic": "zhuh-DEE"
                     },
                     {
-                        "left": "Friday",
-                        "right": "vendredi"
+                        "id": "fra-5",
+                        "foreign": "vendredi",
+                        "native": "Friday",
+                        "phonetic": "vahn-druh-DEE"
                     },
                     {
-                        "left": "Saturday",
-                        "right": "samedi"
+                        "id": "fra-6",
+                        "foreign": "samedi",
+                        "native": "Saturday",
+                        "phonetic": "sahm-DEE"
                     },
                     {
-                        "left": "Sunday",
-                        "right": "dimanche"
+                        "id": "fra-7",
+                        "foreign": "dimanche",
+                        "native": "Sunday",
+                        "phonetic": "dee-MAHNSH"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “My birthday is May 1st.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"My birthday is May 1st.\":",
+                "targetSentence": "Mon anniversaire est le premier mai.",
+                "targetTranslation": "My birthday is May 1st.",
+                "scrambledTokens": [
+                    "le",
+                    "premier",
+                    "mai",
+                    "lundi",
+                    "Mon",
+                    "anniversaire",
+                    "est"
+                ],
+                "correctTokens": [
                     "Mon",
                     "anniversaire",
                     "est",
                     "le",
                     "premier",
-                    "mai",
-                    "."
+                    "mai"
                 ],
-                "answer": "Mon anniversaire est le premier mai."
+                "explanation": "A date in full — once you know the pattern, every date falls into place."
             },
             {
                 "type": "listen",
@@ -3453,26 +3698,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Talking about the week",
-                "context": "Making a plan.",
-                "turns": [
-                    {
-                        "speaker": "Friend",
-                        "text": "Quel jour sommes-nous ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Aujourd'hui, c'est mercredi."
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "À vendredi alors !"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "À vendredi."
-                    }
-                ]
+                "dialoguePartner": "Inès (Friend)",
+                "partnerSays": "Quel jour sommes-nous ?",
+                "partnerSaysTranslation": "What day is it today?",
+                "prompt": "Say it's Wednesday:",
+                "options": [
+                    "Aujourd'hui, c'est mercredi.",
+                    "Il est quinze heures.",
+                    "J'ai vingt ans."
+                ],
+                "correctAnswer": "Aujourd'hui, c'est mercredi.",
+                "explanation": "\"Aujourd'hui, c'est mercredi\" answers with the day of the week. Days are not capitalized in French."
             },
             {
                 "type": "check",
@@ -3598,45 +3834,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the family words",
+                "prompt": "Match each French family word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "the father",
-                        "right": "le père"
+                        "id": "fra-1",
+                        "foreign": "le père",
+                        "native": "the father",
+                        "phonetic": "luh PEHR"
                     },
                     {
-                        "left": "the mother",
-                        "right": "la mère"
+                        "id": "fra-2",
+                        "foreign": "la mère",
+                        "native": "the mother",
+                        "phonetic": "lah MEHR"
                     },
                     {
-                        "left": "the brother",
-                        "right": "le frère"
+                        "id": "fra-3",
+                        "foreign": "le frère",
+                        "native": "the brother",
+                        "phonetic": "luh FREHR"
                     },
                     {
-                        "left": "the sister",
-                        "right": "la sœur"
+                        "id": "fra-4",
+                        "foreign": "la sœur",
+                        "native": "the sister",
+                        "phonetic": "lah SUHR"
                     },
                     {
-                        "left": "the grandparents",
-                        "right": "les grands-parents"
+                        "id": "fra-5",
+                        "foreign": "les grands-parents",
+                        "native": "the grandparents",
+                        "phonetic": "lay grahn-pah-RAHN"
                     },
                     {
-                        "left": "a friend",
-                        "right": "un(e) ami(e)"
+                        "id": "fra-6",
+                        "foreign": "un(e) ami(e)",
+                        "native": "a friend",
+                        "phonetic": "uhn / ün ah-MEE"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “I have two brothers.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I have two brothers.\":",
+                "targetSentence": "J'ai deux frères.",
+                "targetTranslation": "I have two brothers.",
+                "scrambledTokens": [
+                    "frères",
+                    "le",
+                    "J'ai",
+                    "deux"
+                ],
+                "correctTokens": [
                     "J'ai",
                     "deux",
-                    "frères",
-                    "."
+                    "frères"
                 ],
-                "answer": "J'ai deux frères."
+                "explanation": "A warm, simple statement that naturally invites the other person to share too."
             },
             {
                 "type": "listen",
@@ -3653,22 +3907,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Talking about family",
-                "context": "Introducing family members.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Voici ma sœur."
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "Enchanté. Avez-vous des frères ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Oui, j'ai deux frères. Mes parents habitent à Paris."
-                    }
-                ]
+                "dialoguePartner": "Paul (Friend)",
+                "partnerSays": "Enchanté. Avez-vous des frères ?",
+                "partnerSaysTranslation": "Nice to meet you. Do you have brothers?",
+                "prompt": "Say you have two brothers:",
+                "options": [
+                    "Oui, j'ai deux frères.",
+                    "Voici ma sœur.",
+                    "Non, je n'ai pas faim."
+                ],
+                "correctAnswer": "Oui, j'ai deux frères.",
+                "explanation": "\"Oui, j'ai deux frères\" answers directly using avoir for family members."
             },
             {
                 "type": "check",
@@ -3784,47 +4033,67 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the shopping words",
+                "prompt": "Match each French shopping word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "the size",
-                        "right": "la taille"
+                        "id": "fra-1",
+                        "foreign": "la taille",
+                        "native": "the size",
+                        "phonetic": "lah TAH-yuh"
                     },
                     {
-                        "left": "the fitting room",
-                        "right": "la cabine d'essayage"
+                        "id": "fra-2",
+                        "foreign": "la cabine d'essayage",
+                        "native": "the fitting room",
+                        "phonetic": "lah kah-BEEN deh-seh-YAHZH"
                     },
                     {
-                        "left": "on sale",
-                        "right": "en solde"
+                        "id": "fra-3",
+                        "foreign": "en solde",
+                        "native": "on sale",
+                        "phonetic": "ahn SOLD"
                     },
                     {
-                        "left": "too big",
-                        "right": "trop grand"
+                        "id": "fra-4",
+                        "foreign": "trop grand",
+                        "native": "too big",
+                        "phonetic": "troh GRAHN"
                     },
                     {
-                        "left": "too small",
-                        "right": "trop petit"
+                        "id": "fra-5",
+                        "foreign": "trop petit",
+                        "native": "too small",
+                        "phonetic": "troh puh-TEE"
                     },
                     {
-                        "left": "a dress",
-                        "right": "une robe"
+                        "id": "fra-6",
+                        "foreign": "une robe",
+                        "native": "a dress",
+                        "phonetic": "ün ROB"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “Do you have this in a size 40?”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Do you have this in a size 40?\":",
+                "targetSentence": "Avez-vous cela en taille quarante ?",
+                "targetTranslation": "Do you have this in a size 40?",
+                "scrambledTokens": [
+                    "taille",
+                    "quarante",
+                    "la",
+                    "Avez-vous",
+                    "cela",
+                    "en"
+                ],
+                "correctTokens": [
                     "Avez-vous",
                     "cela",
                     "en",
                     "taille",
-                    "quarante",
-                    "?"
+                    "quarante"
                 ],
-                "answer": "Avez-vous cela en taille quarante ?"
+                "explanation": "The one question that keeps a shopping trip moving in the right direction."
             },
             {
                 "type": "listen",
@@ -3841,22 +4110,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "In the fitting room",
-                "context": "Trying on clothes.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Puis-je l'essayer ?"
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "Bien sûr. La cabine d'essayage est là-bas."
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "C'est trop petit. Avez-vous une taille plus grande ?"
-                    }
-                ]
+                "dialoguePartner": "Manon (Shop Clerk)",
+                "partnerSays": "Bien sûr. La cabine d'essayage est là-bas.",
+                "partnerSaysTranslation": "Of course. The fitting room is over there.",
+                "prompt": "After trying it on, say it's too small and ask for a bigger size:",
+                "options": [
+                    "C'est trop petit. Avez-vous une taille plus grande ?",
+                    "Puis-je l'essayer ?",
+                    "Je voudrais le rouge."
+                ],
+                "correctAnswer": "C'est trop petit. Avez-vous une taille plus grande ?",
+                "explanation": "\"C'est trop petit. Avez-vous une taille plus grande ?\" describes the problem and asks for the next size up."
             },
             {
                 "type": "check",
@@ -3956,39 +4220,55 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the articles",
+                "prompt": "Match each French article with when it's used:",
                 "pairs": [
                     {
-                        "left": "masculine",
-                        "right": "le / un"
+                        "id": "fra-1",
+                        "foreign": "le / un",
+                        "native": "masculine",
+                        "phonetic": "luh / uhn"
                     },
                     {
-                        "left": "feminine",
-                        "right": "la / une"
+                        "id": "fra-2",
+                        "foreign": "la / une",
+                        "native": "feminine",
+                        "phonetic": "lah / ün"
                     },
                     {
-                        "left": "before a vowel sound",
-                        "right": "l'"
+                        "id": "fra-3",
+                        "foreign": "l'",
+                        "native": "before a vowel sound",
+                        "phonetic": "l"
                     },
                     {
-                        "left": "plural definite (the)",
-                        "right": "les"
+                        "id": "fra-4",
+                        "foreign": "les",
+                        "native": "plural definite (the)",
+                        "phonetic": "lay"
                     },
                     {
-                        "left": "plural indefinite (some)",
-                        "right": "des"
+                        "id": "fra-5",
+                        "foreign": "des",
+                        "native": "plural indefinite (some)",
+                        "phonetic": "day"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “the book”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"the book\":",
+                "targetSentence": "le livre",
+                "targetTranslation": "the book",
+                "scrambledTokens": [
+                    "livre",
+                    "l'",
+                    "le"
+                ],
+                "correctTokens": [
                     "le",
                     "livre"
                 ],
-                "answer": "le livre"
+                "explanation": "A compact phrase that puts the article or gender rule into immediate practice."
             },
             {
                 "type": "listen",
@@ -4006,26 +4286,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Noticing gender",
-                "context": "A quick practice exchange.",
-                "turns": [
-                    {
-                        "speaker": "Teacher",
-                        "text": "Comment dit-on “the table” ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "La table."
-                    },
-                    {
-                        "speaker": "Teacher",
-                        "text": "Et “the hotel” ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "L'hôtel."
-                    }
-                ]
+                "dialoguePartner": "Madame Bernard (Teacher)",
+                "partnerSays": "Comment dit-on « the table » ?",
+                "partnerSaysTranslation": "How do you say \"the table\"?",
+                "prompt": "Answer with the correct article:",
+                "options": [
+                    "La table.",
+                    "Le table.",
+                    "Un table."
+                ],
+                "correctAnswer": "La table.",
+                "explanation": "Table is feminine, so it takes la. Le is masculine, and un is the masculine indefinite article."
             },
             {
                 "type": "check",
@@ -4173,45 +4444,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the conjugations",
+                "prompt": "Match each form of être or avoir with its English meaning:",
                 "pairs": [
                     {
-                        "left": "I am",
-                        "right": "je suis"
+                        "id": "fra-1",
+                        "foreign": "je suis",
+                        "native": "I am",
+                        "phonetic": "zhuh SWEE"
                     },
                     {
-                        "left": "we are",
-                        "right": "nous sommes"
+                        "id": "fra-2",
+                        "foreign": "nous sommes",
+                        "native": "we are",
+                        "phonetic": "noo SOM"
                     },
                     {
-                        "left": "I have",
-                        "right": "j'ai"
+                        "id": "fra-3",
+                        "foreign": "j'ai",
+                        "native": "I have",
+                        "phonetic": "zhay"
                     },
                     {
-                        "left": "we have",
-                        "right": "nous avons"
+                        "id": "fra-4",
+                        "foreign": "nous avons",
+                        "native": "we have",
+                        "phonetic": "noo zah-VOHN"
                     },
                     {
-                        "left": "they have",
-                        "right": "ils ont"
+                        "id": "fra-5",
+                        "foreign": "ils ont",
+                        "native": "they have",
+                        "phonetic": "eel ZOHN"
                     },
                     {
-                        "left": "they are",
-                        "right": "elles sont"
+                        "id": "fra-6",
+                        "foreign": "elles sont",
+                        "native": "they are",
+                        "phonetic": "el SOHN"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “I am tired.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I am tired.\":",
+                "targetSentence": "Je suis fatigué(e).",
+                "targetTranslation": "I am tired.",
+                "scrambledTokens": [
+                    "fatigué(e)",
+                    "j'ai",
+                    "Je",
+                    "suis"
+                ],
+                "correctTokens": [
                     "Je",
                     "suis",
-                    "fatigué(e)",
-                    "."
+                    "fatigué(e)"
                 ],
-                "answer": "Je suis fatigué(e)."
+                "explanation": "Two core verbs in a single sentence — a powerful combination to internalize."
             },
             {
                 "type": "listen",
@@ -4229,22 +4518,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Using être and avoir",
-                "context": "A short description.",
-                "turns": [
-                    {
-                        "speaker": "Friend",
-                        "text": "Comment vas-tu ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Je suis fatigué(e). Et j'ai faim."
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "Nous avons le temps. On va manger ?"
-                    }
-                ]
+                "dialoguePartner": "Sophie (Friend)",
+                "partnerSays": "Comment vas-tu ?",
+                "partnerSaysTranslation": "How are you?",
+                "prompt": "Say you're tired and hungry:",
+                "options": [
+                    "Je suis fatigué et j'ai faim.",
+                    "Je suis faim et j'ai fatigué.",
+                    "J'ai fatigué et je suis faim."
+                ],
+                "correctAnswer": "Je suis fatigué et j'ai faim.",
+                "explanation": "Fatigué uses être (je suis fatigué), while faim uses avoir (j'ai faim)."
             },
             {
                 "type": "check",
@@ -4394,43 +4678,56 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the -er endings",
+                "prompt": "Match each subject pronoun with its -er verb ending:",
                 "pairs": [
                     {
-                        "left": "-e",
-                        "right": "je / il / elle / on"
+                        "id": "fra-1",
+                        "foreign": "je / il / elle / on",
+                        "native": "-e"
                     },
                     {
-                        "left": "-es",
-                        "right": "tu"
+                        "id": "fra-2",
+                        "foreign": "tu",
+                        "native": "-es"
                     },
                     {
-                        "left": "-ons",
-                        "right": "nous"
+                        "id": "fra-3",
+                        "foreign": "nous",
+                        "native": "-ons"
                     },
                     {
-                        "left": "-ez",
-                        "right": "vous"
+                        "id": "fra-4",
+                        "foreign": "vous",
+                        "native": "-ez"
                     },
                     {
-                        "left": "-ent",
-                        "right": "ils / elles"
+                        "id": "fra-5",
+                        "foreign": "ils / elles",
+                        "native": "-ent"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “I speak a little French.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I speak a little French.\":",
+                "targetSentence": "Je parle un peu français.",
+                "targetTranslation": "I speak a little French.",
+                "scrambledTokens": [
+                    "peu",
+                    "français",
+                    "tu",
+                    "Je",
+                    "parle",
+                    "un"
+                ],
+                "correctTokens": [
                     "Je",
                     "parle",
                     "un",
                     "peu",
-                    "français",
-                    "."
+                    "français"
                 ],
-                "answer": "Je parle un peu français."
+                "explanation": "The verb pattern in action — master this form and unlock a whole verb family."
             },
             {
                 "type": "listen",
@@ -4448,22 +4745,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Talking about routines",
-                "context": "Using regular -er verbs.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "Je parle un peu français."
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "Nous travaillons à Paris."
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Elles aiment le fromage français."
-                    }
-                ]
+                "dialoguePartner": "Lucas (Friend)",
+                "partnerSays": "Tu parles français ?",
+                "partnerSaysTranslation": "Do you speak French?",
+                "prompt": "Say yes, you speak a little French:",
+                "options": [
+                    "Oui, je parle un peu français.",
+                    "Oui, je parles un peu français.",
+                    "Oui, je parlons un peu français."
+                ],
+                "correctAnswer": "Oui, je parle un peu français.",
+                "explanation": "With je, regular -er verbs take -e: je parle. Parles is the tu form and parlons is the nous form."
             },
             {
                 "type": "check",
@@ -4575,45 +4867,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the adjective forms",
+                "prompt": "Match each French adjective form with its English meaning:",
                 "pairs": [
                     {
-                        "left": "tall/big (masc.)",
-                        "right": "grand"
+                        "id": "fra-1",
+                        "foreign": "grand",
+                        "native": "tall/big (masc.)",
+                        "phonetic": "grahn"
                     },
                     {
-                        "left": "tall/big (fem.)",
-                        "right": "grande"
+                        "id": "fra-2",
+                        "foreign": "grande",
+                        "native": "tall/big (fem.)",
+                        "phonetic": "grahnd"
                     },
                     {
-                        "left": "small (masc.)",
-                        "right": "petit"
+                        "id": "fra-3",
+                        "foreign": "petit",
+                        "native": "small (masc.)",
+                        "phonetic": "puh-TEE"
                     },
                     {
-                        "left": "small (fem.)",
-                        "right": "petite"
+                        "id": "fra-4",
+                        "foreign": "petite",
+                        "native": "small (fem.)",
+                        "phonetic": "puh-TEET"
                     },
                     {
-                        "left": "beautiful (before noun)",
-                        "right": "beau / belle"
+                        "id": "fra-5",
+                        "foreign": "beau / belle",
+                        "native": "beautiful (before noun)",
+                        "phonetic": "boh / bel"
                     },
                     {
-                        "left": "new (before noun)",
-                        "right": "nouveau / nouvelle"
+                        "id": "fra-6",
+                        "foreign": "nouveau / nouvelle",
+                        "native": "new (before noun)",
+                        "phonetic": "noo-VOH / noo-VEL"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “She is small.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"She is small.\":",
+                "targetSentence": "Elle est petite.",
+                "targetTranslation": "She is small.",
+                "scrambledTokens": [
+                    "petite",
+                    "grand",
+                    "Elle",
+                    "est"
+                ],
+                "correctTokens": [
                     "Elle",
                     "est",
-                    "petite",
-                    "."
+                    "petite"
                 ],
-                "answer": "Elle est petite."
+                "explanation": "Agreement at work: the adjective shifts to match the noun it describes."
             },
             {
                 "type": "listen",
@@ -4631,22 +4941,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Describing people",
-                "context": "Agreement in action.",
-                "turns": [
-                    {
-                        "speaker": "Friend",
-                        "text": "Il est grand."
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Elle est grande aussi."
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "C'est une belle ville."
-                    }
-                ]
+                "dialoguePartner": "Chloé (Friend)",
+                "partnerSays": "Mon frère est grand. Et ta sœur ?",
+                "partnerSaysTranslation": "My brother is tall. And your sister?",
+                "prompt": "Describe your sister the same way:",
+                "options": [
+                    "Elle est grande aussi.",
+                    "Elle est grand aussi.",
+                    "Elle est grands aussi."
+                ],
+                "correctAnswer": "Elle est grande aussi.",
+                "explanation": "Adjectives agree with the noun: sœur is feminine singular, so grand becomes grande."
             },
             {
                 "type": "check",
@@ -4752,43 +5057,61 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the negation patterns",
+                "prompt": "Match each French negation pattern with its English meaning:",
                 "pairs": [
                     {
-                        "left": "not",
-                        "right": "ne...pas"
+                        "id": "fra-1",
+                        "foreign": "ne...pas",
+                        "native": "not",
+                        "phonetic": "nuh … PAH"
                     },
                     {
-                        "left": "never",
-                        "right": "ne...jamais"
+                        "id": "fra-2",
+                        "foreign": "ne...jamais",
+                        "native": "never",
+                        "phonetic": "nuh … zhah-MEH"
                     },
                     {
-                        "left": "no longer / not anymore",
-                        "right": "ne...plus"
+                        "id": "fra-3",
+                        "foreign": "ne...plus",
+                        "native": "no longer / not anymore",
+                        "phonetic": "nuh … PLÜ"
                     },
                     {
-                        "left": "nothing",
-                        "right": "ne...rien"
+                        "id": "fra-4",
+                        "foreign": "ne...rien",
+                        "native": "nothing",
+                        "phonetic": "nuh … RYAN"
                     },
                     {
-                        "left": "nobody",
-                        "right": "ne...personne"
+                        "id": "fra-5",
+                        "foreign": "ne...personne",
+                        "native": "nobody",
+                        "phonetic": "nuh … pehr-SON"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “I don't like coffee.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I don't like coffee.\":",
+                "targetSentence": "Je n'aime pas le café.",
+                "targetTranslation": "I don't like coffee.",
+                "scrambledTokens": [
+                    "le",
+                    "café",
+                    "ne...pas",
+                    "Je",
+                    "n'aime",
+                    "pas"
+                ],
+                "correctTokens": [
                     "Je",
                     "n'aime",
                     "pas",
                     "le",
-                    "café",
-                    "."
+                    "café"
                 ],
-                "answer": "Je n'aime pas le café."
+                "explanation": "The negation pattern in its simplest form — learn it once, use it everywhere."
             },
             {
                 "type": "listen",
@@ -4805,26 +5128,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Saying no",
-                "context": "Simple negative exchanges.",
-                "turns": [
-                    {
-                        "speaker": "Friend",
-                        "text": "Tu aimes le café ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Non, je n'aime pas le café."
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "Tu manges de la viande ?"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "Je ne mange jamais de viande."
-                    }
-                ]
+                "dialoguePartner": "Maxime (Friend)",
+                "partnerSays": "Tu aimes le café ?",
+                "partnerSaysTranslation": "Do you like coffee?",
+                "prompt": "Say no, you don't like coffee:",
+                "options": [
+                    "Non, je n'aime pas le café.",
+                    "Non, je aime pas le café.",
+                    "Non, je n'aime le café."
+                ],
+                "correctAnswer": "Non, je n'aime pas le café.",
+                "explanation": "Negation wraps the verb with ne … pas; before a vowel ne becomes n'. Both parts are needed in standard French."
             },
             {
                 "type": "check",
@@ -4942,51 +5256,73 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the question words",
+                "prompt": "Match each French question word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "who",
-                        "right": "qui"
+                        "id": "fra-1",
+                        "foreign": "qui",
+                        "native": "who",
+                        "phonetic": "kee"
                     },
                     {
-                        "left": "what",
-                        "right": "que / quoi"
+                        "id": "fra-2",
+                        "foreign": "que / quoi",
+                        "native": "what",
+                        "phonetic": "kuh / kwah"
                     },
                     {
-                        "left": "where",
-                        "right": "où"
+                        "id": "fra-3",
+                        "foreign": "où",
+                        "native": "where",
+                        "phonetic": "oo"
                     },
                     {
-                        "left": "when",
-                        "right": "quand"
+                        "id": "fra-4",
+                        "foreign": "quand",
+                        "native": "when",
+                        "phonetic": "kahn"
                     },
                     {
-                        "left": "why",
-                        "right": "pourquoi"
+                        "id": "fra-5",
+                        "foreign": "pourquoi",
+                        "native": "why",
+                        "phonetic": "poor-KWAH"
                     },
                     {
-                        "left": "how",
-                        "right": "comment"
+                        "id": "fra-6",
+                        "foreign": "comment",
+                        "native": "how",
+                        "phonetic": "koh-MAHN"
                     },
                     {
-                        "left": "how much / how many",
-                        "right": "combien"
+                        "id": "fra-7",
+                        "foreign": "combien",
+                        "native": "how much / how many",
+                        "phonetic": "kohm-BYAN"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Translate & build",
-                "prompt": "How do you say this in French? Build the French: “Do you speak English?”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Do you speak English?\":",
+                "targetSentence": "Est-ce que vous parlez anglais ?",
+                "targetTranslation": "Do you speak English?",
+                "scrambledTokens": [
+                    "parlez",
+                    "anglais",
+                    "qui",
+                    "Est-ce",
+                    "que",
+                    "vous"
+                ],
+                "correctTokens": [
                     "Est-ce",
                     "que",
                     "vous",
                     "parlez",
-                    "anglais",
-                    "?"
+                    "anglais"
                 ],
-                "answer": "Est-ce que vous parlez anglais ?"
+                "explanation": "A well-formed question using the key structure — polite, clear, and natural."
             },
             {
                 "type": "listen",
@@ -5003,22 +5339,17 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Asking around",
-                "context": "Three ways to ask the same thing.",
-                "turns": [
-                    {
-                        "speaker": "Casual",
-                        "text": "Tu aimes le café ?"
-                    },
-                    {
-                        "speaker": "Neutral",
-                        "text": "Est-ce que tu aimes le café ?"
-                    },
-                    {
-                        "speaker": "Formal",
-                        "text": "Aimes-tu le café ?"
-                    }
-                ]
+                "dialoguePartner": "Emma (Friend)",
+                "partnerSays": "Alors, tu veux savoir quelque chose ?",
+                "partnerSaysTranslation": "So, do you want to know something?",
+                "prompt": "Ask if she likes coffee using est-ce que:",
+                "options": [
+                    "Est-ce que tu aimes le café ?",
+                    "Tu aimes est-ce que le café ?",
+                    "Aimes est-ce que tu le café ?"
+                ],
+                "correctAnswer": "Est-ce que tu aimes le café ?",
+                "explanation": "Est-ce que goes at the very start of the question, followed by normal word order."
             },
             {
                 "type": "check",

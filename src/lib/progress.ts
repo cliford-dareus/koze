@@ -42,6 +42,7 @@ export type ProgressState = {
     lessonProgress: Map<string, Map<string, LessonProgressEntry>>;
     lessonsCompleted: Map<string, string[]>;
     completedStoryIds: string[];
+    completedListeningIds: string[];
     lessonDirection: LessonDirection;
     nativeLanguage: string | null;
     learningLanguage: string | null;
@@ -51,8 +52,10 @@ export type ProgressState = {
     todayXp: number;
     todayDate: string | null;
     dailyGoalMet: boolean;
+    lastPracticedDate: string;
     todayMinutesPracticed: number;
     dailyGoalMinutes: number;
+    weeklyActivity: Record<string, number>;
     /** Earned badge ids */
     badges: string[];
     cairnStonesCount: number;
@@ -79,6 +82,7 @@ export const defaultProgress = (): ProgressState => ({
     lessonProgress: new Map(),
     lessonsCompleted: new Map(),
     completedStoryIds: [],
+    completedListeningIds: [],
     lessonDirection: null,
     nativeLanguage: null,
     learningLanguage: null,
@@ -88,8 +92,10 @@ export const defaultProgress = (): ProgressState => ({
     todayXp: 0,
     todayDate: null,
     dailyGoalMet: false,
+    lastPracticedDate: todayKey(),
     todayMinutesPracticed: 0,
     dailyGoalMinutes: DEFAULT_DAILY_GOAL,
+    weeklyActivity: {},
     badges: [],
     cairnStonesCount: 0,
     soundEnabled: true,
@@ -278,17 +284,17 @@ export function recordActivity(
         };
 
         const lessonProgress = new Map(next.lessonProgress);
-        const existingDirectionMap = lessonProgress.get(direction);
+        const existingDirectionMap = lessonProgress.get(direction!);
         const directionProgress = new Map(existingDirectionMap || []);
         directionProgress.set(lessonId, entry);
-        lessonProgress.set(direction, directionProgress);
+        lessonProgress.set(direction!, directionProgress);
 
         const lessonsCompleted = new Map(next.lessonsCompleted);
-        let completedLessons = [...(lessonsCompleted.get(direction) ?? [])];
+        let completedLessons = [...(lessonsCompleted.get(direction!) ?? [])];
 
         if (completed && !completedLessons.includes(lessonId)) {
             completedLessons.push(lessonId);
-            lessonsCompleted.set(direction, completedLessons);
+            lessonsCompleted.set(direction!, completedLessons);
         }
 
         next = {
@@ -311,16 +317,16 @@ export function recordActivity(
         xpEarned: extra?.xpEarned,
     });
 
-    const { progress: withBadges, unlocked } = applyBadgeUnlocks(next);
-    next = withBadges;
-
-    if (unlocked.length && typeof window !== "undefined") {
-        window.dispatchEvent(
-            new CustomEvent("koze-badges", { detail: { unlocked } }),
-        );
-    }
-
     saveProgress(next);
+
+    applyBadgeUnlocks(next).then(({ progress: withBadges, unlocked }) => {
+        saveProgress(withBadges);
+        if (unlocked.length && typeof window !== "undefined") {
+            window.dispatchEvent(
+                new CustomEvent("koze-badges", { detail: { unlocked } }),
+            );
+        }
+    }).catch(() => { /* ignore badge evaluation errors */ });
 
     if (typeof window !== "undefined") {
         void fetch("/api/progress", {

@@ -165,7 +165,7 @@ export function isScenarioUnlocked(
     if (!required?.length) return true;
 
     const completed =
-        progress.lessonsCompleted?.get?.(direction) ??
+        progress.lessonsCompleted?.get?.(direction!) ??
         progress.lessonsCompleted?.get?.("en-fr") ??
         progress.lessonsCompleted?.get?.("fr-en") ??
         [];

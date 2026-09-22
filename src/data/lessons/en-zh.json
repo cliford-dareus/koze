@@ -100,45 +100,63 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the greetings",
+        "prompt": "Match each Chinese greeting with its English meaning:",
         "pairs": [
           {
-            "left": "你好",
-            "right": "Hello"
+            "id": "zho-1",
+            "foreign": "你好",
+            "native": "Hello",
+            "phonetic": "nǐ hǎo"
           },
           {
-            "left": "早上好",
-            "right": "Good morning"
+            "id": "zho-2",
+            "foreign": "早上好",
+            "native": "Good morning",
+            "phonetic": "zǎoshang hǎo"
           },
           {
-            "left": "晚上好",
-            "right": "Good evening"
+            "id": "zho-3",
+            "foreign": "晚上好",
+            "native": "Good evening",
+            "phonetic": "wǎnshang hǎo"
           },
           {
-            "left": "再见",
-            "right": "Goodbye"
+            "id": "zho-4",
+            "foreign": "再见",
+            "native": "Goodbye",
+            "phonetic": "zàijiàn"
           },
           {
-            "left": "明天见",
-            "right": "See you tomorrow"
+            "id": "zho-5",
+            "foreign": "明天见",
+            "native": "See you tomorrow",
+            "phonetic": "míngtiān jiàn"
           },
           {
-            "left": "晚安",
-            "right": "Good night"
+            "id": "zho-6",
+            "foreign": "晚安",
+            "native": "Good night",
+            "phonetic": "wǎn'ān"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the greeting",
-        "prompt": "Build: “Hello, how are you?”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Hello, how are you?\":",
+        "targetSentence": "你好，你好吗？",
+        "targetTranslation": "Hello, how are you?",
+        "scrambledTokens": [
+          "你好吗",
+          "早上好",
+          "你好",
+          "，"
+        ],
+        "correctTokens": [
           "你好",
           "，",
-          "你好吗",
-          "？"
+          "你好吗"
         ],
-        "answer": "你好，你好吗？"
+        "explanation": "A warm, time-appropriate greeting — the foundation of any first impression."
       },
       {
         "type": "listen",
@@ -155,22 +173,18 @@
       },
       {
         "type": "context-dialogue",
-        "title": "A first meeting",
-        "context": "You meet someone for the first time.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "您好，你好吗？"
-          },
-          {
-            "speaker": "Other",
-            "text": "我很好，谢谢。你呢？"
-          },
-          {
-            "speaker": "You",
-            "text": "我也很好。"
-          }
-        ]
+        "dialoguePartner": "Wang Ayi (Colleague's Mother)",
+        "partnerSays": "您好，很高兴认识你。你好吗？",
+        "partnerSaysPhonetic": "Nín hǎo, hěn gāoxìng rènshi nǐ. Nǐ hǎo ma?",
+        "partnerSaysTranslation": "Hello, nice to meet you. How are you?",
+        "prompt": "Reply politely and return the question:",
+        "options": [
+          "我很好，谢谢。您呢？",
+          "再见！",
+          "我不明白。"
+        ],
+        "correctAnswer": "我很好，谢谢。您呢？",
+        "explanation": "\"我很好，谢谢。您呢？\" answers warmly and returns the question using the respectful 您. \"再见\" is a goodbye."
       },
       {
         "type": "check",
@@ -298,42 +312,59 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the polite phrases",
+        "prompt": "Match each Chinese polite phrase with its English meaning:",
         "pairs": [
           {
-            "left": "请",
-            "right": "Please"
+            "id": "zho-1",
+            "foreign": "请",
+            "native": "Please",
+            "phonetic": "qǐng"
           },
           {
-            "left": "谢谢",
-            "right": "Thank you"
+            "id": "zho-2",
+            "foreign": "谢谢",
+            "native": "Thank you",
+            "phonetic": "xièxie"
           },
           {
-            "left": "非常感谢",
-            "right": "Thank you very much"
+            "id": "zho-3",
+            "foreign": "非常感谢",
+            "native": "Thank you very much",
+            "phonetic": "fēicháng gǎnxiè"
           },
           {
-            "left": "不客气",
-            "right": "You’re welcome"
+            "id": "zho-4",
+            "foreign": "不客气",
+            "native": "You’re welcome",
+            "phonetic": "bú kèqi"
           },
           {
-            "left": "对不起",
-            "right": "Sorry"
+            "id": "zho-5",
+            "foreign": "对不起",
+            "native": "Sorry",
+            "phonetic": "duìbuqǐ"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the request",
-        "prompt": "Build: “A coffee, please.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"A coffee, please.\":",
+        "targetSentence": "请给我一杯咖啡。",
+        "targetTranslation": "A coffee, please.",
+        "scrambledTokens": [
+          "一杯",
+          "咖啡",
+          "谢谢",
+          "请",
+          "给我"
+        ],
+        "correctTokens": [
           "请",
           "给我",
           "一杯",
-          "咖啡",
-          "。"
+          "咖啡"
         ],
-        "answer": "请给我一杯咖啡。"
+        "explanation": "Combining a request with \"please\" — the cornerstone of polite interaction."
       },
       {
         "type": "listen",
@@ -350,26 +381,18 @@
       },
       {
         "type": "context-dialogue",
-        "title": "At the counter",
-        "context": "Ordering and thanking.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "请给我一杯咖啡。"
-          },
-          {
-            "speaker": "Clerk",
-            "text": "好的。三块。"
-          },
-          {
-            "speaker": "You",
-            "text": "谢谢。"
-          },
-          {
-            "speaker": "Clerk",
-            "text": "不客气。"
-          }
-        ]
+        "dialoguePartner": "Xiao Li (Café Clerk)",
+        "partnerSays": "您的咖啡好了。三块钱。",
+        "partnerSaysPhonetic": "Nín de kāfēi hǎo le. Sān kuài qián.",
+        "partnerSaysTranslation": "Your coffee is ready. Three yuan.",
+        "prompt": "Thank him as you pay:",
+        "options": [
+          "谢谢。",
+          "请给我一杯咖啡。",
+          "不客气。"
+        ],
+        "correctAnswer": "谢谢。",
+        "explanation": "\"谢谢\" is the natural thank-you. \"不客气\" (you're welcome) is what the clerk would say back."
       },
       {
         "type": "check",
@@ -545,50 +568,71 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the numbers",
+        "prompt": "Match each Chinese number with its numeral:",
         "pairs": [
           {
-            "left": "一",
-            "right": "1"
+            "id": "zho-1",
+            "foreign": "一",
+            "native": "1",
+            "phonetic": "yī"
           },
           {
-            "left": "二",
-            "right": "2"
+            "id": "zho-2",
+            "foreign": "二",
+            "native": "2",
+            "phonetic": "èr"
           },
           {
-            "left": "三",
-            "right": "3"
+            "id": "zho-3",
+            "foreign": "三",
+            "native": "3",
+            "phonetic": "sān"
           },
           {
-            "left": "五",
-            "right": "5"
+            "id": "zho-4",
+            "foreign": "五",
+            "native": "5",
+            "phonetic": "wǔ"
           },
           {
-            "left": "七",
-            "right": "7"
+            "id": "zho-5",
+            "foreign": "七",
+            "native": "7",
+            "phonetic": "qī"
           },
           {
-            "left": "十",
-            "right": "10"
+            "id": "zho-6",
+            "foreign": "十",
+            "native": "10",
+            "phonetic": "shí"
           },
           {
-            "left": "二十",
-            "right": "20"
+            "id": "zho-7",
+            "foreign": "二十",
+            "native": "20",
+            "phonetic": "èrshí"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the order",
-        "prompt": "Build: “Two coffees, please.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Two coffees, please.\":",
+        "targetSentence": "请给我两杯咖啡。",
+        "targetTranslation": "Two coffees, please.",
+        "scrambledTokens": [
+          "两杯",
+          "咖啡",
+          "一",
+          "请",
+          "给我"
+        ],
+        "correctTokens": [
           "请",
           "给我",
           "两杯",
-          "咖啡",
-          "。"
+          "咖啡"
         ],
-        "answer": "请给我两杯咖啡。"
+        "explanation": "Numbers in context — the essential combination for real-world transactions."
       },
       {
         "type": "listen",
@@ -605,22 +649,18 @@
       },
       {
         "type": "context-dialogue",
-        "title": "At the ticket window",
-        "context": "Buying tickets.",
-        "turns": [
-          {
-            "speaker": "Clerk",
-            "text": "两张票？"
-          },
-          {
-            "speaker": "You",
-            "text": "对，两张。我二十岁。"
-          },
-          {
-            "speaker": "Clerk",
-            "text": "好的。十五块。"
-          }
-        ]
+        "dialoguePartner": "Mr. Zhang (Ticket Clerk)",
+        "partnerSays": "您要几张票？",
+        "partnerSaysPhonetic": "Nín yào jǐ zhāng piào?",
+        "partnerSaysTranslation": "How many tickets do you want?",
+        "prompt": "Ask for two tickets:",
+        "options": [
+          "两张，谢谢。",
+          "我二十岁。",
+          "十五块。"
+        ],
+        "correctAnswer": "两张，谢谢。",
+        "explanation": "\"两张\" uses 两 (not 二) before the measure word 张 for tickets. \"十五块\" is the price the clerk would quote."
       },
       {
         "type": "check",
@@ -742,42 +782,59 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the building blocks",
+        "prompt": "Match each Chinese introduction phrase with its English meaning:",
         "pairs": [
           {
-            "left": "我叫…",
-            "right": "My name is…"
+            "id": "zho-1",
+            "foreign": "我叫…",
+            "native": "My name is…",
+            "phonetic": "wǒ jiào…"
           },
           {
-            "left": "我来自…",
-            "right": "I come from…"
+            "id": "zho-2",
+            "foreign": "我来自…",
+            "native": "I come from…",
+            "phonetic": "wǒ láizì…"
           },
           {
-            "left": "我住在…",
-            "right": "I live in…"
+            "id": "zho-3",
+            "foreign": "我住在…",
+            "native": "I live in…",
+            "phonetic": "wǒ zhù zài…"
           },
           {
-            "left": "很高兴认识你",
-            "right": "Nice to meet you"
+            "id": "zho-4",
+            "foreign": "很高兴认识你",
+            "native": "Nice to meet you",
+            "phonetic": "hěn gāoxìng rènshi nǐ"
           },
           {
-            "left": "你呢？",
-            "right": "And you?"
+            "id": "zho-5",
+            "foreign": "你呢？",
+            "native": "And you?",
+            "phonetic": "nǐ ne?"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the introduction",
-        "prompt": "Build: “Hello, my name is Alex.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Hello, my name is Alex.\":",
+        "targetSentence": "你好，我叫Alex。",
+        "targetTranslation": "Hello, my name is Alex.",
+        "scrambledTokens": [
+          "我叫",
+          "Alex",
+          "很高兴认识你",
+          "你好",
+          "，"
+        ],
+        "correctTokens": [
           "你好",
           "，",
           "我叫",
-          "Alex",
-          "。"
+          "Alex"
         ],
-        "answer": "你好，我叫Alex。"
+        "explanation": "Your origin in one clear sentence — the natural follow-up to sharing your name."
       },
       {
         "type": "listen",
@@ -794,26 +851,18 @@
       },
       {
         "type": "context-dialogue",
-        "title": "Meeting someone new",
-        "context": "A short self-introduction.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "你好，我叫Sam。"
-          },
-          {
-            "speaker": "Other",
-            "text": "很高兴认识你。我叫Lea。"
-          },
-          {
-            "speaker": "You",
-            "text": "我来自美国。你呢？"
-          },
-          {
-            "speaker": "Léa",
-            "text": "我来自北京。"
-          }
-        ]
+        "dialoguePartner": "Lea (New Acquaintance)",
+        "partnerSays": "很高兴认识你。我叫Lea。你是哪国人？",
+        "partnerSaysPhonetic": "Hěn gāoxìng rènshi nǐ. Wǒ jiào Lea. Nǐ shì nǎ guó rén?",
+        "partnerSaysTranslation": "Nice to meet you. I'm Lea. Which country are you from?",
+        "prompt": "Say where you're from and return the question:",
+        "options": [
+          "我来自美国。你呢？",
+          "我叫Sam。",
+          "我很好。"
+        ],
+        "correctAnswer": "我来自美国。你呢？",
+        "explanation": "\"我来自美国。你呢？\" answers her question and keeps the conversation balanced."
       },
       {
         "type": "check",
@@ -938,43 +987,61 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the colors",
+        "prompt": "Match each Chinese color with its English name:",
         "pairs": [
           {
-            "left": "红色",
-            "right": "red"
+            "id": "zho-1",
+            "foreign": "红色",
+            "native": "red",
+            "phonetic": "hóngsè"
           },
           {
-            "left": "蓝色",
-            "right": "blue"
+            "id": "zho-2",
+            "foreign": "蓝色",
+            "native": "blue",
+            "phonetic": "lánsè"
           },
           {
-            "left": "绿色",
-            "right": "green"
+            "id": "zho-3",
+            "foreign": "绿色",
+            "native": "green",
+            "phonetic": "lǜsè"
           },
           {
-            "left": "黑色",
-            "right": "black"
+            "id": "zho-4",
+            "foreign": "黑色",
+            "native": "black",
+            "phonetic": "hēisè"
           },
           {
-            "left": "白色",
-            "right": "white"
+            "id": "zho-5",
+            "foreign": "白色",
+            "native": "white",
+            "phonetic": "báisè"
           },
           {
-            "left": "棕色",
-            "right": "brown"
+            "id": "zho-6",
+            "foreign": "棕色",
+            "native": "brown",
+            "phonetic": "zōngsè"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the description",
-        "prompt": "Build: “a blue dress”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"a blue dress\":",
+        "targetSentence": "蓝色的裙子",
+        "targetTranslation": "a blue dress",
+        "scrambledTokens": [
+          "裙子",
+          "红色",
+          "蓝色的"
+        ],
+        "correctTokens": [
           "蓝色的",
           "裙子"
         ],
-        "answer": "蓝色的裙子"
+        "explanation": "Color + polite form — everything needed to express a preference in any shop."
       },
       {
         "type": "listen",
@@ -991,22 +1058,18 @@
       },
       {
         "type": "context-dialogue",
-        "title": "Choosing a color",
-        "context": "In a clothing shop.",
-        "turns": [
-          {
-            "speaker": "Clerk",
-            "text": "您喜欢什么颜色？"
-          },
-          {
-            "speaker": "You",
-            "text": "我想要红色的。"
-          },
-          {
-            "speaker": "Clerk",
-            "text": "这是红色的裙子。"
-          }
-        ]
+        "dialoguePartner": "Xiao Chen (Shop Clerk)",
+        "partnerSays": "您喜欢什么颜色？",
+        "partnerSaysPhonetic": "Nín xǐhuan shénme yánsè?",
+        "partnerSaysTranslation": "Which color do you like?",
+        "prompt": "Say you want the red one:",
+        "options": [
+          "我想要红色的。",
+          "多少钱？",
+          "太大了。"
+        ],
+        "correctAnswer": "我想要红色的。",
+        "explanation": "\"我想要红色的\" (I'd like the red one) answers the question about color directly."
       },
       {
         "type": "check",
@@ -1036,5 +1099,4169 @@
       }
     ],
     "direction": "en-zh"
+  },
+  {
+    "id": "cafe-1",
+    "slug": "at-the-cafe",
+    "title": "At the café",
+    "description": "Order drinks and ask for the bill with confidence.",
+    "unitId": "everyday",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "A quiet table",
+        "body": "A handful of drink words plus a polite request phrase is enough to order confidently anywhere."
+      },
+      {
+        "type": "tip",
+        "title": "Café culture",
+        "body": "Ask for the bill — servers rarely bring it unsolicited. Tipping customs vary by country.",
+        "bullets": [
+          "For here or to go? — learn both forms.",
+          "A jug of tap water is often free — always worth asking."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "饮料与服务",
+        "items": [
+          {
+            "term": "a coffee",
+            "meaning": "一杯咖啡"
+          },
+          {
+            "term": "a coffee with milk",
+            "meaning": "拿铁咖啡"
+          },
+          {
+            "term": "a tea",
+            "meaning": "一杯茶"
+          },
+          {
+            "term": "a hot chocolate",
+            "meaning": "热巧克力"
+          },
+          {
+            "term": "an orange juice",
+            "meaning": "橙汁"
+          },
+          {
+            "term": "some water",
+            "meaning": "水"
+          },
+          {
+            "term": "a jug of water",
+            "meaning": "一壶水"
+          },
+          {
+            "term": "the bill",
+            "meaning": "账单 / 买单"
+          },
+          {
+            "term": "I would like…",
+            "meaning": "请给我…"
+          },
+          {
+            "term": "for here",
+            "meaning": "在这里喝"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "点餐",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "I would like a coffee, please.",
+            "target": "请给我一杯咖啡。"
+          },
+          {
+            "source": "A tea to go, please.",
+            "target": "一杯茶打包带走，谢谢。"
+          },
+          {
+            "source": "The bill, please.",
+            "target": "请结账。/ 买单！"
+          },
+          {
+            "source": "For here or to go?",
+            "target": "在这里喝还是打包？"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "一杯咖啡",
+            "native": "a coffee",
+            "phonetic": "yī bēi kāfēi"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "拿铁",
+            "native": "coffee with milk (latte)",
+            "phonetic": "nātiě"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "打包带走",
+            "native": "to go",
+            "phonetic": "dǎbāo dài zǒu"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "在这里喝",
+            "native": "for here",
+            "phonetic": "zài zhèlǐ hē"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "账单",
+            "native": "the bill",
+            "phonetic": "zhàngdān"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "水",
+            "native": "water",
+            "phonetic": "shuǐ"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Please give me a cup of coffee.\":",
+        "targetSentence": "请给我一杯咖啡。",
+        "targetTranslation": "Please give me a cup of coffee.",
+        "scrambledTokens": [
+          "一",
+          "杯",
+          "咖啡",
+          "一杯咖啡",
+          "请",
+          "给",
+          "我"
+        ],
+        "correctTokens": [
+          "请",
+          "给",
+          "我",
+          "一",
+          "杯",
+          "咖啡"
+        ],
+        "explanation": "A polite order that works in any café — commit it to memory for the first sip."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · bill",
+        "prompt": "How do you ask for the bill?",
+        "audioText": "请结账",
+        "options": [
+          "一杯咖啡",
+          "请结账",
+          "打包带走",
+          "一杯茶"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "小明 (Café Clerk)",
+        "partnerSays": "您想要什么？",
+        "partnerSaysTranslation": "What would you like?",
+        "partnerSaysPhonetic": "Nín xiǎng yào shénme?",
+        "prompt": "Order a coffee politely:",
+        "options": [
+          "请给我一杯咖啡。",
+          "请给我账单。",
+          "打包带走。"
+        ],
+        "correctAnswer": "请给我一杯咖啡。",
+        "explanation": "\"请给我一杯咖啡\" (please give me a cup of coffee) is the natural way to order."
+      },
+      {
+        "type": "check",
+        "title": "Check · bill",
+        "prompt": "How do you say \"the bill\" in Chinese?",
+        "options": [
+          "菜单",
+          "账单",
+          "咖啡",
+          "桌子"
+        ],
+        "answerIndex": 1,
+        "explanation": "账单 is the bill. 买单 (mǎidān) is also commonly used to mean \"pay the bill\"."
+      },
+      {
+        "type": "check",
+        "title": "Check · to go",
+        "prompt": "How do you say \"to go\" when ordering?",
+        "options": [
+          "在这里喝",
+          "打包带走",
+          "加牛奶",
+          "热的"
+        ],
+        "answerIndex": 1,
+        "explanation": "打包带走 = pack up and take away = to go."
+      }
+    ]
+  },
+  {
+    "id": "food-market-1",
+    "slug": "at-the-market",
+    "title": "At the market",
+    "description": "Fruit, quantities, and polite requests at a stall.",
+    "unitId": "everyday",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Market pace",
+        "body": "Markets reward clear numbers and a polite request. Pointing plus a word works — language makes it smoother."
+      },
+      {
+        "type": "vocab",
+        "title": "食物",
+        "items": [
+          {
+            "term": "an apple",
+            "meaning": "一个苹果"
+          },
+          {
+            "term": "a banana",
+            "meaning": "一根香蕉"
+          },
+          {
+            "term": "a tomato",
+            "meaning": "一个番茄"
+          },
+          {
+            "term": "a carrot",
+            "meaning": "一根胡萝卜"
+          },
+          {
+            "term": "some bread",
+            "meaning": "面包"
+          },
+          {
+            "term": "some cheese",
+            "meaning": "奶酪"
+          },
+          {
+            "term": "a kilo of…",
+            "meaning": "一斤/一公斤…"
+          },
+          {
+            "term": "half a kilo of…",
+            "meaning": "半斤/半公斤…"
+          },
+          {
+            "term": "How much is it?",
+            "meaning": "多少钱？"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "在摊位",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "I'd like three apples, please.",
+            "target": "我要三个苹果。"
+          },
+          {
+            "source": "A kilo of tomatoes, please.",
+            "target": "一斤番茄。"
+          },
+          {
+            "source": "How much is it?",
+            "target": "多少钱？"
+          },
+          {
+            "source": "That's all, thank you.",
+            "target": "就这些，谢谢。"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "一个苹果",
+            "native": "an apple",
+            "phonetic": "yī gè píngguǒ"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "一个番茄",
+            "native": "a tomato",
+            "phonetic": "yī gè fānqié"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "面包",
+            "native": "some bread",
+            "phonetic": "miànbāo"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "一斤…",
+            "native": "a kilo of…",
+            "phonetic": "yī jīn"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "多少钱？",
+            "native": "How much is it?",
+            "phonetic": "duōshao qián"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "就这些",
+            "native": "That's all",
+            "phonetic": "jiù zhèxiē"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I want three apples.\":",
+        "targetSentence": "我要三个苹果。",
+        "targetTranslation": "I want three apples.",
+        "scrambledTokens": [
+          "个",
+          "苹果",
+          "一个苹果",
+          "我",
+          "要",
+          "三"
+        ],
+        "correctTokens": [
+          "我",
+          "要",
+          "三",
+          "个",
+          "苹果"
+        ],
+        "explanation": "Quantity, item, price question — the complete phrase for any market stall."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · price",
+        "prompt": "How do you ask \"How much is it?\"",
+        "audioText": "多少钱？",
+        "options": [
+          "多少钱？",
+          "要多少？",
+          "够了吗？",
+          "有苹果吗？"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "阿姨 (Market Vendor)",
+        "partnerSays": "您要什么？",
+        "partnerSaysTranslation": "What would you like?",
+        "partnerSaysPhonetic": "Nín yào shénme?",
+        "prompt": "Ask for three apples and the price:",
+        "options": [
+          "三个苹果。多少钱？",
+          "五块钱。",
+          "今天天气不错。"
+        ],
+        "correctAnswer": "三个苹果。多少钱？",
+        "explanation": "\"三个苹果。多少钱？\" adds to your order and asks the price."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you ask the price in Chinese?",
+        "options": [
+          "几点了？",
+          "多少钱？",
+          "在哪里？",
+          "叫什么名字？"
+        ],
+        "answerIndex": 1,
+        "explanation": "多少钱？= How much money? = How much is it? A core shopping phrase."
+      },
+      {
+        "type": "check",
+        "title": "Check · order",
+        "prompt": "Best for \"three apples\"?",
+        "options": [
+          "三个苹果",
+          "三杯咖啡",
+          "苹果再见",
+          "我叫苹果"
+        ],
+        "answerIndex": 0,
+        "explanation": "三个苹果 = three apples, using the measure word 个."
+      }
+    ]
+  },
+  {
+    "id": "small-talk-1",
+    "slug": "small-talk-weather",
+    "title": "Small talk & weather",
+    "description": "Light conversation beyond hello.",
+    "unitId": "everyday",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Beyond hello",
+        "body": "Weather and weekend questions are safe bridges after greetings. A comment on the sun or rain opens doors."
+      },
+      {
+        "type": "vocab",
+        "title": "天气与聊天",
+        "items": [
+          {
+            "term": "The weather is nice",
+            "meaning": "天气很好"
+          },
+          {
+            "term": "It's raining",
+            "meaning": "在下雨"
+          },
+          {
+            "term": "It's cold",
+            "meaning": "很冷"
+          },
+          {
+            "term": "It's hot",
+            "meaning": "很热"
+          },
+          {
+            "term": "It's sunny",
+            "meaning": "阳光明媚"
+          },
+          {
+            "term": "It's snowing",
+            "meaning": "在下雪"
+          },
+          {
+            "term": "the weekend",
+            "meaning": "周末"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "轻松聊天",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "Nice weather today.",
+            "target": "今天天气真好。"
+          },
+          {
+            "source": "It's raining a lot.",
+            "target": "雨下得很大。"
+          },
+          {
+            "source": "How was your weekend?",
+            "target": "您周末过得怎么样？"
+          },
+          {
+            "source": "It's really cold today!",
+            "target": "今天真的很冷！"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "天气很好",
+            "native": "The weather is nice",
+            "phonetic": "tiānqì hěn hǎo"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "在下雨",
+            "native": "It's raining",
+            "phonetic": "zài xià yǔ"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "很冷",
+            "native": "It's cold",
+            "phonetic": "hěn lěng"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "很热",
+            "native": "It's hot",
+            "phonetic": "hěn rè"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "在下雪",
+            "native": "It's snowing",
+            "phonetic": "zài xià xuě"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "周末",
+            "native": "the weekend",
+            "phonetic": "zhōumò"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"The weather is really nice today.\":",
+        "targetSentence": "今天天气真好。",
+        "targetTranslation": "The weather is really nice today.",
+        "scrambledTokens": [
+          "真",
+          "好",
+          "天气很好",
+          "今天",
+          "天气"
+        ],
+        "correctTokens": [
+          "今天",
+          "天气",
+          "真",
+          "好"
+        ],
+        "explanation": "A light observation that opens the door to warm, easy conversation."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · rain",
+        "prompt": "How do you say \"It's raining\"?",
+        "audioText": "在下雨",
+        "options": [
+          "天气很好",
+          "在下雨",
+          "很冷",
+          "是周末"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "同事 (Colleague)",
+        "partnerSays": "今天天气真好！",
+        "partnerSaysTranslation": "The weather is really nice today!",
+        "partnerSaysPhonetic": "Jīntiān tiānqì zhēn hǎo!",
+        "prompt": "Agree and keep the chat going:",
+        "options": [
+          "是啊，阳光明媚。您周末过得怎么样？",
+          "不，我不喜欢咖啡。",
+          "请给我账单。"
+        ],
+        "correctAnswer": "是啊，阳光明媚。您周末过得怎么样？",
+        "explanation": "Agreeing and asking about the weekend keeps the small talk flowing."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"It's raining\" in Chinese?",
+        "options": [
+          "很热",
+          "在下雨",
+          "阳光明媚",
+          "刮风了"
+        ],
+        "answerIndex": 1,
+        "explanation": "在下雨 = (it) is raining. 在 + verb = progressive action."
+      },
+      {
+        "type": "check",
+        "title": "Check · weekend",
+        "prompt": "How do you ask \"How was your weekend?\"",
+        "options": [
+          "您周末过得怎么样？",
+          "很冷吗？",
+          "您累吗？",
+          "周末多少钱？"
+        ],
+        "answerIndex": 0,
+        "explanation": "怎么样? = How was it? 过得 = spent (time)."
+      }
+    ]
+  },
+  {
+    "id": "restaurant-1",
+    "slug": "at-the-restaurant",
+    "title": "At the restaurant",
+    "description": "Ordering a meal and dietary needs.",
+    "unitId": "everyday",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "From table to bill",
+        "body": "Ordering follows a clear rhythm: being seated, choosing, ordering, and asking for the bill."
+      },
+      {
+        "type": "tip",
+        "title": "Cultural notes",
+        "body": "Learn the word for \"Enjoy your meal!\" and the dietary vocabulary relevant to your needs.",
+        "bullets": [
+          "Vegetarian and vegan options are now widely available.",
+          "Stating allergies early is always wise."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "餐厅用语",
+        "items": [
+          {
+            "term": "a table for two",
+            "meaning": "两人桌"
+          },
+          {
+            "term": "the menu",
+            "meaning": "菜单"
+          },
+          {
+            "term": "the starter",
+            "meaning": "前菜 / 开胃菜"
+          },
+          {
+            "term": "the main course",
+            "meaning": "主菜"
+          },
+          {
+            "term": "dessert",
+            "meaning": "甜点"
+          },
+          {
+            "term": "vegetarian",
+            "meaning": "素食者 / 吃素的"
+          },
+          {
+            "term": "an allergy",
+            "meaning": "过敏"
+          },
+          {
+            "term": "the bill",
+            "meaning": "账单"
+          },
+          {
+            "term": "Enjoy your meal!",
+            "meaning": "请慢用！/ 祝您用餐愉快！"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "点餐",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "A table for two, please.",
+            "target": "两位。"
+          },
+          {
+            "source": "What do you recommend?",
+            "target": "您推荐什么？"
+          },
+          {
+            "source": "I'll have the fish.",
+            "target": "我要鱼。"
+          },
+          {
+            "source": "I'm vegetarian.",
+            "target": "我吃素。"
+          },
+          {
+            "source": "Enjoy your meal!",
+            "target": "请慢用！"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "菜单",
+            "native": "the menu",
+            "phonetic": "càidān"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "前菜",
+            "native": "the starter",
+            "phonetic": "qiáncài"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "主菜",
+            "native": "the main course",
+            "phonetic": "zhǔcài"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "素食者",
+            "native": "vegetarian",
+            "phonetic": "sùshízhě"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "请慢用！",
+            "native": "Enjoy your meal!",
+            "phonetic": "qǐng màn yòng"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "账单",
+            "native": "the bill",
+            "phonetic": "zhàngdān"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Two people.\":",
+        "targetSentence": "两位。",
+        "targetTranslation": "Two people.",
+        "scrambledTokens": [
+          "位",
+          "菜单",
+          "两"
+        ],
+        "correctTokens": [
+          "两",
+          "位"
+        ],
+        "explanation": "The natural, confident way to place an order with any server."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · recommendation",
+        "prompt": "How do you ask \"What do you recommend?\"",
+        "audioText": "您推荐什么？",
+        "options": [
+          "您推荐什么？",
+          "洗手间在哪里？",
+          "多少钱？",
+          "早餐包含在内吗？"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "服务员 (Server)",
+        "partnerSays": "你们点好了吗？",
+        "partnerSaysTranslation": "Have you ordered?",
+        "partnerSaysPhonetic": "Nǐmen diǎn hǎo le ma?",
+        "prompt": "Order the fish:",
+        "options": [
+          "我要鱼，谢谢。",
+          "火车站在哪里？",
+          "我在下一站下车。"
+        ],
+        "correctAnswer": "我要鱼，谢谢。",
+        "explanation": "\"我要鱼\" (I want fish) is the direct way to order food in Chinese."
+      },
+      {
+        "type": "check",
+        "title": "Check · menu",
+        "prompt": "菜单 in Chinese refers to…",
+        "options": [
+          "The fixed-price set meal",
+          "The full list of dishes",
+          "The wine list",
+          "The bill"
+        ],
+        "answerIndex": 1,
+        "explanation": "菜单 is the full menu of available dishes."
+      },
+      {
+        "type": "check",
+        "title": "Check · vegetarian",
+        "prompt": "How does a person say \"I'm vegetarian\" in Chinese?",
+        "options": [
+          "我吃素。",
+          "我素食了。",
+          "我有素食。",
+          "我是素食。"
+        ],
+        "answerIndex": 0,
+        "explanation": "我吃素 = I eat vegetarian food. 吃素 (to eat vegetarian) is the standard expression."
+      }
+    ]
+  },
+  {
+    "id": "weekend-plans-1",
+    "slug": "talking-about-plans",
+    "title": "Talking about plans",
+    "description": "Express what you're going to do.",
+    "unitId": "everyday",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "The near future",
+        "body": "Each language has a simple structure to talk about upcoming plans."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "Learn the future/plan marker for your language.",
+        "bullets": [
+          "Haitian Creole: pral + verb (no conjugation)",
+          "Korean: ~(으)ㄹ 거예요",
+          "Chinese: 打算 + verb or 要 + verb"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "未来计划",
+        "items": [
+          {
+            "term": "I will go",
+            "meaning": "我要去 / 我打算去"
+          },
+          {
+            "term": "I will eat",
+            "meaning": "我要吃"
+          },
+          {
+            "term": "I will visit",
+            "meaning": "我要去拜访"
+          },
+          {
+            "term": "I will see",
+            "meaning": "我要看"
+          },
+          {
+            "term": "I will travel",
+            "meaning": "我要去旅行"
+          },
+          {
+            "term": "we will go",
+            "meaning": "我们要去"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "做计划",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "What do you plan to do this weekend?",
+            "target": "这个周末你打算做什么？"
+          },
+          {
+            "source": "I'm going to visit my parents.",
+            "target": "我打算去看望父母。"
+          },
+          {
+            "source": "We're going to watch a film.",
+            "target": "我们要去看电影。"
+          },
+          {
+            "source": "She's going to travel to Shanghai.",
+            "target": "她打算去上海旅行。"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "我打算…",
+            "native": "I plan to…",
+            "phonetic": "wǒ dǎsuàn"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "我要…",
+            "native": "I want to / I'm going to…",
+            "phonetic": "wǒ yào"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "我们要去",
+            "native": "we will go",
+            "phonetic": "wǒmen yào qù"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "打算 + 动词",
+            "native": "plan to + verb",
+            "phonetic": "dǎsuàn + dòngcí"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "要 + 动词",
+            "native": "will / want to + verb",
+            "phonetic": "yào + dòngcí"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I plan to visit my parents.\":",
+        "targetSentence": "我打算去看望父母。",
+        "targetTranslation": "I plan to visit my parents.",
+        "scrambledTokens": [
+          "看望",
+          "父母",
+          "我们要去",
+          "我",
+          "打算",
+          "去"
+        ],
+        "correctTokens": [
+          "我",
+          "打算",
+          "去",
+          "看望",
+          "父母"
+        ],
+        "explanation": "Future marker + plan — two building blocks for any upcoming arrangement."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · structure",
+        "prompt": "Which uses 打算 correctly?",
+        "audioText": "我打算去旅行",
+        "options": [
+          "我去旅行了",
+          "我打算去旅行",
+          "我旅行着",
+          "我旅行过"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "朋友 (Friend)",
+        "partnerSays": "这个周末你打算做什么？",
+        "partnerSaysTranslation": "What do you plan to do this weekend?",
+        "partnerSaysPhonetic": "Zhège zhōumò nǐ dǎsuàn zuò shénme?",
+        "prompt": "Say you're going to visit your parents:",
+        "options": [
+          "我打算去看望父母。",
+          "现在两点半。",
+          "我想要红色的。"
+        ],
+        "correctAnswer": "我打算去看望父母。",
+        "explanation": "\"我打算…\" (I plan to…) is a common way to express future plans."
+      },
+      {
+        "type": "check",
+        "title": "Check · structure",
+        "prompt": "Which correctly uses 打算 + verb?",
+        "options": [
+          "我吃了",
+          "我打算吃",
+          "我在吃",
+          "我吃过了"
+        ],
+        "answerIndex": 1,
+        "explanation": "打算 + verb = plan to: 我打算吃 = I plan to eat."
+      },
+      {
+        "type": "check",
+        "title": "Check · translate",
+        "prompt": "How do you say \"We will travel\" in Chinese?",
+        "options": [
+          "我们旅行了",
+          "我们要去旅行",
+          "我们在旅行",
+          "我们旅行过了"
+        ],
+        "answerIndex": 1,
+        "explanation": "我们要去旅行 = We're going to travel."
+      }
+    ]
+  },
+  {
+    "id": "directions-1",
+    "slug": "simple-directions",
+    "title": "Simple directions",
+    "description": "Left, right, straight — and asking where something is.",
+    "unitId": "travel",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Finding your way",
+        "body": "Combine \"where is…?\" with a few direction words for short walks in a new city."
+      },
+      {
+        "type": "vocab",
+        "title": "方向",
+        "items": [
+          {
+            "term": "to the left",
+            "meaning": "向左 / 往左"
+          },
+          {
+            "term": "to the right",
+            "meaning": "向右 / 往右"
+          },
+          {
+            "term": "straight ahead",
+            "meaning": "一直走"
+          },
+          {
+            "term": "near",
+            "meaning": "附近"
+          },
+          {
+            "term": "far from",
+            "meaning": "离…很远"
+          },
+          {
+            "term": "at the corner",
+            "meaning": "在拐角处"
+          },
+          {
+            "term": "across from",
+            "meaning": "对面"
+          },
+          {
+            "term": "between",
+            "meaning": "在…之间"
+          },
+          {
+            "term": "Where is…?",
+            "meaning": "…在哪里？"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "问路",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "Where is the station?",
+            "target": "火车站在哪里？"
+          },
+          {
+            "source": "Is it far?",
+            "target": "远吗？"
+          },
+          {
+            "source": "Go straight ahead, then left.",
+            "target": "一直走，然后向左转。"
+          },
+          {
+            "source": "It's across from the pharmacy.",
+            "target": "在药店对面。"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "向左",
+            "native": "to the left",
+            "phonetic": "xiàng zuǒ"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "向右",
+            "native": "to the right",
+            "phonetic": "xiàng yòu"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "一直走",
+            "native": "straight ahead",
+            "phonetic": "yīzhí zǒu"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "附近",
+            "native": "near",
+            "phonetic": "fùjìn"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "对面",
+            "native": "across from",
+            "phonetic": "duìmiàn"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "…在哪里？",
+            "native": "Where is…?",
+            "phonetic": "… zài nǎlǐ"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Go straight, then turn left.\":",
+        "targetSentence": "一直走，然后向左转。",
+        "targetTranslation": "Go straight, then turn left.",
+        "scrambledTokens": [
+          "向",
+          "左",
+          "转",
+          "向左",
+          "一直",
+          "走",
+          "，",
+          "然后"
+        ],
+        "correctTokens": [
+          "一直",
+          "走",
+          "，",
+          "然后",
+          "向",
+          "左",
+          "转"
+        ],
+        "explanation": "Left, right, and straight — three words that will get you anywhere in the city."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · where",
+        "prompt": "How do you ask \"Where is the station?\"",
+        "audioText": "火车站在哪里？",
+        "options": [
+          "火车站在哪里？",
+          "远吗？",
+          "票多少钱？",
+          "几号站台？"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "路人 (Passer-by)",
+        "partnerSays": "一直走，然后向左转。在药店对面。",
+        "partnerSaysTranslation": "Go straight, then turn left. It's across from the pharmacy.",
+        "partnerSaysPhonetic": "Yīzhí zǒu, ránhòu xiàng zuǒ zhuǎn.",
+        "prompt": "Ask whether it's far:",
+        "options": [
+          "远吗？",
+          "火车站在哪里？",
+          "在这里停。"
+        ],
+        "correctAnswer": "远吗？",
+        "explanation": "\"远吗？\" is the natural follow-up after getting directions."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"straight ahead\" in Chinese?",
+        "options": [
+          "向左",
+          "向右",
+          "一直走",
+          "很近"
+        ],
+        "answerIndex": 2,
+        "explanation": "一直走 means go straight ahead; 向左/向右 are turn left/right."
+      },
+      {
+        "type": "check",
+        "title": "Check · ask",
+        "prompt": "How do you ask where the station is?",
+        "options": [
+          "票多少钱？",
+          "火车站在哪里？",
+          "现在几点？",
+          "出租车！"
+        ],
+        "answerIndex": 1,
+        "explanation": "…在哪里？= Where is…? The essential navigation question."
+      }
+    ]
+  },
+  {
+    "id": "travel-phrases-1",
+    "slug": "travel-phrases",
+    "title": "Travel phrases",
+    "description": "Tickets, platforms, and delays.",
+    "unitId": "travel",
+    "direction": "en-zh",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "On the move",
+        "body": "Stations repeat the same patterns: destination, platform, delay. Learn them once."
+      },
+      {
+        "type": "vocab",
+        "title": "旅行用语",
+        "items": [
+          {
+            "term": "a ticket",
+            "meaning": "一张票"
+          },
+          {
+            "term": "round trip",
+            "meaning": "往返"
+          },
+          {
+            "term": "one-way",
+            "meaning": "单程"
+          },
+          {
+            "term": "the train",
+            "meaning": "火车"
+          },
+          {
+            "term": "the platform",
+            "meaning": "站台 / 月台"
+          },
+          {
+            "term": "the flight",
+            "meaning": "航班"
+          },
+          {
+            "term": "the connection",
+            "meaning": "转车 / 中转"
+          },
+          {
+            "term": "delayed / late",
+            "meaning": "晚点"
+          },
+          {
+            "term": "on time",
+            "meaning": "准时"
+          },
+          {
+            "term": "cancelled",
+            "meaning": "取消了"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "在售票处",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "A ticket to Beijing, please.",
+            "target": "请给我一张去北京的票。"
+          },
+          {
+            "source": "A round trip to Shanghai.",
+            "target": "上海往返票。"
+          },
+          {
+            "source": "Which platform?",
+            "target": "几号站台？"
+          },
+          {
+            "source": "Is the train delayed?",
+            "target": "火车晚点了吗？"
+          },
+          {
+            "source": "Where do I transfer?",
+            "target": "在哪里换车？"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "一张票",
+            "native": "a ticket",
+            "phonetic": "yī zhāng piào"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "往返",
+            "native": "round trip",
+            "phonetic": "wǎngfǎn"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "站台",
+            "native": "the platform",
+            "phonetic": "zhàntái"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "晚点",
+            "native": "delayed",
+            "phonetic": "wǎndiǎn"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "准时",
+            "native": "on time",
+            "phonetic": "zhǔnshí"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "取消了",
+            "native": "cancelled",
+            "phonetic": "qǔxiāo le"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Please give me a ticket to Beijing.\":",
+        "targetSentence": "请给我一张去北京的票。",
+        "targetTranslation": "Please give me a ticket to Beijing.",
+        "scrambledTokens": [
+          "去",
+          "北京",
+          "的",
+          "票",
+          "一张票",
+          "请",
+          "给",
+          "我",
+          "一",
+          "张"
+        ],
+        "correctTokens": [
+          "请",
+          "给",
+          "我",
+          "一",
+          "张",
+          "去",
+          "北京",
+          "的",
+          "票"
+        ],
+        "explanation": "A direct question that instantly tells you if you're running on schedule."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · delay",
+        "prompt": "How do you say \"The train is delayed\"?",
+        "audioText": "火车晚点了",
+        "options": [
+          "火车准时",
+          "火车取消了",
+          "火车晚点了",
+          "火车满员了"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "售票员 (Ticket Clerk)",
+        "partnerSays": "火车从三号站台出发。",
+        "partnerSaysTranslation": "The train departs from platform three.",
+        "partnerSaysPhonetic": "Huǒchē cóng sān hào zhàntái chūfā.",
+        "prompt": "Ask if the train is running late:",
+        "options": [
+          "火车晚点了吗？",
+          "请给我一张去北京的票。",
+          "今天天气真好。"
+        ],
+        "correctAnswer": "火车晚点了吗？",
+        "explanation": "\"火车晚点了吗？\" asks about delays."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"a ticket\" in Chinese?",
+        "options": [
+          "站台",
+          "一张票",
+          "火车",
+          "延误"
+        ],
+        "answerIndex": 1,
+        "explanation": "一张票 = one ticket. 张 is the measure word for flat things like tickets."
+      },
+      {
+        "type": "check",
+        "title": "Check · delay",
+        "prompt": "How do you say \"delayed\" in Chinese?",
+        "options": [
+          "准时",
+          "取消了",
+          "晚点",
+          "满员"
+        ],
+        "answerIndex": 2,
+        "explanation": "晚点 means late/delayed; 准时 means on time."
+      }
+    ]
+  },
+  {
+    "id": "hotel-1",
+    "slug": "at-the-hotel",
+    "title": "At the hotel",
+    "description": "Check-in lines and simple room requests.",
+    "unitId": "travel",
+    "direction": "en-zh",
+    "level": "intermediate",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Front desk",
+        "body": "Reservation, nights, and room type cover most check-ins."
+      },
+      {
+        "type": "vocab",
+        "title": "酒店用语",
+        "items": [
+          {
+            "term": "a reservation",
+            "meaning": "预订"
+          },
+          {
+            "term": "a room",
+            "meaning": "一间客房"
+          },
+          {
+            "term": "a double room",
+            "meaning": "双人间"
+          },
+          {
+            "term": "a night",
+            "meaning": "一晚"
+          },
+          {
+            "term": "a passport",
+            "meaning": "护照"
+          },
+          {
+            "term": "the key",
+            "meaning": "钥匙 / 房卡"
+          },
+          {
+            "term": "breakfast",
+            "meaning": "早餐"
+          },
+          {
+            "term": "the elevator",
+            "meaning": "电梯"
+          },
+          {
+            "term": "the reception",
+            "meaning": "前台"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "办理入住",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "I have a reservation.",
+            "target": "我有预订。"
+          },
+          {
+            "source": "Two nights, please.",
+            "target": "两晚。"
+          },
+          {
+            "source": "Is breakfast included?",
+            "target": "早餐包含在内吗？"
+          },
+          {
+            "source": "What time is checkout?",
+            "target": "退房时间是几点？"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "预订",
+            "native": "a reservation",
+            "phonetic": "yùdìng"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "一间客房",
+            "native": "a room",
+            "phonetic": "yī jiān kèfáng"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "双人间",
+            "native": "a double room",
+            "phonetic": "shuāngrénjiān"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "早餐",
+            "native": "breakfast",
+            "phonetic": "zǎocān"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "前台",
+            "native": "the front desk",
+            "phonetic": "qiántái"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "退房",
+            "native": "checkout",
+            "phonetic": "tuìfáng"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have a reservation.\":",
+        "targetSentence": "我有预订。",
+        "targetTranslation": "I have a reservation.",
+        "scrambledTokens": [
+          "预订",
+          "一间客房",
+          "我",
+          "有"
+        ],
+        "correctTokens": [
+          "我",
+          "有",
+          "预订"
+        ],
+        "explanation": "A short statement that confirms your booking and sets check-in in motion."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · breakfast",
+        "prompt": "How do you ask \"Is breakfast included?\"",
+        "audioText": "早餐包含在内吗？",
+        "options": [
+          "早餐包含在内吗？",
+          "退房时间是几点？",
+          "有双人间吗？",
+          "电梯在哪里？"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "前台 (Receptionist)",
+        "partnerSays": "你好。两晚，对吧？",
+        "partnerSaysTranslation": "Hello. Two nights, right?",
+        "partnerSaysPhonetic": "Nǐ hǎo. Liǎng wǎn, duì ba?",
+        "prompt": "Confirm and ask about breakfast:",
+        "options": [
+          "对。早餐包含在内吗？",
+          "不，我不喜欢咖啡。",
+          "三个苹果，谢谢。"
+        ],
+        "correctAnswer": "对。早餐包含在内吗？",
+        "explanation": "\"对。早餐包含在内吗？\" confirms and asks a key check-in question."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"I have a reservation\" in Chinese?",
+        "options": [
+          "我需要出租车",
+          "我有预订",
+          "房间准备好了",
+          "早餐在哪里？"
+        ],
+        "answerIndex": 1,
+        "explanation": "我有预订 = I have a reservation. 有 = to have."
+      },
+      {
+        "type": "check",
+        "title": "Check · checkout",
+        "prompt": "How do you ask what time checkout is?",
+        "options": [
+          "退房时间是几点？",
+          "前台在哪里？",
+          "一晚多少钱？",
+          "我有预订"
+        ],
+        "answerIndex": 0,
+        "explanation": "退房时间是几点？= What time is checkout?"
+      }
+    ]
+  },
+  {
+    "id": "getting-around-1",
+    "slug": "getting-around-town",
+    "title": "Getting around town",
+    "description": "Buses, metro, taxis, and buying tickets.",
+    "unitId": "travel",
+    "direction": "en-zh",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Moving through the city",
+        "body": "Most cities run on a mix of metro, bus, and taxi. A few words cover most fare questions."
+      },
+      {
+        "type": "vocab",
+        "title": "交通用语",
+        "items": [
+          {
+            "term": "the subway/metro",
+            "meaning": "地铁"
+          },
+          {
+            "term": "the bus",
+            "meaning": "公交车"
+          },
+          {
+            "term": "the tram",
+            "meaning": "有轨电车"
+          },
+          {
+            "term": "a ticket (single fare)",
+            "meaning": "单程票"
+          },
+          {
+            "term": "a day pass",
+            "meaning": "日票"
+          },
+          {
+            "term": "a stop",
+            "meaning": "站"
+          },
+          {
+            "term": "a station",
+            "meaning": "火车站 / 地铁站"
+          },
+          {
+            "term": "a taxi",
+            "meaning": "出租车 / 的士"
+          },
+          {
+            "term": "I'm getting off here",
+            "meaning": "我在这里下车"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "出行",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "Where's the nearest metro station?",
+            "target": "最近的地铁站在哪里？"
+          },
+          {
+            "source": "One ticket, please.",
+            "target": "一张票，谢谢。"
+          },
+          {
+            "source": "Does this bus go downtown?",
+            "target": "这辆公交车去市中心吗？"
+          },
+          {
+            "source": "I'm getting off at the next stop.",
+            "target": "我在下一站下车。"
+          },
+          {
+            "source": "Can you call me a taxi?",
+            "target": "能帮我叫辆出租车吗？"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "地铁",
+            "native": "the subway/metro",
+            "phonetic": "dìtiě"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "公交车",
+            "native": "the bus",
+            "phonetic": "gōngjiāochē"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "单程票",
+            "native": "a single ticket",
+            "phonetic": "dānchéng piào"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "日票",
+            "native": "a day pass",
+            "phonetic": "rì piào"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "站",
+            "native": "a stop/station",
+            "phonetic": "zhàn"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "我在这里下车",
+            "native": "I'm getting off here",
+            "phonetic": "wǒ zài zhèlǐ xià chē"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Does this bus go to the city center?\":",
+        "targetSentence": "这辆公交车去市中心吗？",
+        "targetTranslation": "Does this bus go to the city center?",
+        "scrambledTokens": [
+          "去",
+          "市中心",
+          "吗",
+          "地铁",
+          "这",
+          "辆",
+          "公交车"
+        ],
+        "correctTokens": [
+          "这",
+          "辆",
+          "公交车",
+          "去",
+          "市中心",
+          "吗"
+        ],
+        "explanation": "The phrase that ends any bus or metro journey gracefully."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · getting off",
+        "prompt": "How do you say \"I'm getting off at the next stop\"?",
+        "audioText": "我在下一站下车",
+        "options": [
+          "我在这里上车",
+          "我在下一站下车",
+          "我留在这里",
+          "我迷路了"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "司机 (Bus Driver)",
+        "partnerSays": "是的，这辆公交车去市中心。",
+        "partnerSaysTranslation": "Yes, this bus goes to the city center.",
+        "partnerSaysPhonetic": "Shì de, zhè liàng gōngjiāochē qù shì zhōngxīn.",
+        "prompt": "Say you're getting off at the next stop:",
+        "options": [
+          "我在下一站下车。",
+          "一张去北京的票。",
+          "我打算去看望父母。"
+        ],
+        "correctAnswer": "我在下一站下车。",
+        "explanation": "\"我在下一站下车\" tells the driver where you want to get off."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "日票 usually refers to…",
+        "options": [
+          "A single bus ticket",
+          "A day transport pass",
+          "A taxi receipt",
+          "A train delay"
+        ],
+        "answerIndex": 1,
+        "explanation": "日票 is a day pass; 单程票 is a single fare."
+      },
+      {
+        "type": "check",
+        "title": "Check · getting off",
+        "prompt": "How do you say \"I'm getting off here\"?",
+        "options": [
+          "我在这里上车",
+          "我在这里下车",
+          "我留在这里",
+          "我到达这里"
+        ],
+        "answerIndex": 1,
+        "explanation": "下车 means to get off a vehicle; 上车 means to get on."
+      }
+    ]
+  },
+  {
+    "id": "pharmacy-health-1",
+    "slug": "pharmacy-and-feeling-unwell",
+    "title": "Pharmacy & feeling unwell",
+    "description": "Describe symptoms and get help at a pharmacy.",
+    "unitId": "health-safety",
+    "direction": "en-zh",
+    "level": "intermediate",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Getting help",
+        "body": "Pharmacies are trained to advise on minor issues before you need a doctor."
+      },
+      {
+        "type": "tip",
+        "title": "Pain pattern",
+        "body": "Each language has a go-to pattern for expressing physical pain.",
+        "bullets": [
+          "Haitian Creole: mwen gen yon doulè nan… (I have pain in…)",
+          "Korean: …이/가 아파요 (… hurts)",
+          "Chinese: …疼 / 我…疼 (… hurts)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "健康用语",
+        "items": [
+          {
+            "term": "a pharmacy",
+            "meaning": "药店"
+          },
+          {
+            "term": "a doctor",
+            "meaning": "医生"
+          },
+          {
+            "term": "sick",
+            "meaning": "生病了"
+          },
+          {
+            "term": "fever",
+            "meaning": "发烧"
+          },
+          {
+            "term": "a medicine",
+            "meaning": "药"
+          },
+          {
+            "term": "a prescription",
+            "meaning": "处方"
+          },
+          {
+            "term": "the head",
+            "meaning": "头"
+          },
+          {
+            "term": "the stomach",
+            "meaning": "肚子 / 胃"
+          },
+          {
+            "term": "the throat",
+            "meaning": "嗓子 / 喉咙"
+          },
+          {
+            "term": "Help!",
+            "meaning": "救命！"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "描述症状",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "I don't feel well.",
+            "target": "我不舒服。"
+          },
+          {
+            "source": "I have a headache.",
+            "target": "我头疼。"
+          },
+          {
+            "source": "I have a fever.",
+            "target": "我发烧了。"
+          },
+          {
+            "source": "Do you have something for a sore throat?",
+            "target": "有治嗓子的药吗？"
+          },
+          {
+            "source": "Call an ambulance!",
+            "target": "叫救护车！"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "我头疼",
+            "native": "I have a headache",
+            "phonetic": "wǒ tóuténg"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "我肚子疼",
+            "native": "I have a stomach ache",
+            "phonetic": "wǒ dùzi téng"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "我发烧了",
+            "native": "I have a fever",
+            "phonetic": "wǒ fāshāo le"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "生病了",
+            "native": "sick",
+            "phonetic": "shēng bìng le"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "处方",
+            "native": "a prescription",
+            "phonetic": "chǔfāng"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "救命！",
+            "native": "Help!",
+            "phonetic": "jiùmìng"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have a headache.\":",
+        "targetSentence": "我头疼。",
+        "targetTranslation": "I have a headache.",
+        "scrambledTokens": [
+          "疼",
+          "我头疼",
+          "我",
+          "头"
+        ],
+        "correctTokens": [
+          "我",
+          "头",
+          "疼"
+        ],
+        "explanation": "Describing the most common ache — clear and calm gets you the right remedy."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · stomach",
+        "prompt": "Which phrase means \"I have a stomach ache\"?",
+        "audioText": "我肚子疼",
+        "options": [
+          "我头疼",
+          "我肚子疼",
+          "我发烧了",
+          "我不舒服"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "药剂师 (Pharmacist)",
+        "partnerSays": "您有处方吗？",
+        "partnerSaysTranslation": "Do you have a prescription?",
+        "partnerSaysPhonetic": "Nín yǒu chǔfāng ma?",
+        "prompt": "Say no and ask for something for your throat:",
+        "options": [
+          "没有。有治嗓子的药吗？",
+          "有，两张票。",
+          "我是素食者。"
+        ],
+        "correctAnswer": "没有。有治嗓子的药吗？",
+        "explanation": "\"没有。有治嗓子的药吗？\" answers and asks for an over-the-counter remedy."
+      },
+      {
+        "type": "check",
+        "title": "Check · pattern",
+        "prompt": "How do you say \"I have a headache\" in Chinese?",
+        "options": [
+          "我头疼",
+          "我有头",
+          "我的头疼我",
+          "我在头"
+        ],
+        "answerIndex": 0,
+        "explanation": "我头疼 = I headache = I have a headache. Subject + body part + 疼 is the standard pattern."
+      },
+      {
+        "type": "check",
+        "title": "Check · emergency",
+        "prompt": "Which phrase calls for urgent help?",
+        "options": [
+          "请慢用",
+          "救命！",
+          "多少钱？",
+          "很高兴认识你"
+        ],
+        "answerIndex": 1,
+        "explanation": "救命！= Save life! = Help! The standard cry for help in Chinese."
+      }
+    ]
+  },
+  {
+    "id": "telling-time-1",
+    "slug": "telling-time",
+    "title": "Telling time",
+    "description": "Ask for and give the time, on the hour and beyond.",
+    "unitId": "time-dates",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "What time is it?",
+        "body": "Each language has a key question for asking the time and a standard way to give it."
+      },
+      {
+        "type": "tip",
+        "title": "Minute expressions",
+        "body": "Learn the fixed time expressions for each language.",
+        "bullets": [
+          "Haitian Creole: è (o'clock), e mwatye (half past), e ka (quarter past)",
+          "Korean: 시 (hour), 분 (minute), 반 (half)",
+          "Chinese: 点 (hour), 分 (minute), 半 (half)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "时间用语",
+        "items": [
+          {
+            "term": "What time is it?",
+            "meaning": "现在几点？"
+          },
+          {
+            "term": "It is … o'clock",
+            "meaning": "…点钟"
+          },
+          {
+            "term": "quarter past",
+            "meaning": "…点一刻 / …点十五分"
+          },
+          {
+            "term": "half past",
+            "meaning": "…点半"
+          },
+          {
+            "term": "quarter to",
+            "meaning": "差一刻…点"
+          },
+          {
+            "term": "noon",
+            "meaning": "正午 / 中午12点"
+          },
+          {
+            "term": "midnight",
+            "meaning": "午夜 / 夜里12点"
+          },
+          {
+            "term": "in the morning",
+            "meaning": "上午"
+          },
+          {
+            "term": "in the afternoon",
+            "meaning": "下午"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "说时间",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "What time is it?",
+            "target": "现在几点？"
+          },
+          {
+            "source": "It's three o'clock.",
+            "target": "现在三点钟。"
+          },
+          {
+            "source": "It's half past seven.",
+            "target": "现在七点半。"
+          },
+          {
+            "source": "It's a quarter to nine.",
+            "target": "差一刻九点。"
+          },
+          {
+            "source": "The train leaves at 14:30.",
+            "target": "火车14点30分出发。"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "现在几点？",
+            "native": "What time is it?",
+            "phonetic": "xiànzài jǐ diǎn"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "点钟",
+            "native": "o'clock",
+            "phonetic": "diǎn zhōng"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "点半",
+            "native": "half past",
+            "phonetic": "diǎn bàn"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "点一刻",
+            "native": "quarter past",
+            "phonetic": "diǎn yī kè"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "差一刻",
+            "native": "quarter to",
+            "phonetic": "chā yī kè"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "正午",
+            "native": "noon",
+            "phonetic": "zhènggwǔ"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"It's half past seven.\":",
+        "targetSentence": "现在七点半。",
+        "targetTranslation": "It's half past seven.",
+        "scrambledTokens": [
+          "点",
+          "半",
+          "现在几点？",
+          "现在",
+          "七"
+        ],
+        "correctTokens": [
+          "现在",
+          "七",
+          "点",
+          "半"
+        ],
+        "explanation": "Hour + \"half\" — the most common time expression in everyday conversation."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · half past",
+        "prompt": "How do you say \"half past seven\"?",
+        "audioText": "七点半",
+        "options": [
+          "七点一刻",
+          "七点半",
+          "六点四十五",
+          "七点整"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "路人 (Passer-by)",
+        "partnerSays": "现在两点半。",
+        "partnerSaysTranslation": "It's half past two.",
+        "partnerSaysPhonetic": "Xiànzài liǎng diǎn bàn.",
+        "prompt": "Thank her and say when your train leaves:",
+        "options": [
+          "谢谢。火车三点钟出发。",
+          "打扰一下，现在几点？",
+          "这个太小了。"
+        ],
+        "correctAnswer": "谢谢。火车三点钟出发。",
+        "explanation": "\"谢谢。火车三点钟出发\" thanks her and states the departure time."
+      },
+      {
+        "type": "check",
+        "title": "Check · 半",
+        "prompt": "\"…点半\" in Chinese means…",
+        "options": [
+          "Quarter past",
+          "Half past",
+          "Quarter to",
+          "On the hour"
+        ],
+        "answerIndex": 1,
+        "explanation": "半 means half, so 七点半 = 7:30 = half past seven."
+      },
+      {
+        "type": "check",
+        "title": "Check · noon",
+        "prompt": "How do you say \"It's noon\" in Chinese?",
+        "options": [
+          "午夜",
+          "正午",
+          "上午",
+          "很晚了"
+        ],
+        "answerIndex": 1,
+        "explanation": "正午 is noon; 午夜 is midnight."
+      }
+    ]
+  },
+  {
+    "id": "days-months-1",
+    "slug": "days-months-and-dates",
+    "title": "Days, months & dates",
+    "description": "The calendar and how to say a date.",
+    "unitId": "time-dates",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Calendar basics",
+        "body": "Learning days and months opens up conversations about plans, birthdays, and appointments."
+      },
+      {
+        "type": "vocab",
+        "title": "星期",
+        "items": [
+          {
+            "term": "Monday",
+            "meaning": "星期一"
+          },
+          {
+            "term": "Tuesday",
+            "meaning": "星期二"
+          },
+          {
+            "term": "Wednesday",
+            "meaning": "星期三"
+          },
+          {
+            "term": "Thursday",
+            "meaning": "星期四"
+          },
+          {
+            "term": "Friday",
+            "meaning": "星期五"
+          },
+          {
+            "term": "Saturday",
+            "meaning": "星期六"
+          },
+          {
+            "term": "Sunday",
+            "meaning": "星期天 / 星期日"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "月份",
+        "items": [
+          {
+            "term": "January",
+            "meaning": "一月"
+          },
+          {
+            "term": "February",
+            "meaning": "二月"
+          },
+          {
+            "term": "March",
+            "meaning": "三月"
+          },
+          {
+            "term": "April",
+            "meaning": "四月"
+          },
+          {
+            "term": "May",
+            "meaning": "五月"
+          },
+          {
+            "term": "June",
+            "meaning": "六月"
+          },
+          {
+            "term": "July",
+            "meaning": "七月"
+          },
+          {
+            "term": "August",
+            "meaning": "八月"
+          },
+          {
+            "term": "September",
+            "meaning": "九月"
+          },
+          {
+            "term": "October",
+            "meaning": "十月"
+          },
+          {
+            "term": "November",
+            "meaning": "十一月"
+          },
+          {
+            "term": "December",
+            "meaning": "十二月"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "谈论日期",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "What day of the week is today?",
+            "target": "今天是星期几？"
+          },
+          {
+            "source": "Today is Monday.",
+            "target": "今天是星期一。"
+          },
+          {
+            "source": "My birthday is May 1st.",
+            "target": "我的生日是五月一号。"
+          },
+          {
+            "source": "See you on Friday.",
+            "target": "星期五见。"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "星期一",
+            "native": "Monday",
+            "phonetic": "xīngqī yī"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "星期二",
+            "native": "Tuesday",
+            "phonetic": "xīngqī èr"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "星期三",
+            "native": "Wednesday",
+            "phonetic": "xīngqī sān"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "星期四",
+            "native": "Thursday",
+            "phonetic": "xīngqī sì"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "星期五",
+            "native": "Friday",
+            "phonetic": "xīngqī wǔ"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "星期六",
+            "native": "Saturday",
+            "phonetic": "xīngqī liù"
+          },
+          {
+            "id": "zho-7",
+            "foreign": "星期天",
+            "native": "Sunday",
+            "phonetic": "xīngqītiān"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"My birthday is May 1st.\":",
+        "targetSentence": "我的生日是五月一号。",
+        "targetTranslation": "My birthday is May 1st.",
+        "scrambledTokens": [
+          "五月",
+          "一号",
+          "星期一",
+          "我的",
+          "生日",
+          "是"
+        ],
+        "correctTokens": [
+          "我的",
+          "生日",
+          "是",
+          "五月",
+          "一号"
+        ],
+        "explanation": "A date in full — once you know the pattern, every date falls into place."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · day",
+        "prompt": "How do you say \"Today is Monday\"?",
+        "audioText": "今天是星期一",
+        "options": [
+          "今天是星期二",
+          "今天是星期一",
+          "今天是星期天",
+          "今天是星期五"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "小红 (Friend)",
+        "partnerSays": "今天是星期几？",
+        "partnerSaysTranslation": "What day of the week is today?",
+        "partnerSaysPhonetic": "Jīntiān shì xīngqī jǐ?",
+        "prompt": "Say it's Wednesday:",
+        "options": [
+          "今天是星期三。",
+          "现在三点。",
+          "我二十岁。"
+        ],
+        "correctAnswer": "今天是星期三。",
+        "explanation": "\"今天是星期三\" answers with the day. Chinese days use 星期 + number."
+      },
+      {
+        "type": "check",
+        "title": "Check · order",
+        "prompt": "Which day comes right after 星期三 (Wednesday)?",
+        "options": [
+          "星期二",
+          "星期五",
+          "星期四",
+          "星期六"
+        ],
+        "answerIndex": 2,
+        "explanation": "The order: 星期一(Mon), 星期二(Tue), 星期三(Wed), 星期四(Thu), 星期五(Fri), 星期六(Sat), 星期天(Sun)."
+      },
+      {
+        "type": "check",
+        "title": "Check · Sunday",
+        "prompt": "Sunday in Chinese is…",
+        "options": [
+          "星期六",
+          "星期一",
+          "星期天",
+          "星期五"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sunday is 星期天 or 星期日. 七 (seven) is sometimes used but 天/日 are more common."
+      }
+    ]
+  },
+  {
+    "id": "family-1",
+    "slug": "talking-about-family",
+    "title": "Talking about family",
+    "description": "Name family members and describe relationships.",
+    "unitId": "family-friends",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Who's who",
+        "body": "Family vocabulary combines with \"to have\" and possessives for quick descriptions."
+      },
+      {
+        "type": "tip",
+        "title": "Age-relative terms",
+        "body": "Korean and Chinese use different words depending on whether a sibling is older or younger.",
+        "bullets": [
+          "Korean: 오빠/형 (older brother from woman/man's perspective), 언니/누나 (older sister), 남동생/여동생 (younger siblings)",
+          "Chinese: 哥哥/弟弟 (older/younger brother), 姐姐/妹妹 (older/younger sister)",
+          "Haitian Creole: frè (brother), sè (sister) — no age distinction"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "家庭成员",
+        "items": [
+          {
+            "term": "the family",
+            "meaning": "家人 / 家庭"
+          },
+          {
+            "term": "the father",
+            "meaning": "父亲 / 爸爸"
+          },
+          {
+            "term": "the mother",
+            "meaning": "母亲 / 妈妈"
+          },
+          {
+            "term": "older brother",
+            "meaning": "哥哥"
+          },
+          {
+            "term": "younger brother",
+            "meaning": "弟弟"
+          },
+          {
+            "term": "older sister",
+            "meaning": "姐姐"
+          },
+          {
+            "term": "younger sister",
+            "meaning": "妹妹"
+          },
+          {
+            "term": "the grandparents",
+            "meaning": "祖父母 / 爷爷奶奶 / 外公外婆"
+          },
+          {
+            "term": "the husband / the wife",
+            "meaning": "丈夫 / 妻子"
+          },
+          {
+            "term": "a friend",
+            "meaning": "朋友"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "介绍家人",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "I have two younger brothers.",
+            "target": "我有两个弟弟。"
+          },
+          {
+            "source": "This is my older sister.",
+            "target": "这是我姐姐。"
+          },
+          {
+            "source": "My parents live in Beijing.",
+            "target": "我父母住在北京。"
+          },
+          {
+            "source": "Do you have children?",
+            "target": "你有孩子吗？"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "爸爸",
+            "native": "the father",
+            "phonetic": "bàba"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "妈妈",
+            "native": "the mother",
+            "phonetic": "māma"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "哥哥",
+            "native": "older brother",
+            "phonetic": "gēge"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "弟弟",
+            "native": "younger brother",
+            "phonetic": "dìdi"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "姐姐",
+            "native": "older sister",
+            "phonetic": "jiějie"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "朋友",
+            "native": "a friend",
+            "phonetic": "péngyou"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have two younger brothers.\":",
+        "targetSentence": "我有两个弟弟。",
+        "targetTranslation": "I have two younger brothers.",
+        "scrambledTokens": [
+          "个",
+          "弟弟",
+          "爸爸",
+          "我",
+          "有",
+          "两"
+        ],
+        "correctTokens": [
+          "我",
+          "有",
+          "两",
+          "个",
+          "弟弟"
+        ],
+        "explanation": "A warm, simple statement that naturally invites the other person to share too."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · possessive",
+        "prompt": "How do you say \"my older sister\"?",
+        "audioText": "我姐姐",
+        "options": [
+          "我哥哥",
+          "我姐姐",
+          "我父母",
+          "我朋友"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "小刚 (Friend)",
+        "partnerSays": "很高兴认识你。你有兄弟姐妹吗？",
+        "partnerSaysTranslation": "Nice to meet you. Do you have siblings?",
+        "partnerSaysPhonetic": "Hěn gāoxìng rènshi nǐ. Nǐ yǒu xiōngdì jiěmèi ma?",
+        "prompt": "Say you have two brothers:",
+        "options": [
+          "是的，我有两个弟弟。",
+          "这是我姐姐。",
+          "不，我不饿。"
+        ],
+        "correctAnswer": "是的，我有两个弟弟。",
+        "explanation": "\"是的，我有两个弟弟\" answers directly using 有 (to have)."
+      },
+      {
+        "type": "check",
+        "title": "Check · sibling terms",
+        "prompt": "An older sister in Chinese is called…",
+        "options": [
+          "弟弟",
+          "妹妹",
+          "姐姐",
+          "哥哥"
+        ],
+        "answerIndex": 2,
+        "explanation": "姐姐 = older sister; 妹妹 = younger sister; 哥哥 = older brother; 弟弟 = younger brother."
+      },
+      {
+        "type": "check",
+        "title": "Check · measure word",
+        "prompt": "How do you say \"two younger brothers\" using the right measure word?",
+        "options": [
+          "两个弟弟",
+          "两弟弟",
+          "两位弟弟",
+          "两本弟弟"
+        ],
+        "answerIndex": 0,
+        "explanation": "个 (gè) is the general measure word for people: 两个弟弟 = two younger brothers."
+      }
+    ]
+  },
+  {
+    "id": "shopping-clothes-1",
+    "slug": "shopping-for-clothes",
+    "title": "Shopping for clothes",
+    "description": "Sizes, trying things on, and asking about price.",
+    "unitId": "shopping",
+    "direction": "en-zh",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Trying it on",
+        "body": "Clothes shopping mixes size, color, and a few polite requests to try things on or ask for a different size."
+      },
+      {
+        "type": "vocab",
+        "title": "服装用语",
+        "items": [
+          {
+            "term": "a piece of clothing",
+            "meaning": "一件衣服"
+          },
+          {
+            "term": "a shirt",
+            "meaning": "衬衫"
+          },
+          {
+            "term": "trousers/pants",
+            "meaning": "裤子"
+          },
+          {
+            "term": "a dress",
+            "meaning": "裙子 / 连衣裙"
+          },
+          {
+            "term": "shoes",
+            "meaning": "鞋子"
+          },
+          {
+            "term": "the size",
+            "meaning": "尺寸 / 码数"
+          },
+          {
+            "term": "the fitting room",
+            "meaning": "试衣间"
+          },
+          {
+            "term": "on sale",
+            "meaning": "打折 / 特价"
+          },
+          {
+            "term": "too big / too small",
+            "meaning": "太大了 / 太小了"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "在商店",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "Do you have this in a size M?",
+            "target": "有M码的吗？"
+          },
+          {
+            "source": "Can I try it on?",
+            "target": "我可以试穿吗？"
+          },
+          {
+            "source": "Where is the fitting room?",
+            "target": "试衣间在哪里？"
+          },
+          {
+            "source": "It's too small.",
+            "target": "太小了。"
+          },
+          {
+            "source": "Do you have a bigger size?",
+            "target": "有大一号的吗？"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "尺寸 / 码数",
+            "native": "the size",
+            "phonetic": "chǐcun / mǎshù"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "试衣间",
+            "native": "the fitting room",
+            "phonetic": "shì yī jiān"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "打折",
+            "native": "on sale",
+            "phonetic": "dǎzhé"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "太大了",
+            "native": "too big",
+            "phonetic": "tài dà le"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "太小了",
+            "native": "too small",
+            "phonetic": "tài xiǎo le"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "连衣裙",
+            "native": "a dress",
+            "phonetic": "liányīqún"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Do you have this in size M?\":",
+        "targetSentence": "有M码的吗？",
+        "targetTranslation": "Do you have this in size M?",
+        "scrambledTokens": [
+          "的",
+          "吗",
+          "试衣间",
+          "有",
+          "M",
+          "码"
+        ],
+        "correctTokens": [
+          "有",
+          "M",
+          "码",
+          "的",
+          "吗"
+        ],
+        "explanation": "The one question that keeps a shopping trip moving in the right direction."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · size",
+        "prompt": "How do you say \"It's too small\"?",
+        "audioText": "太小了",
+        "options": [
+          "太大了",
+          "太小了",
+          "打折呢",
+          "刚好"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "店员 (Shop Clerk)",
+        "partnerSays": "当然。试衣间在那边。",
+        "partnerSaysTranslation": "Of course. The fitting room is over there.",
+        "partnerSaysPhonetic": "Dāngrán. Shì yī jiān zài nà biān.",
+        "prompt": "After trying it on, say it's too small and ask for a bigger size:",
+        "options": [
+          "太小了。有大一号的吗？",
+          "我可以试穿吗？",
+          "我想要红色的。"
+        ],
+        "correctAnswer": "太小了。有大一号的吗？",
+        "explanation": "\"太小了。有大一号的吗？\" describes the problem and asks for the next size."
+      },
+      {
+        "type": "check",
+        "title": "Check · size",
+        "prompt": "How do you ask \"do you have this in size M?\"",
+        "options": [
+          "有M码的吗？",
+          "太大了吗？",
+          "试衣间在哪里？",
+          "打折吧。"
+        ],
+        "answerIndex": 0,
+        "explanation": "码 is the measure word for clothing sizes in Chinese: M码 = size M."
+      },
+      {
+        "type": "check",
+        "title": "Check · too small",
+        "prompt": "How do you say \"It's too small\" in Chinese?",
+        "options": [
+          "太大了",
+          "太小了",
+          "打折",
+          "刚好"
+        ],
+        "answerIndex": 1,
+        "explanation": "太小了 = too small; 太大了 = too big. 太 = too."
+      }
+    ]
+  },
+  {
+    "id": "articles-gender-1",
+    "slug": "articles-and-grammar",
+    "title": "Grammar: articles & markers",
+    "description": "How these languages mark nouns and structure sentences.",
+    "unitId": "grammar-core",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 18,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Nouns and their markers",
+        "body": "Haitian Creole, Korean, and Chinese each handle definiteness and nouns very differently from European languages."
+      },
+      {
+        "type": "tip",
+        "title": "Key differences",
+        "body": "No language in this group has gender like French or Spanish.",
+        "bullets": [
+          "Haitian Creole: definite article la/a/an comes AFTER the noun; no gender",
+          "Korean: no articles; topic (은/는) and subject (이/가) markers do important grammar work",
+          "Chinese: no articles, no gender; measure words are required between numbers and nouns"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "中文量词 (measure words)",
+        "items": [
+          {
+            "term": "one book",
+            "meaning": "一本书"
+          },
+          {
+            "term": "two people",
+            "meaning": "两个人"
+          },
+          {
+            "term": "three cups of coffee",
+            "meaning": "三杯咖啡"
+          },
+          {
+            "term": "a piece of clothing",
+            "meaning": "一件衣服"
+          },
+          {
+            "term": "a sheet of paper",
+            "meaning": "一张纸"
+          },
+          {
+            "term": "a long thin thing",
+            "meaning": "一条鱼 (a fish)"
+          },
+          {
+            "term": "a pair of shoes",
+            "meaning": "一双鞋"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "本 (běn)",
+            "native": "for books",
+            "phonetic": "běn"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "个 (gè)",
+            "native": "general measure word",
+            "phonetic": "gè"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "杯 (bēi)",
+            "native": "for cups/glasses",
+            "phonetic": "bēi"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "件 (jiàn)",
+            "native": "for clothing",
+            "phonetic": "jiàn"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "张 (zhāng)",
+            "native": "for flat objects",
+            "phonetic": "zhāng"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "双 (shuāng)",
+            "native": "for pairs",
+            "phonetic": "shuāng"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"one book\":",
+        "targetSentence": "一本书",
+        "targetTranslation": "one book",
+        "scrambledTokens": [
+          "书",
+          "个",
+          "一",
+          "本"
+        ],
+        "correctTokens": [
+          "一",
+          "本",
+          "书"
+        ],
+        "explanation": "A compact phrase that puts the article or gender rule into immediate practice."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · measure word",
+        "prompt": "Which measure word fits with \"书\" (book)?",
+        "audioText": "一本书",
+        "options": [
+          "一张书",
+          "一本书",
+          "一件书",
+          "一个书"
+        ],
+        "answerIndex": 1,
+        "explanation": "本 (běn) is the measure word for books."
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "老师 (Teacher)",
+        "partnerSays": "\"书\"的量词是什么？",
+        "partnerSaysTranslation": "What is the measure word for \"书\" (book)?",
+        "partnerSaysPhonetic": "\"Shū\" de liàngcí shì shénme?",
+        "prompt": "Answer correctly:",
+        "options": [
+          "本 (běn)",
+          "张 (zhāng)",
+          "条 (tiáo)"
+        ],
+        "correctAnswer": "本 (běn)",
+        "explanation": "Chinese has no articles or gender, but measure words (量词) are required. 本 is for books; 张 is for flat objects like paper."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "Which measure word fits with \"书\" (book)?",
+        "options": [
+          "张",
+          "本",
+          "杯",
+          "件"
+        ],
+        "answerIndex": 1,
+        "explanation": "本 is the measure word for books: 一本书. 张 is for flat things, 杯 for cups, 件 for clothing."
+      },
+      {
+        "type": "check",
+        "title": "Check · gender",
+        "prompt": "Which statement about Chinese gender is correct?",
+        "options": [
+          "Has masculine and feminine gender",
+          "Has no grammatical gender",
+          "Has three genders",
+          "Changes verb based on gender"
+        ],
+        "answerIndex": 1,
+        "explanation": "Chinese has no grammatical gender. There is no equivalent to le/la or der/die/das."
+      },
+      {
+        "type": "check",
+        "title": "Check · articles",
+        "prompt": "How does Chinese show definiteness?",
+        "options": [
+          "With articles before the noun",
+          "With particles after the noun",
+          "Through context and demonstratives",
+          "With verb changes"
+        ],
+        "answerIndex": 2,
+        "explanation": "Chinese has no articles. Definiteness is shown through context, demonstratives (这/那), or word order."
+      }
+    ]
+  },
+  {
+    "id": "etre-avoir-1",
+    "slug": "to-be-and-to-have",
+    "title": "To be & to have",
+    "description": "The core verbs — and how they differ across languages.",
+    "unitId": "grammar-core",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 19,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Workhorses",
+        "body": "The concepts of \"to be\" and \"to have\" exist in all three languages but work quite differently."
+      },
+      {
+        "type": "vocab",
+        "title": "是 (shì) — to be (identity)",
+        "items": [
+          {
+            "term": "I am",
+            "meaning": "我是"
+          },
+          {
+            "term": "you are",
+            "meaning": "你是"
+          },
+          {
+            "term": "he / she is",
+            "meaning": "他/她是"
+          },
+          {
+            "term": "we are",
+            "meaning": "我们是"
+          },
+          {
+            "term": "they are",
+            "meaning": "他们/她们是"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "有 (yǒu) — to have / exist",
+        "items": [
+          {
+            "term": "I have",
+            "meaning": "我有"
+          },
+          {
+            "term": "you have",
+            "meaning": "你有"
+          },
+          {
+            "term": "he / she has",
+            "meaning": "他/她有"
+          },
+          {
+            "term": "we have",
+            "meaning": "我们有"
+          },
+          {
+            "term": "there is",
+            "meaning": "有"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "用在句子里",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "I am tired.",
+            "target": "我累了。"
+          },
+          {
+            "source": "She is Chinese.",
+            "target": "她是中国人。"
+          },
+          {
+            "source": "I have a reservation.",
+            "target": "我有预订。"
+          },
+          {
+            "source": "We have time.",
+            "target": "我们有时间。"
+          },
+          {
+            "source": "They are hungry.",
+            "target": "他们饿了。"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "我是…",
+            "native": "I am… (identity)",
+            "phonetic": "wǒ shì"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "我在…",
+            "native": "I am at… (location)",
+            "phonetic": "wǒ zài"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "我有…",
+            "native": "I have…",
+            "phonetic": "wǒ yǒu"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "累了",
+            "native": "tired",
+            "phonetic": "lèi le"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "饿了",
+            "native": "hungry",
+            "phonetic": "è le"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "有时间",
+            "native": "have time",
+            "phonetic": "yǒu shíjiān"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I am tired.\":",
+        "targetSentence": "我累了。",
+        "targetTranslation": "I am tired.",
+        "scrambledTokens": [
+          "了",
+          "累了",
+          "我",
+          "累"
+        ],
+        "correctTokens": [
+          "我",
+          "累",
+          "了"
+        ],
+        "explanation": "Two core verbs in a single sentence — a powerful combination to internalize."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · identity",
+        "prompt": "How do you say \"She is Chinese\"?",
+        "audioText": "她是中国人",
+        "options": [
+          "她是中国人",
+          "她有中国人",
+          "她在中国人",
+          "她不是中国人"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "小花 (Friend)",
+        "partnerSays": "你怎么样？",
+        "partnerSaysTranslation": "How are you?",
+        "partnerSaysPhonetic": "Nǐ zěnmeyàng?",
+        "prompt": "Say you're tired and hungry:",
+        "options": [
+          "我累了，而且我很饿。",
+          "我有累，而且我是饿。",
+          "累了我，饿了我。"
+        ],
+        "correctAnswer": "我累了，而且我很饿。",
+        "explanation": "Tiredness uses 累了 (got tired). Hunger uses 很饿 (very hungry). 是 is for identity; 有 is for possession."
+      },
+      {
+        "type": "check",
+        "title": "Check · 是",
+        "prompt": "How do you say \"I am a student\" in Chinese?",
+        "options": [
+          "我有学生",
+          "我是学生",
+          "我在学生",
+          "我学生"
+        ],
+        "answerIndex": 1,
+        "explanation": "是 is used for identity/equation: 我是学生 = I am a student."
+      },
+      {
+        "type": "check",
+        "title": "Check · 有",
+        "prompt": "\"我有预订\" means…",
+        "options": [
+          "I am a reservation",
+          "I have a reservation",
+          "I was a reservation",
+          "I want a reservation"
+        ],
+        "answerIndex": 1,
+        "explanation": "有 = to have: 我有预订 = I have a reservation."
+      },
+      {
+        "type": "check",
+        "title": "Check · hungry",
+        "prompt": "How do you say \"I am hungry\" in Chinese?",
+        "options": [
+          "我是饿",
+          "我有饿",
+          "我饿了",
+          "我在饿"
+        ],
+        "answerIndex": 2,
+        "explanation": "我饿了 = I got hungry = I am hungry. 了 marks the change of state."
+      }
+    ]
+  },
+  {
+    "id": "regular-er-verbs-1",
+    "slug": "verbs-and-patterns",
+    "title": "Verbs & patterns",
+    "description": "How verbs work in these three languages.",
+    "unitId": "grammar-core",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 18,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Verb patterns",
+        "body": "Haitian Creole verbs don't conjugate at all — the biggest advantage for learners! Korean and Chinese also avoid the complexity of European conjugation."
+      },
+      {
+        "type": "tip",
+        "title": "Verb patterns compared",
+        "body": "These languages express tense and aspect very differently.",
+        "bullets": [
+          "Haitian Creole: verbs never change. Aspect markers (ap, te, pral) are added.",
+          "Korean: verbs conjugate for politeness and tense, but not for person or gender.",
+          "Chinese: verbs never change. Tense is shown by time words and aspect particles (了, 过, 着)."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "动词 (verbs never change form!)",
+        "items": [
+          {
+            "term": "I speak",
+            "meaning": "我说"
+          },
+          {
+            "term": "you speak",
+            "meaning": "你说"
+          },
+          {
+            "term": "he/she speaks",
+            "meaning": "他/她说"
+          },
+          {
+            "term": "I spoke (completed)",
+            "meaning": "我说了"
+          },
+          {
+            "term": "I am speaking",
+            "meaning": "我在说 / 我说着"
+          },
+          {
+            "term": "I have spoken before",
+            "meaning": "我说过"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "常用动词",
+        "items": [
+          {
+            "term": "to speak",
+            "meaning": "说 (shuō)"
+          },
+          {
+            "term": "to eat",
+            "meaning": "吃 (chī)"
+          },
+          {
+            "term": "to go",
+            "meaning": "去 (qù)"
+          },
+          {
+            "term": "to work",
+            "meaning": "工作 (gōngzuò)"
+          },
+          {
+            "term": "to see",
+            "meaning": "看 (kàn)"
+          },
+          {
+            "term": "to understand",
+            "meaning": "明白 (míngbai)"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "实际使用",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "I speak a little Chinese.",
+            "target": "我会说一点中文。"
+          },
+          {
+            "source": "We work in Beijing.",
+            "target": "我们在北京工作。"
+          },
+          {
+            "source": "She is eating now.",
+            "target": "她在吃饭。"
+          },
+          {
+            "source": "They went home.",
+            "target": "他们回家了。"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "verb + 了",
+            "native": "completed action",
+            "phonetic": "le"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "在 + verb",
+            "native": "in progress (now)",
+            "phonetic": "zài"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "verb + 过",
+            "native": "experienced before",
+            "phonetic": "guò"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "说",
+            "native": "to speak",
+            "phonetic": "shuō"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "在说",
+            "native": "is speaking",
+            "phonetic": "zài shuō"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I can speak a little Chinese.\":",
+        "targetSentence": "我会说一点中文。",
+        "targetTranslation": "I can speak a little Chinese.",
+        "scrambledTokens": [
+          "一点",
+          "中文",
+          "在说",
+          "我",
+          "会",
+          "说"
+        ],
+        "correctTokens": [
+          "我",
+          "会",
+          "说",
+          "一点",
+          "中文"
+        ],
+        "explanation": "The verb pattern in action — master this form and unlock a whole verb family."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · tense",
+        "prompt": "Which form shows a completed past action?",
+        "audioText": "我吃了",
+        "options": [
+          "我吃",
+          "我在吃",
+          "我吃了",
+          "我吃过"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "小强 (Friend)",
+        "partnerSays": "你会说中文吗？",
+        "partnerSaysTranslation": "Can you speak Chinese?",
+        "partnerSaysPhonetic": "Nǐ huì shuō Zhōngwén ma?",
+        "prompt": "Say yes, you speak a little Chinese:",
+        "options": [
+          "是的，我会说一点中文。",
+          "是的，你会说一点中文。",
+          "是的，我会说一点了中文。"
+        ],
+        "correctAnswer": "是的，我会说一点中文。",
+        "explanation": "Chinese verbs don't conjugate. 我会说 (I can speak) stays the same regardless of tense or subject."
+      },
+      {
+        "type": "check",
+        "title": "Check · no conjugation",
+        "prompt": "In Chinese, do verbs change based on the subject (I, you, he…)?",
+        "options": [
+          "Yes, like French verbs",
+          "No, verbs never change form",
+          "Yes, for gender",
+          "Yes, for tense"
+        ],
+        "answerIndex": 1,
+        "explanation": "Chinese verbs never conjugate. 说 = speak; 我说, 你说, 他说 all use the same form."
+      },
+      {
+        "type": "check",
+        "title": "Check · aspect",
+        "prompt": "What does 了 signal after a verb in Chinese?",
+        "options": [
+          "Future tense",
+          "Present progressive",
+          "Completed action / change of state",
+          "Negation"
+        ],
+        "answerIndex": 2,
+        "explanation": "了 marks completion or a change of state: 我吃了 = I have eaten / I ate."
+      }
+    ]
+  },
+  {
+    "id": "adjective-agreement-1",
+    "slug": "adjectives-and-descriptions",
+    "title": "Adjectives & descriptions",
+    "description": "How descriptive words work in these languages.",
+    "unitId": "grammar-core",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Describing things",
+        "body": "None of these three languages has the gender agreement of European Romance languages, which simplifies adjective use significantly."
+      },
+      {
+        "type": "tip",
+        "title": "Key rules",
+        "body": "Adjectives work simply in these languages.",
+        "bullets": [
+          "Haitian Creole: adjectives never change for gender or number",
+          "Korean: adjectives conjugate like verbs (for tense/politeness) but not for gender/number of the noun",
+          "Chinese: adjectives don't change form; predicative adjectives usually take 很 (hěn)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "常用形容词",
+        "items": [
+          {
+            "term": "tall / big",
+            "meaning": "高 (gāo)"
+          },
+          {
+            "term": "small",
+            "meaning": "小 (xiǎo)"
+          },
+          {
+            "term": "happy",
+            "meaning": "快乐 (kuàilè)"
+          },
+          {
+            "term": "beautiful",
+            "meaning": "美丽 (měilì)"
+          },
+          {
+            "term": "good",
+            "meaning": "好 (hǎo)"
+          },
+          {
+            "term": "bad",
+            "meaning": "坏 (huài)"
+          },
+          {
+            "term": "new",
+            "meaning": "新 (xīn)"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "描述人和事物",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "He is tall.",
+            "target": "他很高。"
+          },
+          {
+            "source": "She is also tall.",
+            "target": "她也很高。"
+          },
+          {
+            "source": "They are happy.",
+            "target": "他们很快乐。"
+          },
+          {
+            "source": "It's a beautiful city.",
+            "target": "这是一个美丽的城市。"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "很高",
+            "native": "very tall",
+            "phonetic": "hěn gāo"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "很小",
+            "native": "very small",
+            "phonetic": "hěn xiǎo"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "很快乐",
+            "native": "very happy",
+            "phonetic": "hěn kuàilè"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "很美丽",
+            "native": "very beautiful",
+            "phonetic": "hěn měilì"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "很好",
+            "native": "very good / fine",
+            "phonetic": "hěn hǎo"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "新的",
+            "native": "new (attributive)",
+            "phonetic": "xīn de"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"She is also tall.\":",
+        "targetSentence": "她也很高。",
+        "targetTranslation": "She is also tall.",
+        "scrambledTokens": [
+          "很",
+          "高",
+          "很高",
+          "她",
+          "也"
+        ],
+        "correctTokens": [
+          "她",
+          "也",
+          "很",
+          "高"
+        ],
+        "explanation": "Agreement at work: the adjective shifts to match the noun it describes."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · adjective",
+        "prompt": "Which correctly says \"He is tall\" in Chinese?",
+        "audioText": "他很高",
+        "options": [
+          "他高",
+          "他很高",
+          "他是高",
+          "他好高的"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "小燕 (Friend)",
+        "partnerSays": "我哥哥很高。你姐姐呢？",
+        "partnerSaysTranslation": "My brother is very tall. What about your sister?",
+        "partnerSaysPhonetic": "Wǒ gēge hěn gāo. Nǐ jiějie ne?",
+        "prompt": "Describe your sister the same way:",
+        "options": [
+          "她也很高。",
+          "她也很高的。",
+          "她也高很。"
+        ],
+        "correctAnswer": "她也很高。",
+        "explanation": "Chinese adjectives don't change for gender or number. 高 (tall) works for everyone. 很 is typically used before adjectives in predicates."
+      },
+      {
+        "type": "check",
+        "title": "Check · 很",
+        "prompt": "Why is 很 used before adjectives in predicates?",
+        "options": [
+          "It means \"very\" and is required grammatically",
+          "It marks the future",
+          "It shows plural",
+          "It's optional — never used"
+        ],
+        "answerIndex": 0,
+        "explanation": "很 (hěn = very) is typically required before adjectives in predicative position: 他很高. Without 很, it implies contrast."
+      },
+      {
+        "type": "check",
+        "title": "Check · no agreement",
+        "prompt": "In Chinese, how does \"tall\" (高) change for a woman?",
+        "options": [
+          "Becomes 高女",
+          "Stays as 高 — no change",
+          "Becomes 高的",
+          "Becomes 高们"
+        ],
+        "answerIndex": 1,
+        "explanation": "Chinese adjectives never change for gender or number. 高 works for everyone and everything."
+      }
+    ]
+  },
+  {
+    "id": "negation-1",
+    "slug": "saying-no",
+    "title": "Saying no",
+    "description": "Turn any sentence negative with simple patterns.",
+    "unitId": "grammar-core",
+    "direction": "en-zh",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Negation patterns",
+        "body": "Each language has a characteristic way to negate a verb. Learn the pattern, apply it everywhere."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "Negation is relatively straightforward in all three languages.",
+        "bullets": [
+          "Haitian Creole: pa before the verb",
+          "Korean: 안 before verb/adjective, or -지 않다 after the stem",
+          "Chinese: 不 (bù) for general negation, 没 (méi) for past/existence"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "否定词",
+        "items": [
+          {
+            "term": "not (habitual/general)",
+            "meaning": "不 (bù)"
+          },
+          {
+            "term": "not (existence/past)",
+            "meaning": "没 (méi)"
+          },
+          {
+            "term": "never",
+            "meaning": "从不 / 从来不"
+          },
+          {
+            "term": "no longer",
+            "meaning": "不再"
+          },
+          {
+            "term": "nothing",
+            "meaning": "没有什么 / 什么都没有"
+          },
+          {
+            "term": "nobody",
+            "meaning": "没有人 / 谁都没有"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "否定句",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "I don't speak French.",
+            "target": "我不说法语。"
+          },
+          {
+            "source": "I don't like coffee.",
+            "target": "我不喜欢咖啡。"
+          },
+          {
+            "source": "I never eat meat.",
+            "target": "我从不吃肉。"
+          },
+          {
+            "source": "There's nothing here.",
+            "target": "这里什么都没有。"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "不 (bù)",
+            "native": "not (general)",
+            "phonetic": "bù"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "没 (méi)",
+            "native": "not (past/existence)",
+            "phonetic": "méi"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "从不",
+            "native": "never",
+            "phonetic": "cóng bù"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "不再",
+            "native": "no longer",
+            "phonetic": "bù zài"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "没有",
+            "native": "doesn't have / there isn't",
+            "phonetic": "méi yǒu"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "什么都没有",
+            "native": "nothing",
+            "phonetic": "shénme dōu méi yǒu"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I don't like coffee.\":",
+        "targetSentence": "我不喜欢咖啡。",
+        "targetTranslation": "I don't like coffee.",
+        "scrambledTokens": [
+          "喜欢",
+          "咖啡",
+          "从不",
+          "我",
+          "不"
+        ],
+        "correctTokens": [
+          "我",
+          "不",
+          "喜欢",
+          "咖啡"
+        ],
+        "explanation": "The negation pattern in its simplest form — learn it once, use it everywhere."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · 不",
+        "prompt": "Which correctly negates \"I like coffee\"?",
+        "audioText": "我不喜欢咖啡",
+        "options": [
+          "我喜欢不咖啡",
+          "我不喜欢咖啡",
+          "不我喜欢咖啡",
+          "我喜欢咖啡不"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "小伟 (Friend)",
+        "partnerSays": "你喜欢咖啡吗？",
+        "partnerSaysTranslation": "Do you like coffee?",
+        "partnerSaysPhonetic": "Nǐ xǐhuān kāfēi ma?",
+        "prompt": "Say no, you don't like coffee:",
+        "options": [
+          "不，我不喜欢咖啡。",
+          "不，我喜欢不咖啡。",
+          "不，没有喜欢咖啡。"
+        ],
+        "correctAnswer": "不，我不喜欢咖啡。",
+        "explanation": "不 negates adjectives and general actions (不喜欢). 没 negates existence and completed actions (没有)."
+      },
+      {
+        "type": "check",
+        "title": "Check · 不 vs. 没",
+        "prompt": "Which is used to negate a completed past action?",
+        "options": [
+          "不",
+          "没",
+          "从不",
+          "不再"
+        ],
+        "answerIndex": 1,
+        "explanation": "没 negates completed actions: 我没吃饭 (I didn't eat). 不 negates habits/states: 我不吃肉 (I don't eat meat)."
+      },
+      {
+        "type": "check",
+        "title": "Check · placement",
+        "prompt": "Where does 不 go in a Chinese sentence?",
+        "options": [
+          "After the object",
+          "Right before the verb/adjective",
+          "At the very end",
+          "Before the subject"
+        ],
+        "answerIndex": 1,
+        "explanation": "不 goes directly before the verb or adjective: 不喜欢, 不去, 不大."
+      }
+    ]
+  },
+  {
+    "id": "asking-questions-1",
+    "slug": "asking-questions",
+    "title": "Asking questions",
+    "description": "Question words and patterns.",
+    "unitId": "grammar-core",
+    "direction": "en-zh",
+    "level": "intermediate",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Asking around",
+        "body": "Each language has its own set of question words and question-formation patterns."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "Yes/no and information questions each have their own structure.",
+        "bullets": [
+          "Haitian Creole: eske at the start for yes/no; question word replaces the unknown element",
+          "Korean: question words in place of what they ask; -요? at the end for polite questions",
+          "Chinese: question words in place of what they ask; 吗 (ma) at the end for yes/no questions"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "疑问词",
+        "items": [
+          {
+            "term": "who",
+            "meaning": "谁 (shéi/shuí)"
+          },
+          {
+            "term": "what",
+            "meaning": "什么 (shénme)"
+          },
+          {
+            "term": "where",
+            "meaning": "哪里 / 哪儿 (nǎlǐ/nǎr)"
+          },
+          {
+            "term": "when",
+            "meaning": "什么时候 (shénme shíhou)"
+          },
+          {
+            "term": "why",
+            "meaning": "为什么 (wèishénme)"
+          },
+          {
+            "term": "how",
+            "meaning": "怎么 / 怎么样 (zěnme)"
+          },
+          {
+            "term": "how much / how many",
+            "meaning": "多少 / 几 (duōshao/jǐ)"
+          },
+          {
+            "term": "which",
+            "meaning": "哪个 / 哪 (nǎ)"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "问题示例",
+        "sourceLabel": "en-zh",
+        "phrases": [
+          {
+            "source": "Do you speak English?",
+            "target": "你会说英语吗？"
+          },
+          {
+            "source": "Where do you live?",
+            "target": "你住在哪里？"
+          },
+          {
+            "source": "Why are you laughing?",
+            "target": "你为什么笑？"
+          },
+          {
+            "source": "How much does it cost?",
+            "target": "这多少钱？"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Chinese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "zho-1",
+            "foreign": "谁",
+            "native": "who",
+            "phonetic": "shéi/shuí"
+          },
+          {
+            "id": "zho-2",
+            "foreign": "什么",
+            "native": "what",
+            "phonetic": "shénme"
+          },
+          {
+            "id": "zho-3",
+            "foreign": "哪里",
+            "native": "where",
+            "phonetic": "nǎlǐ"
+          },
+          {
+            "id": "zho-4",
+            "foreign": "什么时候",
+            "native": "when",
+            "phonetic": "shénme shíhou"
+          },
+          {
+            "id": "zho-5",
+            "foreign": "为什么",
+            "native": "why",
+            "phonetic": "wèishénme"
+          },
+          {
+            "id": "zho-6",
+            "foreign": "怎么",
+            "native": "how",
+            "phonetic": "zěnme"
+          },
+          {
+            "id": "zho-7",
+            "foreign": "多少",
+            "native": "how much",
+            "phonetic": "duōshao"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Do you speak English?\":",
+        "targetSentence": "你会说英语吗？",
+        "targetTranslation": "Do you speak English?",
+        "scrambledTokens": [
+          "英语",
+          "吗",
+          "谁",
+          "你",
+          "会",
+          "说"
+        ],
+        "correctTokens": [
+          "你",
+          "会",
+          "说",
+          "英语",
+          "吗"
+        ],
+        "explanation": "A well-formed question using the key structure — polite, clear, and natural."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · why",
+        "prompt": "How do you say \"why\" in Chinese?",
+        "audioText": "为什么",
+        "options": [
+          "什么时候",
+          "怎么",
+          "为什么",
+          "谁"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "小芳 (Friend)",
+        "partnerSays": "你有什么问题吗？",
+        "partnerSaysTranslation": "Do you have any questions?",
+        "partnerSaysPhonetic": "Nǐ yǒu shénme wèntí ma?",
+        "prompt": "Ask where she lives:",
+        "options": [
+          "你住在哪里？",
+          "哪里你住在？",
+          "你在哪里住了？"
+        ],
+        "correctAnswer": "你住在哪里？",
+        "explanation": "Chinese question words stay in the position of what they're asking about: 你住在哪里？(you live at where?)"
+      },
+      {
+        "type": "check",
+        "title": "Check · word meaning",
+        "prompt": "How do you say \"why\" in Chinese?",
+        "options": [
+          "什么时候",
+          "怎么",
+          "为什么",
+          "谁"
+        ],
+        "answerIndex": 2,
+        "explanation": "为什么 = why; it pairs with 因为 (because) in the answer."
+      },
+      {
+        "type": "check",
+        "title": "Check · yes/no question",
+        "prompt": "Which word forms yes/no questions in Chinese?",
+        "options": [
+          "哪里",
+          "什么时候",
+          "吗",
+          "为什么"
+        ],
+        "answerIndex": 2,
+        "explanation": "吗 (ma) at the end of a statement turns it into a yes/no question: 你好吗？(Are you well?)"
+      }
+    ]
   }
 ]

@@ -8,6 +8,7 @@ import MainHeader from "./main-header";
 import { defaultProgress, loadProgress, ProgressState } from "@/lib/progress";
 import { ensureTodayCounters } from "@/lib/gamification";
 import { WelcomePanel } from "./welcome-panel";
+import { LANGUAGES } from "@/lib/languages";
 
 export function LandingPage({ word }: { word: { ok: boolean; text?: string | undefined; error?: string | undefined; } }) {
     const [progress, setProgress] = useState<ProgressState>(defaultProgress());
@@ -29,6 +30,10 @@ export function LandingPage({ word }: { word: { ok: boolean; text?: string | und
         };
     }, []);
 
+    const currentLang =
+        LANGUAGES.find((l) => l.value === progress.learningLanguage) ||
+        LANGUAGES[0];
+
     if (!ready) return null;
 
     if (progress && !progress.nativeLanguage) {
@@ -39,10 +44,10 @@ export function LandingPage({ word }: { word: { ok: boolean; text?: string | und
 
     return (
         <div className="">
-            <MainHeader progress={progress} ready={ready} />
-            <Hero progress={progress} ready={ready} />
-            <WordOfTheDay word={word} />
-            <ProgressSummary progress={progress} ready={ready} />
+            <MainHeader progress={progress} ready={ready} currentLang={currentLang} />
+            <Hero progress={progress} ready={ready} currentLang={currentLang} />
+            {/*<WordOfTheDay word={word} />*/}
+            <ProgressSummary progress={progress} ready={ready}/>
         </div>
     );
 }

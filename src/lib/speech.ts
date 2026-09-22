@@ -15,7 +15,7 @@ function getVoicesAsync(): Promise<SpeechSynthesisVoice[]> {
     });
 }
 
-export async function speak(text: string, lang = "en-US") {
+export async function speak(text: string, lang = "en-US", speed?: number, pitch?: number) {
     if (typeof window === "undefined" || !window.speechSynthesis) return;
     if (!text.trim()) return;
     window.speechSynthesis.cancel();
@@ -23,7 +23,8 @@ export async function speak(text: string, lang = "en-US") {
     const voices = await getVoicesAsync();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = lang;
-    u.rate = 0.92;
+    u.rate = speed ?? 0.92;
+    u.pitch = pitch ?? 1.0;
 
     const match =
         voices.find((v) => v.lang === lang) ??
@@ -32,6 +33,7 @@ export async function speak(text: string, lang = "en-US") {
 
     // slight delay works around a Chromium cancel/speak race condition
     setTimeout(() => window.speechSynthesis.speak(u), 50);
+    return u
 }
 
 export function stopSpeaking() {

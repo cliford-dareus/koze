@@ -1,6 +1,7 @@
 import {
     getLessonsByDirection,
     getUnit,
+    Unit,
     type Lesson,
     type LessonDirection,
     type LessonStep,
@@ -31,16 +32,16 @@ const SLUG_TAG_HINTS: { match: RegExp; tags: LessonTag[] }[] = [
 /** Resolve lesson tags (explicit → unit → slug heuristics). */
 export function resolveLessonTags(lesson: Lesson): LessonTag[] {
     if (lesson.tags?.length) return Array.from(new Set(lesson.tags));
-
+    let unit: Unit | undefined;
     const tags = new Set<LessonTag>();
-    const unit = getUnit(lesson.unitId);
-    unit?.tags?.forEach((t) => tags.add(t));
-
+    getUnit(lesson.unitId).then((r) => {
+        unit = r;
+        unit?.tags?.forEach((t) => tags.add(t));
+    });
     const haystack = `${lesson.slug} ${lesson.id} ${lesson.title}`;
     for (const { match, tags: hinted } of SLUG_TAG_HINTS) {
         if (match.test(haystack)) hinted.forEach((t) => tags.add(t));
     }
-
     if (!tags.size) tags.add("basics");
     return Array.from(tags);
 }
@@ -88,7 +89,10 @@ export function collectReviewChecks(
     currentLessonId: string,
     completedLessonIds: string[],
 ): CheckStep[] {
-    const catalog = getLessonsByDirection(direction);
+    let catalog: Lesson[] = [];
+    getLessonsByDirection(direction).then((r) => {
+        catalog = r;
+    });
     const currentIdx = catalog.findIndex((l) => l.id === currentLessonId);
     const completed = new Set(completedLessonIds);
     const pool: CheckStep[] = [];

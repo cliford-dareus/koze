@@ -34,7 +34,7 @@ export function saveLearningPrefs(prefs: LearningPrefs) {
     try {
         localStorage.setItem(LEARNING_PREFS_KEY, JSON.stringify(prefs));
         // Keep progress.lessonDirection in sync for easy reads from progress storage
-        const direction = directionForLearningLanguage(prefs.learningLanguage);
+        const direction = directionForLearningLanguage(prefs.learningLanguage, prefs.nativeLanguage);
         window.dispatchEvent(new CustomEvent("koze-learning-prefs"));
     } catch {
         // ignore
@@ -49,10 +49,10 @@ export function saveLearningPrefs(prefs: LearningPrefs) {
  */
 export function directionForLearningLanguage(
     learningLanguage: string,
+    nativeLanguage: string
 ): LessonDirection {
     const code = (learningLanguage || "fr").toLowerCase();
-    if (code === "en" || code.startsWith("en-")) return "fr-en";
-    if (code === "fr" || code.startsWith("fr-")) return "en-fr";
+    if (code) return `${nativeLanguage}-${code}` as LessonDirection;
     return "en-fr";
 }
 

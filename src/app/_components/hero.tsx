@@ -9,12 +9,9 @@ import { sound } from "@/lib/sound";
 import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
 import ZenGarden from "./zen-garden";
 import DailyPractice from "./daily-practice";
+import { LanguageOption } from "@/data/languages";
 
-export default function Hero({ progress, ready }: { progress: ProgressState; ready: boolean }) {
-    const currentLang =
-        LANGUAGES.find((l) => l.value === progress.lessonDirection.split('-')[1]) ||
-        LANGUAGES[0];
-
+export default function Hero({ progress, ready, currentLang }: { progress: ProgressState; ready: boolean; currentLang: LanguageOption; }) {
     const levelInfo = useMemo(
         () => levelProgress(progress.xp ?? 0),
         [progress.xp],
@@ -35,7 +32,7 @@ export default function Hero({ progress, ready }: { progress: ProgressState; rea
         <div>
             <section
                 id="hero-sanctuary"
-                className="relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-soft sm:p-8"
+                className="relative overflow-hidden rounded-xl border border-border bg-background p-6 shadow-soft sm:p-8"
             >
                 <div className="max-w-2xl space-y-2">
                     <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
@@ -67,7 +64,7 @@ export default function Hero({ progress, ready }: { progress: ProgressState; rea
                                 <span>Today's Mindful 3-min Practice</span>
                             </button>
                         </DrawerTrigger>
-                        <DrawerContent>
+                        <DrawerContent className="border border-border bg-background">
                             <DailyPractice progress={progress} />
                         </DrawerContent>
                     </Drawer>
@@ -85,7 +82,7 @@ export default function Hero({ progress, ready }: { progress: ProgressState; rea
                                 <span>View Pebble Cairn ({progress.cairnStonesCount})</span>
                             </button>
                         </DrawerTrigger>
-                        <DrawerContent>
+                        <DrawerContent className="border border-border bg-background">
                             <ZenGarden progress={progress} />
                         </DrawerContent>
                     </Drawer>

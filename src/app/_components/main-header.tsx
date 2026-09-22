@@ -12,13 +12,9 @@ import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
 import ZenGarden from "./zen-garden";
 import { LessonDirection } from "@/data/lessons";
 
-export default function MainHeader({ progress, ready }: { progress: ProgressState; ready: boolean; }) {
+export default function MainHeader({ progress, ready, currentLang }: { progress: ProgressState; ready: boolean; currentLang: LanguageOption; }) {
     const [langDropdownOpen, setLangDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
-
-    const currentLang =
-        LANGUAGES.find((l) => l.value === progress.learningLanguage) ||
-        LANGUAGES[0];
 
     const handleSelectLanguage = (langId: string) => {
         const updated: ProgressState = {
@@ -157,7 +153,7 @@ export default function MainHeader({ progress, ready }: { progress: ProgressStat
                                 <span className="hidden sm:inline text-foreground text-xs">pebbles</span>
                             </button>
                         </DrawerTrigger>
-                        <DrawerContent>
+                        <DrawerContent className="border border-border bg-background">
                             <ZenGarden progress={progress} />
                         </DrawerContent>
                     </Drawer>

@@ -3,6 +3,7 @@ import { getRandomFacts } from "@/app/_actions/translate";
 import TextToSpeechWithVirsual from "@/app/_components/text-to-speech-with-virsual";
 import MicAudioVisualizer from "@/app/_components/mic-audio-visualizer";
 import { Leaf } from "lucide-react";
+import { ListeningPage } from "./_components/listening-page";
 
 const Listening = async () => {
     const randomFact = await getRandomFacts();
@@ -15,40 +16,13 @@ const Listening = async () => {
                 Listening
             </p>
             <h1 className="mt-2 font-display text-3xl font-medium">
-                Hear it, then choose.
+                Listening Sanctuary.
             </h1>
             <p className="mt-2 text-sm text-muted-foreground">
-                Play the sentence once. Pick the line that matches.
+                Tune your ear to genuine conversations, atmospheric soundscapes, and native cadence without the pressure of speed.
             </p>
 
-            <div className="mt-6 flex min-h-[28vh] flex-col items-center justify-center gap-4 rounded-xl border border-border bg-card p-8 shadow-soft">
-                <TextToSpeechWithVirsual
-                    classname="h-[80px]"
-                    randomFact={randomFact?.text}
-                />
-            </div>
-
-            <div className="mt-4">
-                <MicAudioVisualizer
-                    label="Echo practice"
-                    barCount={40}
-                    canvasClassName="h-24"
-                />
-                <p className="mt-2 text-xs text-muted-foreground">
-                    Optional: open the mic and repeat what you heard — the
-                    visualizer reacts to your voice.
-                </p>
-            </div>
-
-            <div className="mt-6">
-                <h2 className="font-medium">What did you hear?</h2>
-                <p className="text-sm text-muted-foreground">
-                    Choose the correct sentence
-                </p>
-                <div className="mt-3">
-                    <MultiChoice quote={randomFact?.text} />
-                </div>
-            </div>
+            <ListeningPage />
         </div>
     );
 };

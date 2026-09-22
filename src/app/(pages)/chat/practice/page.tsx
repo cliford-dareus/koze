@@ -14,6 +14,7 @@ import {
 } from "@/data/tutor-scenarios";
 import { Button } from "@/app/_components/ui/button";
 import {
+    defaultProgress,
     loadProgress,
     recordActivity,
     removeSavedPhrase,
@@ -23,9 +24,8 @@ import {
 } from "@/lib/progress";
 import {
     directionForLearningLanguage,
-    loadLearningPrefs,
 } from "@/lib/learning-prefs";
-import { voiceFor, type LangCode } from "@/lib/languages";
+import { LANGUAGES, voiceFor, type LangCode } from "@/lib/languages";
 import { speak, startListening } from "@/lib/speech";
 import { cn } from "@/lib/utils";
 import type { LessonDirection } from "@/data/lessons";
@@ -46,22 +46,8 @@ type TutorApiOk = {
     summaryHint: string | null;
 };
 
-function targetLangFromPrefs(): LangCode {
-    const prefs = loadLearningPrefs();
-    const dir = directionForLearningLanguage(prefs.learningLanguage);
-    return dir === "en-fr" ? "fr" : "en";
-}
-
-function supportLangFromPrefs(): LangCode {
-    const prefs = loadLearningPrefs();
-    return (prefs.nativeLanguage as LangCode) || "en";
-}
-
-function directionFromPrefs(): LessonDirection {
-    return directionForLearningLanguage(loadLearningPrefs().learningLanguage);
-}
-
 export default function PracticePage() {
+    const [progress, setProgress] = useState<ProgressState>(defaultProgress());
     const [phase, setPhase] = useState<"pick" | "chat" | "summary">("pick");
     const [scenario, setScenario] = useState<TutorScenario | null>(null);
     const [messages, setMessages] = useState<ChatMsg[]>([]);
@@ -73,13 +59,12 @@ export default function PracticePage() {
     const [summaryHint, setSummaryHint] = useState<string | null>(null);
     const [lastBetter, setLastBetter] = useState<string | null>(null);
     const [phraseSaved, setPhraseSaved] = useState(false);
-    const [progress, setProgress] = useState<ProgressState | null>(null);
     const stopListenRef = useRef<(() => void) | null>(null);
 
-    const targetLanguage = useMemo(() => targetLangFromPrefs(), []);
-    const supportLanguage = useMemo(() => supportLangFromPrefs(), []);
-    const direction = useMemo(() => directionFromPrefs(), []);
-    const voiceLang = voiceFor(targetLanguage);
+    const direction = useMemo(() => {
+        return directionForLearningLanguage(progress.learningLanguage!, progress.nativeLanguage!);
+    }, []);
+    const voiceLang = voiceFor(progress.learningLanguage!);
 
     useEffect(() => {
         const refresh = () => setProgress(loadProgress());
@@ -92,6 +77,8 @@ export default function PracticePage() {
         };
     }, []);
 
+    const currentLanguage = LANGUAGES.find(l => l.value === progress.learningLanguage) || LANGUAGES[0];
+    
     const units = useMemo(() => {
         const map = new Map<TutorUnit, TutorScenario[]>();
         for (const s of TUTOR_SCENARIOS) {
@@ -115,8 +102,8 @@ export default function PracticePage() {
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify({
                     scenarioId: opts.scenarioId,
-                    targetLanguage,
-                    supportLanguage,
+                    targetLanguage: progress.learningLanguage,
+                    supportLanguage: progress.nativeLanguage,
                     messages: opts.messages,
                     start: opts.start,
                 }),
@@ -127,7 +114,7 @@ export default function PracticePage() {
             }
             return data as TutorApiOk;
         },
-        [supportLanguage, targetLanguage],
+        [progress.learningLanguage, progress.nativeLanguage],
     );
 
     const beginScenario = async (s: TutorScenario) => {
@@ -265,7 +252,7 @@ export default function PracticePage() {
                 <p className="mt-2 max-w-prose text-sm text-muted-foreground">
                     Roleplays unlock as you finish related lessons. Practicing{" "}
                     <span className="font-medium text-foreground">
-                        {targetLanguage === "fr" ? "French" : "English"}
+                        {currentLanguage.name}
                     </span>
                     .
                 </p>

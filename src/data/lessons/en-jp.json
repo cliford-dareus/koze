@@ -115,47 +115,67 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the greetings",
+                "prompt": "Match each Japanese greeting with its English meaning:",
                 "pairs": [
                     {
-                        "left": "おはようございます",
-                        "right": "Good morning (polite)"
+                        "id": "jpn-1",
+                        "foreign": "おはようございます",
+                        "native": "Good morning (polite)",
+                        "phonetic": "ohayō gozaimasu"
                     },
                     {
-                        "left": "こんにちは",
-                        "right": "Hello / good afternoon"
+                        "id": "jpn-2",
+                        "foreign": "こんにちは",
+                        "native": "Hello / good afternoon",
+                        "phonetic": "konnichiwa"
                     },
                     {
-                        "left": "こんばんは",
-                        "right": "Good evening"
+                        "id": "jpn-3",
+                        "foreign": "こんばんは",
+                        "native": "Good evening",
+                        "phonetic": "konbanwa"
                     },
                     {
-                        "left": "さようなら",
-                        "right": "Goodbye"
+                        "id": "jpn-4",
+                        "foreign": "さようなら",
+                        "native": "Goodbye",
+                        "phonetic": "sayōnara"
                     },
                     {
-                        "left": "おやすみなさい",
-                        "right": "Good night"
+                        "id": "jpn-5",
+                        "foreign": "おやすみなさい",
+                        "native": "Good night",
+                        "phonetic": "oyasuminasai"
                     },
                     {
-                        "left": "またね",
-                        "right": "See you later (casual)"
+                        "id": "jpn-6",
+                        "foreign": "またね",
+                        "native": "See you later (casual)",
+                        "phonetic": "mata ne"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the greeting",
-                "prompt": "Build: “Hello, how are you?” (polite)",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Hello, how are you?\":",
+                "targetSentence": "こんにちは、お元気ですか？",
+                "targetTranslation": "Hello, how are you?",
+                "scrambledTokens": [
+                    "です",
+                    "か",
+                    "おはようございます",
+                    "こんにちは",
+                    "、",
+                    "お元気"
+                ],
+                "correctTokens": [
                     "こんにちは",
                     "、",
                     "お元気",
                     "です",
-                    "か",
-                    "？"
+                    "か"
                 ],
-                "answer": "こんにちは、お元気ですか？"
+                "explanation": "A warm, time-appropriate greeting — the foundation of any first impression."
             },
             {
                 "type": "listen",
@@ -173,22 +193,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "A first meeting",
-                "context": "You meet a colleague’s parent for the first time.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "こんにちは、お元気ですか？"
-                    },
-                    {
-                        "speaker": "Parent",
-                        "text": "はい、元気です。あなたは？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "元気です、ありがとうございます。"
-                    }
-                ]
+                "dialoguePartner": "Tanaka-san (Colleague's Mother)",
+                "partnerSays": "こんにちは、はじめまして。お元気ですか？",
+                "partnerSaysPhonetic": "Konnichiwa, hajimemashite. Ogenki desu ka?",
+                "partnerSaysTranslation": "Hello, nice to meet you. How are you?",
+                "prompt": "Reply politely:",
+                "options": [
+                    "はい、元気です。ありがとうございます。",
+                    "さようなら。",
+                    "いいえ、けっこうです。"
+                ],
+                "correctAnswer": "はい、元気です。ありがとうございます。",
+                "explanation": "\"はい、元気です。ありがとうございます\" answers warmly in polite form. \"さようなら\" is a goodbye."
             },
             {
                 "type": "check",
@@ -328,45 +344,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the polite phrases",
+                "prompt": "Match each Japanese polite phrase with its English meaning:",
                 "pairs": [
                     {
-                        "left": "ください",
-                        "right": "Please (give me…)"
+                        "id": "jpn-1",
+                        "foreign": "ください",
+                        "native": "Please (give me…)",
+                        "phonetic": "kudasai"
                     },
                     {
-                        "left": "お願いします",
-                        "right": "Please (request)"
+                        "id": "jpn-2",
+                        "foreign": "お願いします",
+                        "native": "Please (request)",
+                        "phonetic": "onegaishimasu"
                     },
                     {
-                        "left": "ありがとうございます",
-                        "right": "Thank you (polite)"
+                        "id": "jpn-3",
+                        "foreign": "ありがとうございます",
+                        "native": "Thank you (polite)",
+                        "phonetic": "arigatō gozaimasu"
                     },
                     {
-                        "left": "どういたしまして",
-                        "right": "You’re welcome"
+                        "id": "jpn-4",
+                        "foreign": "どういたしまして",
+                        "native": "You’re welcome",
+                        "phonetic": "dō itashimashite"
                     },
                     {
-                        "left": "すみません",
-                        "right": "Excuse me / sorry"
+                        "id": "jpn-5",
+                        "foreign": "すみません",
+                        "native": "Excuse me / sorry",
+                        "phonetic": "sumimasen"
                     },
                     {
-                        "left": "ごめんなさい",
-                        "right": "Sorry (apology)"
+                        "id": "jpn-6",
+                        "foreign": "ごめんなさい",
+                        "native": "Sorry (apology)",
+                        "phonetic": "gomennasai"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the request",
-                "prompt": "Build: “A coffee, please.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"A coffee, please.\":",
+                "targetSentence": "コーヒーをください。",
+                "targetTranslation": "A coffee, please.",
+                "scrambledTokens": [
+                    "ください",
+                    "お願いします",
+                    "コーヒー",
+                    "を"
+                ],
+                "correctTokens": [
                     "コーヒー",
                     "を",
-                    "ください",
-                    "。"
+                    "ください"
                 ],
-                "answer": "コーヒーをください。"
+                "explanation": "Combining a request with \"please\" — the cornerstone of polite interaction."
             },
             {
                 "type": "listen",
@@ -383,26 +417,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "At the counter",
-                "context": "Ordering and thanking in a shop.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "コーヒーをください。"
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "はい、どうぞ。三百円です。"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "ありがとうございます。"
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "どういたしまして。"
-                    }
-                ]
+                "dialoguePartner": "Sato-san (Café Clerk)",
+                "partnerSays": "はい、どうぞ。三百円です。",
+                "partnerSaysPhonetic": "Hai, dōzo. Sanbyaku-en desu.",
+                "partnerSaysTranslation": "Here you go. That's 300 yen.",
+                "prompt": "Thank her as you pay:",
+                "options": [
+                    "ありがとうございます。",
+                    "コーヒーをください。",
+                    "どういたしまして。"
+                ],
+                "correctAnswer": "ありがとうございます。",
+                "explanation": "\"ありがとうございます\" is the polite thank-you. \"どういたしまして\" is what the clerk would say back to you."
             },
             {
                 "type": "check",
@@ -578,50 +604,71 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the numbers",
+                "prompt": "Match each Japanese number with its numeral:",
                 "pairs": [
                     {
-                        "left": "いち",
-                        "right": "1"
+                        "id": "jpn-1",
+                        "foreign": "いち",
+                        "native": "1",
+                        "phonetic": "ichi"
                     },
                     {
-                        "left": "に",
-                        "right": "2"
+                        "id": "jpn-2",
+                        "foreign": "に",
+                        "native": "2",
+                        "phonetic": "ni"
                     },
                     {
-                        "left": "さん",
-                        "right": "3"
+                        "id": "jpn-3",
+                        "foreign": "さん",
+                        "native": "3",
+                        "phonetic": "san"
                     },
                     {
-                        "left": "ご",
-                        "right": "5"
+                        "id": "jpn-4",
+                        "foreign": "ご",
+                        "native": "5",
+                        "phonetic": "go"
                     },
                     {
-                        "left": "なな",
-                        "right": "7"
+                        "id": "jpn-5",
+                        "foreign": "なな",
+                        "native": "7",
+                        "phonetic": "nana"
                     },
                     {
-                        "left": "じゅう",
-                        "right": "10"
+                        "id": "jpn-6",
+                        "foreign": "じゅう",
+                        "native": "10",
+                        "phonetic": "jū"
                     },
                     {
-                        "left": "にじゅう",
-                        "right": "20"
+                        "id": "jpn-7",
+                        "foreign": "にじゅう",
+                        "native": "20",
+                        "phonetic": "nijū"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the order",
-                "prompt": "Build: “Two coffees, please.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Two coffees, please.\":",
+                "targetSentence": "コーヒーを二つください。",
+                "targetTranslation": "Two coffees, please.",
+                "scrambledTokens": [
+                    "二つ",
+                    "ください",
+                    "いち",
+                    "コーヒー",
+                    "を"
+                ],
+                "correctTokens": [
                     "コーヒー",
                     "を",
                     "二つ",
-                    "ください",
-                    "。"
+                    "ください"
                 ],
-                "answer": "コーヒーを二つください。"
+                "explanation": "Numbers in context — the essential combination for real-world transactions."
             },
             {
                 "type": "listen",
@@ -639,22 +686,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "At the ticket window",
-                "context": "Buying tickets and giving age.",
-                "turns": [
-                    {
-                        "speaker": "Clerk",
-                        "text": "チケットは二枚ですか？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "はい、二つ。二十歳です。"
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "わかりました。千五百円です。"
-                    }
-                ]
+                "dialoguePartner": "Suzuki-san (Ticket Clerk)",
+                "partnerSays": "チケットは何枚ですか？",
+                "partnerSaysPhonetic": "Chiketto wa nan-mai desu ka?",
+                "partnerSaysTranslation": "How many tickets?",
+                "prompt": "Ask for two tickets:",
+                "options": [
+                    "二枚お願いします。",
+                    "二十歳です。",
+                    "千五百円です。"
+                ],
+                "correctAnswer": "二枚お願いします。",
+                "explanation": "\"二枚お願いします\" uses the counter 枚 for flat objects like tickets. \"千五百円です\" is the price the clerk would quote."
             },
             {
                 "type": "check",
@@ -680,7 +723,7 @@
                     "No coffee"
                 ],
                 "answerIndex": 1,
-                "explanation": "二つ means two (native counter)."
+                "explanation": "二つ means two (left counter)."
             },
             {
                 "type": "check",
@@ -780,42 +823,59 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the building blocks",
+                "prompt": "Match each Japanese introduction phrase with its English meaning:",
                 "pairs": [
                     {
-                        "left": "〜です",
-                        "right": "My name is… / I am…"
+                        "id": "jpn-1",
+                        "foreign": "〜です",
+                        "native": "My name is… / I am…",
+                        "phonetic": "〜desu"
                     },
                     {
-                        "left": "〜から来ました",
-                        "right": "I come from…"
+                        "id": "jpn-2",
+                        "foreign": "〜から来ました",
+                        "native": "I come from…",
+                        "phonetic": "〜kara kimashita"
                     },
                     {
-                        "left": "〜に住んでいます",
-                        "right": "I live in…"
+                        "id": "jpn-3",
+                        "foreign": "〜に住んでいます",
+                        "native": "I live in…",
+                        "phonetic": "〜ni sunde imasu"
                     },
                     {
-                        "left": "はじめまして",
-                        "right": "Nice to meet you"
+                        "id": "jpn-4",
+                        "foreign": "はじめまして",
+                        "native": "Nice to meet you",
+                        "phonetic": "hajimemashite"
                     },
                     {
-                        "left": "よろしくお願いします",
-                        "right": "Please treat me well"
+                        "id": "jpn-5",
+                        "foreign": "よろしくお願いします",
+                        "native": "Please treat me well",
+                        "phonetic": "yoroshiku onegaishimasu"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the introduction",
-                "prompt": "Build: “Hello, my name is Alex.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Hello, my name is Alex.\":",
+                "targetSentence": "こんにちは、アレックスです。",
+                "targetTranslation": "Hello, my name is Alex.",
+                "scrambledTokens": [
+                    "アレックス",
+                    "です",
+                    "はじめまして",
+                    "こんにちは",
+                    "、"
+                ],
+                "correctTokens": [
                     "こんにちは",
                     "、",
                     "アレックス",
-                    "です",
-                    "。"
+                    "です"
                 ],
-                "answer": "こんにちは、アレックスです。"
+                "explanation": "Your origin in one clear sentence — the natural follow-up to sharing your name."
             },
             {
                 "type": "listen",
@@ -832,26 +892,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Meeting someone new",
-                "context": "A short self-introduction.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "こんにちは、サムです。"
-                    },
-                    {
-                        "speaker": "Other",
-                        "text": "はじめまして。レアです。"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "アメリカから来ました。あなたは？"
-                    },
-                    {
-                        "speaker": "Léa",
-                        "text": "東京から来ました。"
-                    }
-                ]
+                "dialoguePartner": "Lea (New Acquaintance)",
+                "partnerSays": "はじめまして。レアです。どこから来ましたか？",
+                "partnerSaysPhonetic": "Hajimemashite. Rea desu. Doko kara kimashita ka?",
+                "partnerSaysTranslation": "Nice to meet you. I'm Lea. Where are you from?",
+                "prompt": "Say where you're from and return the question:",
+                "options": [
+                    "アメリカから来ました。レアさんは？",
+                    "サムです。",
+                    "元気です。"
+                ],
+                "correctAnswer": "アメリカから来ました。レアさんは？",
+                "explanation": "\"アメリカから来ました。レアさんは？\" answers her question and returns it using her name + さん, which is more natural than あなた."
             },
             {
                 "type": "check",
@@ -977,43 +1029,61 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the colors",
+                "prompt": "Match each Japanese color with its English name:",
                 "pairs": [
                     {
-                        "left": "赤い",
-                        "right": "red"
+                        "id": "jpn-1",
+                        "foreign": "赤い",
+                        "native": "red",
+                        "phonetic": "akai"
                     },
                     {
-                        "left": "青い",
-                        "right": "blue"
+                        "id": "jpn-2",
+                        "foreign": "青い",
+                        "native": "blue",
+                        "phonetic": "aoi"
                     },
                     {
-                        "left": "緑",
-                        "right": "green"
+                        "id": "jpn-3",
+                        "foreign": "緑",
+                        "native": "green",
+                        "phonetic": "midori"
                     },
                     {
-                        "left": "黒い",
-                        "right": "black"
+                        "id": "jpn-4",
+                        "foreign": "黒い",
+                        "native": "black",
+                        "phonetic": "kuroi"
                     },
                     {
-                        "left": "白い",
-                        "right": "white"
+                        "id": "jpn-5",
+                        "foreign": "白い",
+                        "native": "white",
+                        "phonetic": "shiroi"
                     },
                     {
-                        "left": "茶色い",
-                        "right": "brown"
+                        "id": "jpn-6",
+                        "foreign": "茶色い",
+                        "native": "brown",
+                        "phonetic": "chairoi"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the description",
-                "prompt": "Build: “a blue dress”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"a blue dress\":",
+                "targetSentence": "青いドレス",
+                "targetTranslation": "a blue dress",
+                "scrambledTokens": [
+                    "ドレス",
+                    "赤い",
+                    "青い"
+                ],
+                "correctTokens": [
                     "青い",
                     "ドレス"
                 ],
-                "answer": "青いドレス"
+                "explanation": "Color + polite form — everything needed to express a preference in any shop."
             },
             {
                 "type": "listen",
@@ -1030,22 +1100,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Choosing a color",
-                "context": "In a clothing shop.",
-                "turns": [
-                    {
-                        "speaker": "Clerk",
-                        "text": "どの色がいいですか？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "赤いのが欲しいです。"
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "はい、赤いドレスです。"
-                    }
-                ]
+                "dialoguePartner": "Yamada-san (Shop Clerk)",
+                "partnerSays": "どの色がいいですか？",
+                "partnerSaysPhonetic": "Dono iro ga ii desu ka?",
+                "partnerSaysTranslation": "Which color would you like?",
+                "prompt": "Say you want the red one:",
+                "options": [
+                    "赤いのが欲しいです。",
+                    "いくらですか？",
+                    "大きすぎます。"
+                ],
+                "correctAnswer": "赤いのが欲しいです。",
+                "explanation": "\"赤いのが欲しいです\" (I want the red one) answers the question about color directly."
             },
             {
                 "type": "check",
@@ -1172,41 +1238,57 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the café words",
+                "prompt": "Match each Japanese café word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "コーヒー",
-                        "right": "coffee"
+                        "id": "jpn-1",
+                        "foreign": "コーヒー",
+                        "native": "coffee",
+                        "phonetic": "kōhī"
                     },
                     {
-                        "left": "持ち帰り",
-                        "right": "to go"
+                        "id": "jpn-2",
+                        "foreign": "持ち帰り",
+                        "native": "to go",
+                        "phonetic": "mochikaeri"
                     },
                     {
-                        "left": "店内",
-                        "right": "for here"
+                        "id": "jpn-3",
+                        "foreign": "店内",
+                        "native": "for here",
+                        "phonetic": "tennai"
                     },
                     {
-                        "left": "お会計",
-                        "right": "the bill"
+                        "id": "jpn-4",
+                        "foreign": "お会計",
+                        "native": "the bill",
+                        "phonetic": "okaikei"
                     },
                     {
-                        "left": "水",
-                        "right": "water"
+                        "id": "jpn-5",
+                        "foreign": "水",
+                        "native": "water",
+                        "phonetic": "mizu"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the order",
-                "prompt": "Build: “I would like a coffee, please.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I would like a coffee, please.\":",
+                "targetSentence": "コーヒーをください。",
+                "targetTranslation": "I would like a coffee, please.",
+                "scrambledTokens": [
+                    "ください",
+                    "お会計",
+                    "コーヒー",
+                    "を"
+                ],
+                "correctTokens": [
                     "コーヒー",
                     "を",
-                    "ください",
-                    "。"
+                    "ください"
                 ],
-                "answer": "コーヒーをください。"
+                "explanation": "A polite order that works in any café — commit it to memory for the first sip."
             },
             {
                 "type": "listen",
@@ -1223,26 +1305,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Ordering and paying",
-                "context": "A typical café exchange.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "アイスコーヒーをください。"
-                    },
-                    {
-                        "speaker": "Server",
-                        "text": "店内ですか、持ち帰りですか？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "店内で。"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "お会計をお願いします。"
-                    }
-                ]
+                "dialoguePartner": "Kobayashi-san (Server)",
+                "partnerSays": "店内ですか、お持ち帰りですか？",
+                "partnerSaysPhonetic": "Tennai desu ka, omochikaeri desu ka?",
+                "partnerSaysTranslation": "For here or to take away?",
+                "prompt": "You're staying at the café. Answer:",
+                "options": [
+                    "店内でお願いします。",
+                    "お会計をお願いします。",
+                    "アイスコーヒーをください。"
+                ],
+                "correctAnswer": "店内でお願いします。",
+                "explanation": "\"店内でお願いします\" means you'll have it here. \"お会計をお願いします\" is for asking for the bill later."
             },
             {
                 "type": "check",
@@ -1350,42 +1424,59 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the market words",
+                "prompt": "Match each Japanese market word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "りんご",
-                        "right": "apple"
+                        "id": "jpn-1",
+                        "foreign": "りんご",
+                        "native": "apple",
+                        "phonetic": "ringo"
                     },
                     {
-                        "left": "トマト",
-                        "right": "tomato"
+                        "id": "jpn-2",
+                        "foreign": "トマト",
+                        "native": "tomato",
+                        "phonetic": "tomato"
                     },
                     {
-                        "left": "パン",
-                        "right": "bread"
+                        "id": "jpn-3",
+                        "foreign": "パン",
+                        "native": "bread",
+                        "phonetic": "pan"
                     },
                     {
-                        "left": "いくらですか",
-                        "right": "How much is it?"
+                        "id": "jpn-4",
+                        "foreign": "いくらですか",
+                        "native": "How much is it?",
+                        "phonetic": "ikura desu ka"
                     },
                     {
-                        "left": "以上です",
-                        "right": "That’s all"
+                        "id": "jpn-5",
+                        "foreign": "以上です",
+                        "native": "That’s all",
+                        "phonetic": "ijō desu"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the request",
-                "prompt": "Build: “I’d like three apples, please.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I’d like three apples, please.\":",
+                "targetSentence": "りんごを三つください。",
+                "targetTranslation": "I’d like three apples, please.",
+                "scrambledTokens": [
+                    "三つ",
+                    "ください",
+                    "トマト",
+                    "りんご",
+                    "を"
+                ],
+                "correctTokens": [
                     "りんご",
                     "を",
                     "三つ",
-                    "ください",
-                    "。"
+                    "ください"
                 ],
-                "answer": "りんごを三つください。"
+                "explanation": "Quantity, item, price question — the complete phrase for any market stall."
             },
             {
                 "type": "listen",
@@ -1402,30 +1493,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "At the fruit stall",
-                "context": "Buying fruit at a market.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "トマトを一キロください。"
-                    },
-                    {
-                        "speaker": "Seller",
-                        "text": "他に何か？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "りんごも三つ。いくらですか？"
-                    },
-                    {
-                        "speaker": "Seller",
-                        "text": "五百円です。"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "以上です、ありがとう。"
-                    }
-                ]
+                "dialoguePartner": "Ito-san (Fruit Seller)",
+                "partnerSays": "他に何か？",
+                "partnerSaysPhonetic": "Hoka ni nani ka?",
+                "partnerSaysTranslation": "Anything else?",
+                "prompt": "Ask for three apples and the price:",
+                "options": [
+                    "りんごも三つ。いくらですか？",
+                    "五百円です。",
+                    "今日はいい天気ですね。"
+                ],
+                "correctAnswer": "りんごも三つ。いくらですか？",
+                "explanation": "\"りんごも三つ。いくらですか？\" adds to your order and asks the total. \"五百円です\" is what the seller would say."
             },
             {
                 "type": "check",
@@ -1529,44 +1608,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the weather phrases",
+                "prompt": "Match each Japanese weather phrase with its English meaning:",
                 "pairs": [
                     {
-                        "left": "いい天気です",
-                        "right": "The weather is nice"
+                        "id": "jpn-1",
+                        "foreign": "いい天気です",
+                        "native": "The weather is nice",
+                        "phonetic": "ii tenki desu"
                     },
                     {
-                        "left": "雨が降っています",
-                        "right": "It’s raining"
+                        "id": "jpn-2",
+                        "foreign": "雨が降っています",
+                        "native": "It’s raining",
+                        "phonetic": "ame ga futte imasu"
                     },
                     {
-                        "left": "寒いです",
-                        "right": "It’s cold"
+                        "id": "jpn-3",
+                        "foreign": "寒いです",
+                        "native": "It’s cold",
+                        "phonetic": "samui desu"
                     },
                     {
-                        "left": "暑いです",
-                        "right": "It’s hot"
+                        "id": "jpn-4",
+                        "foreign": "暑いです",
+                        "native": "It’s hot",
+                        "phonetic": "atsui desu"
                     },
                     {
-                        "left": "雪が降っています",
-                        "right": "It’s snowing"
+                        "id": "jpn-5",
+                        "foreign": "雪が降っています",
+                        "native": "It’s snowing",
+                        "phonetic": "yuki ga futte imasu"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the comment",
-                "prompt": "Build: “Nice weather today.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Nice weather today.\":",
+                "targetSentence": "今日はいい天気ですね。",
+                "targetTranslation": "Nice weather today.",
+                "scrambledTokens": [
+                    "天気",
+                    "です",
+                    "ね",
+                    "雨が降っています",
+                    "今日",
+                    "は",
+                    "いい"
+                ],
+                "correctTokens": [
                     "今日",
                     "は",
                     "いい",
                     "天気",
                     "です",
-                    "ね",
-                    "。"
+                    "ね"
                 ],
-                "answer": "今日はいい天気ですね。"
+                "explanation": "A light observation that opens the door to warm, easy conversation."
             },
             {
                 "type": "listen",
@@ -1583,22 +1681,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Quick weather chat",
-                "context": "Light small talk after greeting.",
-                "turns": [
-                    {
-                        "speaker": "Colleague",
-                        "text": "今日はいい天気ですね！"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "はい、晴れです。週末はどうでしたか？"
-                    },
-                    {
-                        "speaker": "Colleague",
-                        "text": "とても良かったです。あなたは？"
-                    }
-                ]
+                "dialoguePartner": "Nakamura-san (Colleague)",
+                "partnerSays": "今日はいい天気ですね！",
+                "partnerSaysPhonetic": "Kyō wa ii tenki desu ne!",
+                "partnerSaysTranslation": "Nice weather today, isn't it!",
+                "prompt": "Agree and keep the chat going:",
+                "options": [
+                    "はい、晴れですね。週末はどうでしたか？",
+                    "いいえ、コーヒーは好きじゃないです。",
+                    "お会計をお願いします。"
+                ],
+                "correctAnswer": "はい、晴れですね。週末はどうでしたか？",
+                "explanation": "Agreeing with ね and asking about the weekend is classic small talk that keeps the exchange flowing."
             },
             {
                 "type": "check",
@@ -1728,43 +1822,61 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the restaurant words",
+                "prompt": "Match each Japanese restaurant word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "メニュー",
-                        "right": "the menu"
+                        "id": "jpn-1",
+                        "foreign": "メニュー",
+                        "native": "the menu",
+                        "phonetic": "menyū"
                     },
                     {
-                        "left": "定食",
-                        "right": "set meal"
+                        "id": "jpn-2",
+                        "foreign": "定食",
+                        "native": "set meal",
+                        "phonetic": "teishoku"
                     },
                     {
-                        "left": "前菜",
-                        "right": "starter"
+                        "id": "jpn-3",
+                        "foreign": "前菜",
+                        "native": "starter",
+                        "phonetic": "zensai"
                     },
                     {
-                        "left": "ベジタリアン",
-                        "right": "vegetarian"
+                        "id": "jpn-4",
+                        "foreign": "ベジタリアン",
+                        "native": "vegetarian",
+                        "phonetic": "bejitarian"
                     },
                     {
-                        "left": "お会計",
-                        "right": "the bill"
+                        "id": "jpn-5",
+                        "foreign": "お会計",
+                        "native": "the bill",
+                        "phonetic": "okaikei"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the request",
-                "prompt": "Build: “A table for two, please.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"A table for two, please.\":",
+                "targetSentence": "二人用のテーブルをお願いします。",
+                "targetTranslation": "A table for two, please.",
+                "scrambledTokens": [
+                    "を",
+                    "お願いします",
+                    "定食",
+                    "二人用",
+                    "の",
+                    "テーブル"
+                ],
+                "correctTokens": [
                     "二人用",
                     "の",
                     "テーブル",
                     "を",
-                    "お願いします",
-                    "。"
+                    "お願いします"
                 ],
-                "answer": "二人用のテーブルをお願いします。"
+                "explanation": "The natural, confident way to place an order with any server."
             },
             {
                 "type": "listen",
@@ -1781,26 +1893,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Ordering a meal",
-                "context": "Seated at a restaurant.",
-                "turns": [
-                    {
-                        "speaker": "Server",
-                        "text": "ご注文はお決まりですか？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "魚にします。ベジタリアンです。"
-                    },
-                    {
-                        "speaker": "Server",
-                        "text": "わかりました。前菜は？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "サラダをお願いします。"
-                    }
-                ]
+                "dialoguePartner": "Kato-san (Server)",
+                "partnerSays": "ご注文はお決まりですか？",
+                "partnerSaysPhonetic": "Gochūmon wa okimari desu ka?",
+                "partnerSaysTranslation": "Have you decided on your order?",
+                "prompt": "Order the fish:",
+                "options": [
+                    "魚にします。",
+                    "駅はどこですか？",
+                    "次の停留所で降ります。"
+                ],
+                "correctAnswer": "魚にします。",
+                "explanation": "\"〜にします\" is the standard way to state your choice when ordering."
             },
             {
                 "type": "check",
@@ -1910,39 +2014,55 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the plan forms",
+                "prompt": "Match each Japanese plan or intention form with its English meaning:",
                 "pairs": [
                     {
-                        "left": "〜つもりです",
-                        "right": "I intend to…"
+                        "id": "jpn-1",
+                        "foreign": "〜つもりです",
+                        "native": "I intend to…",
+                        "phonetic": "〜tsumori desu"
                     },
                     {
-                        "left": "〜予定です",
-                        "right": "I plan to…"
+                        "id": "jpn-2",
+                        "foreign": "〜予定です",
+                        "native": "I plan to…",
+                        "phonetic": "〜yotei desu"
                     },
                     {
-                        "left": "行きます",
-                        "right": "I will go"
+                        "id": "jpn-3",
+                        "foreign": "行きます",
+                        "native": "I will go",
+                        "phonetic": "ikimasu"
                     },
                     {
-                        "left": "見ます",
-                        "right": "I will watch"
+                        "id": "jpn-4",
+                        "foreign": "見ます",
+                        "native": "I will watch",
+                        "phonetic": "mimasu"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the plan",
-                "prompt": "Build: “I’m going to visit my parents.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I’m going to visit my parents.\":",
+                "targetSentence": "両親に会うつもりです。",
+                "targetTranslation": "I’m going to visit my parents.",
+                "scrambledTokens": [
+                    "つもり",
+                    "です",
+                    "行きます",
+                    "両親",
+                    "に",
+                    "会う"
+                ],
+                "correctTokens": [
                     "両親",
                     "に",
                     "会う",
                     "つもり",
-                    "です",
-                    "。"
+                    "です"
                 ],
-                "answer": "両親に会うつもりです。"
+                "explanation": "Future marker + plan — two building blocks for any upcoming arrangement."
             },
             {
                 "type": "listen",
@@ -1959,22 +2079,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Weekend plans",
-                "context": "Asking a friend about the weekend.",
-                "turns": [
-                    {
-                        "speaker": "Friend",
-                        "text": "今週末は何をするつもり？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "両親に会うつもりです。"
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "映画を見る予定だよ。来る？"
-                    }
-                ]
+                "dialoguePartner": "Yuki (Friend)",
+                "partnerSays": "今週末は何をするつもり？",
+                "partnerSaysPhonetic": "Konshūmatsu wa nani o suru tsumori?",
+                "partnerSaysTranslation": "What are you planning to do this weekend?",
+                "prompt": "Say you're planning to see your parents:",
+                "options": [
+                    "両親に会うつもりです。",
+                    "十四時三十分です。",
+                    "赤いのが欲しいです。"
+                ],
+                "correctAnswer": "両親に会うつもりです。",
+                "explanation": "\"両親に会うつもりです\" uses 〜つもり to express a plan or intention."
             },
             {
                 "type": "check",
@@ -2008,7 +2124,7 @@
         "id": "directions-1",
         "slug": "simple-directions",
         "title": "Simple directions",
-        "description": "Left, right, straight — and asking where something is.",
+        "description": "left, right, straight — and asking where something is.",
         "unitId": "travel",
         "direction": "en-jp",
         "level": "elementary",
@@ -2086,44 +2202,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the direction words",
+                "prompt": "Match each Japanese direction word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "左",
-                        "right": "left"
+                        "id": "jpn-1",
+                        "foreign": "左",
+                        "native": "left",
+                        "phonetic": "hidari"
                     },
                     {
-                        "left": "右",
-                        "right": "right"
+                        "id": "jpn-2",
+                        "foreign": "右",
+                        "native": "right",
+                        "phonetic": "migi"
                     },
                     {
-                        "left": "まっすぐ",
-                        "right": "straight ahead"
+                        "id": "jpn-3",
+                        "foreign": "まっすぐ",
+                        "native": "straight ahead",
+                        "phonetic": "massugu"
                     },
                     {
-                        "left": "近く",
-                        "right": "near"
+                        "id": "jpn-4",
+                        "foreign": "近く",
+                        "native": "near",
+                        "phonetic": "chikaku"
                     },
                     {
-                        "left": "どこですか",
-                        "right": "Where is…?"
+                        "id": "jpn-5",
+                        "foreign": "どこですか",
+                        "native": "Where is…?",
+                        "phonetic": "doko desu ka"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the direction",
-                "prompt": "Build: “Go straight ahead, then left.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Go straight ahead, then left.\":",
+                "targetSentence": "まっすぐ行って、それから左です。",
+                "targetTranslation": "Go straight ahead, then left.",
+                "scrambledTokens": [
+                    "それから",
+                    "左",
+                    "です",
+                    "どこですか",
+                    "まっすぐ",
+                    "行って",
+                    "、"
+                ],
+                "correctTokens": [
                     "まっすぐ",
                     "行って",
                     "、",
                     "それから",
                     "左",
-                    "です",
-                    "。"
+                    "です"
                 ],
-                "answer": "まっすぐ行って、それから左です。"
+                "explanation": "Left, right, and straight — three words that will get you anywhere in the city."
             },
             {
                 "type": "listen",
@@ -2140,26 +2275,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Asking the way",
-                "context": "Looking for the station.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "すみません、駅はどこですか？"
-                    },
-                    {
-                        "speaker": "Passer-by",
-                        "text": "まっすぐ行って、それから左です。薬局の向かいです。"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "遠いですか？"
-                    },
-                    {
-                        "speaker": "Passer-by",
-                        "text": "いいえ、歩いて五分です。"
-                    }
-                ]
+                "dialoguePartner": "Hayashi-san (Passer-by)",
+                "partnerSays": "まっすぐ行って、それから左です。薬局の向かいです。",
+                "partnerSaysPhonetic": "Massugu itte, sorekara hidari desu. Yakkyoku no mukai desu.",
+                "partnerSaysTranslation": "Go straight, then left. It's across from the pharmacy.",
+                "prompt": "Ask whether it's far:",
+                "options": [
+                    "遠いですか？",
+                    "駅はどこですか？",
+                    "店内でお願いします。"
+                ],
+                "correctAnswer": "遠いですか？",
+                "explanation": "\"遠いですか？\" is the natural follow-up after getting directions."
             },
             {
                 "type": "check",
@@ -2279,44 +2406,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the travel words",
+                "prompt": "Match each Japanese travel word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "切符",
-                        "right": "ticket"
+                        "id": "jpn-1",
+                        "foreign": "切符",
+                        "native": "ticket",
+                        "phonetic": "kippu"
                     },
                     {
-                        "left": "往復",
-                        "right": "round trip"
+                        "id": "jpn-2",
+                        "foreign": "往復",
+                        "native": "round trip",
+                        "phonetic": "ōfuku"
                     },
                     {
-                        "left": "片道",
-                        "right": "one-way"
+                        "id": "jpn-3",
+                        "foreign": "片道",
+                        "native": "one-way",
+                        "phonetic": "katamichi"
                     },
                     {
-                        "left": "番線",
-                        "right": "platform"
+                        "id": "jpn-4",
+                        "foreign": "番線",
+                        "native": "platform",
+                        "phonetic": "bansen"
                     },
                     {
-                        "left": "遅れ",
-                        "right": "delay"
+                        "id": "jpn-5",
+                        "foreign": "遅れ",
+                        "native": "delay",
+                        "phonetic": "okure"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the request",
-                "prompt": "Build: “A ticket to Kyoto, please.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"A ticket to Kyoto, please.\":",
+                "targetSentence": "京都までの切符をください。",
+                "targetTranslation": "A ticket to Kyoto, please.",
+                "scrambledTokens": [
+                    "切符",
+                    "を",
+                    "ください",
+                    "往復",
+                    "京都",
+                    "まで",
+                    "の"
+                ],
+                "correctTokens": [
                     "京都",
                     "まで",
                     "の",
                     "切符",
                     "を",
-                    "ください",
-                    "。"
+                    "ください"
                 ],
-                "answer": "京都までの切符をください。"
+                "explanation": "A direct question that instantly tells you if you're running on schedule."
             },
             {
                 "type": "listen",
@@ -2333,26 +2479,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "At the ticket counter",
-                "context": "Buying a train ticket.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "京都までの切符をください。往復で。"
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "三番線から出ます。"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "電車は遅れていますか？"
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "いいえ、時間通りです。"
-                    }
-                ]
+                "dialoguePartner": "Mori-san (Ticket Clerk)",
+                "partnerSays": "三番線から出ます。",
+                "partnerSaysPhonetic": "San-bansen kara demasu.",
+                "partnerSaysTranslation": "It leaves from platform three.",
+                "prompt": "Ask if the train is running late:",
+                "options": [
+                    "電車は遅れていますか？",
+                    "京都までの切符をください。",
+                    "今日はいい天気ですね。"
+                ],
+                "correctAnswer": "電車は遅れていますか？",
+                "explanation": "\"電車は遅れていますか？\" asks about delays using the ています form for a current state."
             },
             {
                 "type": "check",
@@ -2464,41 +2602,57 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the hotel words",
+                "prompt": "Match each Japanese hotel word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "予約",
-                        "right": "reservation"
+                        "id": "jpn-1",
+                        "foreign": "予約",
+                        "native": "reservation",
+                        "phonetic": "yoyaku"
                     },
                     {
-                        "left": "部屋",
-                        "right": "room"
+                        "id": "jpn-2",
+                        "foreign": "部屋",
+                        "native": "room",
+                        "phonetic": "heya"
                     },
                     {
-                        "left": "朝食",
-                        "right": "breakfast"
+                        "id": "jpn-3",
+                        "foreign": "朝食",
+                        "native": "breakfast",
+                        "phonetic": "chōshoku"
                     },
                     {
-                        "left": "フロント",
-                        "right": "front desk"
+                        "id": "jpn-4",
+                        "foreign": "フロント",
+                        "native": "front desk",
+                        "phonetic": "furonto"
                     },
                     {
-                        "left": "チェックアウト",
-                        "right": "checkout"
+                        "id": "jpn-5",
+                        "foreign": "チェックアウト",
+                        "native": "checkout",
+                        "phonetic": "chekkuauto"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the check-in line",
-                "prompt": "Build: “I have a reservation.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I have a reservation.\":",
+                "targetSentence": "予約しています。",
+                "targetTranslation": "I have a reservation.",
+                "scrambledTokens": [
+                    "います",
+                    "部屋",
+                    "予約",
+                    "して"
+                ],
+                "correctTokens": [
                     "予約",
                     "して",
-                    "います",
-                    "。"
+                    "います"
                 ],
-                "answer": "予約しています。"
+                "explanation": "A short statement that confirms your booking and sets check-in in motion."
             },
             {
                 "type": "listen",
@@ -2515,26 +2669,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Check-in",
-                "context": "At the hotel front desk.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "こんにちは、予約しています。"
-                    },
-                    {
-                        "speaker": "Receptionist",
-                        "text": "二泊ですか？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "はい。朝食は含まれていますか？"
-                    },
-                    {
-                        "speaker": "Receptionist",
-                        "text": "はい。チェックアウトは十一時です。"
-                    }
-                ]
+                "dialoguePartner": "Shimizu-san (Receptionist)",
+                "partnerSays": "いらっしゃいませ。二泊ですね？",
+                "partnerSaysPhonetic": "Irasshaimase. Ni-haku desu ne?",
+                "partnerSaysTranslation": "Welcome. Two nights, correct?",
+                "prompt": "Confirm and ask about breakfast:",
+                "options": [
+                    "はい。朝食は含まれていますか？",
+                    "いいえ、コーヒーは好きじゃないです。",
+                    "りんごを三つください。"
+                ],
+                "correctAnswer": "はい。朝食は含まれていますか？",
+                "explanation": "\"はい。朝食は含まれていますか？\" confirms the booking and asks a useful check-in question."
             },
             {
                 "type": "check",
@@ -2650,35 +2796,58 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the transport words",
+                "prompt": "Match each Japanese transport word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "地下鉄",
-                        "right": "subway / metro"
+                        "id": "jpn-1",
+                        "foreign": "地下鉄",
+                        "native": "subway / metro",
+                        "phonetic": "chikatetsu"
                     },
                     {
-                        "left": "バス",
-                        "right": "bus"
+                        "id": "jpn-2",
+                        "foreign": "バス",
+                        "native": "bus",
+                        "phonetic": "basu"
                     },
                     {
-                        "left": "切符",
-                        "right": "single ticket"
+                        "id": "jpn-3",
+                        "foreign": "切符",
+                        "native": "single ticket",
+                        "phonetic": "kippu"
                     },
                     {
-                        "left": "定期券",
-                        "right": "commuter pass"
+                        "id": "jpn-4",
+                        "foreign": "定期券",
+                        "native": "commuter pass",
+                        "phonetic": "teikiken"
                     },
                     {
-                        "left": "ここで降ります",
-                        "right": "I’m getting off here"
+                        "id": "jpn-5",
+                        "foreign": "ここで降ります",
+                        "native": "I’m getting off here",
+                        "phonetic": "koko de orimasu"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the question",
-                "prompt": "Build: “Where’s the nearest metro station?”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Where’s the nearest metro station?\":",
+                "targetSentence": "一番近い地下鉄の駅はどこですか？",
+                "targetTranslation": "Where’s the nearest metro station?",
+                "scrambledTokens": [
+                    "は",
+                    "どこ",
+                    "です",
+                    "か",
+                    "切符",
+                    "一番",
+                    "近い",
+                    "地下鉄",
+                    "の",
+                    "駅"
+                ],
+                "correctTokens": [
                     "一番",
                     "近い",
                     "地下鉄",
@@ -2687,10 +2856,9 @@
                     "は",
                     "どこ",
                     "です",
-                    "か",
-                    "？"
+                    "か"
                 ],
-                "answer": "一番近い地下鉄の駅はどこですか？"
+                "explanation": "The phrase that ends any bus or metro journey gracefully."
             },
             {
                 "type": "listen",
@@ -2707,22 +2875,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "On the bus",
-                "context": "Asking about the route and getting off.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "このバスは市内中心部に行きますか？"
-                    },
-                    {
-                        "speaker": "Driver",
-                        "text": "はい。"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "次の停留所で降ります。"
-                    }
-                ]
+                "dialoguePartner": "Okada-san (Bus Driver)",
+                "partnerSays": "はい、市内中心部に行きます。",
+                "partnerSaysPhonetic": "Hai, shinai chūshinbu ni ikimasu.",
+                "partnerSaysTranslation": "Yes, it goes to the city center.",
+                "prompt": "Say you're getting off at the next stop:",
+                "options": [
+                    "次の停留所で降ります。",
+                    "京都までの切符をください。",
+                    "両親に会うつもりです。"
+                ],
+                "correctAnswer": "次の停留所で降ります。",
+                "explanation": "\"次の停留所で降ります\" tells the driver where you want to get off."
             },
             {
                 "type": "check",
@@ -2853,42 +3017,59 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the health phrases",
+                "prompt": "Match each Japanese health phrase with its English meaning:",
                 "pairs": [
                     {
-                        "left": "頭が痛い",
-                        "right": "I have a headache"
+                        "id": "jpn-1",
+                        "foreign": "頭が痛い",
+                        "native": "I have a headache",
+                        "phonetic": "atama ga itai"
                     },
                     {
-                        "left": "お腹が痛い",
-                        "right": "I have a stomach ache"
+                        "id": "jpn-2",
+                        "foreign": "お腹が痛い",
+                        "native": "I have a stomach ache",
+                        "phonetic": "onaka ga itai"
                     },
                     {
-                        "left": "熱があります",
-                        "right": "I have a fever"
+                        "id": "jpn-3",
+                        "foreign": "熱があります",
+                        "native": "I have a fever",
+                        "phonetic": "netsu ga arimasu"
                     },
                     {
-                        "left": "体調が悪い",
-                        "right": "I don’t feel well"
+                        "id": "jpn-4",
+                        "foreign": "体調が悪い",
+                        "native": "I don’t feel well",
+                        "phonetic": "taichō ga warui"
                     },
                     {
-                        "left": "助けて！",
-                        "right": "Help!"
+                        "id": "jpn-5",
+                        "foreign": "助けて！",
+                        "native": "Help!",
+                        "phonetic": "tasukete!"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the symptom",
-                "prompt": "Build: “I have a headache.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I have a headache.\":",
+                "targetSentence": "頭が痛いです。",
+                "targetTranslation": "I have a headache.",
+                "scrambledTokens": [
+                    "痛い",
+                    "です",
+                    "頭が痛い",
+                    "頭",
+                    "が"
+                ],
+                "correctTokens": [
                     "頭",
                     "が",
                     "痛い",
-                    "です",
-                    "。"
+                    "です"
                 ],
-                "answer": "頭が痛いです。"
+                "explanation": "Describing the most common ache — clear and calm gets you the right remedy."
             },
             {
                 "type": "listen",
@@ -2905,22 +3086,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "At the pharmacy",
-                "context": "Describing symptoms.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "体調が悪いです。頭が痛いし、熱があります。"
-                    },
-                    {
-                        "speaker": "Pharmacist",
-                        "text": "処方箋はありますか？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "いいえ。喉の薬はありますか？"
-                    }
-                ]
+                "dialoguePartner": "Fujita-san (Pharmacist)",
+                "partnerSays": "処方箋はありますか？",
+                "partnerSaysPhonetic": "Shohōsen wa arimasu ka?",
+                "partnerSaysTranslation": "Do you have a prescription?",
+                "prompt": "Say no and ask for throat medicine:",
+                "options": [
+                    "いいえ。喉の薬はありますか？",
+                    "はい、二枚です。",
+                    "ベジタリアンです。"
+                ],
+                "correctAnswer": "いいえ。喉の薬はありますか？",
+                "explanation": "\"いいえ。喉の薬はありますか？\" answers the question and asks for an over-the-counter remedy."
             },
             {
                 "type": "check",
@@ -3043,41 +3220,57 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the time expressions",
+                "prompt": "Match each Japanese time expression with its English meaning:",
                 "pairs": [
                     {
-                        "left": "今何時ですか",
-                        "right": "What time is it?"
+                        "id": "jpn-1",
+                        "foreign": "今何時ですか",
+                        "native": "What time is it?",
+                        "phonetic": "ima nanji desu ka"
                     },
                     {
-                        "left": "半",
-                        "right": "half past"
+                        "id": "jpn-2",
+                        "foreign": "半",
+                        "native": "half past",
+                        "phonetic": "han"
                     },
                     {
-                        "left": "正午",
-                        "right": "noon"
+                        "id": "jpn-3",
+                        "foreign": "正午",
+                        "native": "noon",
+                        "phonetic": "shōgo"
                     },
                     {
-                        "left": "夜中",
-                        "right": "midnight"
+                        "id": "jpn-4",
+                        "foreign": "夜中",
+                        "native": "midnight",
+                        "phonetic": "yonaka"
                     },
                     {
-                        "left": "午後",
-                        "right": "p.m."
+                        "id": "jpn-5",
+                        "foreign": "午後",
+                        "native": "p.m.",
+                        "phonetic": "gogo"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the time",
-                "prompt": "Build: “It’s half past seven.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"It’s half past seven.\":",
+                "targetSentence": "七時半です。",
+                "targetTranslation": "It’s half past seven.",
+                "scrambledTokens": [
+                    "です",
+                    "今何時ですか",
+                    "七時",
+                    "半"
+                ],
+                "correctTokens": [
                     "七時",
                     "半",
-                    "です",
-                    "。"
+                    "です"
                 ],
-                "answer": "七時半です。"
+                "explanation": "Hour + \"half\" — the most common time expression in everyday conversation."
             },
             {
                 "type": "listen",
@@ -3094,22 +3287,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Asking the time",
-                "context": "At the station.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "すみません、今何時ですか？"
-                    },
-                    {
-                        "speaker": "Passer-by",
-                        "text": "十四時三十分です。"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "ありがとう。電車は十五時に出ます。"
-                    }
-                ]
+                "dialoguePartner": "Aoi (Passer-by)",
+                "partnerSays": "十四時三十分です。",
+                "partnerSaysPhonetic": "Jūyo-ji sanjuppun desu.",
+                "partnerSaysTranslation": "It's 2:30 p.m.",
+                "prompt": "Thank her and say when your train leaves:",
+                "options": [
+                    "ありがとうございます。電車は十五時に出ます。",
+                    "すみません、今何時ですか？",
+                    "小さすぎます。"
+                ],
+                "correctAnswer": "ありがとうございます。電車は十五時に出ます。",
+                "explanation": "\"ありがとうございます。電車は十五時に出ます\" thanks her and uses the 24-hour clock, common on Japanese timetables."
             },
             {
                 "type": "check",
@@ -3277,51 +3466,73 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the days",
+                "prompt": "Match each Japanese day with its English name:",
                 "pairs": [
                     {
-                        "left": "月曜日",
-                        "right": "Monday"
+                        "id": "jpn-1",
+                        "foreign": "月曜日",
+                        "native": "Monday",
+                        "phonetic": "getsuyōbi"
                     },
                     {
-                        "left": "火曜日",
-                        "right": "Tuesday"
+                        "id": "jpn-2",
+                        "foreign": "火曜日",
+                        "native": "Tuesday",
+                        "phonetic": "kayōbi"
                     },
                     {
-                        "left": "水曜日",
-                        "right": "Wednesday"
+                        "id": "jpn-3",
+                        "foreign": "水曜日",
+                        "native": "Wednesday",
+                        "phonetic": "suiyōbi"
                     },
                     {
-                        "left": "木曜日",
-                        "right": "Thursday"
+                        "id": "jpn-4",
+                        "foreign": "木曜日",
+                        "native": "Thursday",
+                        "phonetic": "mokuyōbi"
                     },
                     {
-                        "left": "金曜日",
-                        "right": "Friday"
+                        "id": "jpn-5",
+                        "foreign": "金曜日",
+                        "native": "Friday",
+                        "phonetic": "kin'yōbi"
                     },
                     {
-                        "left": "土曜日",
-                        "right": "Saturday"
+                        "id": "jpn-6",
+                        "foreign": "土曜日",
+                        "native": "Saturday",
+                        "phonetic": "doyōbi"
                     },
                     {
-                        "left": "日曜日",
-                        "right": "Sunday"
+                        "id": "jpn-7",
+                        "foreign": "日曜日",
+                        "native": "Sunday",
+                        "phonetic": "nichiyōbi"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the date",
-                "prompt": "Build: “My birthday is May 1st.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"My birthday is May 1st.\":",
+                "targetSentence": "誕生日は五月一日です。",
+                "targetTranslation": "My birthday is May 1st.",
+                "scrambledTokens": [
+                    "一日",
+                    "です",
+                    "月曜日",
+                    "誕生日",
+                    "は",
+                    "五月"
+                ],
+                "correctTokens": [
                     "誕生日",
                     "は",
                     "五月",
                     "一日",
-                    "です",
-                    "。"
+                    "です"
                 ],
-                "answer": "誕生日は五月一日です。"
+                "explanation": "A date in full — once you know the pattern, every date falls into place."
             },
             {
                 "type": "listen",
@@ -3338,26 +3549,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Talking about the week",
-                "context": "Making a plan.",
-                "turns": [
-                    {
-                        "speaker": "Friend",
-                        "text": "今日は何曜日？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "水曜日です。"
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "じゃあ金曜日に。"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "金曜日に。"
-                    }
-                ]
+                "dialoguePartner": "Ren (Friend)",
+                "partnerSays": "今日は何曜日？",
+                "partnerSaysPhonetic": "Kyō wa nan-yōbi?",
+                "partnerSaysTranslation": "What day is it today?",
+                "prompt": "Say it's Wednesday:",
+                "options": [
+                    "水曜日です。",
+                    "十五時です。",
+                    "二十歳です。"
+                ],
+                "correctAnswer": "水曜日です。",
+                "explanation": "\"水曜日です\" answers with the day of the week. 曜日 is the ending for all weekday names."
             },
             {
                 "type": "check",
@@ -3487,42 +3690,59 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the family words",
+                "prompt": "Match each Japanese family word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "父",
-                        "right": "father"
+                        "id": "jpn-1",
+                        "foreign": "父",
+                        "native": "father",
+                        "phonetic": "chichi"
                     },
                     {
-                        "left": "母",
-                        "right": "mother"
+                        "id": "jpn-2",
+                        "foreign": "母",
+                        "native": "mother",
+                        "phonetic": "haha"
                     },
                     {
-                        "left": "兄",
-                        "right": "older brother"
+                        "id": "jpn-3",
+                        "foreign": "兄",
+                        "native": "older brother",
+                        "phonetic": "ani"
                     },
                     {
-                        "left": "姉",
-                        "right": "older sister"
+                        "id": "jpn-4",
+                        "foreign": "姉",
+                        "native": "older sister",
+                        "phonetic": "ane"
                     },
                     {
-                        "left": "友達",
-                        "right": "friend"
+                        "id": "jpn-5",
+                        "foreign": "友達",
+                        "native": "friend",
+                        "phonetic": "tomodachi"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the sentence",
-                "prompt": "Build: “I have two brothers.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I have two brothers.\":",
+                "targetSentence": "兄弟が二人います。",
+                "targetTranslation": "I have two brothers.",
+                "scrambledTokens": [
+                    "二人",
+                    "います",
+                    "父",
+                    "兄弟",
+                    "が"
+                ],
+                "correctTokens": [
                     "兄弟",
                     "が",
                     "二人",
-                    "います",
-                    "。"
+                    "います"
                 ],
-                "answer": "兄弟が二人います。"
+                "explanation": "A warm, simple statement that naturally invites the other person to share too."
             },
             {
                 "type": "listen",
@@ -3539,22 +3759,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Talking about family",
-                "context": "Introducing family members.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "こちらは私の姉です。"
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "はじめまして。兄弟はいますか？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "はい、弟が二人います。両親は東京に住んでいます。"
-                    }
-                ]
+                "dialoguePartner": "Haruto (Friend)",
+                "partnerSays": "はじめまして。兄弟はいますか？",
+                "partnerSaysPhonetic": "Hajimemashite. Kyōdai wa imasu ka?",
+                "partnerSaysTranslation": "Nice to meet you. Do you have siblings?",
+                "prompt": "Say you have two younger brothers:",
+                "options": [
+                    "はい、弟が二人います。",
+                    "こちらは私の姉です。",
+                    "いいえ、お腹は空いていません。"
+                ],
+                "correctAnswer": "はい、弟が二人います。",
+                "explanation": "\"はい、弟が二人います\" answers directly, using います for people and the counter 人."
             },
             {
                 "type": "check",
@@ -3670,43 +3886,61 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the shopping words",
+                "prompt": "Match each Japanese shopping word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "サイズ",
-                        "right": "size"
+                        "id": "jpn-1",
+                        "foreign": "サイズ",
+                        "native": "size",
+                        "phonetic": "saizu"
                     },
                     {
-                        "left": "試着室",
-                        "right": "fitting room"
+                        "id": "jpn-2",
+                        "foreign": "試着室",
+                        "native": "fitting room",
+                        "phonetic": "shichakushitsu"
                     },
                     {
-                        "left": "セール",
-                        "right": "sale"
+                        "id": "jpn-3",
+                        "foreign": "セール",
+                        "native": "sale",
+                        "phonetic": "sēru"
                     },
                     {
-                        "left": "大きすぎる",
-                        "right": "too big"
+                        "id": "jpn-4",
+                        "foreign": "大きすぎる",
+                        "native": "too big",
+                        "phonetic": "ōkisugiru"
                     },
                     {
-                        "left": "小さすぎる",
-                        "right": "too small"
+                        "id": "jpn-5",
+                        "foreign": "小さすぎる",
+                        "native": "too small",
+                        "phonetic": "chiisasugiru"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the question",
-                "prompt": "Build: “Do you have this in a size M?”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Do you have this in a size M?\":",
+                "targetSentence": "Mサイズはありますか？",
+                "targetTranslation": "Do you have this in a size M?",
+                "scrambledTokens": [
+                    "あります",
+                    "か",
+                    "試着室",
+                    "M",
+                    "サイズ",
+                    "は"
+                ],
+                "correctTokens": [
                     "M",
                     "サイズ",
                     "は",
                     "あります",
-                    "か",
-                    "？"
+                    "か"
                 ],
-                "answer": "Mサイズはありますか？"
+                "explanation": "The one question that keeps a shopping trip moving in the right direction."
             },
             {
                 "type": "listen",
@@ -3723,22 +3957,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "In the fitting room",
-                "context": "Trying on clothes.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "試着してもいいですか？"
-                    },
-                    {
-                        "speaker": "Clerk",
-                        "text": "はい、試着室はあちらです。"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "小さすぎます。もっと大きいサイズはありますか？"
-                    }
-                ]
+                "dialoguePartner": "Matsumoto-san (Shop Clerk)",
+                "partnerSays": "はい、試着室はあちらです。",
+                "partnerSaysPhonetic": "Hai, shichakushitsu wa achira desu.",
+                "partnerSaysTranslation": "Yes, the fitting room is over there.",
+                "prompt": "After trying it on, say it's too small and ask for a bigger size:",
+                "options": [
+                    "小さすぎます。もっと大きいサイズはありますか？",
+                    "試着してもいいですか？",
+                    "赤いのが欲しいです。"
+                ],
+                "correctAnswer": "小さすぎます。もっと大きいサイズはありますか？",
+                "explanation": "\"小さすぎます。もっと大きいサイズはありますか？\" describes the problem with 〜すぎます and asks for the next size up."
             },
             {
                 "type": "check",
@@ -3874,43 +4104,61 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the particles",
+                "prompt": "Match each Japanese particle with its function:",
                 "pairs": [
                     {
-                        "left": "は",
-                        "right": "topic"
+                        "id": "jpn-1",
+                        "foreign": "は",
+                        "native": "topic",
+                        "phonetic": "wa"
                     },
                     {
-                        "left": "が",
-                        "right": "subject"
+                        "id": "jpn-2",
+                        "foreign": "が",
+                        "native": "subject",
+                        "phonetic": "ga"
                     },
                     {
-                        "left": "を",
-                        "right": "object"
+                        "id": "jpn-3",
+                        "foreign": "を",
+                        "native": "object",
+                        "phonetic": "o"
                     },
                     {
-                        "left": "に",
-                        "right": "to / at (time)"
+                        "id": "jpn-4",
+                        "foreign": "に",
+                        "native": "to / at (time)",
+                        "phonetic": "ni"
                     },
                     {
-                        "left": "で",
-                        "right": "at (action) / by"
+                        "id": "jpn-5",
+                        "foreign": "で",
+                        "native": "at (action) / by",
+                        "phonetic": "de"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build with particles",
-                "prompt": "Build: “I drink coffee.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I drink coffee.\":",
+                "targetSentence": "私はコーヒーを飲みます。",
+                "targetTranslation": "I drink coffee.",
+                "scrambledTokens": [
+                    "を",
+                    "飲みます",
+                    "も",
+                    "私",
+                    "は",
+                    "コーヒー"
+                ],
+                "correctTokens": [
                     "私",
                     "は",
                     "コーヒー",
                     "を",
-                    "飲みます",
-                    "。"
+                    "飲みます"
                 ],
-                "answer": "私はコーヒーを飲みます。"
+                "explanation": "A compact phrase that puts the article or gender rule into immediate practice."
             },
             {
                 "type": "listen",
@@ -3927,22 +4175,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Noticing particles",
-                "context": "A quick practice exchange.",
-                "turns": [
-                    {
-                        "speaker": "Teacher",
-                        "text": "「本を読みます」の「を」は何ですか？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "目的語のマーカーです。"
-                    },
-                    {
-                        "speaker": "Teacher",
-                        "text": "そうですね。"
-                    }
-                ]
+                "dialoguePartner": "Sensei (Teacher)",
+                "partnerSays": "「本を読みます」の「を」は何ですか？",
+                "partnerSaysPhonetic": "\"Hon o yomimasu\" no \"o\" wa nan desu ka?",
+                "partnerSaysTranslation": "In \"hon o yomimasu\", what is \"o\"?",
+                "prompt": "Explain the particle:",
+                "options": [
+                    "目的語のマーカーです。",
+                    "主語のマーカーです。",
+                    "場所のマーカーです。"
+                ],
+                "correctAnswer": "目的語のマーカーです。",
+                "explanation": "を marks the direct object of the verb. が/は mark the subject or topic, and で/に mark location."
             }
         ]
     },
@@ -4034,41 +4278,57 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the forms",
+                "prompt": "Match each Japanese copula or existence form with its English meaning:",
                 "pairs": [
                     {
-                        "left": "〜です",
-                        "right": "is / am / are"
+                        "id": "jpn-1",
+                        "foreign": "〜です",
+                        "native": "is / am / are",
+                        "phonetic": "〜desu"
                     },
                     {
-                        "left": "います",
-                        "right": "there is (animate)"
+                        "id": "jpn-2",
+                        "foreign": "います",
+                        "native": "there is (animate)",
+                        "phonetic": "imasu"
                     },
                     {
-                        "left": "あります",
-                        "right": "there is (inanimate)"
+                        "id": "jpn-3",
+                        "foreign": "あります",
+                        "native": "there is (inanimate)",
+                        "phonetic": "arimasu"
                     },
                     {
-                        "left": "いません",
-                        "right": "there isn’t (animate)"
+                        "id": "jpn-4",
+                        "foreign": "いません",
+                        "native": "there isn’t (animate)",
+                        "phonetic": "imasen"
                     },
                     {
-                        "left": "ありません",
-                        "right": "there isn’t (inanimate)"
+                        "id": "jpn-5",
+                        "foreign": "ありません",
+                        "native": "there isn’t (inanimate)",
+                        "phonetic": "arimasen"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the sentence",
-                "prompt": "Build: “I am tired.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I am tired.\":",
+                "targetSentence": "疲れています。",
+                "targetTranslation": "I am tired.",
+                "scrambledTokens": [
+                    "います",
+                    "も",
+                    "疲れ",
+                    "て"
+                ],
+                "correctTokens": [
                     "疲れ",
                     "て",
-                    "います",
-                    "。"
+                    "います"
                 ],
-                "answer": "疲れています。"
+                "explanation": "Two core verbs in a single sentence — a powerful combination to internalize."
             },
             {
                 "type": "listen",
@@ -4085,22 +4345,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Using です and あります",
-                "context": "A short description.",
-                "turns": [
-                    {
-                        "speaker": "Friend",
-                        "text": "元気ですか？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "少し疲れています。お腹が空いています。"
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "時間があります。食べに行きましょうか？"
-                    }
-                ]
+                "dialoguePartner": "Mio (Friend)",
+                "partnerSays": "元気ですか？",
+                "partnerSaysPhonetic": "Genki desu ka?",
+                "partnerSaysTranslation": "How are you?",
+                "prompt": "Say you're a bit tired and hungry:",
+                "options": [
+                    "少し疲れています。お腹が空いています。",
+                    "少し疲れるです。",
+                    "お腹が空くです。"
+                ],
+                "correctAnswer": "少し疲れています。お腹が空いています。",
+                "explanation": "States like being tired or hungry use the ています form: 疲れています, お腹が空いています. A plain verb + です is ungrammatical."
             },
             {
                 "type": "check",
@@ -4239,42 +4495,59 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the verbs",
+                "prompt": "Match each Japanese ます-form verb with its English meaning:",
                 "pairs": [
                     {
-                        "left": "食べます",
-                        "right": "eat"
+                        "id": "jpn-1",
+                        "foreign": "食べます",
+                        "native": "eat",
+                        "phonetic": "tabemasu"
                     },
                     {
-                        "left": "行きます",
-                        "right": "go"
+                        "id": "jpn-2",
+                        "foreign": "行きます",
+                        "native": "go",
+                        "phonetic": "ikimasu"
                     },
                     {
-                        "left": "見ます",
-                        "right": "see / watch"
+                        "id": "jpn-3",
+                        "foreign": "見ます",
+                        "native": "see / watch",
+                        "phonetic": "mimasu"
                     },
                     {
-                        "left": "話します",
-                        "right": "speak"
+                        "id": "jpn-4",
+                        "foreign": "話します",
+                        "native": "speak",
+                        "phonetic": "hanashimasu"
                     },
                     {
-                        "left": "買います",
-                        "right": "buy"
+                        "id": "jpn-5",
+                        "foreign": "買います",
+                        "native": "buy",
+                        "phonetic": "kaimasu"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the sentence",
-                "prompt": "Build: “I speak a little Japanese.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I speak a little Japanese.\":",
+                "targetSentence": "日本語を少し話します。",
+                "targetTranslation": "I speak a little Japanese.",
+                "scrambledTokens": [
+                    "少し",
+                    "話します",
+                    "食べます",
+                    "日本語",
+                    "を"
+                ],
+                "correctTokens": [
                     "日本語",
                     "を",
                     "少し",
-                    "話します",
-                    "。"
+                    "話します"
                 ],
-                "answer": "日本語を少し話します。"
+                "explanation": "The verb pattern in action — master this form and unlock a whole verb family."
             },
             {
                 "type": "listen",
@@ -4291,22 +4564,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Talking about routines",
-                "context": "Using ます-form verbs.",
-                "turns": [
-                    {
-                        "speaker": "You",
-                        "text": "日本語を少し話します。"
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "東京で働きます。"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "日本料理が好きです。"
-                    }
-                ]
+                "dialoguePartner": "Sora (Friend)",
+                "partnerSays": "日本語を話しますか？",
+                "partnerSaysPhonetic": "Nihongo o hanashimasu ka?",
+                "partnerSaysTranslation": "Do you speak Japanese?",
+                "prompt": "Say yes, you speak a little:",
+                "options": [
+                    "はい、少し話します。",
+                    "はい、少し話すます。",
+                    "はい、少し話しるます。"
+                ],
+                "correctAnswer": "はい、少し話します。",
+                "explanation": "The polite form of 話す is 話します: change the final -u to -i and add ます."
             },
             {
                 "type": "check",
@@ -4432,42 +4701,59 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the adjectives",
+                "prompt": "Match each Japanese adjective with its English meaning:",
                 "pairs": [
                     {
-                        "left": "大きい",
-                        "right": "big"
+                        "id": "jpn-1",
+                        "foreign": "大きい",
+                        "native": "big",
+                        "phonetic": "ōkii"
                     },
                     {
-                        "left": "小さい",
-                        "right": "small"
+                        "id": "jpn-2",
+                        "foreign": "小さい",
+                        "native": "small",
+                        "phonetic": "chiisai"
                     },
                     {
-                        "left": "高い",
-                        "right": "expensive / tall"
+                        "id": "jpn-3",
+                        "foreign": "高い",
+                        "native": "expensive / tall",
+                        "phonetic": "takai"
                     },
                     {
-                        "left": "静か（な）",
-                        "right": "quiet"
+                        "id": "jpn-4",
+                        "foreign": "静か（な）",
+                        "native": "quiet",
+                        "phonetic": "shizuka (na)"
                     },
                     {
-                        "left": "きれい（な）",
-                        "right": "beautiful / clean"
+                        "id": "jpn-5",
+                        "foreign": "きれい（な）",
+                        "native": "beautiful / clean",
+                        "phonetic": "kirei (na)"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the description",
-                "prompt": "Build: “She is small.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"She is small.\":",
+                "targetSentence": "彼女は小さいです。",
+                "targetTranslation": "She is small.",
+                "scrambledTokens": [
+                    "小さい",
+                    "です",
+                    "大きい",
+                    "彼女",
+                    "は"
+                ],
+                "correctTokens": [
                     "彼女",
                     "は",
                     "小さい",
-                    "です",
-                    "。"
+                    "です"
                 ],
-                "answer": "彼女は小さいです。"
+                "explanation": "Agreement at work: the adjective shifts to match the noun it describes."
             },
             {
                 "type": "listen",
@@ -4484,22 +4770,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Describing people",
-                "context": "Agreement-style description (no gender agreement needed).",
-                "turns": [
-                    {
-                        "speaker": "Friend",
-                        "text": "彼は背が高いです。"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "彼女も大きいです。"
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "きれいな街ですね。"
-                    }
-                ]
+                "dialoguePartner": "Hina (Friend)",
+                "partnerSays": "彼は背が高いですね。彼女は？",
+                "partnerSaysPhonetic": "Kare wa se ga takai desu ne. Kanojo wa?",
+                "partnerSaysTranslation": "He's tall, isn't he? What about her?",
+                "prompt": "Say she's tall too:",
+                "options": [
+                    "彼女も背が高いです。",
+                    "彼女も背が高いなです。",
+                    "彼女も背が高いだです。"
+                ],
+                "correctAnswer": "彼女も背が高いです。",
+                "explanation": "い-adjectives like 高い connect directly to です with no extra な or だ. Japanese adjectives don't change for gender."
             },
             {
                 "type": "check",
@@ -4614,44 +4896,63 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the negation patterns",
+                "prompt": "Match each Japanese negative form with its English meaning:",
                 "pairs": [
                     {
-                        "left": "〜ません",
-                        "right": "do not (polite verb)"
+                        "id": "jpn-1",
+                        "foreign": "〜ません",
+                        "native": "do not (polite verb)",
+                        "phonetic": "〜masen"
                     },
                     {
-                        "left": "〜くない",
-                        "right": "not (い-adjective)"
+                        "id": "jpn-2",
+                        "foreign": "〜くない",
+                        "native": "not (い-adjective)",
+                        "phonetic": "〜kunai"
                     },
                     {
-                        "left": "〜ではありません",
-                        "right": "is not (polite)"
+                        "id": "jpn-3",
+                        "foreign": "〜ではありません",
+                        "native": "is not (polite)",
+                        "phonetic": "〜de wa arimasen"
                     },
                     {
-                        "left": "何も",
-                        "right": "nothing"
+                        "id": "jpn-4",
+                        "foreign": "何も",
+                        "native": "nothing",
+                        "phonetic": "nani mo"
                     },
                     {
-                        "left": "誰も",
-                        "right": "nobody"
+                        "id": "jpn-5",
+                        "foreign": "誰も",
+                        "native": "nobody",
+                        "phonetic": "dare mo"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the negative",
-                "prompt": "Build: “I don’t like coffee.”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"I don’t like coffee.\":",
+                "targetSentence": "コーヒーが好きじゃないです。",
+                "targetTranslation": "I don’t like coffee.",
+                "scrambledTokens": [
+                    "じゃ",
+                    "ない",
+                    "です",
+                    "も",
+                    "コーヒー",
+                    "が",
+                    "好き"
+                ],
+                "correctTokens": [
                     "コーヒー",
                     "が",
                     "好き",
                     "じゃ",
                     "ない",
-                    "です",
-                    "。"
+                    "です"
                 ],
-                "answer": "コーヒーが好きじゃないです。"
+                "explanation": "The negation pattern in its simplest form — learn it once, use it everywhere."
             },
             {
                 "type": "listen",
@@ -4668,26 +4969,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Saying no",
-                "context": "Simple negative exchanges.",
-                "turns": [
-                    {
-                        "speaker": "Friend",
-                        "text": "コーヒーが好き？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "いいえ、好きじゃないです。"
-                    },
-                    {
-                        "speaker": "Friend",
-                        "text": "肉は食べる？"
-                    },
-                    {
-                        "speaker": "You",
-                        "text": "肉は決して食べません。"
-                    }
-                ]
+                "dialoguePartner": "Kaito (Friend)",
+                "partnerSays": "コーヒーが好き？",
+                "partnerSaysPhonetic": "Kōhī ga suki?",
+                "partnerSaysTranslation": "Do you like coffee?",
+                "prompt": "Say no, you don't like it:",
+                "options": [
+                    "いいえ、好きじゃないです。",
+                    "いいえ、好きくないです。",
+                    "いいえ、好きないです。"
+                ],
+                "correctAnswer": "いいえ、好きじゃないです。",
+                "explanation": "好き is a な-adjective, so its polite negative is 好きじゃないです (or 好きではありません). 〜くない is only for い-adjectives."
             },
             {
                 "type": "check",
@@ -4805,50 +5098,71 @@
             },
             {
                 "type": "pair-matching",
-                "title": "Match the question words",
+                "prompt": "Match each Japanese question word with its English meaning:",
                 "pairs": [
                     {
-                        "left": "誰",
-                        "right": "who"
+                        "id": "jpn-1",
+                        "foreign": "誰",
+                        "native": "who",
+                        "phonetic": "dare"
                     },
                     {
-                        "left": "何",
-                        "right": "what"
+                        "id": "jpn-2",
+                        "foreign": "何",
+                        "native": "what",
+                        "phonetic": "nani"
                     },
                     {
-                        "left": "どこ",
-                        "right": "where"
+                        "id": "jpn-3",
+                        "foreign": "どこ",
+                        "native": "where",
+                        "phonetic": "doko"
                     },
                     {
-                        "left": "いつ",
-                        "right": "when"
+                        "id": "jpn-4",
+                        "foreign": "いつ",
+                        "native": "when",
+                        "phonetic": "itsu"
                     },
                     {
-                        "left": "なぜ",
-                        "right": "why"
+                        "id": "jpn-5",
+                        "foreign": "なぜ",
+                        "native": "why",
+                        "phonetic": "naze"
                     },
                     {
-                        "left": "どう",
-                        "right": "how"
+                        "id": "jpn-6",
+                        "foreign": "どう",
+                        "native": "how",
+                        "phonetic": "dō"
                     },
                     {
-                        "left": "いくら",
-                        "right": "how much"
+                        "id": "jpn-7",
+                        "foreign": "いくら",
+                        "native": "how much",
+                        "phonetic": "ikura"
                     }
                 ]
             },
             {
                 "type": "sentence-builder",
-                "title": "Build the polite question",
-                "prompt": "Build: “Do you speak English?”",
-                "words": [
+                "prompt": "Arrange the stones to say: \"Do you speak English?\":",
+                "targetSentence": "英語を話しますか？",
+                "targetTranslation": "Do you speak English?",
+                "scrambledTokens": [
+                    "話します",
+                    "か",
+                    "誰",
+                    "英語",
+                    "を"
+                ],
+                "correctTokens": [
                     "英語",
                     "を",
                     "話します",
-                    "か",
-                    "？"
+                    "か"
                 ],
-                "answer": "英語を話しますか？"
+                "explanation": "A well-formed question using the key structure — polite, clear, and natural."
             },
             {
                 "type": "listen",
@@ -4865,22 +5179,18 @@
             },
             {
                 "type": "context-dialogue",
-                "title": "Asking around",
-                "context": "Casual vs polite.",
-                "turns": [
-                    {
-                        "speaker": "Casual",
-                        "text": "コーヒーが好き？"
-                    },
-                    {
-                        "speaker": "Polite",
-                        "text": "コーヒーが好きですか？"
-                    },
-                    {
-                        "speaker": "Info",
-                        "text": "どこに住んでいますか？"
-                    }
-                ]
+                "dialoguePartner": "Nao (Friend)",
+                "partnerSays": "何か聞きたいことある？",
+                "partnerSaysPhonetic": "Nanika kikitai koto aru?",
+                "partnerSaysTranslation": "Is there something you want to ask?",
+                "prompt": "Politely ask where she lives:",
+                "options": [
+                    "どこに住んでいますか？",
+                    "どこに住んでいます。",
+                    "住んでいますかどこに？"
+                ],
+                "correctAnswer": "どこに住んでいますか？",
+                "explanation": "Polite questions keep normal word order and end with か. Without か it's a statement, and か must come at the end."
             },
             {
                 "type": "check",

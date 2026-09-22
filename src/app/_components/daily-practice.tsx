@@ -2,20 +2,25 @@
 
 import { getLessonsByDirection, Lesson, LessonStep } from "@/data/lessons";
 import { LANGUAGES } from "@/lib/languages";
-import { ProgressState } from "@/lib/progress";
+import { ProgressState, saveProgress } from "@/lib/progress";
 import { sound } from "@/lib/sound";
 import { speak } from "@/lib/speech";
 import { ArrowRight, Check, Flame, Sparkles, Volume2, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function DailyPractice({ progress }: { progress: ProgressState }) {
+    const [course, setCourse] = useState<Lesson[]>([]);
+    const [practiceQuestions, setPracticeQuestions] = useState<LessonStep[]>([]);
+
     const currentLang =
         LANGUAGES.find((l) => l.value === progress.learningLanguage) ||
         LANGUAGES[0];
 
-    const course = getLessonsByDirection(progress.lessonDirection);
+    useEffect(() => {
+        getLessonsByDirection(progress.lessonDirection).then((lessons) => {
+            setCourse(lessons);
+        });
 
-    const [practiceQuestions] = useState<LessonStep[]>(() => {
         const allQuestions: any[] = [];
         const isCheck = (step: LessonStep) => step.type === 'check';
         const isContextDialogue = (step: LessonStep) => step.type === 'context-dialogue';
@@ -30,8 +35,8 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
             }
         }
         allQuestions.sort(() => Math.random() - 0.5);
-        return allQuestions.slice(0, 4);
-    });
+        setPracticeQuestions(allQuestions.slice(0, 4));
+    }, [course, progress.lessonDirection]);
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -53,7 +58,7 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
 
         let correct = false;
         if (currentQ.type === 'check' || currentQ.type === 'listen') {
-            correct = selectedOption === currentQ.answerIndex.toString();
+            correct = selectedOption === currentQ.options[currentQ.answerIndex];
         } else if (currentQ.type === 'context-dialogue') {
             correct = selectedOption === currentQ.correctAnswer;
         } else {
@@ -83,12 +88,34 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
         }
     };
 
+    // On Complete Daily Practice
+    const handleCompleteDailyPractice = (minutes: number, xp: number) => {
+        const today = new Date().toISOString().split('T')[0];
+        const isNewDay = progress.lastPracticedDate !== today;
+        const newStreak = isNewDay ? progress.streak + 1 : progress.streak;
+
+        const updated: ProgressState = {
+            ...progress,
+            streak: newStreak,
+            lastPracticedDate: today,
+            todayMinutesPracticed: progress.todayMinutesPracticed + minutes,
+            xp: progress.xp + xp,
+            cairnStonesCount: progress.cairnStonesCount + 1,
+            weeklyActivity: {
+                ...progress.weeklyActivity,
+                [today]: (progress.weeklyActivity[today] || 0) + minutes,
+            },
+        };
+
+        saveProgress(updated);
+    };
+
     return (
         <div
             id="daily-practice-modal"
             className="flex items-center justify-center animate-in fade-in duration-200"
         >
-            <div className="w-full max-w-xl bg-card p-6 sm:p-8 shadow-2xl space-y-6 relative">
+            <div className="w-full max-w-xl bg-background p-6 sm:p-8 shadow-2xl space-y-6 relative">
                 {!isFinished ? (
                     <>
                         <div>
@@ -128,11 +155,10 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                                                     type="button"
                                                     disabled={isAnswerChecked}
                                                     onClick={() => handleSelect(opt)}
-                                                    className={`p-3.5 rounded-xl border text-left text-sm font-medium transition-all ${
-                                                        isSelected
-                                                            ? 'bg-accent border-primary text-primary'
-                                                            : 'bg-card border-border hover:border-border'
-                                                    }`}
+                                                    className={`p-3.5 rounded-xl border text-left text-sm font-medium transition-all ${isSelected
+                                                        ? 'bg-accent border-primary text-primary'
+                                                        : 'bg-card border-border hover:border-border'
+                                                        }`}
                                                 >
                                                     {opt}
                                                 </button>
@@ -157,11 +183,10 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                                     type="button"
                                     disabled={!selectedOption}
                                     onClick={handleCheck}
-                                    className={`px-5 py-2 rounded-full text-xs font-semibold transition-all ${
-                                        selectedOption
-                                            ? 'bg-primary text-primary-foreground hover:bg-primary/90'
-                                            : 'bg-secondary text-muted-foreground cursor-not-allowed'
-                                    }`}
+                                    className={`px-5 py-2 rounded-full text-xs font-semibold transition-all ${selectedOption
+                                        ? 'bg-primary text-primary-foreground hover:bg-primary/90'
+                                        : 'bg-secondary text-muted-foreground cursor-not-allowed'
+                                        }`}
                                 >
                                     Check
                                 </button>
@@ -209,6 +234,7 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                             type="button"
                             onClick={() => {
                                 sound.playPebbleTap(progress.soundEnabled);
+                                handleCompleteDailyPractice(3, 25);
                             }}
                             className="w-full py-3 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-semibold transition-all"
                         >

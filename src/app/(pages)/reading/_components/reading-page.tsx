@@ -169,7 +169,7 @@ export function ReadingPage() {
                             <article
                                 key={story.id}
                                 id={`story-card-${story.id}`}
-                                className="group relative bg-card hover:bg-[#20221E] border border-border hover:border-[#383B35] rounded-[26px] p-5 mt-4 sm:p-6 shadow-xs transition-all flex flex-col justify-between cursor-pointer"
+                                className="group relative bg-background hover:bg-[#20221E] border border-border hover:border-[#383B35] rounded-[26px] p-5 mt-4 sm:p-6 shadow-xs transition-all flex flex-col justify-between cursor-pointer"
                                 onClick={() => handleOpenStory(story)}
                             >
                                 <div>

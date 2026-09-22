@@ -96,47 +96,67 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the greetings",
+        "prompt": "Match each Hindi greeting with its English meaning:",
         "pairs": [
           {
-            "left": "नमस्ते",
-            "right": "Hello"
+            "id": "hin-1",
+            "foreign": "नमस्ते",
+            "native": "Hello",
+            "phonetic": "namaste"
           },
           {
-            "left": "सुप्रभात",
-            "right": "Good morning"
+            "id": "hin-2",
+            "foreign": "सुप्रभात",
+            "native": "Good morning",
+            "phonetic": "suprabhaat"
           },
           {
-            "left": "शुभ संध्या",
-            "right": "Good evening"
+            "id": "hin-3",
+            "foreign": "शुभ संध्या",
+            "native": "Good evening",
+            "phonetic": "shubh sandhya"
           },
           {
-            "left": "अलविदा",
-            "right": "Goodbye"
+            "id": "hin-4",
+            "foreign": "अलविदा",
+            "native": "Goodbye",
+            "phonetic": "alvida"
           },
           {
-            "left": "शुभ रात्रि",
-            "right": "Good night"
+            "id": "hin-5",
+            "foreign": "शुभ रात्रि",
+            "native": "Good night",
+            "phonetic": "shubh raatri"
           },
           {
-            "left": "कल मिलते हैं",
-            "right": "See you tomorrow"
+            "id": "hin-6",
+            "foreign": "कल मिलते हैं",
+            "native": "See you tomorrow",
+            "phonetic": "kal milte hain"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the greeting",
-        "prompt": "Build: “Hello, how are you?”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Hello, how are you?\":",
+        "targetSentence": "नमस्ते, आप कैसे हैं?",
+        "targetTranslation": "Hello, how are you?",
+        "scrambledTokens": [
+          "कैसे",
+          "हैं",
+          "सुप्रभात",
+          "नमस्ते",
+          ",",
+          "आप"
+        ],
+        "correctTokens": [
           "नमस्ते",
           ",",
           "आप",
           "कैसे",
-          "हैं",
-          "?"
+          "हैं"
         ],
-        "answer": "नमस्ते, आप कैसे हैं?"
+        "explanation": "A warm, time-appropriate greeting — the foundation of any first impression."
       },
       {
         "type": "listen",
@@ -153,22 +173,18 @@
       },
       {
         "type": "context-dialogue",
-        "title": "A first meeting",
-        "context": "You meet someone for the first time.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "नमस्ते, आप कैसे हैं?"
-          },
-          {
-            "speaker": "Other",
-            "text": "मैं ठीक हूँ, धन्यवाद। और आप?"
-          },
-          {
-            "speaker": "You",
-            "text": "मैं भी ठीक हूँ।"
-          }
-        ]
+        "dialoguePartner": "Sharma ji (Colleague's Father)",
+        "partnerSays": "नमस्ते, आप कैसे हैं?",
+        "partnerSaysPhonetic": "namaste, āp kaise hain?",
+        "partnerSaysTranslation": "Hello, how are you?",
+        "prompt": "Reply politely and return the question:",
+        "options": [
+          "मैं ठीक हूँ, धन्यवाद। और आप?",
+          "फिर मिलेंगे।",
+          "मुझे समझ नहीं आया।"
+        ],
+        "correctAnswer": "मैं ठीक हूँ, धन्यवाद। और आप?",
+        "explanation": "\"मैं ठीक हूँ, धन्यवाद। और आप?\" answers warmly and returns the question with the respectful आप."
       },
       {
         "type": "check",
@@ -295,42 +311,61 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the polite phrases",
+        "prompt": "Match each Hindi polite phrase with its English meaning:",
         "pairs": [
           {
-            "left": "कृपया",
-            "right": "Please"
+            "id": "hin-1",
+            "foreign": "कृपया",
+            "native": "Please",
+            "phonetic": "kripya"
           },
           {
-            "left": "धन्यवाद",
-            "right": "Thank you"
+            "id": "hin-2",
+            "foreign": "धन्यवाद",
+            "native": "Thank you",
+            "phonetic": "dhanyavaad"
           },
           {
-            "left": "बहुत धन्यवाद",
-            "right": "Thank you very much"
+            "id": "hin-3",
+            "foreign": "बहुत धन्यवाद",
+            "native": "Thank you very much",
+            "phonetic": "bahut dhanyavaad"
           },
           {
-            "left": "आपका स्वागत है",
-            "right": "You’re welcome"
+            "id": "hin-4",
+            "foreign": "आपका स्वागत है",
+            "native": "You’re welcome",
+            "phonetic": "aapka swaagat hai"
           },
           {
-            "left": "माफ़ कीजिए",
-            "right": "Excuse me / sorry"
+            "id": "hin-5",
+            "foreign": "माफ़ कीजिए",
+            "native": "Excuse me / sorry",
+            "phonetic": "maaf kijiye"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the request",
-        "prompt": "Build: “A coffee, please.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"A coffee, please.\":",
+        "targetSentence": "कृपया एक कॉफ़ी दीजिए।",
+        "targetTranslation": "A coffee, please.",
+        "scrambledTokens": [
+          "दीजिए",
+          "।",
+          "धन्यवाद",
+          "कृपया",
+          "एक",
+          "कॉफ़ी"
+        ],
+        "correctTokens": [
           "कृपया",
           "एक",
           "कॉफ़ी",
           "दीजिए",
           "।"
         ],
-        "answer": "कृपया एक कॉफ़ी दीजिए।"
+        "explanation": "Combining a request with \"please\" — the cornerstone of polite interaction."
       },
       {
         "type": "listen",
@@ -347,26 +382,18 @@
       },
       {
         "type": "context-dialogue",
-        "title": "At the counter",
-        "context": "Ordering and thanking.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "कृपया एक कॉफ़ी दीजिए।"
-          },
-          {
-            "speaker": "Clerk",
-            "text": "ये लीजिए। तीन रुपये।"
-          },
-          {
-            "speaker": "You",
-            "text": "बहुत धन्यवाद।"
-          },
-          {
-            "speaker": "Clerk",
-            "text": "आपका स्वागत है।"
-          }
-        ]
+        "dialoguePartner": "Ravi (Café Clerk)",
+        "partnerSays": "ये लीजिए, आपकी कॉफ़ी। तीन रुपये।",
+        "partnerSaysPhonetic": "ye lījiye, āpkī kōfī. tīn rupaye.",
+        "partnerSaysTranslation": "Here you go, your coffee. Three rupees.",
+        "prompt": "Thank him as you pay:",
+        "options": [
+          "बहुत धन्यवाद।",
+          "कृपया एक कॉफ़ी दीजिए।",
+          "आपका स्वागत है।"
+        ],
+        "correctAnswer": "बहुत धन्यवाद।",
+        "explanation": "\"बहुत धन्यवाद\" (thank you very much) is the natural response. \"आपका स्वागत है\" is what the clerk would say back."
       },
       {
         "type": "check",
@@ -541,49 +568,71 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the numbers",
+        "prompt": "Match each Hindi number with its numeral:",
         "pairs": [
           {
-            "left": "एक",
-            "right": "1"
+            "id": "hin-1",
+            "foreign": "एक",
+            "native": "1",
+            "phonetic": "ek"
           },
           {
-            "left": "दो",
-            "right": "2"
+            "id": "hin-2",
+            "foreign": "दो",
+            "native": "2",
+            "phonetic": "do"
           },
           {
-            "left": "तीन",
-            "right": "3"
+            "id": "hin-3",
+            "foreign": "तीन",
+            "native": "3",
+            "phonetic": "teen"
           },
           {
-            "left": "पाँच",
-            "right": "5"
+            "id": "hin-4",
+            "foreign": "पाँच",
+            "native": "5",
+            "phonetic": "paanch"
           },
           {
-            "left": "सात",
-            "right": "7"
+            "id": "hin-5",
+            "foreign": "सात",
+            "native": "7",
+            "phonetic": "saat"
           },
           {
-            "left": "दस",
-            "right": "10"
+            "id": "hin-6",
+            "foreign": "दस",
+            "native": "10",
+            "phonetic": "das"
           },
           {
-            "left": "बीस",
-            "right": "20"
+            "id": "hin-7",
+            "foreign": "बीस",
+            "native": "20",
+            "phonetic": "bees"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the order",
-        "prompt": "Build: “Two coffees, please.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Two coffees, please.\":",
+        "targetSentence": "दो कॉफ़ी दीजिए।",
+        "targetTranslation": "Two coffees, please.",
+        "scrambledTokens": [
+          "दीजिए",
+          "।",
+          "एक",
+          "दो",
+          "कॉफ़ी"
+        ],
+        "correctTokens": [
           "दो",
           "कॉफ़ी",
           "दीजिए",
           "।"
         ],
-        "answer": "दो कॉफ़ी दीजिए।"
+        "explanation": "Numbers in context — the essential combination for real-world transactions."
       },
       {
         "type": "listen",
@@ -600,22 +649,18 @@
       },
       {
         "type": "context-dialogue",
-        "title": "At the ticket window",
-        "context": "Buying tickets.",
-        "turns": [
-          {
-            "speaker": "Clerk",
-            "text": "दो टिकट?"
-          },
-          {
-            "speaker": "You",
-            "text": "हाँ, दो। मेरी उम्र बीस साल है।"
-          },
-          {
-            "speaker": "Clerk",
-            "text": "ठीक है। पंद्रह रुपये।"
-          }
-        ]
+        "dialoguePartner": "Meena (Ticket Clerk)",
+        "partnerSays": "कितने टिकट चाहिए?",
+        "partnerSaysPhonetic": "kitne ṭikaṭ chāhiye?",
+        "partnerSaysTranslation": "How many tickets do you need?",
+        "prompt": "Ask for two tickets:",
+        "options": [
+          "दो टिकट, कृपया।",
+          "मेरी उम्र बीस साल है।",
+          "पंद्रह रुपये।"
+        ],
+        "correctAnswer": "दो टिकट, कृपया।",
+        "explanation": "\"दो टिकट, कृपया\" answers with a number and a polite please. \"पंद्रह रुपये\" is the price the clerk would quote."
       },
       {
         "type": "check",
@@ -737,35 +782,56 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the building blocks",
+        "prompt": "Match each Hindi introduction phrase with its English meaning:",
         "pairs": [
           {
-            "left": "मेरा नाम … है",
-            "right": "My name is…"
+            "id": "hin-1",
+            "foreign": "मेरा नाम … है",
+            "native": "My name is…",
+            "phonetic": "mera naam … hai"
           },
           {
-            "left": "मैं … से हूँ",
-            "right": "I am from…"
+            "id": "hin-2",
+            "foreign": "मैं … से हूँ",
+            "native": "I am from…",
+            "phonetic": "main … se hoon"
           },
           {
-            "left": "मैं … में रहता हूँ",
-            "right": "I live in…"
+            "id": "hin-3",
+            "foreign": "मैं … में रहता हूँ",
+            "native": "I live in…",
+            "phonetic": "main … mein rehta hoon"
           },
           {
-            "left": "आपसे मिलकर खुशी हुई",
-            "right": "Nice to meet you"
+            "id": "hin-4",
+            "foreign": "आपसे मिलकर खुशी हुई",
+            "native": "Nice to meet you",
+            "phonetic": "aapse milkar khushi hui"
           },
           {
-            "left": "और आप?",
-            "right": "And you?"
+            "id": "hin-5",
+            "foreign": "और आप?",
+            "native": "And you?",
+            "phonetic": "aur aap?"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the introduction",
-        "prompt": "Build: “Hello, my name is Alex.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Hello, my name is Alex.\":",
+        "targetSentence": "नमस्ते, मेरा नाम एलेक्स है।",
+        "targetTranslation": "Hello, my name is Alex.",
+        "scrambledTokens": [
+          "एलेक्स",
+          "है",
+          "।",
+          "आपसे",
+          "नमस्ते",
+          ",",
+          "मेरा",
+          "नाम"
+        ],
+        "correctTokens": [
           "नमस्ते",
           ",",
           "मेरा",
@@ -774,7 +840,7 @@
           "है",
           "।"
         ],
-        "answer": "नमस्ते, मेरा नाम एलेक्स है।"
+        "explanation": "Your origin in one clear sentence — the natural follow-up to sharing your name."
       },
       {
         "type": "listen",
@@ -791,26 +857,18 @@
       },
       {
         "type": "context-dialogue",
-        "title": "Meeting someone new",
-        "context": "A short self-introduction.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "नमस्ते, मेरा नाम सैम है।"
-          },
-          {
-            "speaker": "Other",
-            "text": "आपसे मिलकर खुशी हुई। मेरा नाम लिया है।"
-          },
-          {
-            "speaker": "You",
-            "text": "मैं अमेरिका से हूँ। और आप?"
-          },
-          {
-            "speaker": "Léa",
-            "text": "मैं दिल्ली से हूँ।"
-          }
-        ]
+        "dialoguePartner": "Lea (New Acquaintance)",
+        "partnerSays": "आपसे मिलकर खुशी हुई। मेरा नाम लिया है। आप कहाँ से हैं?",
+        "partnerSaysPhonetic": "āpse milkar khushī huī. merā nām Liyā hai. āp kahān se hain?",
+        "partnerSaysTranslation": "Nice to meet you. My name is Lea. Where are you from?",
+        "prompt": "Say where you're from and return the question:",
+        "options": [
+          "मैं अमेरिका से हूँ। और आप?",
+          "मेरा नाम सैम है।",
+          "मैं ठीक हूँ।"
+        ],
+        "correctAnswer": "मैं अमेरिका से हूँ। और आप?",
+        "explanation": "\"मैं अमेरिका से हूँ। और आप?\" answers her question and keeps the conversation balanced."
       },
       {
         "type": "check",
@@ -935,43 +993,61 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the colors",
+        "prompt": "Match each Hindi color with its English name:",
         "pairs": [
           {
-            "left": "लाल",
-            "right": "red"
+            "id": "hin-1",
+            "foreign": "लाल",
+            "native": "red",
+            "phonetic": "laal"
           },
           {
-            "left": "नीला",
-            "right": "blue"
+            "id": "hin-2",
+            "foreign": "नीला",
+            "native": "blue",
+            "phonetic": "neela"
           },
           {
-            "left": "हरा",
-            "right": "green"
+            "id": "hin-3",
+            "foreign": "हरा",
+            "native": "green",
+            "phonetic": "hara"
           },
           {
-            "left": "काला",
-            "right": "black"
+            "id": "hin-4",
+            "foreign": "काला",
+            "native": "black",
+            "phonetic": "kaala"
           },
           {
-            "left": "सफ़ेद",
-            "right": "white"
+            "id": "hin-5",
+            "foreign": "सफ़ेद",
+            "native": "white",
+            "phonetic": "safed"
           },
           {
-            "left": "भूरा",
-            "right": "brown"
+            "id": "hin-6",
+            "foreign": "भूरा",
+            "native": "brown",
+            "phonetic": "bhoora"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the description",
-        "prompt": "Build: “a blue dress”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"a blue dress\":",
+        "targetSentence": "नीली पोशाक",
+        "targetTranslation": "a blue dress",
+        "scrambledTokens": [
+          "पोशाक",
+          "लाल",
+          "नीली"
+        ],
+        "correctTokens": [
           "नीली",
           "पोशाक"
         ],
-        "answer": "नीली पोशाक"
+        "explanation": "Color + polite form — everything needed to express a preference in any shop."
       },
       {
         "type": "listen",
@@ -988,22 +1064,18 @@
       },
       {
         "type": "context-dialogue",
-        "title": "Choosing a color",
-        "context": "In a clothing shop.",
-        "turns": [
-          {
-            "speaker": "Clerk",
-            "text": "कौन सा रंग पसंद है?"
-          },
-          {
-            "speaker": "You",
-            "text": "मुझे लाल वाला चाहिए।"
-          },
-          {
-            "speaker": "Clerk",
-            "text": "ये लीजिए, लाल पोशाक।"
-          }
-        ]
+        "dialoguePartner": "Priya (Shop Clerk)",
+        "partnerSays": "आपको कौन सा रंग पसंद है?",
+        "partnerSaysPhonetic": "āpko kaun sā rang pasand hai?",
+        "partnerSaysTranslation": "Which color do you like?",
+        "prompt": "Say you want the red one:",
+        "options": [
+          "मुझे लाल वाला चाहिए।",
+          "यह कितने का है?",
+          "यह बहुत बड़ा है।"
+        ],
+        "correctAnswer": "मुझे लाल वाला चाहिए।",
+        "explanation": "\"मुझे लाल वाला चाहिए\" (I want the red one) answers the question about color directly."
       },
       {
         "type": "check",
@@ -1033,5 +1105,4186 @@
       }
     ],
     "direction": "en-hi"
+  },
+  {
+    "id": "cafe-1",
+    "slug": "at-the-cafe",
+    "title": "At the café",
+    "description": "Order drinks and ask for the bill with confidence.",
+    "unitId": "everyday",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "A quiet table",
+        "body": "A handful of drink words plus the equivalent of s'il vous plaît is enough to order confidently anywhere."
+      },
+      {
+        "type": "tip",
+        "title": "Café culture",
+        "body": "Ask for \"the bill\" — servers rarely bring it unsolicited. Tipping customs vary by country.",
+        "bullets": [
+          "For here or to go? — learn both forms.",
+          "A jug of tap water is often free — always worth asking."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "पेय और सेवा",
+        "items": [
+          {
+            "term": "a coffee",
+            "meaning": "एक कॉफ़ी"
+          },
+          {
+            "term": "coffee with milk",
+            "meaning": "दूध वाली कॉफ़ी"
+          },
+          {
+            "term": "a tea",
+            "meaning": "एक चाय"
+          },
+          {
+            "term": "a hot chocolate",
+            "meaning": "गरम चॉकलेट"
+          },
+          {
+            "term": "an orange juice",
+            "meaning": "संतरे का रस"
+          },
+          {
+            "term": "some water",
+            "meaning": "पानी"
+          },
+          {
+            "term": "a jug of water",
+            "meaning": "पानी का जग"
+          },
+          {
+            "term": "the bill",
+            "meaning": "बिल"
+          },
+          {
+            "term": "I would like…",
+            "meaning": "मुझे … चाहिए"
+          },
+          {
+            "term": "for here",
+            "meaning": "यहाँ बैठकर"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "ऑर्डर करना",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "I would like a coffee, please.",
+            "target": "मुझे एक कॉफ़ी चाहिए, कृपया."
+          },
+          {
+            "source": "A tea to go, please.",
+            "target": "एक चाय पैक करके दीजिए, कृपया."
+          },
+          {
+            "source": "The bill, please.",
+            "target": "बिल लाइए, कृपया."
+          },
+          {
+            "source": "For here or to go?",
+            "target": "यहाँ बैठकर या पैक करना है?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "एक कॉफ़ी",
+            "native": "a coffee",
+            "phonetic": "ek kofī"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "दूध वाली कॉफ़ी",
+            "native": "coffee with milk",
+            "phonetic": "doodh vālī kofī"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "पैक करके",
+            "native": "to go",
+            "phonetic": "paik karke"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "यहाँ बैठकर",
+            "native": "for here",
+            "phonetic": "yahā̃ baiṭhkar"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "बिल",
+            "native": "the bill",
+            "phonetic": "bil"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "पानी का जग",
+            "native": "jug of water",
+            "phonetic": "pānī kā jag"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I would like a coffee, please.\":",
+        "targetSentence": "मुझे एक कॉफ़ी चाहिए, कृपया.",
+        "targetTranslation": "I would like a coffee, please.",
+        "scrambledTokens": [
+          "चाहिए",
+          ",",
+          "कृपया",
+          "बिल",
+          "मुझे",
+          "एक",
+          "कॉफ़ी"
+        ],
+        "correctTokens": [
+          "मुझे",
+          "एक",
+          "कॉफ़ी",
+          "चाहिए",
+          ",",
+          "कृपया"
+        ],
+        "explanation": "A polite order that works in any café — commit it to memory for the first sip."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · bill",
+        "prompt": "How do you ask for the bill?",
+        "audioText": "बिल लाइए, कृपया",
+        "options": [
+          "एक कॉफ़ी, कृपया",
+          "बिल लाइए, कृपया",
+          "पैक करके दीजिए",
+          "एक चाय, कृपया"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Rajan (Café Clerk)",
+        "partnerSays": "आप क्या लेंगे?",
+        "partnerSaysTranslation": "What will you have?",
+        "partnerSaysPhonetic": "Āp kyā leṅge?",
+        "prompt": "Order a coffee politely:",
+        "options": [
+          "एक कॉफ़ी, कृपया.",
+          "बिल लाइए, कृपया.",
+          "पैक करके दीजिए."
+        ],
+        "correctAnswer": "एक कॉफ़ी, कृपया.",
+        "explanation": "\"एक कॉफ़ी, कृपया\" is the natural way to order a coffee."
+      },
+      {
+        "type": "check",
+        "title": "Check · bill",
+        "prompt": "How do you say \"the bill\" in Hindi?",
+        "options": [
+          "मेनू",
+          "बिल",
+          "कॉफ़ी",
+          "मेज़"
+        ],
+        "answerIndex": 1,
+        "explanation": "बिल is used for the bill in Hindi cafés and restaurants."
+      },
+      {
+        "type": "check",
+        "title": "Check · to go",
+        "prompt": "How do you say \"to go\" when ordering?",
+        "options": [
+          "यहाँ बैठकर",
+          "पैक करके",
+          "दूध के साथ",
+          "गरम"
+        ],
+        "answerIndex": 1,
+        "explanation": "पैक करके means \"packed up\", i.e. to take away."
+      }
+    ]
+  },
+  {
+    "id": "food-market-1",
+    "slug": "at-the-market",
+    "title": "At the market",
+    "description": "Fruit, quantities, and polite requests at a stall.",
+    "unitId": "everyday",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Market pace",
+        "body": "Markets reward clear numbers and a polite request. Pointing plus a word works — language makes it smoother."
+      },
+      {
+        "type": "vocab",
+        "title": "खाने की चीज़ें",
+        "items": [
+          {
+            "term": "an apple",
+            "meaning": "एक सेब"
+          },
+          {
+            "term": "a banana",
+            "meaning": "एक केला"
+          },
+          {
+            "term": "a tomato",
+            "meaning": "एक टमाटर"
+          },
+          {
+            "term": "a carrot",
+            "meaning": "एक गाजर"
+          },
+          {
+            "term": "some bread",
+            "meaning": "कुछ रोटी / ब्रेड"
+          },
+          {
+            "term": "some cheese",
+            "meaning": "कुछ पनीर"
+          },
+          {
+            "term": "a kilo of…",
+            "meaning": "एक किलो…"
+          },
+          {
+            "term": "half a kilo of…",
+            "meaning": "आधा किलो…"
+          },
+          {
+            "term": "How much is it?",
+            "meaning": "कितने का है?"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "दुकान पर",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "I'd like three apples, please.",
+            "target": "मुझे तीन सेब चाहिए, कृपया."
+          },
+          {
+            "source": "A kilo of tomatoes, please.",
+            "target": "एक किलो टमाटर, कृपया."
+          },
+          {
+            "source": "How much is it?",
+            "target": "कितने का है?"
+          },
+          {
+            "source": "That's all, thank you.",
+            "target": "बस इतना ही, धन्यवाद."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "एक सेब",
+            "native": "an apple",
+            "phonetic": "ek seb"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "एक टमाटर",
+            "native": "a tomato",
+            "phonetic": "ek ṭamāṭar"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "रोटी",
+            "native": "some bread",
+            "phonetic": "roṭī"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "एक किलो",
+            "native": "a kilo of…",
+            "phonetic": "ek kilo"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "कितने का है?",
+            "native": "How much is it?",
+            "phonetic": "kitne kā hai"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "बस इतना ही",
+            "native": "That's all",
+            "phonetic": "bas itnā hī"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I'd like three apples, please.\":",
+        "targetSentence": "मुझे तीन सेब चाहिए, कृपया.",
+        "targetTranslation": "I'd like three apples, please.",
+        "scrambledTokens": [
+          "चाहिए",
+          ",",
+          "कृपया",
+          "रोटी",
+          "मुझे",
+          "तीन",
+          "सेब"
+        ],
+        "correctTokens": [
+          "मुझे",
+          "तीन",
+          "सेब",
+          "चाहिए",
+          ",",
+          "कृपया"
+        ],
+        "explanation": "Quantity, item, price question — the complete phrase for any market stall."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · price",
+        "prompt": "How do you ask \"How much is it?\"",
+        "audioText": "कितने का है?",
+        "options": [
+          "कितने का है?",
+          "कितने चाहिए?",
+          "बस इतना ही?",
+          "क्या सेब है?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Sushila (Market Vendor)",
+        "partnerSays": "क्या चाहिए?",
+        "partnerSaysTranslation": "What do you want?",
+        "partnerSaysPhonetic": "Kyā chāhiye?",
+        "prompt": "Ask for three apples and the price:",
+        "options": [
+          "तीन सेब। कितने का है?",
+          "पाँच रुपये.",
+          "आज मौसम अच्छा है."
+        ],
+        "correctAnswer": "तीन सेब। कितने का है?",
+        "explanation": "\"तीन सेब। कितने का है?\" adds to your order and asks the price."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you ask the price in Hindi?",
+        "options": [
+          "क्या समय है?",
+          "कितने का है?",
+          "कहाँ है?",
+          "आपका नाम क्या है?"
+        ],
+        "answerIndex": 1,
+        "explanation": "कितने का है? = How much does it cost? A core shopping phrase."
+      },
+      {
+        "type": "check",
+        "title": "Check · order",
+        "prompt": "Best for \"three apples, please\"?",
+        "options": [
+          "तीन सेब, कृपया",
+          "तीन कॉफ़ी, धन्यवाद",
+          "अलविदा सेब",
+          "मेरा नाम सेब है"
+        ],
+        "answerIndex": 0,
+        "explanation": "तीन सेब, कृपया directly matches the request."
+      }
+    ]
+  },
+  {
+    "id": "small-talk-1",
+    "slug": "small-talk-weather",
+    "title": "Small talk & weather",
+    "description": "Light conversation beyond hello.",
+    "unitId": "everyday",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Beyond hello",
+        "body": "Weather and weekend questions are safe bridges after greetings. A comment on the sun or rain opens doors."
+      },
+      {
+        "type": "vocab",
+        "title": "मौसम और बातचीत",
+        "items": [
+          {
+            "term": "The weather is nice",
+            "meaning": "मौसम अच्छा है"
+          },
+          {
+            "term": "It's raining",
+            "meaning": "बारिश हो रही है"
+          },
+          {
+            "term": "It's cold",
+            "meaning": "ठंड है"
+          },
+          {
+            "term": "It's hot",
+            "meaning": "गर्मी है"
+          },
+          {
+            "term": "It's sunny",
+            "meaning": "धूप निकली है"
+          },
+          {
+            "term": "It's snowing",
+            "meaning": "बर्फ़ पड़ रही है"
+          },
+          {
+            "term": "the weekend",
+            "meaning": "वीकेंड / सप्ताहांत"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "हल्की बातचीत",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "Nice weather today.",
+            "target": "आज मौसम अच्छा है."
+          },
+          {
+            "source": "It's raining a lot.",
+            "target": "बहुत बारिश हो रही है."
+          },
+          {
+            "source": "How was your weekend?",
+            "target": "आपका वीकेंड कैसा रहा?"
+          },
+          {
+            "source": "It's really cold today!",
+            "target": "आज बहुत ठंड है!"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "मौसम अच्छा है",
+            "native": "The weather is nice",
+            "phonetic": "mausam acchā hai"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "बारिश हो रही है",
+            "native": "It's raining",
+            "phonetic": "bāriś ho rahī hai"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "ठंड है",
+            "native": "It's cold",
+            "phonetic": "ṭhanḍ hai"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "गर्मी है",
+            "native": "It's hot",
+            "phonetic": "garmī hai"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "धूप निकली है",
+            "native": "It's sunny",
+            "phonetic": "dhūp niklī hai"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "वीकेंड",
+            "native": "the weekend",
+            "phonetic": "wīkeṇḍ"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Nice weather today.\":",
+        "targetSentence": "आज मौसम अच्छा है.",
+        "targetTranslation": "Nice weather today.",
+        "scrambledTokens": [
+          "अच्छा",
+          "है",
+          "वीकेंड",
+          "आज",
+          "मौसम"
+        ],
+        "correctTokens": [
+          "आज",
+          "मौसम",
+          "अच्छा",
+          "है"
+        ],
+        "explanation": "A light observation that opens the door to warm, easy conversation."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · rain",
+        "prompt": "How do you say \"It's raining\"?",
+        "audioText": "बारिश हो रही है",
+        "options": [
+          "मौसम अच्छा है",
+          "बारिश हो रही है",
+          "ठंड है",
+          "वीकेंड है"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Suresh (Colleague)",
+        "partnerSays": "आज मौसम बहुत अच्छा है!",
+        "partnerSaysTranslation": "The weather is very nice today!",
+        "partnerSaysPhonetic": "Āj mausam bahut acchā hai!",
+        "prompt": "Agree and keep the chat going:",
+        "options": [
+          "हाँ, धूप निकली है। आपका वीकेंड कैसा रहा?",
+          "नहीं, मुझे कॉफ़ी पसंद नहीं.",
+          "बिल लाइए, कृपया."
+        ],
+        "correctAnswer": "हाँ, धूप निकली है। आपका वीकेंड कैसा रहा?",
+        "explanation": "Agreeing and asking about the weekend keeps the small talk flowing."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"It's raining\" in Hindi?",
+        "options": [
+          "गर्मी है",
+          "बारिश हो रही है",
+          "धूप है",
+          "हवा चल रही है"
+        ],
+        "answerIndex": 1,
+        "explanation": "बारिश हो रही है uses the progressive form (हो रही है = is happening)."
+      },
+      {
+        "type": "check",
+        "title": "Check · weekend",
+        "prompt": "How do you ask \"How was your weekend?\" politely?",
+        "options": [
+          "आपका वीकेंड कैसा रहा?",
+          "ठंड है?",
+          "क्या थके हैं?",
+          "वीकेंड कितने का है?"
+        ],
+        "answerIndex": 0,
+        "explanation": "आपका वीकेंड कैसा रहा? uses आपका (your, respectful) and रहा (past)."
+      }
+    ]
+  },
+  {
+    "id": "restaurant-1",
+    "slug": "at-the-restaurant",
+    "title": "At the restaurant",
+    "description": "Ordering a meal and dietary needs.",
+    "unitId": "everyday",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "From table to bill",
+        "body": "Ordering follows a clear rhythm: being seated, choosing, ordering, and asking for the bill."
+      },
+      {
+        "type": "tip",
+        "title": "Cultural notes",
+        "body": "Learn the word for the full menu vs. a set meal in your target language — they often differ.",
+        "bullets": [
+          "Saying \"Enjoy your meal!\" before eating is polite in most cultures.",
+          "Dietary restrictions are best stated as early as possible."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "रेस्तराँ के शब्द",
+        "items": [
+          {
+            "term": "a table for two",
+            "meaning": "दो लोगों के लिए एक मेज़"
+          },
+          {
+            "term": "the menu",
+            "meaning": "मेनू"
+          },
+          {
+            "term": "the starter",
+            "meaning": "स्टार्टर / पहला कोर्स"
+          },
+          {
+            "term": "the main course",
+            "meaning": "मुख्य व्यंजन"
+          },
+          {
+            "term": "dessert",
+            "meaning": "मिठाई / डेज़र्ट"
+          },
+          {
+            "term": "vegetarian",
+            "meaning": "शाकाहारी"
+          },
+          {
+            "term": "an allergy",
+            "meaning": "एलर्जी"
+          },
+          {
+            "term": "the bill",
+            "meaning": "बिल"
+          },
+          {
+            "term": "Enjoy your meal!",
+            "meaning": "खाना खाइए!"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "खाना ऑर्डर करना",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "A table for two, please.",
+            "target": "दो लोगों के लिए एक मेज़, कृपया."
+          },
+          {
+            "source": "What do you recommend?",
+            "target": "आप क्या सुझाते हैं?"
+          },
+          {
+            "source": "I'll have the fish.",
+            "target": "मैं मछली लूँगा."
+          },
+          {
+            "source": "I'm vegetarian.",
+            "target": "मैं शाकाहारी हूँ."
+          },
+          {
+            "source": "Enjoy your meal!",
+            "target": "खाना खाइए!"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "मेनू",
+            "native": "the menu",
+            "phonetic": "menū"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "स्टार्टर",
+            "native": "the starter",
+            "phonetic": "sṭārṭar"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "मुख्य व्यंजन",
+            "native": "the main course",
+            "phonetic": "mukhya vyañjan"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "शाकाहारी",
+            "native": "vegetarian",
+            "phonetic": "śākāhārī"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "खाना खाइए!",
+            "native": "Enjoy your meal!",
+            "phonetic": "khānā khāiye"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "बिल",
+            "native": "the bill",
+            "phonetic": "bil"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"A table for two, please.\":",
+        "targetSentence": "दो लोगों के लिए एक मेज़, कृपया.",
+        "targetTranslation": "A table for two, please.",
+        "scrambledTokens": [
+          "एक",
+          "मेज़",
+          ",",
+          "कृपया",
+          "मेनू",
+          "दो",
+          "लोगों",
+          "के",
+          "लिए"
+        ],
+        "correctTokens": [
+          "दो",
+          "लोगों",
+          "के",
+          "लिए",
+          "एक",
+          "मेज़",
+          ",",
+          "कृपया"
+        ],
+        "explanation": "The natural, confident way to place an order with any server."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · recommendation",
+        "prompt": "How do you ask \"What do you recommend?\"",
+        "audioText": "आप क्या सुझाते हैं?",
+        "options": [
+          "आप क्या सुझाते हैं?",
+          "वॉशरूम कहाँ है?",
+          "कितने का है?",
+          "क्या नाश्ता शामिल है?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Vijay (Waiter)",
+        "partnerSays": "आपने ऑर्डर दे दिया?",
+        "partnerSaysTranslation": "Have you placed your order?",
+        "partnerSaysPhonetic": "Āpne order de diyā?",
+        "prompt": "Order the fish:",
+        "options": [
+          "मैं मछली लूँगा, कृपया.",
+          "स्टेशन कहाँ है?",
+          "मैं अगले स्टॉप पर उतरूँगा."
+        ],
+        "correctAnswer": "मैं मछली लूँगा, कृपया.",
+        "explanation": "\"मैं मछली लूँगा\" is the natural way to order food in Hindi."
+      },
+      {
+        "type": "check",
+        "title": "Check · menu",
+        "prompt": "मेनू in a Hindi restaurant refers to…",
+        "options": [
+          "The fixed-price set meal",
+          "The full list of dishes",
+          "The wine list",
+          "The bill"
+        ],
+        "answerIndex": 1,
+        "explanation": "मेनू is the menu listing all available dishes."
+      },
+      {
+        "type": "check",
+        "title": "Check · vegetarian",
+        "prompt": "How does a person say \"I'm vegetarian\" in Hindi?",
+        "options": [
+          "मैं मांसाहारी हूँ",
+          "मैं शाकाहारी हूँ",
+          "मुझे शाकाहारी है",
+          "मैं शाकाहार हूँ"
+        ],
+        "answerIndex": 1,
+        "explanation": "मैं शाकाहारी हूँ = I am vegetarian. शाकाहारी is the standard Hindi word."
+      }
+    ]
+  },
+  {
+    "id": "weekend-plans-1",
+    "slug": "talking-about-plans",
+    "title": "Talking about plans",
+    "description": "Express what you're going to do using the near future.",
+    "unitId": "everyday",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "The near future",
+        "body": "Each language has a simple structure to talk about upcoming plans."
+      },
+      {
+        "type": "tip",
+        "title": "Pattern",
+        "body": "Learn the future or near-future structure for your language.",
+        "bullets": [
+          "Portuguese: ir + infinitivo (vou visitar)",
+          "Arabic: س + verb (سأزور)",
+          "Hindi: future tense verb form (जाऊँगा)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "भविष्यकाल",
+        "items": [
+          {
+            "term": "I will go",
+            "meaning": "मैं जाऊँगा (m.) / जाऊँगी (f.)"
+          },
+          {
+            "term": "I will eat",
+            "meaning": "मैं खाऊँगा / खाऊँगी"
+          },
+          {
+            "term": "I will visit",
+            "meaning": "मैं मिलने जाऊँगा / जाऊँगी"
+          },
+          {
+            "term": "I will see",
+            "meaning": "मैं देखूँगा / देखूँगी"
+          },
+          {
+            "term": "I will travel",
+            "meaning": "मैं यात्रा करूँगा / करूँगी"
+          },
+          {
+            "term": "we will go",
+            "meaning": "हम जाएँगे"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "योजनाएँ बनाना",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "What are you going to do this weekend?",
+            "target": "इस वीकेंड क्या करने वाले हो?"
+          },
+          {
+            "source": "I'm going to visit my parents.",
+            "target": "मैं अपने माता-पिता से मिलने जाऊँगा."
+          },
+          {
+            "source": "We're going to watch a film.",
+            "target": "हम फ़िल्म देखेंगे."
+          },
+          {
+            "source": "She's going to travel to Mumbai.",
+            "target": "वह मुंबई जाएगी."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "मैं जाऊँगा",
+            "native": "I will go (m.)",
+            "phonetic": "maiṁ jāūṁgā"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "हम जाएँगे",
+            "native": "we will go",
+            "phonetic": "ham jāeṁge"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "वह जाएगी",
+            "native": "she will go",
+            "phonetic": "vah jāegī"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "वे देखेंगे",
+            "native": "they will see",
+            "phonetic": "ve dekheṁge"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "भविष्यकाल",
+            "native": "future tense",
+            "phonetic": "bhaviṣyakāl"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I'm going to visit my parents.\":",
+        "targetSentence": "मैं अपने माता-पिता से मिलने जाऊँगा.",
+        "targetTranslation": "I'm going to visit my parents.",
+        "scrambledTokens": [
+          "से",
+          "मिलने",
+          "जाऊँगा",
+          "भविष्यकाल",
+          "मैं",
+          "अपने",
+          "माता-पिता"
+        ],
+        "correctTokens": [
+          "मैं",
+          "अपने",
+          "माता-पिता",
+          "से",
+          "मिलने",
+          "जाऊँगा"
+        ],
+        "explanation": "Future marker + plan — two building blocks for any upcoming arrangement."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · structure",
+        "prompt": "Which correctly uses the Hindi future tense?",
+        "audioText": "मैं जाऊँगा",
+        "options": [
+          "मैं जाता हूँ",
+          "मैं जाऊँगा",
+          "मैं गया",
+          "मैं जा रहा हूँ"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Anjali (Friend)",
+        "partnerSays": "इस वीकेंड क्या करने वाले हो?",
+        "partnerSaysTranslation": "What are you going to do this weekend?",
+        "partnerSaysPhonetic": "Is weekend kyā karne vāle ho?",
+        "prompt": "Say you're going to visit your parents:",
+        "options": [
+          "मैं अपने माता-पिता से मिलने जाऊँगा.",
+          "ढाई बज रहे हैं.",
+          "मुझे लाल वाला चाहिए."
+        ],
+        "correctAnswer": "मैं अपने माता-पिता से मिलने जाऊँगा.",
+        "explanation": "\"मैं … जाऊँगा\" uses the future tense to express a plan."
+      },
+      {
+        "type": "check",
+        "title": "Check · structure",
+        "prompt": "Which uses the Hindi future tense correctly?",
+        "options": [
+          "मैं खाता हूँ",
+          "मैं खाऊँगा",
+          "मैं खाया",
+          "मैं खा रहा हूँ"
+        ],
+        "answerIndex": 1,
+        "explanation": "खाऊँगा is the masculine first person future form of खाना (to eat)."
+      },
+      {
+        "type": "check",
+        "title": "Check · translate",
+        "prompt": "How do you say \"We will travel\" in Hindi?",
+        "options": [
+          "हमने यात्रा की",
+          "हम यात्रा करेंगे",
+          "हम यात्रा करते हैं",
+          "हम यात्रा करना चाहते हैं"
+        ],
+        "answerIndex": 1,
+        "explanation": "हम यात्रा करेंगे uses the first person plural future form."
+      }
+    ]
+  },
+  {
+    "id": "directions-1",
+    "slug": "simple-directions",
+    "title": "Simple directions",
+    "description": "Left, right, straight — and asking where something is.",
+    "unitId": "travel",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Finding your way",
+        "body": "Combine \"where is…?\" with a few direction words for short walks in a new city."
+      },
+      {
+        "type": "vocab",
+        "title": "दिशाएँ",
+        "items": [
+          {
+            "term": "to the left",
+            "meaning": "बाईं ओर"
+          },
+          {
+            "term": "to the right",
+            "meaning": "दाईं ओर"
+          },
+          {
+            "term": "straight ahead",
+            "meaning": "सीधे"
+          },
+          {
+            "term": "near",
+            "meaning": "के पास"
+          },
+          {
+            "term": "far from",
+            "meaning": "से दूर"
+          },
+          {
+            "term": "at the corner",
+            "meaning": "कोने पर"
+          },
+          {
+            "term": "across from",
+            "meaning": "के सामने"
+          },
+          {
+            "term": "between",
+            "meaning": "के बीच में"
+          },
+          {
+            "term": "Where is…?",
+            "meaning": "… कहाँ है?"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "रास्ता पूछना",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "Where is the station?",
+            "target": "स्टेशन कहाँ है?"
+          },
+          {
+            "source": "Is it far?",
+            "target": "क्या यह दूर है?"
+          },
+          {
+            "source": "Go straight ahead, then left.",
+            "target": "सीधे जाइए, फिर बाईं ओर मुड़िए."
+          },
+          {
+            "source": "It's across from the pharmacy.",
+            "target": "यह फ़ार्मेसी के सामने है."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "बाईं ओर",
+            "native": "to the left",
+            "phonetic": "bā'ī or"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "दाईं ओर",
+            "native": "to the right",
+            "phonetic": "dā'ī or"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "सीधे",
+            "native": "straight ahead",
+            "phonetic": "sīdhe"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "के पास",
+            "native": "near",
+            "phonetic": "ke pās"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "के सामने",
+            "native": "across from",
+            "phonetic": "ke sāmne"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "… कहाँ है?",
+            "native": "Where is…?",
+            "phonetic": "… kahā̃ hai"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Go straight ahead, then left.\":",
+        "targetSentence": "सीधे जाइए, फिर बाईं ओर मुड़िए.",
+        "targetTranslation": "Go straight ahead, then left.",
+        "scrambledTokens": [
+          "बाईं",
+          "ओर",
+          "मुड़िए",
+          "दाईं",
+          "सीधे",
+          "जाइए",
+          ",",
+          "फिर"
+        ],
+        "correctTokens": [
+          "सीधे",
+          "जाइए",
+          ",",
+          "फिर",
+          "बाईं",
+          "ओर",
+          "मुड़िए"
+        ],
+        "explanation": "Left, right, and straight — three words that will get you anywhere in the city."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · where",
+        "prompt": "How do you ask \"Where is the station?\"",
+        "audioText": "स्टेशन कहाँ है?",
+        "options": [
+          "स्टेशन कहाँ है?",
+          "क्या यह दूर है?",
+          "टिकट कितने का है?",
+          "कौन सा प्लेटफ़ॉर्म?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Ramesh (Passer-by)",
+        "partnerSays": "सीधे जाइए फिर बाईं ओर मुड़िए। यह फ़ार्मेसी के सामने है।",
+        "partnerSaysTranslation": "Go straight then turn left. It's opposite the pharmacy.",
+        "partnerSaysPhonetic": "Sīdhe jāiye phir bā'ī or mudiye.",
+        "prompt": "Ask whether it's far:",
+        "options": [
+          "क्या यह दूर है?",
+          "स्टेशन कहाँ है?",
+          "यहाँ, कृपया."
+        ],
+        "correctAnswer": "क्या यह दूर है?",
+        "explanation": "\"क्या यह दूर है?\" is the natural follow-up after getting directions."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"straight ahead\" in Hindi?",
+        "options": [
+          "बाईं ओर",
+          "दाईं ओर",
+          "सीधे",
+          "बहुत पास"
+        ],
+        "answerIndex": 2,
+        "explanation": "सीधे means straight ahead; बाईं/दाईं ओर are left/right."
+      },
+      {
+        "type": "check",
+        "title": "Check · ask",
+        "prompt": "How do you ask where the station is?",
+        "options": [
+          "टिकट कितने का है?",
+          "स्टेशन कहाँ है?",
+          "क्या समय है?",
+          "एक टैक्सी, कृपया"
+        ],
+        "answerIndex": 1,
+        "explanation": "… कहाँ है? = Where is …? The essential navigation structure in Hindi."
+      }
+    ]
+  },
+  {
+    "id": "travel-phrases-1",
+    "slug": "travel-phrases",
+    "title": "Travel phrases",
+    "description": "Tickets, platforms, and delays.",
+    "unitId": "travel",
+    "direction": "en-hi",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "On the move",
+        "body": "Stations and airports repeat the same patterns: destination, platform, delay. Learn them once."
+      },
+      {
+        "type": "vocab",
+        "title": "यात्रा के शब्द",
+        "items": [
+          {
+            "term": "a ticket",
+            "meaning": "एक टिकट"
+          },
+          {
+            "term": "round trip",
+            "meaning": "आने-जाने का टिकट"
+          },
+          {
+            "term": "one-way",
+            "meaning": "एकतरफ़ा टिकट"
+          },
+          {
+            "term": "the train",
+            "meaning": "ट्रेन"
+          },
+          {
+            "term": "the platform",
+            "meaning": "प्लेटफ़ॉर्म"
+          },
+          {
+            "term": "the flight",
+            "meaning": "उड़ान"
+          },
+          {
+            "term": "the connection",
+            "meaning": "कनेक्शन / जुड़ाव"
+          },
+          {
+            "term": "delayed / late",
+            "meaning": "देर से"
+          },
+          {
+            "term": "on time",
+            "meaning": "समय पर"
+          },
+          {
+            "term": "cancelled",
+            "meaning": "रद्द"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "काउंटर पर",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "A ticket to Delhi, please.",
+            "target": "दिल्ली का एक टिकट, कृपया."
+          },
+          {
+            "source": "A round trip to Mumbai.",
+            "target": "मुंबई का आने-जाने का टिकट."
+          },
+          {
+            "source": "Which platform?",
+            "target": "कौन सा प्लेटफ़ॉर्म?"
+          },
+          {
+            "source": "Is the train delayed?",
+            "target": "क्या ट्रेन देर से है?"
+          },
+          {
+            "source": "Where do I change trains?",
+            "target": "ट्रेन कहाँ बदलनी होगी?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "एक टिकट",
+            "native": "a ticket",
+            "phonetic": "ek ṭikaṭ"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "आने-जाने का टिकट",
+            "native": "round trip",
+            "phonetic": "āne-jāne kā ṭikaṭ"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "प्लेटफ़ॉर्म",
+            "native": "the platform",
+            "phonetic": "pleṭfarm"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "देर से",
+            "native": "delayed",
+            "phonetic": "der se"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "समय पर",
+            "native": "on time",
+            "phonetic": "samay par"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "रद्द",
+            "native": "cancelled",
+            "phonetic": "radd"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"A ticket to Delhi, please.\":",
+        "targetSentence": "दिल्ली का एक टिकट, कृपया.",
+        "targetTranslation": "A ticket to Delhi, please.",
+        "scrambledTokens": [
+          "टिकट",
+          ",",
+          "कृपया",
+          "प्लेटफ़ॉर्म",
+          "दिल्ली",
+          "का",
+          "एक"
+        ],
+        "correctTokens": [
+          "दिल्ली",
+          "का",
+          "एक",
+          "टिकट",
+          ",",
+          "कृपया"
+        ],
+        "explanation": "A direct question that instantly tells you if you're running on schedule."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · delay",
+        "prompt": "How do you say \"The train is delayed\"?",
+        "audioText": "ट्रेन देर से है",
+        "options": [
+          "ट्रेन समय पर है",
+          "ट्रेन रद्द है",
+          "ट्रेन देर से है",
+          "ट्रेन भरी है"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Kavita (Ticket Clerk)",
+        "partnerSays": "ट्रेन तीन नंबर प्लेटफ़ॉर्म से जाएगी.",
+        "partnerSaysTranslation": "The train will leave from platform three.",
+        "partnerSaysPhonetic": "Ṭren tīn nambar pleṭfarm se jāegī.",
+        "prompt": "Ask if the train is running late:",
+        "options": [
+          "क्या ट्रेन देर से चल रही है?",
+          "मुझे दिल्ली का टिकट चाहिए.",
+          "आज मौसम अच्छा है."
+        ],
+        "correctAnswer": "क्या ट्रेन देर से चल रही है?",
+        "explanation": "\"क्या ट्रेन देर से चल रही है?\" asks about delays."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"a ticket\" in Hindi?",
+        "options": [
+          "प्लेटफ़ॉर्म",
+          "टिकट",
+          "ट्रेन",
+          "देरी"
+        ],
+        "answerIndex": 1,
+        "explanation": "टिकट is a ticket; प्लेटफ़ॉर्म is the platform."
+      },
+      {
+        "type": "check",
+        "title": "Check · delay",
+        "prompt": "How do you say \"delayed\" in Hindi?",
+        "options": [
+          "समय पर",
+          "रद्द",
+          "देर से",
+          "भरी"
+        ],
+        "answerIndex": 2,
+        "explanation": "देर से means late/delayed; समय पर means on time."
+      }
+    ]
+  },
+  {
+    "id": "hotel-1",
+    "slug": "at-the-hotel",
+    "title": "At the hotel",
+    "description": "Check-in lines and simple room requests.",
+    "unitId": "travel",
+    "direction": "en-hi",
+    "level": "intermediate",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Front desk",
+        "body": "Reservation, nights, and room type cover most check-ins."
+      },
+      {
+        "type": "vocab",
+        "title": "होटल के शब्द",
+        "items": [
+          {
+            "term": "a reservation",
+            "meaning": "एक बुकिंग"
+          },
+          {
+            "term": "a room",
+            "meaning": "एक कमरा"
+          },
+          {
+            "term": "a double room",
+            "meaning": "एक डबल रूम"
+          },
+          {
+            "term": "a night",
+            "meaning": "एक रात"
+          },
+          {
+            "term": "a passport",
+            "meaning": "पासपोर्ट"
+          },
+          {
+            "term": "the key",
+            "meaning": "चाबी"
+          },
+          {
+            "term": "breakfast",
+            "meaning": "नाश्ता"
+          },
+          {
+            "term": "the elevator",
+            "meaning": "लिफ्ट"
+          },
+          {
+            "term": "the reception",
+            "meaning": "रिसेप्शन"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "चेक-इन",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "I have a reservation.",
+            "target": "मेरी बुकिंग है."
+          },
+          {
+            "source": "Two nights, please.",
+            "target": "दो रातें, कृपया."
+          },
+          {
+            "source": "Is breakfast included?",
+            "target": "क्या नाश्ता शामिल है?"
+          },
+          {
+            "source": "What time is checkout?",
+            "target": "चेक-आउट कितने बजे है?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "एक बुकिंग",
+            "native": "a reservation",
+            "phonetic": "ek bukiṁg"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "एक कमरा",
+            "native": "a room",
+            "phonetic": "ek kamrā"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "डबल रूम",
+            "native": "a double room",
+            "phonetic": "ḍabal rūm"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "नाश्ता",
+            "native": "breakfast",
+            "phonetic": "nāśtā"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "रिसेप्शन",
+            "native": "the front desk",
+            "phonetic": "risepśan"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "चेक-आउट",
+            "native": "checkout",
+            "phonetic": "chek-āuṭ"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have a reservation.\":",
+        "targetSentence": "मेरी बुकिंग है.",
+        "targetTranslation": "I have a reservation.",
+        "scrambledTokens": [
+          "है",
+          "नाश्ता",
+          "मेरी",
+          "बुकिंग"
+        ],
+        "correctTokens": [
+          "मेरी",
+          "बुकिंग",
+          "है"
+        ],
+        "explanation": "A short statement that confirms your booking and sets check-in in motion."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · breakfast",
+        "prompt": "How do you ask \"Is breakfast included?\"",
+        "audioText": "क्या नाश्ता शामिल है?",
+        "options": [
+          "क्या नाश्ता शामिल है?",
+          "चेक-आउट कितने बजे है?",
+          "क्या डबल रूम है?",
+          "लिफ्ट कहाँ है?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Sunita (Receptionist)",
+        "partnerSays": "नमस्ते। दो रात, ठीक है?",
+        "partnerSaysTranslation": "Hello. Two nights, right?",
+        "partnerSaysPhonetic": "Namaste. Do rāt, ṭhīk hai?",
+        "prompt": "Confirm and ask about breakfast:",
+        "options": [
+          "हाँ। क्या नाश्ता शामिल है?",
+          "नहीं, मुझे कॉफ़ी पसंद नहीं.",
+          "तीन सेब, कृपया."
+        ],
+        "correctAnswer": "हाँ। क्या नाश्ता शामिल है?",
+        "explanation": "\"हाँ। क्या नाश्ता शामिल है?\" confirms and asks a key check-in question."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"I have a reservation\"?",
+        "options": [
+          "मुझे टैक्सी चाहिए",
+          "मेरी बुकिंग है",
+          "कमरा तैयार है",
+          "नाश्ता कहाँ है?"
+        ],
+        "answerIndex": 1,
+        "explanation": "मेरी बुकिंग है = My booking is (there) = I have a reservation."
+      },
+      {
+        "type": "check",
+        "title": "Check · checkout",
+        "prompt": "How do you ask what time checkout is?",
+        "options": [
+          "चेक-आउट कितने बजे है?",
+          "रिसेप्शन कहाँ है?",
+          "एक रात कितने की है?",
+          "मेरी बुकिंग है"
+        ],
+        "answerIndex": 0,
+        "explanation": "चेक-आउट कितने बजे है? = What time is checkout?"
+      }
+    ]
+  },
+  {
+    "id": "getting-around-1",
+    "slug": "getting-around-town",
+    "title": "Getting around town",
+    "description": "Buses, metro, taxis, and buying tickets.",
+    "unitId": "travel",
+    "direction": "en-hi",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Moving through the city",
+        "body": "Most cities run on a mix of metro, bus, and tram. A few words cover most fare questions."
+      },
+      {
+        "type": "vocab",
+        "title": "परिवहन के शब्द",
+        "items": [
+          {
+            "term": "the subway/metro",
+            "meaning": "मेट्रो"
+          },
+          {
+            "term": "the bus",
+            "meaning": "बस"
+          },
+          {
+            "term": "the tram",
+            "meaning": "ट्राम"
+          },
+          {
+            "term": "a ticket (single fare)",
+            "meaning": "एक टिकट"
+          },
+          {
+            "term": "a day pass",
+            "meaning": "दिनभर का पास"
+          },
+          {
+            "term": "a stop",
+            "meaning": "स्टॉप"
+          },
+          {
+            "term": "a station",
+            "meaning": "स्टेशन"
+          },
+          {
+            "term": "a taxi",
+            "meaning": "टैक्सी"
+          },
+          {
+            "term": "I'm getting off here",
+            "meaning": "मैं यहाँ उतरूँगा"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "रास्ते में",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "Where's the nearest metro station?",
+            "target": "सबसे पास का मेट्रो स्टेशन कहाँ है?"
+          },
+          {
+            "source": "One ticket, please.",
+            "target": "एक टिकट, कृपया."
+          },
+          {
+            "source": "Does this bus go to the center?",
+            "target": "क्या यह बस केंद्र तक जाती है?"
+          },
+          {
+            "source": "I'm getting off at the next stop.",
+            "target": "मैं अगले स्टॉप पर उतरूँगा."
+          },
+          {
+            "source": "Can you call me a taxi?",
+            "target": "क्या आप मेरे लिए टैक्सी बुला सकते हैं?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "मेट्रो",
+            "native": "the subway/metro",
+            "phonetic": "meṭro"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "बस",
+            "native": "the bus",
+            "phonetic": "bas"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "एक टिकट",
+            "native": "a single-fare ticket",
+            "phonetic": "ek ṭikaṭ"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "दिनभर का पास",
+            "native": "a day pass",
+            "phonetic": "dinbhar kā pās"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "स्टॉप",
+            "native": "a stop",
+            "phonetic": "sṭop"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "मैं यहाँ उतरूँगा",
+            "native": "I'm getting off here",
+            "phonetic": "maiṁ yahā̃ utarūṁgā"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Does this bus go to the center?\":",
+        "targetSentence": "क्या यह बस केंद्र तक जाती है?",
+        "targetTranslation": "Does this bus go to the center?",
+        "scrambledTokens": [
+          "तक",
+          "जाती",
+          "है",
+          "मेट्रो",
+          "क्या",
+          "यह",
+          "बस",
+          "केंद्र"
+        ],
+        "correctTokens": [
+          "क्या",
+          "यह",
+          "बस",
+          "केंद्र",
+          "तक",
+          "जाती",
+          "है"
+        ],
+        "explanation": "The phrase that ends any bus or metro journey gracefully."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · getting off",
+        "prompt": "How do you say \"I'm getting off at the next stop\"?",
+        "audioText": "मैं अगले स्टॉप पर उतरूँगा",
+        "options": [
+          "मैं यहाँ चढ़ूँगा",
+          "मैं अगले स्टॉप पर उतरूँगा",
+          "मैं यहाँ रहूँगा",
+          "मैं रास्ता भूल गया"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Mohan (Bus Driver)",
+        "partnerSays": "हाँ, यह बस शहर के केंद्र तक जाती है.",
+        "partnerSaysTranslation": "Yes, this bus goes to the city center.",
+        "partnerSaysPhonetic": "Hā̃, yah bas śahar ke kendr tak jātī hai.",
+        "prompt": "Say you're getting off at the next stop:",
+        "options": [
+          "मैं अगले स्टॉप पर उतरूँगा.",
+          "मुझे दिल्ली का टिकट चाहिए.",
+          "मैं अपने माता-पिता से मिलने जाऊँगा."
+        ],
+        "correctAnswer": "मैं अगले स्टॉप पर उतरूँगा.",
+        "explanation": "\"मैं अगले स्टॉप पर उतरूँगा\" tells the driver where you want to get off."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "दिनभर का पास usually refers to…",
+        "options": [
+          "A single bus ticket",
+          "A day transport pass",
+          "A taxi receipt",
+          "A train delay"
+        ],
+        "answerIndex": 1,
+        "explanation": "दिनभर का पास is a day pass; एक टिकट is a single fare."
+      },
+      {
+        "type": "check",
+        "title": "Check · getting off",
+        "prompt": "How do you say \"I'm getting off here\"?",
+        "options": [
+          "मैं यहाँ चढ़ूँगा",
+          "मैं यहाँ उतरूँगा",
+          "मैं यहाँ रहूँगा",
+          "मैं यहाँ पहुँचा"
+        ],
+        "answerIndex": 1,
+        "explanation": "उतरना means to get off/alight; चढ़ना means to get on/board."
+      }
+    ]
+  },
+  {
+    "id": "pharmacy-health-1",
+    "slug": "pharmacy-and-feeling-unwell",
+    "title": "Pharmacy & feeling unwell",
+    "description": "Describe symptoms and get help at a pharmacy.",
+    "unitId": "health-safety",
+    "direction": "en-hi",
+    "level": "intermediate",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Getting help",
+        "body": "Pharmacies are trained to advise on minor issues before you need a doctor."
+      },
+      {
+        "type": "tip",
+        "title": "Pain pattern",
+        "body": "Each language has a go-to pattern for expressing physical pain.",
+        "bullets": [
+          "Portuguese: dói-me… / tenho dores de…",
+          "Arabic: عندي ألم في… / يؤلمني…",
+          "Hindi: … दर्द हो रहा है / मुझे … दर्द है"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "स्वास्थ्य के शब्द",
+        "items": [
+          {
+            "term": "a pharmacy",
+            "meaning": "दवाई की दुकान / फ़ार्मेसी"
+          },
+          {
+            "term": "a doctor",
+            "meaning": "डॉक्टर"
+          },
+          {
+            "term": "sick",
+            "meaning": "बीमार"
+          },
+          {
+            "term": "fever",
+            "meaning": "बुखार"
+          },
+          {
+            "term": "a medicine",
+            "meaning": "दवाई"
+          },
+          {
+            "term": "a prescription",
+            "meaning": "पर्ची / प्रिस्क्रिप्शन"
+          },
+          {
+            "term": "the head",
+            "meaning": "सिर"
+          },
+          {
+            "term": "the stomach",
+            "meaning": "पेट"
+          },
+          {
+            "term": "the throat",
+            "meaning": "गला"
+          },
+          {
+            "term": "Help!",
+            "meaning": "बचाओ!"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "लक्षण बताना",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "I don't feel well.",
+            "target": "मुझे ठीक नहीं लग रहा."
+          },
+          {
+            "source": "I have a headache.",
+            "target": "मेरे सिर में दर्द है."
+          },
+          {
+            "source": "I have a fever.",
+            "target": "मुझे बुखार है."
+          },
+          {
+            "source": "Do you have something for a sore throat?",
+            "target": "क्या आपके पास गले के लिए कुछ है?"
+          },
+          {
+            "source": "Call an ambulance!",
+            "target": "एम्बुलेंस बुलाइए!"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "मेरे सिर में दर्द है",
+            "native": "I have a headache",
+            "phonetic": "mere sir meṁ dard hai"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "मेरे पेट में दर्द है",
+            "native": "I have a stomach ache",
+            "phonetic": "mere peṭ meṁ dard hai"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "मुझे बुखार है",
+            "native": "I have a fever",
+            "phonetic": "mujhe bukhār hai"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "बीमार",
+            "native": "sick",
+            "phonetic": "bīmār"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "पर्ची",
+            "native": "a prescription",
+            "phonetic": "parcī"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "बचाओ!",
+            "native": "Help!",
+            "phonetic": "bachāo"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have a headache.\":",
+        "targetSentence": "मेरे सिर में दर्द है.",
+        "targetTranslation": "I have a headache.",
+        "scrambledTokens": [
+          "दर्द",
+          "है",
+          "बीमार",
+          "मेरे",
+          "सिर",
+          "में"
+        ],
+        "correctTokens": [
+          "मेरे",
+          "सिर",
+          "में",
+          "दर्द",
+          "है"
+        ],
+        "explanation": "Describing the most common ache — clear and calm gets you the right remedy."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · stomach",
+        "prompt": "Which phrase means \"I have a stomach ache\"?",
+        "audioText": "मेरे पेट में दर्द है",
+        "options": [
+          "मेरे सिर में दर्द है",
+          "मेरे पेट में दर्द है",
+          "मुझे बुखार है",
+          "मुझे ठीक नहीं लग रहा"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Dr. Sharma (Pharmacist)",
+        "partnerSays": "क्या आपके पास पर्ची है?",
+        "partnerSaysTranslation": "Do you have a prescription?",
+        "partnerSaysPhonetic": "Kyā āpke pās parcī hai?",
+        "prompt": "Say no and ask for something for your throat:",
+        "options": [
+          "नहीं। क्या आपके पास गले के लिए कुछ है?",
+          "हाँ, दो टिकट.",
+          "मैं शाकाहारी हूँ."
+        ],
+        "correctAnswer": "नहीं। क्या आपके पास गले के लिए कुछ है?",
+        "explanation": "\"नहीं। क्या आपके पास गले के लिए कुछ है?\" answers and asks for a remedy."
+      },
+      {
+        "type": "check",
+        "title": "Check · pattern",
+        "prompt": "How do you say \"I have a headache\" in Hindi?",
+        "options": [
+          "मेरे सिर में दर्द है",
+          "मेरे पास सिर है",
+          "मेरा सिर दर्द करे",
+          "मैं सिर में हूँ"
+        ],
+        "answerIndex": 0,
+        "explanation": "मेरे सिर में दर्द है = In my head there is pain = I have a headache."
+      },
+      {
+        "type": "check",
+        "title": "Check · emergency",
+        "prompt": "Which phrase calls for urgent help?",
+        "options": [
+          "खाना खाइए",
+          "बचाओ!",
+          "कितने का है?",
+          "मिलकर खुशी हुई"
+        ],
+        "answerIndex": 1,
+        "explanation": "बचाओ! is the standard exclamation for calling for help in Hindi."
+      }
+    ]
+  },
+  {
+    "id": "telling-time-1",
+    "slug": "telling-time",
+    "title": "Telling time",
+    "description": "Ask for and give the time, on the hour and beyond.",
+    "unitId": "time-dates",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "What time is it?",
+        "body": "Each language has a key question for asking the time and a standard way to give it."
+      },
+      {
+        "type": "tip",
+        "title": "Minute expressions",
+        "body": "Learn these fixed time chunks rather than translating word for word.",
+        "bullets": [
+          "Portuguese: e um quarto (quarter past), e meia (half past), menos um quarto (quarter to)",
+          "Arabic: الساعة الـ + time, والنصف (half past)",
+          "Hindi: बजे (o'clock), ढाई (2:30), साढ़े (half past)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "समय के शब्द",
+        "items": [
+          {
+            "term": "What time is it?",
+            "meaning": "कितने बजे हैं?"
+          },
+          {
+            "term": "It is … o'clock",
+            "meaning": "… बजे हैं"
+          },
+          {
+            "term": "quarter past",
+            "meaning": "… बजकर पंद्रह मिनट"
+          },
+          {
+            "term": "half past",
+            "meaning": "… बजकर आधा (ढाई बजे = 2:30, साढ़े = half past)"
+          },
+          {
+            "term": "quarter to",
+            "meaning": "पौने …"
+          },
+          {
+            "term": "noon",
+            "meaning": "दोपहर"
+          },
+          {
+            "term": "midnight",
+            "meaning": "आधी रात"
+          },
+          {
+            "term": "in the morning",
+            "meaning": "सुबह"
+          },
+          {
+            "term": "in the afternoon / evening",
+            "meaning": "दोपहर / शाम"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "समय बताना",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "What time is it?",
+            "target": "कितने बजे हैं?"
+          },
+          {
+            "source": "It's three o'clock.",
+            "target": "तीन बजे हैं."
+          },
+          {
+            "source": "It's half past seven.",
+            "target": "साढ़े सात बजे हैं."
+          },
+          {
+            "source": "It's a quarter to nine.",
+            "target": "पौने नौ बजे हैं."
+          },
+          {
+            "source": "The train leaves at 14:30.",
+            "target": "ट्रेन ढाई बजे चलती है."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "कितने बजे हैं?",
+            "native": "What time is it?",
+            "phonetic": "kitne baje haiṁ"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "बजकर पंद्रह मिनट",
+            "native": "quarter past",
+            "phonetic": "bajkar pandrah minaṭ"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "साढ़े",
+            "native": "half past (for 7:30, 8:30…)",
+            "phonetic": "sāṛhe"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "पौने",
+            "native": "quarter to",
+            "phonetic": "paune"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "दोपहर",
+            "native": "noon",
+            "phonetic": "dopahar"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "आधी रात",
+            "native": "midnight",
+            "phonetic": "ādhī rāt"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"It's half past seven.\":",
+        "targetSentence": "साढ़े सात बजे हैं.",
+        "targetTranslation": "It's half past seven.",
+        "scrambledTokens": [
+          "बजे",
+          "हैं",
+          "पौने",
+          "साढ़े",
+          "सात"
+        ],
+        "correctTokens": [
+          "साढ़े",
+          "सात",
+          "बजे",
+          "हैं"
+        ],
+        "explanation": "Hour + \"half\" — the most common time expression in everyday conversation."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · quarter to",
+        "prompt": "How do you say \"quarter to nine\"?",
+        "audioText": "पौने नौ बजे हैं",
+        "options": [
+          "सवा नौ बजे हैं",
+          "साढ़े नौ बजे हैं",
+          "पौने नौ बजे हैं",
+          "नौ बजे हैं"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Geeta (Passer-by)",
+        "partnerSays": "ढाई बज रहे हैं.",
+        "partnerSaysTranslation": "It's half past two.",
+        "partnerSaysPhonetic": "Ḍhāī baj rahe haiṅ.",
+        "prompt": "Thank her and say when your train leaves:",
+        "options": [
+          "धन्यवाद। ट्रेन तीन बजे जाएगी.",
+          "माफ़ करें, कितने बजे हैं?",
+          "यह बहुत छोटा है."
+        ],
+        "correctAnswer": "धन्यवाद। ट्रेन तीन बजे जाएगी.",
+        "explanation": "\"धन्यवाद। ट्रेन तीन बजे जाएगी\" thanks her and states the departure time."
+      },
+      {
+        "type": "check",
+        "title": "Check · quarter to",
+        "prompt": "How do you say \"quarter to nine\" in Hindi?",
+        "options": [
+          "सवा नौ बजे हैं",
+          "पौने नौ बजे हैं",
+          "साढ़े नौ बजे हैं",
+          "नौ बजकर पंद्रह मिनट"
+        ],
+        "answerIndex": 1,
+        "explanation": "पौने नौ = quarter to nine. पौने + hour means \"quarter missing from that hour\"."
+      },
+      {
+        "type": "check",
+        "title": "Check · noon",
+        "prompt": "How do you say \"It's noon\" in Hindi?",
+        "options": [
+          "आधी रात है",
+          "दोपहर है",
+          "सुबह है",
+          "शाम है"
+        ],
+        "answerIndex": 1,
+        "explanation": "दोपहर is noon/midday; आधी रात is midnight."
+      }
+    ]
+  },
+  {
+    "id": "days-months-1",
+    "slug": "days-months-and-dates",
+    "title": "Days, months & dates",
+    "description": "The calendar and how to say a date.",
+    "unitId": "time-dates",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Calendar basics",
+        "body": "Learning days and months opens up conversations about plans, birthdays, and appointments."
+      },
+      {
+        "type": "vocab",
+        "title": "सप्ताह के दिन",
+        "items": [
+          {
+            "term": "Monday",
+            "meaning": "सोमवार"
+          },
+          {
+            "term": "Tuesday",
+            "meaning": "मंगलवार"
+          },
+          {
+            "term": "Wednesday",
+            "meaning": "बुधवार"
+          },
+          {
+            "term": "Thursday",
+            "meaning": "गुरुवार / बृहस्पतिवार"
+          },
+          {
+            "term": "Friday",
+            "meaning": "शुक्रवार"
+          },
+          {
+            "term": "Saturday",
+            "meaning": "शनिवार"
+          },
+          {
+            "term": "Sunday",
+            "meaning": "रविवार"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "महीने",
+        "items": [
+          {
+            "term": "January",
+            "meaning": "जनवरी"
+          },
+          {
+            "term": "February",
+            "meaning": "फ़रवरी"
+          },
+          {
+            "term": "March",
+            "meaning": "मार्च"
+          },
+          {
+            "term": "April",
+            "meaning": "अप्रैल"
+          },
+          {
+            "term": "May",
+            "meaning": "मई"
+          },
+          {
+            "term": "June",
+            "meaning": "जून"
+          },
+          {
+            "term": "July",
+            "meaning": "जुलाई"
+          },
+          {
+            "term": "August",
+            "meaning": "अगस्त"
+          },
+          {
+            "term": "September",
+            "meaning": "सितंबर"
+          },
+          {
+            "term": "October",
+            "meaning": "अक्तूबर"
+          },
+          {
+            "term": "November",
+            "meaning": "नवंबर"
+          },
+          {
+            "term": "December",
+            "meaning": "दिसंबर"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "तारीखों के बारे में",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "What day is it today?",
+            "target": "आज कौन सा दिन है?"
+          },
+          {
+            "source": "Today is Monday.",
+            "target": "आज सोमवार है."
+          },
+          {
+            "source": "My birthday is May 1st.",
+            "target": "मेरा जन्मदिन एक मई को है."
+          },
+          {
+            "source": "See you on Friday.",
+            "target": "शुक्रवार को मिलते हैं."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "सोमवार",
+            "native": "Monday",
+            "phonetic": "somvār"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "मंगलवार",
+            "native": "Tuesday",
+            "phonetic": "maṁgalvār"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "बुधवार",
+            "native": "Wednesday",
+            "phonetic": "budhvār"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "गुरुवार",
+            "native": "Thursday",
+            "phonetic": "guruvār"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "शुक्रवार",
+            "native": "Friday",
+            "phonetic": "śukravār"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "शनिवार",
+            "native": "Saturday",
+            "phonetic": "śanivār"
+          },
+          {
+            "id": "hin-7",
+            "foreign": "रविवार",
+            "native": "Sunday",
+            "phonetic": "ravivār"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"My birthday is May 1st.\":",
+        "targetSentence": "मेरा जन्मदिन एक मई को है.",
+        "targetTranslation": "My birthday is May 1st.",
+        "scrambledTokens": [
+          "मई",
+          "को",
+          "है",
+          "सोमवार",
+          "मेरा",
+          "जन्मदिन",
+          "एक"
+        ],
+        "correctTokens": [
+          "मेरा",
+          "जन्मदिन",
+          "एक",
+          "मई",
+          "को",
+          "है"
+        ],
+        "explanation": "A date in full — once you know the pattern, every date falls into place."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · day",
+        "prompt": "How do you say \"Today is Monday\"?",
+        "audioText": "आज सोमवार है",
+        "options": [
+          "आज मंगलवार है",
+          "आज सोमवार है",
+          "आज रविवार है",
+          "आज शुक्रवार है"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Deepak (Friend)",
+        "partnerSays": "आज कौन सा दिन है?",
+        "partnerSaysTranslation": "What day is today?",
+        "partnerSaysPhonetic": "Āj kaun sā din hai?",
+        "prompt": "Say it's Wednesday:",
+        "options": [
+          "आज बुधवार है.",
+          "तीन बजे हैं.",
+          "मेरी उम्र बीस साल है."
+        ],
+        "correctAnswer": "आज बुधवार है.",
+        "explanation": "\"आज बुधवार है\" answers with the day."
+      },
+      {
+        "type": "check",
+        "title": "Check · order",
+        "prompt": "Which day comes right after बुधवार (Wednesday)?",
+        "options": [
+          "मंगलवार",
+          "शुक्रवार",
+          "गुरुवार",
+          "शनिवार"
+        ],
+        "answerIndex": 2,
+        "explanation": "The order: सोमवार, मंगलवार, बुधवार, गुरुवार, शुक्रवार, शनिवार, रविवार."
+      },
+      {
+        "type": "check",
+        "title": "Check · Sunday",
+        "prompt": "Sunday in Hindi is…",
+        "options": [
+          "शनिवार",
+          "सोमवार",
+          "रविवार",
+          "गुरुवार"
+        ],
+        "answerIndex": 2,
+        "explanation": "रविवार means Sunday — it comes from रवि (sun) + वार (day)."
+      }
+    ]
+  },
+  {
+    "id": "family-1",
+    "slug": "talking-about-family",
+    "title": "Talking about family",
+    "description": "Name family members and describe relationships.",
+    "unitId": "family-friends",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Who's who",
+        "body": "Family vocabulary combines with \"to have\" and possessives for quick descriptions."
+      },
+      {
+        "type": "tip",
+        "title": "Possessives and gender",
+        "body": "Possessives work differently in each language.",
+        "bullets": [
+          "Portuguese: meu/minha agree with the noun",
+          "Arabic: possessive suffixes attach to the noun",
+          "Hindi: मेरा/मेरी agree with the noun gender"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "परिवार के सदस्य",
+        "items": [
+          {
+            "term": "the family",
+            "meaning": "परिवार"
+          },
+          {
+            "term": "the father",
+            "meaning": "पिता / पापा"
+          },
+          {
+            "term": "the mother",
+            "meaning": "माँ / माता"
+          },
+          {
+            "term": "the brother",
+            "meaning": "भाई"
+          },
+          {
+            "term": "the sister",
+            "meaning": "बहन"
+          },
+          {
+            "term": "the son",
+            "meaning": "बेटा"
+          },
+          {
+            "term": "the daughter",
+            "meaning": "बेटी"
+          },
+          {
+            "term": "the grandparents",
+            "meaning": "दादा-दादी / नाना-नानी"
+          },
+          {
+            "term": "the husband / the wife",
+            "meaning": "पति / पत्नी"
+          },
+          {
+            "term": "a friend",
+            "meaning": "दोस्त / मित्र"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "परिवार के बारे में",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "I have two brothers.",
+            "target": "मेरे दो भाई हैं."
+          },
+          {
+            "source": "This is my sister.",
+            "target": "यह मेरी बहन है."
+          },
+          {
+            "source": "My parents live in Delhi.",
+            "target": "मेरे माता-पिता दिल्ली में रहते हैं."
+          },
+          {
+            "source": "Do you have children?",
+            "target": "क्या आपके बच्चे हैं?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "पिता",
+            "native": "the father",
+            "phonetic": "pitā"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "माँ",
+            "native": "the mother",
+            "phonetic": "mā̃"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "भाई",
+            "native": "the brother",
+            "phonetic": "bhāī"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "बहन",
+            "native": "the sister",
+            "phonetic": "bahan"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "दादा-दादी",
+            "native": "the grandparents",
+            "phonetic": "dādā-dādī"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "दोस्त",
+            "native": "a friend",
+            "phonetic": "dost"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have two brothers.\":",
+        "targetSentence": "मेरे दो भाई हैं.",
+        "targetTranslation": "I have two brothers.",
+        "scrambledTokens": [
+          "भाई",
+          "हैं",
+          "पिता",
+          "मेरे",
+          "दो"
+        ],
+        "correctTokens": [
+          "मेरे",
+          "दो",
+          "भाई",
+          "हैं"
+        ],
+        "explanation": "A warm, simple statement that naturally invites the other person to share too."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · possessive",
+        "prompt": "How do you say \"my sister\" in Hindi?",
+        "audioText": "मेरी बहन",
+        "options": [
+          "मेरा भाई",
+          "मेरी बहन",
+          "मेरे माता-पिता",
+          "मेरा दोस्त"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Rohit (Friend)",
+        "partnerSays": "मिलकर बहुत खुशी हुई। क्या आपके भाई-बहन हैं?",
+        "partnerSaysTranslation": "Nice to meet you. Do you have siblings?",
+        "partnerSaysPhonetic": "Milkar bahut khushī huī. Kyā āpke bhāī-bahan haiṅ?",
+        "prompt": "Say you have two brothers:",
+        "options": [
+          "हाँ, मेरे दो भाई हैं.",
+          "यह मेरी बहन है.",
+          "नहीं, मुझे भूख नहीं है."
+        ],
+        "correctAnswer": "हाँ, मेरे दो भाई हैं.",
+        "explanation": "\"हाँ, मेरे दो भाई हैं\" answers directly."
+      },
+      {
+        "type": "check",
+        "title": "Check · possessive",
+        "prompt": "How do you say \"my sister\" in Hindi?",
+        "options": [
+          "मेरा बहन",
+          "मेरी बहन",
+          "मेरे बहन",
+          "बहन"
+        ],
+        "answerIndex": 1,
+        "explanation": "बहन is feminine → मेरी बहन. मेरा is masculine, मेरी is feminine."
+      },
+      {
+        "type": "check",
+        "title": "Check · plural",
+        "prompt": "How do you say \"my parents\" in Hindi?",
+        "options": [
+          "मेरा माता-पिता",
+          "मेरे माता-पिता",
+          "मेरी माता-पिता",
+          "उनके माता-पिता"
+        ],
+        "answerIndex": 1,
+        "explanation": "माता-पिता is plural → मेरे माता-पिता (plural possessive form)."
+      }
+    ]
+  },
+  {
+    "id": "shopping-clothes-1",
+    "slug": "shopping-for-clothes",
+    "title": "Shopping for clothes",
+    "description": "Sizes, trying things on, and asking about price.",
+    "unitId": "shopping",
+    "direction": "en-hi",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Trying it on",
+        "body": "Clothes shopping mixes size, color, and a few polite requests to try things on or ask for a different size."
+      },
+      {
+        "type": "vocab",
+        "title": "कपड़ों के शब्द",
+        "items": [
+          {
+            "term": "a piece of clothing",
+            "meaning": "कपड़ा"
+          },
+          {
+            "term": "a shirt",
+            "meaning": "कमीज़"
+          },
+          {
+            "term": "trousers/pants",
+            "meaning": "पैंट"
+          },
+          {
+            "term": "a dress",
+            "meaning": "फ्रॉक / ड्रेस"
+          },
+          {
+            "term": "shoes",
+            "meaning": "जूते"
+          },
+          {
+            "term": "the size",
+            "meaning": "साइज़"
+          },
+          {
+            "term": "the fitting room",
+            "meaning": "ट्रायल रूम"
+          },
+          {
+            "term": "on sale",
+            "meaning": "सेल में / छूट पर"
+          },
+          {
+            "term": "too big / too small",
+            "meaning": "बहुत बड़ा / बहुत छोटा"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "दुकान में",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "Do you have this in a size 40?",
+            "target": "क्या यह साइज़ चालीस में है?"
+          },
+          {
+            "source": "Can I try it on?",
+            "target": "क्या मैं इसे पहन कर देख सकता हूँ?"
+          },
+          {
+            "source": "Where is the fitting room?",
+            "target": "ट्रायल रूम कहाँ है?"
+          },
+          {
+            "source": "It's too small.",
+            "target": "यह बहुत छोटा है."
+          },
+          {
+            "source": "Do you have a bigger size?",
+            "target": "क्या इससे बड़ा साइज़ है?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "साइज़",
+            "native": "the size",
+            "phonetic": "sā'iz"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "ट्रायल रूम",
+            "native": "the fitting room",
+            "phonetic": "ṭrāyal rūm"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "सेल में",
+            "native": "on sale",
+            "phonetic": "sel meṁ"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "बहुत बड़ा",
+            "native": "too big",
+            "phonetic": "bahut baṛā"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "बहुत छोटा",
+            "native": "too small",
+            "phonetic": "bahut choṭā"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "ड्रेस",
+            "native": "a dress",
+            "phonetic": "ḍres"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Do you have this in a size 40?\":",
+        "targetSentence": "क्या यह साइज़ चालीस में है?",
+        "targetTranslation": "Do you have this in a size 40?",
+        "scrambledTokens": [
+          "चालीस",
+          "में",
+          "है",
+          "ड्रेस",
+          "क्या",
+          "यह",
+          "साइज़"
+        ],
+        "correctTokens": [
+          "क्या",
+          "यह",
+          "साइज़",
+          "चालीस",
+          "में",
+          "है"
+        ],
+        "explanation": "The one question that keeps a shopping trip moving in the right direction."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · size",
+        "prompt": "How do you say \"It's too small\"?",
+        "audioText": "यह बहुत छोटा है",
+        "options": [
+          "यह बहुत बड़ा है",
+          "यह बहुत छोटा है",
+          "यह सेल में है",
+          "यह परफेक्ट है"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Preeti (Shop Clerk)",
+        "partnerSays": "बिल्कुल। ट्रायल रूम वहाँ है.",
+        "partnerSaysTranslation": "Of course. The fitting room is over there.",
+        "partnerSaysPhonetic": "Bilkul. ṭrāyal rūm vahā̃ hai.",
+        "prompt": "After trying it on, say it's too small and ask for a bigger size:",
+        "options": [
+          "यह बहुत छोटा है। क्या इससे बड़ा साइज़ है?",
+          "क्या मैं इसे पहन कर देख सकता हूँ?",
+          "मुझे लाल वाला चाहिए."
+        ],
+        "correctAnswer": "यह बहुत छोटा है। क्या इससे बड़ा साइज़ है?",
+        "explanation": "\"यह बहुत छोटा है। क्या इससे बड़ा साइज़ है?\" describes the problem and asks for the next size."
+      },
+      {
+        "type": "check",
+        "title": "Check · size",
+        "prompt": "How do you ask \"do you have this in size 40?\"",
+        "options": [
+          "क्या यह साइज़ चालीस में है?",
+          "क्या यह बहुत बड़ा है?",
+          "ट्रायल रूम कहाँ है?",
+          "सेल में, कृपया."
+        ],
+        "answerIndex": 0,
+        "explanation": "साइज़ means size; साइज़ चालीस में = in size 40."
+      },
+      {
+        "type": "check",
+        "title": "Check · too small",
+        "prompt": "How do you say \"It's too small\" in Hindi?",
+        "options": [
+          "यह बहुत बड़ा है",
+          "यह बहुत छोटा है",
+          "यह सेल में है",
+          "यह परफेक्ट है"
+        ],
+        "answerIndex": 1,
+        "explanation": "बहुत छोटा = too small; बहुत बड़ा = too big."
+      }
+    ]
+  },
+  {
+    "id": "articles-gender-1",
+    "slug": "articles-and-gender",
+    "title": "Articles & gender",
+    "description": "Noun gender and grammatical articles (or their equivalents).",
+    "unitId": "grammar-core",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 18,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Nouns and their markers",
+        "body": "Portuguese has gender like French; Arabic has gender but a single definite article; Hindi has gender with no articles at all."
+      },
+      {
+        "type": "tip",
+        "title": "Key differences",
+        "body": "Each language handles definiteness and gender differently.",
+        "bullets": [
+          "Portuguese: o/a (the), um/uma (a) — 2 genders",
+          "Arabic: الـ (al-) for all definite nouns — 2 genders",
+          "Hindi: no articles; gender affects adjectives and verb agreement"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "लिंग और व्याकरण",
+        "items": [
+          {
+            "term": "masculine noun (table)",
+            "meaning": "मेज़ — स्त्रीलिंग (f.)"
+          },
+          {
+            "term": "masculine noun (boy)",
+            "meaning": "लड़का — पुल्लिंग (m.)"
+          },
+          {
+            "term": "masculine adjective",
+            "meaning": "अच्छा (m.)"
+          },
+          {
+            "term": "feminine adjective",
+            "meaning": "अच्छी (f.)"
+          },
+          {
+            "term": "verb — masculine",
+            "meaning": "जाता है (m. sg.)"
+          },
+          {
+            "term": "verb — feminine",
+            "meaning": "जाती है (f. sg.)"
+          },
+          {
+            "term": "plural verb (m.)",
+            "meaning": "जाते हैं"
+          },
+          {
+            "term": "plural verb (f.)",
+            "meaning": "जाती हैं"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "पुल्लिंग",
+            "native": "masculine gender",
+            "phonetic": "pulliṁg"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "स्त्रीलिंग",
+            "native": "feminine gender",
+            "phonetic": "strīliṁg"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "अच्छा (m.)",
+            "native": "good (masculine)",
+            "phonetic": "acchā"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "अच्छी (f.)",
+            "native": "good (feminine)",
+            "phonetic": "acchī"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "जाता है (m.)",
+            "native": "goes (masc. sg.)",
+            "phonetic": "jātā hai"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"The table is good.\":",
+        "targetSentence": "मेज़ अच्छी है.",
+        "targetTranslation": "The table is good.",
+        "scrambledTokens": [
+          "है",
+          "पुल्लिंग",
+          "मेज़",
+          "अच्छी"
+        ],
+        "correctTokens": [
+          "मेज़",
+          "अच्छी",
+          "है"
+        ],
+        "explanation": "A compact phrase that puts the article or gender rule into immediate practice."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · gender agreement",
+        "prompt": "Which adjective form matches \"बहन\" (sister, feminine)?",
+        "audioText": "अच्छी बहन",
+        "options": [
+          "अच्छा बहन",
+          "अच्छी बहन",
+          "अच्छे बहन",
+          "अच्छों बहन"
+        ],
+        "answerIndex": 1,
+        "explanation": "बहन is feminine → the feminine adjective form अच्छी."
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Gupta ji (Teacher)",
+        "partnerSays": "हिंदी में \"table\" का लिंग क्या है?",
+        "partnerSaysTranslation": "What is the gender of \"table\" in Hindi?",
+        "partnerSaysPhonetic": "Hindī meṅ \"table\" kā liṅg kyā hai?",
+        "prompt": "Answer correctly:",
+        "options": [
+          "मेज़ स्त्रीलिंग है।",
+          "मेज़ पुल्लिंग है।",
+          "मेज़ में लिंग नहीं होता।"
+        ],
+        "correctAnswer": "मेज़ स्त्रीलिंग है।",
+        "explanation": "मेज़ (table) is feminine (स्त्रीलिंग) in Hindi. Gender affects verb and adjective forms."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "मेज़ (table) is which gender in Hindi?",
+        "options": [
+          "Masculine",
+          "Feminine",
+          "Neuter",
+          "No gender"
+        ],
+        "answerIndex": 1,
+        "explanation": "मेज़ is feminine (स्त्रीलिंग). This affects adjective forms and verb agreement."
+      },
+      {
+        "type": "check",
+        "title": "Check · agreement",
+        "prompt": "How do you say \"The boy is good\" in Hindi?",
+        "options": [
+          "लड़का अच्छी है",
+          "लड़का अच्छा है",
+          "लड़का अच्छे है",
+          "लड़की अच्छा है"
+        ],
+        "answerIndex": 1,
+        "explanation": "लड़का is masculine → अच्छा (masculine adjective)."
+      },
+      {
+        "type": "check",
+        "title": "Check · articles",
+        "prompt": "Which statement about Hindi articles is correct?",
+        "options": [
+          "Hindi uses le/la like French",
+          "Hindi has no articles",
+          "Hindi uses the/a like English",
+          "Hindi uses el/la like Spanish"
+        ],
+        "answerIndex": 1,
+        "explanation": "Hindi has no articles. Definiteness is shown by context or demonstratives (यह, वह)."
+      }
+    ]
+  },
+  {
+    "id": "etre-avoir-1",
+    "slug": "to-be-and-to-have",
+    "title": "To be & to have",
+    "description": "The two verbs you'll use every day.",
+    "unitId": "grammar-core",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 19,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Workhorses",
+        "body": "The verbs \"to be\" and \"to have\" appear constantly in descriptions, states, and idioms."
+      },
+      {
+        "type": "vocab",
+        "title": "होना — to be",
+        "items": [
+          {
+            "term": "I am",
+            "meaning": "मैं हूँ"
+          },
+          {
+            "term": "you are (informal)",
+            "meaning": "तुम हो"
+          },
+          {
+            "term": "he / she is",
+            "meaning": "वह है"
+          },
+          {
+            "term": "we are",
+            "meaning": "हम हैं"
+          },
+          {
+            "term": "you are (formal)",
+            "meaning": "आप हैं"
+          },
+          {
+            "term": "they are",
+            "meaning": "वे हैं"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "\"के पास होना\" — to have",
+        "items": [
+          {
+            "term": "I have",
+            "meaning": "मेरे पास है"
+          },
+          {
+            "term": "you have (informal)",
+            "meaning": "तुम्हारे पास है"
+          },
+          {
+            "term": "he / she has",
+            "meaning": "उनके पास है / उसके पास है"
+          },
+          {
+            "term": "we have",
+            "meaning": "हमारे पास है"
+          },
+          {
+            "term": "they have",
+            "meaning": "उनके पास है"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "वाक्यों में",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "I am tired.",
+            "target": "मैं थका हुआ हूँ."
+          },
+          {
+            "source": "She is Indian.",
+            "target": "वह भारतीय है."
+          },
+          {
+            "source": "I have a reservation.",
+            "target": "मेरे पास बुकिंग है."
+          },
+          {
+            "source": "We have time.",
+            "target": "हमारे पास समय है."
+          },
+          {
+            "source": "They are hungry.",
+            "target": "उन्हें भूख लगी है.",
+            "note": "Idiom: भूख लगना = to feel hungry"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "मैं हूँ",
+            "native": "I am",
+            "phonetic": "maiṁ hūṁ"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "वह है",
+            "native": "he/she is",
+            "phonetic": "vah hai"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "हम हैं",
+            "native": "we are",
+            "phonetic": "ham haiṁ"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "मेरे पास है",
+            "native": "I have",
+            "phonetic": "mere pās hai"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "हमारे पास है",
+            "native": "we have",
+            "phonetic": "hamāre pās hai"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "भूख लगना",
+            "native": "to feel hungry",
+            "phonetic": "bhūkh lagnā"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I am tired.\":",
+        "targetSentence": "मैं थका हुआ हूँ.",
+        "targetTranslation": "I am tired.",
+        "scrambledTokens": [
+          "हुआ",
+          "हूँ",
+          "वह",
+          "मैं",
+          "थका"
+        ],
+        "correctTokens": [
+          "मैं",
+          "थका",
+          "हुआ",
+          "हूँ"
+        ],
+        "explanation": "Two core verbs in a single sentence — a powerful combination to internalize."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · idiom",
+        "prompt": "How do you say \"They are hungry\"?",
+        "audioText": "उन्हें भूख लगी है",
+        "options": [
+          "उन्हें भूख लगी है",
+          "उन्हें प्यास लगी है",
+          "वे खा रहे हैं",
+          "वे थके हैं"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Neha (Friend)",
+        "partnerSays": "आप कैसे हैं?",
+        "partnerSaysTranslation": "How are you?",
+        "partnerSaysPhonetic": "Āp kaise haiṅ?",
+        "prompt": "Say you're tired and hungry:",
+        "options": [
+          "मैं थका हुआ हूँ और मुझे भूख लगी है.",
+          "मैं भूखा हूँ और थका लगती है.",
+          "थका हुआ और भूख लगती है."
+        ],
+        "correctAnswer": "मैं थका हुआ हूँ और मुझे भूख लगी है.",
+        "explanation": "Tiredness uses हूँ (am), while hunger uses मुझे लगी है (I feel/have)."
+      },
+      {
+        "type": "check",
+        "title": "Check · to be",
+        "prompt": "How do you say \"I am\" in Hindi?",
+        "options": [
+          "मेरे पास है",
+          "मैं हूँ",
+          "मैं जाता हूँ",
+          "मैं चाहता हूँ"
+        ],
+        "answerIndex": 1,
+        "explanation": "मैं हूँ = I am. हूँ is the first person singular form of होना (to be)."
+      },
+      {
+        "type": "check",
+        "title": "Check · to have",
+        "prompt": "\"मेरे पास बुकिंग है\" means…",
+        "options": [
+          "I am a booking",
+          "I have a booking",
+          "I was a booking",
+          "I want a booking"
+        ],
+        "answerIndex": 1,
+        "explanation": "मेरे पास = at/with me = I have; बुकिंग है = there is a booking."
+      },
+      {
+        "type": "check",
+        "title": "Check · idiom",
+        "prompt": "How do you say \"they are hungry\" in Hindi?",
+        "options": [
+          "उन्हें भूख लगी है",
+          "उन्हें प्यास लगी है",
+          "वे थके हैं",
+          "उनके पास खाना है"
+        ],
+        "answerIndex": 0,
+        "explanation": "भूख लगना is the idiom — Hindi uses \"feel hunger\" where English uses \"be hungry\"."
+      }
+    ]
+  },
+  {
+    "id": "regular-er-verbs-1",
+    "slug": "regular-verbs",
+    "title": "Regular verbs",
+    "description": "Conjugate the most common verb family.",
+    "unitId": "grammar-core",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 18,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "The biggest group",
+        "body": "Most verbs follow a regular pattern — learn it once, apply it to hundreds of verbs."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "Each language has its main verb conjugation pattern.",
+        "bullets": [
+          "Portuguese: -ar verbs (falar) → falo, falas, fala, falamos, falam",
+          "Arabic: present tense uses prefix + suffix patterns: أتكلم، تتكلم، يتكلم",
+          "Hindi: verb + gender/number + tense marker: बोलता हूँ (m.), बोलती हूँ (f.)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "बोलना — present tense",
+        "items": [
+          {
+            "term": "I speak (m.)",
+            "meaning": "मैं बोलता हूँ"
+          },
+          {
+            "term": "I speak (f.)",
+            "meaning": "मैं बोलती हूँ"
+          },
+          {
+            "term": "you speak (tu, m.)",
+            "meaning": "तुम बोलते हो"
+          },
+          {
+            "term": "he speaks",
+            "meaning": "वह बोलता है"
+          },
+          {
+            "term": "she speaks",
+            "meaning": "वह बोलती है"
+          },
+          {
+            "term": "we speak",
+            "meaning": "हम बोलते हैं"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "More useful verbs",
+        "items": [
+          {
+            "term": "to eat",
+            "meaning": "खाना — खाता/खाती हूँ"
+          },
+          {
+            "term": "to go",
+            "meaning": "जाना — जाता/जाती हूँ"
+          },
+          {
+            "term": "to live",
+            "meaning": "रहना — रहता/रहती हूँ"
+          },
+          {
+            "term": "to work",
+            "meaning": "काम करना — करता/करती हूँ"
+          },
+          {
+            "term": "to understand",
+            "meaning": "समझना — समझता/समझती हूँ"
+          },
+          {
+            "term": "to like",
+            "meaning": "पसंद करना"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "उपयोग में",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "I speak a little Hindi.",
+            "target": "मैं थोड़ी हिंदी बोलता हूँ."
+          },
+          {
+            "source": "We work in Delhi.",
+            "target": "हम दिल्ली में काम करते हैं."
+          },
+          {
+            "source": "She loves Indian food.",
+            "target": "वह भारतीय खाना पसंद करती है."
+          },
+          {
+            "source": "He studies every day.",
+            "target": "वह हर रोज़ पढ़ता है."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "बोलता हूँ (m.)",
+            "native": "I speak (masculine)",
+            "phonetic": "boltā hūṁ"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "बोलती हूँ (f.)",
+            "native": "I speak (feminine)",
+            "phonetic": "boltī hūṁ"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "बोलता है",
+            "native": "he speaks",
+            "phonetic": "boltā hai"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "बोलती है",
+            "native": "she speaks",
+            "phonetic": "boltī hai"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "बोलते हैं",
+            "native": "we/they speak (m.)",
+            "phonetic": "bolte haiṁ"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I speak a little Hindi.\":",
+        "targetSentence": "मैं थोड़ी हिंदी बोलता हूँ.",
+        "targetTranslation": "I speak a little Hindi.",
+        "scrambledTokens": [
+          "बोलता",
+          "हूँ",
+          "बोलती",
+          "मैं",
+          "थोड़ी",
+          "हिंदी"
+        ],
+        "correctTokens": [
+          "मैं",
+          "थोड़ी",
+          "हिंदी",
+          "बोलता",
+          "हूँ"
+        ],
+        "explanation": "The verb pattern in action — master this form and unlock a whole verb family."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · she form",
+        "prompt": "Which form is correct for \"she speaks\"?",
+        "audioText": "वह बोलती है",
+        "options": [
+          "वह बोलता है",
+          "वह बोलती है",
+          "वह बोलते हैं",
+          "वह बोलती हैं"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Vikram (Friend)",
+        "partnerSays": "क्या आप हिंदी बोलते हैं?",
+        "partnerSaysTranslation": "Do you speak Hindi?",
+        "partnerSaysPhonetic": "Kyā āp Hindī bolte haiṅ?",
+        "prompt": "Say yes, you speak a little Hindi:",
+        "options": [
+          "हाँ, मैं थोड़ी हिंदी बोलता हूँ.",
+          "हाँ, तुम थोड़ी हिंदी बोलता हूँ.",
+          "हाँ, हम थोड़ी हिंदी बोलता हूँ."
+        ],
+        "correctAnswer": "हाँ, मैं थोड़ी हिंदी बोलता हूँ.",
+        "explanation": "With मैं, the verb form for masculine is बोलता हूँ. For feminine: बोलती हूँ."
+      },
+      {
+        "type": "check",
+        "title": "Check · gender",
+        "prompt": "What form of \"speak\" does a woman use for \"I speak\"?",
+        "options": [
+          "बोलता हूँ",
+          "बोलती हूँ",
+          "बोलते हैं",
+          "बोलती हैं"
+        ],
+        "answerIndex": 1,
+        "explanation": "बोलती हूँ is the feminine first person singular: मैं बोलती हूँ."
+      },
+      {
+        "type": "check",
+        "title": "Check · she",
+        "prompt": "What form means \"she speaks\"?",
+        "options": [
+          "वह बोलता है",
+          "वह बोलती है",
+          "वह बोलती हूँ",
+          "वह बोलते हैं"
+        ],
+        "answerIndex": 1,
+        "explanation": "She is feminine → वह बोलती है."
+      }
+    ]
+  },
+  {
+    "id": "adjective-agreement-1",
+    "slug": "adjective-agreement",
+    "title": "Adjective agreement",
+    "description": "Make descriptive words match the noun they describe.",
+    "unitId": "grammar-core",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Adjectives match their nouns",
+        "body": "Portuguese adjectives agree with gender/number. Arabic adjectives agree with gender, number, and definiteness. Hindi adjectives agree with gender and number."
+      },
+      {
+        "type": "tip",
+        "title": "The default rule",
+        "body": "Add -a/-e for feminine in Portuguese; change the ending in Arabic; change -ā to -ī in Hindi.",
+        "bullets": [
+          "Portuguese: alto → alta (f.), altos (m. pl.), altas (f. pl.)",
+          "Arabic: طويل (m.) → طويلة (f.)",
+          "Hindi: लंबा (m.) → लंबी (f.) → लंबे (m. pl.)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "सामान्य विशेषण",
+        "items": [
+          {
+            "term": "tall",
+            "meaning": "लंबा (m.) / लंबी (f.) / लंबे (m. pl.)"
+          },
+          {
+            "term": "short",
+            "meaning": "छोटा (m.) / छोटी (f.)"
+          },
+          {
+            "term": "happy",
+            "meaning": "खुश (no change)"
+          },
+          {
+            "term": "interesting",
+            "meaning": "दिलचस्प (no change)"
+          },
+          {
+            "term": "beautiful (m.)",
+            "meaning": "सुंदर / खूबसूरत (no change)"
+          },
+          {
+            "term": "new",
+            "meaning": "नया (m.) / नई (f.) / नए (m. pl.)"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "लोगों और चीज़ों का वर्णन",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "He is tall.",
+            "target": "वह लंबा है."
+          },
+          {
+            "source": "She is tall.",
+            "target": "वह लंबी है."
+          },
+          {
+            "source": "They are happy. (m.)",
+            "target": "वे खुश हैं."
+          },
+          {
+            "source": "It's a beautiful city.",
+            "target": "यह एक सुंदर शहर है."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "लंबा (m.)",
+            "native": "tall (masculine)",
+            "phonetic": "lambā"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "लंबी (f.)",
+            "native": "tall (feminine)",
+            "phonetic": "lambī"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "छोटा (m.)",
+            "native": "small (masculine)",
+            "phonetic": "choṭā"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "छोटी (f.)",
+            "native": "small (feminine)",
+            "phonetic": "choṭī"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "नया/नई",
+            "native": "new (m./f.)",
+            "phonetic": "nayā/naī"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "सुंदर",
+            "native": "beautiful (no change)",
+            "phonetic": "sundar"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"She is small.\":",
+        "targetSentence": "वह छोटी है.",
+        "targetTranslation": "She is small.",
+        "scrambledTokens": [
+          "है",
+          "नया/नई",
+          "वह",
+          "छोटी"
+        ],
+        "correctTokens": [
+          "वह",
+          "छोटी",
+          "है"
+        ],
+        "explanation": "Agreement at work: the adjective shifts to match the noun it describes."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · feminine",
+        "prompt": "Which adjective form goes with \"बहन\" (sister, feminine)?",
+        "audioText": "लंबी",
+        "options": [
+          "लंबा",
+          "लंबी",
+          "लंबे",
+          "लंबों"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Priya (Friend)",
+        "partnerSays": "मेरा भाई लंबा है। और तुम्हारी बहन?",
+        "partnerSaysTranslation": "My brother is tall. And your sister?",
+        "partnerSaysPhonetic": "Merā bhāī lambā hai. Aur tumhārī bahan?",
+        "prompt": "Describe your sister the same way:",
+        "options": [
+          "वह भी लंबी है.",
+          "वह भी लंबा है.",
+          "वह भी लंबे हैं."
+        ],
+        "correctAnswer": "वह भी लंबी है.",
+        "explanation": "Hindi adjectives agree with gender: लंबा (masc.) becomes लंबी (fem.) for बहन."
+      },
+      {
+        "type": "check",
+        "title": "Check · feminine",
+        "prompt": "How do you say \"she is short\" in Hindi?",
+        "options": [
+          "वह छोटा है",
+          "वह छोटी है",
+          "वह छोटे हैं",
+          "वह छोटी हूँ"
+        ],
+        "answerIndex": 1,
+        "explanation": "वह refers to \"she\" here → feminine adjective छोटी."
+      },
+      {
+        "type": "check",
+        "title": "Check · position",
+        "prompt": "Where do adjectives usually go in Hindi?",
+        "options": [
+          "After the noun",
+          "Before the noun",
+          "At the end of sentence",
+          "No fixed rule"
+        ],
+        "answerIndex": 1,
+        "explanation": "Hindi adjectives precede the noun: एक सुंदर शहर (a beautiful city)."
+      }
+    ]
+  },
+  {
+    "id": "negation-1",
+    "slug": "saying-no",
+    "title": "Saying no",
+    "description": "Turn any sentence negative with simple patterns.",
+    "unitId": "grammar-core",
+    "direction": "en-hi",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Negation patterns",
+        "body": "Each language has a characteristic way to negate a verb. Learn the pattern, apply it everywhere."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "Position of the negative word differs.",
+        "bullets": [
+          "Portuguese: não before the verb",
+          "Arabic: لا (present), لم + jussive (past), ليس (to be)",
+          "Hindi: नहीं after the predicate; मत for commands"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "नकार के शब्द",
+        "items": [
+          {
+            "term": "not (general)",
+            "meaning": "नहीं"
+          },
+          {
+            "term": "not (commands)",
+            "meaning": "मत"
+          },
+          {
+            "term": "never",
+            "meaning": "कभी नहीं"
+          },
+          {
+            "term": "no longer",
+            "meaning": "अब नहीं"
+          },
+          {
+            "term": "nothing",
+            "meaning": "कुछ नहीं"
+          },
+          {
+            "term": "nobody",
+            "meaning": "कोई नहीं"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "नकारात्मक वाक्य",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "I don't speak French.",
+            "target": "मैं फ़्रांसीसी नहीं बोलता."
+          },
+          {
+            "source": "I don't like coffee.",
+            "target": "मुझे कॉफ़ी पसंद नहीं."
+          },
+          {
+            "source": "I never eat meat.",
+            "target": "मैं कभी माँस नहीं खाता."
+          },
+          {
+            "source": "There's nothing here.",
+            "target": "यहाँ कुछ नहीं है."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "नहीं",
+            "native": "not (general)",
+            "phonetic": "nahīṁ"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "मत",
+            "native": "not (command)",
+            "phonetic": "mat"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "कभी नहीं",
+            "native": "never",
+            "phonetic": "kabhī nahīṁ"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "अब नहीं",
+            "native": "no longer",
+            "phonetic": "ab nahīṁ"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "कुछ नहीं",
+            "native": "nothing",
+            "phonetic": "kuch nahīṁ"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "कोई नहीं",
+            "native": "nobody",
+            "phonetic": "koī nahīṁ"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I don't like coffee.\":",
+        "targetSentence": "मुझे कॉफ़ी पसंद नहीं.",
+        "targetTranslation": "I don't like coffee.",
+        "scrambledTokens": [
+          "पसंद",
+          "नहीं",
+          "मत",
+          "मुझे",
+          "कॉफ़ी"
+        ],
+        "correctTokens": [
+          "मुझे",
+          "कॉफ़ी",
+          "पसंद",
+          "नहीं"
+        ],
+        "explanation": "The negation pattern in its simplest form — learn it once, use it everywhere."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · नहीं",
+        "prompt": "Which is the correct negative form?",
+        "audioText": "मुझे कॉफ़ी पसंद नहीं",
+        "options": [
+          "मुझे नहीं कॉफ़ी पसंद",
+          "मुझे कॉफ़ी पसंद नहीं",
+          "नहीं मुझे कॉफ़ी पसंद",
+          "मुझे कॉफ़ी नहीं पसंद है"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Arjun (Friend)",
+        "partnerSays": "क्या तुम्हें कॉफ़ी पसंद है?",
+        "partnerSaysTranslation": "Do you like coffee?",
+        "partnerSaysPhonetic": "Kyā tumheṅ kofī pasand hai?",
+        "prompt": "Say no, you don't like coffee:",
+        "options": [
+          "नहीं, मुझे कॉफ़ी पसंद नहीं.",
+          "नहीं, मुझे नहीं कॉफ़ी पसंद.",
+          "नहीं, पसंद नहीं कॉफ़ी मुझे."
+        ],
+        "correctAnswer": "नहीं, मुझे कॉफ़ी पसंद नहीं.",
+        "explanation": "Hindi negation places नहीं after the verb/adjective: पसंद नहीं."
+      },
+      {
+        "type": "check",
+        "title": "Check · placement",
+        "prompt": "Where does नहीं typically go in a Hindi sentence?",
+        "options": [
+          "Before the subject",
+          "Before the verb/predicate",
+          "At the very end",
+          "First word in sentence"
+        ],
+        "answerIndex": 1,
+        "explanation": "नहीं comes after the predicate (adjective, noun, or verb) it negates: पसंद नहीं, है नहीं."
+      },
+      {
+        "type": "check",
+        "title": "Check · command",
+        "prompt": "Which word is used to negate a command in Hindi?",
+        "options": [
+          "नहीं",
+          "मत",
+          "कभी",
+          "अब"
+        ],
+        "answerIndex": 1,
+        "explanation": "मत is used for negative commands: मत जाओ (Don't go!), while नहीं is for statements."
+      }
+    ]
+  },
+  {
+    "id": "asking-questions-1",
+    "slug": "asking-questions",
+    "title": "Asking questions",
+    "description": "Question words and patterns.",
+    "unitId": "grammar-core",
+    "direction": "en-hi",
+    "level": "intermediate",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Asking around",
+        "body": "Each language has its own set of question words and question-formation patterns."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "Yes/no and information questions each have their own structure.",
+        "bullets": [
+          "Portuguese: rise in intonation + ? punctuation. Or verb-subject inversion.",
+          "Arabic: question word + normal word order. هل at start for yes/no.",
+          "Hindi: क्या at the start for yes/no; question words stay in the position of what they ask."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "प्रश्नवाचक शब्द",
+        "items": [
+          {
+            "term": "who",
+            "meaning": "कौन"
+          },
+          {
+            "term": "what",
+            "meaning": "क्या"
+          },
+          {
+            "term": "where",
+            "meaning": "कहाँ"
+          },
+          {
+            "term": "when",
+            "meaning": "कब"
+          },
+          {
+            "term": "why",
+            "meaning": "क्यों"
+          },
+          {
+            "term": "how",
+            "meaning": "कैसे"
+          },
+          {
+            "term": "how much / how many",
+            "meaning": "कितना/कितनी/कितने"
+          },
+          {
+            "term": "which",
+            "meaning": "कौन सा/सी"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "उदाहरण प्रश्न",
+        "sourceLabel": "en-hi",
+        "phrases": [
+          {
+            "source": "Do you speak English?",
+            "target": "क्या आप अंग्रेज़ी बोलते हैं?"
+          },
+          {
+            "source": "Where do you live?",
+            "target": "आप कहाँ रहते हैं?"
+          },
+          {
+            "source": "Why are you laughing?",
+            "target": "आप क्यों हँस रहे हैं?"
+          },
+          {
+            "source": "How much does it cost?",
+            "target": "यह कितने का है?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Hindi word with its English meaning:",
+        "pairs": [
+          {
+            "id": "hin-1",
+            "foreign": "कौन",
+            "native": "who",
+            "phonetic": "kaun"
+          },
+          {
+            "id": "hin-2",
+            "foreign": "क्या",
+            "native": "what / yes-no marker",
+            "phonetic": "kyā"
+          },
+          {
+            "id": "hin-3",
+            "foreign": "कहाँ",
+            "native": "where",
+            "phonetic": "kahā̃"
+          },
+          {
+            "id": "hin-4",
+            "foreign": "कब",
+            "native": "when",
+            "phonetic": "kab"
+          },
+          {
+            "id": "hin-5",
+            "foreign": "क्यों",
+            "native": "why",
+            "phonetic": "kyoṁ"
+          },
+          {
+            "id": "hin-6",
+            "foreign": "कैसे",
+            "native": "how",
+            "phonetic": "kaise"
+          },
+          {
+            "id": "hin-7",
+            "foreign": "कितना",
+            "native": "how much",
+            "phonetic": "kitnā"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Do you speak English?\":",
+        "targetSentence": "क्या आप अंग्रेज़ी बोलते हैं?",
+        "targetTranslation": "Do you speak English?",
+        "scrambledTokens": [
+          "बोलते",
+          "हैं",
+          "कौन",
+          "क्या",
+          "आप",
+          "अंग्रेज़ी"
+        ],
+        "correctTokens": [
+          "क्या",
+          "आप",
+          "अंग्रेज़ी",
+          "बोलते",
+          "हैं"
+        ],
+        "explanation": "A well-formed question using the key structure — polite, clear, and natural."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · why",
+        "prompt": "How do you say \"why\" in Hindi?",
+        "audioText": "क्यों",
+        "options": [
+          "कब",
+          "कैसे",
+          "क्यों",
+          "कौन"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Shreya (Friend)",
+        "partnerSays": "क्या तुम्हारा कोई सवाल है?",
+        "partnerSaysTranslation": "Do you have a question?",
+        "partnerSaysPhonetic": "Kyā tumhārā koī savāl hai?",
+        "prompt": "Ask where she lives:",
+        "options": [
+          "तुम कहाँ रहती हो?",
+          "तुम कहाँ रहता हो?",
+          "कहाँ तुम रहती हो?"
+        ],
+        "correctAnswer": "तुम कहाँ रहती हो?",
+        "explanation": "कहाँ रहती हो uses the feminine form रहती for addressing Shreya."
+      },
+      {
+        "type": "check",
+        "title": "Check · word meaning",
+        "prompt": "How do you say \"why\" in Hindi?",
+        "options": [
+          "कब",
+          "कैसे",
+          "क्यों",
+          "कौन"
+        ],
+        "answerIndex": 2,
+        "explanation": "क्यों = why; it pairs with क्योंकि (because) in the answer."
+      },
+      {
+        "type": "check",
+        "title": "Check · yes/no question",
+        "prompt": "Which word is placed at the start to form a yes/no question in Hindi?",
+        "options": [
+          "कहाँ",
+          "कब",
+          "क्या",
+          "कैसे"
+        ],
+        "answerIndex": 2,
+        "explanation": "क्या at the start of a statement turns it into a yes/no question: क्या आप बोलते हैं?"
+      }
+    ]
   }
 ]

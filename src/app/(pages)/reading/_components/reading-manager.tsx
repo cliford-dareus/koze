@@ -73,7 +73,7 @@ const ReadingManager = ({
                     {/* Reader Controls Toolbar */}
                     <div
                         id="reader-toolbar"
-                        className="bg-card border border-border rounded-[22px] p-3 flex items-center justify-between flex-wrap gap-2 text-xs"
+                        className="bg-background border border-border rounded-[22px] p-3 flex items-center justify-between flex-wrap gap-2 text-xs"
                     >
                         {/* Text Size Switcher */}
                         <div className="flex items-center gap-1">
@@ -172,7 +172,7 @@ const ReadingManager = ({
                         <section
                             key={activeParagraph?.id}
                             id={`passage-${activeParagraph?.id}`}
-                            className="relative bg-[#1C1D1B] border border-[#2A2C29] rounded-[26px] p-5 sm:p-7 shadow-xs space-y-3.5 transition-colors"
+                            className="relative bg-background border border-border rounded-[26px] p-5 sm:p-7 shadow-xs space-y-3.5 transition-colors"
                         >
                             {/* Top passage indicator & Audio button */}
                             <div className="flex items-center justify-between text-xs text-[#61665D]">
@@ -194,7 +194,7 @@ const ReadingManager = ({
 
                             {/* Target Language Main Text */}
                             <div
-                                className={`font-serif text-[#ECEBE6] tracking-wide selection:bg-[#2C332A] ${getFontSizeClasses()}`}
+                                className={`font-serif text-foreground tracking-wide selection:bg-[#2C332A] ${getFontSizeClasses()}`}
                             >
                                 {/* Highlight interactive vocabulary words if present */}
                                 {activeParagraph?.vocabulary && activeParagraph.vocabulary.length > 0 ? (
@@ -315,7 +315,7 @@ const ReadingManager = ({
                     {/* Mindful Reflection & Comprehension Check */}
                     <section
                         id="story-reflection-card"
-                        className="bg-[#1C1D1B] border border-[#2A2C29] rounded-[26px] p-5 sm:p-7 shadow-xs space-y-4 mt-8"
+                        className="bg-background border border-border rounded-[26px] p-5 sm:p-7 shadow-xs space-y-4 mt-8"
                     >
                         <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#A5C9B1]">
                             <Sparkles className="w-3.5 h-3.5" />

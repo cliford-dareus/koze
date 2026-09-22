@@ -1,5 +1,5 @@
 import { defaultProgress, type ProgressState } from "@/lib/progress";
-import { LESSONS_PATH_MAP, UNITS, type LessonDirection } from "@/data/lessons";
+import { getLessonsByDirection, type LessonDirection } from "@/data/lessons";
 import { levelFromXp } from "@/lib/gamification";
 
 import FIRST_STEP from "../../public/badges/first-step.svg";
@@ -23,7 +23,7 @@ export type BadgeDef = {
     title: string;
     description: string;
     emoji: string;
-    isEarned: (p: ProgressState, direction?: LessonDirection) => boolean;
+    isEarned: (p: ProgressState, direction?: LessonDirection) => boolean | Promise<boolean>;
 };
 
 export function learningPrefs(): LessonDirection | null {
@@ -35,11 +35,12 @@ export function learningPrefs(): LessonDirection | null {
     return `${nativeLanguage}-${learningLanguage}` as LessonDirection;
 }
 
-function unitComplete(p: ProgressState, unitId: string): boolean {
+async function unitComplete(p: ProgressState, unitId: string): Promise<boolean> {
     const direction = learningPrefs();
     if (!direction) return false;
-    const LESSONS = LESSONS_PATH_MAP[direction];
-    const ids = LESSONS.filter((l) => l.unitId === unitId).map((l) => l.id);
+
+    const lessons = await getLessonsByDirection(direction);
+    const ids = lessons.filter((l) => l.unitId === unitId).map((l) => l.id);
     if (!ids.length) return false;
     const done = new Set(p.lessonsCompleted.get(direction) || []);
     return ids.every((id) => done.has(id));
@@ -53,11 +54,11 @@ export const BADGES: BadgeDef[] = [
         emoji: "🌱",
         isEarned: (p, direction) =>
             p.translations +
-                p.listeningCorrect +
-                p.readingSessions +
-                p.quizCorrect +
-                (p.practiceSessions || 0) +
-                (p.lessonsCompleted?.get(direction!)?.length || 0) >=
+            p.listeningCorrect +
+            p.readingSessions +
+            p.quizCorrect +
+            (p.practiceSessions || 0) +
+            (p.lessonsCompleted?.get(direction!)?.length || 0) >=
             1,
     },
     {
@@ -164,11 +165,16 @@ export const BADGES: BadgeDef[] = [
         title: "Full path",
         description: "Complete all lessons in the catalog.",
         emoji: "🏅",
-        isEarned: (p, direction) =>
-            LESSONS_PATH_MAP[direction!].length > 0 &&
-            LESSONS_PATH_MAP[direction!].every((l) =>
-                (p.lessonsCompleted.get(direction!) || []).includes(l.id),
-            ),
+        isEarned: async (p, direction) => {
+            if (!direction) return false;
+            const lessons = await getLessonsByDirection(direction);
+            return (
+                lessons.length > 0 &&
+                lessons.every((l) =>
+                    (p.lessonsCompleted.get(direction) || []).includes(l.id),
+                )
+            );
+        },
     },
 ];
 
@@ -195,13 +201,13 @@ export function getBadge(id: string): BadgeDef | undefined {
     return BADGES.find((b) => b.id === id);
 }
 
-export function evaluateNewBadges(p: ProgressState): string[] {
+export async function evaluateNewBadges(p: ProgressState): Promise<string[]> {
     const have = new Set(p.badges || []);
     const earned: string[] = [];
     for (const badge of BADGES) {
         if (have.has(badge.id)) continue;
         try {
-            if (badge.isEarned(p)) earned.push(badge.id);
+            if (await badge.isEarned(p)) earned.push(badge.id);
         } catch {
             // ignore
         }
@@ -209,11 +215,11 @@ export function evaluateNewBadges(p: ProgressState): string[] {
     return earned;
 }
 
-export function applyBadgeUnlocks(p: ProgressState): {
+export async function applyBadgeUnlocks(p: ProgressState): Promise<{
     progress: ProgressState;
     unlocked: string[];
-} {
-    const unlocked = evaluateNewBadges(p);
+}> {
+    const unlocked = await evaluateNewBadges(p);
     if (!unlocked.length) return { progress: p, unlocked: [] };
     const badges = Array.from(new Set([...(p.badges || []), ...unlocked]));
     return {

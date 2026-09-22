@@ -100,46 +100,65 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the greetings",
+        "prompt": "Match each Italian greeting with its English meaning:",
         "pairs": [
           {
-            "left": "Ciao",
-            "right": "Hi / bye (informal)"
+            "id": "ita-1",
+            "foreign": "Ciao",
+            "native": "Hi / bye (informal)",
+            "phonetic": "chow"
           },
           {
-            "left": "Buongiorno",
-            "right": "Good morning / good day"
+            "id": "ita-2",
+            "foreign": "Buongiorno",
+            "native": "Good morning / good day",
+            "phonetic": "bwon-JOR-noh"
           },
           {
-            "left": "Buonasera",
-            "right": "Good evening"
+            "id": "ita-3",
+            "foreign": "Buonasera",
+            "native": "Good evening",
+            "phonetic": "bwoh-nah-SEH-rah"
           },
           {
-            "left": "Arrivederci",
-            "right": "Goodbye"
+            "id": "ita-4",
+            "foreign": "Arrivederci",
+            "native": "Goodbye",
+            "phonetic": "ah-ree-veh-DEHR-chee"
           },
           {
-            "left": "A presto",
-            "right": "See you soon"
+            "id": "ita-5",
+            "foreign": "A presto",
+            "native": "See you soon",
+            "phonetic": "ah PREHS-toh"
           },
           {
-            "left": "Buonanotte",
-            "right": "Good night"
+            "id": "ita-6",
+            "foreign": "Buonanotte",
+            "native": "Good night",
+            "phonetic": "bwoh-nah-NOT-teh"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the greeting",
-        "prompt": "Build: “Hello, how are you?” (formal)",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Hello, how are you?\":",
+        "targetSentence": "Buongiorno, come sta?",
+        "targetTranslation": "Hello, how are you?",
+        "scrambledTokens": [
+          "come",
+          "sta",
+          "Ciao",
+          "Buongiorno",
+          ","
+        ],
+        "correctTokens": [
           "Buongiorno",
           ",",
           "come",
-          "sta",
-          "?"
+          "sta"
         ],
-        "answer": "Buongiorno, come sta?"
+        "explanation": "A warm, time-appropriate greeting — the foundation of any first impression."
       },
       {
         "type": "listen",
@@ -156,22 +175,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "A first meeting",
-        "context": "You meet a colleague’s parent for the first time.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "Buongiorno, come sta?"
-          },
-          {
-            "speaker": "Parent",
-            "text": "Molto bene, grazie. E Lei?"
-          },
-          {
-            "speaker": "You",
-            "text": "Sto bene, grazie."
-          }
-        ]
+        "dialoguePartner": "Signora Conti (Colleague's Mother)",
+        "partnerSays": "Buongiorno, piacere. Come sta?",
+        "partnerSaysTranslation": "Good morning, pleased to meet you. How are you?",
+        "prompt": "Reply politely, keeping the formal Lei:",
+        "options": [
+          "Molto bene, grazie. E Lei?",
+          "Ciao, a dopo.",
+          "No, grazie."
+        ],
+        "correctAnswer": "Molto bene, grazie. E Lei?",
+        "explanation": "\"Molto bene, grazie. E Lei?\" answers warmly and returns the question with the formal Lei. \"Ciao\" is too casual here."
       },
       {
         "type": "check",
@@ -299,47 +313,67 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the polite phrases",
+        "prompt": "Match each Italian polite phrase with its English meaning:",
         "pairs": [
           {
-            "left": "Per favore",
-            "right": "Please"
+            "id": "ita-1",
+            "foreign": "Per favore",
+            "native": "Please",
+            "phonetic": "pehr fah-VOH-reh"
           },
           {
-            "left": "Grazie",
-            "right": "Thank you"
+            "id": "ita-2",
+            "foreign": "Grazie",
+            "native": "Thank you",
+            "phonetic": "GRAH-tsyeh"
           },
           {
-            "left": "Grazie mille",
-            "right": "Thank you very much"
+            "id": "ita-3",
+            "foreign": "Grazie mille",
+            "native": "Thank you very much",
+            "phonetic": "GRAH-tsyeh MEEL-leh"
           },
           {
-            "left": "Prego",
-            "right": "You’re welcome"
+            "id": "ita-4",
+            "foreign": "Prego",
+            "native": "You’re welcome",
+            "phonetic": "PREH-goh"
           },
           {
-            "left": "Scusi",
-            "right": "Excuse me"
+            "id": "ita-5",
+            "foreign": "Scusi",
+            "native": "Excuse me",
+            "phonetic": "SKOO-zee"
           },
           {
-            "left": "Mi dispiace",
-            "right": "I’m sorry"
+            "id": "ita-6",
+            "foreign": "Mi dispiace",
+            "native": "I’m sorry",
+            "phonetic": "mee dees-PYAH-cheh"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the request",
-        "prompt": "Build: “A coffee, please.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"A coffee, please.\":",
+        "targetSentence": "Un caffè, per favore.",
+        "targetTranslation": "A coffee, please.",
+        "scrambledTokens": [
+          "per",
+          "favore",
+          "Grazie",
+          "Un",
+          "caffè",
+          ","
+        ],
+        "correctTokens": [
           "Un",
           "caffè",
           ",",
           "per",
-          "favore",
-          "."
+          "favore"
         ],
-        "answer": "Un caffè, per favore."
+        "explanation": "Combining a request with \"please\" — the cornerstone of polite interaction."
       },
       {
         "type": "listen",
@@ -356,26 +390,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "At the counter",
-        "context": "Ordering and thanking.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "Un caffè, per favore."
-          },
-          {
-            "speaker": "Clerk",
-            "text": "Ecco. Tre euro."
-          },
-          {
-            "speaker": "You",
-            "text": "Grazie mille."
-          },
-          {
-            "speaker": "Clerk",
-            "text": "Prego."
-          }
-        ]
+        "dialoguePartner": "Marco (Café Clerk)",
+        "partnerSays": "Ecco il suo caffè. Sono tre euro.",
+        "partnerSaysTranslation": "Here's your coffee. That's three euros.",
+        "prompt": "Thank him as you pay:",
+        "options": [
+          "Grazie mille.",
+          "Un caffè, per favore.",
+          "Scusi, non capisco."
+        ],
+        "correctAnswer": "Grazie mille.",
+        "explanation": "\"Grazie mille\" is the natural thank-you at this point in the exchange."
       },
       {
         "type": "check",
@@ -550,51 +575,73 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the numbers",
+        "prompt": "Match each Italian number with its numeral:",
         "pairs": [
           {
-            "left": "uno",
-            "right": "1"
+            "id": "ita-1",
+            "foreign": "uno",
+            "native": "1",
+            "phonetic": "OO-noh"
           },
           {
-            "left": "due",
-            "right": "2"
+            "id": "ita-2",
+            "foreign": "due",
+            "native": "2",
+            "phonetic": "DOO-eh"
           },
           {
-            "left": "tre",
-            "right": "3"
+            "id": "ita-3",
+            "foreign": "tre",
+            "native": "3",
+            "phonetic": "treh"
           },
           {
-            "left": "cinque",
-            "right": "5"
+            "id": "ita-4",
+            "foreign": "cinque",
+            "native": "5",
+            "phonetic": "CHEEN-kweh"
           },
           {
-            "left": "sette",
-            "right": "7"
+            "id": "ita-5",
+            "foreign": "sette",
+            "native": "7",
+            "phonetic": "SET-teh"
           },
           {
-            "left": "dieci",
-            "right": "10"
+            "id": "ita-6",
+            "foreign": "dieci",
+            "native": "10",
+            "phonetic": "DYEH-chee"
           },
           {
-            "left": "venti",
-            "right": "20"
+            "id": "ita-7",
+            "foreign": "venti",
+            "native": "20",
+            "phonetic": "VEN-tee"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the order",
-        "prompt": "Build: “Two coffees, please.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Two coffees, please.\":",
+        "targetSentence": "Due caffè, per favore.",
+        "targetTranslation": "Two coffees, please.",
+        "scrambledTokens": [
+          "per",
+          "favore",
+          "uno",
+          "Due",
+          "caffè",
+          ","
+        ],
+        "correctTokens": [
           "Due",
           "caffè",
           ",",
           "per",
-          "favore",
-          "."
+          "favore"
         ],
-        "answer": "Due caffè, per favore."
+        "explanation": "Numbers in context — the essential combination for real-world transactions."
       },
       {
         "type": "listen",
@@ -611,22 +658,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "At the ticket window",
-        "context": "Buying tickets.",
-        "turns": [
-          {
-            "speaker": "Clerk",
-            "text": "Due biglietti?"
-          },
-          {
-            "speaker": "You",
-            "text": "Sì, due. Ho vent’anni."
-          },
-          {
-            "speaker": "Clerk",
-            "text": "Va bene. Quindici euro."
-          }
-        ]
+        "dialoguePartner": "Signor Russo (Ticket Clerk)",
+        "partnerSays": "Quanti biglietti vuole?",
+        "partnerSaysTranslation": "How many tickets would you like?",
+        "prompt": "Ask for two tickets:",
+        "options": [
+          "Due biglietti, per favore.",
+          "Ho vent'anni.",
+          "Sono quindici euro."
+        ],
+        "correctAnswer": "Due biglietti, per favore.",
+        "explanation": "\"Due biglietti, per favore\" answers with a number and a polite request. \"Sono quindici euro\" is what the clerk would say."
       },
       {
         "type": "check",
@@ -752,43 +794,61 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the building blocks",
+        "prompt": "Match each Italian introduction phrase with its English meaning:",
         "pairs": [
           {
-            "left": "Mi chiamo…",
-            "right": "My name is…"
+            "id": "ita-1",
+            "foreign": "Mi chiamo…",
+            "native": "My name is…",
+            "phonetic": "mee KYAH-moh"
           },
           {
-            "left": "Vengo da…",
-            "right": "I come from…"
+            "id": "ita-2",
+            "foreign": "Vengo da…",
+            "native": "I come from…",
+            "phonetic": "VEN-goh dah"
           },
           {
-            "left": "Abito a…",
-            "right": "I live in…"
+            "id": "ita-3",
+            "foreign": "Abito a…",
+            "native": "I live in…",
+            "phonetic": "AH-bee-toh ah"
           },
           {
-            "left": "Piacere",
-            "right": "Nice to meet you"
+            "id": "ita-4",
+            "foreign": "Piacere",
+            "native": "Nice to meet you",
+            "phonetic": "pyah-CHEH-reh"
           },
           {
-            "left": "E Lei?",
-            "right": "And you? (formal)"
+            "id": "ita-5",
+            "foreign": "E Lei?",
+            "native": "And you? (formal)",
+            "phonetic": "eh LAY"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the introduction",
-        "prompt": "Build: “Hello, my name is Alex.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Hello, my name is Alex.\":",
+        "targetSentence": "Ciao, mi chiamo Alex.",
+        "targetTranslation": "Hello, my name is Alex.",
+        "scrambledTokens": [
+          "chiamo",
+          "Alex",
+          "Piacere",
+          "Ciao",
+          ",",
+          "mi"
+        ],
+        "correctTokens": [
           "Ciao",
           ",",
           "mi",
           "chiamo",
-          "Alex",
-          "."
+          "Alex"
         ],
-        "answer": "Ciao, mi chiamo Alex."
+        "explanation": "Your origin in one clear sentence — the natural follow-up to sharing your name."
       },
       {
         "type": "listen",
@@ -805,26 +865,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "Meeting someone new",
-        "context": "A short self-introduction.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "Ciao, mi chiamo Sam."
-          },
-          {
-            "speaker": "Other",
-            "text": "Piacere. Mi chiamo Lea."
-          },
-          {
-            "speaker": "You",
-            "text": "Vengo dagli Stati Uniti. E Lei?"
-          },
-          {
-            "speaker": "Léa",
-            "text": "Vengo da Roma."
-          }
-        ]
+        "dialoguePartner": "Lea (New Acquaintance)",
+        "partnerSays": "Piacere. Mi chiamo Lea. Di dove è?",
+        "partnerSaysTranslation": "Nice to meet you. My name is Lea. Where are you from?",
+        "prompt": "Say where you're from and return the question:",
+        "options": [
+          "Vengo dagli Stati Uniti. E Lei?",
+          "Mi chiamo Sam.",
+          "Sto bene, grazie."
+        ],
+        "correctAnswer": "Vengo dagli Stati Uniti. E Lei?",
+        "explanation": "\"Vengo dagli Stati Uniti. E Lei?\" answers her question and keeps the conversation balanced."
       },
       {
         "type": "check",
@@ -950,44 +1001,63 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the colors",
+        "prompt": "Match each Italian color with its English name:",
         "pairs": [
           {
-            "left": "rosso",
-            "right": "red"
+            "id": "ita-1",
+            "foreign": "rosso",
+            "native": "red",
+            "phonetic": "ROHS-soh"
           },
           {
-            "left": "blu",
-            "right": "blue"
+            "id": "ita-2",
+            "foreign": "blu",
+            "native": "blue",
+            "phonetic": "bloo"
           },
           {
-            "left": "verde",
-            "right": "green"
+            "id": "ita-3",
+            "foreign": "verde",
+            "native": "green",
+            "phonetic": "VEHR-deh"
           },
           {
-            "left": "nero",
-            "right": "black"
+            "id": "ita-4",
+            "foreign": "nero",
+            "native": "black",
+            "phonetic": "NEH-roh"
           },
           {
-            "left": "bianco",
-            "right": "white"
+            "id": "ita-5",
+            "foreign": "bianco",
+            "native": "white",
+            "phonetic": "BYAHN-koh"
           },
           {
-            "left": "marrone",
-            "right": "brown"
+            "id": "ita-6",
+            "foreign": "marrone",
+            "native": "brown",
+            "phonetic": "mahr-ROH-neh"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the description",
-        "prompt": "Build: “a blue dress”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"a blue dress\":",
+        "targetSentence": "un vestito blu",
+        "targetTranslation": "a blue dress",
+        "scrambledTokens": [
+          "blu",
+          "rosso",
+          "un",
+          "vestito"
+        ],
+        "correctTokens": [
           "un",
           "vestito",
           "blu"
         ],
-        "answer": "un vestito blu"
+        "explanation": "Color + polite form — everything needed to express a preference in any shop."
       },
       {
         "type": "listen",
@@ -1004,22 +1074,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "Choosing a color",
-        "context": "In a clothing shop.",
-        "turns": [
-          {
-            "speaker": "Clerk",
-            "text": "Che colore preferisce?"
-          },
-          {
-            "speaker": "You",
-            "text": "Vorrei quello rosso."
-          },
-          {
-            "speaker": "Clerk",
-            "text": "Ecco un vestito rosso."
-          }
-        ]
+        "dialoguePartner": "Giulia (Shop Clerk)",
+        "partnerSays": "Che colore preferisce?",
+        "partnerSaysTranslation": "Which color do you prefer?",
+        "prompt": "Say you'd like the red one:",
+        "options": [
+          "Vorrei quello rosso.",
+          "Quanto costa?",
+          "È troppo grande."
+        ],
+        "correctAnswer": "Vorrei quello rosso.",
+        "explanation": "\"Vorrei quello rosso\" names the color politely with vorrei."
       },
       {
         "type": "check",
@@ -1049,5 +1114,4168 @@
       }
     ],
     "direction": "en-it"
+  },
+  {
+    "id": "cafe-1",
+    "slug": "at-the-cafe",
+    "title": "At the café",
+    "description": "Order drinks and ask for the bill with confidence.",
+    "unitId": "everyday",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "A quiet table",
+        "body": "Learn a handful of drink words plus two key phrases — s'il vous plaît equivalents — and you can order confidently anywhere."
+      },
+      {
+        "type": "tip",
+        "title": "Café culture",
+        "body": "In many countries, un café means a short espresso. Always clarify 'for here' or 'to go' when ordering.",
+        "bullets": [
+          "Asking for the bill is an active request — servers rarely bring it unsolicited.",
+          "Tipping customs vary widely — research the local norm."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Bevande & servizio",
+        "items": [
+          {
+            "term": "a coffee (espresso)",
+            "meaning": "un caffè"
+          },
+          {
+            "term": "a cappuccino",
+            "meaning": "un cappuccino"
+          },
+          {
+            "term": "a tea",
+            "meaning": "un tè"
+          },
+          {
+            "term": "a hot chocolate",
+            "meaning": "una cioccolata calda"
+          },
+          {
+            "term": "an orange juice",
+            "meaning": "un succo d'arancia"
+          },
+          {
+            "term": "some water",
+            "meaning": "dell'acqua"
+          },
+          {
+            "term": "a jug of tap water",
+            "meaning": "una caraffa d'acqua"
+          },
+          {
+            "term": "the bill",
+            "meaning": "il conto"
+          },
+          {
+            "term": "I would like…",
+            "meaning": "Vorrei…"
+          },
+          {
+            "term": "for here",
+            "meaning": "per qui"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Ordinare",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "I would like a coffee, please.",
+            "target": "Vorrei un caffè, per favore."
+          },
+          {
+            "source": "A tea to take away, please.",
+            "target": "Un tè da portare via, per favore."
+          },
+          {
+            "source": "The bill, please.",
+            "target": "Il conto, per favore."
+          },
+          {
+            "source": "For here or to take away?",
+            "target": "Per qui o da portare via?"
+          },
+          {
+            "source": "Can I have some tap water?",
+            "target": "Posso avere un'acqua del rubinetto?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "un caffè",
+            "native": "a coffee (espresso)",
+            "phonetic": "oon kah-FEH"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "un cappuccino",
+            "native": "a cappuccino",
+            "phonetic": "oon kah-poo-CHEE-noh"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "da portare via",
+            "native": "to take away",
+            "phonetic": "dah por-TAH-reh VEE-ah"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "per qui",
+            "native": "for here",
+            "phonetic": "pehr KWEE"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "il conto",
+            "native": "the bill",
+            "phonetic": "eel KON-toh"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "acqua del rubinetto",
+            "native": "tap water",
+            "phonetic": "AH-kwah del roo-bee-NET-toh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I would like a coffee, please.\":",
+        "targetSentence": "Vorrei un caffè, per favore.",
+        "targetTranslation": "I would like a coffee, please.",
+        "scrambledTokens": [
+          ",",
+          "per",
+          "favore",
+          "da",
+          "Vorrei",
+          "un",
+          "caffè"
+        ],
+        "correctTokens": [
+          "Vorrei",
+          "un",
+          "caffè",
+          ",",
+          "per",
+          "favore"
+        ],
+        "explanation": "A polite order that works in any café — commit it to memory for the first sip."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · conto",
+        "prompt": "How do you ask for the bill?",
+        "audioText": "Il conto, per favore",
+        "options": [
+          "Un caffè, per favore",
+          "Il conto, per favore",
+          "Da portare via",
+          "Una tavola, per favore"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Luca (Barista)",
+        "partnerSays": "Cosa prende?",
+        "partnerSaysTranslation": "What will you have?",
+        "prompt": "Order a coffee politely:",
+        "options": [
+          "Un caffè, per favore.",
+          "Il conto, per favore.",
+          "Da portare via."
+        ],
+        "correctAnswer": "Un caffè, per favore.",
+        "explanation": "\"Un caffè, per favore\" is the natural way to order a coffee at an Italian bar."
+      },
+      {
+        "type": "check",
+        "title": "Check · bill",
+        "prompt": "How do you say \"the bill\" in Italian?",
+        "options": [
+          "il menù",
+          "il conto",
+          "il caffè",
+          "il tavolo"
+        ],
+        "answerIndex": 1,
+        "explanation": "Il conto is the bill in Italian."
+      },
+      {
+        "type": "check",
+        "title": "Check · to go",
+        "prompt": "How do you say \"to take away\" in Italian?",
+        "options": [
+          "per qui",
+          "da portare via",
+          "con latte",
+          "caldo"
+        ],
+        "answerIndex": 1,
+        "explanation": "Da portare via means \"to carry away\" / to go."
+      }
+    ]
+  },
+  {
+    "id": "food-market-1",
+    "slug": "at-the-market",
+    "title": "At the market",
+    "description": "Fruit, quantities, and polite requests at a stall.",
+    "unitId": "everyday",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Market pace",
+        "body": "Markets reward clear numbers and a polite request word. Pointing plus a word works — language makes it smoother."
+      },
+      {
+        "type": "vocab",
+        "title": "Cibo",
+        "items": [
+          {
+            "term": "an apple",
+            "meaning": "una mela"
+          },
+          {
+            "term": "a banana",
+            "meaning": "una banana"
+          },
+          {
+            "term": "a tomato",
+            "meaning": "un pomodoro"
+          },
+          {
+            "term": "a carrot",
+            "meaning": "una carota"
+          },
+          {
+            "term": "some bread",
+            "meaning": "del pane"
+          },
+          {
+            "term": "some cheese",
+            "meaning": "del formaggio"
+          },
+          {
+            "term": "a kilo of…",
+            "meaning": "un chilo di…"
+          },
+          {
+            "term": "half a kilo of…",
+            "meaning": "mezzo chilo di…"
+          },
+          {
+            "term": "How much is it?",
+            "meaning": "Quanto costa?"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Al banco",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "I'd like three apples, please.",
+            "target": "Vorrei tre mele, per favore."
+          },
+          {
+            "source": "A kilo of tomatoes, please.",
+            "target": "Un chilo di pomodori, per favore."
+          },
+          {
+            "source": "How much is it?",
+            "target": "Quanto costa?"
+          },
+          {
+            "source": "That's all, thank you.",
+            "target": "È tutto, grazie."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "una mela",
+            "native": "an apple",
+            "phonetic": "OO-nah MEH-lah"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "un pomodoro",
+            "native": "a tomato",
+            "phonetic": "oon poh-moh-DOH-roh"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "del pane",
+            "native": "some bread",
+            "phonetic": "del PAH-neh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "un chilo di…",
+            "native": "a kilo of…",
+            "phonetic": "oon KEE-loh dee"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "Quanto costa?",
+            "native": "How much is it?",
+            "phonetic": "KWAHN-toh KOS-tah"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "È tutto",
+            "native": "That's all",
+            "phonetic": "eh TOOT-toh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I'd like three apples, please.\":",
+        "targetSentence": "Vorrei tre mele, per favore.",
+        "targetTranslation": "I'd like three apples, please.",
+        "scrambledTokens": [
+          ",",
+          "per",
+          "favore",
+          "una",
+          "Vorrei",
+          "tre",
+          "mele"
+        ],
+        "correctTokens": [
+          "Vorrei",
+          "tre",
+          "mele",
+          ",",
+          "per",
+          "favore"
+        ],
+        "explanation": "Quantity, item, price question — the complete phrase for any market stall."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · prezzo",
+        "prompt": "How do you ask \"How much is it?\"",
+        "audioText": "Quanto costa?",
+        "options": [
+          "Quanto costa?",
+          "Quante ne vuole?",
+          "È tutto?",
+          "Ha mele?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Signora Rossi (Market Vendor)",
+        "partnerSays": "Cosa desidera?",
+        "partnerSaysTranslation": "What would you like?",
+        "prompt": "Ask for three apples and the price:",
+        "options": [
+          "Tre mele. Quanto costa?",
+          "Cinque euro.",
+          "Fa bello oggi."
+        ],
+        "correctAnswer": "Tre mele. Quanto costa?",
+        "explanation": "\"Tre mele. Quanto costa?\" adds to your order and asks the price."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you ask the price in Italian?",
+        "options": [
+          "Che ore sono?",
+          "Quanto costa?",
+          "Dove si trova?",
+          "Come si chiama?"
+        ],
+        "answerIndex": 1,
+        "explanation": "Quanto costa? = How much does it cost? Essential in any market."
+      },
+      {
+        "type": "check",
+        "title": "Check · order",
+        "prompt": "Best for \"three apples, please\"?",
+        "options": [
+          "Tre mele, per favore",
+          "Tre caffè, grazie",
+          "Arrivederci mele",
+          "Mi chiamo mela"
+        ],
+        "answerIndex": 0,
+        "explanation": "Tre mele, per favore directly matches the request."
+      }
+    ]
+  },
+  {
+    "id": "small-talk-1",
+    "slug": "small-talk-weather",
+    "title": "Small talk & weather",
+    "description": "Light conversation beyond hello.",
+    "unitId": "everyday",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Beyond hello",
+        "body": "Weather and weekend questions are safe bridges after greetings. A simple comment on the sun or rain opens doors."
+      },
+      {
+        "type": "vocab",
+        "title": "Tempo & conversazione",
+        "items": [
+          {
+            "term": "The weather is nice",
+            "meaning": "Fa bello"
+          },
+          {
+            "term": "It's raining",
+            "meaning": "Sta piovendo"
+          },
+          {
+            "term": "It's cold",
+            "meaning": "Fa freddo"
+          },
+          {
+            "term": "It's hot",
+            "meaning": "Fa caldo"
+          },
+          {
+            "term": "It's sunny",
+            "meaning": "C'è il sole"
+          },
+          {
+            "term": "It's snowing",
+            "meaning": "Sta nevicando"
+          },
+          {
+            "term": "the weekend",
+            "meaning": "il fine settimana"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Scambi leggeri",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "Nice weather today.",
+            "target": "Oggi fa bello."
+          },
+          {
+            "source": "It's raining a lot.",
+            "target": "Sta piovendo molto."
+          },
+          {
+            "source": "How was your weekend?",
+            "target": "Com'era il suo fine settimana?"
+          },
+          {
+            "source": "It's really hot today!",
+            "target": "Oggi fa davvero caldo!"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "Fa bello",
+            "native": "The weather is nice",
+            "phonetic": "fah BEL-loh"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "Sta piovendo",
+            "native": "It's raining",
+            "phonetic": "stah pyoh-VEN-doh"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "Fa freddo",
+            "native": "It's cold",
+            "phonetic": "fah FRED-doh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "Fa caldo",
+            "native": "It's hot",
+            "phonetic": "fah KAL-doh"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "Sta nevicando",
+            "native": "It's snowing",
+            "phonetic": "stah neh-vee-KAN-doh"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "il fine settimana",
+            "native": "the weekend",
+            "phonetic": "eel FEE-neh set-tee-MAH-nah"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Nice weather today.\":",
+        "targetSentence": "Oggi fa bello.",
+        "targetTranslation": "Nice weather today.",
+        "scrambledTokens": [
+          "bello",
+          "Fa",
+          "Oggi",
+          "fa"
+        ],
+        "correctTokens": [
+          "Oggi",
+          "fa",
+          "bello"
+        ],
+        "explanation": "A light observation that opens the door to warm, easy conversation."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · pioggia",
+        "prompt": "How do you say \"It's raining\"?",
+        "audioText": "Sta piovendo",
+        "options": [
+          "Fa bello",
+          "Sta piovendo",
+          "Fa freddo",
+          "È il fine settimana"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Francesca (Colleague)",
+        "partnerSays": "Fa bello oggi!",
+        "partnerSaysTranslation": "Nice weather today!",
+        "prompt": "Agree and keep the chat going:",
+        "options": [
+          "Sì, c'è il sole. Com'era il suo weekend?",
+          "No, non mi piace il caffè.",
+          "Il conto, per favore."
+        ],
+        "correctAnswer": "Sì, c'è il sole. Com'era il suo weekend?",
+        "explanation": "Agreeing and asking about the weekend is classic small talk."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"It's raining\" in Italian?",
+        "options": [
+          "Fa caldo",
+          "Sta piovendo",
+          "C'è vento",
+          "C'è il sole"
+        ],
+        "answerIndex": 1,
+        "explanation": "Stare + gerund (-ando/-endo) is used for current weather conditions."
+      },
+      {
+        "type": "check",
+        "title": "Check · weekend",
+        "prompt": "How do you ask \"How was your weekend?\" formally?",
+        "options": [
+          "Com'era il suo fine settimana?",
+          "Fa bello?",
+          "È stanco?",
+          "Quanto costa il weekend?"
+        ],
+        "answerIndex": 0,
+        "explanation": "Com'era…? (how was…?) uses imperfect of essere."
+      }
+    ]
+  },
+  {
+    "id": "restaurant-1",
+    "slug": "at-the-restaurant",
+    "title": "At the restaurant",
+    "description": "Reservations, ordering a meal, and dietary needs.",
+    "unitId": "everyday",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "From table to bill",
+        "body": "A restaurant visit follows a clear rhythm: being seated, ordering, and eventually asking for the bill."
+      },
+      {
+        "type": "tip",
+        "title": "Menu know-how",
+        "body": "In many European countries, il menù/el menú/die Speisekarte is the full list of dishes.",
+        "bullets": [
+          "The starter may be called entrante, antipasto, or Vorspeise.",
+          "The main course: plato principal, secondo piatto, Hauptgericht.",
+          "Say Buen provecho / Buon appetito / Guten Appetit before eating."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Parole del ristorante",
+        "items": [
+          {
+            "term": "a table for two",
+            "meaning": "un tavolo per due"
+          },
+          {
+            "term": "the menu",
+            "meaning": "il menù / la carta"
+          },
+          {
+            "term": "the starter",
+            "meaning": "l'antipasto"
+          },
+          {
+            "term": "the main course",
+            "meaning": "il secondo piatto"
+          },
+          {
+            "term": "dessert",
+            "meaning": "il dolce"
+          },
+          {
+            "term": "vegetarian",
+            "meaning": "vegetariano/a"
+          },
+          {
+            "term": "an allergy",
+            "meaning": "un'allergia"
+          },
+          {
+            "term": "the bill",
+            "meaning": "il conto"
+          },
+          {
+            "term": "Enjoy your meal!",
+            "meaning": "Buon appetito!"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Ordinare",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "A table for two, please.",
+            "target": "Un tavolo per due, per favore."
+          },
+          {
+            "source": "What do you recommend?",
+            "target": "Cosa ci consiglia?"
+          },
+          {
+            "source": "I'll have the fish.",
+            "target": "Prendo il pesce."
+          },
+          {
+            "source": "I'm vegetarian.",
+            "target": "Sono vegetariano/a."
+          },
+          {
+            "source": "Enjoy your meal!",
+            "target": "Buon appetito!"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "la carta",
+            "native": "the menu",
+            "phonetic": "lah KAR-tah"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "l'antipasto",
+            "native": "the starter",
+            "phonetic": "lan-tee-PAH-stoh"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "il secondo piatto",
+            "native": "the main course",
+            "phonetic": "eel seh-KON-doh PYAT-toh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "vegetariano/a",
+            "native": "vegetarian",
+            "phonetic": "veh-jeh-tah-RYAH-noh/nah"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "Buon appetito!",
+            "native": "Enjoy your meal!",
+            "phonetic": "bwon ah-peh-TEE-toh"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "il conto",
+            "native": "the bill",
+            "phonetic": "eel KON-toh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"A table for two, please.\":",
+        "targetSentence": "Un tavolo per due, per favore.",
+        "targetTranslation": "A table for two, please.",
+        "scrambledTokens": [
+          ",",
+          "per",
+          "favore",
+          "l'antipasto",
+          "Un",
+          "tavolo",
+          "per",
+          "due"
+        ],
+        "correctTokens": [
+          "Un",
+          "tavolo",
+          "per",
+          "due",
+          ",",
+          "per",
+          "favore"
+        ],
+        "explanation": "The natural, confident way to place an order with any server."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · recommendation",
+        "prompt": "How do you ask \"What do you recommend?\"",
+        "audioText": "Cosa ci consiglia?",
+        "options": [
+          "Cosa ci consiglia?",
+          "Dove sono i bagni?",
+          "Quanto costa?",
+          "La colazione è inclusa?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Paolo (Waiter)",
+        "partnerSays": "Avete scelto?",
+        "partnerSaysTranslation": "Have you decided?",
+        "prompt": "Order the fish:",
+        "options": [
+          "Prendo il pesce, per favore.",
+          "Dov'è la stazione?",
+          "Scendo alla prossima fermata."
+        ],
+        "correctAnswer": "Prendo il pesce, per favore.",
+        "explanation": "\"Prendo…\" (I'll take/have) is the standard way to order."
+      },
+      {
+        "type": "check",
+        "title": "Check · antipasto",
+        "prompt": "In an Italian restaurant, l'antipasto is…",
+        "options": [
+          "The main course",
+          "The starter",
+          "The dessert",
+          "The bill"
+        ],
+        "answerIndex": 1,
+        "explanation": "Antipasto (before the pasta) is the starter; il secondo is the main course."
+      },
+      {
+        "type": "check",
+        "title": "Check · vegetarian",
+        "prompt": "A woman says \"I'm vegetarian.\" Which form?",
+        "options": [
+          "Sono vegetariano",
+          "Sono vegetariana",
+          "Ho vegetariano",
+          "Faccio vegetariano"
+        ],
+        "answerIndex": 1,
+        "explanation": "Vegetariana is the feminine form; vegetariano is masculine."
+      }
+    ]
+  },
+  {
+    "id": "weekend-plans-1",
+    "slug": "talking-about-plans",
+    "title": "Talking about plans",
+    "description": "Express what you're going to do using the near future.",
+    "unitId": "everyday",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "The near future",
+        "body": "Each language has a simple structure to talk about upcoming plans — usually involving \"to go\" or a future auxiliary plus an infinitive."
+      },
+      {
+        "type": "tip",
+        "title": "Pattern",
+        "body": "Learn the subject + \"going to/will\" + infinitive pattern for your target language.",
+        "bullets": [
+          "Spanish: ir a + infinitivo",
+          "German: werden + infinitive",
+          "Italian: future tense or andare a + infinito"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Futuro semplice — andare",
+        "items": [
+          {
+            "term": "I will go",
+            "meaning": "andrò"
+          },
+          {
+            "term": "you will go (informal)",
+            "meaning": "andrai"
+          },
+          {
+            "term": "he / she will go",
+            "meaning": "andrà"
+          },
+          {
+            "term": "we will go",
+            "meaning": "andremo"
+          },
+          {
+            "term": "you will go (formal/plural)",
+            "meaning": "andrà / andrete"
+          },
+          {
+            "term": "they will go",
+            "meaning": "andranno"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Fare piani",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "What are you going to do this weekend?",
+            "target": "Cosa farai questo weekend?"
+          },
+          {
+            "source": "I'm going to visit my parents.",
+            "target": "Andrò a trovare i miei genitori."
+          },
+          {
+            "source": "We're going to watch a film.",
+            "target": "Guarderemo un film."
+          },
+          {
+            "source": "She's going to travel to Rome.",
+            "target": "Viaggerà a Roma."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "andrò",
+            "native": "I will go",
+            "phonetic": "an-DROH"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "andrai",
+            "native": "you will go",
+            "phonetic": "an-DRYE"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "andremo",
+            "native": "we will go",
+            "phonetic": "an-DREH-moh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "andranno",
+            "native": "they will go",
+            "phonetic": "an-DRAN-noh"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "futuro semplice",
+            "native": "simple future tense",
+            "phonetic": "foo-TOO-roh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I'm going to visit my parents.\":",
+        "targetSentence": "Andrò a trovare i miei genitori.",
+        "targetTranslation": "I'm going to visit my parents.",
+        "scrambledTokens": [
+          "i",
+          "miei",
+          "genitori",
+          "andrò",
+          "Andrò",
+          "a",
+          "trovare"
+        ],
+        "correctTokens": [
+          "Andrò",
+          "a",
+          "trovare",
+          "i",
+          "miei",
+          "genitori"
+        ],
+        "explanation": "Future marker + plan — two building blocks for any upcoming arrangement."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · structure",
+        "prompt": "Which sentence uses the Italian future correctly?",
+        "audioText": "Andrò a mangiare",
+        "options": [
+          "Andrò a mangiare",
+          "Vado a mangiare domani",
+          "Sono andato a mangiare",
+          "Andrei a mangiare"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Sofia (Friend)",
+        "partnerSays": "Cosa farai questo weekend?",
+        "partnerSaysTranslation": "What will you do this weekend?",
+        "prompt": "Say you're going to visit your parents:",
+        "options": [
+          "Andrò a trovare i miei genitori.",
+          "Sono le due e mezzo.",
+          "Vorrei quello rosso."
+        ],
+        "correctAnswer": "Andrò a trovare i miei genitori.",
+        "explanation": "\"Andrò a trovare…\" uses the future tense of andare to express a plan."
+      },
+      {
+        "type": "check",
+        "title": "Check · structure",
+        "prompt": "Which uses the simple future in Italian?",
+        "options": [
+          "Andrò a mangiare",
+          "Vado a mangiare",
+          "Sono andato",
+          "Andavo a mangiare"
+        ],
+        "answerIndex": 0,
+        "explanation": "Andrò is the first person future of andare."
+      },
+      {
+        "type": "check",
+        "title": "Check · translate",
+        "prompt": "How do you say \"We will travel\"?",
+        "options": [
+          "Abbiamo viaggiato",
+          "Viaggeremo",
+          "Viaggiamo ogni giorno",
+          "Vogliamo viaggiare"
+        ],
+        "answerIndex": 1,
+        "explanation": "Viaggeremo is the first person plural future of viaggiare."
+      }
+    ]
+  },
+  {
+    "id": "directions-1",
+    "slug": "simple-directions",
+    "title": "Simple directions",
+    "description": "Left, right, straight — and asking where something is.",
+    "unitId": "travel",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Finding your way",
+        "body": "Combine \"where is…?\" with a few direction words for short walks in a new city."
+      },
+      {
+        "type": "vocab",
+        "title": "Direzioni",
+        "items": [
+          {
+            "term": "to the left",
+            "meaning": "a sinistra"
+          },
+          {
+            "term": "to the right",
+            "meaning": "a destra"
+          },
+          {
+            "term": "straight ahead",
+            "meaning": "dritto / sempre dritto"
+          },
+          {
+            "term": "near",
+            "meaning": "vicino a"
+          },
+          {
+            "term": "far from",
+            "meaning": "lontano da"
+          },
+          {
+            "term": "at the corner",
+            "meaning": "all'angolo"
+          },
+          {
+            "term": "across from",
+            "meaning": "di fronte a"
+          },
+          {
+            "term": "between",
+            "meaning": "tra / fra"
+          },
+          {
+            "term": "Where is…?",
+            "meaning": "Dov'è…?"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Chiedere la strada",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "Where is the station?",
+            "target": "Dov'è la stazione?"
+          },
+          {
+            "source": "Is it far?",
+            "target": "È lontano?"
+          },
+          {
+            "source": "Go straight ahead, then left.",
+            "target": "Vada dritto, poi a sinistra."
+          },
+          {
+            "source": "It's across from the pharmacy.",
+            "target": "È di fronte alla farmacia."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "a sinistra",
+            "native": "to the left",
+            "phonetic": "ah see-NEES-trah"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "a destra",
+            "native": "to the right",
+            "phonetic": "ah DES-trah"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "sempre dritto",
+            "native": "straight ahead",
+            "phonetic": "SEM-preh DREET-toh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "vicino a",
+            "native": "near",
+            "phonetic": "vee-CHEE-noh ah"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "di fronte a",
+            "native": "across from",
+            "phonetic": "dee FRON-teh ah"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "Dov'è…?",
+            "native": "Where is…?",
+            "phonetic": "doh-VEH"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Go straight ahead, then left.\":",
+        "targetSentence": "Vada dritto, poi a sinistra.",
+        "targetTranslation": "Go straight ahead, then left.",
+        "scrambledTokens": [
+          "poi",
+          "a",
+          "sinistra",
+          "sempre",
+          "Vada",
+          "dritto",
+          ","
+        ],
+        "correctTokens": [
+          "Vada",
+          "dritto",
+          ",",
+          "poi",
+          "a",
+          "sinistra"
+        ],
+        "explanation": "Left, right, and straight — three words that will get you anywhere in the city."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · where",
+        "prompt": "How do you ask \"Where is the station?\"",
+        "audioText": "Dov'è la stazione?",
+        "options": [
+          "Dov'è la stazione?",
+          "È lontano?",
+          "Quanto costa un biglietto?",
+          "Quale binario?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Signor Bianchi (Passer-by)",
+        "partnerSays": "Vada dritto, poi a sinistra. È di fronte alla farmacia.",
+        "partnerSaysTranslation": "Go straight, then left. It's opposite the pharmacy.",
+        "prompt": "Ask whether it's far:",
+        "options": [
+          "È lontano?",
+          "Dov'è la stazione?",
+          "Qui, per favore."
+        ],
+        "correctAnswer": "È lontano?",
+        "explanation": "\"È lontano?\" is the natural follow-up after getting directions."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"straight ahead\" in Italian?",
+        "options": [
+          "a sinistra",
+          "a destra",
+          "sempre dritto",
+          "molto vicino"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sempre dritto means straight ahead; a sinistra/destra are left/right."
+      },
+      {
+        "type": "check",
+        "title": "Check · ask",
+        "prompt": "How do you ask where the station is?",
+        "options": [
+          "Quanto costa un biglietto?",
+          "Dov'è la stazione?",
+          "Che ore sono?",
+          "Un taxi, per favore"
+        ],
+        "answerIndex": 1,
+        "explanation": "Dov'è…? = Where is…? — essential navigation question."
+      }
+    ]
+  },
+  {
+    "id": "travel-phrases-1",
+    "slug": "travel-phrases",
+    "title": "Travel phrases",
+    "description": "Tickets, platforms, and delays.",
+    "unitId": "travel",
+    "direction": "en-it",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "On the move",
+        "body": "Stations repeat the same patterns: destination, platform, delay, seat. Learn them once."
+      },
+      {
+        "type": "vocab",
+        "title": "Parole di viaggio",
+        "items": [
+          {
+            "term": "a ticket",
+            "meaning": "un biglietto"
+          },
+          {
+            "term": "round trip",
+            "meaning": "andata e ritorno"
+          },
+          {
+            "term": "one-way",
+            "meaning": "solo andata"
+          },
+          {
+            "term": "the train",
+            "meaning": "il treno"
+          },
+          {
+            "term": "the platform",
+            "meaning": "il binario"
+          },
+          {
+            "term": "the flight",
+            "meaning": "il volo"
+          },
+          {
+            "term": "the connection",
+            "meaning": "la coincidenza"
+          },
+          {
+            "term": "delayed / late",
+            "meaning": "in ritardo"
+          },
+          {
+            "term": "on time",
+            "meaning": "in orario"
+          },
+          {
+            "term": "cancelled",
+            "meaning": "cancellato"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Al botteghino",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "A ticket to Rome, please.",
+            "target": "Un biglietto per Roma, per favore."
+          },
+          {
+            "source": "A round trip to Milan.",
+            "target": "Andata e ritorno per Milano."
+          },
+          {
+            "source": "Which platform?",
+            "target": "Quale binario?"
+          },
+          {
+            "source": "Is the train delayed?",
+            "target": "Il treno è in ritardo?"
+          },
+          {
+            "source": "Where do I change trains?",
+            "target": "Dove cambio treno?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "un biglietto",
+            "native": "a ticket",
+            "phonetic": "oon bee-LYEH-toh"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "andata e ritorno",
+            "native": "round trip",
+            "phonetic": "an-DAH-tah eh ree-TOR-noh"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "il binario",
+            "native": "the platform",
+            "phonetic": "eel bee-NAH-ryoh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "in ritardo",
+            "native": "delayed",
+            "phonetic": "in ree-TAR-doh"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "in orario",
+            "native": "on time",
+            "phonetic": "in oh-RAH-ryoh"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "cancellato",
+            "native": "cancelled",
+            "phonetic": "kan-chel-LAH-toh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"A ticket to Rome, please.\":",
+        "targetSentence": "Un biglietto per Roma, per favore.",
+        "targetTranslation": "A ticket to Rome, please.",
+        "scrambledTokens": [
+          ",",
+          "per",
+          "favore",
+          "cancellato",
+          "Un",
+          "biglietto",
+          "per",
+          "Roma"
+        ],
+        "correctTokens": [
+          "Un",
+          "biglietto",
+          "per",
+          "Roma",
+          ",",
+          "per",
+          "favore"
+        ],
+        "explanation": "A direct question that instantly tells you if you're running on schedule."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · delay",
+        "prompt": "How do you say \"The train is delayed\"?",
+        "audioText": "Il treno è in ritardo",
+        "options": [
+          "Il treno è in orario",
+          "Il treno è cancellato",
+          "Il treno è in ritardo",
+          "Il treno è completo"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Signora Ferrari (Ticket Clerk)",
+        "partnerSays": "Il treno parte dal binario tre.",
+        "partnerSaysTranslation": "The train leaves from platform three.",
+        "prompt": "Ask if the train is running late:",
+        "options": [
+          "Il treno è in ritardo?",
+          "Un biglietto per Roma, per favore.",
+          "Fa bello oggi."
+        ],
+        "correctAnswer": "Il treno è in ritardo?",
+        "explanation": "\"Il treno è in ritardo?\" asks about delays."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"a ticket\" in Italian?",
+        "options": [
+          "un binario",
+          "un biglietto",
+          "un treno",
+          "un ritardo"
+        ],
+        "answerIndex": 1,
+        "explanation": "Un biglietto is a ticket; il binario is the platform."
+      },
+      {
+        "type": "check",
+        "title": "Check · delay",
+        "prompt": "How do you say \"delayed\" in Italian?",
+        "options": [
+          "in orario",
+          "cancellato",
+          "in ritardo",
+          "completo"
+        ],
+        "answerIndex": 2,
+        "explanation": "In ritardo means late/delayed; in orario means on time."
+      }
+    ]
+  },
+  {
+    "id": "hotel-1",
+    "slug": "at-the-hotel",
+    "title": "At the hotel",
+    "description": "Check-in lines and simple room requests.",
+    "unitId": "travel",
+    "direction": "en-it",
+    "level": "intermediate",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Front desk",
+        "body": "Reservation, nights, and room type cover most check-ins."
+      },
+      {
+        "type": "vocab",
+        "title": "Parole dell'hotel",
+        "items": [
+          {
+            "term": "a reservation",
+            "meaning": "una prenotazione"
+          },
+          {
+            "term": "a room",
+            "meaning": "una camera"
+          },
+          {
+            "term": "a double room",
+            "meaning": "una camera doppia"
+          },
+          {
+            "term": "a night",
+            "meaning": "una notte"
+          },
+          {
+            "term": "a passport",
+            "meaning": "il passaporto"
+          },
+          {
+            "term": "the key",
+            "meaning": "la chiave"
+          },
+          {
+            "term": "breakfast",
+            "meaning": "la colazione"
+          },
+          {
+            "term": "the elevator",
+            "meaning": "l'ascensore"
+          },
+          {
+            "term": "the reception",
+            "meaning": "la reception"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Check-in",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "I have a reservation.",
+            "target": "Ho una prenotazione."
+          },
+          {
+            "source": "Two nights, please.",
+            "target": "Due notti, per favore."
+          },
+          {
+            "source": "Is breakfast included?",
+            "target": "La colazione è inclusa?"
+          },
+          {
+            "source": "What time is checkout?",
+            "target": "A che ora è il check-out?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "una prenotazione",
+            "native": "a reservation",
+            "phonetic": "OO-nah preh-noh-tah-TSYO-neh"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "una camera",
+            "native": "a room",
+            "phonetic": "OO-nah KAH-meh-rah"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "una camera doppia",
+            "native": "a double room",
+            "phonetic": "KAH-meh-rah DOP-pyah"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "la colazione",
+            "native": "breakfast",
+            "phonetic": "lah koh-lah-TSYO-neh"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "la reception",
+            "native": "the front desk",
+            "phonetic": "lah reh-SEP-shon"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "il check-out",
+            "native": "checkout",
+            "phonetic": "eel CHECK-owt"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have a reservation.\":",
+        "targetSentence": "Ho una prenotazione.",
+        "targetTranslation": "I have a reservation.",
+        "scrambledTokens": [
+          "prenotazione",
+          "la",
+          "Ho",
+          "una"
+        ],
+        "correctTokens": [
+          "Ho",
+          "una",
+          "prenotazione"
+        ],
+        "explanation": "A short statement that confirms your booking and sets check-in in motion."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · breakfast",
+        "prompt": "How do you ask \"Is breakfast included?\"",
+        "audioText": "La colazione è inclusa?",
+        "options": [
+          "La colazione è inclusa?",
+          "A che ora è il check-out?",
+          "Avete una camera doppia?",
+          "Dov'è l'ascensore?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Giulia (Receptionist)",
+        "partnerSays": "Buonasera. Due notti, giusto?",
+        "partnerSaysTranslation": "Good evening. Two nights, right?",
+        "prompt": "Confirm and ask about breakfast:",
+        "options": [
+          "Sì. La colazione è inclusa?",
+          "No, non mi piace il caffè.",
+          "Tre mele, per favore."
+        ],
+        "correctAnswer": "Sì. La colazione è inclusa?",
+        "explanation": "\"Sì. La colazione è inclusa?\" confirms and asks a key check-in question."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"I have a reservation\" in Italian?",
+        "options": [
+          "Ho bisogno di un taxi",
+          "Ho una prenotazione",
+          "La camera è pronta",
+          "Dov'è la colazione?"
+        ],
+        "answerIndex": 1,
+        "explanation": "Avere (to have) conjugated: ho + una prenotazione."
+      },
+      {
+        "type": "check",
+        "title": "Check · checkout",
+        "prompt": "How do you ask what time checkout is?",
+        "options": [
+          "A che ora è il check-out?",
+          "Dov'è la reception?",
+          "Quanto costa la notte?",
+          "Ho una prenotazione"
+        ],
+        "answerIndex": 0,
+        "explanation": "A che ora è…? (At what time is…?) is the question structure for hotel times."
+      }
+    ]
+  },
+  {
+    "id": "getting-around-1",
+    "slug": "getting-around-town",
+    "title": "Getting around town",
+    "description": "Buses, metro, taxis, and buying tickets.",
+    "unitId": "travel",
+    "direction": "en-it",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Moving through the city",
+        "body": "Most cities run on a mix of metro, bus, and tram. A few words cover most fare questions."
+      },
+      {
+        "type": "vocab",
+        "title": "Parole dei trasporti",
+        "items": [
+          {
+            "term": "the subway/metro",
+            "meaning": "la metropolitana / il metro"
+          },
+          {
+            "term": "the bus",
+            "meaning": "l'autobus"
+          },
+          {
+            "term": "the tram",
+            "meaning": "il tram"
+          },
+          {
+            "term": "a ticket (single fare)",
+            "meaning": "un biglietto"
+          },
+          {
+            "term": "a day pass",
+            "meaning": "un abbonamento giornaliero"
+          },
+          {
+            "term": "a stop",
+            "meaning": "una fermata"
+          },
+          {
+            "term": "a station",
+            "meaning": "una stazione"
+          },
+          {
+            "term": "a taxi",
+            "meaning": "un taxi"
+          },
+          {
+            "term": "I'm getting off here",
+            "meaning": "Scendo qui"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "In giro",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "Where's the nearest metro station?",
+            "target": "Dov'è la stazione della metropolitana più vicina?"
+          },
+          {
+            "source": "One ticket, please.",
+            "target": "Un biglietto, per favore."
+          },
+          {
+            "source": "Does this bus go to the center?",
+            "target": "Questo autobus va al centro?"
+          },
+          {
+            "source": "I'm getting off at the next stop.",
+            "target": "Scendo alla prossima fermata."
+          },
+          {
+            "source": "Can you call me a taxi?",
+            "target": "Può chiamarmi un taxi?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "la metropolitana",
+            "native": "the subway/metro",
+            "phonetic": "lah meh-troh-poh-lee-TAH-nah"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "l'autobus",
+            "native": "the bus",
+            "phonetic": "low-toh-BOOS"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "un biglietto",
+            "native": "a single-fare ticket",
+            "phonetic": "oon bee-LYEH-toh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "un abbonamento",
+            "native": "a pass",
+            "phonetic": "oon ah-boh-nah-MEN-toh"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "una fermata",
+            "native": "a stop",
+            "phonetic": "OO-nah fer-MAH-tah"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "Scendo qui",
+            "native": "I'm getting off here",
+            "phonetic": "SHEN-doh kwee"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Does this bus go to the center?\":",
+        "targetSentence": "Questo autobus va al centro?",
+        "targetTranslation": "Does this bus go to the center?",
+        "scrambledTokens": [
+          "al",
+          "centro",
+          "l'autobus",
+          "Questo",
+          "autobus",
+          "va"
+        ],
+        "correctTokens": [
+          "Questo",
+          "autobus",
+          "va",
+          "al",
+          "centro"
+        ],
+        "explanation": "The phrase that ends any bus or metro journey gracefully."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · scendere",
+        "prompt": "How do you say \"I'm getting off here\" on the metro?",
+        "audioText": "Scendo qui",
+        "options": [
+          "Salgo qui",
+          "Scendo qui",
+          "Resto qui",
+          "Sono perso"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Antonio (Bus Driver)",
+        "partnerSays": "Sì, questo autobus va al centro.",
+        "partnerSaysTranslation": "Yes, this bus goes to the center.",
+        "prompt": "Say you're getting off at the next stop:",
+        "options": [
+          "Scendo alla prossima fermata.",
+          "Un biglietto per Roma.",
+          "Andrò a trovare i miei genitori."
+        ],
+        "correctAnswer": "Scendo alla prossima fermata.",
+        "explanation": "\"Scendo alla prossima fermata\" tells the driver where you want to get off."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "Un abbonamento giornaliero usually refers to…",
+        "options": [
+          "A single bus ticket",
+          "A day transport pass",
+          "A taxi receipt",
+          "A train delay"
+        ],
+        "answerIndex": 1,
+        "explanation": "Un abbonamento is a pass; un biglietto is a single fare."
+      },
+      {
+        "type": "check",
+        "title": "Check · getting off",
+        "prompt": "How do you say \"I'm getting off here\"?",
+        "options": [
+          "Salgo qui",
+          "Scendo qui",
+          "Rimango qui",
+          "Arrivo qui"
+        ],
+        "answerIndex": 1,
+        "explanation": "Scendere means to get off/go down; salire means to get on/go up."
+      }
+    ]
+  },
+  {
+    "id": "pharmacy-health-1",
+    "slug": "pharmacy-and-feeling-unwell",
+    "title": "Pharmacy & feeling unwell",
+    "description": "Describe symptoms and get help at a pharmacy.",
+    "unitId": "health-safety",
+    "direction": "en-it",
+    "level": "intermediate",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Green cross, calm help",
+        "body": "Pharmacies are trained to advise on minor issues before you need a doctor."
+      },
+      {
+        "type": "tip",
+        "title": "Pain pattern",
+        "body": "The pattern for expressing pain: \"I have pain in (body part).\"",
+        "bullets": [
+          "Spanish: me duele la cabeza",
+          "German: Ich habe Kopfschmerzen",
+          "Italian: Ho mal di testa"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Parole della salute",
+        "items": [
+          {
+            "term": "a pharmacy",
+            "meaning": "una farmacia"
+          },
+          {
+            "term": "a doctor",
+            "meaning": "un medico"
+          },
+          {
+            "term": "sick",
+            "meaning": "malato/a"
+          },
+          {
+            "term": "fever",
+            "meaning": "la febbre"
+          },
+          {
+            "term": "a medicine",
+            "meaning": "un medicinale"
+          },
+          {
+            "term": "a prescription",
+            "meaning": "una ricetta"
+          },
+          {
+            "term": "the head",
+            "meaning": "la testa"
+          },
+          {
+            "term": "the stomach",
+            "meaning": "lo stomaco"
+          },
+          {
+            "term": "the throat",
+            "meaning": "la gola"
+          },
+          {
+            "term": "Help!",
+            "meaning": "Aiuto!"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Spiegare i sintomi",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "I don't feel well.",
+            "target": "Non mi sento bene."
+          },
+          {
+            "source": "I have a headache.",
+            "target": "Ho mal di testa."
+          },
+          {
+            "source": "I have a fever.",
+            "target": "Ho la febbre."
+          },
+          {
+            "source": "Do you have something for a sore throat?",
+            "target": "Ha qualcosa per la gola?"
+          },
+          {
+            "source": "Call an ambulance!",
+            "target": "Chiami un'ambulanza!"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "Ho mal di testa",
+            "native": "I have a headache",
+            "phonetic": "oh mahl dee TES-tah"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "Ho mal di stomaco",
+            "native": "I have a stomach ache",
+            "phonetic": "oh mahl dee STOH-mah-koh"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "Ho la febbre",
+            "native": "I have a fever",
+            "phonetic": "oh lah FEB-breh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "malato/a",
+            "native": "sick",
+            "phonetic": "mah-LAH-toh/tah"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "una ricetta",
+            "native": "a prescription",
+            "phonetic": "OO-nah ree-CHET-tah"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "Aiuto!",
+            "native": "Help!",
+            "phonetic": "ah-YOO-toh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have a headache.\":",
+        "targetSentence": "Ho mal di testa.",
+        "targetTranslation": "I have a headache.",
+        "scrambledTokens": [
+          "di",
+          "testa",
+          "malato/a",
+          "Ho",
+          "mal"
+        ],
+        "correctTokens": [
+          "Ho",
+          "mal",
+          "di",
+          "testa"
+        ],
+        "explanation": "Describing the most common ache — clear and calm gets you the right remedy."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · stomaco",
+        "prompt": "Which phrase means \"I have a stomach ache\"?",
+        "audioText": "Ho mal di stomaco",
+        "options": [
+          "Ho mal di testa",
+          "Ho mal di stomaco",
+          "Ho la febbre",
+          "Non mi sento bene"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Signora Marino (Pharmacist)",
+        "partnerSays": "Ha la ricetta?",
+        "partnerSaysTranslation": "Do you have a prescription?",
+        "prompt": "Say no and ask for something for your throat:",
+        "options": [
+          "No. Ha qualcosa per la gola?",
+          "Sì, due biglietti.",
+          "Sono vegetariana."
+        ],
+        "correctAnswer": "No. Ha qualcosa per la gola?",
+        "explanation": "\"No. Ha qualcosa per la gola?\" answers and asks for an over-the-counter remedy."
+      },
+      {
+        "type": "check",
+        "title": "Check · pattern",
+        "prompt": "How do you say \"I have a headache\" in Italian?",
+        "options": [
+          "Ho mal di testa",
+          "Ho la testa",
+          "La mia testa fa male",
+          "Sono in testa"
+        ],
+        "answerIndex": 0,
+        "explanation": "Ho mal di testa uses the idiom avere mal di + body part."
+      },
+      {
+        "type": "check",
+        "title": "Check · emergency",
+        "prompt": "Which phrase calls for urgent help?",
+        "options": [
+          "Buon appetito",
+          "Aiuto!",
+          "Quanto costa?",
+          "Piacere"
+        ],
+        "answerIndex": 1,
+        "explanation": "Aiuto! is the standard exclamation for calling for help in Italian."
+      }
+    ]
+  },
+  {
+    "id": "telling-time-1",
+    "slug": "telling-time",
+    "title": "Telling time",
+    "description": "Ask for and give the time, on the hour and beyond.",
+    "unitId": "time-dates",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "What time is it?",
+        "body": "Each language has a key question for asking the time and a standard way to give it."
+      },
+      {
+        "type": "tip",
+        "title": "Minute expressions",
+        "body": "Learn these fixed chunks rather than translating word for word.",
+        "bullets": [
+          "Spanish: y cuarto (quarter past), y media (half past), menos cuarto (quarter to)",
+          "German: Viertel nach (quarter past), halb (half), Viertel vor (quarter to)",
+          "Italian: e un quarto (quarter past), e mezza (half past), meno un quarto (quarter to)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Parole del tempo",
+        "items": [
+          {
+            "term": "What time is it?",
+            "meaning": "Che ore sono?"
+          },
+          {
+            "term": "It is … o'clock",
+            "meaning": "Sono le… / È l'una"
+          },
+          {
+            "term": "quarter past",
+            "meaning": "e un quarto"
+          },
+          {
+            "term": "half past",
+            "meaning": "e mezza"
+          },
+          {
+            "term": "quarter to",
+            "meaning": "meno un quarto"
+          },
+          {
+            "term": "noon",
+            "meaning": "mezzogiorno"
+          },
+          {
+            "term": "midnight",
+            "meaning": "mezzanotte"
+          },
+          {
+            "term": "in the morning",
+            "meaning": "di mattina"
+          },
+          {
+            "term": "in the afternoon / evening",
+            "meaning": "del pomeriggio / di sera"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Dire l'ora",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "What time is it?",
+            "target": "Che ore sono?"
+          },
+          {
+            "source": "It's three o'clock.",
+            "target": "Sono le tre."
+          },
+          {
+            "source": "It's half past seven.",
+            "target": "Sono le sette e mezza."
+          },
+          {
+            "source": "It's a quarter to nine.",
+            "target": "Sono le nove meno un quarto."
+          },
+          {
+            "source": "The train leaves at 14:30.",
+            "target": "Il treno parte alle quattordici e trenta."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "Che ore sono?",
+            "native": "What time is it?",
+            "phonetic": "keh OH-reh SOH-noh"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "e un quarto",
+            "native": "quarter past",
+            "phonetic": "eh oon KWAR-toh"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "e mezza",
+            "native": "half past",
+            "phonetic": "eh MED-zah"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "meno un quarto",
+            "native": "quarter to",
+            "phonetic": "MEH-noh oon KWAR-toh"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "mezzogiorno",
+            "native": "noon",
+            "phonetic": "med-dzoh-JOR-noh"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "mezzanotte",
+            "native": "midnight",
+            "phonetic": "med-dzah-NOT-teh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"It's half past seven.\":",
+        "targetSentence": "Sono le sette e mezza.",
+        "targetTranslation": "It's half past seven.",
+        "scrambledTokens": [
+          "e",
+          "mezza",
+          "mezzogiorno",
+          "Sono",
+          "le",
+          "sette"
+        ],
+        "correctTokens": [
+          "Sono",
+          "le",
+          "sette",
+          "e",
+          "mezza"
+        ],
+        "explanation": "Hour + \"half\" — the most common time expression in everyday conversation."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · quarter to",
+        "prompt": "How do you say \"quarter to nine\" in Italian?",
+        "audioText": "le nove meno un quarto",
+        "options": [
+          "le nove e un quarto",
+          "le nove e mezza",
+          "le nove meno un quarto",
+          "le nove in punto"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Chiara (Passer-by)",
+        "partnerSays": "Sono le due e mezza.",
+        "partnerSaysTranslation": "It's half past two.",
+        "prompt": "Thank her and say when your train leaves:",
+        "options": [
+          "Grazie. Il treno parte alle tre.",
+          "Scusi, che ore sono?",
+          "È troppo piccolo."
+        ],
+        "correctAnswer": "Grazie. Il treno parte alle tre.",
+        "explanation": "\"Grazie. Il treno parte alle tre\" thanks her and states the departure time."
+      },
+      {
+        "type": "check",
+        "title": "Check · quarter to",
+        "prompt": "How do you say \"quarter to nine\" in Italian?",
+        "options": [
+          "le nove e un quarto",
+          "le nove meno un quarto",
+          "le nove e mezza",
+          "un quarto di nove"
+        ],
+        "answerIndex": 1,
+        "explanation": "Meno un quarto subtracts a quarter hour from the stated hour."
+      },
+      {
+        "type": "check",
+        "title": "Check · noon",
+        "prompt": "How do you say \"It's noon\" in Italian?",
+        "options": [
+          "È mezzanotte",
+          "È mezzogiorno",
+          "È mattina",
+          "È tardi"
+        ],
+        "answerIndex": 1,
+        "explanation": "Mezzogiorno is noon (middle of the day); mezzanotte is midnight."
+      }
+    ]
+  },
+  {
+    "id": "days-months-1",
+    "slug": "days-months-and-dates",
+    "title": "Days, months & dates",
+    "description": "The calendar and how to say a date.",
+    "unitId": "time-dates",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "The week starts on Monday",
+        "body": "Romance language calendars typically start the week with Monday. Days and months are NOT capitalized."
+      },
+      {
+        "type": "tip",
+        "title": "Saying a date",
+        "body": "Romance languages use day + month (no ordinals except \"1st\"). German uses ordinal numbers.",
+        "bullets": [
+          "Spanish: el primero de mayo = May 1st",
+          "German: der erste Mai = May 1st",
+          "Italian: il primo maggio = May 1st",
+          "Days and months are lowercase in Spanish and Italian, capitalized in German."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Giorni della settimana",
+        "items": [
+          {
+            "term": "Monday",
+            "meaning": "lunedì"
+          },
+          {
+            "term": "Tuesday",
+            "meaning": "martedì"
+          },
+          {
+            "term": "Wednesday",
+            "meaning": "mercoledì"
+          },
+          {
+            "term": "Thursday",
+            "meaning": "giovedì"
+          },
+          {
+            "term": "Friday",
+            "meaning": "venerdì"
+          },
+          {
+            "term": "Saturday",
+            "meaning": "sabato"
+          },
+          {
+            "term": "Sunday",
+            "meaning": "domenica"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Mesi",
+        "items": [
+          {
+            "term": "January",
+            "meaning": "gennaio"
+          },
+          {
+            "term": "February",
+            "meaning": "febbraio"
+          },
+          {
+            "term": "March",
+            "meaning": "marzo"
+          },
+          {
+            "term": "April",
+            "meaning": "aprile"
+          },
+          {
+            "term": "May",
+            "meaning": "maggio"
+          },
+          {
+            "term": "June",
+            "meaning": "giugno"
+          },
+          {
+            "term": "July",
+            "meaning": "luglio"
+          },
+          {
+            "term": "August",
+            "meaning": "agosto"
+          },
+          {
+            "term": "September",
+            "meaning": "settembre"
+          },
+          {
+            "term": "October",
+            "meaning": "ottobre"
+          },
+          {
+            "term": "November",
+            "meaning": "novembre"
+          },
+          {
+            "term": "December",
+            "meaning": "dicembre"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Parlare di date",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "What day is it today?",
+            "target": "Che giorno è oggi?"
+          },
+          {
+            "source": "Today is Monday.",
+            "target": "Oggi è lunedì."
+          },
+          {
+            "source": "My birthday is May 1st.",
+            "target": "Il mio compleanno è il primo maggio."
+          },
+          {
+            "source": "See you on Friday.",
+            "target": "A venerdì."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "lunedì",
+            "native": "Monday",
+            "phonetic": "loo-neh-DEE"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "martedì",
+            "native": "Tuesday",
+            "phonetic": "mar-teh-DEE"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "mercoledì",
+            "native": "Wednesday",
+            "phonetic": "mer-koh-leh-DEE"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "giovedì",
+            "native": "Thursday",
+            "phonetic": "joh-veh-DEE"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "venerdì",
+            "native": "Friday",
+            "phonetic": "veh-nehr-DEE"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "sabato",
+            "native": "Saturday",
+            "phonetic": "SAH-bah-toh"
+          },
+          {
+            "id": "ita-7",
+            "foreign": "domenica",
+            "native": "Sunday",
+            "phonetic": "doh-MEH-nee-kah"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"My birthday is May 1st.\":",
+        "targetSentence": "Il mio compleanno è il primo maggio.",
+        "targetTranslation": "My birthday is May 1st.",
+        "scrambledTokens": [
+          "il",
+          "primo",
+          "maggio",
+          "lunedì",
+          "Il",
+          "mio",
+          "compleanno",
+          "è"
+        ],
+        "correctTokens": [
+          "Il",
+          "mio",
+          "compleanno",
+          "è",
+          "il",
+          "primo",
+          "maggio"
+        ],
+        "explanation": "A date in full — once you know the pattern, every date falls into place."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · day",
+        "prompt": "How do you say \"Today is Monday\" in Italian?",
+        "audioText": "Oggi è lunedì",
+        "options": [
+          "Oggi è martedì",
+          "Oggi è lunedì",
+          "Oggi è domenica",
+          "Oggi è venerdì"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Marco (Friend)",
+        "partnerSays": "Che giorno è oggi?",
+        "partnerSaysTranslation": "What day is today?",
+        "prompt": "Say it's Wednesday:",
+        "options": [
+          "Oggi è mercoledì.",
+          "Sono le tre.",
+          "Ho vent'anni."
+        ],
+        "correctAnswer": "Oggi è mercoledì.",
+        "explanation": "\"Oggi è mercoledì\" answers with the day. Days are not capitalized in Italian."
+      },
+      {
+        "type": "check",
+        "title": "Check · order",
+        "prompt": "Which day comes right after mercoledì?",
+        "options": [
+          "martedì",
+          "venerdì",
+          "giovedì",
+          "sabato"
+        ],
+        "answerIndex": 2,
+        "explanation": "The order is lunedì, martedì, mercoledì, giovedì, venerdì, sabato, domenica."
+      },
+      {
+        "type": "check",
+        "title": "Check · capitalization",
+        "prompt": "In Italian, days and months are…",
+        "options": [
+          "Always capitalized",
+          "Never capitalized",
+          "Capitalized only in titles",
+          "Capitalized only at sentence start"
+        ],
+        "answerIndex": 1,
+        "explanation": "Unlike English, Italian days and months are lowercase: lunedì, gennaio."
+      }
+    ]
+  },
+  {
+    "id": "family-1",
+    "slug": "talking-about-family",
+    "title": "Talking about family",
+    "description": "Name family members and describe relationships.",
+    "unitId": "family-friends",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Who's who",
+        "body": "Family vocabulary combines nicely with \"to have\" and possessive adjectives."
+      },
+      {
+        "type": "tip",
+        "title": "Possessives",
+        "body": "Possessives agree with the noun that follows, not the owner's gender.",
+        "bullets": [
+          "Spanish: mi hermano (my brother), mi hermana (my sister)",
+          "German: mein Bruder, meine Schwester",
+          "Italian: mio fratello, mia sorella"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Membri della famiglia",
+        "items": [
+          {
+            "term": "the family",
+            "meaning": "la famiglia"
+          },
+          {
+            "term": "the father",
+            "meaning": "il padre"
+          },
+          {
+            "term": "the mother",
+            "meaning": "la madre"
+          },
+          {
+            "term": "the brother",
+            "meaning": "il fratello"
+          },
+          {
+            "term": "the sister",
+            "meaning": "la sorella"
+          },
+          {
+            "term": "the son",
+            "meaning": "il figlio"
+          },
+          {
+            "term": "the daughter",
+            "meaning": "la figlia"
+          },
+          {
+            "term": "the grandparents",
+            "meaning": "i nonni"
+          },
+          {
+            "term": "the husband / the wife",
+            "meaning": "il marito / la moglie"
+          },
+          {
+            "term": "a friend",
+            "meaning": "un amico / un'amica"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Descrivere la propria famiglia",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "I have two brothers.",
+            "target": "Ho due fratelli."
+          },
+          {
+            "source": "This is my sister.",
+            "target": "Questa è mia sorella."
+          },
+          {
+            "source": "My parents live in Rome.",
+            "target": "I miei genitori abitano a Roma."
+          },
+          {
+            "source": "Do you have children?",
+            "target": "Ha dei figli?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "il padre",
+            "native": "the father",
+            "phonetic": "eel PAH-dreh"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "la madre",
+            "native": "the mother",
+            "phonetic": "lah MAH-dreh"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "il fratello",
+            "native": "the brother",
+            "phonetic": "eel frah-TEL-loh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "la sorella",
+            "native": "the sister",
+            "phonetic": "lah soh-REL-lah"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "i nonni",
+            "native": "the grandparents",
+            "phonetic": "ee NON-nee"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "un amico/a",
+            "native": "a friend",
+            "phonetic": "oon ah-MEE-koh/kah"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have two brothers.\":",
+        "targetSentence": "Ho due fratelli.",
+        "targetTranslation": "I have two brothers.",
+        "scrambledTokens": [
+          "fratelli",
+          "il",
+          "Ho",
+          "due"
+        ],
+        "correctTokens": [
+          "Ho",
+          "due",
+          "fratelli"
+        ],
+        "explanation": "A warm, simple statement that naturally invites the other person to share too."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · possessive",
+        "prompt": "How do you say \"my sister\" in Italian?",
+        "audioText": "mia sorella",
+        "options": [
+          "mio fratello",
+          "mia sorella",
+          "i miei genitori",
+          "il mio amico"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Andrea (Friend)",
+        "partnerSays": "Piacere. Ha dei fratelli?",
+        "partnerSaysTranslation": "Nice to meet you. Do you have siblings?",
+        "prompt": "Say you have two brothers:",
+        "options": [
+          "Sì, ho due fratelli.",
+          "Questa è mia sorella.",
+          "No, non ho fame."
+        ],
+        "correctAnswer": "Sì, ho due fratelli.",
+        "explanation": "\"Sì, ho due fratelli\" answers directly using avere."
+      },
+      {
+        "type": "check",
+        "title": "Check · possessive",
+        "prompt": "How do you say \"my sister\" in Italian?",
+        "options": [
+          "mio sorella",
+          "mia sorella",
+          "miei sorella",
+          "la sorella"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sorella is feminine singular → mia sorella (no article needed with close family)."
+      },
+      {
+        "type": "check",
+        "title": "Check · plural",
+        "prompt": "How do you say \"my parents\" in Italian?",
+        "options": [
+          "il mio genitore",
+          "i miei genitori",
+          "la mia genitore",
+          "nostri genitori"
+        ],
+        "answerIndex": 1,
+        "explanation": "I miei genitori — miei is the masculine plural possessive, genitori is \"parents\"."
+      }
+    ]
+  },
+  {
+    "id": "shopping-clothes-1",
+    "slug": "shopping-for-clothes",
+    "title": "Shopping for clothes",
+    "description": "Sizes, trying things on, and asking about price.",
+    "unitId": "shopping",
+    "direction": "en-it",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Trying it on",
+        "body": "Clothes shopping mixes size, color, and a few polite requests to try things on or ask for a different size."
+      },
+      {
+        "type": "vocab",
+        "title": "Parole dell'abbigliamento",
+        "items": [
+          {
+            "term": "a piece of clothing",
+            "meaning": "un capo d'abbigliamento"
+          },
+          {
+            "term": "a shirt",
+            "meaning": "una camicia"
+          },
+          {
+            "term": "trousers/pants",
+            "meaning": "i pantaloni"
+          },
+          {
+            "term": "a dress",
+            "meaning": "un vestito / una gonna"
+          },
+          {
+            "term": "shoes",
+            "meaning": "le scarpe"
+          },
+          {
+            "term": "the size",
+            "meaning": "la taglia"
+          },
+          {
+            "term": "the fitting room",
+            "meaning": "il camerino"
+          },
+          {
+            "term": "on sale",
+            "meaning": "in saldo"
+          },
+          {
+            "term": "too big / too small",
+            "meaning": "troppo grande / troppo piccolo"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "In negozio",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "Do you have this in a size 40?",
+            "target": "Ce l'ha in taglia quaranta?"
+          },
+          {
+            "source": "Can I try it on?",
+            "target": "Posso provarlo?"
+          },
+          {
+            "source": "Where is the fitting room?",
+            "target": "Dov'è il camerino?"
+          },
+          {
+            "source": "It's too small.",
+            "target": "È troppo piccolo/a."
+          },
+          {
+            "source": "Do you have a bigger size?",
+            "target": "Ha una taglia più grande?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "la taglia",
+            "native": "the size",
+            "phonetic": "lah TAH-lyah"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "il camerino",
+            "native": "the fitting room",
+            "phonetic": "eel kah-meh-REE-noh"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "in saldo",
+            "native": "on sale",
+            "phonetic": "in SAL-doh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "troppo grande",
+            "native": "too big",
+            "phonetic": "TROP-poh GRAN-deh"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "troppo piccolo",
+            "native": "too small",
+            "phonetic": "TROP-poh PEE-koh-loh"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "un vestito",
+            "native": "a dress",
+            "phonetic": "oon vehs-TEE-toh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Do you have this in a size 40?\":",
+        "targetSentence": "Ce l'ha in taglia quaranta?",
+        "targetTranslation": "Do you have this in a size 40?",
+        "scrambledTokens": [
+          "taglia",
+          "quaranta",
+          "la",
+          "Ce",
+          "l'ha",
+          "in"
+        ],
+        "correctTokens": [
+          "Ce",
+          "l'ha",
+          "in",
+          "taglia",
+          "quaranta"
+        ],
+        "explanation": "The one question that keeps a shopping trip moving in the right direction."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · size",
+        "prompt": "How do you say \"It's too small\"?",
+        "audioText": "È troppo piccolo",
+        "options": [
+          "È troppo grande",
+          "È troppo piccolo",
+          "È in saldo",
+          "È perfetto"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Alessia (Shop Clerk)",
+        "partnerSays": "Certamente. Il camerino è là in fondo.",
+        "partnerSaysTranslation": "Certainly. The fitting room is at the back.",
+        "prompt": "After trying it on, say it's too small and ask for a bigger size:",
+        "options": [
+          "È troppo piccolo. Ha una taglia più grande?",
+          "Posso provarlo?",
+          "Vorrei quello rosso."
+        ],
+        "correctAnswer": "È troppo piccolo. Ha una taglia più grande?",
+        "explanation": "\"È troppo piccolo. Ha una taglia più grande?\" describes the problem and asks for the next size."
+      },
+      {
+        "type": "check",
+        "title": "Check · size",
+        "prompt": "How do you ask \"do you have this in size 40?\"",
+        "options": [
+          "Ce l'ha in taglia quaranta?",
+          "È troppo grande?",
+          "Dov'è il camerino?",
+          "In saldo, per favore."
+        ],
+        "answerIndex": 0,
+        "explanation": "Taglia means size; in taglia quaranta = in size 40."
+      },
+      {
+        "type": "check",
+        "title": "Check · too small",
+        "prompt": "How do you say \"It's too small\"?",
+        "options": [
+          "È troppo grande",
+          "È troppo piccolo",
+          "È in saldo",
+          "È perfetto"
+        ],
+        "answerIndex": 1,
+        "explanation": "Troppo piccolo = too small; troppo grande = too big."
+      }
+    ]
+  },
+  {
+    "id": "articles-gender-1",
+    "slug": "articles-and-gender",
+    "title": "Articles & gender",
+    "description": "Noun gender and the articles that show it.",
+    "unitId": "grammar-core",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 18,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Every noun has a gender",
+        "body": "In Romance languages, nouns are masculine or feminine. In German, there are three genders. Articles show that gender. Memorize nouns with their article."
+      },
+      {
+        "type": "tip",
+        "title": "Learning habit",
+        "body": "Don't just learn 'house'. Learn 'the house' with its article. The article is part of the word.",
+        "bullets": [
+          "Spanish: el/la (the), un/una (a)",
+          "German: der/die/das (the), ein/eine/ein (a)",
+          "Italian: il/la (the), un/una (a), lo/gli for special cases"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Coppie da notare",
+        "items": [
+          {
+            "term": "the book (masculine)",
+            "meaning": "il libro"
+          },
+          {
+            "term": "the table (feminine)",
+            "meaning": "la tavola"
+          },
+          {
+            "term": "a coffee",
+            "meaning": "un caffè"
+          },
+          {
+            "term": "an apple",
+            "meaning": "una mela"
+          },
+          {
+            "term": "water (feminine)",
+            "meaning": "l'acqua (takes l' before vowel)"
+          },
+          {
+            "term": "the hotel",
+            "meaning": "l'hotel (m.)"
+          },
+          {
+            "term": "the children",
+            "meaning": "i bambini (pl. masc.)"
+          },
+          {
+            "term": "some friends",
+            "meaning": "degli amici"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "il / un",
+            "native": "masculine",
+            "phonetic": "eel / oon"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "la / una",
+            "native": "feminine",
+            "phonetic": "lah / OO-nah"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "l'",
+            "native": "before a vowel sound",
+            "phonetic": "l"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "i / degli",
+            "native": "masculine plural",
+            "phonetic": "ee / DEH-lyee"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "le / delle",
+            "native": "feminine plural",
+            "phonetic": "leh / DEL-leh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"the table\":",
+        "targetSentence": "la tavola",
+        "targetTranslation": "the table",
+        "scrambledTokens": [
+          "tavola",
+          "l'",
+          "la"
+        ],
+        "correctTokens": [
+          "la",
+          "tavola"
+        ],
+        "explanation": "A compact phrase that puts the article or gender rule into immediate practice."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · gender",
+        "prompt": "Which article fits with \"mela\" (apple)?",
+        "audioText": "la mela",
+        "options": [
+          "il",
+          "la",
+          "i",
+          "un"
+        ],
+        "answerIndex": 1,
+        "explanation": "Mela is feminine → la / una mela."
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Professoressa Conti (Teacher)",
+        "partnerSays": "Come si dice \"the table\" in italiano?",
+        "partnerSaysTranslation": "How do you say \"the table\" in Italian?",
+        "prompt": "Answer with the correct article:",
+        "options": [
+          "La tavola.",
+          "Il tavola.",
+          "Un tavola."
+        ],
+        "correctAnswer": "La tavola.",
+        "explanation": "Tavola is feminine, so it takes la. Il is masculine, and un is the masculine indefinite article."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "Which article fits with \"libro\" (book) in Italian?",
+        "options": [
+          "la",
+          "il",
+          "i only",
+          "No article ever"
+        ],
+        "answerIndex": 1,
+        "explanation": "Il/un libro — masculine."
+      },
+      {
+        "type": "check",
+        "title": "Check · vowel",
+        "prompt": "Before a vowel sound, il/la often becomes…",
+        "options": [
+          "del",
+          "l'",
+          "dei",
+          "al"
+        ],
+        "answerIndex": 1,
+        "explanation": "L'hotel, l'acqua — the apostrophe replaces il/la before a vowel sound."
+      },
+      {
+        "type": "check",
+        "title": "Check · plural",
+        "prompt": "The masculine plural definite article in Italian is…",
+        "options": [
+          "le",
+          "il",
+          "i",
+          "un"
+        ],
+        "answerIndex": 2,
+        "explanation": "I is the masculine plural definite article: i libri, i bambini."
+      }
+    ]
+  },
+  {
+    "id": "etre-avoir-1",
+    "slug": "to-be-and-to-have",
+    "title": "To be & to have",
+    "description": "The two verbs you'll use every day.",
+    "unitId": "grammar-core",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 19,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Workhorses",
+        "body": "The verbs \"to be\" and \"to have\" appear constantly in descriptions, states, and idioms."
+      },
+      {
+        "type": "vocab",
+        "title": "Essere — presente",
+        "items": [
+          {
+            "term": "I am",
+            "meaning": "sono"
+          },
+          {
+            "term": "you are (informal)",
+            "meaning": "sei"
+          },
+          {
+            "term": "he / she / it is",
+            "meaning": "è"
+          },
+          {
+            "term": "we are",
+            "meaning": "siamo"
+          },
+          {
+            "term": "you are (formal/plural)",
+            "meaning": "è / siete"
+          },
+          {
+            "term": "they are",
+            "meaning": "sono"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Avere — presente",
+        "items": [
+          {
+            "term": "I have",
+            "meaning": "ho"
+          },
+          {
+            "term": "you have (informal)",
+            "meaning": "hai"
+          },
+          {
+            "term": "he / she has",
+            "meaning": "ha"
+          },
+          {
+            "term": "we have",
+            "meaning": "abbiamo"
+          },
+          {
+            "term": "you have (formal/plural)",
+            "meaning": "ha / avete"
+          },
+          {
+            "term": "they have",
+            "meaning": "hanno"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "In frasi",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "I am tired.",
+            "target": "Sono stanco/a."
+          },
+          {
+            "source": "She is Italian.",
+            "target": "È italiana."
+          },
+          {
+            "source": "I have a reservation.",
+            "target": "Ho una prenotazione."
+          },
+          {
+            "source": "We have time.",
+            "target": "Abbiamo tempo."
+          },
+          {
+            "source": "They are hungry.",
+            "target": "Hanno fame.",
+            "note": "Idiom: avere fame = to be hungry"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "sono",
+            "native": "I am / they are",
+            "phonetic": "SOH-noh"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "siamo",
+            "native": "we are",
+            "phonetic": "SYAH-moh"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "ho",
+            "native": "I have",
+            "phonetic": "oh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "abbiamo",
+            "native": "we have",
+            "phonetic": "ab-BYAH-moh"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "hanno",
+            "native": "they have",
+            "phonetic": "AN-noh"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "avere fame",
+            "native": "to be hungry",
+            "phonetic": "ah-VEH-reh FAH-meh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I am tired.\":",
+        "targetSentence": "Sono stanco/a.",
+        "targetTranslation": "I am tired.",
+        "scrambledTokens": [
+          "stanco/a",
+          "sono",
+          "Sono"
+        ],
+        "correctTokens": [
+          "Sono",
+          "stanco/a"
+        ],
+        "explanation": "Two core verbs in a single sentence — a powerful combination to internalize."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · idiom",
+        "prompt": "How do you say \"They are hungry\"?",
+        "audioText": "Hanno fame",
+        "options": [
+          "Hanno fame",
+          "Hanno sete",
+          "Stanno mangiando",
+          "Sono stanchi"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Valentina (Friend)",
+        "partnerSays": "Come stai?",
+        "partnerSaysTranslation": "How are you?",
+        "prompt": "Say you're tired and hungry:",
+        "options": [
+          "Sono stanco e ho fame.",
+          "Ho stanco e sono fame.",
+          "Sono fame e ho stanco."
+        ],
+        "correctAnswer": "Sono stanco e ho fame.",
+        "explanation": "Stanco uses essere (sono stanco), while fame uses avere (ho fame)."
+      },
+      {
+        "type": "check",
+        "title": "Check · essere",
+        "prompt": "How do you say \"I am\"?",
+        "options": [
+          "Ho",
+          "Sono",
+          "Vado",
+          "Voglio"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sono comes from essere (to be)."
+      },
+      {
+        "type": "check",
+        "title": "Check · avere",
+        "prompt": "\"Ho una prenotazione\" uses…",
+        "options": [
+          "essere",
+          "avere",
+          "andare",
+          "volere"
+        ],
+        "answerIndex": 1,
+        "explanation": "Ho comes from avere (to have)."
+      },
+      {
+        "type": "check",
+        "title": "Check · idiom",
+        "prompt": "How do you say \"they are hungry\" in Italian?",
+        "options": [
+          "Hanno fame",
+          "Hanno sete",
+          "Sono stanchi",
+          "Hanno una prenotazione"
+        ],
+        "answerIndex": 0,
+        "explanation": "Avere fame is an idiom — Italian uses \"have\" where English uses \"be\" for hunger."
+      }
+    ]
+  },
+  {
+    "id": "regular-er-verbs-1",
+    "slug": "regular-verbs",
+    "title": "Regular verbs",
+    "description": "Conjugate the most common verb family.",
+    "unitId": "grammar-core",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 18,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "The biggest group",
+        "body": "Most verbs in these languages follow a regular pattern — learn it once, apply it to hundreds of verbs."
+      },
+      {
+        "type": "tip",
+        "title": "The pattern",
+        "body": "Drop the infinitive ending, add the personal ending for each subject.",
+        "bullets": [
+          "Spanish -ar: habl-ar → hablo, hablas, habla, hablamos, habláis, hablan",
+          "German regular: spiel-en → spiele, spielst, spielt, spielen, spielt, spielen",
+          "Italian -are: parl-are → parlo, parli, parla, parliamo, parlate, parlano"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Parlare (to speak) — presente",
+        "items": [
+          {
+            "term": "I speak",
+            "meaning": "parlo"
+          },
+          {
+            "term": "you speak (informal)",
+            "meaning": "parli"
+          },
+          {
+            "term": "he / she speaks",
+            "meaning": "parla"
+          },
+          {
+            "term": "we speak",
+            "meaning": "parliamo"
+          },
+          {
+            "term": "you speak (formal/plural)",
+            "meaning": "parla / parlate"
+          },
+          {
+            "term": "they speak",
+            "meaning": "parlano"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "More -are verbs",
+        "items": [
+          {
+            "term": "to like",
+            "meaning": "piacere (irregular)"
+          },
+          {
+            "term": "to live (somewhere)",
+            "meaning": "abitare"
+          },
+          {
+            "term": "to work",
+            "meaning": "lavorare"
+          },
+          {
+            "term": "to watch/look",
+            "meaning": "guardare"
+          },
+          {
+            "term": "to eat",
+            "meaning": "mangiare"
+          },
+          {
+            "term": "to listen",
+            "meaning": "ascoltare"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "In uso",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "I speak a little Italian.",
+            "target": "Parlo un po' italiano."
+          },
+          {
+            "source": "We work in Milan.",
+            "target": "Lavoriamo a Milano."
+          },
+          {
+            "source": "They love Italian food.",
+            "target": "Amano il cibo italiano."
+          },
+          {
+            "source": "She watches TV every day.",
+            "target": "Guarda la TV ogni giorno."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "parlo",
+            "native": "I speak (io)",
+            "phonetic": "PAR-loh"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "parli",
+            "native": "you speak (tu)",
+            "phonetic": "PAR-lee"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "parliamo",
+            "native": "we speak",
+            "phonetic": "par-LYAH-moh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "lavorano",
+            "native": "they work",
+            "phonetic": "lah-VOH-rah-noh"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "ascolti",
+            "native": "you listen (tu)",
+            "phonetic": "ah-SKOL-tee"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I speak a little Italian.\":",
+        "targetSentence": "Parlo un po' italiano.",
+        "targetTranslation": "I speak a little Italian.",
+        "scrambledTokens": [
+          "po'",
+          "italiano",
+          "parlo",
+          "Parlo",
+          "un"
+        ],
+        "correctTokens": [
+          "Parlo",
+          "un",
+          "po'",
+          "italiano"
+        ],
+        "explanation": "The verb pattern in action — master this form and unlock a whole verb family."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · noi form",
+        "prompt": "Which form is correct for \"we work\"?",
+        "audioText": "lavoriamo",
+        "options": [
+          "lavoron",
+          "lavoriamo",
+          "lavorate",
+          "lavorano"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Matteo (Friend)",
+        "partnerSays": "Parli italiano?",
+        "partnerSaysTranslation": "Do you speak Italian?",
+        "prompt": "Say yes, you speak a little Italian:",
+        "options": [
+          "Sì, parlo un po' italiano.",
+          "Sì, parli un po' italiano.",
+          "Sì, parliamo un po' italiano."
+        ],
+        "correctAnswer": "Sì, parlo un po' italiano.",
+        "explanation": "With io, -are verbs take -o: parlo. Parli is the tu form."
+      },
+      {
+        "type": "check",
+        "title": "Check · ending",
+        "prompt": "What ending goes with io for -are verbs?",
+        "options": [
+          "-i",
+          "-o",
+          "-a",
+          "-iamo"
+        ],
+        "answerIndex": 1,
+        "explanation": "Io takes -o: parlo, lavoro, guardo."
+      },
+      {
+        "type": "check",
+        "title": "Check · noi",
+        "prompt": "What ending goes with noi for -are verbs?",
+        "options": [
+          "-o",
+          "-i",
+          "-iamo",
+          "-ano"
+        ],
+        "answerIndex": 2,
+        "explanation": "Noi takes -iamo: parliamo, lavoriamo."
+      }
+    ]
+  },
+  {
+    "id": "adjective-agreement-1",
+    "slug": "adjective-agreement",
+    "title": "Adjective agreement",
+    "description": "Make descriptive words match the noun they describe.",
+    "unitId": "grammar-core",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Adjectives match their nouns",
+        "body": "In Romance languages, adjectives agree with the noun in gender and number. In German, predicate adjectives (after 'to be') stay unchanged."
+      },
+      {
+        "type": "tip",
+        "title": "The default rule",
+        "body": "Add -a/-e for feminine, -s for plural in Romance languages. German predicate adjectives don't decline.",
+        "bullets": [
+          "Spanish: gran-d → grande (m/f), grand-es (pl)",
+          "German: Er ist groß / Sie ist groß (no change after sein)",
+          "Italian: grand-e → grande (m/f), grand-i (pl)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Aggettivi comuni",
+        "items": [
+          {
+            "term": "tall / big",
+            "meaning": "alto/a"
+          },
+          {
+            "term": "small",
+            "meaning": "piccolo/a"
+          },
+          {
+            "term": "happy",
+            "meaning": "contento/a"
+          },
+          {
+            "term": "interesting",
+            "meaning": "interessante (same m/f)"
+          },
+          {
+            "term": "beautiful (m.)",
+            "meaning": "bello"
+          },
+          {
+            "term": "beautiful (f.)",
+            "meaning": "bella"
+          },
+          {
+            "term": "new",
+            "meaning": "nuovo/a"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Descrivere persone e cose",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "He is tall.",
+            "target": "Lui è alto."
+          },
+          {
+            "source": "She is tall.",
+            "target": "Lei è alta."
+          },
+          {
+            "source": "They are happy. (f.)",
+            "target": "Loro sono contente."
+          },
+          {
+            "source": "It's a beautiful city.",
+            "target": "È una bella città."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "alto",
+            "native": "tall/big (masc.)",
+            "phonetic": "AL-toh"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "alta",
+            "native": "tall/big (fem.)",
+            "phonetic": "AL-tah"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "piccolo",
+            "native": "small (masc.)",
+            "phonetic": "PEE-koh-loh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "piccola",
+            "native": "small (fem.)",
+            "phonetic": "PEE-koh-lah"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "nuovo/a",
+            "native": "new (masc./fem.)",
+            "phonetic": "NWOH-voh/vah"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "bello/bella",
+            "native": "beautiful (masc./fem.)",
+            "phonetic": "BEL-loh/lah"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"She is small.\":",
+        "targetSentence": "Lei è piccola.",
+        "targetTranslation": "She is small.",
+        "scrambledTokens": [
+          "piccola",
+          "alto",
+          "Lei",
+          "è"
+        ],
+        "correctTokens": [
+          "Lei",
+          "è",
+          "piccola"
+        ],
+        "explanation": "Agreement at work: the adjective shifts to match the noun it describes."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · feminine",
+        "prompt": "Which adjective form goes with \"sorella\" (sister)?",
+        "audioText": "alta",
+        "options": [
+          "alto",
+          "alta",
+          "alti",
+          "alte"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Elena (Friend)",
+        "partnerSays": "Mio fratello è alto. E tua sorella?",
+        "partnerSaysTranslation": "My brother is tall. And your sister?",
+        "prompt": "Describe your sister the same way:",
+        "options": [
+          "È alta anche lei.",
+          "È alto anche lei.",
+          "È alti anche lei."
+        ],
+        "correctAnswer": "È alta anche lei.",
+        "explanation": "Adjectives agree with the noun: sorella is feminine, so alto becomes alta."
+      },
+      {
+        "type": "check",
+        "title": "Check · feminine",
+        "prompt": "How do you say \"she is small\" (piccola)?",
+        "options": [
+          "Lei è piccolo",
+          "Lei è piccola",
+          "Lei è piccoli",
+          "Lei è piccole"
+        ],
+        "answerIndex": 1,
+        "explanation": "Lei (feminine singular) needs the -a ending: piccola."
+      },
+      {
+        "type": "check",
+        "title": "Check · position",
+        "prompt": "Which adjective position is standard in Italian?",
+        "options": [
+          "Always before the noun",
+          "Usually after the noun",
+          "Before for all adjectives",
+          "No fixed rule"
+        ],
+        "answerIndex": 1,
+        "explanation": "Most Italian adjectives follow the noun: una città bella."
+      }
+    ]
+  },
+  {
+    "id": "negation-1",
+    "slug": "saying-no",
+    "title": "Saying no",
+    "description": "Turn any sentence negative with simple patterns.",
+    "unitId": "grammar-core",
+    "direction": "en-it",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Negation patterns",
+        "body": "Each language has a characteristic way to negate a verb. Learn the pattern, apply it everywhere."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "The position of 'no/nicht/non' differs in each language.",
+        "bullets": [
+          "Spanish: no before the verb. Double negation is standard: no veo nada.",
+          "German: nicht usually late in the sentence; kein negates nouns.",
+          "Italian: non before the verb. Double negation standard: non vedo niente."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Parole di negazione",
+        "items": [
+          {
+            "term": "not",
+            "meaning": "non"
+          },
+          {
+            "term": "never",
+            "meaning": "mai"
+          },
+          {
+            "term": "no longer / not anymore",
+            "meaning": "non…più"
+          },
+          {
+            "term": "nothing",
+            "meaning": "niente / nulla"
+          },
+          {
+            "term": "nobody",
+            "meaning": "nessuno"
+          },
+          {
+            "term": "neither…nor…",
+            "meaning": "né…né…"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Frasi negative",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "I don't speak French.",
+            "target": "Non parlo francese."
+          },
+          {
+            "source": "I don't like coffee.",
+            "target": "Non mi piace il caffè."
+          },
+          {
+            "source": "I never eat meat.",
+            "target": "Non mangio mai la carne."
+          },
+          {
+            "source": "There's nothing here.",
+            "target": "Non c'è niente qui."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "non",
+            "native": "not",
+            "phonetic": "non"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "mai",
+            "native": "never",
+            "phonetic": "my"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "non…più",
+            "native": "no longer",
+            "phonetic": "non…pyoo"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "niente / nulla",
+            "native": "nothing",
+            "phonetic": "NYEN-teh / NOO-lah"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "nessuno",
+            "native": "nobody",
+            "phonetic": "nes-SOO-noh"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "né…né…",
+            "native": "neither…nor…",
+            "phonetic": "neh…neh…"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I don't like coffee.\":",
+        "targetSentence": "Non mi piace il caffè.",
+        "targetTranslation": "I don't like coffee.",
+        "scrambledTokens": [
+          "il",
+          "caffè",
+          "non",
+          "Non",
+          "mi",
+          "piace"
+        ],
+        "correctTokens": [
+          "Non",
+          "mi",
+          "piace",
+          "il",
+          "caffè"
+        ],
+        "explanation": "The negation pattern in its simplest form — learn it once, use it everywhere."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · non",
+        "prompt": "Which is the correct negative form?",
+        "audioText": "Non mi piace il caffè",
+        "options": [
+          "Mi piace non il caffè",
+          "Non mi piace il caffè",
+          "Non il caffè mi piace",
+          "Mi non piace il caffè"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Davide (Friend)",
+        "partnerSays": "Ti piace il caffè?",
+        "partnerSaysTranslation": "Do you like coffee?",
+        "prompt": "Say no, you don't like coffee:",
+        "options": [
+          "No, non mi piace il caffè.",
+          "No, mi piace non il caffè.",
+          "No, non piace il caffè."
+        ],
+        "correctAnswer": "No, non mi piace il caffè.",
+        "explanation": "Italian negation places non directly before the verb: non mi piace."
+      },
+      {
+        "type": "check",
+        "title": "Check · placement",
+        "prompt": "Where does \"non\" go in a simple Italian negative sentence?",
+        "options": [
+          "After the verb",
+          "Right before the verb",
+          "At the end",
+          "Before the subject"
+        ],
+        "answerIndex": 1,
+        "explanation": "Non goes directly before the conjugated verb: non parlo, non mi piace."
+      },
+      {
+        "type": "check",
+        "title": "Check · double negative",
+        "prompt": "\"Non vedo niente\" (I see nothing) — is this correct Italian?",
+        "options": [
+          "No, double negation is wrong in Italian",
+          "Yes, double negation is standard in Italian",
+          "Only in formal Italian",
+          "Only in northern Italian"
+        ],
+        "answerIndex": 1,
+        "explanation": "Double negation is grammatically correct and required in Italian: non vedo niente."
+      }
+    ]
+  },
+  {
+    "id": "asking-questions-1",
+    "slug": "asking-questions",
+    "title": "Asking questions",
+    "description": "Question words and patterns.",
+    "unitId": "grammar-core",
+    "direction": "en-it",
+    "level": "intermediate",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Asking around",
+        "body": "Each language has its own set of question words and question-formation patterns."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "Yes/no questions and information questions each have their own structure.",
+        "bullets": [
+          "Spanish: rise in intonation + ¿…? punctuation. Or inversion (¿Habla usted inglés?).",
+          "German: Verb first for yes/no (Sprichst du Deutsch?). W-word + verb for info questions.",
+          "Italian: Intonation (rise) for yes/no. Question word + normal word order for info questions."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Parole interrogative",
+        "items": [
+          {
+            "term": "who",
+            "meaning": "chi"
+          },
+          {
+            "term": "what",
+            "meaning": "cosa / che cosa"
+          },
+          {
+            "term": "where",
+            "meaning": "dove"
+          },
+          {
+            "term": "when",
+            "meaning": "quando"
+          },
+          {
+            "term": "why",
+            "meaning": "perché"
+          },
+          {
+            "term": "how",
+            "meaning": "come"
+          },
+          {
+            "term": "how much / how many",
+            "meaning": "quanto/a/i/e"
+          },
+          {
+            "term": "which",
+            "meaning": "quale / quali"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Domande di esempio",
+        "sourceLabel": "en-it",
+        "phrases": [
+          {
+            "source": "Do you speak English?",
+            "target": "Parla inglese?"
+          },
+          {
+            "source": "Where do you live?",
+            "target": "Dove abiti?"
+          },
+          {
+            "source": "Why are you laughing?",
+            "target": "Perché ridi?"
+          },
+          {
+            "source": "How much does it cost?",
+            "target": "Quanto costa?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Italian word with its English meaning:",
+        "pairs": [
+          {
+            "id": "ita-1",
+            "foreign": "chi",
+            "native": "who",
+            "phonetic": "kee"
+          },
+          {
+            "id": "ita-2",
+            "foreign": "cosa",
+            "native": "what",
+            "phonetic": "KOH-zah"
+          },
+          {
+            "id": "ita-3",
+            "foreign": "dove",
+            "native": "where",
+            "phonetic": "DOH-veh"
+          },
+          {
+            "id": "ita-4",
+            "foreign": "quando",
+            "native": "when",
+            "phonetic": "KWAN-doh"
+          },
+          {
+            "id": "ita-5",
+            "foreign": "perché",
+            "native": "why",
+            "phonetic": "pehr-KEH"
+          },
+          {
+            "id": "ita-6",
+            "foreign": "come",
+            "native": "how",
+            "phonetic": "KOH-meh"
+          },
+          {
+            "id": "ita-7",
+            "foreign": "quanto",
+            "native": "how much",
+            "phonetic": "KWAN-toh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Do you speak English?\":",
+        "targetSentence": "Parla inglese?",
+        "targetTranslation": "Do you speak English?",
+        "scrambledTokens": [
+          "inglese",
+          "chi",
+          "Parla"
+        ],
+        "correctTokens": [
+          "Parla",
+          "inglese"
+        ],
+        "explanation": "A well-formed question using the key structure — polite, clear, and natural."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · perché",
+        "prompt": "How do you say \"why\" in Italian?",
+        "audioText": "perché",
+        "options": [
+          "quando",
+          "come",
+          "perché",
+          "chi"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Camilla (Friend)",
+        "partnerSays": "Hai qualche domanda?",
+        "partnerSaysTranslation": "Do you have a question?",
+        "prompt": "Ask where she lives:",
+        "options": [
+          "Dove abiti?",
+          "Dove abitate?",
+          "Dove abita?"
+        ],
+        "correctAnswer": "Dove abiti?",
+        "explanation": "Dove abiti? uses the tu form of abitare for informal questions."
+      },
+      {
+        "type": "check",
+        "title": "Check · word meaning",
+        "prompt": "How do you say \"why\" in Italian?",
+        "options": [
+          "quando",
+          "come",
+          "perché",
+          "chi"
+        ],
+        "answerIndex": 2,
+        "explanation": "Perché = why (and also \"because\" when answering)."
+      },
+      {
+        "type": "check",
+        "title": "Check · question form",
+        "prompt": "How do you ask \"Do you speak Italian?\" informally?",
+        "options": [
+          "Parli italiano?",
+          "Parlate italiano?",
+          "Parlano italiano?",
+          "Parla italiano?"
+        ],
+        "answerIndex": 0,
+        "explanation": "Parli is the tu (informal) form of parlare. Rising intonation turns it into a question."
+      }
+    ]
   }
 ]

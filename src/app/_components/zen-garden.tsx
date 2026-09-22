@@ -38,7 +38,7 @@ export default function ZenGarden({ progress }: { progress: ProgressState }) {
                     </p>
                 </div>
 
-                <div className="relative w-full h-56 sm:h-64 bg-card rounded-2xl border border-border flex flex-col items-center justify-end pb-8 overflow-hidden">
+                <div className="relative w-full h-56 mt-4 sm:h-64 bg-background rounded-2xl border border-border flex flex-col items-center justify-end pb-8 overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
                         <div className="w-96 h-96 rounded-full border-2 border-border" />
                         <div className="w-72 h-72 rounded-full border border-border absolute" />
@@ -72,7 +72,7 @@ export default function ZenGarden({ progress }: { progress: ProgressState }) {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-4">
                     <div className="p-3 bg-card rounded-xl border border-border text-center">
                         <Flame className="w-4 h-4 text-destructive mx-auto mb-1" />
                         <div className="text-lg font-bold text-primary">{progress.streak}</div>
@@ -106,7 +106,7 @@ export default function ZenGarden({ progress }: { progress: ProgressState }) {
                     </div>
                 </div>
 
-                <div className="p-3.5 bg-secondary rounded-xl border border-border text-center">
+                <div className="p-3.5 mt-4 bg-background rounded-xl border border-border text-center">
                     <p className="font-serif italic text-xs sm:text-sm text-foreground leading-relaxed">
                         "A drop of daily water carves the stone with effortless gentleness. Keep your
                         rhythm soft, steady, and joyful."

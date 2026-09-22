@@ -104,46 +104,65 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the greetings",
+        "prompt": "Match each Portuguese greeting with its English meaning:",
         "pairs": [
           {
-            "left": "Olá",
-            "right": "Hello / hi"
+            "id": "por-1",
+            "foreign": "Olá",
+            "native": "Hello / hi",
+            "phonetic": "oh-LAH"
           },
           {
-            "left": "Bom dia",
-            "right": "Good morning"
+            "id": "por-2",
+            "foreign": "Bom dia",
+            "native": "Good morning",
+            "phonetic": "bohn DEE-ah"
           },
           {
-            "left": "Boa tarde",
-            "right": "Good afternoon"
+            "id": "por-3",
+            "foreign": "Boa tarde",
+            "native": "Good afternoon",
+            "phonetic": "BOH-ah TAR-deh"
           },
           {
-            "left": "Adeus",
-            "right": "Goodbye"
+            "id": "por-4",
+            "foreign": "Adeus",
+            "native": "Goodbye",
+            "phonetic": "ah-DEH-oosh"
           },
           {
-            "left": "Até logo",
-            "right": "See you later"
+            "id": "por-5",
+            "foreign": "Até logo",
+            "native": "See you later",
+            "phonetic": "ah-TEH LOH-goo"
           },
           {
-            "left": "Boa noite",
-            "right": "Good night"
+            "id": "por-6",
+            "foreign": "Boa noite",
+            "native": "Good night",
+            "phonetic": "BOH-ah NOY-teh"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the greeting",
-        "prompt": "Build: “Hello, how are you?”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Hello, how are you?\":",
+        "targetSentence": "Olá, como está?",
+        "targetTranslation": "Hello, how are you?",
+        "scrambledTokens": [
+          "como",
+          "está",
+          "Adeus",
+          "Olá",
+          ","
+        ],
+        "correctTokens": [
           "Olá",
           ",",
           "como",
-          "está",
-          "?"
+          "está"
         ],
-        "answer": "Olá, como está?"
+        "explanation": "A warm, time-appropriate greeting — the foundation of any first impression."
       },
       {
         "type": "listen",
@@ -160,22 +179,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "A first meeting",
-        "context": "You meet a colleague’s parent for the first time.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "Olá, como está?"
-          },
-          {
-            "speaker": "Parent",
-            "text": "Muito bem, obrigado. E você?"
-          },
-          {
-            "speaker": "You",
-            "text": "Estou bem, obrigado."
-          }
-        ]
+        "dialoguePartner": "Dona Sofia (Colleague's Mother)",
+        "partnerSays": "Olá, muito prazer. Como está?",
+        "partnerSaysTranslation": "Hello, pleased to meet you. How are you?",
+        "prompt": "Reply politely and return the question:",
+        "options": [
+          "Muito bem, obrigado. E você?",
+          "Adeus, até logo.",
+          "Não, obrigado."
+        ],
+        "correctAnswer": "Muito bem, obrigado. E você?",
+        "explanation": "\"Muito bem, obrigado. E você?\" answers warmly and invites her to share too. \"Adeus\" is a goodbye."
       },
       {
         "type": "check",
@@ -307,47 +321,67 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the polite phrases",
+        "prompt": "Match each Portuguese polite phrase with its English meaning:",
         "pairs": [
           {
-            "left": "Por favor",
-            "right": "Please"
+            "id": "por-1",
+            "foreign": "Por favor",
+            "native": "Please",
+            "phonetic": "poor fah-VOR"
           },
           {
-            "left": "Obrigado",
-            "right": "Thank you"
+            "id": "por-2",
+            "foreign": "Obrigado",
+            "native": "Thank you",
+            "phonetic": "oh-bree-GAH-doo"
           },
           {
-            "left": "Muito obrigado",
-            "right": "Thank you very much"
+            "id": "por-3",
+            "foreign": "Muito obrigado",
+            "native": "Thank you very much",
+            "phonetic": "MWEEN-too oh-bree-GAH-doo"
           },
           {
-            "left": "De nada",
-            "right": "You’re welcome"
+            "id": "por-4",
+            "foreign": "De nada",
+            "native": "You’re welcome",
+            "phonetic": "deh NAH-dah"
           },
           {
-            "left": "Com licença",
-            "right": "Excuse me"
+            "id": "por-5",
+            "foreign": "Com licença",
+            "native": "Excuse me",
+            "phonetic": "kohn lee-SEN-sah"
           },
           {
-            "left": "Sinto muito",
-            "right": "I’m sorry"
+            "id": "por-6",
+            "foreign": "Sinto muito",
+            "native": "I’m sorry",
+            "phonetic": "SEEN-too MWEEN-too"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the request",
-        "prompt": "Build: “A coffee, please.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"A coffee, please.\":",
+        "targetSentence": "Um café, por favor.",
+        "targetTranslation": "A coffee, please.",
+        "scrambledTokens": [
+          "por",
+          "favor",
+          "Obrigado",
+          "Um",
+          "café",
+          ","
+        ],
+        "correctTokens": [
           "Um",
           "café",
           ",",
           "por",
-          "favor",
-          "."
+          "favor"
         ],
-        "answer": "Um café, por favor."
+        "explanation": "Combining a request with \"please\" — the cornerstone of polite interaction."
       },
       {
         "type": "listen",
@@ -364,26 +398,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "At the counter",
-        "context": "Ordering and thanking.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "Um café, por favor."
-          },
-          {
-            "speaker": "Clerk",
-            "text": "Aqui está. Três euros."
-          },
-          {
-            "speaker": "You",
-            "text": "Muito obrigado."
-          },
-          {
-            "speaker": "Clerk",
-            "text": "De nada."
-          }
-        ]
+        "dialoguePartner": "Tiago (Café Clerk)",
+        "partnerSays": "Aqui está o seu café. São três euros.",
+        "partnerSaysTranslation": "Here's your coffee. That's three euros.",
+        "prompt": "Thank him as you pay:",
+        "options": [
+          "Muito obrigado.",
+          "Um café, por favor.",
+          "Desculpe, não percebo."
+        ],
+        "correctAnswer": "Muito obrigado.",
+        "explanation": "\"Muito obrigado\" is the natural thank-you at this point in the exchange."
       },
       {
         "type": "check",
@@ -558,51 +583,73 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the numbers",
+        "prompt": "Match each Portuguese number with its numeral:",
         "pairs": [
           {
-            "left": "um",
-            "right": "1"
+            "id": "por-1",
+            "foreign": "um",
+            "native": "1",
+            "phonetic": "oon"
           },
           {
-            "left": "dois",
-            "right": "2"
+            "id": "por-2",
+            "foreign": "dois",
+            "native": "2",
+            "phonetic": "doysh"
           },
           {
-            "left": "três",
-            "right": "3"
+            "id": "por-3",
+            "foreign": "três",
+            "native": "3",
+            "phonetic": "tresh"
           },
           {
-            "left": "cinco",
-            "right": "5"
+            "id": "por-4",
+            "foreign": "cinco",
+            "native": "5",
+            "phonetic": "SEEN-koo"
           },
           {
-            "left": "sete",
-            "right": "7"
+            "id": "por-5",
+            "foreign": "sete",
+            "native": "7",
+            "phonetic": "SEH-teh"
           },
           {
-            "left": "dez",
-            "right": "10"
+            "id": "por-6",
+            "foreign": "dez",
+            "native": "10",
+            "phonetic": "desh"
           },
           {
-            "left": "vinte",
-            "right": "20"
+            "id": "por-7",
+            "foreign": "vinte",
+            "native": "20",
+            "phonetic": "VEEN-teh"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the order",
-        "prompt": "Build: “Two coffees, please.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Two coffees, please.\":",
+        "targetSentence": "Dois cafés, por favor.",
+        "targetTranslation": "Two coffees, please.",
+        "scrambledTokens": [
+          "por",
+          "favor",
+          "um",
+          "Dois",
+          "cafés",
+          ","
+        ],
+        "correctTokens": [
           "Dois",
           "cafés",
           ",",
           "por",
-          "favor",
-          "."
+          "favor"
         ],
-        "answer": "Dois cafés, por favor."
+        "explanation": "Numbers in context — the essential combination for real-world transactions."
       },
       {
         "type": "listen",
@@ -619,22 +666,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "At the ticket window",
-        "context": "Buying tickets.",
-        "turns": [
-          {
-            "speaker": "Clerk",
-            "text": "Dois bilhetes?"
-          },
-          {
-            "speaker": "You",
-            "text": "Sim, dois. Tenho vinte anos."
-          },
-          {
-            "speaker": "Clerk",
-            "text": "Certo. Quinze euros."
-          }
-        ]
+        "dialoguePartner": "Senhor Costa (Ticket Clerk)",
+        "partnerSays": "Quantos bilhetes quer?",
+        "partnerSaysTranslation": "How many tickets would you like?",
+        "prompt": "Ask for two tickets:",
+        "options": [
+          "Dois bilhetes, por favor.",
+          "Tenho vinte anos.",
+          "São quinze euros."
+        ],
+        "correctAnswer": "Dois bilhetes, por favor.",
+        "explanation": "\"Dois bilhetes, por favor\" answers with a number and a polite request. \"São quinze euros\" is what the clerk would say."
       },
       {
         "type": "check",
@@ -756,42 +798,59 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the building blocks",
+        "prompt": "Match each Portuguese introduction phrase with its English meaning:",
         "pairs": [
           {
-            "left": "Chamo-me…",
-            "right": "My name is…"
+            "id": "por-1",
+            "foreign": "Chamo-me…",
+            "native": "My name is…",
+            "phonetic": "SHAH-moo-meh"
           },
           {
-            "left": "Sou de…",
-            "right": "I am from…"
+            "id": "por-2",
+            "foreign": "Sou de…",
+            "native": "I am from…",
+            "phonetic": "soh deh"
           },
           {
-            "left": "Moro em…",
-            "right": "I live in…"
+            "id": "por-3",
+            "foreign": "Moro em…",
+            "native": "I live in…",
+            "phonetic": "MOH-roo ayn"
           },
           {
-            "left": "Prazer",
-            "right": "Nice to meet you"
+            "id": "por-4",
+            "foreign": "Prazer",
+            "native": "Nice to meet you",
+            "phonetic": "prah-ZEHR"
           },
           {
-            "left": "E você?",
-            "right": "And you?"
+            "id": "por-5",
+            "foreign": "E você?",
+            "native": "And you?",
+            "phonetic": "ee voh-SEH"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the introduction",
-        "prompt": "Build: “Hello, my name is Alex.”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"Hello, my name is Alex.\":",
+        "targetSentence": "Olá, chamo-me Alex.",
+        "targetTranslation": "Hello, my name is Alex.",
+        "scrambledTokens": [
+          "chamo-me",
+          "Alex",
+          "Prazer",
+          "Olá",
+          ","
+        ],
+        "correctTokens": [
           "Olá",
           ",",
           "chamo-me",
-          "Alex",
-          "."
+          "Alex"
         ],
-        "answer": "Olá, chamo-me Alex."
+        "explanation": "Your origin in one clear sentence — the natural follow-up to sharing your name."
       },
       {
         "type": "listen",
@@ -808,26 +867,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "Meeting someone new",
-        "context": "A short self-introduction.",
-        "turns": [
-          {
-            "speaker": "You",
-            "text": "Olá, chamo-me Sam."
-          },
-          {
-            "speaker": "Other",
-            "text": "Prazer. Chamo-me Lea."
-          },
-          {
-            "speaker": "You",
-            "text": "Sou dos Estados Unidos. E você?"
-          },
-          {
-            "speaker": "Léa",
-            "text": "Sou de Lisboa."
-          }
-        ]
+        "dialoguePartner": "Lea (New Acquaintance)",
+        "partnerSays": "Prazer. Chamo-me Lea. De onde é?",
+        "partnerSaysTranslation": "Nice to meet you. My name is Lea. Where are you from?",
+        "prompt": "Say where you're from and return the question:",
+        "options": [
+          "Sou dos Estados Unidos. E você?",
+          "Chamo-me Sam.",
+          "Estou bem, obrigado."
+        ],
+        "correctAnswer": "Sou dos Estados Unidos. E você?",
+        "explanation": "\"Sou dos Estados Unidos. E você?\" answers her question and keeps the conversation balanced."
       },
       {
         "type": "check",
@@ -952,44 +1002,63 @@
       },
       {
         "type": "pair-matching",
-        "title": "Match the colors",
+        "prompt": "Match each Portuguese color with its English name:",
         "pairs": [
           {
-            "left": "vermelho",
-            "right": "red"
+            "id": "por-1",
+            "foreign": "vermelho",
+            "native": "red",
+            "phonetic": "vehr-MEH-lyoo"
           },
           {
-            "left": "azul",
-            "right": "blue"
+            "id": "por-2",
+            "foreign": "azul",
+            "native": "blue",
+            "phonetic": "ah-ZOOL"
           },
           {
-            "left": "verde",
-            "right": "green"
+            "id": "por-3",
+            "foreign": "verde",
+            "native": "green",
+            "phonetic": "VEHR-deh"
           },
           {
-            "left": "preto",
-            "right": "black"
+            "id": "por-4",
+            "foreign": "preto",
+            "native": "black",
+            "phonetic": "PREH-too"
           },
           {
-            "left": "branco",
-            "right": "white"
+            "id": "por-5",
+            "foreign": "branco",
+            "native": "white",
+            "phonetic": "BRAHN-koo"
           },
           {
-            "left": "castanho",
-            "right": "brown"
+            "id": "por-6",
+            "foreign": "castanho",
+            "native": "brown",
+            "phonetic": "kahsh-TAH-nyoo"
           }
         ]
       },
       {
         "type": "sentence-builder",
-        "title": "Build the description",
-        "prompt": "Build: “a blue dress”",
-        "words": [
+        "prompt": "Arrange the stones to say: \"a blue dress\":",
+        "targetSentence": "um vestido azul",
+        "targetTranslation": "a blue dress",
+        "scrambledTokens": [
+          "azul",
+          "vermelho",
+          "um",
+          "vestido"
+        ],
+        "correctTokens": [
           "um",
           "vestido",
           "azul"
         ],
-        "answer": "um vestido azul"
+        "explanation": "Color + polite form — everything needed to express a preference in any shop."
       },
       {
         "type": "listen",
@@ -1006,22 +1075,17 @@
       },
       {
         "type": "context-dialogue",
-        "title": "Choosing a color",
-        "context": "In a clothing shop.",
-        "turns": [
-          {
-            "speaker": "Clerk",
-            "text": "Que cor prefere?"
-          },
-          {
-            "speaker": "You",
-            "text": "Gostaria do vermelho."
-          },
-          {
-            "speaker": "Clerk",
-            "text": "Aqui tem um vestido vermelho."
-          }
-        ]
+        "dialoguePartner": "Inês (Shop Clerk)",
+        "partnerSays": "Que cor prefere?",
+        "partnerSaysTranslation": "Which color do you prefer?",
+        "prompt": "Say you'd like the red one:",
+        "options": [
+          "Gostaria do vermelho.",
+          "Quanto custa?",
+          "É muito grande."
+        ],
+        "correctAnswer": "Gostaria do vermelho.",
+        "explanation": "\"Gostaria do vermelho\" names the color politely with gostaria."
       },
       {
         "type": "check",
@@ -1051,5 +1115,4166 @@
       }
     ],
     "direction": "en-pt"
+  },
+  {
+    "id": "cafe-1",
+    "slug": "at-the-cafe",
+    "title": "At the café",
+    "description": "Order drinks and ask for the bill with confidence.",
+    "unitId": "everyday",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "A quiet table",
+        "body": "A handful of drink words plus the equivalent of s'il vous plaît is enough to order confidently anywhere."
+      },
+      {
+        "type": "tip",
+        "title": "Café culture",
+        "body": "Ask for \"the bill\" — servers rarely bring it unsolicited. Tipping customs vary by country.",
+        "bullets": [
+          "For here or to go? — learn both forms.",
+          "A jug of tap water is often free — always worth asking."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Drinks & service",
+        "items": [
+          {
+            "term": "a coffee",
+            "meaning": "um café"
+          },
+          {
+            "term": "coffee with milk",
+            "meaning": "um café com leite"
+          },
+          {
+            "term": "a tea",
+            "meaning": "um chá"
+          },
+          {
+            "term": "a hot chocolate",
+            "meaning": "um chocolate quente"
+          },
+          {
+            "term": "an orange juice",
+            "meaning": "um sumo de laranja"
+          },
+          {
+            "term": "some water",
+            "meaning": "água"
+          },
+          {
+            "term": "a jug of tap water",
+            "meaning": "um jarro de água"
+          },
+          {
+            "term": "the bill",
+            "meaning": "a conta"
+          },
+          {
+            "term": "I would like…",
+            "meaning": "Gostaria de…"
+          },
+          {
+            "term": "for here",
+            "meaning": "para aqui"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Ordering",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "I would like a coffee, please.",
+            "target": "Gostaria de um café, por favor."
+          },
+          {
+            "source": "A tea to go, please.",
+            "target": "Um chá para levar, por favor."
+          },
+          {
+            "source": "The bill, please.",
+            "target": "A conta, por favor."
+          },
+          {
+            "source": "For here or to go?",
+            "target": "Para aqui ou para levar?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "um café",
+            "native": "a coffee",
+            "phonetic": "oom kah-FAY"
+          },
+          {
+            "id": "por-2",
+            "foreign": "café com leite",
+            "native": "coffee with milk",
+            "phonetic": "kah-FAY kom LAY-teh"
+          },
+          {
+            "id": "por-3",
+            "foreign": "para levar",
+            "native": "to go",
+            "phonetic": "PAH-rah leh-VAR"
+          },
+          {
+            "id": "por-4",
+            "foreign": "para aqui",
+            "native": "for here",
+            "phonetic": "PAH-rah ah-KEE"
+          },
+          {
+            "id": "por-5",
+            "foreign": "a conta",
+            "native": "the bill",
+            "phonetic": "ah KON-tah"
+          },
+          {
+            "id": "por-6",
+            "foreign": "jarro de água",
+            "native": "jug of water",
+            "phonetic": "JAH-rroh deh AH-gwah"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I would like a coffee, please.\":",
+        "targetSentence": "Gostaria de um café, por favor.",
+        "targetTranslation": "I would like a coffee, please.",
+        "scrambledTokens": [
+          ",",
+          "por",
+          "favor",
+          "para",
+          "Gostaria",
+          "de",
+          "um",
+          "café"
+        ],
+        "correctTokens": [
+          "Gostaria",
+          "de",
+          "um",
+          "café",
+          ",",
+          "por",
+          "favor"
+        ],
+        "explanation": "A polite order that works in any café — commit it to memory for the first sip."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · bill",
+        "prompt": "How do you ask for the bill?",
+        "audioText": "A conta, por favor",
+        "options": [
+          "Um café, por favor",
+          "A conta, por favor",
+          "Para levar, por favor",
+          "Um chá, por favor"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "João (Café Clerk)",
+        "partnerSays": "O que vai querer?",
+        "partnerSaysTranslation": "What will you have?",
+        "prompt": "Order a coffee politely:",
+        "options": [
+          "Um café, por favor.",
+          "A conta, por favor.",
+          "Para levar."
+        ],
+        "correctAnswer": "Um café, por favor.",
+        "explanation": "\"Um café, por favor\" is the natural way to order a coffee."
+      },
+      {
+        "type": "check",
+        "title": "Check · bill",
+        "prompt": "How do you say \"the bill\" in Portuguese?",
+        "options": [
+          "o menu",
+          "a conta",
+          "o café",
+          "a mesa"
+        ],
+        "answerIndex": 1,
+        "explanation": "A conta is the bill in Portuguese restaurants and cafés."
+      },
+      {
+        "type": "check",
+        "title": "Check · to go",
+        "prompt": "How do you say \"to go\" when ordering?",
+        "options": [
+          "para aqui",
+          "para levar",
+          "à la carte",
+          "com leite"
+        ],
+        "answerIndex": 1,
+        "explanation": "Para levar means \"to carry away\", i.e. to go."
+      }
+    ]
+  },
+  {
+    "id": "food-market-1",
+    "slug": "at-the-market",
+    "title": "At the market",
+    "description": "Fruit, quantities, and polite requests at a stall.",
+    "unitId": "everyday",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Market pace",
+        "body": "Markets reward clear numbers and a polite request. Pointing plus a word works — language makes it smoother."
+      },
+      {
+        "type": "vocab",
+        "title": "Food words",
+        "items": [
+          {
+            "term": "an apple",
+            "meaning": "uma maçã"
+          },
+          {
+            "term": "a banana",
+            "meaning": "uma banana"
+          },
+          {
+            "term": "a tomato",
+            "meaning": "um tomate"
+          },
+          {
+            "term": "a carrot",
+            "meaning": "uma cenoura"
+          },
+          {
+            "term": "some bread",
+            "meaning": "pão"
+          },
+          {
+            "term": "some cheese",
+            "meaning": "queijo"
+          },
+          {
+            "term": "a kilo of…",
+            "meaning": "um quilo de…"
+          },
+          {
+            "term": "half a kilo of…",
+            "meaning": "meio quilo de…"
+          },
+          {
+            "term": "How much is it?",
+            "meaning": "Quanto é?"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "At the stall",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "I'd like three apples, please.",
+            "target": "Queria três maçãs, por favor."
+          },
+          {
+            "source": "A kilo of tomatoes, please.",
+            "target": "Um quilo de tomates, por favor."
+          },
+          {
+            "source": "How much is it?",
+            "target": "Quanto é?"
+          },
+          {
+            "source": "That's all, thank you.",
+            "target": "É tudo, obrigado."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "uma maçã",
+            "native": "an apple",
+            "phonetic": "OO-mah mah-SAH"
+          },
+          {
+            "id": "por-2",
+            "foreign": "um tomate",
+            "native": "a tomato",
+            "phonetic": "oom toh-MAH-teh"
+          },
+          {
+            "id": "por-3",
+            "foreign": "pão",
+            "native": "some bread",
+            "phonetic": "powng"
+          },
+          {
+            "id": "por-4",
+            "foreign": "um quilo de…",
+            "native": "a kilo of…",
+            "phonetic": "oom KEE-loh deh"
+          },
+          {
+            "id": "por-5",
+            "foreign": "Quanto é?",
+            "native": "How much is it?",
+            "phonetic": "KWAN-toh eh"
+          },
+          {
+            "id": "por-6",
+            "foreign": "É tudo",
+            "native": "That's all",
+            "phonetic": "eh TOO-doh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I'd like three apples, please.\":",
+        "targetSentence": "Queria três maçãs, por favor.",
+        "targetTranslation": "I'd like three apples, please.",
+        "scrambledTokens": [
+          ",",
+          "por",
+          "favor",
+          "pão",
+          "Queria",
+          "três",
+          "maçãs"
+        ],
+        "correctTokens": [
+          "Queria",
+          "três",
+          "maçãs",
+          ",",
+          "por",
+          "favor"
+        ],
+        "explanation": "Quantity, item, price question — the complete phrase for any market stall."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · price",
+        "prompt": "How do you ask \"How much is it?\"",
+        "audioText": "Quanto é?",
+        "options": [
+          "Quanto é?",
+          "Quantos quer?",
+          "É tudo?",
+          "Quer maçãs?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Dona Fátima (Market Vendor)",
+        "partnerSays": "O que deseja?",
+        "partnerSaysTranslation": "What would you like?",
+        "prompt": "Ask for three apples and the price:",
+        "options": [
+          "Três maçãs. Quanto é?",
+          "Cinco euros.",
+          "Está bom tempo hoje."
+        ],
+        "correctAnswer": "Três maçãs. Quanto é?",
+        "explanation": "\"Três maçãs. Quanto é?\" adds to your order and asks the price."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you ask the price in Portuguese?",
+        "options": [
+          "Que horas são?",
+          "Quanto é?",
+          "Onde fica?",
+          "Como se chama?"
+        ],
+        "answerIndex": 1,
+        "explanation": "Quanto é? = How much is it? A core shopping phrase."
+      },
+      {
+        "type": "check",
+        "title": "Check · order",
+        "prompt": "Best for \"three apples, please\"?",
+        "options": [
+          "Três maçãs, por favor",
+          "Três cafés, obrigado",
+          "Adeus maçãs",
+          "Chamo-me maçã"
+        ],
+        "answerIndex": 0,
+        "explanation": "Três maçãs, por favor directly matches the request."
+      }
+    ]
+  },
+  {
+    "id": "small-talk-1",
+    "slug": "small-talk-weather",
+    "title": "Small talk & weather",
+    "description": "Light conversation beyond hello.",
+    "unitId": "everyday",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Beyond hello",
+        "body": "Weather and weekend questions are safe bridges after greetings. A comment on the sun or rain opens doors."
+      },
+      {
+        "type": "vocab",
+        "title": "Weather & chat",
+        "items": [
+          {
+            "term": "The weather is nice",
+            "meaning": "Está bom tempo"
+          },
+          {
+            "term": "It's raining",
+            "meaning": "Está a chover"
+          },
+          {
+            "term": "It's cold",
+            "meaning": "Está frio"
+          },
+          {
+            "term": "It's hot",
+            "meaning": "Está calor"
+          },
+          {
+            "term": "It's sunny",
+            "meaning": "Está sol"
+          },
+          {
+            "term": "It's snowing",
+            "meaning": "Está a nevar"
+          },
+          {
+            "term": "the weekend",
+            "meaning": "o fim de semana"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Light exchanges",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "Nice weather today.",
+            "target": "Está bom tempo hoje."
+          },
+          {
+            "source": "It's raining a lot.",
+            "target": "Está a chover muito."
+          },
+          {
+            "source": "How was your weekend?",
+            "target": "Como foi o seu fim de semana?"
+          },
+          {
+            "source": "It's really cold today!",
+            "target": "Hoje está mesmo frio!"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "Está bom tempo",
+            "native": "The weather is nice",
+            "phonetic": "ehs-TAH bom TEM-poh"
+          },
+          {
+            "id": "por-2",
+            "foreign": "Está a chover",
+            "native": "It's raining",
+            "phonetic": "ehs-TAH ah shoh-VER"
+          },
+          {
+            "id": "por-3",
+            "foreign": "Está frio",
+            "native": "It's cold",
+            "phonetic": "ehs-TAH FREE-oh"
+          },
+          {
+            "id": "por-4",
+            "foreign": "Está calor",
+            "native": "It's hot",
+            "phonetic": "ehs-TAH kah-LOR"
+          },
+          {
+            "id": "por-5",
+            "foreign": "Está a nevar",
+            "native": "It's snowing",
+            "phonetic": "ehs-TAH ah neh-VAR"
+          },
+          {
+            "id": "por-6",
+            "foreign": "o fim de semana",
+            "native": "the weekend",
+            "phonetic": "oh feem deh seh-MAH-nah"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Nice weather today.\":",
+        "targetSentence": "Está bom tempo hoje.",
+        "targetTranslation": "Nice weather today.",
+        "scrambledTokens": [
+          "tempo",
+          "hoje",
+          "o",
+          "Está",
+          "bom"
+        ],
+        "correctTokens": [
+          "Está",
+          "bom",
+          "tempo",
+          "hoje"
+        ],
+        "explanation": "A light observation that opens the door to warm, easy conversation."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · rain",
+        "prompt": "How do you say \"It's raining\"?",
+        "audioText": "Está a chover",
+        "options": [
+          "Está bom tempo",
+          "Está a chover",
+          "Está frio",
+          "É o fim de semana"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Ricardo (Colleague)",
+        "partnerSays": "Está bom tempo hoje!",
+        "partnerSaysTranslation": "Nice weather today!",
+        "prompt": "Agree and keep the chat going:",
+        "options": [
+          "Sim, está sol. Como foi o seu fim de semana?",
+          "Não, não gosto de café.",
+          "A conta, por favor."
+        ],
+        "correctAnswer": "Sim, está sol. Como foi o seu fim de semana?",
+        "explanation": "Agreeing and asking about the weekend keeps the small talk flowing."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"It's raining\" in Portuguese?",
+        "options": [
+          "Está calor",
+          "Está a chover",
+          "Está sol",
+          "Está vento"
+        ],
+        "answerIndex": 1,
+        "explanation": "Estar a chover (estar + a + infinitive) is the progressive form in European Portuguese."
+      },
+      {
+        "type": "check",
+        "title": "Check · weekend",
+        "prompt": "How do you ask \"How was your weekend?\" formally?",
+        "options": [
+          "Como foi o seu fim de semana?",
+          "Está frio?",
+          "Está cansado?",
+          "Quanto é o fim de semana?"
+        ],
+        "answerIndex": 0,
+        "explanation": "Como foi…? = How was…? Seu is the formal \"your\"."
+      }
+    ]
+  },
+  {
+    "id": "restaurant-1",
+    "slug": "at-the-restaurant",
+    "title": "At the restaurant",
+    "description": "Ordering a meal and dietary needs.",
+    "unitId": "everyday",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "From table to bill",
+        "body": "Ordering follows a clear rhythm: being seated, choosing, ordering, and asking for the bill."
+      },
+      {
+        "type": "tip",
+        "title": "Cultural notes",
+        "body": "Learn the word for the full menu vs. a set meal in your target language — they often differ.",
+        "bullets": [
+          "Saying \"Enjoy your meal!\" before eating is polite in most cultures.",
+          "Dietary restrictions are best stated as early as possible."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Restaurant words",
+        "items": [
+          {
+            "term": "a table for two",
+            "meaning": "uma mesa para dois"
+          },
+          {
+            "term": "the menu",
+            "meaning": "a ementa / o menu"
+          },
+          {
+            "term": "the starter",
+            "meaning": "a entrada"
+          },
+          {
+            "term": "the main course",
+            "meaning": "o prato principal"
+          },
+          {
+            "term": "dessert",
+            "meaning": "a sobremesa"
+          },
+          {
+            "term": "vegetarian",
+            "meaning": "vegetariano/a"
+          },
+          {
+            "term": "an allergy",
+            "meaning": "uma alergia"
+          },
+          {
+            "term": "the bill",
+            "meaning": "a conta"
+          },
+          {
+            "term": "Enjoy your meal!",
+            "meaning": "Bom apetite!"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Ordering a meal",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "A table for two, please.",
+            "target": "Uma mesa para dois, por favor."
+          },
+          {
+            "source": "What do you recommend?",
+            "target": "O que nos recomenda?"
+          },
+          {
+            "source": "I'll have the fish.",
+            "target": "Quero o peixe."
+          },
+          {
+            "source": "I'm vegetarian.",
+            "target": "Sou vegetariano/a."
+          },
+          {
+            "source": "Enjoy your meal!",
+            "target": "Bom apetite!"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "a ementa",
+            "native": "the menu",
+            "phonetic": "ah eh-MEN-tah"
+          },
+          {
+            "id": "por-2",
+            "foreign": "a entrada",
+            "native": "the starter",
+            "phonetic": "ah en-TRAH-dah"
+          },
+          {
+            "id": "por-3",
+            "foreign": "o prato principal",
+            "native": "the main course",
+            "phonetic": "oh PRAH-toh prin-see-PAL"
+          },
+          {
+            "id": "por-4",
+            "foreign": "vegetariano/a",
+            "native": "vegetarian",
+            "phonetic": "veh-jeh-tah-RYAH-noh/nah"
+          },
+          {
+            "id": "por-5",
+            "foreign": "Bom apetite!",
+            "native": "Enjoy your meal!",
+            "phonetic": "bom ah-peh-TEE-teh"
+          },
+          {
+            "id": "por-6",
+            "foreign": "a conta",
+            "native": "the bill",
+            "phonetic": "ah KON-tah"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"A table for two, please.\":",
+        "targetSentence": "Uma mesa para dois, por favor.",
+        "targetTranslation": "A table for two, please.",
+        "scrambledTokens": [
+          ",",
+          "por",
+          "favor",
+          "vegetariano/a",
+          "Uma",
+          "mesa",
+          "para",
+          "dois"
+        ],
+        "correctTokens": [
+          "Uma",
+          "mesa",
+          "para",
+          "dois",
+          ",",
+          "por",
+          "favor"
+        ],
+        "explanation": "The natural, confident way to place an order with any server."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · recommendation",
+        "prompt": "How do you ask \"What do you recommend?\"",
+        "audioText": "O que nos recomenda?",
+        "options": [
+          "O que nos recomenda?",
+          "Onde são as casas de banho?",
+          "Quanto é?",
+          "O pequeno-almoço está incluído?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Fernando (Waiter)",
+        "partnerSays": "Já escolheram?",
+        "partnerSaysTranslation": "Have you decided?",
+        "prompt": "Order the fish:",
+        "options": [
+          "Vou querer o peixe, por favor.",
+          "Onde é a estação?",
+          "Saio na próxima paragem."
+        ],
+        "correctAnswer": "Vou querer o peixe, por favor.",
+        "explanation": "\"Vou querer…\" is a polite way to order in Portuguese."
+      },
+      {
+        "type": "check",
+        "title": "Check · menu",
+        "prompt": "A ementa in a Portuguese restaurant refers to…",
+        "options": [
+          "The fixed-price set meal",
+          "The full list of every dish",
+          "The wine list",
+          "The bill"
+        ],
+        "answerIndex": 1,
+        "explanation": "A ementa is the menu with all available dishes."
+      },
+      {
+        "type": "check",
+        "title": "Check · vegetarian",
+        "prompt": "How would a woman say \"I'm vegetarian\"?",
+        "options": [
+          "Sou vegetariano",
+          "Sou vegetariana",
+          "Tenho vegetariano",
+          "Estou vegetariana"
+        ],
+        "answerIndex": 1,
+        "explanation": "Vegetariana is the feminine form; vegetariano is masculine."
+      }
+    ]
+  },
+  {
+    "id": "weekend-plans-1",
+    "slug": "talking-about-plans",
+    "title": "Talking about plans",
+    "description": "Express what you're going to do using the near future.",
+    "unitId": "everyday",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "The near future",
+        "body": "Each language has a simple structure to talk about upcoming plans."
+      },
+      {
+        "type": "tip",
+        "title": "Pattern",
+        "body": "Learn the future or near-future structure for your language.",
+        "bullets": [
+          "Portuguese: ir + infinitivo (vou visitar)",
+          "Arabic: س + verb (سأزور)",
+          "Hindi: future tense verb form (जाऊँगा)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Ir — presente",
+        "items": [
+          {
+            "term": "I go / I'm going",
+            "meaning": "vou"
+          },
+          {
+            "term": "you go (informal)",
+            "meaning": "vais"
+          },
+          {
+            "term": "he / she goes",
+            "meaning": "vai"
+          },
+          {
+            "term": "we go",
+            "meaning": "vamos"
+          },
+          {
+            "term": "you go (formal/plural)",
+            "meaning": "vai / vão"
+          },
+          {
+            "term": "they go",
+            "meaning": "vão"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Making plans",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "What are you going to do this weekend?",
+            "target": "O que vais fazer este fim de semana?"
+          },
+          {
+            "source": "I'm going to visit my parents.",
+            "target": "Vou visitar os meus pais."
+          },
+          {
+            "source": "We're going to watch a film.",
+            "target": "Vamos ver um filme."
+          },
+          {
+            "source": "She's going to travel to Porto.",
+            "target": "Ela vai viajar ao Porto."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "vou",
+            "native": "I am going",
+            "phonetic": "voh"
+          },
+          {
+            "id": "por-2",
+            "foreign": "vais",
+            "native": "you are going (tu)",
+            "phonetic": "vish"
+          },
+          {
+            "id": "por-3",
+            "foreign": "vamos",
+            "native": "we are going",
+            "phonetic": "VAH-mohs"
+          },
+          {
+            "id": "por-4",
+            "foreign": "vão",
+            "native": "they are going",
+            "phonetic": "vowng"
+          },
+          {
+            "id": "por-5",
+            "foreign": "ir + infinitivo",
+            "native": "to be going to…",
+            "phonetic": "eer + infinitivo"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I'm going to visit my parents.\":",
+        "targetSentence": "Vou visitar os meus pais.",
+        "targetTranslation": "I'm going to visit my parents.",
+        "scrambledTokens": [
+          "meus",
+          "pais",
+          "vou",
+          "Vou",
+          "visitar",
+          "os"
+        ],
+        "correctTokens": [
+          "Vou",
+          "visitar",
+          "os",
+          "meus",
+          "pais"
+        ],
+        "explanation": "Future marker + plan — two building blocks for any upcoming arrangement."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · structure",
+        "prompt": "Which sentence uses the near future correctly?",
+        "audioText": "Vou comer",
+        "options": [
+          "Vou comê",
+          "Vou comer",
+          "Sou comer",
+          "Vou como"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Mariana (Friend)",
+        "partnerSays": "O que vais fazer este fim de semana?",
+        "partnerSaysTranslation": "What are you going to do this weekend?",
+        "prompt": "Say you're going to visit your parents:",
+        "options": [
+          "Vou visitar os meus pais.",
+          "São duas e meia.",
+          "Gostaria do vermelho."
+        ],
+        "correctAnswer": "Vou visitar os meus pais.",
+        "explanation": "\"Vou visitar…\" uses ir + infinitive to express a near-future plan."
+      },
+      {
+        "type": "check",
+        "title": "Check · structure",
+        "prompt": "Which correctly uses ir + infinitive?",
+        "options": [
+          "Vou comê",
+          "Vou comer",
+          "Vou come",
+          "Sou comer"
+        ],
+        "answerIndex": 1,
+        "explanation": "Ir + infinitive: vou + comer (unconjugated)."
+      },
+      {
+        "type": "check",
+        "title": "Check · translate",
+        "prompt": "How do you say \"We are going to travel\"?",
+        "options": [
+          "Temos viajado",
+          "Vamos viajar",
+          "Viajamos todos os dias",
+          "Queremos viajar"
+        ],
+        "answerIndex": 1,
+        "explanation": "Vamos viajar uses ir a + infinitive for a near-future plan."
+      }
+    ]
+  },
+  {
+    "id": "directions-1",
+    "slug": "simple-directions",
+    "title": "Simple directions",
+    "description": "Left, right, straight — and asking where something is.",
+    "unitId": "travel",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Finding your way",
+        "body": "Combine \"where is…?\" with a few direction words for short walks in a new city."
+      },
+      {
+        "type": "vocab",
+        "title": "Directions",
+        "items": [
+          {
+            "term": "to the left",
+            "meaning": "à esquerda"
+          },
+          {
+            "term": "to the right",
+            "meaning": "à direita"
+          },
+          {
+            "term": "straight ahead",
+            "meaning": "sempre em frente"
+          },
+          {
+            "term": "near",
+            "meaning": "perto de"
+          },
+          {
+            "term": "far from",
+            "meaning": "longe de"
+          },
+          {
+            "term": "at the corner",
+            "meaning": "na esquina"
+          },
+          {
+            "term": "across from",
+            "meaning": "em frente a"
+          },
+          {
+            "term": "between",
+            "meaning": "entre"
+          },
+          {
+            "term": "Where is…?",
+            "meaning": "Onde é…? / Onde fica…?"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Asking the way",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "Where is the station?",
+            "target": "Onde é a estação?"
+          },
+          {
+            "source": "Is it far?",
+            "target": "É longe?"
+          },
+          {
+            "source": "Go straight ahead, then left.",
+            "target": "Siga sempre em frente, depois vire à esquerda."
+          },
+          {
+            "source": "It's across from the pharmacy.",
+            "target": "É em frente à farmácia."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "à esquerda",
+            "native": "to the left",
+            "phonetic": "ah esh-KEHR-dah"
+          },
+          {
+            "id": "por-2",
+            "foreign": "à direita",
+            "native": "to the right",
+            "phonetic": "ah dee-RAY-tah"
+          },
+          {
+            "id": "por-3",
+            "foreign": "sempre em frente",
+            "native": "straight ahead",
+            "phonetic": "SEM-preh em FREN-teh"
+          },
+          {
+            "id": "por-4",
+            "foreign": "perto de",
+            "native": "near",
+            "phonetic": "PEHR-toh deh"
+          },
+          {
+            "id": "por-5",
+            "foreign": "em frente a",
+            "native": "across from",
+            "phonetic": "em FREN-teh ah"
+          },
+          {
+            "id": "por-6",
+            "foreign": "Onde fica…?",
+            "native": "Where is…?",
+            "phonetic": "ON-deh FEE-kah"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Go straight ahead, then left.\":",
+        "targetSentence": "Siga sempre em frente, depois vire à esquerda.",
+        "targetTranslation": "Go straight ahead, then left.",
+        "scrambledTokens": [
+          "depois",
+          "vire",
+          "à",
+          "esquerda",
+          "perto",
+          "Siga",
+          "sempre",
+          "em",
+          "frente",
+          ","
+        ],
+        "correctTokens": [
+          "Siga",
+          "sempre",
+          "em",
+          "frente",
+          ",",
+          "depois",
+          "vire",
+          "à",
+          "esquerda"
+        ],
+        "explanation": "Left, right, and straight — three words that will get you anywhere in the city."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · where",
+        "prompt": "How do you ask \"Where is the station?\"",
+        "audioText": "Onde é a estação?",
+        "options": [
+          "Onde é a estação?",
+          "É longe?",
+          "Quanto é um bilhete?",
+          "Qual plataforma?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Senhor Alves (Passer-by)",
+        "partnerSays": "Siga em frente e depois vire à esquerda. É em frente à farmácia.",
+        "partnerSaysTranslation": "Go straight and then turn left. It's opposite the pharmacy.",
+        "prompt": "Ask whether it's far:",
+        "options": [
+          "É longe?",
+          "Onde é a estação?",
+          "Aqui, por favor."
+        ],
+        "correctAnswer": "É longe?",
+        "explanation": "\"É longe?\" is the natural follow-up after getting directions."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"straight ahead\" in Portuguese?",
+        "options": [
+          "à esquerda",
+          "à direita",
+          "sempre em frente",
+          "muito perto"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sempre em frente means straight ahead; à esquerda/direita are left/right."
+      },
+      {
+        "type": "check",
+        "title": "Check · ask",
+        "prompt": "How do you ask where the station is?",
+        "options": [
+          "Quanto é um bilhete?",
+          "Onde é a estação?",
+          "Que horas são?",
+          "Um táxi, por favor"
+        ],
+        "answerIndex": 1,
+        "explanation": "Onde é…? / Onde fica…? = Where is…? Essential navigation question."
+      }
+    ]
+  },
+  {
+    "id": "travel-phrases-1",
+    "slug": "travel-phrases",
+    "title": "Travel phrases",
+    "description": "Tickets, platforms, and delays.",
+    "unitId": "travel",
+    "direction": "en-pt",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "On the move",
+        "body": "Stations and airports repeat the same patterns: destination, platform, delay. Learn them once."
+      },
+      {
+        "type": "vocab",
+        "title": "Travel words",
+        "items": [
+          {
+            "term": "a ticket",
+            "meaning": "um bilhete"
+          },
+          {
+            "term": "round trip",
+            "meaning": "ida e volta"
+          },
+          {
+            "term": "one-way",
+            "meaning": "só ida"
+          },
+          {
+            "term": "the train",
+            "meaning": "o comboio"
+          },
+          {
+            "term": "the platform",
+            "meaning": "a plataforma"
+          },
+          {
+            "term": "the flight",
+            "meaning": "o voo"
+          },
+          {
+            "term": "the connection",
+            "meaning": "a ligação / correspondência"
+          },
+          {
+            "term": "delayed / late",
+            "meaning": "atrasado"
+          },
+          {
+            "term": "on time",
+            "meaning": "a horas"
+          },
+          {
+            "term": "cancelled",
+            "meaning": "cancelado"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "At the counter",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "A ticket to Lisbon, please.",
+            "target": "Um bilhete para Lisboa, por favor."
+          },
+          {
+            "source": "A round trip to Porto.",
+            "target": "Uma ida e volta para o Porto."
+          },
+          {
+            "source": "Which platform?",
+            "target": "Qual plataforma?"
+          },
+          {
+            "source": "Is the train delayed?",
+            "target": "O comboio está atrasado?"
+          },
+          {
+            "source": "Where do I change trains?",
+            "target": "Onde mudo de comboio?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "um bilhete",
+            "native": "a ticket",
+            "phonetic": "oom bee-YEH-teh"
+          },
+          {
+            "id": "por-2",
+            "foreign": "ida e volta",
+            "native": "round trip",
+            "phonetic": "EE-dah eh VOL-tah"
+          },
+          {
+            "id": "por-3",
+            "foreign": "a plataforma",
+            "native": "the platform",
+            "phonetic": "ah plah-tah-FOR-mah"
+          },
+          {
+            "id": "por-4",
+            "foreign": "atrasado",
+            "native": "delayed",
+            "phonetic": "ah-trah-ZAH-doh"
+          },
+          {
+            "id": "por-5",
+            "foreign": "a horas",
+            "native": "on time",
+            "phonetic": "ah OH-rahs"
+          },
+          {
+            "id": "por-6",
+            "foreign": "cancelado",
+            "native": "cancelled",
+            "phonetic": "kan-seh-LAH-doh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"A ticket to Lisbon, please.\":",
+        "targetSentence": "Um bilhete para Lisboa, por favor.",
+        "targetTranslation": "A ticket to Lisbon, please.",
+        "scrambledTokens": [
+          ",",
+          "por",
+          "favor",
+          "atrasado",
+          "Um",
+          "bilhete",
+          "para",
+          "Lisboa"
+        ],
+        "correctTokens": [
+          "Um",
+          "bilhete",
+          "para",
+          "Lisboa",
+          ",",
+          "por",
+          "favor"
+        ],
+        "explanation": "A direct question that instantly tells you if you're running on schedule."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · delay",
+        "prompt": "How do you say \"The train is delayed\"?",
+        "audioText": "O comboio está atrasado",
+        "options": [
+          "O comboio está a horas",
+          "O comboio está cancelado",
+          "O comboio está atrasado",
+          "O comboio está cheio"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Dona Silva (Ticket Clerk)",
+        "partnerSays": "O comboio parte da plataforma três.",
+        "partnerSaysTranslation": "The train leaves from platform three.",
+        "prompt": "Ask if the train is running late:",
+        "options": [
+          "O comboio está atrasado?",
+          "Um bilhete para Lisboa, por favor.",
+          "Está bom tempo hoje."
+        ],
+        "correctAnswer": "O comboio está atrasado?",
+        "explanation": "\"O comboio está atrasado?\" asks about delays."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"a ticket\" in Portuguese?",
+        "options": [
+          "uma plataforma",
+          "um bilhete",
+          "um comboio",
+          "um atraso"
+        ],
+        "answerIndex": 1,
+        "explanation": "Um bilhete is a ticket for trains, buses, and planes in Portuguese."
+      },
+      {
+        "type": "check",
+        "title": "Check · delay",
+        "prompt": "How do you say \"delayed\" in Portuguese?",
+        "options": [
+          "a horas",
+          "cancelado",
+          "atrasado",
+          "cheio"
+        ],
+        "answerIndex": 2,
+        "explanation": "Atrasado means late/delayed; a horas means on time."
+      }
+    ]
+  },
+  {
+    "id": "hotel-1",
+    "slug": "at-the-hotel",
+    "title": "At the hotel",
+    "description": "Check-in lines and simple room requests.",
+    "unitId": "travel",
+    "direction": "en-pt",
+    "level": "intermediate",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Front desk",
+        "body": "Reservation, nights, and room type cover most check-ins."
+      },
+      {
+        "type": "vocab",
+        "title": "Hotel words",
+        "items": [
+          {
+            "term": "a reservation",
+            "meaning": "uma reserva"
+          },
+          {
+            "term": "a room",
+            "meaning": "um quarto"
+          },
+          {
+            "term": "a double room",
+            "meaning": "um quarto duplo"
+          },
+          {
+            "term": "a night",
+            "meaning": "uma noite"
+          },
+          {
+            "term": "a passport",
+            "meaning": "o passaporte"
+          },
+          {
+            "term": "the key",
+            "meaning": "a chave"
+          },
+          {
+            "term": "breakfast",
+            "meaning": "o pequeno-almoço"
+          },
+          {
+            "term": "the elevator",
+            "meaning": "o elevador"
+          },
+          {
+            "term": "the reception",
+            "meaning": "a receção"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Check-in",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "I have a reservation.",
+            "target": "Tenho uma reserva."
+          },
+          {
+            "source": "Two nights, please.",
+            "target": "Duas noites, por favor."
+          },
+          {
+            "source": "Is breakfast included?",
+            "target": "O pequeno-almoço está incluído?"
+          },
+          {
+            "source": "What time is checkout?",
+            "target": "A que horas é o check-out?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "uma reserva",
+            "native": "a reservation",
+            "phonetic": "OO-mah reh-ZEHR-vah"
+          },
+          {
+            "id": "por-2",
+            "foreign": "um quarto",
+            "native": "a room",
+            "phonetic": "oom KWAR-toh"
+          },
+          {
+            "id": "por-3",
+            "foreign": "um quarto duplo",
+            "native": "a double room",
+            "phonetic": "oom KWAR-toh DOO-ploh"
+          },
+          {
+            "id": "por-4",
+            "foreign": "o pequeno-almoço",
+            "native": "breakfast",
+            "phonetic": "oh peh-KEH-noh al-MOH-soh"
+          },
+          {
+            "id": "por-5",
+            "foreign": "a receção",
+            "native": "the front desk",
+            "phonetic": "ah reh-seh-SOWNG"
+          },
+          {
+            "id": "por-6",
+            "foreign": "o check-out",
+            "native": "checkout",
+            "phonetic": "oh CHEK-owt"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have a reservation.\":",
+        "targetSentence": "Tenho uma reserva.",
+        "targetTranslation": "I have a reservation.",
+        "scrambledTokens": [
+          "reserva",
+          "um",
+          "Tenho",
+          "uma"
+        ],
+        "correctTokens": [
+          "Tenho",
+          "uma",
+          "reserva"
+        ],
+        "explanation": "A short statement that confirms your booking and sets check-in in motion."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · breakfast",
+        "prompt": "How do you ask \"Is breakfast included?\"",
+        "audioText": "O pequeno-almoço está incluído?",
+        "options": [
+          "O pequeno-almoço está incluído?",
+          "A que horas é o check-out?",
+          "Tem quarto duplo?",
+          "Onde é o elevador?"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Ana (Receptionist)",
+        "partnerSays": "Boa tarde. Duas noites, certo?",
+        "partnerSaysTranslation": "Good afternoon. Two nights, right?",
+        "prompt": "Confirm and ask about breakfast:",
+        "options": [
+          "Sim. O pequeno-almoço está incluído?",
+          "Não, não gosto de café.",
+          "Três maçãs, por favor."
+        ],
+        "correctAnswer": "Sim. O pequeno-almoço está incluído?",
+        "explanation": "\"Sim. O pequeno-almoço está incluído?\" confirms and asks a key check-in question."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "How do you say \"I have a reservation\"?",
+        "options": [
+          "Preciso de um táxi",
+          "Tenho uma reserva",
+          "O quarto está pronto",
+          "Onde é o pequeno-almoço?"
+        ],
+        "answerIndex": 1,
+        "explanation": "Ter (to have) + uma reserva = I have a reservation."
+      },
+      {
+        "type": "check",
+        "title": "Check · checkout",
+        "prompt": "How do you ask what time checkout is?",
+        "options": [
+          "A que horas é o check-out?",
+          "Onde é a receção?",
+          "Quanto custa por noite?",
+          "Tenho uma reserva"
+        ],
+        "answerIndex": 0,
+        "explanation": "A que horas é…? = At what time is…? Standard question for hotel times."
+      }
+    ]
+  },
+  {
+    "id": "getting-around-1",
+    "slug": "getting-around-town",
+    "title": "Getting around town",
+    "description": "Buses, metro, taxis, and buying tickets.",
+    "unitId": "travel",
+    "direction": "en-pt",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Moving through the city",
+        "body": "Most cities run on a mix of metro, bus, and tram. A few words cover most fare questions."
+      },
+      {
+        "type": "vocab",
+        "title": "Transport words",
+        "items": [
+          {
+            "term": "the subway/metro",
+            "meaning": "o metro"
+          },
+          {
+            "term": "the bus",
+            "meaning": "o autocarro"
+          },
+          {
+            "term": "the tram",
+            "meaning": "o elétrico"
+          },
+          {
+            "term": "a ticket (single fare)",
+            "meaning": "um bilhete"
+          },
+          {
+            "term": "a day pass",
+            "meaning": "um passe diário"
+          },
+          {
+            "term": "a stop",
+            "meaning": "uma paragem"
+          },
+          {
+            "term": "a station",
+            "meaning": "uma estação"
+          },
+          {
+            "term": "a taxi",
+            "meaning": "um táxi"
+          },
+          {
+            "term": "I'm getting off here",
+            "meaning": "Saio aqui"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "On the way",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "Where's the nearest metro station?",
+            "target": "Onde é a estação de metro mais próxima?"
+          },
+          {
+            "source": "One ticket, please.",
+            "target": "Um bilhete, por favor."
+          },
+          {
+            "source": "Does this bus go to the center?",
+            "target": "Este autocarro vai ao centro?"
+          },
+          {
+            "source": "I'm getting off at the next stop.",
+            "target": "Saio na próxima paragem."
+          },
+          {
+            "source": "Can you call me a taxi?",
+            "target": "Pode chamar-me um táxi?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "o metro",
+            "native": "the subway/metro",
+            "phonetic": "oh MEH-troh"
+          },
+          {
+            "id": "por-2",
+            "foreign": "o autocarro",
+            "native": "the bus",
+            "phonetic": "oh ow-toh-KAH-rroh"
+          },
+          {
+            "id": "por-3",
+            "foreign": "um bilhete",
+            "native": "a single-fare ticket",
+            "phonetic": "oom bee-YEH-teh"
+          },
+          {
+            "id": "por-4",
+            "foreign": "um passe diário",
+            "native": "a day pass",
+            "phonetic": "oom PAH-seh dee-AH-ryoh"
+          },
+          {
+            "id": "por-5",
+            "foreign": "uma paragem",
+            "native": "a stop",
+            "phonetic": "OO-mah pah-RAH-jem"
+          },
+          {
+            "id": "por-6",
+            "foreign": "Saio aqui",
+            "native": "I'm getting off here",
+            "phonetic": "SAH-yoh ah-KEE"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Does this bus go to the center?\":",
+        "targetSentence": "Este autocarro vai ao centro?",
+        "targetTranslation": "Does this bus go to the center?",
+        "scrambledTokens": [
+          "ao",
+          "centro",
+          "o",
+          "Este",
+          "autocarro",
+          "vai"
+        ],
+        "correctTokens": [
+          "Este",
+          "autocarro",
+          "vai",
+          "ao",
+          "centro"
+        ],
+        "explanation": "The phrase that ends any bus or metro journey gracefully."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · getting off",
+        "prompt": "How do you say \"I'm getting off at the next stop\"?",
+        "audioText": "Saio na próxima paragem",
+        "options": [
+          "Subo aqui",
+          "Saio na próxima paragem",
+          "Fico aqui",
+          "Estou perdido"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Pedro (Bus Driver)",
+        "partnerSays": "Sim, este autocarro vai ao centro.",
+        "partnerSaysTranslation": "Yes, this bus goes to the center.",
+        "prompt": "Say you're getting off at the next stop:",
+        "options": [
+          "Saio na próxima paragem.",
+          "Um bilhete para Lisboa.",
+          "Vou visitar os meus pais."
+        ],
+        "correctAnswer": "Saio na próxima paragem.",
+        "explanation": "\"Saio na próxima paragem\" tells the driver where you want to get off."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "Um passe diário usually refers to…",
+        "options": [
+          "A single bus ticket",
+          "A day transport pass",
+          "A taxi receipt",
+          "A train delay"
+        ],
+        "answerIndex": 1,
+        "explanation": "Um passe diário is a day pass; um bilhete is a single fare."
+      },
+      {
+        "type": "check",
+        "title": "Check · getting off",
+        "prompt": "How do you say \"I'm getting off here\"?",
+        "options": [
+          "Subo aqui",
+          "Saio aqui",
+          "Fico aqui",
+          "Chego aqui"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sair means to get off/leave; subir means to get on/go up."
+      }
+    ]
+  },
+  {
+    "id": "pharmacy-health-1",
+    "slug": "pharmacy-and-feeling-unwell",
+    "title": "Pharmacy & feeling unwell",
+    "description": "Describe symptoms and get help at a pharmacy.",
+    "unitId": "health-safety",
+    "direction": "en-pt",
+    "level": "intermediate",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Getting help",
+        "body": "Pharmacies are trained to advise on minor issues before you need a doctor."
+      },
+      {
+        "type": "tip",
+        "title": "Pain pattern",
+        "body": "Each language has a go-to pattern for expressing physical pain.",
+        "bullets": [
+          "Portuguese: dói-me… / tenho dores de…",
+          "Arabic: عندي ألم في… / يؤلمني…",
+          "Hindi: … दर्द हो रहा है / मुझे … दर्द है"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Health words",
+        "items": [
+          {
+            "term": "a pharmacy",
+            "meaning": "uma farmácia"
+          },
+          {
+            "term": "a doctor",
+            "meaning": "um médico"
+          },
+          {
+            "term": "sick",
+            "meaning": "doente"
+          },
+          {
+            "term": "fever",
+            "meaning": "febre"
+          },
+          {
+            "term": "a medicine",
+            "meaning": "um medicamento"
+          },
+          {
+            "term": "a prescription",
+            "meaning": "uma receita"
+          },
+          {
+            "term": "the head",
+            "meaning": "a cabeça"
+          },
+          {
+            "term": "the stomach",
+            "meaning": "o estômago"
+          },
+          {
+            "term": "the throat",
+            "meaning": "a garganta"
+          },
+          {
+            "term": "Help!",
+            "meaning": "Socorro!"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Explaining symptoms",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "I don't feel well.",
+            "target": "Não me estou a sentir bem."
+          },
+          {
+            "source": "I have a headache.",
+            "target": "Tenho dores de cabeça."
+          },
+          {
+            "source": "I have a fever.",
+            "target": "Tenho febre."
+          },
+          {
+            "source": "Do you have something for a sore throat?",
+            "target": "Tem alguma coisa para a garganta?"
+          },
+          {
+            "source": "Call an ambulance!",
+            "target": "Chame uma ambulância!"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "Tenho dores de cabeça",
+            "native": "I have a headache",
+            "phonetic": "TEN-yoh DOH-reh deh kah-BEH-sah"
+          },
+          {
+            "id": "por-2",
+            "foreign": "Tenho dores de estômago",
+            "native": "I have a stomach ache",
+            "phonetic": "TEN-yoh DOH-reh deh esh-TOH-mah-goh"
+          },
+          {
+            "id": "por-3",
+            "foreign": "Tenho febre",
+            "native": "I have a fever",
+            "phonetic": "TEN-yoh FEH-breh"
+          },
+          {
+            "id": "por-4",
+            "foreign": "doente",
+            "native": "sick",
+            "phonetic": "doo-EN-teh"
+          },
+          {
+            "id": "por-5",
+            "foreign": "uma receita",
+            "native": "a prescription",
+            "phonetic": "OO-mah reh-SAY-tah"
+          },
+          {
+            "id": "por-6",
+            "foreign": "Socorro!",
+            "native": "Help!",
+            "phonetic": "soh-KOR-roh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have a headache.\":",
+        "targetSentence": "Tenho dores de cabeça.",
+        "targetTranslation": "I have a headache.",
+        "scrambledTokens": [
+          "de",
+          "cabeça",
+          "doente",
+          "Tenho",
+          "dores"
+        ],
+        "correctTokens": [
+          "Tenho",
+          "dores",
+          "de",
+          "cabeça"
+        ],
+        "explanation": "Describing the most common ache — clear and calm gets you the right remedy."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · stomach",
+        "prompt": "Which phrase means \"I have a stomach ache\"?",
+        "audioText": "Tenho dores de estômago",
+        "options": [
+          "Tenho dores de cabeça",
+          "Tenho dores de estômago",
+          "Tenho febre",
+          "Não me sinto bem"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Dona Santos (Pharmacist)",
+        "partnerSays": "Tem receita médica?",
+        "partnerSaysTranslation": "Do you have a prescription?",
+        "prompt": "Say no and ask for something for your throat:",
+        "options": [
+          "Não. Tem alguma coisa para a garganta?",
+          "Sim, dois bilhetes.",
+          "Sou vegetariana."
+        ],
+        "correctAnswer": "Não. Tem alguma coisa para a garganta?",
+        "explanation": "\"Não. Tem alguma coisa para a garganta?\" answers and asks for an over-the-counter remedy."
+      },
+      {
+        "type": "check",
+        "title": "Check · pattern",
+        "prompt": "How do you say \"I have a headache\" in Portuguese?",
+        "options": [
+          "Tenho dores de cabeça",
+          "Tenho a cabeça",
+          "A minha cabeça dói-me",
+          "Estou na cabeça"
+        ],
+        "answerIndex": 0,
+        "explanation": "Tenho dores de cabeça uses ter + dores de + body part."
+      },
+      {
+        "type": "check",
+        "title": "Check · emergency",
+        "prompt": "Which phrase calls for urgent help?",
+        "options": [
+          "Bom apetite",
+          "Socorro!",
+          "Quanto é?",
+          "Encantado"
+        ],
+        "answerIndex": 1,
+        "explanation": "Socorro! is the standard exclamation for calling for help in Portuguese."
+      }
+    ]
+  },
+  {
+    "id": "telling-time-1",
+    "slug": "telling-time",
+    "title": "Telling time",
+    "description": "Ask for and give the time, on the hour and beyond.",
+    "unitId": "time-dates",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "What time is it?",
+        "body": "Each language has a key question for asking the time and a standard way to give it."
+      },
+      {
+        "type": "tip",
+        "title": "Minute expressions",
+        "body": "Learn these fixed time chunks rather than translating word for word.",
+        "bullets": [
+          "Portuguese: e um quarto (quarter past), e meia (half past), menos um quarto (quarter to)",
+          "Arabic: الساعة الـ + time, والنصف (half past)",
+          "Hindi: बजे (o'clock), ढाई (2:30), साढ़े (half past)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Time words",
+        "items": [
+          {
+            "term": "What time is it?",
+            "meaning": "Que horas são?"
+          },
+          {
+            "term": "It is … o'clock",
+            "meaning": "São as… / É a uma"
+          },
+          {
+            "term": "quarter past",
+            "meaning": "e um quarto"
+          },
+          {
+            "term": "half past",
+            "meaning": "e meia"
+          },
+          {
+            "term": "quarter to",
+            "meaning": "menos um quarto"
+          },
+          {
+            "term": "noon",
+            "meaning": "meio-dia"
+          },
+          {
+            "term": "midnight",
+            "meaning": "meia-noite"
+          },
+          {
+            "term": "in the morning",
+            "meaning": "de manhã"
+          },
+          {
+            "term": "in the afternoon / evening",
+            "meaning": "à tarde / à noite"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Giving the time",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "What time is it?",
+            "target": "Que horas são?"
+          },
+          {
+            "source": "It's three o'clock.",
+            "target": "São as três."
+          },
+          {
+            "source": "It's half past seven.",
+            "target": "São as sete e meia."
+          },
+          {
+            "source": "It's a quarter to nine.",
+            "target": "São as nove menos um quarto."
+          },
+          {
+            "source": "The train leaves at 14:30.",
+            "target": "O comboio parte às catorze e trinta."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "Que horas são?",
+            "native": "What time is it?",
+            "phonetic": "keh OH-rahs sowng"
+          },
+          {
+            "id": "por-2",
+            "foreign": "e um quarto",
+            "native": "quarter past",
+            "phonetic": "ee oom KWAR-toh"
+          },
+          {
+            "id": "por-3",
+            "foreign": "e meia",
+            "native": "half past",
+            "phonetic": "ee MAY-ah"
+          },
+          {
+            "id": "por-4",
+            "foreign": "menos um quarto",
+            "native": "quarter to",
+            "phonetic": "MEH-nohs oom KWAR-toh"
+          },
+          {
+            "id": "por-5",
+            "foreign": "meio-dia",
+            "native": "noon",
+            "phonetic": "MAY-oh DEE-ah"
+          },
+          {
+            "id": "por-6",
+            "foreign": "meia-noite",
+            "native": "midnight",
+            "phonetic": "MAY-ah NOY-teh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"It's half past seven.\":",
+        "targetSentence": "São as sete e meia.",
+        "targetTranslation": "It's half past seven.",
+        "scrambledTokens": [
+          "e",
+          "meia",
+          "meio-dia",
+          "São",
+          "as",
+          "sete"
+        ],
+        "correctTokens": [
+          "São",
+          "as",
+          "sete",
+          "e",
+          "meia"
+        ],
+        "explanation": "Hour + \"half\" — the most common time expression in everyday conversation."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · quarter to",
+        "prompt": "How do you say \"quarter to nine\"?",
+        "audioText": "as nove menos um quarto",
+        "options": [
+          "as nove e um quarto",
+          "as nove e meia",
+          "as nove menos um quarto",
+          "as nove em ponto"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Catarina (Passer-by)",
+        "partnerSays": "São duas e meia.",
+        "partnerSaysTranslation": "It's half past two.",
+        "prompt": "Thank her and say when your train leaves:",
+        "options": [
+          "Obrigado. O comboio parte às três.",
+          "Com licença, que horas são?",
+          "É demasiado pequeno."
+        ],
+        "correctAnswer": "Obrigado. O comboio parte às três.",
+        "explanation": "\"Obrigado. O comboio parte às três\" thanks her and states the departure time."
+      },
+      {
+        "type": "check",
+        "title": "Check · quarter to",
+        "prompt": "How do you say \"quarter to nine\" in Portuguese?",
+        "options": [
+          "as nove e um quarto",
+          "as nove menos um quarto",
+          "as nove e meia",
+          "um quarto das nove"
+        ],
+        "answerIndex": 1,
+        "explanation": "Menos um quarto subtracts a quarter hour from the stated hour."
+      },
+      {
+        "type": "check",
+        "title": "Check · noon",
+        "prompt": "How do you say \"It's noon\" in Portuguese?",
+        "options": [
+          "É meia-noite",
+          "É meio-dia",
+          "É de manhã",
+          "É tarde"
+        ],
+        "answerIndex": 1,
+        "explanation": "Meio-dia is noon; meia-noite is midnight."
+      }
+    ]
+  },
+  {
+    "id": "days-months-1",
+    "slug": "days-months-and-dates",
+    "title": "Days, months & dates",
+    "description": "The calendar and how to say a date.",
+    "unitId": "time-dates",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Calendar basics",
+        "body": "Learning days and months opens up conversations about plans, birthdays, and appointments."
+      },
+      {
+        "type": "vocab",
+        "title": "Days of the week",
+        "items": [
+          {
+            "term": "Monday",
+            "meaning": "segunda-feira"
+          },
+          {
+            "term": "Tuesday",
+            "meaning": "terça-feira"
+          },
+          {
+            "term": "Wednesday",
+            "meaning": "quarta-feira"
+          },
+          {
+            "term": "Thursday",
+            "meaning": "quinta-feira"
+          },
+          {
+            "term": "Friday",
+            "meaning": "sexta-feira"
+          },
+          {
+            "term": "Saturday",
+            "meaning": "sábado"
+          },
+          {
+            "term": "Sunday",
+            "meaning": "domingo"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Months",
+        "items": [
+          {
+            "term": "January",
+            "meaning": "janeiro"
+          },
+          {
+            "term": "February",
+            "meaning": "fevereiro"
+          },
+          {
+            "term": "March",
+            "meaning": "março"
+          },
+          {
+            "term": "April",
+            "meaning": "abril"
+          },
+          {
+            "term": "May",
+            "meaning": "maio"
+          },
+          {
+            "term": "June",
+            "meaning": "junho"
+          },
+          {
+            "term": "July",
+            "meaning": "julho"
+          },
+          {
+            "term": "August",
+            "meaning": "agosto"
+          },
+          {
+            "term": "September",
+            "meaning": "setembro"
+          },
+          {
+            "term": "October",
+            "meaning": "outubro"
+          },
+          {
+            "term": "November",
+            "meaning": "novembro"
+          },
+          {
+            "term": "December",
+            "meaning": "dezembro"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Talking about dates",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "What day is it today?",
+            "target": "Que dia é hoje?"
+          },
+          {
+            "source": "Today is Monday.",
+            "target": "Hoje é segunda-feira."
+          },
+          {
+            "source": "My birthday is May 1st.",
+            "target": "O meu aniversário é no primeiro de maio."
+          },
+          {
+            "source": "See you on Friday.",
+            "target": "Até sexta-feira."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "segunda-feira",
+            "native": "Monday",
+            "phonetic": "seh-GUN-dah FAY-rah"
+          },
+          {
+            "id": "por-2",
+            "foreign": "terça-feira",
+            "native": "Tuesday",
+            "phonetic": "TEHR-sah FAY-rah"
+          },
+          {
+            "id": "por-3",
+            "foreign": "quarta-feira",
+            "native": "Wednesday",
+            "phonetic": "KWAR-tah FAY-rah"
+          },
+          {
+            "id": "por-4",
+            "foreign": "quinta-feira",
+            "native": "Thursday",
+            "phonetic": "KEEN-tah FAY-rah"
+          },
+          {
+            "id": "por-5",
+            "foreign": "sexta-feira",
+            "native": "Friday",
+            "phonetic": "SESH-tah FAY-rah"
+          },
+          {
+            "id": "por-6",
+            "foreign": "sábado",
+            "native": "Saturday",
+            "phonetic": "SAH-bah-doh"
+          },
+          {
+            "id": "por-7",
+            "foreign": "domingo",
+            "native": "Sunday",
+            "phonetic": "doh-MEEN-goh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"My birthday is May 1st.\":",
+        "targetSentence": "O meu aniversário é no primeiro de maio.",
+        "targetTranslation": "My birthday is May 1st.",
+        "scrambledTokens": [
+          "no",
+          "primeiro",
+          "de",
+          "maio",
+          "segunda-feira",
+          "O",
+          "meu",
+          "aniversário",
+          "é"
+        ],
+        "correctTokens": [
+          "O",
+          "meu",
+          "aniversário",
+          "é",
+          "no",
+          "primeiro",
+          "de",
+          "maio"
+        ],
+        "explanation": "A date in full — once you know the pattern, every date falls into place."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · day",
+        "prompt": "How do you say \"Today is Monday\"?",
+        "audioText": "Hoje é segunda-feira",
+        "options": [
+          "Hoje é terça-feira",
+          "Hoje é segunda-feira",
+          "Hoje é domingo",
+          "Hoje é sexta-feira"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Bruno (Friend)",
+        "partnerSays": "Que dia é hoje?",
+        "partnerSaysTranslation": "What day is today?",
+        "prompt": "Say it's Wednesday:",
+        "options": [
+          "Hoje é quarta-feira.",
+          "São três horas.",
+          "Tenho vinte anos."
+        ],
+        "correctAnswer": "Hoje é quarta-feira.",
+        "explanation": "\"Hoje é quarta-feira\" answers with the day. Days are not capitalized in Portuguese."
+      },
+      {
+        "type": "check",
+        "title": "Check · order",
+        "prompt": "Which day comes right after quarta-feira?",
+        "options": [
+          "terça-feira",
+          "sexta-feira",
+          "quinta-feira",
+          "sábado"
+        ],
+        "answerIndex": 2,
+        "explanation": "The order is segunda-feira, terça-feira, quarta-feira, quinta-feira, sexta-feira, sábado, domingo."
+      },
+      {
+        "type": "check",
+        "title": "Check · capitalization",
+        "prompt": "In Portuguese, days and months are…",
+        "options": [
+          "Always capitalized",
+          "Never capitalized",
+          "Capitalized only in titles",
+          "Capitalized only at sentence start"
+        ],
+        "answerIndex": 1,
+        "explanation": "Unlike English, Portuguese days and months are lowercase."
+      }
+    ]
+  },
+  {
+    "id": "family-1",
+    "slug": "talking-about-family",
+    "title": "Talking about family",
+    "description": "Name family members and describe relationships.",
+    "unitId": "family-friends",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Who's who",
+        "body": "Family vocabulary combines with \"to have\" and possessives for quick descriptions."
+      },
+      {
+        "type": "tip",
+        "title": "Possessives and gender",
+        "body": "Possessives work differently in each language.",
+        "bullets": [
+          "Portuguese: meu/minha agree with the noun",
+          "Arabic: possessive suffixes attach to the noun",
+          "Hindi: मेरा/मेरी agree with the noun gender"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Family members",
+        "items": [
+          {
+            "term": "the family",
+            "meaning": "a família"
+          },
+          {
+            "term": "the father",
+            "meaning": "o pai"
+          },
+          {
+            "term": "the mother",
+            "meaning": "a mãe"
+          },
+          {
+            "term": "the brother",
+            "meaning": "o irmão"
+          },
+          {
+            "term": "the sister",
+            "meaning": "a irmã"
+          },
+          {
+            "term": "the son",
+            "meaning": "o filho"
+          },
+          {
+            "term": "the daughter",
+            "meaning": "a filha"
+          },
+          {
+            "term": "the grandparents",
+            "meaning": "os avós"
+          },
+          {
+            "term": "the husband / the wife",
+            "meaning": "o marido / a mulher / a esposa"
+          },
+          {
+            "term": "a friend",
+            "meaning": "um amigo / uma amiga"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Describing your family",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "I have two brothers.",
+            "target": "Tenho dois irmãos."
+          },
+          {
+            "source": "This is my sister.",
+            "target": "Esta é a minha irmã."
+          },
+          {
+            "source": "My parents live in Lisbon.",
+            "target": "Os meus pais vivem em Lisboa."
+          },
+          {
+            "source": "Do you have children?",
+            "target": "Tens filhos?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "o pai",
+            "native": "the father",
+            "phonetic": "oh pie"
+          },
+          {
+            "id": "por-2",
+            "foreign": "a mãe",
+            "native": "the mother",
+            "phonetic": "ah mowng"
+          },
+          {
+            "id": "por-3",
+            "foreign": "o irmão",
+            "native": "the brother",
+            "phonetic": "oh eer-MOWNG"
+          },
+          {
+            "id": "por-4",
+            "foreign": "a irmã",
+            "native": "the sister",
+            "phonetic": "ah eer-MAH"
+          },
+          {
+            "id": "por-5",
+            "foreign": "os avós",
+            "native": "the grandparents",
+            "phonetic": "ohz ah-VOSH"
+          },
+          {
+            "id": "por-6",
+            "foreign": "um amigo/a",
+            "native": "a friend",
+            "phonetic": "oom ah-MEE-goh/gah"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I have two brothers.\":",
+        "targetSentence": "Tenho dois irmãos.",
+        "targetTranslation": "I have two brothers.",
+        "scrambledTokens": [
+          "irmãos",
+          "o",
+          "Tenho",
+          "dois"
+        ],
+        "correctTokens": [
+          "Tenho",
+          "dois",
+          "irmãos"
+        ],
+        "explanation": "A warm, simple statement that naturally invites the other person to share too."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · possessive",
+        "prompt": "How do you say \"my sister\" in Portuguese?",
+        "audioText": "a minha irmã",
+        "options": [
+          "o meu irmão",
+          "a minha irmã",
+          "os meus pais",
+          "o meu amigo"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Filipe (Friend)",
+        "partnerSays": "Muito prazer. Tem irmãos?",
+        "partnerSaysTranslation": "Nice to meet you. Do you have siblings?",
+        "prompt": "Say you have two brothers:",
+        "options": [
+          "Sim, tenho dois irmãos.",
+          "Esta é a minha irmã.",
+          "Não, não tenho fome."
+        ],
+        "correctAnswer": "Sim, tenho dois irmãos.",
+        "explanation": "\"Sim, tenho dois irmãos\" answers directly using ter."
+      },
+      {
+        "type": "check",
+        "title": "Check · possessive",
+        "prompt": "How do you say \"my sister\" in Portuguese?",
+        "options": [
+          "o meu irmã",
+          "a minha irmã",
+          "os meus irmã",
+          "a irmã"
+        ],
+        "answerIndex": 1,
+        "explanation": "Irmã is feminine → a minha irmã."
+      },
+      {
+        "type": "check",
+        "title": "Check · plural",
+        "prompt": "How do you say \"my parents\" in Portuguese?",
+        "options": [
+          "o meu pai",
+          "os meus pais",
+          "vossos pais",
+          "seu pai"
+        ],
+        "answerIndex": 1,
+        "explanation": "Os meus pais — meus is the masculine plural possessive, pais is \"parents\"."
+      }
+    ]
+  },
+  {
+    "id": "shopping-clothes-1",
+    "slug": "shopping-for-clothes",
+    "title": "Shopping for clothes",
+    "description": "Sizes, trying things on, and asking about price.",
+    "unitId": "shopping",
+    "direction": "en-pt",
+    "level": "intermediate",
+    "estimatedMinutes": 16,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Trying it on",
+        "body": "Clothes shopping mixes size, color, and a few polite requests to try things on or ask for a different size."
+      },
+      {
+        "type": "vocab",
+        "title": "Clothing words",
+        "items": [
+          {
+            "term": "a piece of clothing",
+            "meaning": "uma peça de roupa"
+          },
+          {
+            "term": "a shirt",
+            "meaning": "uma camisa"
+          },
+          {
+            "term": "trousers/pants",
+            "meaning": "calças"
+          },
+          {
+            "term": "a dress",
+            "meaning": "um vestido"
+          },
+          {
+            "term": "shoes",
+            "meaning": "sapatos"
+          },
+          {
+            "term": "the size",
+            "meaning": "o tamanho / o número (for shoes)"
+          },
+          {
+            "term": "the fitting room",
+            "meaning": "o provador"
+          },
+          {
+            "term": "on sale",
+            "meaning": "em saldo / em promoção"
+          },
+          {
+            "term": "too big / too small",
+            "meaning": "demasiado grande / demasiado pequeno"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "At the shop",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "Do you have this in a size 40?",
+            "target": "Tem isto no tamanho quarenta?"
+          },
+          {
+            "source": "Can I try it on?",
+            "target": "Posso experimentar?"
+          },
+          {
+            "source": "Where is the fitting room?",
+            "target": "Onde é o provador?"
+          },
+          {
+            "source": "It's too small.",
+            "target": "É demasiado pequeno."
+          },
+          {
+            "source": "Do you have a bigger size?",
+            "target": "Tem um tamanho maior?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "o tamanho",
+            "native": "the size",
+            "phonetic": "oh tah-MAH-nyoh"
+          },
+          {
+            "id": "por-2",
+            "foreign": "o provador",
+            "native": "the fitting room",
+            "phonetic": "oh proh-vah-DOR"
+          },
+          {
+            "id": "por-3",
+            "foreign": "em saldo",
+            "native": "on sale",
+            "phonetic": "em SAL-doh"
+          },
+          {
+            "id": "por-4",
+            "foreign": "demasiado grande",
+            "native": "too big",
+            "phonetic": "deh-mah-ZYA-doh GRAN-deh"
+          },
+          {
+            "id": "por-5",
+            "foreign": "demasiado pequeno",
+            "native": "too small",
+            "phonetic": "deh-mah-ZYA-doh peh-KEH-noh"
+          },
+          {
+            "id": "por-6",
+            "foreign": "um vestido",
+            "native": "a dress",
+            "phonetic": "oom vesh-TEE-doh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Do you have this in a size 40?\":",
+        "targetSentence": "Tem isto no tamanho quarenta?",
+        "targetTranslation": "Do you have this in a size 40?",
+        "scrambledTokens": [
+          "tamanho",
+          "quarenta",
+          "o",
+          "Tem",
+          "isto",
+          "no"
+        ],
+        "correctTokens": [
+          "Tem",
+          "isto",
+          "no",
+          "tamanho",
+          "quarenta"
+        ],
+        "explanation": "The one question that keeps a shopping trip moving in the right direction."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · size",
+        "prompt": "How do you say \"It's too small\"?",
+        "audioText": "É demasiado pequeno",
+        "options": [
+          "É demasiado grande",
+          "É demasiado pequeno",
+          "Está em saldo",
+          "É perfeito"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Inês (Shop Clerk)",
+        "partnerSays": "Claro. O provador está ali ao fundo.",
+        "partnerSaysTranslation": "Of course. The fitting room is at the back.",
+        "prompt": "After trying it on, say it's too small and ask for a bigger size:",
+        "options": [
+          "É demasiado pequeno. Tem um tamanho maior?",
+          "Posso experimentar?",
+          "Gostaria do vermelho."
+        ],
+        "correctAnswer": "É demasiado pequeno. Tem um tamanho maior?",
+        "explanation": "\"É demasiado pequeno. Tem um tamanho maior?\" describes the problem and asks for the next size."
+      },
+      {
+        "type": "check",
+        "title": "Check · size",
+        "prompt": "How do you ask \"do you have this in a size 40?\"",
+        "options": [
+          "Tem isto no tamanho quarenta?",
+          "É demasiado grande?",
+          "Onde é o provador?",
+          "Em saldo, por favor."
+        ],
+        "answerIndex": 0,
+        "explanation": "Tamanho means size; no tamanho quarenta = in size 40."
+      },
+      {
+        "type": "check",
+        "title": "Check · too small",
+        "prompt": "How do you say \"It's too small\"?",
+        "options": [
+          "É demasiado grande",
+          "É demasiado pequeno",
+          "Está em saldo",
+          "É perfeito"
+        ],
+        "answerIndex": 1,
+        "explanation": "Demasiado pequeno = too small; demasiado grande = too big."
+      }
+    ]
+  },
+  {
+    "id": "articles-gender-1",
+    "slug": "articles-and-gender",
+    "title": "Articles & gender",
+    "description": "Noun gender and grammatical articles (or their equivalents).",
+    "unitId": "grammar-core",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 18,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Nouns and their markers",
+        "body": "Portuguese has gender like French; Arabic has gender but a single definite article; Hindi has gender with no articles at all."
+      },
+      {
+        "type": "tip",
+        "title": "Key differences",
+        "body": "Each language handles definiteness and gender differently.",
+        "bullets": [
+          "Portuguese: o/a (the), um/uma (a) — 2 genders",
+          "Arabic: الـ (al-) for all definite nouns — 2 genders",
+          "Hindi: no articles; gender affects adjectives and verb agreement"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Pairs to notice",
+        "items": [
+          {
+            "term": "the book (masculine)",
+            "meaning": "o livro"
+          },
+          {
+            "term": "the table (feminine)",
+            "meaning": "a mesa"
+          },
+          {
+            "term": "a coffee",
+            "meaning": "um café"
+          },
+          {
+            "term": "an apple",
+            "meaning": "uma maçã"
+          },
+          {
+            "term": "the hotel",
+            "meaning": "o hotel (m.)"
+          },
+          {
+            "term": "the water (feminine)",
+            "meaning": "a água (f.)"
+          },
+          {
+            "term": "the children",
+            "meaning": "as crianças (pl. f.)"
+          },
+          {
+            "term": "some friends",
+            "meaning": "uns amigos"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "o / um",
+            "native": "masculine",
+            "phonetic": "oh / oom"
+          },
+          {
+            "id": "por-2",
+            "foreign": "a / uma",
+            "native": "feminine",
+            "phonetic": "ah / OO-mah"
+          },
+          {
+            "id": "por-3",
+            "foreign": "os / uns",
+            "native": "masculine plural",
+            "phonetic": "ohz / oonz"
+          },
+          {
+            "id": "por-4",
+            "foreign": "as / umas",
+            "native": "feminine plural",
+            "phonetic": "ahz / OO-mahz"
+          },
+          {
+            "id": "por-5",
+            "foreign": "o livro",
+            "native": "the book (masc.)",
+            "phonetic": "oh LEE-vroh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"the table\":",
+        "targetSentence": "a mesa",
+        "targetTranslation": "the table",
+        "scrambledTokens": [
+          "mesa",
+          "o",
+          "a"
+        ],
+        "correctTokens": [
+          "a",
+          "mesa"
+        ],
+        "explanation": "A compact phrase that puts the article or gender rule into immediate practice."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · gender",
+        "prompt": "Which article fits with \"maçã\" (apple)?",
+        "audioText": "a maçã",
+        "options": [
+          "o",
+          "a",
+          "os",
+          "uns"
+        ],
+        "answerIndex": 1,
+        "explanation": "Maçã is feminine → a / uma maçã."
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Professora Lima (Teacher)",
+        "partnerSays": "Como se diz \"the table\" em português?",
+        "partnerSaysTranslation": "How do you say \"the table\" in Portuguese?",
+        "prompt": "Answer with the correct article:",
+        "options": [
+          "A mesa.",
+          "O mesa.",
+          "Um mesa."
+        ],
+        "correctAnswer": "A mesa.",
+        "explanation": "Mesa is feminine, so it takes a. O is masculine, and um is the masculine indefinite article."
+      },
+      {
+        "type": "check",
+        "title": "Check",
+        "prompt": "Which article fits with \"livro\" (book) in Portuguese?",
+        "options": [
+          "a",
+          "o",
+          "os only",
+          "No article ever"
+        ],
+        "answerIndex": 1,
+        "explanation": "O/um livro — masculine."
+      },
+      {
+        "type": "check",
+        "title": "Check · plural",
+        "prompt": "The feminine plural definite article in Portuguese is…",
+        "options": [
+          "os",
+          "as",
+          "uns",
+          "umas"
+        ],
+        "answerIndex": 1,
+        "explanation": "As is used for feminine plural nouns: as mesas, as crianças."
+      },
+      {
+        "type": "check",
+        "title": "Check · feminine",
+        "prompt": "Which article fits with \"mesa\" (table) in Portuguese?",
+        "options": [
+          "o",
+          "a",
+          "os",
+          "as"
+        ],
+        "answerIndex": 1,
+        "explanation": "Mesa is feminine → a mesa / uma mesa."
+      }
+    ]
+  },
+  {
+    "id": "etre-avoir-1",
+    "slug": "to-be-and-to-have",
+    "title": "To be & to have",
+    "description": "The two verbs you'll use every day.",
+    "unitId": "grammar-core",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 19,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Workhorses",
+        "body": "The verbs \"to be\" and \"to have\" appear constantly in descriptions, states, and idioms."
+      },
+      {
+        "type": "vocab",
+        "title": "Ser e Estar — to be",
+        "items": [
+          {
+            "term": "I am (identity)",
+            "meaning": "sou"
+          },
+          {
+            "term": "I am (state/location)",
+            "meaning": "estou"
+          },
+          {
+            "term": "you are (identity, tu)",
+            "meaning": "és"
+          },
+          {
+            "term": "you are (state, tu)",
+            "meaning": "estás"
+          },
+          {
+            "term": "he / she is (identity)",
+            "meaning": "é"
+          },
+          {
+            "term": "he / she is (state)",
+            "meaning": "está"
+          },
+          {
+            "term": "we are (identity)",
+            "meaning": "somos"
+          },
+          {
+            "term": "we are (state)",
+            "meaning": "estamos"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Ter — to have",
+        "items": [
+          {
+            "term": "I have",
+            "meaning": "tenho"
+          },
+          {
+            "term": "you have (tu)",
+            "meaning": "tens"
+          },
+          {
+            "term": "he / she has",
+            "meaning": "tem"
+          },
+          {
+            "term": "we have",
+            "meaning": "temos"
+          },
+          {
+            "term": "they have",
+            "meaning": "têm"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "In sentences",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "I am tired.",
+            "target": "Estou cansado/a."
+          },
+          {
+            "source": "She is Portuguese.",
+            "target": "Ela é portuguesa."
+          },
+          {
+            "source": "I have a reservation.",
+            "target": "Tenho uma reserva."
+          },
+          {
+            "source": "We have time.",
+            "target": "Temos tempo."
+          },
+          {
+            "source": "They are hungry.",
+            "target": "Têm fome.",
+            "note": "Idiom: ter fome = to be hungry"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "sou",
+            "native": "I am (identity)",
+            "phonetic": "soh"
+          },
+          {
+            "id": "por-2",
+            "foreign": "estou",
+            "native": "I am (state/location)",
+            "phonetic": "esh-TOH"
+          },
+          {
+            "id": "por-3",
+            "foreign": "tenho",
+            "native": "I have",
+            "phonetic": "TEN-yoh"
+          },
+          {
+            "id": "por-4",
+            "foreign": "somos",
+            "native": "we are (identity)",
+            "phonetic": "SOH-mohs"
+          },
+          {
+            "id": "por-5",
+            "foreign": "têm",
+            "native": "they have",
+            "phonetic": "taim"
+          },
+          {
+            "id": "por-6",
+            "foreign": "ter fome",
+            "native": "to be hungry",
+            "phonetic": "tehr FOH-meh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I am tired.\":",
+        "targetSentence": "Estou cansado/a.",
+        "targetTranslation": "I am tired.",
+        "scrambledTokens": [
+          "cansado/a",
+          "sou",
+          "Estou"
+        ],
+        "correctTokens": [
+          "Estou",
+          "cansado/a"
+        ],
+        "explanation": "Two core verbs in a single sentence — a powerful combination to internalize."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · idiom",
+        "prompt": "How do you say \"They are hungry\"?",
+        "audioText": "Têm fome",
+        "options": [
+          "Têm fome",
+          "Têm sede",
+          "Estão a comer",
+          "Estão cansados"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Mónica (Friend)",
+        "partnerSays": "Como estás?",
+        "partnerSaysTranslation": "How are you?",
+        "prompt": "Say you're tired and hungry:",
+        "options": [
+          "Estou cansado e tenho fome.",
+          "Tenho cansado e estou fome.",
+          "Estou fome e tenho cansado."
+        ],
+        "correctAnswer": "Estou cansado e tenho fome.",
+        "explanation": "Cansado uses estar (estou cansado), while fome uses ter (tenho fome)."
+      },
+      {
+        "type": "check",
+        "title": "Check · ser/estar",
+        "prompt": "How do you say \"I am tired\" (temporary state)?",
+        "options": [
+          "Sou cansado",
+          "Estou cansado",
+          "Tenho cansado",
+          "Sou cansando"
+        ],
+        "answerIndex": 1,
+        "explanation": "Estar is for temporary states: estou cansado. Ser is for permanent identity."
+      },
+      {
+        "type": "check",
+        "title": "Check · ter",
+        "prompt": "\"Tenho uma reserva\" uses…",
+        "options": [
+          "ser",
+          "estar",
+          "ter",
+          "ir"
+        ],
+        "answerIndex": 2,
+        "explanation": "Tenho comes from ter (to have)."
+      },
+      {
+        "type": "check",
+        "title": "Check · idiom",
+        "prompt": "How do you say \"they are hungry\" in Portuguese?",
+        "options": [
+          "Têm fome",
+          "Têm sede",
+          "Estão cansados",
+          "Têm uma reserva"
+        ],
+        "answerIndex": 0,
+        "explanation": "Ter fome is an idiom — Portuguese uses \"have\" where English uses \"be\" for hunger."
+      }
+    ]
+  },
+  {
+    "id": "regular-er-verbs-1",
+    "slug": "regular-verbs",
+    "title": "Regular verbs",
+    "description": "Conjugate the most common verb family.",
+    "unitId": "grammar-core",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 18,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "The biggest group",
+        "body": "Most verbs follow a regular pattern — learn it once, apply it to hundreds of verbs."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "Each language has its main verb conjugation pattern.",
+        "bullets": [
+          "Portuguese: -ar verbs (falar) → falo, falas, fala, falamos, falam",
+          "Arabic: present tense uses prefix + suffix patterns: أتكلم، تتكلم، يتكلم",
+          "Hindi: verb + gender/number + tense marker: बोलता हूँ (m.), बोलती हूँ (f.)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Falar (to speak) — presente",
+        "items": [
+          {
+            "term": "I speak",
+            "meaning": "falo"
+          },
+          {
+            "term": "you speak (informal)",
+            "meaning": "falas"
+          },
+          {
+            "term": "he / she speaks",
+            "meaning": "fala"
+          },
+          {
+            "term": "we speak",
+            "meaning": "falamos"
+          },
+          {
+            "term": "you speak (formal/plural)",
+            "meaning": "falam / falais"
+          },
+          {
+            "term": "they speak",
+            "meaning": "falam"
+          }
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "More -ar verbs",
+        "items": [
+          {
+            "term": "to like",
+            "meaning": "gostar de"
+          },
+          {
+            "term": "to live (somewhere)",
+            "meaning": "morar / viver"
+          },
+          {
+            "term": "to work",
+            "meaning": "trabalhar"
+          },
+          {
+            "term": "to watch/look",
+            "meaning": "olhar"
+          },
+          {
+            "term": "to eat",
+            "meaning": "comer (but -er verb!)"
+          },
+          {
+            "term": "to listen",
+            "meaning": "ouvir (irregular)"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "In use",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "I speak a little Portuguese.",
+            "target": "Falo um pouco de português."
+          },
+          {
+            "source": "We work in Lisbon.",
+            "target": "Trabalhamos em Lisboa."
+          },
+          {
+            "source": "They love Portuguese food.",
+            "target": "Adoram a comida portuguesa."
+          },
+          {
+            "source": "She watches TV every day.",
+            "target": "Ela olha para a TV todos os dias."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "falo",
+            "native": "I speak (eu)",
+            "phonetic": "FAH-loh"
+          },
+          {
+            "id": "por-2",
+            "foreign": "falas",
+            "native": "you speak (tu)",
+            "phonetic": "FAH-lahsh"
+          },
+          {
+            "id": "por-3",
+            "foreign": "falamos",
+            "native": "we speak",
+            "phonetic": "fah-LAH-mohsh"
+          },
+          {
+            "id": "por-4",
+            "foreign": "trabalham",
+            "native": "they work",
+            "phonetic": "trah-BAH-lyowm"
+          },
+          {
+            "id": "por-5",
+            "foreign": "ouves",
+            "native": "you listen (tu)",
+            "phonetic": "OH-vesh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I speak a little Portuguese.\":",
+        "targetSentence": "Falo um pouco de português.",
+        "targetTranslation": "I speak a little Portuguese.",
+        "scrambledTokens": [
+          "de",
+          "português",
+          "falo",
+          "Falo",
+          "um",
+          "pouco"
+        ],
+        "correctTokens": [
+          "Falo",
+          "um",
+          "pouco",
+          "de",
+          "português"
+        ],
+        "explanation": "The verb pattern in action — master this form and unlock a whole verb family."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · nós form",
+        "prompt": "Which form is correct for \"we work\"?",
+        "audioText": "trabalhamos",
+        "options": [
+          "trabalhon",
+          "trabalhamos",
+          "trabalham",
+          "trabalhais"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Gonçalo (Friend)",
+        "partnerSays": "Falas português?",
+        "partnerSaysTranslation": "Do you speak Portuguese?",
+        "prompt": "Say yes, you speak a little Portuguese:",
+        "options": [
+          "Sim, falo um pouco de português.",
+          "Sim, falas um pouco de português.",
+          "Sim, falamos um pouco de português."
+        ],
+        "correctAnswer": "Sim, falo um pouco de português.",
+        "explanation": "With eu, -ar verbs take -o: falo. Falas is the tu form."
+      },
+      {
+        "type": "check",
+        "title": "Check · ending",
+        "prompt": "What ending goes with eu for -ar verbs in Portuguese?",
+        "options": [
+          "-as",
+          "-o",
+          "-a",
+          "-amos"
+        ],
+        "answerIndex": 1,
+        "explanation": "Eu takes -o: falo, trabalho, moro."
+      },
+      {
+        "type": "check",
+        "title": "Check · nós",
+        "prompt": "What ending goes with nós for -ar verbs?",
+        "options": [
+          "-o",
+          "-as",
+          "-amos",
+          "-am"
+        ],
+        "answerIndex": 2,
+        "explanation": "Nós takes -amos: falamos, trabalhamos."
+      }
+    ]
+  },
+  {
+    "id": "adjective-agreement-1",
+    "slug": "adjective-agreement",
+    "title": "Adjective agreement",
+    "description": "Make descriptive words match the noun they describe.",
+    "unitId": "grammar-core",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Adjectives match their nouns",
+        "body": "Portuguese adjectives agree with gender/number. Arabic adjectives agree with gender, number, and definiteness. Hindi adjectives agree with gender and number."
+      },
+      {
+        "type": "tip",
+        "title": "The default rule",
+        "body": "Add -a/-e for feminine in Portuguese; change the ending in Arabic; change -ā to -ī in Hindi.",
+        "bullets": [
+          "Portuguese: alto → alta (f.), altos (m. pl.), altas (f. pl.)",
+          "Arabic: طويل (m.) → طويلة (f.)",
+          "Hindi: लंबा (m.) → लंबी (f.) → लंबे (m. pl.)"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Common adjectives",
+        "items": [
+          {
+            "term": "tall / big",
+            "meaning": "alto/a"
+          },
+          {
+            "term": "small",
+            "meaning": "pequeno/a"
+          },
+          {
+            "term": "happy",
+            "meaning": "contente/a"
+          },
+          {
+            "term": "interesting",
+            "meaning": "interessante (same m/f)"
+          },
+          {
+            "term": "beautiful (m.)",
+            "meaning": "bonito"
+          },
+          {
+            "term": "beautiful (f.)",
+            "meaning": "bonita"
+          },
+          {
+            "term": "new",
+            "meaning": "novo/a"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Describing people and things",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "He is tall.",
+            "target": "Ele é alto."
+          },
+          {
+            "source": "She is tall.",
+            "target": "Ela é alta."
+          },
+          {
+            "source": "They are happy. (f.)",
+            "target": "Elas estão contentes."
+          },
+          {
+            "source": "It's a beautiful city.",
+            "target": "É uma cidade bonita."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "alto",
+            "native": "tall/big (masc.)",
+            "phonetic": "AL-toh"
+          },
+          {
+            "id": "por-2",
+            "foreign": "alta",
+            "native": "tall/big (fem.)",
+            "phonetic": "AL-tah"
+          },
+          {
+            "id": "por-3",
+            "foreign": "pequeno",
+            "native": "small (masc.)",
+            "phonetic": "peh-KEH-noh"
+          },
+          {
+            "id": "por-4",
+            "foreign": "pequena",
+            "native": "small (fem.)",
+            "phonetic": "peh-KEH-nah"
+          },
+          {
+            "id": "por-5",
+            "foreign": "novo/a",
+            "native": "new (masc./fem.)",
+            "phonetic": "NOH-voh/vah"
+          },
+          {
+            "id": "por-6",
+            "foreign": "bonito/a",
+            "native": "beautiful (masc./fem.)",
+            "phonetic": "boh-NEE-toh/tah"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"She is small.\":",
+        "targetSentence": "Ela é pequena.",
+        "targetTranslation": "She is small.",
+        "scrambledTokens": [
+          "pequena",
+          "alto",
+          "Ela",
+          "é"
+        ],
+        "correctTokens": [
+          "Ela",
+          "é",
+          "pequena"
+        ],
+        "explanation": "Agreement at work: the adjective shifts to match the noun it describes."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · feminine",
+        "prompt": "Which adjective form goes with \"irmã\" (sister)?",
+        "audioText": "alta",
+        "options": [
+          "alto",
+          "alta",
+          "altos",
+          "altas"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Teresa (Friend)",
+        "partnerSays": "O meu irmão é alto. E a tua irmã?",
+        "partnerSaysTranslation": "My brother is tall. And your sister?",
+        "prompt": "Describe your sister the same way:",
+        "options": [
+          "Ela também é alta.",
+          "Ela também é alto.",
+          "Ela também é altos."
+        ],
+        "correctAnswer": "Ela também é alta.",
+        "explanation": "Adjectives agree with the noun: irmã is feminine, so alto becomes alta."
+      },
+      {
+        "type": "check",
+        "title": "Check · feminine",
+        "prompt": "How do you say \"she is small\" in Portuguese?",
+        "options": [
+          "Ela é pequeno",
+          "Ela é pequena",
+          "Ela é pequenos",
+          "Ela é pequenas"
+        ],
+        "answerIndex": 1,
+        "explanation": "Ela (feminine singular) needs the -a ending: pequena."
+      },
+      {
+        "type": "check",
+        "title": "Check · position",
+        "prompt": "Which adjective position is most common in Portuguese?",
+        "options": [
+          "Always before the noun",
+          "Usually after the noun",
+          "Always at the end of sentence",
+          "No fixed rule"
+        ],
+        "answerIndex": 1,
+        "explanation": "Most Portuguese adjectives follow the noun: uma cidade bonita."
+      }
+    ]
+  },
+  {
+    "id": "negation-1",
+    "slug": "saying-no",
+    "title": "Saying no",
+    "description": "Turn any sentence negative with simple patterns.",
+    "unitId": "grammar-core",
+    "direction": "en-pt",
+    "level": "elementary",
+    "estimatedMinutes": 15,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Negation patterns",
+        "body": "Each language has a characteristic way to negate a verb. Learn the pattern, apply it everywhere."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "Position of the negative word differs.",
+        "bullets": [
+          "Portuguese: não before the verb",
+          "Arabic: لا (present), لم + jussive (past), ليس (to be)",
+          "Hindi: नहीं after the predicate; मत for commands"
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Negation words",
+        "items": [
+          {
+            "term": "not",
+            "meaning": "não"
+          },
+          {
+            "term": "never",
+            "meaning": "nunca / jamais"
+          },
+          {
+            "term": "no longer / not anymore",
+            "meaning": "já não"
+          },
+          {
+            "term": "nothing",
+            "meaning": "nada"
+          },
+          {
+            "term": "nobody",
+            "meaning": "ninguém"
+          },
+          {
+            "term": "neither…nor…",
+            "meaning": "nem…nem…"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Negative sentences",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "I don't speak French.",
+            "target": "Não falo francês."
+          },
+          {
+            "source": "I don't like coffee.",
+            "target": "Não gosto de café."
+          },
+          {
+            "source": "I never eat meat.",
+            "target": "Nunca como carne."
+          },
+          {
+            "source": "There's nothing here.",
+            "target": "Não há nada aqui."
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "não",
+            "native": "not",
+            "phonetic": "nowng"
+          },
+          {
+            "id": "por-2",
+            "foreign": "nunca",
+            "native": "never",
+            "phonetic": "NOON-kah"
+          },
+          {
+            "id": "por-3",
+            "foreign": "já não",
+            "native": "no longer",
+            "phonetic": "zhah nowng"
+          },
+          {
+            "id": "por-4",
+            "foreign": "nada",
+            "native": "nothing",
+            "phonetic": "NAH-dah"
+          },
+          {
+            "id": "por-5",
+            "foreign": "ninguém",
+            "native": "nobody",
+            "phonetic": "neen-GAIM"
+          },
+          {
+            "id": "por-6",
+            "foreign": "nem…nem…",
+            "native": "neither…nor…",
+            "phonetic": "nem…nem…"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"I don't like coffee.\":",
+        "targetSentence": "Não gosto de café.",
+        "targetTranslation": "I don't like coffee.",
+        "scrambledTokens": [
+          "de",
+          "café",
+          "não",
+          "Não",
+          "gosto"
+        ],
+        "correctTokens": [
+          "Não",
+          "gosto",
+          "de",
+          "café"
+        ],
+        "explanation": "The negation pattern in its simplest form — learn it once, use it everywhere."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · não",
+        "prompt": "Which is the correct negative form?",
+        "audioText": "Não gosto de café",
+        "options": [
+          "Gosto não de café",
+          "Não gosto de café",
+          "Não o café gosto",
+          "Gosto não o café"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Rodrigo (Friend)",
+        "partnerSays": "Gostas de café?",
+        "partnerSaysTranslation": "Do you like coffee?",
+        "prompt": "Say no, you don't like coffee:",
+        "options": [
+          "Não, não gosto de café.",
+          "Não, gosto não de café.",
+          "Não, não gosto café."
+        ],
+        "correctAnswer": "Não, não gosto de café.",
+        "explanation": "Portuguese negation: não before the verb. \"Não gosto de…\" is the correct structure."
+      },
+      {
+        "type": "check",
+        "title": "Check · placement",
+        "prompt": "Where does \"não\" go in a Portuguese negative sentence?",
+        "options": [
+          "After the verb",
+          "Right before the verb",
+          "At the end",
+          "Before the subject"
+        ],
+        "answerIndex": 1,
+        "explanation": "Não goes directly before the conjugated verb: não falo, não gosto de."
+      },
+      {
+        "type": "check",
+        "title": "Check · double negative",
+        "prompt": "\"Não vejo nada\" (I see nothing) — is this correct?",
+        "options": [
+          "No, double negation is wrong in Portuguese",
+          "Yes, double negation is standard in Portuguese",
+          "Only in formal Portuguese",
+          "Only in Brazilian Portuguese"
+        ],
+        "answerIndex": 1,
+        "explanation": "Double negation is correct and required in Portuguese: não vejo nada."
+      }
+    ]
+  },
+  {
+    "id": "asking-questions-1",
+    "slug": "asking-questions",
+    "title": "Asking questions",
+    "description": "Question words and patterns.",
+    "unitId": "grammar-core",
+    "direction": "en-pt",
+    "level": "intermediate",
+    "estimatedMinutes": 17,
+    "steps": [
+      {
+        "type": "intro",
+        "title": "Asking around",
+        "body": "Each language has its own set of question words and question-formation patterns."
+      },
+      {
+        "type": "tip",
+        "title": "Patterns compared",
+        "body": "Yes/no and information questions each have their own structure.",
+        "bullets": [
+          "Portuguese: rise in intonation + ? punctuation. Or verb-subject inversion.",
+          "Arabic: question word + normal word order. هل at start for yes/no.",
+          "Hindi: क्या at the start for yes/no; question words stay in the position of what they ask."
+        ]
+      },
+      {
+        "type": "vocab",
+        "title": "Question words",
+        "items": [
+          {
+            "term": "who",
+            "meaning": "quem"
+          },
+          {
+            "term": "what",
+            "meaning": "o que / que"
+          },
+          {
+            "term": "where",
+            "meaning": "onde"
+          },
+          {
+            "term": "when",
+            "meaning": "quando"
+          },
+          {
+            "term": "why",
+            "meaning": "por que / porquê"
+          },
+          {
+            "term": "how",
+            "meaning": "como"
+          },
+          {
+            "term": "how much / how many",
+            "meaning": "quanto/a/s"
+          },
+          {
+            "term": "which",
+            "meaning": "qual / quais"
+          }
+        ]
+      },
+      {
+        "type": "phrase",
+        "title": "Sample questions",
+        "sourceLabel": "en-pt",
+        "phrases": [
+          {
+            "source": "Do you speak English?",
+            "target": "Fala inglês?"
+          },
+          {
+            "source": "Where do you live?",
+            "target": "Onde moras?"
+          },
+          {
+            "source": "Why are you laughing?",
+            "target": "Por que estás a rir?"
+          },
+          {
+            "source": "How much does it cost?",
+            "target": "Quanto custa?"
+          }
+        ]
+      },
+      {
+        "type": "pair-matching",
+        "prompt": "Match each Portuguese word with its English meaning:",
+        "pairs": [
+          {
+            "id": "por-1",
+            "foreign": "quem",
+            "native": "who",
+            "phonetic": "kaim"
+          },
+          {
+            "id": "por-2",
+            "foreign": "o que",
+            "native": "what",
+            "phonetic": "oh keh"
+          },
+          {
+            "id": "por-3",
+            "foreign": "onde",
+            "native": "where",
+            "phonetic": "ON-deh"
+          },
+          {
+            "id": "por-4",
+            "foreign": "quando",
+            "native": "when",
+            "phonetic": "KWAN-doh"
+          },
+          {
+            "id": "por-5",
+            "foreign": "por que",
+            "native": "why",
+            "phonetic": "por KEH"
+          },
+          {
+            "id": "por-6",
+            "foreign": "como",
+            "native": "how",
+            "phonetic": "KOH-moh"
+          },
+          {
+            "id": "por-7",
+            "foreign": "quanto",
+            "native": "how much",
+            "phonetic": "KWAN-toh"
+          }
+        ]
+      },
+      {
+        "type": "sentence-builder",
+        "prompt": "Arrange the stones to say: \"Do you speak English?\":",
+        "targetSentence": "Fala inglês?",
+        "targetTranslation": "Do you speak English?",
+        "scrambledTokens": [
+          "inglês",
+          "quem",
+          "Fala"
+        ],
+        "correctTokens": [
+          "Fala",
+          "inglês"
+        ],
+        "explanation": "A well-formed question using the key structure — polite, clear, and natural."
+      },
+      {
+        "type": "listen",
+        "title": "Listen · why",
+        "prompt": "How do you say \"why\" in Portuguese?",
+        "audioText": "por que",
+        "options": [
+          "quando",
+          "como",
+          "por que",
+          "quem"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "type": "context-dialogue",
+        "dialoguePartner": "Beatriz (Friend)",
+        "partnerSays": "Tens alguma pergunta?",
+        "partnerSaysTranslation": "Do you have a question?",
+        "prompt": "Ask where she lives:",
+        "options": [
+          "Onde moras?",
+          "Onde mora?",
+          "Moras onde?"
+        ],
+        "correctAnswer": "Onde moras?",
+        "explanation": "Onde moras? uses the tu form of morar for informal questions."
+      },
+      {
+        "type": "check",
+        "title": "Check · word meaning",
+        "prompt": "How do you say \"why\" in Portuguese?",
+        "options": [
+          "quando",
+          "como",
+          "por que",
+          "quem"
+        ],
+        "answerIndex": 2,
+        "explanation": "Por que = why; it pairs with porque (because) in the answer."
+      },
+      {
+        "type": "check",
+        "title": "Check · question form",
+        "prompt": "Which is a correct yes/no question in Portuguese?",
+        "options": [
+          "Fala inglês?",
+          "Inglês fala?",
+          "Por que fala inglês?",
+          "Fala por quê inglês?"
+        ],
+        "answerIndex": 0,
+        "explanation": "Yes/no questions in Portuguese use rising intonation or verb-subject inversion. Fala inglês? is correct."
+      }
+    ]
   }
 ]

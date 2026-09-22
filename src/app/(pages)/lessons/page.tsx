@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
 import {
+    Lesson,
     UNITS,
     getLessonsByDirection,
     type LessonDirection,
@@ -25,10 +26,16 @@ export default function LessonsPage() {
     const { data: session } = useSession();
     const [progress, setProgress] = useState<ProgressState>(defaultProgress());
     const [learningLanguage, setLearningLanguage] = useState(progress.learningLanguage || "en");
+    const [lessons, setLessons] = useState<Lesson[]>([]);
 
     const currentLang =
-        LANGUAGES.find((l) => l.voice === progress.lessonDirection) ||
+        LANGUAGES.find((l) => l.value === progress.learningLanguage) ||
         LANGUAGES[0];
+
+    const primaryDirection: LessonDirection = useMemo(
+        () => directionForLearningLanguage(learningLanguage, progress.nativeLanguage!),
+        [learningLanguage, progress.nativeLanguage],
+    );
 
     useEffect(() => {
         const refreshProgress = () => setProgress(loadProgress());
@@ -43,18 +50,20 @@ export default function LessonsPage() {
     }, [session?.user?.learningLanguage, session?.user?.nativeLanguage]);
 
     useEffect(() => {
+        const refreshLesson = async () => {
+            const lessons = await getLessonsByDirection(primaryDirection);
+            setLessons(lessons);
+        };
+        refreshLesson();
+    }, [primaryDirection]);
+
+    useEffect(() => {
         setLearningLanguage(progress.learningLanguage!);
     }, [progress]);
-
-    const primaryDirection: LessonDirection = useMemo(
-        () => directionForLearningLanguage(learningLanguage),
-        [learningLanguage],
-    );
 
     const completedSet = new Set(progress.lessonsCompleted.get(primaryDirection!) || []);
 
     const countFor = (direction: LessonDirection) => {
-        const lessons = getLessonsByDirection(direction);
         const completedIds = progress.lessonsCompleted.get(direction!) || [];
         const done = lessons.filter((l) => completedIds.includes(l.id)).length;
         return { done, total: lessons.length };
@@ -68,7 +77,7 @@ export default function LessonsPage() {
     return (
         <div className="flex flex-col">
             <p className="flex items-center gap-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                <Leaf className="w-3 h-3 text-[#A5C9B1]" />                
+                <Leaf className="w-3 h-3 text-[#A5C9B1]" />
                 Lessons
             </p>
             <div className="my-6">
@@ -83,7 +92,7 @@ export default function LessonsPage() {
                 </p>
             </div>
 
-            <div className="rounded-xl border border-border bg-card p-6 shadow-soft">
+            <div className="rounded-xl border border-border bg-background p-6 shadow-soft">
                 <div className="flex items-center justify-between gap-3">
                     <div>
                         <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
@@ -112,6 +121,7 @@ export default function LessonsPage() {
                 direction={primaryDirection}
                 completedSet={completedSet}
                 progress={progress}
+                lessons={lessons}
             />
         </div>
     );
@@ -122,17 +132,19 @@ function UnitList({
     direction,
     completedSet,
     progress,
+    lessons,
 }: {
     units: typeof UNITS;
     direction: LessonDirection;
     completedSet: Set<string>;
     progress: ProgressState;
+    lessons: Lesson[];
 }) {
     const router = useRouter();
     return (
         <div className="mt-8 space-y-8">
             {units.map((unit) => {
-                const unitLessons = getLessonsByDirection(direction).filter((l) => l.unitId === unit.id);
+                const unitLessons = lessons.filter((l) => l.unitId === unit.id);
                 const unitDone = unitLessons.filter((l) =>
                     completedSet.has(l.id),
                 ).length;
@@ -140,7 +152,7 @@ function UnitList({
 
                 return (
                     <section key={unit.id}>
-                        <div className="bg-card border border-border rounded-2xl p-5 sm:p-6">
+                        <div className="bg-background border border-border rounded-2xl p-6 sm:p-6">
                             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                                 <div>
                                     <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-foreground">
@@ -211,10 +223,10 @@ function UnitList({
                                                         }
                                                     }}
                                                     className={`group relative w-18 h-18! sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center transition-all duration-300 ${isCompleted
-                                                            ? 'bg-accent text-primary border-2 border-primary/30 hover:bg-accent hover:scale-105 shadow-xs cursor-pointer'
-                                                            : isActive
-                                                                ? 'bg-primary text-primary-foreground border-4 border-primary/30 ring-4 ring-primary/15 hover:scale-105 shadow-md cursor-pointer'
-                                                                : 'bg-secondary text-muted-foreground border-2 border-border cursor-not-allowed'
+                                                        ? 'bg-accent text-primary border-2 border-primary/30 hover:bg-accent hover:scale-105 shadow-xs cursor-pointer'
+                                                        : isActive
+                                                            ? 'bg-primary text-primary-foreground border-4 border-primary/30 ring-4 ring-primary/15 hover:scale-105 shadow-md cursor-pointer'
+                                                            : 'bg-secondary text-muted-foreground border-2 border-border cursor-not-allowed'
                                                         }`}
                                                 >
                                                     {isCompleted ? (
@@ -229,10 +241,10 @@ function UnitList({
 
                                                     <div
                                                         className={`absolute -top-3 px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider transition-colors ${isCompleted
-                                                                ? 'bg-accent text-primary border border-primary/30'
-                                                                : isActive
-                                                                    ? 'bg-card text-destructive border border-border'
-                                                                    : 'bg-secondary text-muted-foreground'
+                                                            ? 'bg-accent text-primary border border-primary/30'
+                                                            : isActive
+                                                                ? 'bg-card text-destructive border border-border'
+                                                                : 'bg-secondary text-muted-foreground'
                                                             }`}
                                                     >
                                                         +{lesson.xp} XP
@@ -242,10 +254,10 @@ function UnitList({
                                                 <div className="mt-3 text-center max-w-xs px-2">
                                                     <h4
                                                         className={`text-sm font-semibold tracking-tight ${isActive
-                                                                ? 'text-primary font-bold'
-                                                                : isCompleted
-                                                                    ? 'text-primary'
-                                                                    : 'text-muted-foreground'
+                                                            ? 'text-primary font-bold'
+                                                            : isCompleted
+                                                                ? 'text-primary'
+                                                                : 'text-muted-foreground'
                                                             }`}
                                                     >
                                                         {lesson.title}

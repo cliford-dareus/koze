@@ -184,7 +184,7 @@ export async function POST(req: NextRequest) {
                     { status: 400 },
                 );
             }
-            const next = applyActivity(current, parsed.data.kind, {
+            const next = await applyActivity(current, parsed.data.kind, {
                 topic: parsed.data.topic,
                 lessonId: parsed.data.lessonId,
                 stepIndex: parsed.data.stepIndex,
@@ -209,7 +209,7 @@ export async function POST(req: NextRequest) {
                 ...defaultProgress(),
                 ...parsed.data.local,
             });
-            const next = mergeProgress(localNorm, current);
+            const next = await mergeProgress(localNorm, current);
             const serialized = serializeProgress(next);
             user.progress = serialized as never;
             await user.save();

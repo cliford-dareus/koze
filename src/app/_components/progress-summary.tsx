@@ -46,7 +46,7 @@ export default function ProgressSummary({ progress, ready }: { progress: Progres
 
     return (
         <div className="mt-6 space-y-3">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 rounded-xl border border-border bg-card p-6 shadow-soft">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 rounded-xl border border-border bg-background p-6 shadow-soft">
                 <div className="flex items-center gap-3.5">
                     <div className="w-12 h-12 rounded-2xl bg-card border border-border flex items-center justify-center text-destructive">
                         <Flame className="w-6 h-6 fill-destructive/30" />
@@ -79,7 +79,7 @@ export default function ProgressSummary({ progress, ready }: { progress: Progres
                             <ArrowRight className="w-4 h-4" />
                         </button>
                     </DrawerTrigger>
-                    <DrawerContent>
+                    <DrawerContent className="border border-border bg-background">
                         <DailyPractice progress={progress} />
                     </DrawerContent>
                 </Drawer>
@@ -112,13 +112,12 @@ export default function ProgressSummary({ progress, ready }: { progress: Progres
                                     id={`rhythm-day-${dayName.toLowerCase()}`}
                                 >
                                     <div
-                                        className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center text-xs font-medium transition-all ${
-                                            isCompleted
+                                        className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center text-xs font-medium transition-all ${isCompleted
                                                 ? 'bg-accent text-primary border border-primary/30 shadow-xs'
                                                 : isCurrent
                                                     ? 'bg-card text-destructive border-2 border-border shadow-xs'
                                                     : 'bg-card text-muted-foreground border border-border'
-                                        }`}
+                                            }`}
                                     >
                                         {isCompleted ? (
                                             <Check className="w-4 h-4 text-primary" />
@@ -129,9 +128,8 @@ export default function ProgressSummary({ progress, ready }: { progress: Progres
                                         )}
                                     </div>
                                     <span
-                                        className={`text-[11px] tracking-tight ${
-                                            isCurrent ? 'font-bold text-primary' : 'text-muted-foreground'
-                                        }`}
+                                        className={`text-[11px] tracking-tight ${isCurrent ? 'font-bold text-primary' : 'text-muted-foreground'
+                                            }`}
                                     >
                                         {dayName}
                                     </span>
@@ -170,11 +168,10 @@ export default function ProgressSummary({ progress, ready }: { progress: Progres
                                         sound.playPebbleTap(progress.soundEnabled);
                                         onUpdateDailyGoal(mins);
                                     }}
-                                    className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                                        isSelected
+                                    className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${isSelected
                                             ? 'bg-primary text-primary-foreground'
                                             : 'bg-secondary text-foreground hover:bg-secondary'
-                                    }`}
+                                        }`}
                                 >
                                     {mins}m
                                 </button>
