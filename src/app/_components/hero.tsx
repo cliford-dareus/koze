@@ -4,12 +4,11 @@ import { useMemo } from "react";
 import { ProgressState } from "../../lib/progress";
 import { DEFAULT_DAILY_GOAL, levelProgress } from "../../lib/gamification";
 import { Leaf, Sparkles } from "lucide-react";
-import { LANGUAGES } from "../../lib/languages";
+import { LanguageOption, LANGUAGES } from "../../lib/languages";
 import { sound } from "@/lib/sound";
 import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
 import ZenGarden from "./zen-garden";
 import DailyPractice from "./daily-practice";
-import { LanguageOption } from "@/data/languages";
 
 export default function Hero({ progress, ready, currentLang }: { progress: ProgressState; ready: boolean; currentLang: LanguageOption; }) {
     const levelInfo = useMemo(
