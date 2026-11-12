@@ -88,7 +88,11 @@ export default function StudioSection({
                     onClick={() => sound.playPebbleTap(soundEnabled)}
                 >
                     <article className="relative overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-soft transition-all duration-200 group-hover:-translate-y-0.5 group-hover:border-primary/30 group-active:translate-y-0 sm:p-6">
-                        <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-accent/60 blur-2xl" />
+                        <div
+                            className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full blur-2xl"
+                            style={{ background: "var(--lang-theme-glow)" }}
+                            aria-hidden
+                        />
                         <div className="relative flex items-start gap-4">
                             <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-xs">
                                 <featured.icon size={18} strokeWidth={1.75} />
