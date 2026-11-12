@@ -3,9 +3,10 @@ import { z } from "zod";
 import { auth } from "@/auth";
 import { connectDB } from "@/lib/db";
 import { User } from "@/models/User";
-import { defaultProgress, type ProgressState } from "@/lib/progress";
-import { applyActivity, mergeProgress } from "@/lib/progress-server";
+import { defaultProgress, type ProgressState, type SavedPhrase } from "@/lib/progress";
+import { applyActivity, isLessonDirection, mergeProgress } from "@/lib/progress-server";
 import { DEFAULT_DAILY_GOAL } from "@/lib/gamification";
+import { SUPPORTED_DIRECTIONS } from "@/data/lessons";
 
 function normalizeProgress(raw: unknown): ProgressState {
     const base = defaultProgress();
@@ -40,6 +41,7 @@ function normalizeProgress(raw: unknown): ProgressState {
         lessonsCompleted = p.lessonsCompleted as ProgressState["lessonsCompleted"];
     } else if (p.lessonsCompleted && typeof p.lessonsCompleted === "object") {
         if (Array.isArray(p.lessonsCompleted)) {
+            // Legacy flat array — fold into default direction
             lessonsCompleted.set("en-fr", p.lessonsCompleted as string[]);
         } else {
             lessonsCompleted = new Map(
@@ -48,17 +50,79 @@ function normalizeProgress(raw: unknown): ProgressState {
         }
     }
 
-    const lessonDirection =
-        p.lessonDirection === "fr-en" || p.lessonDirection === "en-fr"
-            ? p.lessonDirection
-            : base.lessonDirection;
+    const lessonDirection = isLessonDirection(p.lessonDirection)
+        ? p.lessonDirection
+        : base.lessonDirection;
+
+    const weeklyActivity =
+        p.weeklyActivity && typeof p.weeklyActivity === "object" && !Array.isArray(p.weeklyActivity)
+            ? (p.weeklyActivity as Record<string, number>)
+            : {};
 
     return {
         ...base,
-        ...p,
+        translations: typeof p.translations === "number" ? p.translations : base.translations,
+        listeningCorrect:
+            typeof p.listeningCorrect === "number"
+                ? p.listeningCorrect
+                : base.listeningCorrect,
+        readingSessions:
+            typeof p.readingSessions === "number"
+                ? p.readingSessions
+                : base.readingSessions,
+        quizCorrect: typeof p.quizCorrect === "number" ? p.quizCorrect : base.quizCorrect,
+        practiceSessions:
+            typeof p.practiceSessions === "number"
+                ? p.practiceSessions
+                : base.practiceSessions,
+        savedPhrases: Array.isArray(p.savedPhrases)
+            ? (p.savedPhrases as SavedPhrase[])
+            : [],
+        lessonsCompletedCount:
+            typeof p.lessonsCompletedCount === "number"
+                ? p.lessonsCompletedCount
+                : Array.from(lessonsCompleted.values()).reduce(
+                      (sum, arr) => sum + arr.length,
+                      0,
+                  ),
+        streak: typeof p.streak === "number" ? p.streak : base.streak,
+        currentWord:
+            typeof p.currentWord === "string" || p.currentWord === null
+                ? (p.currentWord as string | null)
+                : base.currentWord,
+        currentWordDate:
+            typeof p.currentWordDate === "string" || p.currentWordDate === null
+                ? (p.currentWordDate as string | null)
+                : base.currentWordDate,
+        lastActiveDate:
+            typeof p.lastActiveDate === "string" || p.lastActiveDate === null
+                ? (p.lastActiveDate as string | null)
+                : base.lastActiveDate,
+        lastTopic:
+            typeof p.lastTopic === "string" || p.lastTopic === null
+                ? (p.lastTopic as string | null)
+                : base.lastTopic,
+        lastLessonId:
+            typeof p.lastLessonId === "string" || p.lastLessonId === null
+                ? (p.lastLessonId as string | null)
+                : base.lastLessonId,
         lessonProgress,
         lessonsCompleted,
+        completedStoryIds: Array.isArray(p.completedStoryIds)
+            ? (p.completedStoryIds as string[])
+            : [],
+        completedListeningIds: Array.isArray(p.completedListeningIds)
+            ? (p.completedListeningIds as string[])
+            : [],
         lessonDirection,
+        nativeLanguage:
+            typeof p.nativeLanguage === "string" || p.nativeLanguage === null
+                ? (p.nativeLanguage as string | null)
+                : base.nativeLanguage,
+        learningLanguage:
+            typeof p.learningLanguage === "string" || p.learningLanguage === null
+                ? (p.learningLanguage as string | null)
+                : base.learningLanguage,
         xp: typeof p.xp === "number" ? p.xp : 0,
         dailyGoal:
             typeof p.dailyGoal === "number" ? p.dailyGoal : DEFAULT_DAILY_GOAL,
@@ -66,25 +130,49 @@ function normalizeProgress(raw: unknown): ProgressState {
         todayXp: typeof p.todayXp === "number" ? p.todayXp : 0,
         todayDate: typeof p.todayDate === "string" ? p.todayDate : null,
         dailyGoalMet: Boolean(p.dailyGoalMet),
+        lastPracticedDate:
+            typeof p.lastPracticedDate === "string"
+                ? p.lastPracticedDate
+                : base.lastPracticedDate,
+        todayMinutesPracticed:
+            typeof p.todayMinutesPracticed === "number"
+                ? p.todayMinutesPracticed
+                : 0,
+        dailyGoalMinutes:
+            typeof p.dailyGoalMinutes === "number"
+                ? p.dailyGoalMinutes
+                : base.dailyGoalMinutes,
+        weeklyActivity,
         badges: Array.isArray(p.badges) ? (p.badges as string[]) : [],
-        practiceSessions:
-            typeof p.practiceSessions === "number" ? p.practiceSessions : 0,
-        savedPhrases: Array.isArray(p.savedPhrases) ? p.savedPhrases : [],
-    } as ProgressState;
+        cairnStonesCount:
+            typeof p.cairnStonesCount === "number" ? p.cairnStonesCount : 0,
+        soundEnabled:
+            typeof p.soundEnabled === "boolean" ? p.soundEnabled : true,
+        ambientSoundEnabled:
+            typeof p.ambientSoundEnabled === "boolean"
+                ? p.ambientSoundEnabled
+                : false,
+    };
 }
 
 function serializeProgress(state: ProgressState) {
     return {
         ...state,
         lessonProgress: Object.fromEntries(
-            Array.from(state.lessonProgress.entries()).map(([dir, lessons]) => [
-                dir,
-                Object.fromEntries(lessons),
-            ]),
+            Array.from((state.lessonProgress || new Map()).entries()).map(
+                ([dir, lessons]) => [dir, Object.fromEntries(lessons)],
+            ),
         ),
-        lessonsCompleted: Object.fromEntries(state.lessonsCompleted),
+        lessonsCompleted: Object.fromEntries(
+            state.lessonsCompleted || new Map(),
+        ),
+        weeklyActivity: state.weeklyActivity || {},
     };
 }
+
+const directionEnum = z.enum(
+    SUPPORTED_DIRECTIONS as [string, ...string[]],
+);
 
 const activitySchema = z.object({
     kind: z.enum([
@@ -99,7 +187,9 @@ const activitySchema = z.object({
     lessonId: z.string().optional(),
     stepIndex: z.number().int().min(0).optional(),
     lessonCompleted: z.boolean().optional(),
-    direction: z.enum(["en-fr", "fr-en"]).optional(),
+    direction: directionEnum.optional(),
+    xpEarned: z.number().optional(),
+    minutes: z.number().optional(),
 });
 
 const mergeSchema = z.object({
@@ -120,14 +210,25 @@ const mergeSchema = z.object({
             lastLessonId: z.string().nullable().optional(),
             lessonsCompleted: z.any().optional(),
             lessonProgress: z.any().optional(),
-            lessonDirection: z.enum(["en-fr", "fr-en"]).optional(),
+            completedStoryIds: z.array(z.string()).optional(),
+            completedListeningIds: z.array(z.string()).optional(),
+            lessonDirection: directionEnum.nullable().optional(),
+            nativeLanguage: z.string().nullable().optional(),
+            learningLanguage: z.string().nullable().optional(),
             xp: z.number().optional(),
             dailyGoal: z.number().optional(),
             todayActions: z.number().optional(),
             todayXp: z.number().optional(),
             todayDate: z.string().nullable().optional(),
             dailyGoalMet: z.boolean().optional(),
+            lastPracticedDate: z.string().optional(),
+            todayMinutesPracticed: z.number().optional(),
+            dailyGoalMinutes: z.number().optional(),
+            weeklyActivity: z.record(z.number()).optional(),
             badges: z.array(z.string()).optional(),
+            cairnStonesCount: z.number().optional(),
+            soundEnabled: z.boolean().optional(),
+            ambientSoundEnabled: z.boolean().optional(),
         })
         .passthrough(),
 });
@@ -151,7 +252,10 @@ export async function GET() {
     }
 
     const progress = normalizeProgress(user.progress);
-    return NextResponse.json({ success: true, progress });
+    return NextResponse.json({
+        success: true,
+        progress: serializeProgress(progress),
+    });
 }
 
 export async function POST(req: NextRequest) {
@@ -190,6 +294,8 @@ export async function POST(req: NextRequest) {
                 stepIndex: parsed.data.stepIndex,
                 lessonCompleted: parsed.data.lessonCompleted,
                 direction: parsed.data.direction,
+                xpEarned: parsed.data.xpEarned,
+                minutes: parsed.data.minutes,
             });
             const serialized = serializeProgress(next);
             user.progress = serialized as never;
