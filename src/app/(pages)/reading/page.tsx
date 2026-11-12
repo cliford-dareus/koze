@@ -1,84 +1,22 @@
-import ReadingManager from "./_components/reading-manager";
-import { getQuote } from "@/app/_actions/translate";
-import TextToSpeechWithVirsual from "@/app/_components/text-to-speech-with-virsual";
-import MicAudioVisualizer from "@/app/_components/mic-audio-visualizer";
-import {
-    Drawer,
-    DrawerContent,
-    DrawerTrigger,
-} from "@/app/_components/ui/drawer";
-import { Button } from "@/app/_components/ui/button";
-import { SplitText } from "./_components/split-text";
 import { Leaf } from "lucide-react";
 import { ReadingPage } from "./_components/reading-page";
 
 const Reading = async () => {
-    const randomQuote = await getQuote('happiness');
-    if (randomQuote === null) return null;
-
     return (
         <div className="flex flex-col">
-            <p className="flex items-center gap-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                <Leaf className="w-3 h-3 text-[#A5C9B1]" />
+            <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+                <Leaf className="h-3 w-3" />
                 Reading
             </p>
-            <h1 className="mt-2 font-display text-3xl font-medium">
-                Quiet Passages
+            <h1 className="mt-2 font-serif text-3xl font-semibold tracking-tight text-foreground">
+                Quiet passages
             </h1>
-
-            <p className="text-xs sm:text-sm text-[#70756F] max-w-md mx-auto mt-2 leading-relaxed">
-                Immerse your spirit in peaceful native prose, bilingual reflections, and authentic cultural vignettes.
+            <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
+                Peaceful native prose, bilingual reflections, and authentic cultural
+                vignettes — at an unhurried pace.
             </p>
-            
+
             <ReadingPage />
-
-            {/*<div className="mt-6 rounded-xl border border-border bg-card p-6 shadow-soft">
-                <p className="font-display text-2xl leading-snug">
-                    {randomQuote?.quote}
-                </p>
-                {randomQuote?.author ? (
-                    <p className="mt-6 text-sm text-muted-foreground">
-                        {randomQuote.author}
-                    </p>
-                ) : null}
-            </div>
-
-            <SplitText randomQuote={randomQuote} />
-
-            <div className="mt-4 rounded-xl border border-border bg-card p-4 shadow-soft">
-                <h2 className="text-sm font-medium">Listen</h2>
-                <div className="mt-3 flex items-center gap-4">
-                    <TextToSpeechWithVirsual
-                        classname="h-[30px] w-[60%]"
-                        randomFact={randomQuote?.quote}
-                    />
-                </div>
-            </div>
-
-            <div className="mt-4">
-                <MicAudioVisualizer
-                    label="Practice aloud"
-                    barCount={40}
-                    canvasClassName="h-24"
-                />
-                <p className="mt-2 text-xs text-muted-foreground">
-                    Open the mic and read the line — the bars follow your voice.
-                </p>
-            </div>
-
-            <div className="mt-8 flex w-full justify-center">
-                <Drawer>
-                    <DrawerTrigger asChild>
-                        <Button className="w-full max-w-xs font-medium" size="lg">
-                            Start reading
-                        </Button>
-                    </DrawerTrigger>
-
-                    <DrawerContent className="border-border bg-background pb-20 pt-8">
-                        <ReadingManager quote={randomQuote?.quote} />
-                    </DrawerContent>
-                </Drawer>
-            </div>*/}
         </div>
     );
 };
