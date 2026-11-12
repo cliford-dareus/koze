@@ -8,6 +8,21 @@ const LessonProgressEntrySchema = new Schema(
     { _id: false },
 );
 
+const SavedPhraseSchema = new Schema(
+    {
+        id: { type: String, required: true },
+        text: { type: String, required: true },
+        hint: { type: String },
+        scenarioId: { type: String },
+        savedAt: { type: String, required: true },
+    },
+    { _id: false },
+);
+
+/**
+ * Mirrors client ProgressState (src/lib/progress.ts).
+ * Nested maps are stored as plain objects for MongoDB.
+ */
 const ProgressSchema = new Schema(
     {
         translations: { type: Number, default: 0 },
@@ -15,7 +30,7 @@ const ProgressSchema = new Schema(
         readingSessions: { type: Number, default: 0 },
         quizCorrect: { type: Number, default: 0 },
         practiceSessions: { type: Number, default: 0 },
-        savedPhrases: { type: Schema.Types.Mixed, default: [] },
+        savedPhrases: { type: [SavedPhraseSchema], default: [] },
         lessonsCompletedCount: { type: Number, default: 0 },
         streak: { type: Number, default: 0 },
         currentWord: { type: String, default: null },
@@ -23,20 +38,31 @@ const ProgressSchema = new Schema(
         lastActiveDate: { type: String, default: null },
         lastTopic: { type: String, default: null },
         lastLessonId: { type: String, default: null },
-        lessonsCompleted: { type: Schema.Types.Mixed, default: {} },
+        /** direction -> lessonId -> { currentStep, completed } */
         lessonProgress: { type: Schema.Types.Mixed, default: {} },
-        lessonDirection: {
-            type: String,
-            enum: ["en-fr", "fr-en"],
-            default: "fr-en",
-        },
+        /** direction -> completed lesson ids */
+        lessonsCompleted: { type: Schema.Types.Mixed, default: {} },
+        completedStoryIds: { type: [String], default: [] },
+        completedListeningIds: { type: [String], default: [] },
+        /** e.g. "en-fr", "en-es"; null until path chosen */
+        lessonDirection: { type: String, default: null },
+        nativeLanguage: { type: String, default: null },
+        learningLanguage: { type: String, default: null },
         xp: { type: Number, default: 0 },
         dailyGoal: { type: Number, default: 3 },
         todayActions: { type: Number, default: 0 },
         todayXp: { type: Number, default: 0 },
         todayDate: { type: String, default: null },
         dailyGoalMet: { type: Boolean, default: false },
+        lastPracticedDate: { type: String, default: null },
+        todayMinutesPracticed: { type: Number, default: 0 },
+        dailyGoalMinutes: { type: Number, default: 10 },
+        /** YYYY-MM-DD -> minutes practiced */
+        weeklyActivity: { type: Schema.Types.Mixed, default: {} },
         badges: { type: [String], default: [] },
+        cairnStonesCount: { type: Number, default: 0 },
+        soundEnabled: { type: Boolean, default: true },
+        ambientSoundEnabled: { type: Boolean, default: false },
     },
     { _id: false },
 );
