@@ -51,6 +51,11 @@
 
     --shadow-soft: 0 1px 2px rgb(28 27 25 / 0.04), 0 12px 32px rgb(28 27 25 / 0.05);
     --theme-color: #f4f1eb;
+
+    /* Learning-language tint (overridden by LanguageThemeSync) */
+    --lang-theme: hsl(var(--primary));
+    --lang-theme-soft: hsl(170 28% 23% / 0.1);
+    --lang-theme-glow: hsl(170 28% 23% / 0.12);
   }
 
   .dark {
@@ -85,6 +90,10 @@
 
     --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.35), 0 12px 32px rgb(0 0 0 / 0.28);
     --theme-color: #161412;
+
+    --lang-theme: hsl(var(--primary));
+    --lang-theme-soft: hsl(165 22% 48% / 0.16);
+    --lang-theme-glow: hsl(165 22% 48% / 0.2);
   }
 }
 
@@ -109,6 +118,22 @@
     @apply bg-background text-foreground;
     min-height: 100%;
     min-height: 100dvh;
+    transition:
+      background-color 400ms ease,
+      color 400ms ease;
+  }
+
+  /* Soften primary / accent shifts when learning language changes */
+  .bg-primary,
+  .text-primary,
+  .border-primary,
+  .bg-accent,
+  .ring-primary {
+    transition:
+      background-color 450ms ease,
+      color 450ms ease,
+      border-color 450ms ease,
+      box-shadow 450ms ease;
   }
 
   h1,
@@ -130,11 +155,11 @@
   }
 
   ::selection {
-    background: hsl(170 28% 23% / 0.16);
+    background: hsl(var(--primary) / 0.16);
   }
 
   .dark ::selection {
-    background: hsl(165 22% 48% / 0.28);
+    background: hsl(var(--primary) / 0.28);
   }
 
   @supports (-webkit-touch-callout: none) {
@@ -151,14 +176,24 @@
 
   .paper-grain {
     background-image:
-      radial-gradient(circle at 18% 12%, hsl(170 28% 23% / 0.05), transparent 32%),
+      radial-gradient(circle at 18% 12%, var(--lang-theme-glow), transparent 34%),
       radial-gradient(circle at 88% 0%, hsl(40 8% 10% / 0.04), transparent 28%);
   }
 
   .dark .paper-grain {
     background-image:
-      radial-gradient(circle at 18% 12%, hsl(165 22% 48% / 0.08), transparent 34%),
+      radial-gradient(circle at 18% 12%, var(--lang-theme-glow), transparent 36%),
       radial-gradient(circle at 88% 0%, hsl(40 12% 92% / 0.03), transparent 28%);
+  }
+
+  .lang-wash {
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 0%, var(--lang-theme-soft), transparent 55%),
+      radial-gradient(ellipse 50% 40% at 100% 20%, var(--lang-theme-glow), transparent 50%);
+  }
+
+  .lang-swatch {
+    background-color: var(--lang-theme, hsl(var(--primary)));
   }
 
   .app-frame {
