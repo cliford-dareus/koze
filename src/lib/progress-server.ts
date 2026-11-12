@@ -1,11 +1,8 @@
-import type {
-    ActivityKind,
-    ProgressState,
-} from "@/lib/progress";
+import type { ActivityKind, ProgressState, SavedPhrase } from "@/lib/progress";
 import { defaultProgress } from "@/lib/progress";
 import { applyXpAndDailyGoal, DEFAULT_DAILY_GOAL } from "@/lib/gamification";
 import { applyBadgeUnlocks } from "@/data/badges";
-import { LessonDirection } from "@/data/lessons";
+import { LessonDirection, SUPPORTED_DIRECTIONS } from "@/data/lessons";
 
 function todayKey() {
     return new Date().toISOString().slice(0, 10);
@@ -17,8 +14,11 @@ function yesterdayKey() {
     return d.toISOString().slice(0, 10);
 }
 
-function isLessonDirection(v: unknown): v is LessonDirection {
-    return v === "en-fr" || v === "fr-en";
+export function isLessonDirection(v: unknown): v is Exclude<LessonDirection, null> {
+    return (
+        typeof v === "string" &&
+        (SUPPORTED_DIRECTIONS as string[]).includes(v)
+    );
 }
 
 export function bumpStreak(state: ProgressState): ProgressState {
@@ -30,6 +30,22 @@ export function bumpStreak(state: ProgressState): ProgressState {
     return { ...state, streak: 1, lastActiveDate: today };
 }
 
+function mergeStringLists(a: string[] = [], b: string[] = []): string[] {
+    return Array.from(new Set([...a, ...b]));
+}
+
+function mergeWeeklyActivity(
+    a: Record<string, number> = {},
+    b: Record<string, number> = {},
+): Record<string, number> {
+    const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
+    const out: Record<string, number> = {};
+    for (const k of keys) {
+        out[k] = Math.max(a[k] ?? 0, b[k] ?? 0);
+    }
+    return out;
+}
+
 export async function applyActivity(
     prev: ProgressState,
     kind: ActivityKind,
@@ -39,6 +55,8 @@ export async function applyActivity(
         stepIndex?: number;
         lessonCompleted?: boolean;
         direction?: string;
+        xpEarned?: number;
+        minutes?: number;
     },
 ): Promise<ProgressState> {
     let next = bumpStreak({ ...defaultProgress(), ...prev });
@@ -57,22 +75,24 @@ export async function applyActivity(
         const lessonId = extra.lessonId;
         const stepIndex = extra.stepIndex ?? 0;
         const completed = Boolean(extra.lessonCompleted);
-        const direction: LessonDirection = isLessonDirection(extra.direction)
+        const direction: Exclude<LessonDirection, null> = isLessonDirection(
+            extra.direction,
+        )
             ? extra.direction
             : isLessonDirection(next.lessonDirection)
               ? next.lessonDirection
               : "en-fr";
 
         const lessonProgress = new Map(next.lessonProgress || []);
-        const directionProgress = new Map(lessonProgress.get(direction!) || []);
+        const directionProgress = new Map(lessonProgress.get(direction) || []);
         directionProgress.set(lessonId, { currentStep: stepIndex, completed });
-        lessonProgress.set(direction!, directionProgress);
+        lessonProgress.set(direction, directionProgress);
 
         const lessonsCompleted = new Map(next.lessonsCompleted || []);
-        const list = [...(lessonsCompleted.get(direction!) ?? [])];
+        const list = [...(lessonsCompleted.get(direction) ?? [])];
         if (completed && !list.includes(lessonId)) {
             list.push(lessonId);
-            lessonsCompleted.set(direction!, list);
+            lessonsCompleted.set(direction, list);
         }
 
         next = {
@@ -85,13 +105,30 @@ export async function applyActivity(
                 0,
             ),
             lastLessonId: lessonId,
+            cairnStonesCount:
+                (next.cairnStonesCount || 0) + (completed ? 1 : 0),
         };
     }
 
     if (extra?.topic) next = { ...next, lastTopic: extra.topic };
 
+    if (typeof extra?.minutes === "number" && extra.minutes > 0) {
+        const today = todayKey();
+        const weekly = { ...(next.weeklyActivity || {}) };
+        weekly[today] = (weekly[today] || 0) + extra.minutes;
+        next = {
+            ...next,
+            todayMinutesPracticed:
+                (next.todayDate === today ? next.todayMinutesPracticed : 0) +
+                extra.minutes,
+            lastPracticedDate: today,
+            weeklyActivity: weekly,
+        };
+    }
+
     next = applyXpAndDailyGoal(next, kind, {
         lessonCompleted: extra?.lessonCompleted,
+        xpEarned: extra?.xpEarned,
     });
 
     const { progress } = await applyBadgeUnlocks(next);
@@ -162,8 +199,14 @@ export async function mergeProgress(
         b.lessonsCompleted,
     );
 
-    const badges = Array.from(
-        new Set([...(a.badges || []), ...(b.badges || [])]),
+    const badges = mergeStringLists(a.badges, b.badges);
+    const completedStoryIds = mergeStringLists(
+        a.completedStoryIds,
+        b.completedStoryIds,
+    );
+    const completedListeningIds = mergeStringLists(
+        a.completedListeningIds,
+        b.completedListeningIds,
     );
 
     const today = todayKey();
@@ -174,6 +217,7 @@ export async function mergeProgress(
     let todayXp = 0;
     let dailyGoalMet = false;
     let todayDate: string | null = null;
+    let todayMinutesPracticed = 0;
 
     if (aToday || bToday) {
         todayDate = today;
@@ -184,21 +228,27 @@ export async function mergeProgress(
         todayXp = Math.max(aToday ? a.todayXp : 0, bToday ? b.todayXp : 0);
         dailyGoalMet =
             (aToday && a.dailyGoalMet) || (bToday && b.dailyGoalMet);
+        todayMinutesPracticed = Math.max(
+            aToday ? a.todayMinutesPracticed || 0 : 0,
+            bToday ? b.todayMinutesPracticed || 0 : 0,
+        );
     }
 
     const lessonDirection: LessonDirection = isLessonDirection(a.lessonDirection)
         ? a.lessonDirection
         : isLessonDirection(b.lessonDirection)
           ? b.lessonDirection
-          : "en-fr";
+          : null;
 
-    const byId = new Map<
-        string,
-        NonNullable<ProgressState["savedPhrases"]>[number]
-    >();
+    const byId = new Map<string, SavedPhrase>();
     for (const ph of [...(a.savedPhrases || []), ...(b.savedPhrases || [])]) {
         if (ph?.id && !byId.has(ph.id)) byId.set(ph.id, ph);
     }
+
+    const lastPracticedDate =
+        (a.lastPracticedDate || "") > (b.lastPracticedDate || "")
+            ? a.lastPracticedDate
+            : b.lastPracticedDate || a.lastPracticedDate || today;
 
     const merged: ProgressState = {
         ...a,
@@ -229,7 +279,11 @@ export async function mergeProgress(
             b.lessonProgress,
         ),
         lessonsCompleted,
+        completedStoryIds,
+        completedListeningIds,
         lessonDirection,
+        nativeLanguage: a.nativeLanguage || b.nativeLanguage,
+        learningLanguage: a.learningLanguage || b.learningLanguage,
         xp: Math.max(a.xp ?? 0, b.xp ?? 0),
         dailyGoal: Math.max(
             a.dailyGoal ?? DEFAULT_DAILY_GOAL,
@@ -239,7 +293,28 @@ export async function mergeProgress(
         todayXp,
         todayDate,
         dailyGoalMet,
+        lastPracticedDate,
+        todayMinutesPracticed,
+        dailyGoalMinutes: Math.max(
+            a.dailyGoalMinutes || 0,
+            b.dailyGoalMinutes || 0,
+            DEFAULT_DAILY_GOAL,
+        ),
+        weeklyActivity: mergeWeeklyActivity(a.weeklyActivity, b.weeklyActivity),
         badges,
+        cairnStonesCount: Math.max(
+            a.cairnStonesCount || 0,
+            b.cairnStonesCount || 0,
+        ),
+        // Prefer local preference flags when set
+        soundEnabled:
+            typeof a.soundEnabled === "boolean"
+                ? a.soundEnabled
+                : b.soundEnabled !== false,
+        ambientSoundEnabled:
+            typeof a.ambientSoundEnabled === "boolean"
+                ? a.ambientSoundEnabled
+                : Boolean(b.ambientSoundEnabled),
     };
 
     return (await applyBadgeUnlocks(merged)).progress;
