@@ -11,6 +11,7 @@ import { sound } from "@/lib/sound";
 import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
 import ZenGarden from "./zen-garden";
 import { LessonDirection } from "@/data/lessons";
+import { applyLanguageTheme } from "@/lib/language-theme";
 
 function formatPracticeDate(isoDate: string | null | undefined) {
     if (!isoDate) return "Not yet";
@@ -130,7 +131,7 @@ function RhythmPanel({ progress }: { progress: ProgressState }) {
             )}
 
             <p className="text-center font-serif text-xs italic text-muted-foreground">
-                "Show up softly. The rhythm will hold you."
+                &ldquo;Show up softly. The rhythm will hold you.&rdquo;
             </p>
         </div>
     );
@@ -148,14 +149,16 @@ export default function MainHeader({
     const [langDropdownOpen, setLangDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-    const handleSelectLanguage = (langId: string) => {
-        const native = progress.nativeLanguage || progress.lessonDirection?.split("-")[0] || "en";
+    const handleSelectLanguage = (lang: LanguageOption) => {
+        const native =
+            progress.nativeLanguage || progress.lessonDirection?.split("-")[0] || "en";
         const updated: ProgressState = {
             ...progress,
-            learningLanguage: langId,
-            lessonDirection: `${native}-${langId}` as LessonDirection,
+            learningLanguage: lang.value,
+            lessonDirection: `${native}-${lang.value}` as LessonDirection,
         };
         saveProgress(updated);
+        applyLanguageTheme(lang.themeColor);
     };
 
     useEffect(() => {
@@ -205,7 +208,17 @@ export default function MainHeader({
                                 setLangDropdownOpen(!langDropdownOpen);
                             }}
                             className="flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                            style={{
+                                boxShadow: currentLang.themeColor
+                                    ? `inset 0 0 0 1px ${currentLang.themeColor}33`
+                                    : undefined,
+                            }}
                         >
+                            <span
+                                className="h-2.5 w-2.5 shrink-0 rounded-full"
+                                style={{ backgroundColor: currentLang.themeColor || "hsl(var(--primary))" }}
+                                aria-hidden
+                            />
                             <span className="text-base leading-none">{currentLang.flag}</span>
                             <span className="font-medium">{currentLang.name}</span>
                             <ChevronDown
@@ -218,10 +231,10 @@ export default function MainHeader({
                         {langDropdownOpen && (
                             <div
                                 id="language-dropdown-menu"
-                                className="absolute left-0 z-40 mt-2 w-56 animate-in fade-in zoom-in-95 rounded-2xl border border-border bg-card p-1.5 shadow-xl duration-150"
+                                className="absolute left-0 z-40 mt-2 w-60 animate-in fade-in zoom-in-95 rounded-2xl border border-border bg-card p-1.5 shadow-xl duration-150"
                             >
                                 <div className="px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                                    Select Path
+                                    Select path
                                 </div>
                                 {LANGUAGES.map((lang: LanguageOption) => {
                                     const isSelected = lang.value === progress.learningLanguage;
@@ -232,16 +245,24 @@ export default function MainHeader({
                                             type="button"
                                             onClick={() => {
                                                 sound.playPebbleTap(progress.soundEnabled);
-                                                handleSelectLanguage(lang.value);
+                                                handleSelectLanguage(lang);
                                                 setLangDropdownOpen(false);
                                             }}
                                             className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm transition-colors ${
                                                 isSelected
                                                     ? "bg-accent font-semibold text-primary"
-                                                    : "text-foreground hover:bg-card"
+                                                    : "text-foreground hover:bg-muted"
                                             }`}
                                         >
                                             <div className="flex items-center gap-2.5">
+                                                <span
+                                                    className="h-2.5 w-2.5 shrink-0 rounded-full ring-1 ring-border"
+                                                    style={{
+                                                        backgroundColor:
+                                                            lang.themeColor || "hsl(var(--muted-foreground))",
+                                                    }}
+                                                    aria-hidden
+                                                />
                                                 <span className="text-lg">{lang.flag}</span>
                                                 <div>
                                                     <div className="leading-snug">{lang.name}</div>
