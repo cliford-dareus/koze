@@ -4,15 +4,18 @@ import {
     levelFromXp,
 } from "@/lib/gamification";
 import { applyBadgeUnlocks } from "@/data/badges";
-import { LessonDirection } from "@/data/lessons";
+import { LessonDirection, SUPPORTED_DIRECTIONS } from "@/data/lessons";
 
 export type LessonProgressEntry = {
     currentStep: number;
     completed: boolean;
 };
 
-function isLessonDirection(v: unknown): v is LessonDirection {
-    return v === "en-fr" || v === "fr-en";
+function isLessonDirection(v: unknown): v is Exclude<LessonDirection, null> {
+    return (
+        typeof v === "string" &&
+        (SUPPORTED_DIRECTIONS as string[]).includes(v)
+    );
 }
 
 export type SavedPhrase = {
@@ -160,23 +163,62 @@ function hydrateProgress(raw: unknown): ProgressState {
         if (parsed.lessonsCompleted instanceof Map) {
             lessonsCompleted = new Map(parsed.lessonsCompleted);
         } else if (Array.isArray(parsed.lessonsCompleted)) {
-            lessonsCompleted = new Map(parsed.lessonsCompleted);
+            lessonsCompleted = new Map([
+                ["en-fr", parsed.lessonsCompleted as string[]],
+            ]);
         } else if (typeof parsed.lessonsCompleted === "object") {
             lessonsCompleted = new Map(Object.entries(parsed.lessonsCompleted));
         }
     }
+
+    const weeklyActivity =
+        parsed.weeklyActivity &&
+        typeof parsed.weeklyActivity === "object" &&
+        !Array.isArray(parsed.weeklyActivity)
+            ? (parsed.weeklyActivity as Record<string, number>)
+            : {};
 
     return {
         ...base,
         ...parsed,
         lessonProgress,
         lessonsCompleted,
+        completedStoryIds: Array.isArray(parsed.completedStoryIds)
+            ? parsed.completedStoryIds
+            : [],
+        completedListeningIds: Array.isArray(parsed.completedListeningIds)
+            ? parsed.completedListeningIds
+            : [],
+        lessonDirection: isLessonDirection(parsed.lessonDirection)
+            ? parsed.lessonDirection
+            : null,
+        nativeLanguage:
+            typeof parsed.nativeLanguage === "string"
+                ? parsed.nativeLanguage
+                : null,
+        learningLanguage:
+            typeof parsed.learningLanguage === "string"
+                ? parsed.learningLanguage
+                : null,
         xp: parsed.xp ?? 0,
         dailyGoal: parsed.dailyGoal ?? DEFAULT_DAILY_GOAL,
         todayActions: parsed.todayActions ?? 0,
         todayXp: parsed.todayXp ?? 0,
         todayDate: parsed.todayDate ?? null,
         dailyGoalMet: parsed.dailyGoalMet ?? false,
+        lastPracticedDate:
+            typeof parsed.lastPracticedDate === "string"
+                ? parsed.lastPracticedDate
+                : base.lastPracticedDate,
+        todayMinutesPracticed:
+            typeof parsed.todayMinutesPracticed === "number"
+                ? parsed.todayMinutesPracticed
+                : 0,
+        dailyGoalMinutes:
+            typeof parsed.dailyGoalMinutes === "number"
+                ? parsed.dailyGoalMinutes
+                : base.dailyGoalMinutes,
+        weeklyActivity,
         practiceSessions:
             typeof parsed.practiceSessions === "number"
                 ? parsed.practiceSessions
@@ -184,7 +226,19 @@ function hydrateProgress(raw: unknown): ProgressState {
         savedPhrases: Array.isArray(parsed.savedPhrases)
             ? (parsed.savedPhrases as SavedPhrase[])
             : [],
-        badges: parsed.badges ?? [],
+        badges: Array.isArray(parsed.badges) ? parsed.badges : [],
+        cairnStonesCount:
+            typeof parsed.cairnStonesCount === "number"
+                ? parsed.cairnStonesCount
+                : 0,
+        soundEnabled:
+            typeof parsed.soundEnabled === "boolean"
+                ? parsed.soundEnabled
+                : true,
+        ambientSoundEnabled:
+            typeof parsed.ambientSoundEnabled === "boolean"
+                ? parsed.ambientSoundEnabled
+                : false,
     };
 }
 
@@ -195,7 +249,11 @@ export function loadProgress(): ProgressState {
         if (!raw) {
             localStorage.setItem(
                 PROGRESS_KEY,
-                JSON.stringify(defaultProgress()),
+                JSON.stringify({
+                    ...defaultProgress(),
+                    lessonProgress: {},
+                    lessonsCompleted: {},
+                }),
             );
             return defaultProgress();
         }
@@ -255,6 +313,7 @@ export function recordActivity(
         lessonCompleted?: boolean;
         direction?: LessonDirection;
         xpEarned?: number;
+        minutes?: number;
     },
 ) {
     const prev = loadProgress();
@@ -274,43 +333,65 @@ export function recordActivity(
         const lessonId = extra.lessonId;
         const stepIndex = extra.stepIndex ?? 0;
         const completed = Boolean(extra.lessonCompleted);
-        const direction: LessonDirection = isLessonDirection(extra.direction)
-            ? extra.direction
-            : next.lessonDirection;
+        const direction: Exclude<LessonDirection, null> | null =
+            isLessonDirection(extra.direction)
+                ? extra.direction
+                : isLessonDirection(next.lessonDirection)
+                  ? next.lessonDirection
+                  : null;
 
-        const entry: LessonProgressEntry = {
-            currentStep: stepIndex,
-            completed,
-        };
+        if (direction) {
+            const entry: LessonProgressEntry = {
+                currentStep: stepIndex,
+                completed,
+            };
 
-        const lessonProgress = new Map(next.lessonProgress);
-        const existingDirectionMap = lessonProgress.get(direction!);
-        const directionProgress = new Map(existingDirectionMap || []);
-        directionProgress.set(lessonId, entry);
-        lessonProgress.set(direction!, directionProgress);
+            const lessonProgress = new Map(next.lessonProgress);
+            const existingDirectionMap = lessonProgress.get(direction);
+            const directionProgress = new Map(existingDirectionMap || []);
+            directionProgress.set(lessonId, entry);
+            lessonProgress.set(direction, directionProgress);
 
-        const lessonsCompleted = new Map(next.lessonsCompleted);
-        let completedLessons = [...(lessonsCompleted.get(direction!) ?? [])];
+            const lessonsCompleted = new Map(next.lessonsCompleted);
+            const completedLessons = [
+                ...(lessonsCompleted.get(direction) ?? []),
+            ];
 
-        if (completed && !completedLessons.includes(lessonId)) {
-            completedLessons.push(lessonId);
-            lessonsCompleted.set(direction!, completedLessons);
+            if (completed && !completedLessons.includes(lessonId)) {
+                completedLessons.push(lessonId);
+                lessonsCompleted.set(direction, completedLessons);
+            }
+
+            next = {
+                ...next,
+                lessonProgress,
+                lessonsCompleted,
+                lessonDirection: direction,
+                cairnStonesCount:
+                    (next.cairnStonesCount || 0) + (completed ? 1 : 0),
+                lessonsCompletedCount: Array.from(
+                    lessonsCompleted.values(),
+                ).reduce((sum, arr) => sum + arr.length, 0),
+                lastLessonId: lessonId,
+            };
         }
-
-        next = {
-            ...next,
-            lessonProgress,
-            lessonsCompleted,
-            cairnStonesCount: next.cairnStonesCount + (completed ? 1 : 0),
-            lessonsCompletedCount: Array.from(lessonsCompleted.values()).reduce(
-                (sum, arr) => sum + arr.length,
-                0,
-            ),
-            lastLessonId: lessonId,
-        };
     }
 
     if (extra?.topic) next = { ...next, lastTopic: extra.topic };
+
+    if (typeof extra?.minutes === "number" && extra.minutes > 0) {
+        const today = todayKey();
+        const weekly = { ...(next.weeklyActivity || {}) };
+        weekly[today] = (weekly[today] || 0) + extra.minutes;
+        next = {
+            ...next,
+            todayMinutesPracticed:
+                (next.todayDate === today ? next.todayMinutesPracticed : 0) +
+                extra.minutes,
+            lastPracticedDate: today,
+            weeklyActivity: weekly,
+        };
+    }
 
     next = applyXpAndDailyGoal(next, kind, {
         lessonCompleted: extra?.lessonCompleted,
@@ -319,14 +400,18 @@ export function recordActivity(
 
     saveProgress(next);
 
-    applyBadgeUnlocks(next).then(({ progress: withBadges, unlocked }) => {
-        saveProgress(withBadges);
-        if (unlocked.length && typeof window !== "undefined") {
-            window.dispatchEvent(
-                new CustomEvent("koze-badges", { detail: { unlocked } }),
-            );
-        }
-    }).catch(() => { /* ignore badge evaluation errors */ });
+    applyBadgeUnlocks(next)
+        .then(({ progress: withBadges, unlocked }) => {
+            saveProgress(withBadges);
+            if (unlocked.length && typeof window !== "undefined") {
+                window.dispatchEvent(
+                    new CustomEvent("koze-badges", { detail: { unlocked } }),
+                );
+            }
+        })
+        .catch(() => {
+            /* ignore badge evaluation errors */
+        });
 
     if (typeof window !== "undefined") {
         void fetch("/api/progress", {
@@ -338,6 +423,11 @@ export function recordActivity(
                 lessonId: extra?.lessonId,
                 stepIndex: extra?.stepIndex,
                 lessonCompleted: extra?.lessonCompleted,
+                direction: isLessonDirection(extra?.direction)
+                    ? extra?.direction
+                    : undefined,
+                xpEarned: extra?.xpEarned,
+                minutes: extra?.minutes,
             }),
         })
             .then(async (res) => {
@@ -388,7 +478,7 @@ export function savePhrase(input: {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ action: "savePhrase", phrase }),
-        }).catch(() => { });
+        }).catch(() => {});
     }
     return phrase;
 }
