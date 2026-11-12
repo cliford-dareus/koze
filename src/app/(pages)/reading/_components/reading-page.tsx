@@ -1,4 +1,4 @@
-"use client
+"use client";
 
 import { READING_STORIES, ReadingStory, StoryVocabulary } from "@/data/reading-stories";
 import { LANGUAGES } from "@/lib/languages";
