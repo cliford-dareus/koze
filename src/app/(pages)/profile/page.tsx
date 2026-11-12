@@ -83,17 +83,17 @@ export default function ProfilePage() {
     }
 
     return (
-        <div className="">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+        <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
                 Profile
             </p>
 
             <header className="mt-3 flex items-start gap-4">
-                <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-primary font-display text-2xl font-medium text-primary-foreground">
+                <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-primary font-serif text-2xl font-semibold text-primary-foreground">
                     {initial}
                 </span>
                 <div className="min-w-0 flex-1">
-                    <h1 className="font-display text-3xl font-medium tracking-tight">
+                    <h1 className="font-serif text-3xl font-semibold tracking-tight text-foreground">
                         {displayName}
                     </h1>
                     <p className="mt-1 text-sm text-muted-foreground">
@@ -135,9 +135,8 @@ export default function ProfilePage() {
                 </Button>
             </div>
 
-            {/* Appearance */}
             <section className="mt-8">
-                <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
                     Appearance
                 </p>
                 <ThemeToggle />
@@ -146,14 +145,13 @@ export default function ProfilePage() {
                 </p>
             </section>
 
-            {/* Level */}
-            <section className="mt-8 rounded-xl border border-border bg-card p-4 shadow-soft">
+            <section className="mt-8 rounded-2xl border border-border bg-card p-5 shadow-soft">
                 <div className="flex items-center justify-between gap-3">
                     <div>
-                        <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
                             Level {levelInfo.level}
                         </p>
-                        <p className="mt-1 font-display text-2xl font-medium">
+                        <p className="mt-1 font-serif text-2xl font-semibold tracking-tight text-foreground">
                             {progress.xp ?? 0}{" "}
                             <span className="text-sm font-normal text-muted-foreground">
                                 XP
@@ -172,14 +170,13 @@ export default function ProfilePage() {
                 </div>
             </section>
 
-            {/* Daily goal */}
-            <section className="mt-3 rounded-xl border border-border bg-card p-4 shadow-soft">
+            <section className="mt-3 rounded-2xl border border-border bg-card p-5 shadow-soft">
                 <div className="flex items-center justify-between gap-3">
                     <div>
-                        <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-                            Today’s goal
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                            Today's goal
                         </p>
-                        <p className="mt-1 font-display text-lg font-medium">
+                        <p className="mt-1 font-serif text-lg font-semibold tracking-tight text-foreground">
                             {Math.min(todayActions, goal)}/{goal}{" "}
                             <span className="text-sm font-normal text-muted-foreground">
                                 actions
@@ -205,9 +202,8 @@ export default function ProfilePage() {
                 </div>
             </section>
 
-            {/* Stats grid */}
             <section className="mt-6">
-                <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
                     Activity
                 </p>
                 <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -226,10 +222,9 @@ export default function ProfilePage() {
                 </div>
             </section>
 
-            {/* Badges */}
             <section className="mt-8">
                 <div className="flex items-center justify-between gap-2">
-                    <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
                         Badges
                     </p>
                     <span className="text-xs text-muted-foreground">
@@ -245,7 +240,7 @@ export default function ProfilePage() {
                             <li
                                 key={badge.id}
                                 className={
-                                    "flex items-start gap-3 rounded-xl border p-3 shadow-soft " +
+                                    "flex items-start gap-3 rounded-2xl border p-4 shadow-soft " +
                                     (on
                                         ? "border-primary/25 bg-card"
                                         : "border-border/70 bg-muted/20 opacity-70")
@@ -273,7 +268,7 @@ export default function ProfilePage() {
                                 </span>
                                 <div className="min-w-0 flex-1">
                                     <div className="flex flex-wrap items-center gap-2">
-                                        <h3 className="font-display text-base font-medium">
+                                        <h3 className="font-serif text-base font-semibold tracking-tight text-foreground">
                                             {badge.title}
                                         </h3>
                                         {on ? (
@@ -296,7 +291,7 @@ export default function ProfilePage() {
                 </ul>
             </section>
 
-            <p className="mt-8 mb-4 text-center text-xs text-muted-foreground">
+            <p className="mb-4 mt-8 text-center text-xs text-muted-foreground">
                 Progress stays on this device
                 {session?.user ? " and syncs when you are signed in" : ""}.
             </p>
@@ -306,8 +301,10 @@ export default function ProfilePage() {
 
 function Stat({ label, value }: { label: string; value: string }) {
     return (
-        <div className="rounded-xl border border-border bg-card px-3 py-3 text-center shadow-soft">
-            <p className="font-display text-xl font-medium">{value}</p>
+        <div className="rounded-2xl border border-border bg-card px-3 py-3 text-center shadow-soft">
+            <p className="font-serif text-xl font-semibold tracking-tight text-foreground">
+                {value}
+            </p>
             <p className="mt-0.5 text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
                 {label}
             </p>
