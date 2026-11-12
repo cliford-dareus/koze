@@ -1,24 +1,29 @@
-"use client";
+"use client
 
-import { Drawer, DrawerContent } from "@/app/_components/ui/drawer";
 import { READING_STORIES, ReadingStory, StoryVocabulary } from "@/data/reading-stories";
 import { LANGUAGES } from "@/lib/languages";
 import { defaultProgress, loadProgress, ProgressState } from "@/lib/progress";
 import { sound } from "@/lib/sound";
-import { Check, Clock, Leaf, Plus, Volume2 } from "lucide-react";
+import { ArrowUpRight, Check, Clock } from "lucide-react";
 import { useEffect, useState } from "react";
 import ReadingManager from "./reading-manager";
 
 export function ReadingPage() {
     const [progress, setProgress] = useState<ProgressState>(defaultProgress());
     const [activeStoryId, setActiveStoryId] = useState<string | null>(null);
-    const [selectedLevel, setSelectedLevel] = useState<'all' | 'gentle' | 'growing' | 'deep'>('all');
+    const [selectedLevel, setSelectedLevel] = useState<
+        "all" | "gentle" | "growing" | "deep"
+    >("all");
 
-    const [activeVocab, setActiveVocab] = useState<{ vocab: StoryVocabulary; paragraphId: string } | null>(null);
+    const [activeVocab, setActiveVocab] = useState<{
+        vocab: StoryVocabulary;
+        paragraphId: string;
+    } | null>(null);
     const [selectedAnswerIdx, setSelectedAnswerIdx] = useState<number | null>(null);
     const [hasCompletedActiveStory, setHasCompletedActiveStory] = useState(false);
-    const [currentlySpeakingParaId, setCurrentlySpeakingParaId] = useState<string | null>(null);
-    const [toastMessage, setToastMessage] = useState<string | null>(null);
+    const [currentlySpeakingParaId, setCurrentlySpeakingParaId] = useState<string | null>(
+        null,
+    );
 
     useEffect(() => {
         const refreshProgress = () => setProgress(loadProgress());
@@ -35,23 +40,24 @@ export function ReadingPage() {
     const activeStory = READING_STORIES.find((s) => s.id === activeStoryId);
 
     const currentLang =
-        LANGUAGES.find((l) => l.value === progress?.learningLanguage) ||
-        LANGUAGES[0];
+        LANGUAGES.find((l) => l.value === progress?.learningLanguage) || LANGUAGES[0];
 
-    // Filter stories for current language & selected difficulty level
     const storiesForLanguage = READING_STORIES.filter(
-        (s) => s.languageId === currentLang.id
+        (s) => s.languageId === currentLang.id,
     );
 
     const filteredStories = storiesForLanguage.filter((s) => {
-        if (selectedLevel === 'all') return true;
+        if (selectedLevel === "all") return true;
         return s.level === selectedLevel;
     });
 
     const completedStoryIds = progress.completedStoryIds || [];
     const completedCount = storiesForLanguage.filter((s) =>
-        completedStoryIds.includes(s.id)
-    ).length
+        completedStoryIds.includes(s.id),
+    ).length;
+
+    const wordsSown =
+        (progress.savedPhrases?.length || 0) + (progress.translations || 0);
 
     const handleOpenStory = (story: ReadingStory) => {
         sound.playPebbleTap(progress.soundEnabled);
@@ -59,10 +65,9 @@ export function ReadingPage() {
         setSelectedAnswerIdx(null);
         setActiveVocab(null);
         setHasCompletedActiveStory(completedStoryIds.includes(story.id));
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-    // Handle reflection question answer
     const handleSelectAnswer = (idx: number) => {
         if (selectedAnswerIdx !== null) return;
         setSelectedAnswerIdx(idx);
@@ -74,71 +79,63 @@ export function ReadingPage() {
         }
     };
 
-    // Mark story as completed and collect rewards
     const handleCompleteStory = () => {
         if (!activeStory) return;
-
         sound.playGentleChime(progress.soundEnabled);
-
-        // Extract all vocabulary from story paragraphs
-        const allVocab = activeStory.paragraphs.flatMap((p) => p.vocabulary || []);
-        const wordPayload = allVocab.map((v) => ({
-            word: v.word,
-            translation: v.translation,
-            phonetic: v.phonetic,
-        }));
-
-        // const updated = recordStoryCompletion(
-        //     progress,
-        //     activeStory.id,
-        //     activeStory.xpReward,
-        //     activeStory.readTimeMinutes,
-        //     wordPayload,
-        //     progress.learningLanguage            
-        // );
-
-        // onUpdateProgress(updated);
         setHasCompletedActiveStory(true);
-        // triggerToast(`Reflected on "${activeStory.nativeTitle}"! +${activeStory.xpReward} XP & +1 Pebble`);
     };
+
+    const levelLabel = (level: string) =>
+        level === "gentle"
+            ? "Gentle 🌱"
+            : level === "growing"
+              ? "Growing 🌿"
+              : "Deep 🌳";
 
     return (
         <div>
             <div className="mt-6">
-                {/* Reading Shelf Stats */}
                 <div
                     id="reading-shelf-stats"
-                    className="bg-background border border-border rounded-[24px] p-4 sm:p-5 grid grid-cols-3 gap-3 text-center"
+                    className="grid grid-cols-3 gap-2 rounded-2xl border border-border bg-card p-4 text-center shadow-soft sm:gap-3 sm:p-5"
                 >
                     <div className="border-r border-border pr-2">
-                        <div className="text-xl sm:text-2xl font-serif text-foreground">
-                            {completedCount} <span className="text-xs font-sans text-[#70756F]">/ {storiesForLanguage.length}</span>
+                        <div className="font-serif text-xl text-foreground sm:text-2xl">
+                            {completedCount}{" "}
+                            <span className="font-sans text-xs text-muted-foreground">
+                                / {storiesForLanguage.length}
+                            </span>
                         </div>
-                        <div className="text-[11px] text-muted-foreground mt-0.5">Stories Read</div>
+                        <div className="mt-0.5 text-[11px] text-muted-foreground">
+                            Stories read
+                        </div>
                     </div>
 
                     <div className="border-r border-border px-2">
-                        <div className="text-xl sm:text-2xl font-serif text-foreground">
-                            {progress.cairnStonesCount}
+                        <div className="font-serif text-xl text-foreground sm:text-2xl">
+                            {progress.cairnStonesCount || 0}
                         </div>
-                        <div className="text-[11px] text-muted-foreground mt-0.5">Pebbles Placed</div>
+                        <div className="mt-0.5 text-[11px] text-muted-foreground">
+                            Pebbles placed
+                        </div>
                     </div>
 
                     <div className="pl-2">
-                        <div className="text-xl sm:text-2xl font-serif text-foreground">
-                            {/*{progress.masteredWords.length}*/}
+                        <div className="font-serif text-xl text-foreground sm:text-2xl">
+                            {wordsSown}
                         </div>
-                        <div className="text-[11px] text-muted-foreground mt-0.5">Words in Garden</div>
+                        <div className="mt-0.5 text-[11px] text-muted-foreground">
+                            Words sown
+                        </div>
                     </div>
                 </div>
 
-                {/* Level Filter Tabs */}
-                <div className="flex items-center justify-center gap-1.5 flex-wrap mt-4">
+                <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5">
                     {[
-                        { id: 'all', label: 'All Stories' },
-                        { id: 'gentle', label: 'Gentle 🌱' },
-                        { id: 'growing', label: 'Growing 🌿' },
-                        { id: 'deep', label: 'Deep 🌳' },
+                        { id: "all", label: "All stories" },
+                        { id: "gentle", label: "Gentle 🌱" },
+                        { id: "growing", label: "Growing 🌿" },
+                        { id: "deep", label: "Deep 🌳" },
                     ].map((lvl) => {
                         const isSelected = selectedLevel === lvl.id;
                         return (
@@ -148,12 +145,13 @@ export function ReadingPage() {
                                 type="button"
                                 onClick={() => {
                                     sound.playPebbleTap(progress.soundEnabled);
-                                    setSelectedLevel(lvl.id as any);
+                                    setSelectedLevel(lvl.id as typeof selectedLevel);
                                 }}
-                                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${isSelected
-                                    ? 'bg-[#EAE8E0] text-[#161715] font-semibold shadow-xs'
-                                    : 'bg-[#181917] text-[#70756F] hover:text-[#ECEBE6] border border-[#272926]'
-                                    }`}
+                                className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-all ${
+                                    isSelected
+                                        ? "bg-primary font-semibold text-primary-foreground shadow-xs"
+                                        : "border border-border bg-card text-muted-foreground hover:text-foreground"
+                                }`}
                             >
                                 {lvl.label}
                             </button>
@@ -161,93 +159,81 @@ export function ReadingPage() {
                     })}
                 </div>
 
-                {/* Stories Cards Grid */}
-                <div className="mt-4">
+                <div className="mt-4 space-y-3">
                     {filteredStories.map((story) => {
                         const isCompleted = completedStoryIds.includes(story.id);
                         return (
                             <article
                                 key={story.id}
                                 id={`story-card-${story.id}`}
-                                className="group relative bg-background hover:bg-[#20221E] border border-border hover:border-[#383B35] rounded-[26px] p-5 mt-4 sm:p-6 shadow-xs transition-all flex flex-col justify-between cursor-pointer"
+                                className="group relative flex cursor-pointer flex-col justify-between rounded-2xl border border-border bg-card p-5 shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/25 active:translate-y-0 sm:p-6"
                                 onClick={() => handleOpenStory(story)}
                             >
                                 <div>
-                                    {/* Top Badges */}
-                                    <div className="flex items-center justify-between gap-2 mb-3">
-                                        <div className="flex items-center gap-2">
-                                            <span
-                                                className={`text-[11px] font-medium px-2.5 py-0.5 rounded-full border ${story.level === 'gentle'
-                                                    ? 'bg-[#19261E] text-[#9AC6A9] border-[#2A3F32]'
-                                                    : story.level === 'growing'
-                                                        ? 'bg-[#222619] text-[#C2D19D] border-[#3C4329]'
-                                                        : 'bg-[#261E22] text-[#D8A7BA] border-[#442D38]'
-                                                    }`}
-                                            >
-                                                {story.level === 'gentle'
-                                                    ? 'Gentle 🌱'
-                                                    : story.level === 'growing'
-                                                        ? 'Growing 🌿'
-                                                        : 'Deep 🌳'}
+                                    <div className="mb-3 flex items-center justify-between gap-2">
+                                        <div className="flex flex-wrap items-center gap-2">
+                                            <span className="rounded-full border border-border bg-accent px-2.5 py-0.5 text-[11px] font-medium text-primary">
+                                                {levelLabel(story.level)}
                                             </span>
 
-                                            <span className="text-[11px] text-[#70756F] flex items-center gap-1">
-                                                <Clock className="w-3 h-3" />
+                                            <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                                                <Clock className="h-3 w-3" />
                                                 <span>{story.readTimeMinutes} min</span>
                                             </span>
 
-                                            <span className="text-[11px] text-[#636860] hidden sm:inline">
-                                                • {story.category}
+                                            <span className="hidden text-[11px] text-muted-foreground sm:inline">
+                                                · {story.category}
                                             </span>
                                         </div>
 
-                                        <div className="flex items-center gap-2">
-                                            {isCompleted ? (
-                                                <span className="inline-flex items-center gap-1 text-[11px] text-[#86B495] bg-[#1B271F] px-2 py-0.5 rounded-full border border-[#2B4133]">
-                                                    <Check className="w-3 h-3" />
-                                                    <span>Reflected</span>
-                                                </span>
-                                            ) : (
-                                                <span className="text-[11px] text-[#70756F] bg-[#161715] px-2 py-0.5 rounded-full border border-[#272825]">
-                                                    +{story.xpReward} XP
-                                                </span>
-                                            )}
-                                        </div>
+                                        {isCompleted ? (
+                                            <span className="inline-flex items-center gap-1 rounded-full border border-primary/25 bg-accent px-2 py-0.5 text-[11px] text-primary">
+                                                <Check className="h-3 w-3" />
+                                                <span>Reflected</span>
+                                            </span>
+                                        ) : (
+                                            <span className="rounded-full border border-border bg-background px-2 py-0.5 text-[11px] text-muted-foreground">
+                                                +{story.xpReward} XP
+                                            </span>
+                                        )}
                                     </div>
 
-                                    {/* Titles */}
                                     <div className="space-y-1">
-                                        <h2 className="font-serif text-xl sm:text-2xl font-normal text-foreground group-hover:text-white transition-colors">
+                                        <h2 className="font-serif text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
                                             {story.title}
                                         </h2>
-                                        <div className="text-xs text-muted-foreground font-medium tracking-wide">
+                                        <div className="text-xs font-medium tracking-wide text-muted-foreground">
                                             {story.nativeTitle}
                                         </div>
                                     </div>
 
-                                    {/* Summary */}
-                                    <p className="text-xs sm:text-[13px] text-[#70756F] leading-relaxed mt-2.5 line-clamp-2">
+                                    <p className="mt-2.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground sm:text-[13px]">
                                         {story.summary}
                                     </p>
                                 </div>
 
-                                {/* Bottom Action Footer */}
-                                <div className="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs">
+                                <div className="mt-4 flex items-center justify-between border-t border-border pt-3 text-xs">
                                     <span className="text-[11px] text-muted-foreground">
                                         {story.paragraphs.length} reflective passages
                                     </span>
 
-                                    <button
-                                        type="button"
-                                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground group-hover:text-white transition-colors"
-                                    >
-                                        <span>{isCompleted ? 'Read Again' : 'Read Peacefully'}</span>
-                                        <span>→</span>
-                                    </button>
+                                    <span className="inline-flex items-center gap-1 font-semibold text-primary">
+                                        <span>{isCompleted ? "Read again" : "Read peacefully"}</span>
+                                        <ArrowUpRight
+                                            size={13}
+                                            className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                        />
+                                    </span>
                                 </div>
                             </article>
                         );
                     })}
+
+                    {filteredStories.length === 0 && (
+                        <div className="rounded-2xl border border-border bg-card px-4 py-12 text-center text-sm text-muted-foreground shadow-soft">
+                            No stories match this filter. Try another level.
+                        </div>
+                    )}
                 </div>
 
                 <ReadingManager
