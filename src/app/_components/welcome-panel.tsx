@@ -7,6 +7,7 @@ import { ArrowRight, Check, ChevronDown, Search } from "lucide-react";
 import { LessonDirection } from "@/data/lessons";
 import { useEffect, useRef, useState } from "react";
 import { ProgressState, saveProgress } from "@/lib/progress";
+import { applyLanguageTheme } from "@/lib/language-theme";
 
 export function WelcomePanel({ progress }: { progress: ProgressState }) {
     const [isNativeLanguage, setIsNativeLanguage] = useState(progress.nativeLanguage);
@@ -25,6 +26,10 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
 
     const currentLearning =
         LANGUAGES.find((l) => l.value === learningLanguage) || LANGUAGES[0];
+
+    useEffect(() => {
+        applyLanguageTheme(currentLearning.themeColor);
+    }, [currentLearning.themeColor]);
 
     useEffect(() => {
         function handleClickOutside(e: MouseEvent) {
@@ -47,6 +52,9 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
             lessonDirection: `${currentNativeCode}-${learningLanguage}` as LessonDirection,
         };
         saveProgress(updated);
+        applyLanguageTheme(
+            LANGUAGES.find((l) => l.value === learningLanguage)?.themeColor,
+        );
         setIsNativeLanguage(updated.nativeLanguage);
     };
 
@@ -66,14 +74,17 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
     const handleSelectLearning = (lang: LanguageOption) => {
         sound.playPebbleTap(progress.soundEnabled);
         setLearningLanguage(lang.value);
+        applyLanguageTheme(lang.themeColor);
         setLearningDropdownOpen(false);
     };
 
     return (
         <Drawer open={!isNativeLanguage}>
             <DrawerContent className="min-h-[100%]">
-                <div className="flex min-h-screen flex-col items-center justify-between bg-background px-4 py-6 text-foreground selection:bg-primary/20">
-                    <div className="mx-auto flex w-full max-w-[430px] flex-col">
+                <div className="relative flex min-h-screen flex-col items-center justify-between bg-background px-4 py-6 text-foreground selection:bg-primary/20">
+                    <div className="lang-wash pointer-events-none absolute inset-0 opacity-80" aria-hidden />
+
+                    <div className="relative mx-auto flex w-full max-w-[430px] flex-col">
                         <div className="flex justify-center pb-5 pt-2">
                             <div
                                 id="top-drag-handle"
@@ -192,6 +203,11 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                             id="card-i-am-learning"
                             ref={learningRef}
                             className="relative rounded-[26px] border border-border bg-card p-5 shadow-xs transition-colors sm:p-6"
+                            style={{
+                                boxShadow: currentLearning.themeColor
+                                    ? `inset 0 0 0 1px ${currentLearning.themeColor}40`
+                                    : undefined,
+                            }}
                         >
                             <h2 className="mb-3 text-[16px] font-medium text-foreground">
                                 I am learning
@@ -207,10 +223,15 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                                         setNativeDropdownOpen(false);
                                     }}
                                     title="Choose language to learn"
-                                    className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-secondary text-foreground shadow-xs transition-all hover:bg-muted active:scale-95"
+                                    className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full text-primary-foreground shadow-xs transition-all active:scale-95"
+                                    style={{
+                                        backgroundColor:
+                                            currentLearning.themeColor ||
+                                            "hsl(var(--primary))",
+                                    }}
                                 >
                                     <ChevronDown
-                                        className={`h-4 w-4 stroke-[2.5] text-foreground transition-transform duration-200 ${
+                                        className={`h-4 w-4 stroke-[2.5] transition-transform duration-200 ${
                                             learningDropdownOpen ? "rotate-180" : ""
                                         }`}
                                     />
@@ -238,10 +259,10 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                             {learningDropdownOpen && (
                                 <div
                                     id="learning-dropdown-menu"
-                                    className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 flex flex-col space-y-1.5 rounded-2xl border border-border bg-card p-3 shadow-2xl backdrop-blur-md"
+                                    className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 flex max-h-80 flex-col space-y-1.5 overflow-y-auto rounded-2xl border border-border bg-card p-3 shadow-2xl backdrop-blur-md"
                                 >
                                     <div className="px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                                        Select Language Path
+                                        Select language path
                                     </div>
 
                                     {LANGUAGES.map((lang) => {
@@ -259,6 +280,15 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                                                 }`}
                                             >
                                                 <div className="flex items-center gap-3">
+                                                    <span
+                                                        className="h-3 w-3 shrink-0 rounded-full ring-1 ring-border"
+                                                        style={{
+                                                            backgroundColor:
+                                                                lang.themeColor ||
+                                                                "hsl(var(--muted-foreground))",
+                                                        }}
+                                                        aria-hidden
+                                                    />
                                                     <span className="text-lg">{lang.flag}</span>
                                                     <div>
                                                         <div className="flex items-center gap-2">
@@ -304,7 +334,7 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                         </div>
                     </div>
 
-                    <div className="pb-2 pt-8 text-center text-[11px] text-muted-foreground">
+                    <div className="relative pb-2 pt-8 text-center text-[11px] text-muted-foreground">
                         A calm language learning space designed for peace and presence.
                     </div>
                 </div>
