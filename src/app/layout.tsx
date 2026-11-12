@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/app/_components/ui/tooltip";
 import AuthSessionProvider from "@/app/_components/providers/session-provider";
 import { ThemeProvider } from "@/app/_components/providers/theme-provider";
 import AnimatedSplash from "@/app/_components/animated-splash";
+import LanguageThemeSync from "@/app/_components/language-theme-sync";
 
 const outfit = Outfit({
     subsets: ["latin"],
@@ -237,7 +238,7 @@ export const viewport: Viewport = {
     userScalable: false,
     viewportFit: "cover",
     themeColor: [
-        { media: "(prefers-color-scheme: light)", color: "#F4F1EB" },
+        { media: "(prefers- excolor-scheme: light)", color: "#F4F1EB" },
         { media: "(prefers-color-scheme: dark)", color: "#161412" },
     ],
     colorScheme: "light dark",
@@ -274,6 +275,7 @@ export default function RootLayout({
             >
                 <ThemeProvider>
                     <AuthSessionProvider>
+                        <LanguageThemeSync />
                         <AnimatedSplash />
                         <TooltipProvider>
                             <div className="app-frame">
