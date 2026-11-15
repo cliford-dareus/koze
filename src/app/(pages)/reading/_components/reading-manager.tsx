@@ -5,6 +5,7 @@ import { ReadingStory, StoryVocabulary } from "@/data/reading-stories";
 import { ProgressState } from "@/lib/progress";
 import { sound } from "@/lib/sound";
 import { ArrowLeft, Check, CheckCircle2, Eye, EyeOff, Plus, Sparkles, Volume2 } from "lucide-react";
+import CairnMascot from "@/app/_components/cairn-mascot";
 import { useState } from "react";
 
 type Props = {
@@ -69,11 +70,12 @@ const ReadingManager = ({
     return (
         <Drawer open={!!activeStoryId} onOpenChange={() => setActiveStoryId(null)}>
             <DrawerContent className="min-h-screen h-full">
-                <div className="p-4 h-full overflow-y-auto">
+                <div className="relative mx-auto h-full max-w-2xl overflow-y-auto px-4 pb-10 pt-2">
+                    <div className="lang-wash pointer-events-none absolute inset-0 opacity-25" aria-hidden />
                     {/* Reader Controls Toolbar */}
                     <div
                         id="reader-toolbar"
-                        className="bg-background border border-border rounded-[22px] p-3 flex items-center justify-between flex-wrap gap-2 text-xs"
+                        className="relative flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-border bg-card p-3 text-xs shadow-soft"
                     >
                         {/* Text Size Switcher */}
                         <div className="flex items-center gap-1">
@@ -86,9 +88,9 @@ const ReadingManager = ({
                                         sound.playPebbleTap(progress.soundEnabled);
                                         setFontSize(sz);
                                     }}
-                                    className={`px-2 py-1 rounded-lg text-xs transition-colors cursor-pointer ${fontSize === sz
-                                        ? 'bg-[#272926] text-[#F3F2EE] font-semibold border border-[#3A3D36]'
-                                        : 'text-[#70756F] hover:text-[#ECEBE6]'
+                                    className={`cursor-pointer rounded-full px-2.5 py-1 text-xs transition-colors ${fontSize === sz
+                                        ? 'border border-primary bg-primary font-semibold text-primary-foreground'
+                                        : 'border border-transparent text-muted-foreground hover:bg-muted hover:text-foreground'
                                         }`}
                                 >
                                     {sz === 'normal' ? 'A' : sz === 'comfortable' ? 'A+' : 'A++'}
@@ -98,14 +100,14 @@ const ReadingManager = ({
 
                         {/* Audio Speed Switcher */}
                         <div className="flex items-center gap-1">
-                            <span className="text-[11px] text-[#70756F] mr-1 hidden sm:inline">Audio:</span>
+                            <span className="text-[11px] text-muted-foreground mr-1 hidden sm:inline">Audio:</span>
                             <button
                                 type="button"
                                 onClick={() => {
                                     sound.playPebbleTap(progress.soundEnabled);
                                     setAudioSpeed((prev) => (prev === 1.0 ? 0.8 : 1.0));
                                 }}
-                                className="px-2 py-1 rounded-lg text-xs bg-[#161715] hover:bg-[#20221E] border border-[#272825] text-[#D8DED5] transition-colors cursor-pointer"
+                                className="px-2 py-1 rounded-lg text-xs bg-card hover:bg-muted border border-border text-foreground transition-colors cursor-pointer"
                                 title="Toggle narration speed"
                             >
                                 {audioSpeed}x Speed
@@ -121,8 +123,8 @@ const ReadingManager = ({
                                     setShowAllTranslations(!showAllTranslations);
                                 }}
                                 className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs transition-colors cursor-pointer border ${showAllTranslations
-                                    ? 'bg-[#232924] text-[#A8D3B6] border-[#36483C]'
-                                    : 'bg-[#161715] text-[#70756F] border-[#272825]'
+                                    ? 'bg-accent text-primary border-primary/30'
+                                    : 'bg-card text-muted-foreground border-border'
                                     }`}
                                 title="Toggle native English translation"
                             >
@@ -137,8 +139,8 @@ const ReadingManager = ({
                                     setShowPhonetics(!showPhonetics);
                                 }}
                                 className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs transition-colors cursor-pointer border ${showPhonetics
-                                    ? 'bg-[#26241C] text-[#D8C79D] border-[#443E2C]'
-                                    : 'bg-[#161715] text-[#70756F] border-[#272825]'
+                                    ? 'bg-accent text-primary border-primary/30'
+                                    : 'bg-card text-muted-foreground border-border'
                                     }`}
                                 title="Toggle phonetic / furigana reading guide"
                             >
@@ -149,7 +151,7 @@ const ReadingManager = ({
 
                     {/* Story Header Card */}
                     <header className="text-center space-y-2 py-3">
-                        <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-wider text-[#70756F] font-semibold">
+                        <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">
                             <span>{activeStory?.category}</span>
                             <span>•</span>
                             <span>{activeStory?.readTimeMinutes} min calm read</span>
@@ -157,12 +159,12 @@ const ReadingManager = ({
 
                         <h1
                             id="active-story-title"
-                            className="font-serif text-[32px] sm:text-[40px] font-normal text-[#F3F2EE] leading-tight"
+                            className="font-serif text-[32px] sm:text-[40px] font-normal text-primary-foreground leading-tight"
                         >
                             {activeStory?.title}
                         </h1>
 
-                        <div className="text-sm font-medium text-[#8E948A] tracking-wide">
+                        <div className="text-sm font-medium text-muted-foreground tracking-wide">
                             {activeStory?.nativeTitle}
                         </div>
                     </header>
@@ -172,18 +174,18 @@ const ReadingManager = ({
                         <section
                             key={activeParagraph?.id}
                             id={`passage-${activeParagraph?.id}`}
-                            className="relative bg-background border border-border rounded-[26px] p-5 sm:p-7 shadow-xs space-y-3.5 transition-colors"
+                            className="relative space-y-3.5 overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-soft transition-colors sm:p-7"
                         >
                             {/* Top passage indicator & Audio button */}
-                            <div className="flex items-center justify-between text-xs text-[#61665D]">
+                            <div className="flex items-center justify-between text-xs text-muted-foreground">
                                 <span className="text-[11px] font-mono">§ {storyIndex + 1}</span>
 
                                 <button
                                     type="button"
                                     // onClick={() => handleSpeakText(para.text, para.id)}
                                     className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs transition-colors cursor-pointer border ${isSpeakingThis
-                                        ? 'bg-[#2E3C32] text-[#A8D3B6] border-[#486350] animate-pulse'
-                                        : 'bg-[#161715] text-[#868B82] hover:text-[#F3F2EE] border-[#272825]'
+                                        ? 'bg-accent text-primary border-primary/40 animate-pulse'
+                                        : 'bg-card text-muted-foreground hover:text-primary-foreground border-border'
                                         }`}
                                     title="Listen to tranquil pronunciation"
                                 >
@@ -194,7 +196,7 @@ const ReadingManager = ({
 
                             {/* Target Language Main Text */}
                             <div
-                                className={`font-serif text-foreground tracking-wide selection:bg-[#2C332A] ${getFontSizeClasses()}`}
+                                className={`font-serif text-foreground tracking-wide selection:bg-card ${getFontSizeClasses()}`}
                             >
                                 {/* Highlight interactive vocabulary words if present */}
                                 {activeParagraph?.vocabulary && activeParagraph.vocabulary.length > 0 ? (
@@ -208,22 +210,22 @@ const ReadingManager = ({
 
                             {/* Phonetic / Furigana Guide */}
                             {showPhonetics && activeParagraph?.phonetic && (
-                                <div className="text-xs sm:text-[13px] text-[#A1A69D] font-mono leading-relaxed bg-[#151614] border border-[#222420] rounded-xl px-3.5 py-2">
+                                <div className="text-xs sm:text-[13px] text-foreground font-mono leading-relaxed bg-card border border-border rounded-xl px-3.5 py-2">
                                     {activeParagraph?.phonetic}
                                 </div>
                             )}
 
                             {/* Native English Translation */}
                             {showAllTranslations && (
-                                <div className="text-xs sm:text-sm text-[#70756F] leading-relaxed border-t border-[#262824] pt-3">
+                                <div className="text-xs sm:text-sm text-muted-foreground leading-relaxed border-t border-border pt-3">
                                     {activeParagraph?.translation}
                                 </div>
                             )}
 
                             {/* Interactive Vocabulary Chips */}
                             {activeParagraph?.vocabulary && activeParagraph.vocabulary.length > 0 && (
-                                <div className="pt-2 border-t border-[#222420]">
-                                    <div className="text-[10px] uppercase font-semibold text-[#5A5F56] tracking-wider mb-2">
+                                <div className="pt-2 border-t border-border">
+                                    <div className="text-[10px] uppercase font-semibold text-foreground tracking-wider mb-2">
                                         Key Words (Tap to inspect)
                                     </div>
 
@@ -244,8 +246,8 @@ const ReadingManager = ({
                                                         );
                                                     }}
                                                     className={`px-2.5 py-1 rounded-lg text-xs transition-colors cursor-pointer border ${isSelected
-                                                        ? 'bg-[#EAE8E0] text-[#161715] font-semibold border-[#EAE8E0]'
-                                                        : 'bg-[#161715] text-[#9EA399] hover:text-[#ECEBE6] border-[#272825]'
+                                                        ? 'bg-card text-foreground font-semibold border-border'
+                                                        : 'bg-card text-foreground hover:text-foreground border-border'
                                                         }`}
                                                 >
                                                     {vocab.word}
@@ -260,15 +262,15 @@ const ReadingManager = ({
                             {activeVocab && activeVocab.paragraphId === activeParagraph?.id && (
                                 <div
                                     id="vocab-inspector-box"
-                                    className="mt-3 bg-[#171816] border border-[#2E302C] rounded-2xl p-3.5 text-xs space-y-2.5 animate-in fade-in"
+                                    className="mt-3 bg-card border border-border rounded-2xl p-3.5 text-xs space-y-2.5 animate-in fade-in"
                                 >
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-baseline gap-2">
-                                            <span className="font-serif text-base text-[#F3F2EE] font-medium">
+                                            <span className="font-serif text-base text-primary-foreground font-medium">
                                                 {activeVocab.vocab.word}
                                             </span>
                                             {activeVocab.vocab.phonetic && (
-                                                <span className="text-[11px] text-[#A1A69D] font-mono">
+                                                <span className="text-[11px] text-foreground font-mono">
                                                     [{activeVocab.vocab.phonetic}]
                                                 </span>
                                             )}
@@ -280,7 +282,7 @@ const ReadingManager = ({
                                                 // onClick={() =>
                                                 //     handleSpeakText(activeVocab.vocab.word, `vocab-${activeVocab.vocab.word}`)
                                                 // }
-                                                className="p-1 rounded-md bg-[#222421] text-[#A8D3B6] hover:bg-[#2A2D29] cursor-pointer"
+                                                className="p-1 rounded-md bg-card text-primary hover:bg-card cursor-pointer"
                                                 title="Listen to word"
                                             >
                                                 <Volume2 className="w-3.5 h-3.5" />
@@ -289,7 +291,7 @@ const ReadingManager = ({
                                             <button
                                                 type="button"
                                                 // onClick={() => handleAddWordToGarden(activeVocab.vocab)}
-                                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#253328] hover:bg-[#324536] text-[#A8D3B6] text-[11px] font-medium transition-colors cursor-pointer border border-[#3A4B3D]"
+                                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-card hover:bg-card text-primary text-[11px] font-medium transition-colors cursor-pointer border border-border"
                                             >
                                                 <Plus className="w-3 h-3" />
                                                 <span>Add to Garden</span>
@@ -297,13 +299,13 @@ const ReadingManager = ({
                                         </div>
                                     </div>
 
-                                    <div className="text-xs text-[#ECEBE6]">
-                                        <span className="text-[#70756F] mr-1.5">Meaning:</span>
+                                    <div className="text-xs text-foreground">
+                                        <span className="text-muted-foreground mr-1.5">Meaning:</span>
                                         <span className="font-medium">{activeVocab.vocab.translation}</span>
                                     </div>
 
                                     {activeVocab.vocab.note && (
-                                        <div className="text-[11px] text-[#6E7369]">
+                                        <div className="text-[11px] text-foreground">
                                             {activeVocab.vocab.note}
                                         </div>
                                     )}
@@ -315,14 +317,15 @@ const ReadingManager = ({
                     {/* Mindful Reflection & Comprehension Check */}
                     <section
                         id="story-reflection-card"
-                        className="bg-background border border-border rounded-[26px] p-5 sm:p-7 shadow-xs space-y-4 mt-8"
+                        className="relative mt-8 space-y-4 overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-7"
                     >
-                        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#A5C9B1]">
-                            <Sparkles className="w-3.5 h-3.5" />
+                        <div className="lang-wash pointer-events-none absolute inset-0 opacity-20" aria-hidden />
+                        <div className="relative flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+                            <Sparkles className="h-3.5 w-3.5" />
                             <span>Mindful Reflection</span>
                         </div>
 
-                        <h3 className="text-base sm:text-lg font-medium text-[#ECEBE6] leading-snug">
+                        <h3 className="relative text-base font-medium leading-snug text-foreground sm:text-lg">
                             {activeStory?.reflection.question}
                         </h3>
 
@@ -332,12 +335,12 @@ const ReadingManager = ({
                                 const isCorrect = optIdx === activeStory?.reflection.correctIndex;
                                 const showResult = selectedAnswerIdx !== null;
 
-                                let cardStyle = 'bg-[#161715] hover:bg-[#20221E] border-[#272825] text-[#B5B9B2]';
+                                let cardStyle = 'border-border bg-background hover:bg-muted text-foreground';
                                 if (showResult) {
                                     if (isCorrect) {
-                                        cardStyle = 'bg-[#1E2B21] border-[#39533F] text-[#C2E5CD]';
+                                        cardStyle = 'border-primary/40 bg-accent text-primary';
                                     } else if (isSelected && !isCorrect) {
-                                        cardStyle = 'bg-[#291B1D] border-[#52292E] text-[#E5A7AD]';
+                                        cardStyle = 'border-border bg-muted text-muted-foreground opacity-70';
                                     }
                                 }
 
@@ -351,7 +354,7 @@ const ReadingManager = ({
                                     >
                                         <span>{option}</span>
                                         {showResult && isCorrect && (
-                                            <Check className="w-4 h-4 text-[#A8D3B6] shrink-0" />
+                                            <Check className="w-4 h-4 text-primary shrink-0" />
                                         )}
                                     </button>
                                 );
@@ -361,16 +364,16 @@ const ReadingManager = ({
                         {/* Reflection Feedback & Zen Affirmation */}
                         {selectedAnswerIdx !== null && (
                             <div className="pt-2 space-y-3 animate-in fade-in">
-                                <div className="text-xs text-[#8A9085] leading-relaxed bg-[#161715] border border-[#272825] rounded-2xl p-3.5">
-                                    <span className="font-semibold text-[#D8DED5]">Insight: </span>
+                                <div className="rounded-2xl border border-border bg-background p-3.5 text-xs leading-relaxed text-muted-foreground">
+                                    <span className="font-semibold text-foreground">Insight: </span>
                                     {activeStory?.reflection.explanation}
                                 </div>
 
-                                <div className="bg-[#1D2520] border border-[#35483B] rounded-2xl p-4 text-center space-y-1">
-                                    <div className="text-[11px] font-semibold tracking-wider uppercase text-[#88B897]">
+                                <div className="space-y-1 rounded-2xl border border-border bg-background p-4 text-center">
+                                    <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
                                         Zen Takeaway
                                     </div>
-                                    <p className="font-serif text-sm sm:text-base text-[#D7EADE] italic">
+                                    <p className="font-serif text-sm sm:text-base text-foreground italic">
                                         "{activeStory?.reflection.zenAffirmation}"
                                     </p>
                                 </div>
@@ -380,16 +383,21 @@ const ReadingManager = ({
                                         id="claim-story-reward-btn"
                                         type="button"
                                         // onClick={handleCompleteStory}
-                                        className="w-full h-12 rounded-full bg-[#EAE8E0] hover:bg-white text-[#161715] font-semibold text-sm transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99] mt-2"
+                                        className="mt-2 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-xs transition-all hover:bg-primary/90 active:scale-[0.99]"
                                     >
-                                        <Sparkles className="w-4 h-4 text-[#161715]" />
-                                        <span>Complete Passage & Claim +{activeStory?.xpReward} XP</span>
+                                        <Sparkles className="h-4 w-4" />
+                                        <span>Complete Passage · +{activeStory?.xpReward} XP</span>
                                     </button>
                                 ) : (
-                                    <div className="text-center pt-2">
-                                        <div className="inline-flex items-center gap-1.5 text-xs text-[#A8D3B6]">
-                                            <CheckCircle2 className="w-4 h-4" />
-                                            <span>Passage completed & peacefully recorded in your journey</span>
+                                    <div className="flex flex-col items-center gap-2 pt-3 text-center">
+                                        <CairnMascot
+                                            className="h-14 w-auto"
+                                            mood="celebrate"
+                                            label="Cairn celebrates a finished passage"
+                                        />
+                                        <div className="inline-flex items-center gap-1.5 text-xs text-primary">
+                                            <CheckCircle2 className="h-4 w-4 text-primary" />
+                                            <span>Passage completed & recorded in your journey</span>
                                         </div>
                                     </div>
                                 )}
@@ -398,7 +406,7 @@ const ReadingManager = ({
                     </section>
 
                     {/* Bottom Navigation */}
-                    <div className="pt-4 pb-8 flex items-center justify-between">
+                    <div className="relative flex items-center justify-between pb-4 pt-6">
                         <button
                             id="finish-reading-return-shelf-btn"
                             type="button"
@@ -406,7 +414,7 @@ const ReadingManager = ({
                                 sound.playPebbleTap(progress.soundEnabled);
                                 prevStory();
                             }}
-                            className="inline-flex items-center gap-1.5 text-xs text-[#70756F] hover:text-[#ECEBE6] transition-colors cursor-pointer"
+                            className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                         >
                             <ArrowLeft className="w-3.5 h-3.5" />
                             <span>Prev</span>
@@ -419,7 +427,7 @@ const ReadingManager = ({
                                 sound.playPebbleTap(progress.soundEnabled);
                                 nextStory();
                             }}
-                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#EAE8E0] hover:text-white transition-colors cursor-pointer"
+                            className="inline-flex cursor-pointer items-center gap-1.5 text-xs font-semibold text-primary transition-colors hover:text-primary/80"
                         >
                             <span>Next</span>
                             <span>→</span>
