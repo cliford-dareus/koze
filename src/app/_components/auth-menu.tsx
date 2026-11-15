@@ -3,52 +3,94 @@
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { useEffect } from "react";
-import { ProgressState, saveProgress, syncProgressFromCloud } from "@/lib/progress";
+import {
+    ProgressState,
+    saveProgress,
+    syncProgressFromCloud,
+} from "@/lib/progress";
 import { sound } from "@/lib/sound";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
-import ThemeToggle from "@/app/_components/theme-toggle";
-import { LogIn, LogOut, Sparkles, Volume2, VolumeX, Wind } from "lucide-react";
-import { useRouter } from "next/navigation";
+import {
+    DropdownMenu,
+    DropdownMenuCheckboxItem,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import {
+    BookOpen,
+    GraduationCap,
+    LogIn,
+    LogOut,
+    Monitor,
+    Moon,
+    Sun,
+    UserRound,
+    Volume2,
+    Wind,
+} from "lucide-react";
+import { useTheme } from "@/app/_components/providers/theme-provider";
 
 export default function AuthMenu({ progress }: { progress: ProgressState }) {
-    const router = useRouter();
     const { data: session, status } = useSession();
+    const { mode, cycleMode, resolved } = useTheme();
 
-    // Sound Toggle Handler
-    const handleToggleSound = () => {
-        const nextVal = !progress.soundEnabled;
-        const updated: ProgressState = {
-            ...progress,
-            soundEnabled: nextVal,
-        };
-        saveProgress(updated);
-    };
+    const isAuthed = status === "authenticated" && Boolean(session?.user);
+    const displayName =
+        session?.user?.name?.trim() ||
+        (isAuthed ? "Learner" : "Guest");
+    const firstName = displayName.split(" ")[0] || "Guest";
+    const initial = firstName.charAt(0).toUpperCase() || "K";
+    const email = session?.user?.email || null;
 
-    // Ambient Hum Toggle
-    const handleToggleAmbient = () => {
-        const nextVal = !progress.ambientSoundEnabled;
-        const updated: ProgressState = {
-            ...progress,
-            ambientSoundEnabled: nextVal,
-        };
-        saveProgress(updated);
-    };
+    const soundOn = progress.soundEnabled !== false;
+    const ambientOn = Boolean(progress.ambientSoundEnabled);
 
+    // Cloud sync when signed in
     useEffect(() => {
         if (status === "authenticated") {
             void syncProgressFromCloud();
         }
     }, [status]);
 
+    // Keep ambient engine in sync with stored preference
+    useEffect(() => {
+        sound.toggleAmbient(ambientOn);
+        return () => {
+            sound.toggleAmbient(false);
+        };
+    }, [ambientOn]);
+
+    const persist = (patch: Partial<ProgressState>) => {
+        saveProgress({ ...progress, ...patch });
+    };
+
+    const handleToggleSound = (next: boolean) => {
+        persist({ soundEnabled: next });
+        if (next) sound.playPebbleTap(true);
+    };
+
+    const handleToggleAmbient = (next: boolean) => {
+        persist({ ambientSoundEnabled: next });
+        sound.toggleAmbient(next);
+        sound.playPebbleTap(soundOn);
+    };
+
     if (status === "loading") {
         return (
-            <span className="rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground">
+            <span
+                className="inline-flex size-8 items-center justify-center rounded-full border border-border bg-card text-xs text-muted-foreground"
+                aria-hidden
+            >
                 …
             </span>
         );
     }
 
-    const label = session?.user.name?.split(" ")[0] || "Account";
+    const ThemeIcon =
+        mode === "system" ? Monitor : resolved === "dark" ? Moon : Sun;
 
     return (
         <DropdownMenu>
@@ -56,106 +98,145 @@ export default function AuthMenu({ progress }: { progress: ProgressState }) {
                 <button
                     id="user-profile-header-btn"
                     type="button"
-                    onClick={() => {
-                        sound.playPebbleTap(progress.soundEnabled);
-                    }}
-                    className="flex items-center gap-1.5 pl-1.5 pr-2.5 py-1  bg-card text-xs font-medium cursor-pointer p-2 rounded-full text-foreground hover:bg-secondary border border-transparent hover:border-border transition-colors"
-                    title="User Profile & Settings"
+                    onClick={() => sound.playPebbleTap(soundOn)}
+                    className="flex items-center gap-1.5 rounded-full border border-transparent bg-card py-1 pl-1 pr-2 text-xs font-medium text-foreground transition-colors hover:border-border hover:bg-secondary"
+                    title="Account & settings"
+                    aria-label="Account menu"
                 >
-                    <div className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center text-[10px] font-bold">
-                        {label ? label[0].toUpperCase() : 'C'}
-                    </div>
-                    <span className="hidden sm:inline font-medium text-xs">
-                        {label || 'Profile'}
+                    <span className="flex size-6 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
+                        {initial}
+                    </span>
+                    <span className="hidden max-w-[5.5rem] truncate sm:inline">
+                        {firstName}
                     </span>
                 </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
-                <DropdownMenuLabel className="p-0 font-normal">
-                    <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                        <div className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center text-[10px] font-bold">
-                            {label ? label[0].toUpperCase() : 'C'}
-                        </div>
-                        <div className="grid flex-1 text-left text-sm leading-tight">
-                            <span className="truncate font-medium">{label}</span>
+
+            <DropdownMenuContent align="end" className="w-56 min-w-[14rem]">
+                <DropdownMenuLabel className="font-normal">
+                    <div className="flex items-center gap-2.5 px-0.5 py-0.5">
+                        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                            {initial}
+                        </span>
+                        <div className="min-w-0 flex-1 leading-tight">
+                            <p className="truncate text-sm font-medium text-foreground">
+                                {displayName}
+                            </p>
+                            <p className="truncate text-[11px] text-muted-foreground">
+                                {email || "Practicing on this device"}
+                            </p>
                         </div>
                     </div>
                 </DropdownMenuLabel>
+
                 <DropdownMenuSeparator />
+
                 <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                        <Sparkles />
-                        Upgrade to Pro
+                    <DropdownMenuItem asChild>
+                        <Link
+                            href="/profile"
+                            className="cursor-pointer"
+                            onClick={() => sound.playPebbleTap(soundOn)}
+                        >
+                            <UserRound />
+                            Profile
+                        </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                        <Link
+                            href="/lessons"
+                            className="cursor-pointer"
+                            onClick={() => sound.playPebbleTap(soundOn)}
+                        >
+                            <GraduationCap />
+                            Lessons
+                        </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                        <Link
+                            href="/reading"
+                            className="cursor-pointer"
+                            onClick={() => sound.playPebbleTap(soundOn)}
+                        >
+                            <BookOpen />
+                            Reading shelf
+                        </Link>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
+
                 <DropdownMenuSeparator />
+
                 <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                        <button
-                            id="toggle-ambient-btn"
-                            type="button"
-                            onClick={() => {
-                                sound.playPebbleTap(progress.soundEnabled);
-                                handleToggleAmbient();
-                            }}
-                            className={`w-full flex items-center gap-2 rounded-full transition-colors border ${progress.ambientSoundEnabled
-                                ? 'bg-accent text-primary border-primary/30 px-2'
-                                : 'text-foreground hover:bg-secondary border-transparent'
-                                }`}
-                            title={
-                                progress.ambientSoundEnabled
-                                    ? 'Mute ambient soundscape'
-                                    : 'Enable calming ambient soundscape'
-                            }
-                        >
-                            <Wind className="w-4 h-4" />
-                            Sound
-                        </button>
+                    <DropdownMenuItem
+                        onSelect={(e) => {
+                            e.preventDefault();
+                            cycleMode();
+                            sound.playPebbleTap(soundOn);
+                        }}
+                    >
+                        <ThemeIcon />
+                        Theme
+                        <span className="ml-auto text-[11px] capitalize text-muted-foreground">
+                            {mode}
+                        </span>
                     </DropdownMenuItem>
 
-                    <DropdownMenuItem>
-                        <button
-                            id="toggle-sound-btn"
-                            type="button"
-                            onClick={() => {
-                                handleToggleSound();
-                            }}
-                            className={`flex items-center gap-2 rounded-full transition-colors border ${progress.soundEnabled
-                                ? 'text-foreground hover:bg-secondary border-transparent'
-                                : 'text-muted-foreground hover:bg-secondary border-transparent'
-                                }`}
-                            title={progress.soundEnabled ? 'Mute ambient sound' : 'Unmute ambient sound'}
-                        >
-                            {progress.soundEnabled ? (
-                                <Volume2 className="w-4 h-4" />
-                            ) : (
-                                <VolumeX className="w-4 h-4" />
-                            )}
-                            Chimes
-                        </button>
-                    </DropdownMenuItem>
+                    <DropdownMenuCheckboxItem
+                        checked={soundOn}
+                        onCheckedChange={(v) => handleToggleSound(Boolean(v))}
+                        onSelect={(e) => e.preventDefault()}
+                    >
+                        <Volume2 />
+                        Soft sounds
+                    </DropdownMenuCheckboxItem>
+
+                    <DropdownMenuCheckboxItem
+                        checked={ambientOn}
+                        onCheckedChange={(v) => handleToggleAmbient(Boolean(v))}
+                        onSelect={(e) => e.preventDefault()}
+                    >
+                        <Wind />
+                        Ambient soundscape
+                    </DropdownMenuCheckboxItem>
                 </DropdownMenuGroup>
+
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                    {!session?.user ?
-                        <button
-                            type="button"
-                            className="flex items-center gap-2"
-                            onClick={() => router.push("/login")}
-                        >
-                            <LogIn />
-                            Log in
-                        </button>
-                        :
-                        <button
-                            type="button"
-                            className="flex items-center gap-2"
-                            onClick={() => signOut({ callbackUrl: "/" })}
-                        >
-                            <LogOut />
-                            Log out
-                        </button>}
-                </DropdownMenuItem>
+
+                {!isAuthed ? (
+                    <DropdownMenuGroup>
+                        <DropdownMenuItem asChild>
+                            <Link
+                                href="/login"
+                                className="cursor-pointer"
+                                onClick={() => sound.playPebbleTap(soundOn)}
+                            >
+                                <LogIn />
+                                Sign in
+                            </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <Link
+                                href="/register"
+                                className="cursor-pointer"
+                                onClick={() => sound.playPebbleTap(soundOn)}
+                            >
+                                <UserRound />
+                                Create account
+                            </Link>
+                        </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                ) : (
+                    <DropdownMenuItem
+                        variant="destructive"
+                        onSelect={() => {
+                            sound.playPebbleTap(soundOn);
+                            void signOut({ callbackUrl: "/" });
+                        }}
+                    >
+                        <LogOut />
+                        Sign out
+                    </DropdownMenuItem>
+                )}
             </DropdownMenuContent>
         </DropdownMenu>
     );
