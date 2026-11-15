@@ -9,6 +9,7 @@ import { sound } from "@/lib/sound";
 import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
 import ZenGarden from "./zen-garden";
 import DailyPractice from "./daily-practice";
+import CairnMascot from "./cairn-mascot";
 
 export default function Hero({
     progress,
@@ -29,6 +30,7 @@ export default function Hero({
     const goal = progress.dailyGoal || DEFAULT_DAILY_GOAL;
     const todayActions = progress.todayActions ?? 0;
     const goalMet = progress.dailyGoalMet || todayActions >= goal;
+    const stones = progress.cairnStonesCount || 0;
 
     return (
         <div>
@@ -38,23 +40,33 @@ export default function Hero({
             >
                 <div className="lang-wash pointer-events-none absolute inset-0" aria-hidden />
 
-                <div className="relative max-w-2xl space-y-2">
-                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
-                        <span
-                            className="h-2 w-2 rounded-full lang-swatch shadow-xs"
-                            aria-hidden
-                        />
-                        <Leaf className="h-3.5 w-3.5" />
-                        <span>Mindful Language Sanctuary</span>
+                <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="max-w-2xl space-y-2">
+                        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
+                            <span
+                                className="h-2 w-2 rounded-full lang-swatch shadow-xs"
+                                aria-hidden
+                            />
+                            <Leaf className="h-3.5 w-3.5" />
+                            <span>Mindful Language Sanctuary</span>
+                        </div>
+
+                        <h1 className="font-serif text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
+                            {currentLang.greeting}
+                        </h1>
+
+                        <p className="text-sm leading-relaxed text-foreground sm:text-base">
+                            {currentLang.description}
+                        </p>
                     </div>
 
-                    <h1 className="font-serif text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
-                        {currentLang.greeting}
-                    </h1>
-
-                    <p className="text-sm leading-relaxed text-foreground sm:text-base">
-                        {currentLang.description}
-                    </p>
+                    <div className="mx-auto shrink-0 sm:mx-0">
+                        <CairnMascot
+                            className="h-24 w-auto sm:h-28"
+                            mood={goalMet ? "celebrate" : stones > 0 ? "idle" : "encourage"}
+                            label="Cairn, your practice companion"
+                        />
+                    </div>
                 </div>
 
                 <div className="relative mt-5 flex flex-wrap items-center gap-3">
@@ -91,9 +103,7 @@ export default function Hero({
                                 }}
                                 className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-secondary"
                             >
-                                <span>
-                                    View Pebble Cairn ({progress.cairnStonesCount || 0})
-                                </span>
+                                <span>View Pebble Cairn ({stones})</span>
                             </button>
                         </DrawerTrigger>
                         <DrawerContent className="border border-border bg-background">
