@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import {
@@ -15,7 +14,6 @@ import {
     Sparkles,
     Target,
 } from "lucide-react";
-import { BADGES, BADGES_ICON_MAP } from "@/data/badges";
 import {
     DEFAULT_DAILY_GOAL,
     ensureTodayCounters,
@@ -28,10 +26,11 @@ import {
     totalActivities,
     type ProgressState,
 } from "@/lib/progress";
-import { LANGUAGES, languageLabel } from "@/lib/languages";
+import { LANGUAGES } from "@/lib/languages";
 import { learningTrackLabel } from "@/lib/learning-prefs";
 import { Button } from "@/app/_components/ui/button";
 import ThemeToggle from "@/app/_components/theme-toggle";
+import BadgeShelf from "@/app/_components/badge-shelf";
 import { sound } from "@/lib/sound";
 
 export default function ProfilePage() {
@@ -56,11 +55,6 @@ export default function ProfilePage() {
     const levelInfo = useMemo(
         () => levelProgress(progress.xp ?? 0),
         [progress.xp],
-    );
-
-    const earned = useMemo(
-        () => new Set(progress.badges || []),
-        [progress.badges],
     );
 
     const learningLang =
@@ -123,7 +117,6 @@ export default function ProfilePage() {
                 </p>
             </div>
 
-            {/* Identity */}
             <section className="relative overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6">
                 <div className="lang-wash pointer-events-none absolute inset-0" aria-hidden />
                 <div className="relative flex items-start gap-4">
@@ -205,7 +198,6 @@ export default function ProfilePage() {
                 </div>
             </section>
 
-            {/* Level + daily intention */}
             <section className="grid gap-3 sm:grid-cols-2">
                 <div className="rounded-2xl border border-border bg-card p-5 shadow-soft">
                     <div className="flex items-center justify-between gap-2">
@@ -271,7 +263,6 @@ export default function ProfilePage() {
                 </div>
             </section>
 
-            {/* Activity grid */}
             <section>
                 <div className="mb-3 flex items-end justify-between gap-2">
                     <div>
@@ -336,7 +327,6 @@ export default function ProfilePage() {
                 </div>
             </section>
 
-            {/* Preferences */}
             <section className="rounded-2xl border border-border bg-card p-5 shadow-soft">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
                     Preferences
@@ -388,80 +378,10 @@ export default function ProfilePage() {
                 </div>
             </section>
 
-            {/* Badges */}
-            <section>
-                <div className="mb-3 flex items-end justify-between gap-2">
-                    <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
-                            Collected
-                        </p>
-                        <h2 className="mt-0.5 font-serif text-xl font-semibold tracking-tight text-foreground">
-                            Badges
-                        </h2>
-                    </div>
-                    <span className="text-xs text-muted-foreground">
-                        {earned.size}/{BADGES.length}
-                    </span>
-                </div>
-
-                <ul className="space-y-2">
-                    {BADGES.map((badge) => {
-                        const on = earned.has(badge.id);
-                        const icon = BADGES_ICON_MAP[badge.id];
-                        return (
-                            <li
-                                key={badge.id}
-                                className={
-                                    "flex items-start gap-3 rounded-2xl border p-4 shadow-soft transition-colors " +
-                                    (on
-                                        ? "border-primary/25 bg-card"
-                                        : "border-border/70 bg-muted/15 opacity-75")
-                                }
-                            >
-                                <span
-                                    className={
-                                        "flex size-12 shrink-0 items-center justify-center rounded-xl " +
-                                        (on ? "bg-accent" : "bg-muted")
-                                    }
-                                >
-                                    {icon ? (
-                                        <Image
-                                            src={icon}
-                                            width={28}
-                                            height={28}
-                                            alt=""
-                                            className="size-7"
-                                        />
-                                    ) : (
-                                        <span className="text-xl" aria-hidden>
-                                            {badge.emoji}
-                                        </span>
-                                    )}
-                                </span>
-                                <div className="min-w-0 flex-1">
-                                    <div className="flex flex-wrap items-center gap-2">
-                                        <h3 className="font-serif text-base font-semibold tracking-tight text-foreground">
-                                            {badge.title}
-                                        </h3>
-                                        {on ? (
-                                            <span className="rounded-full bg-primary px-2 py-0.5 text-[10px] font-medium text-primary-foreground">
-                                                Earned
-                                            </span>
-                                        ) : (
-                                            <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
-                                                Locked
-                                            </span>
-                                        )}
-                                    </div>
-                                    <p className="mt-1 text-xs leading-5 text-muted-foreground">
-                                        {badge.description}
-                                    </p>
-                                </div>
-                            </li>
-                        );
-                    })}
-                </ul>
-            </section>
+            <BadgeShelf
+                earnedIds={progress.badges || []}
+                soundEnabled={progress.soundEnabled !== false}
+            />
 
             <p className="pb-2 text-center text-[11px] text-muted-foreground">
                 Progress stays on this device
