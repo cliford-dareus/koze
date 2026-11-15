@@ -6,6 +6,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/app/_components/ui/button";
 import { Input } from "@/app/_components/ui/input";
+import CairnMascot from "@/app/_components/cairn-mascot";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -56,6 +57,13 @@ export default function RegisterPage() {
 
   return (
     <div className="mx-auto w-full max-w-md">
+      <div className="mb-4 flex justify-center">
+        <CairnMascot
+          className="h-20 w-auto"
+          mood="encourage"
+          label="Cairn welcomes a new learner"
+        />
+      </div>
       <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
         Get started
       </p>
