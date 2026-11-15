@@ -4,47 +4,22 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { LucideLock, LucideMic, LucideSend, LucideVolume2 } from "lucide-react";
 import {
-    TUTOR_SCENARIOS,
-    TUTOR_UNIT_LABEL,
-    getScenario,
-    isScenarioUnlocked,
-    unlockHint,
-    type TutorScenario,
-    type TutorUnit,
+    TUTOR_SCENARIOS, TUTOR_UNIT_LABEL, getScenario, isScenarioUnlocked, unlockHint,
+    type TutorScenario, type TutorUnit,
 } from "@/data/tutor-scenarios";
 import { Button } from "@/app/_components/ui/button";
 import {
-    defaultProgress,
-    loadProgress,
-    recordActivity,
-    removeSavedPhrase,
-    savePhrase,
-    type ProgressState,
-    type SavedPhrase,
+    defaultProgress, loadProgress, recordActivity, removeSavedPhrase, savePhrase,
+    type ProgressState, type SavedPhrase,
 } from "@/lib/progress";
-import {
-    directionForLearningLanguage,
-} from "@/lib/learning-prefs";
-import { LANGUAGES, voiceFor, type LangCode } from "@/lib/languages";
+import { directionForLearningLanguage } from "@/lib/learning-prefs";
+import { LANGUAGES, voiceFor } from "@/lib/languages";
 import { speak, startListening } from "@/lib/speech";
 import { cn } from "@/lib/utils";
-import type { LessonDirection } from "@/data/lessons";
+import CairnMascot from "@/app/_components/cairn-mascot";
 
-type ChatMsg = {
-    role: "user" | "assistant";
-    content: string;
-    correction?: string | null;
-    betterPhrase?: string | null;
-};
-
-type TutorApiOk = {
-    success: true;
-    reply: string;
-    correction: string | null;
-    betterPhrase: string | null;
-    continue: boolean;
-    summaryHint: string | null;
-};
+type ChatMsg = { role: "user" | "assistant"; content: string; correction?: string | null; betterPhrase?: string | null };
+type TutorApiOk = { success: true; reply: string; correction: string | null; betterPhrase: string | null; continue: boolean; summaryHint: string | null };
 
 export default function PracticePage() {
     const [progress, setProgress] = useState<ProgressState>(defaultProgress());
@@ -61,9 +36,10 @@ export default function PracticePage() {
     const [phraseSaved, setPhraseSaved] = useState(false);
     const stopListenRef = useRef<(() => void) | null>(null);
 
-    const direction = useMemo(() => {
-        return directionForLearningLanguage(progress.learningLanguage!, progress.nativeLanguage!);
-    }, []);
+    const direction = useMemo(
+        () => directionForLearningLanguage(progress.learningLanguage!, progress.nativeLanguage!),
+        [progress.learningLanguage, progress.nativeLanguage],
+    );
     const voiceLang = voiceFor(progress.learningLanguage!);
 
     useEffect(() => {
@@ -77,8 +53,7 @@ export default function PracticePage() {
         };
     }, []);
 
-    const currentLanguage = LANGUAGES.find(l => l.value === progress.learningLanguage) || LANGUAGES[0];
-    
+    const currentLanguage = LANGUAGES.find((l) => l.value === progress.learningLanguage) || LANGUAGES[0];
     const units = useMemo(() => {
         const map = new Map<TutorUnit, TutorScenario[]>();
         for (const s of TUTOR_SCENARIOS) {
@@ -88,15 +63,10 @@ export default function PracticePage() {
         }
         return map;
     }, []);
-
     const savedPhrases: SavedPhrase[] = progress?.savedPhrases ?? [];
 
     const callTutor = useCallback(
-        async (opts: {
-            scenarioId: string;
-            messages: { role: "user" | "assistant"; content: string }[];
-            start?: boolean;
-        }) => {
+        async (opts: { scenarioId: string; messages: { role: "user" | "assistant"; content: string }[]; start?: boolean }) => {
             const res = await fetch("/api/tutor", {
                 method: "POST",
                 headers: { "content-type": "application/json" },
@@ -109,9 +79,7 @@ export default function PracticePage() {
                 }),
             });
             const data = await res.json();
-            if (!res.ok || !data?.success) {
-                throw new Error(data?.error || "Tutor request failed");
-            }
+            if (!res.ok || !data?.success) throw new Error(data?.error || "Tutor request failed");
             return data as TutorApiOk;
         },
         [progress.learningLanguage, progress.nativeLanguage],
@@ -133,11 +101,7 @@ export default function PracticePage() {
         setPhase("chat");
         setBusy(true);
         try {
-            const data = await callTutor({
-                scenarioId: s.id,
-                messages: [],
-                start: true,
-            });
+            const data = await callTutor({ scenarioId: s.id, messages: [], start: true });
             setMessages([{ role: "assistant", content: data.reply }]);
             void speak(data.reply, voiceLang);
         } catch (e) {
@@ -184,10 +148,7 @@ export default function PracticePage() {
             const hitLimit = turns >= scenario.maxTurns;
             if (!data.continue || hitLimit) {
                 finishSession(
-                    data.summaryHint ||
-                        (hitLimit
-                            ? "Nice work staying in the scene. Try again when you like."
-                            : null),
+                    data.summaryHint || (hitLimit ? "Nice work staying in the scene. Try again when you like." : null),
                     data.betterPhrase,
                 );
             }
@@ -201,14 +162,7 @@ export default function PracticePage() {
     const listen = () => {
         if (listening || busy) return;
         setListening(true);
-        const stop = startListening(
-            voiceLang,
-            (text) => {
-                setDraft(text);
-                setListening(false);
-            },
-            () => setListening(false),
-        );
+        const stop = startListening(voiceLang, (text) => { setDraft(text); setListening(false); }, () => setListening(false));
         stopListenRef.current = stop;
         if (!stop) {
             setListening(false);
@@ -233,8 +187,7 @@ export default function PracticePage() {
 
     const onSavePhrase = () => {
         if (!lastBetter) return;
-        const saved = savePhrase({ text: lastBetter, scenarioId: scenario?.id });
-        if (saved) {
+        if (savePhrase({ text: lastBetter, scenarioId: scenario?.id })) {
             setPhraseSaved(true);
             setProgress(loadProgress());
         }
@@ -242,101 +195,48 @@ export default function PracticePage() {
 
     if (phase === "pick") {
         return (
-            <div className="flex flex-col pb-4">
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                    Practice
-                </p>
-                <h1 className="mt-2 font-display text-3xl font-medium">
-                    A patient conversation.
-                </h1>
-                <p className="mt-2 max-w-prose text-sm text-muted-foreground">
-                    Roleplays unlock as you finish related lessons. Practicing{" "}
-                    <span className="font-medium text-foreground">
-                        {currentLanguage.name}
-                    </span>
-                    .
-                </p>
-                {error ? (
-                    <p className="mt-4 text-sm text-destructive" role="alert">
-                        {error}
+            <div className="relative mx-auto flex w-full max-w-lg flex-col pb-10">
+                <div className="lang-wash pointer-events-none absolute inset-0 opacity-20" aria-hidden />
+                <header className="relative">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">Studio · Practice</p>
+                    <h1 className="mt-1.5 font-serif text-3xl font-semibold tracking-tight text-foreground">A patient conversation.</h1>
+                    <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">
+                        Roleplays unlock as you finish related lessons. Practicing{" "}
+                        <span className="font-medium text-foreground">{currentLanguage.name}</span>.
                     </p>
-                ) : null}
+                </header>
+                {error ? <p className="relative mt-4 text-sm text-destructive" role="alert">{error}</p> : null}
                 {savedPhrases.length > 0 ? (
-                    <div className="mt-6 rounded-xl border border-border bg-card p-4 shadow-soft">
-                        <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-                            Saved for review
-                        </p>
-                        <ul className="mt-3 space-y-2">
+                    <div className="relative mt-6 overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-soft">
+                        <div className="lang-wash pointer-events-none absolute inset-0 opacity-20" aria-hidden />
+                        <p className="relative text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">Saved for review</p>
+                        <ul className="relative mt-3 space-y-2">
                             {savedPhrases.slice(0, 8).map((ph) => (
-                                <li
-                                    key={ph.id}
-                                    className="flex items-start justify-between gap-2 text-sm"
-                                >
-                                    <button
-                                        type="button"
-                                        className="min-w-0 flex-1 text-left font-medium"
-                                        onClick={() => void speak(ph.text, voiceLang)}
-                                    >
-                                        {ph.text}
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="shrink-0 text-xs text-muted-foreground hover:text-destructive"
-                                        onClick={() => {
-                                            removeSavedPhrase(ph.id);
-                                            setProgress(loadProgress());
-                                        }}
-                                    >
-                                        Remove
-                                    </button>
+                                <li key={ph.id} className="flex items-start justify-between gap-2 text-sm">
+                                    <button type="button" className="min-w-0 flex-1 text-left font-medium hover:text-primary" onClick={() => void speak(ph.text, voiceLang)}>{ph.text}</button>
+                                    <button type="button" className="shrink-0 text-xs text-muted-foreground hover:text-destructive" onClick={() => { removeSavedPhrase(ph.id); setProgress(loadProgress()); }}>Remove</button>
                                 </li>
                             ))}
                         </ul>
                     </div>
                 ) : null}
-                <div className="mt-8 space-y-8">
+                <div className="relative mt-8 space-y-8">
                     {Array.from(units.entries()).map(([unit, list]) => (
                         <section key={unit}>
-                            <h2 className="font-display text-lg font-medium">
-                                {TUTOR_UNIT_LABEL[unit]}
-                            </h2>
-                            <ul className="mt-3 space-y-2">
+                            <h2 className="font-serif text-lg font-semibold tracking-tight text-foreground">{TUTOR_UNIT_LABEL[unit]}</h2>
+                            <ul className="mt-3 space-y-2.5">
                                 {list.map((s) => {
-                                    const unlocked = progress
-                                        ? isScenarioUnlocked(s, progress, direction)
-                                        : true;
+                                    const unlocked = progress ? isScenarioUnlocked(s, progress, direction) : true;
                                     return (
                                         <li key={s.id}>
-                                            <button
-                                                type="button"
-                                                disabled={busy || !unlocked}
-                                                onClick={() => void beginScenario(s)}
-                                                className={cn(
-                                                    "w-full rounded-xl border border-border bg-card p-4 text-left shadow-soft transition-transform duration-150",
-                                                    unlocked
-                                                        ? "hover:-translate-y-0.5"
-                                                        : "opacity-70",
-                                                )}
-                                            >
+                                            <button type="button" disabled={busy || !unlocked} onClick={() => void beginScenario(s)}
+                                                className={cn("w-full rounded-2xl border border-border bg-card p-4 text-left shadow-soft transition-all", unlocked ? "hover:-translate-y-0.5 hover:border-primary/30" : "opacity-70")}>
                                                 <div className="flex items-start justify-between gap-2">
-                                                    <p className="font-display text-base font-medium">
-                                                        {s.title}
-                                                    </p>
-                                                    {!unlocked ? (
-                                                        <LucideLock
-                                                            size={16}
-                                                            className="shrink-0 text-muted-foreground"
-                                                        />
-                                                    ) : null}
+                                                    <p className="font-serif text-base font-medium text-foreground">{s.title}</p>
+                                                    {!unlocked ? <LucideLock size={16} className="shrink-0 text-muted-foreground" /> : null}
                                                 </div>
-                                                <p className="mt-1 text-xs text-muted-foreground">
-                                                    {s.description}
-                                                </p>
-                                                <p className="mt-2 text-xs font-medium text-primary">
-                                                    {unlocked
-                                                        ? `Start · up to ${s.maxTurns} turns →`
-                                                        : unlockHint(s)}
-                                                </p>
+                                                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{s.description}</p>
+                                                <p className="mt-2 text-xs font-medium text-primary">{unlocked ? `Start · up to ${s.maxTurns} turns →` : unlockHint(s)}</p>
                                             </button>
                                         </li>
                                     );
@@ -345,76 +245,49 @@ export default function PracticePage() {
                         </section>
                     ))}
                 </div>
-                <Button variant="ghost" className="mt-6" asChild>
-                    <Link href="/chat">Back to practice home</Link>
-                </Button>
+                <Button variant="ghost" className="relative mt-6" asChild><Link href="/chat">Back to practice home</Link></Button>
             </div>
         );
     }
 
     if (phase === "summary" && scenario) {
         return (
-            <div className="flex flex-col pb-4">
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                    Session complete
-                </p>
-                <h1 className="mt-2 font-display text-3xl font-medium">Well held.</h1>
-                <p className="mt-2 text-sm text-muted-foreground">
-                    {scenario.title} · {userTurns} turns · practice XP
-                </p>
-                <div className="mt-6 rounded-xl border border-border bg-card p-5 shadow-soft">
-                    {summaryHint ? (
-                        <p className="text-sm leading-relaxed">{summaryHint}</p>
-                    ) : (
-                        <p className="text-sm text-muted-foreground">
-                            You stayed with the scene. That is enough for today.
-                        </p>
-                    )}
-                    {lastBetter ? (
-                        <div className="mt-4 rounded-lg border border-primary/20 bg-accent/40 px-3 py-3">
-                            <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
-                                Phrase to keep
-                            </p>
-                            <p className="mt-1 font-display text-lg font-medium">{lastBetter}</p>
-                            <div className="mt-2 flex flex-wrap gap-2">
-                                <Button
-                                    type="button"
-                                    size="sm"
-                                    variant="outline"
-                                    className="gap-1.5"
-                                    onClick={() => void speak(lastBetter, voiceLang)}
-                                >
-                                    <LucideVolume2 size={14} />
-                                    Hear it
-                                </Button>
-                                <Button
-                                    type="button"
-                                    size="sm"
-                                    variant={phraseSaved ? "default" : "outline"}
-                                    disabled={phraseSaved}
-                                    onClick={onSavePhrase}
-                                >
-                                    {phraseSaved ? "Saved for review" : "Save for review"}
-                                </Button>
-                            </div>
-                        </div>
-                    ) : null}
-                    <p className="mt-4 text-xs text-muted-foreground">
-                        Counts toward your daily goal as practice.
-                    </p>
+            <div className="relative mx-auto flex w-full max-w-lg flex-col pb-10">
+                <div className="lang-wash pointer-events-none absolute inset-0 opacity-25" aria-hidden />
+                <div className="relative mb-4 flex justify-center">
+                    <CairnMascot className="h-20 w-auto" mood="celebrate" label="Cairn celebrates a finished practice" />
                 </div>
-                <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-                    <Button type="button" onClick={reset}>
-                        Choose another scenario
-                    </Button>
-                    <Button
-                        type="button"
-                        variant="outline"
-                        onClick={() => {
-                            const s = getScenario(scenario.id);
-                            if (s) void beginScenario(s);
-                        }}
-                    >
+                <header className="relative text-center">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">Path complete</p>
+                    <h1 className="mt-1.5 font-serif text-3xl font-semibold tracking-tight text-foreground">Well held.</h1>
+                    <p className="mt-2 text-sm text-muted-foreground">{scenario.title} · {userTurns} turns · practice XP</p>
+                </header>
+                <div className="relative mt-6 overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6">
+                    <div className="lang-wash pointer-events-none absolute inset-0 opacity-20" aria-hidden />
+                    <div className="relative">
+                        {summaryHint ? <p className="text-sm leading-relaxed text-foreground">{summaryHint}</p> : (
+                            <p className="text-sm text-muted-foreground">You stayed with the scene. That is enough for today.</p>
+                        )}
+                        {lastBetter ? (
+                            <div className="mt-4 overflow-hidden rounded-2xl border border-primary/20 bg-accent/40 px-4 py-3">
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">Phrase to keep</p>
+                                <p className="mt-1 font-serif text-lg font-medium text-foreground">{lastBetter}</p>
+                                <div className="mt-3 flex flex-wrap gap-2">
+                                    <Button type="button" size="sm" variant="outline" className="gap-1.5 rounded-full" onClick={() => void speak(lastBetter, voiceLang)}>
+                                        <LucideVolume2 size={14} /> Hear it
+                                    </Button>
+                                    <Button type="button" size="sm" variant={phraseSaved ? "default" : "outline"} className="rounded-full" disabled={phraseSaved} onClick={onSavePhrase}>
+                                        {phraseSaved ? "Saved for review" : "Save for review"}
+                                    </Button>
+                                </div>
+                            </div>
+                        ) : null}
+                        <p className="mt-4 text-xs text-muted-foreground">Counts toward your daily goal as practice.</p>
+                    </div>
+                </div>
+                <div className="relative mt-6 flex flex-col gap-2 sm:flex-row">
+                    <Button type="button" className="rounded-full" onClick={reset}>Choose another scenario</Button>
+                    <Button type="button" variant="outline" className="rounded-full" onClick={() => { const s = getScenario(scenario.id); if (s) void beginScenario(s); }}>
                         Replay this one
                     </Button>
                 </div>
@@ -423,107 +296,63 @@ export default function PracticePage() {
     }
 
     return (
-        <div className="flex flex-col pb-4">
-            <div className="flex items-start justify-between gap-3">
+        <div className="relative mx-auto flex w-full max-w-lg flex-col pb-10">
+            <div className="lang-wash pointer-events-none absolute inset-0 opacity-15" aria-hidden />
+            <div className="relative flex items-start justify-between gap-3">
                 <div>
-                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                        {scenario ? TUTOR_UNIT_LABEL[scenario.unit] : "Practice"}
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+                        {scenario ? `Studio · ${TUTOR_UNIT_LABEL[scenario.unit]}` : "Studio · Practice"}
                     </p>
-                    <h1 className="mt-1 font-display text-2xl font-medium">
-                        {scenario?.title ?? "Conversation"}
-                    </h1>
-                    {scenario ? (
-                        <p className="mt-1 text-xs text-muted-foreground">
-                            Goal: {scenario.goal}
-                        </p>
-                    ) : null}
+                    <h1 className="mt-1 font-serif text-2xl font-semibold tracking-tight text-foreground">{scenario?.title ?? "Conversation"}</h1>
+                    {scenario ? <p className="mt-1 text-xs text-muted-foreground">Goal: {scenario.goal}</p> : null}
                 </div>
-                <span className="shrink-0 rounded-full bg-muted px-2.5 py-1 text-xs font-medium">
+                <span className="shrink-0 rounded-full border border-border bg-card px-2.5 py-1 text-xs font-medium text-primary shadow-xs">
                     {userTurns}/{scenario?.maxTurns ?? "—"}
                 </span>
             </div>
-            <div className="mt-6 flex flex-col gap-3">
+            <div className="relative mt-6 flex flex-col gap-3">
                 {messages.map((m, i) => (
-                    <div key={i} className="flex flex-col gap-1">
-                        <div
-                            className={cn(
-                                "rounded-xl px-4 py-3 text-sm leading-6 shadow-soft",
-                                m.role === "user"
-                                    ? "ml-6 border border-primary/20 bg-primary text-primary-foreground"
-                                    : "mr-6 border border-border bg-card",
-                            )}
-                        >
+                    <div key={i} className="flex flex-col gap-1.5">
+                        <div className={cn("rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-soft", m.role === "user" ? "ml-6 border border-primary/25 bg-primary text-primary-foreground" : "mr-6 border border-border bg-card text-foreground")}>
                             {m.content}
                         </div>
                         {m.role === "assistant" && (m.correction || m.betterPhrase) ? (
-                            <div className="mr-6 rounded-lg border border-border/80 bg-muted/40 px-3 py-2 text-xs text-muted-foreground">
-                                {m.correction ? (
-                                    <p>
-                                        <span className="font-medium text-foreground">Note: </span>
-                                        {m.correction}
-                                    </p>
-                                ) : null}
-                                {m.betterPhrase ? (
-                                    <p className={m.correction ? "mt-1" : ""}>
-                                        <span className="font-medium text-foreground">Try: </span>
-                                        {m.betterPhrase}
-                                    </p>
-                                ) : null}
+                            <div className="mr-6 rounded-2xl border border-border bg-muted/40 px-3.5 py-2.5 text-xs text-muted-foreground">
+                                {m.correction ? <p><span className="font-medium text-foreground">Note: </span>{m.correction}</p> : null}
+                                {m.betterPhrase ? <p className={m.correction ? "mt-1" : ""}><span className="font-medium text-foreground">Try: </span>{m.betterPhrase}</p> : null}
                             </div>
                         ) : null}
                     </div>
                 ))}
                 {busy ? (
-                    <p className="text-xs text-muted-foreground">The tutor is thinking…</p>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <CairnMascot className="h-8 w-auto" mood="thinking" label="Cairn is thinking" />
+                        <span>The tutor is thinking…</span>
+                    </div>
                 ) : null}
             </div>
             {listening ? (
-                <p className="mt-4 flex items-center gap-2 text-xs font-medium text-primary">
+                <p className="relative mt-4 flex items-center gap-2 text-xs font-medium text-primary">
+                    <CairnMascot className="h-7 w-auto" mood="listening" label="Cairn is listening" />
                     <span className="size-2 animate-pulse rounded-full bg-primary" />
                     Listening — speak clearly, then pause
                 </p>
             ) : null}
-            {error ? (
-                <p className="mt-3 text-sm text-destructive" role="alert">
-                    {error}
-                </p>
-            ) : null}
-            <form
-                className="mt-6 flex items-center gap-2"
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    void send(draft);
-                }}
-            >
-                <input
-                    value={draft}
-                    onChange={(e) => setDraft(e.target.value)}
-                    placeholder="Your reply…"
-                    disabled={busy}
-                    className="min-h-11 flex-1 rounded-xl border border-border bg-card px-3 text-sm outline-none ring-ring focus:ring-2"
-                />
-                <Button
-                    type="button"
-                    variant="outline"
-                    size="icon"
-                    onClick={listen}
-                    disabled={busy}
-                    aria-label="Speak"
-                    className={listening ? "border-primary" : ""}
-                >
+            {error ? <p className="relative mt-3 text-sm text-destructive" role="alert">{error}</p> : null}
+            <form className="relative mt-6 flex items-center gap-2" onSubmit={(e) => { e.preventDefault(); void send(draft); }}>
+                <input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="Your reply…" disabled={busy}
+                    className="min-h-11 flex-1 rounded-2xl border border-border bg-card px-4 text-sm outline-none ring-ring focus:ring-2" />
+                <Button type="button" variant="outline" size="icon" onClick={listen} disabled={busy} aria-label="Speak"
+                    className={cn("rounded-full", listening ? "border-primary bg-accent" : "")}>
                     <LucideMic size={18} />
                 </Button>
-                <Button type="submit" size="icon" disabled={busy || !draft.trim()} aria-label="Send">
+                <Button type="submit" size="icon" disabled={busy || !draft.trim()} aria-label="Send" className="rounded-full">
                     <LucideSend size={18} />
                 </Button>
             </form>
-            <button
-                type="button"
-                className="mt-4 text-xs font-medium text-muted-foreground hover:text-foreground"
-                onClick={reset}
-            >
+            <button type="button" className="relative mt-4 text-xs font-medium text-muted-foreground hover:text-foreground" onClick={reset}>
                 Leave scenario
             </button>
         </div>
-    );
-}
+    )
+};
