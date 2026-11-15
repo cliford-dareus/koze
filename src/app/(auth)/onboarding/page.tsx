@@ -8,6 +8,7 @@ import { Input } from "@/app/_components/ui/input";
 import { LANGUAGES } from "@/lib/languages";
 import { syncProgressFromCloud } from "@/lib/progress";
 import { saveLearningPrefs } from "@/lib/learning-prefs";
+import CairnMascot from "@/app/_components/cairn-mascot";
 
 const GOALS = [
     { id: "travel", label: "Travel" },
@@ -54,7 +55,6 @@ export default function OnboardingPage() {
         setLoading(true);
         setError("");
         try {
-            // Always persist locally so Lessons works for this device immediately
             saveLearningPrefs({ learningLanguage, nativeLanguage });
 
             const res = await fetch("/api/onboarding", {
@@ -107,6 +107,13 @@ export default function OnboardingPage() {
 
     return (
         <div className="mx-auto w-full max-w-md">
+            <div className="mb-4 flex justify-center">
+                <CairnMascot
+                    className="h-20 w-auto"
+                    mood={step === 3 ? "encourage" : "idle"}
+                    label="Cairn guides your setup"
+                />
+            </div>
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
                 Setup · {step + 1} of 4
             </p>
