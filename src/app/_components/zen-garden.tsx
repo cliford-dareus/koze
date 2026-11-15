@@ -4,18 +4,88 @@ import { ProgressState } from "@/lib/progress";
 import { BookOpen, Clock, Flame, Layers, Sparkles } from "lucide-react";
 import CairnMascot from "@/app/_components/cairn-mascot";
 
+/**
+ * Single pebble drawn like the stones in CairnMascot:
+ * soft shadow ellipse + muted body + tiny primary speckles.
+ */
+function CairnStone({
+    width,
+    height,
+    index,
+}: {
+    width: number;
+    height: number;
+    index: number;
+}) {
+    // index used for natural sway
+    // Slight horizontal sway so the stack feels balanced, not rigid
+    const sway = ((index % 3) - 1) * 4;
+    const rx = width / 2;
+    const ry = height / 2;
+    const vbW = width + 8;
+    const vbH = height + 6;
+    const cx = vbW / 2 + sway * 0.15;
+    const cy = vbH / 2;
+
+    // Speckle positions relative to center (mascot-style)
+    const speckles = [
+        { dx: -rx * 0.35, dy: -ry * 0.15, r: Math.max(1.1, width * 0.018) },
+        { dx: rx * 0.28, dy: ry * 0.12, r: Math.max(0.9, width * 0.014) },
+    ];
+
+    return (
+        <svg
+            width={width}
+            height={height + 4}
+            viewBox={`0 0 ${vbW} ${vbH}`}
+            className="shrink-0 transition-transform duration-300 hover:scale-105"
+            style={{ marginLeft: sway }}
+            aria-hidden
+        >
+            {/* Soft under-shadow (matches mascot muted-foreground/20) */}
+            <ellipse
+                cx={cx}
+                cy={cy + 1.5}
+                rx={rx}
+                ry={ry}
+                className="fill-muted-foreground/20 dark:fill-muted-foreground/30"
+            />
+            {/* Stone body (matches mascot fill-muted) */}
+            <ellipse
+                cx={cx}
+                cy={cy}
+                rx={rx - 2}
+                ry={ry - 1.2}
+                className="fill-muted stroke-border"
+                strokeWidth="0.75"
+            />
+            {/* Primary speckles */}
+            {speckles.map((s, i) => (
+                <circle
+                    key={i}
+                    cx={cx + s.dx}
+                    cy={cy + s.dy}
+                    r={s.r}
+                    className={i === 0 ? "fill-primary/25" : "fill-primary/20"}
+                />
+            ))}
+        </svg>
+    );
+}
+
 export default function ZenGarden({ progress }: { progress: ProgressState }) {
     const stonesToShow = Math.min(8, Math.max(0, progress.cairnStonesCount || 0));
-    const stoneWidths = [140, 124, 110, 96, 82, 68, 56, 44];
-    const stoneColors = [
-        "hsl(var(--primary))",
-        "hsl(var(--muted-foreground))",
-        "hsl(var(--primary) / 0.75)",
-        "hsl(var(--muted-foreground) / 0.85)",
-        "hsl(var(--primary) / 0.9)",
-        "hsl(var(--accent-foreground) / 0.7)",
-        "hsl(var(--primary) / 0.65)",
-        "hsl(var(--muted-foreground) / 0.7)",
+
+    // Bottom → top: widest base, tapering like a real cairn (and the mascot)
+    const stoneSizes = [
+        { w: 148, h: 22 },
+        { w: 128, h: 20 },
+        { w: 112, h: 18 },
+        { w: 96, h: 17 },
+        { w: 82, h: 15 },
+        { w: 68, h: 14 },
+        { w: 56, h: 13 },
+        { w: 44, h: 12 },
     ];
 
     const todayMinutes = progress.todayMinutesPracticed || 0;
@@ -23,8 +93,14 @@ export default function ZenGarden({ progress }: { progress: ProgressState }) {
         (progress.savedPhrases?.length || 0) + (progress.translations || 0);
 
     return (
-        <div id="zen-garden-modal" className="relative mx-auto w-full max-w-md px-4 pb-10 pt-2">
-            <div className="lang-wash pointer-events-none absolute inset-0 opacity-40" aria-hidden />
+        <div
+            id="zen-garden-modal"
+            className="relative mx-auto w-full max-w-md px-4 pb-10 pt-2"
+        >
+            <div
+                className="lang-wash pointer-events-none absolute inset-0 opacity-40"
+                aria-hidden
+            />
 
             <div className="relative space-y-1 text-center">
                 <div className="flex items-center justify-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
@@ -41,16 +117,20 @@ export default function ZenGarden({ progress }: { progress: ProgressState }) {
             </div>
 
             <div className="relative mt-5 flex h-56 w-full flex-col items-center justify-end overflow-hidden rounded-2xl border border-border bg-card pb-8 shadow-soft sm:h-64">
-                <div className="lang-wash pointer-events-none absolute inset-0 opacity-30" aria-hidden />
+                <div
+                    className="lang-wash pointer-events-none absolute inset-0 opacity-30"
+                    aria-hidden
+                />
                 <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-15">
                     <div className="h-96 w-96 rounded-full border-2 border-border" />
                     <div className="absolute h-72 w-72 rounded-full border border-border" />
                     <div className="absolute h-48 w-48 rounded-full border border-border" />
                 </div>
 
-                <div className="mb-1 h-3 w-48 rounded-full border border-border bg-muted shadow-inner" />
+                {/* Ground pad under the stack */}
+                <div className="mb-0.5 h-2.5 w-40 rounded-full bg-muted-foreground/15 dark:bg-muted-foreground/25" />
 
-                <div className="z-10 flex flex-col-reverse items-center gap-0.5">
+                <div className="z-10 flex flex-col-reverse items-center gap-0">
                     {stonesToShow === 0 ? (
                         <div className="mb-4 flex flex-col items-center gap-2 px-4">
                             <CairnMascot
@@ -64,18 +144,13 @@ export default function ZenGarden({ progress }: { progress: ProgressState }) {
                         </div>
                     ) : (
                         Array.from({ length: stonesToShow }).map((_, idx) => {
-                            const width = stoneWidths[idx] || 40;
-                            const color = stoneColors[idx % stoneColors.length];
+                            const size = stoneSizes[idx] || { w: 40, h: 12 };
                             return (
-                                <div
+                                <CairnStone
                                     key={idx}
-                                    className="h-5 rounded-full shadow-xs transition-transform duration-300 hover:scale-105 sm:h-6"
-                                    style={{
-                                        width: `${width}px`,
-                                        backgroundColor: color,
-                                        border: "1px solid hsl(var(--border))",
-                                    }}
-                                    title={`Stone #${idx + 1}`}
+                                    width={size.w}
+                                    height={size.h}
+                                    index={idx}
                                 />
                             );
                         })
@@ -91,7 +166,9 @@ export default function ZenGarden({ progress }: { progress: ProgressState }) {
             <div className="relative mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
                 <div className="rounded-2xl border border-border bg-card p-3 text-center shadow-soft">
                     <Flame className="mx-auto mb-1 h-4 w-4 text-destructive" />
-                    <div className="text-lg font-bold text-primary">{progress.streak || 0}</div>
+                    <div className="text-lg font-bold text-primary">
+                        {progress.streak || 0}
+                    </div>
                     <div className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
                         Day Rhythm
                     </div>
@@ -105,7 +182,9 @@ export default function ZenGarden({ progress }: { progress: ProgressState }) {
                 </div>
                 <div className="rounded-2xl border border-border bg-card p-3 text-center shadow-soft">
                     <Sparkles className="mx-auto mb-1 h-4 w-4 text-primary" />
-                    <div className="text-lg font-bold text-primary">{progress.xp || 0}</div>
+                    <div className="text-lg font-bold text-primary">
+                        {progress.xp || 0}
+                    </div>
                     <div className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
                         Lotus XP
                     </div>
@@ -120,7 +199,10 @@ export default function ZenGarden({ progress }: { progress: ProgressState }) {
             </div>
 
             <div className="relative mt-4 overflow-hidden rounded-2xl border border-border bg-card p-4 text-center shadow-soft">
-                <div className="lang-wash pointer-events-none absolute inset-0 opacity-25" aria-hidden />
+                <div
+                    className="lang-wash pointer-events-none absolute inset-0 opacity-25"
+                    aria-hidden
+                />
                 <p className="relative font-serif text-xs italic leading-relaxed text-muted-foreground sm:text-sm">
                     &ldquo;A drop of daily water carves the stone with effortless
                     gentleness. Keep your rhythm soft, steady, and joyful.&rdquo;
