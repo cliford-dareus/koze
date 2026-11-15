@@ -2,11 +2,11 @@
 
 import { ProgressState } from "@/lib/progress";
 import { BookOpen, Clock, Flame, Layers, Sparkles } from "lucide-react";
+import CairnMascot from "@/app/_components/cairn-mascot";
 
 export default function ZenGarden({ progress }: { progress: ProgressState }) {
     const stonesToShow = Math.min(8, Math.max(0, progress.cairnStonesCount || 0));
     const stoneWidths = [140, 124, 110, 96, 82, 68, 56, 44];
-    // Theme-aware pebble tones (primary / muted mix)
     const stoneColors = [
         "hsl(var(--primary))",
         "hsl(var(--muted-foreground))",
@@ -53,9 +53,16 @@ export default function ZenGarden({ progress }: { progress: ProgressState }) {
 
                     <div className="z-10 flex flex-col-reverse items-center gap-0.5">
                         {stonesToShow === 0 ? (
-                            <p className="mb-6 px-4 text-center text-xs text-muted-foreground">
-                                Complete a lesson or daily practice to place your first pebble.
-                            </p>
+                            <div className="mb-4 flex flex-col items-center gap-2 px-4">
+                                <CairnMascot
+                                    className="h-20 w-auto opacity-90"
+                                    mood="encourage"
+                                    label="Cairn waiting for your first pebble"
+                                />
+                                <p className="text-center text-xs text-muted-foreground">
+                                    Complete a lesson or daily practice to place your first pebble.
+                                </p>
+                            </div>
                         ) : (
                             Array.from({ length: stonesToShow }).map((_, idx) => {
                                 const width = stoneWidths[idx] || 40;
