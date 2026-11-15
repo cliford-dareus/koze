@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useMemo, useState } from "react";
 import ResultComponent from "./result-component";
 import TranslationForm from "./translation-form";
 import { translate } from "@/app/_actions/translate";
@@ -8,7 +8,14 @@ import { LANGUAGES } from "@/lib/languages";
 import { recordActivity } from "@/lib/progress";
 import { Button } from "@/app/_components/ui/button";
 import { ArrowLeftRight, Leaf } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/app/_components/ui/select";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/app/_components/ui/select";
+import type { CairnMood } from "@/app/_components/cairn-mascot";
 
 const TranslationManager = () => {
     const [result, setResult] = useState("");
@@ -19,6 +26,13 @@ const TranslationManager = () => {
         from: "en",
         to: "fr",
     });
+
+    const cairnMood: CairnMood | undefined = useMemo(() => {
+        if (isLoading) return "thinking";
+        if (error) return "puzzled";
+        // ResultComponent handles speaking / happy / idle when no override
+        return undefined;
+    }, [isLoading, error]);
 
     const handleLangChange = (type: "from" | "to", value: string) => {
         setSelectedLang((prevState) => ({
@@ -74,7 +88,7 @@ const TranslationManager = () => {
     return (
         <div>
             <p className="flex items-center gap-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                <Leaf className="w-3 h-3 text-[#A5C9B1]" />
+                <Leaf className="h-3 w-3 text-[#A5C9B1]" />
                 Translate
             </p>
             <h1 className="mt-2 font-display text-3xl font-medium">
@@ -82,7 +96,10 @@ const TranslationManager = () => {
             </h1>
 
             <div className="mt-6 flex items-center gap-2">
-                <Select value={selectedLang.from} onValueChange={(value) => handleLangChange("from", value)}>
+                <Select
+                    value={selectedLang.from}
+                    onValueChange={(value) => handleLangChange("from", value)}
+                >
                     <SelectTrigger className="flex-1">
                         <SelectValue />
                     </SelectTrigger>
@@ -103,7 +120,10 @@ const TranslationManager = () => {
                 >
                     <ArrowLeftRight />
                 </Button>
-                <Select value={selectedLang.to} onValueChange={(value) => handleLangChange("to", value)}>
+                <Select
+                    value={selectedLang.to}
+                    onValueChange={(value) => handleLangChange("to", value)}
+                >
                     <SelectTrigger className="flex-1">
                         <SelectValue />
                     </SelectTrigger>
@@ -118,7 +138,11 @@ const TranslationManager = () => {
             </div>
 
             <div className="mt-6">
-                <ResultComponent output={result} selectedLang={selectedLang} />
+                <ResultComponent
+                    output={result}
+                    selectedLang={selectedLang}
+                    mood={cairnMood}
+                />
 
                 {error && (
                     <p className="mt-3 text-center text-sm text-destructive">{error}</p>
