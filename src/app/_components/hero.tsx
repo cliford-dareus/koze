@@ -62,6 +62,7 @@ export default function Hero({
 
                     <div className="mx-auto shrink-0 sm:mx-0">
                         <CairnMascot
+                            layoutId="cairn-mascot"
                             className="h-24 w-auto sm:h-28"
                             mood={goalMet ? "celebrate" : stones > 0 ? "idle" : "encourage"}
                             label="Cairn, your practice companion"
