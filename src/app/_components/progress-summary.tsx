@@ -79,7 +79,7 @@ export default function ProgressSummary({ progress, ready }: { progress: Progres
                             <ArrowRight className="w-4 h-4" />
                         </button>
                     </DrawerTrigger>
-                    <DrawerContent className="border border-border bg-background">
+                    <DrawerContent className="border-border bg-background">
                         <DailyPractice progress={progress} />
                     </DrawerContent>
                 </Drawer>
@@ -113,10 +113,10 @@ export default function ProgressSummary({ progress, ready }: { progress: Progres
                                 >
                                     <div
                                         className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center text-xs font-medium transition-all ${isCompleted
-                                                ? 'bg-accent text-primary border border-primary/30 shadow-xs'
-                                                : isCurrent
-                                                    ? 'bg-card text-destructive border-2 border-border shadow-xs'
-                                                    : 'bg-card text-muted-foreground border border-border'
+                                            ? 'bg-accent text-primary border border-primary/30 shadow-xs'
+                                            : isCurrent
+                                                ? 'bg-card text-destructive border-2 border-border shadow-xs'
+                                                : 'bg-card text-muted-foreground border border-border'
                                             }`}
                                     >
                                         {isCompleted ? (
@@ -169,8 +169,8 @@ export default function ProgressSummary({ progress, ready }: { progress: Progres
                                         onUpdateDailyGoal(mins);
                                     }}
                                     className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${isSelected
-                                            ? 'bg-primary text-primary-foreground'
-                                            : 'bg-secondary text-foreground hover:bg-secondary'
+                                        ? 'bg-primary text-primary-foreground'
+                                        : 'bg-secondary text-foreground hover:bg-secondary'
                                         }`}
                                 >
                                     {mins}m

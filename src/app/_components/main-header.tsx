@@ -10,6 +10,7 @@ import { ProgressState, saveProgress } from "../../lib/progress";
 import { sound } from "@/lib/sound";
 import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
 import ZenGarden from "./zen-garden";
+import RhythmPanel from "./rhythm-panel";
 import { LessonDirection } from "@/data/lessons";
 import { applyLanguageTheme } from "@/lib/language-theme";
 
@@ -25,116 +26,6 @@ function formatPracticeDate(isoDate: string | null | undefined) {
     } catch {
         return isoDate;
     }
-}
-
-function RhythmPanel({ progress }: { progress: ProgressState }) {
-    const goal = progress.dailyGoal || 3;
-    const todayActions = progress.todayActions || 0;
-    const goalRatio = Math.min(1, todayActions / goal);
-    const goalMet = progress.dailyGoalMet || todayActions >= goal;
-
-    const weekEntries = Object.entries(progress.weeklyActivity || {}).sort(
-        ([a], [b]) => a.localeCompare(b),
-    );
-    const recentWeek = weekEntries.slice(-7);
-
-    return (
-        <div className="mx-auto w-full max-w-md space-y-5 px-4 pb-8 pt-2">
-            <div className="text-center">
-                <div className="flex items-center justify-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-                    <Flame className="h-3.5 w-3.5 text-destructive" />
-                    <span>Mindful Daily Rhythm</span>
-                </div>
-                <h2 className="mt-2 font-serif text-3xl font-semibold tracking-tight text-primary">
-                    {progress.streak || 0}-day rhythm
-                </h2>
-                <p className="mt-1 text-sm text-muted-foreground">
-                    Soft consistency beats intensity. Return each day when you can.
-                </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-2.5">
-                <div className="rounded-xl border border-border bg-card p-3 text-center">
-                    <div className="text-2xl font-bold text-primary">{progress.streak || 0}</div>
-                    <div className="text-[10px] font-semibold uppercase text-muted-foreground">
-                        Current streak
-                    </div>
-                </div>
-                <div className="rounded-xl border border-border bg-card p-3 text-center">
-                    <div className="text-2xl font-bold text-primary">
-                        {progress.todayMinutesPracticed || 0}
-                    </div>
-                    <div className="text-[10px] font-semibold uppercase text-muted-foreground">
-                        Minutes today
-                    </div>
-                </div>
-                <div className="rounded-xl border border-border bg-card p-3 text-center">
-                    <div className="text-2xl font-bold text-primary">
-                        {formatPracticeDate(progress.lastPracticedDate)}
-                    </div>
-                    <div className="text-[10px] font-semibold uppercase text-muted-foreground">
-                        Last practiced
-                    </div>
-                </div>
-                <div className="rounded-xl border border-border bg-card p-3 text-center">
-                    <div className="text-2xl font-bold text-primary">
-                        {todayActions}/{goal}
-                    </div>
-                    <div className="text-[10px] font-semibold uppercase text-muted-foreground">
-                        Daily actions
-                    </div>
-                </div>
-            </div>
-
-            <div className="rounded-xl border border-border bg-card p-4">
-                <div className="mb-2 flex items-center justify-between text-xs">
-                    <span className="font-medium text-foreground">Today's intention</span>
-                    <span className="text-muted-foreground">
-                        {goalMet ? "Fulfilled" : `${Math.round(goalRatio * 100)}%`}
-                    </span>
-                </div>
-                <div className="h-2 overflow-hidden rounded-full bg-muted">
-                    <div
-                        className="h-full rounded-full bg-primary transition-all duration-300"
-                        style={{ width: `${goalRatio * 100}%` }}
-                    />
-                </div>
-            </div>
-
-            {recentWeek.length > 0 && (
-                <div className="rounded-xl border border-border bg-card p-4">
-                    <div className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                        Recent practice
-                    </div>
-                    <div className="flex items-end justify-between gap-1.5">
-                        {recentWeek.map(([date, minutes]) => {
-                            const value = typeof minutes === "number" ? minutes : 0;
-                            const height = Math.max(8, Math.min(48, value * 6));
-                            return (
-                                <div
-                                    key={date}
-                                    className="flex flex-1 flex-col items-center gap-1"
-                                    title={`${date}: ${value} min`}
-                                >
-                                    <div
-                                        className="w-full max-w-[18px] rounded-t-sm bg-primary/80"
-                                        style={{ height }}
-                                    />
-                                    <span className="text-[9px] text-muted-foreground">
-                                        {date.slice(5)}
-                                    </span>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            )}
-
-            <p className="text-center font-serif text-xs italic text-muted-foreground">
-                &ldquo;Show up softly. The rhythm will hold you.&rdquo;
-            </p>
-        </div>
-    );
 }
 
 export default function MainHeader({
@@ -222,9 +113,8 @@ export default function MainHeader({
                             <span className="text-base leading-none">{currentLang.flag}</span>
                             <span className="font-medium">{currentLang.name}</span>
                             <ChevronDown
-                                className={`h-3.5 w-3.5 text-foreground transition-transform duration-200 ${
-                                    langDropdownOpen ? "rotate-180" : ""
-                                }`}
+                                className={`h-3.5 w-3.5 text-foreground transition-transform duration-200 ${langDropdownOpen ? "rotate-180" : ""
+                                    }`}
                             />
                         </button>
 
@@ -248,11 +138,10 @@ export default function MainHeader({
                                                 handleSelectLanguage(lang);
                                                 setLangDropdownOpen(false);
                                             }}
-                                            className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm transition-colors ${
-                                                isSelected
+                                            className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm transition-colors ${isSelected
                                                     ? "bg-accent font-semibold text-primary"
                                                     : "text-foreground hover:bg-muted"
-                                            }`}
+                                                }`}
                                         >
                                             <div className="flex items-center gap-2.5">
                                                 <span
@@ -299,7 +188,7 @@ export default function MainHeader({
                                 </span>
                             </button>
                         </DrawerTrigger>
-                        <DrawerContent className="border-border bg-background pb-20 pt-6">
+                        <DrawerContent className="border-border bg-background">
                             <RhythmPanel progress={progress} />
                         </DrawerContent>
                     </Drawer>
@@ -322,7 +211,7 @@ export default function MainHeader({
                                 </span>
                             </button>
                         </DrawerTrigger>
-                        <DrawerContent className="border border-border bg-background">
+                        <DrawerContent className="border-border bg-background">
                             <ZenGarden progress={progress} />
                         </DrawerContent>
                     </Drawer>

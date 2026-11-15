@@ -7,6 +7,7 @@ import { sound } from "@/lib/sound";
 import { speak } from "@/lib/speech";
 import { ArrowRight, Check, Flame, Loader2, Sparkles, Volume2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import CairnMascot from "@/app/_components/cairn-mascot";
 
 type PracticeStep = Extract<
     LessonStep,
@@ -36,8 +37,7 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
     const [loadError, setLoadError] = useState<string | null>(null);
 
     const currentLang =
-        LANGUAGES.find((l) => l.value === progress.learningLanguage) ||
-        LANGUAGES[0];
+        LANGUAGES.find((l) => l.value === progress.learningLanguage) || LANGUAGES[0];
 
     useEffect(() => {
         let cancelled = false;
@@ -164,24 +164,30 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
     return (
         <div
             id="daily-practice-modal"
-            className="flex items-center justify-center animate-in fade-in duration-200"
+            className="relative mx-auto w-full max-w-xl px-4 pb-10 pt-2"
         >
-            <div className="relative w-full max-w-xl space-y-6 bg-background p-6 shadow-2xl sm:p-8">
+            <div className="lang-wash pointer-events-none absolute inset-0 opacity-30" aria-hidden />
+
+            <div className="relative space-y-6">
                 {loading ? (
                     <div className="flex flex-col items-center justify-center gap-3 py-16 text-muted-foreground">
-                        <Loader2 className="h-6 w-6 animate-spin text-primary" />
+                        <CairnMascot className="h-16 w-auto" mood="thinking" label="Cairn prepares practice" />
+                        <Loader2 className="h-5 w-5 animate-spin text-primary" />
                         <p className="text-sm">Preparing a gentle recall…</p>
                     </div>
                 ) : loadError ? (
                     <div className="space-y-3 py-10 text-center">
+                        <CairnMascot className="mx-auto h-14 w-auto" mood="puzzled" label="Cairn is puzzled" />
                         <p className="text-sm text-muted-foreground">{loadError}</p>
                     </div>
                 ) : practiceQuestions.length === 0 ? (
                     <div className="space-y-3 py-10 text-center">
-                        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-accent text-primary">
-                            <Sparkles className="h-5 w-5" />
-                        </div>
-                        <h2 className="font-serif text-xl font-semibold text-primary">
+                        <CairnMascot
+                            className="mx-auto h-16 w-auto"
+                            mood="thinking"
+                            label="Cairn has no questions yet"
+                        />
+                        <h2 className="font-serif text-xl font-semibold text-foreground">
                             No practice ready yet
                         </h2>
                         <p className="mx-auto max-w-sm text-sm text-muted-foreground">
@@ -192,50 +198,64 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                 ) : !isFinished ? (
                     <>
                         <div>
-                            <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
+                            <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
                                 <Sparkles className="h-3.5 w-3.5" />
-                                <span>Mindful Daily Practice (3 min)</span>
+                                <span>Mindful Daily Practice</span>
                             </div>
-                            <h2 className="mt-1 font-serif text-2xl font-semibold tracking-tight text-primary">
-                                Gentle Recall ({currentIndex + 1} of{" "}
-                                {practiceQuestions.length})
+                            <h2 className="mt-1.5 font-serif text-2xl font-semibold tracking-tight text-foreground">
+                                Gentle Recall ({currentIndex + 1} of {practiceQuestions.length})
                             </h2>
+                            <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-muted">
+                                <div
+                                    className="h-full rounded-full bg-primary transition-all duration-500"
+                                    style={{
+                                        width: `${((currentIndex + (isAnswerChecked ? 1 : 0)) / practiceQuestions.length) * 100}%`,
+                                    }}
+                                />
+                            </div>
                         </div>
 
                         {currentQ && (
                             <div className="space-y-4">
-                                <div className="text-lg font-medium text-primary">
-                                    {"prompt" in currentQ && currentQ.prompt}
+                                <div className="overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-soft sm:p-5">
+                                    <div className="lang-wash pointer-events-none absolute inset-0 opacity-20" aria-hidden />
+                                    <p className="relative text-base font-medium leading-relaxed text-foreground sm:text-lg">
+                                        {"prompt" in currentQ && currentQ.prompt}
+                                    </p>
                                 </div>
 
                                 {"audioText" in currentQ && currentQ.audioText && (
                                     <button
                                         type="button"
-                                        onClick={() =>
-                                            speak(currentQ.audioText!, currentLang.voice)
-                                        }
-                                        className="inline-flex items-center gap-2 rounded-full bg-secondary px-3.5 py-1.5 text-xs font-medium text-primary"
+                                        onClick={() => speak(currentQ.audioText!, currentLang.voice)}
+                                        className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-primary shadow-xs transition-colors hover:bg-accent"
                                     >
-                                        <Volume2 className="h-3.5 w-3.5 text-primary" />
-                                        <span>Listen audio</span>
+                                        <Volume2 className="h-3.5 w-3.5" />
+                                        <span>Listen</span>
                                     </button>
                                 )}
 
                                 {optionsForCurrent && (
-                                    <div className="grid grid-cols-1 gap-2.5 pt-2 sm:grid-cols-2">
+                                    <div className="grid grid-cols-1 gap-2.5 pt-1 sm:grid-cols-2">
                                         {optionsForCurrent.map((opt: string, i: number) => {
                                             const isSelected = selectedOption === opt;
+                                            let style =
+                                                "border-border bg-card hover:bg-muted";
+                                            if (isAnswerChecked && isSelected && isCorrect) {
+                                                style = "border-primary bg-accent text-primary";
+                                            } else if (isAnswerChecked && isSelected && !isCorrect) {
+                                                style = "border-border bg-muted text-muted-foreground opacity-70";
+                                            } else if (isSelected) {
+                                                style = "border-primary bg-accent text-primary shadow-xs";
+                                            }
+
                                             return (
                                                 <button
                                                     key={i}
                                                     type="button"
                                                     disabled={isAnswerChecked}
                                                     onClick={() => handleSelect(opt)}
-                                                    className={`rounded-xl border p-3.5 text-left text-sm font-medium transition-all ${
-                                                        isSelected
-                                                            ? "border-primary bg-accent text-primary"
-                                                            : "border-border bg-card hover:border-border"
-                                                    }`}
+                                                    className={`rounded-2xl border-2 p-3.5 text-left text-sm font-medium transition-all ${style}`}
                                                 >
                                                     {opt}
                                                 </button>
@@ -246,25 +266,40 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                             </div>
                         )}
 
-                        <div className="flex items-center justify-between border-t border-border pt-4">
-                            <span className="text-xs text-muted-foreground">
-                                {isAnswerChecked
+                        <div
+                            className={`flex items-center justify-between gap-3 rounded-2xl border px-4 py-4 transition-colors ${isAnswerChecked
                                     ? isCorrect
-                                        ? "Serene and accurate."
-                                        : "A gentle review note."
-                                    : "Select an option to check."}
-                            </span>
+                                        ? "border-primary/25 bg-accent"
+                                        : "border-border bg-muted"
+                                    : "border-border bg-card"
+                                }`}
+                        >
+                            <div className="flex items-start gap-2.5">
+                                {isAnswerChecked && (
+                                    <CairnMascot
+                                        className="mt-0.5 h-9 w-auto shrink-0"
+                                        mood={isCorrect ? "happy" : "puzzled"}
+                                        label={isCorrect ? "Cairn is pleased" : "Cairn reflects"}
+                                    />
+                                )}
+                                <span className="text-xs leading-relaxed text-muted-foreground">
+                                    {isAnswerChecked
+                                        ? isCorrect
+                                            ? "Serene and accurate."
+                                            : "A gentle review note. Take a breath and continue."
+                                        : "Select an option when you feel ready."}
+                                </span>
+                            </div>
 
                             {!isAnswerChecked ? (
                                 <button
                                     type="button"
                                     disabled={!selectedOption}
                                     onClick={handleCheck}
-                                    className={`rounded-full px-5 py-2 text-xs font-semibold transition-all ${
-                                        selectedOption
-                                            ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                                            : "cursor-not-allowed bg-secondary text-muted-foreground"
-                                    }`}
+                                    className={`shrink-0 rounded-full px-5 py-2.5 text-xs font-semibold transition-all ${selectedOption
+                                            ? "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90"
+                                            : "cursor-not-allowed bg-muted text-muted-foreground"
+                                        }`}
                                 >
                                     Check
                                 </button>
@@ -272,7 +307,7 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                                 <button
                                     type="button"
                                     onClick={handleNext}
-                                    className="flex items-center gap-1.5 rounded-full bg-primary px-5 py-2 text-xs font-semibold text-primary-foreground hover:bg-primary/90"
+                                    className="flex shrink-0 items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-xs font-semibold text-primary-foreground shadow-xs hover:bg-primary/90"
                                 >
                                     <span>Continue</span>
                                     <ArrowRight className="h-3.5 w-3.5" />
@@ -282,29 +317,36 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                     </>
                 ) : (
                     <div className="space-y-5 py-4 text-center">
-                        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 border-primary/30 bg-accent text-primary">
-                            <Check className="h-8 w-8" />
+                        <div className="flex justify-center">
+                            <CairnMascot
+                                className="h-20 w-auto"
+                                mood="celebrate"
+                                label="Cairn celebrates daily practice"
+                            />
                         </div>
 
                         <div>
-                            <div className="text-xs font-semibold uppercase tracking-wider text-primary">
+                            <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
                                 Mindful Intention Fulfilled
                             </div>
-                            <h3 className="mt-1 font-serif text-2xl font-semibold text-primary">
+                            <h3 className="mt-1.5 font-serif text-2xl font-semibold tracking-tight text-foreground">
                                 Daily Rhythm Preserved
                             </h3>
-                            <p className="mt-1 text-xs text-foreground sm:text-sm">
-                                You dedicated 3 quiet minutes to language and peace today.
+                            <p className="mt-1.5 text-sm text-muted-foreground">
+                                You dedicated a few quiet minutes to language and peace today.
                             </p>
                         </div>
 
-                        <div className="flex items-center justify-center gap-4 py-2">
-                            <div className="flex items-center gap-1.5 rounded-xl border border-border bg-card px-4 py-2 text-xs font-semibold text-destructive">
-                                <Flame className="h-4 w-4 fill-destructive/30" />
+                        <div className="flex flex-wrap items-center justify-center gap-2.5 py-1">
+                            <div className="flex items-center gap-1.5 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-semibold text-destructive shadow-xs">
+                                <Flame className="h-3.5 w-3.5 fill-destructive/30" />
                                 <span>Streak Protected</span>
                             </div>
-                            <div className="rounded-xl border border-primary/30 bg-accent px-4 py-2 text-xs font-semibold text-primary">
+                            <div className="rounded-full border border-primary/25 bg-accent px-3.5 py-1.5 text-xs font-semibold text-primary shadow-xs">
                                 +25 Lotus XP
+                            </div>
+                            <div className="rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-xs">
+                                +1 Pebble
                             </div>
                         </div>
 
@@ -314,7 +356,7 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                                 sound.playPebbleTap(progress.soundEnabled);
                                 handleCompleteDailyPractice(3, 25);
                             }}
-                            className="w-full rounded-full bg-primary py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90"
+                            className="w-full rounded-full bg-primary py-3 text-sm font-semibold text-primary-foreground shadow-xs transition-all hover:bg-primary/90"
                         >
                             Return with Peace
                         </button>
