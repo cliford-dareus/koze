@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Lock, Sparkles } from "lucide-react";
 import { BADGES, BADGES_ICON_MAP } from "@/data/badges";
 import { sound } from "@/lib/sound";
+import CairnMascot from "@/app/_components/cairn-mascot";
 
 type Filter = "all" | "earned" | "locked";
 
@@ -62,7 +63,6 @@ export default function BadgeShelf({
                     </p>
                 </div>
 
-                {/* Collection progress ring */}
                 <div className="flex items-center gap-3">
                     <div
                         className="relative flex size-14 items-center justify-center rounded-full"
@@ -83,7 +83,6 @@ export default function BadgeShelf({
                 </div>
             </div>
 
-            {/* Filters */}
             <div className="mb-4 flex flex-wrap gap-1.5">
                 {(
                     [
@@ -113,7 +112,6 @@ export default function BadgeShelf({
                 })}
             </div>
 
-            {/* Medallion grid */}
             <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {visible.map((badge) => {
                     const on = earned.has(badge.id);
@@ -141,12 +139,12 @@ export default function BadgeShelf({
                                 aria-pressed={isSelected}
                                 aria-label={`${badge.title}${on ? ", earned" : ", locked"}`}
                             >
-                                {/* Soft glow for earned */}
                                 {on && (
                                     <span
                                         className="pointer-events-none absolute inset-x-4 top-2 h-16 rounded-full opacity-70 blur-2xl"
                                         style={{
-                                            background: "var(--lang-theme-glow, hsl(var(--primary) / 0.25))",
+                                            background:
+                                                "var(--lang-theme-glow, hsl(var(--primary) / 0.25))",
                                         }}
                                         aria-hidden
                                     />
@@ -209,14 +207,24 @@ export default function BadgeShelf({
             </ul>
 
             {visible.length === 0 && (
-                <div className="rounded-2xl border border-border bg-card px-4 py-10 text-center text-sm text-muted-foreground shadow-soft">
-                    {filter === "earned"
-                        ? "No seals yet — a single mindful action begins the shelf."
-                        : "Nothing left locked on this path. Beautiful."}
+                <div className="flex flex-col items-center rounded-2xl border border-border bg-card px-4 py-10 text-center shadow-soft">
+                    <CairnMascot
+                        className="mb-4 h-24 w-auto"
+                        mood={filter === "earned" ? "encourage" : "celebrate"}
+                        label={
+                            filter === "earned"
+                                ? "Cairn waiting for your first seal"
+                                : "Cairn celebrating a full shelf"
+                        }
+                    />
+                    <p className="max-w-xs text-sm text-muted-foreground">
+                        {filter === "earned"
+                            ? "No seals yet — a single mindful action begins the shelf."
+                            : "Nothing left locked on this path. Beautiful."}
+                    </p>
                 </div>
             )}
 
-            {/* Detail panel */}
             {selected && (
                 <div
                     className={`mt-4 overflow-hidden rounded-2xl border p-5 shadow-soft transition-colors ${
