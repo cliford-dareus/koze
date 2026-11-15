@@ -8,6 +8,7 @@ import { LessonDirection } from "@/data/lessons";
 import { useEffect, useRef, useState } from "react";
 import { ProgressState, saveProgress } from "@/lib/progress";
 import { applyLanguageTheme } from "@/lib/language-theme";
+import CairnMascot from "@/app/_components/cairn-mascot";
 
 export function WelcomePanel({ progress }: { progress: ProgressState }) {
     const [isNativeLanguage, setIsNativeLanguage] = useState(progress.nativeLanguage);
@@ -93,6 +94,14 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                             />
                         </div>
 
+                        <div className="flex justify-center pb-2">
+                            <CairnMascot
+                                className="h-28 w-auto"
+                                mood="idle"
+                                label="Cairn welcomes you to the sanctuary"
+                            />
+                        </div>
+
                         <h1
                             id="welcome-title"
                             className="text-center font-serif text-[34px] font-normal tracking-tight text-foreground sm:text-[37px]"
@@ -108,230 +117,24 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                             gratitude. Please set your native language to start.
                         </p>
 
-                        <div
-                            id="card-i-speak"
-                            ref={nativeRef}
-                            className="relative mb-3.5 rounded-[26px] border border-border bg-card p-5 shadow-xs transition-colors sm:p-6"
-                        >
-                            <h2 className="mb-3 text-[16px] font-medium text-foreground">
-                                I speak
-                            </h2>
-
-                            <button
-                                id="native-lang-selector"
-                                type="button"
-                                onClick={() => {
-                                    sound.playPebbleTap(progress.soundEnabled);
-                                    setNativeDropdownOpen((prev) => !prev);
-                                    setLearningDropdownOpen(false);
-                                }}
-                                className="flex h-12 w-full cursor-pointer items-center justify-between rounded-full border border-border bg-background px-4 text-sm text-foreground outline-none transition-all hover:border-primary/40 focus:border-primary"
-                            >
-                                <div className="flex items-center gap-2.5 overflow-hidden">
-                                    <span className="text-base leading-none">
-                                        {currentNative.flag}
-                                    </span>
-                                    <span className="truncate font-normal">
-                                        {currentNative.name}
-                                    </span>
-                                    {currentNative.nativeName !== currentNative.name && (
-                                        <span className="text-xs text-muted-foreground">
-                                            ({currentNative.nativeName})
-                                        </span>
-                                    )}
-                                </div>
-                                <ChevronDown
-                                    className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${
-                                        nativeDropdownOpen ? "rotate-180" : ""
-                                    }`}
-                                />
-                            </button>
-
-                            {nativeDropdownOpen && (
-                                <div
-                                    id="native-dropdown-menu"
-                                    className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 flex max-h-72 flex-col overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-2xl backdrop-blur-md"
-                                >
-                                    <div className="relative mb-2">
-                                        <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
-                                        <input
-                                            id="search-native-language"
-                                            type="text"
-                                            placeholder="Search languages..."
-                                            value={searchQuery}
-                                            onChange={(e) => setSearchQuery(e.target.value)}
-                                            className="w-full rounded-xl border border-border bg-background py-1.5 pl-8 pr-3 text-xs text-foreground outline-none placeholder:text-muted-foreground focus:border-primary"
-                                            autoFocus
-                                        />
-                                    </div>
-
-                                    <div className="custom-scrollbar space-y-1 overflow-y-auto pr-1">
-                                        {filteredNatives.map((lang) => {
-                                            const isSelected =
-                                                lang.value === currentNative.value;
-                                            return (
-                                                <button
-                                                    key={lang.value}
-                                                    id={`select-native-${lang.value}`}
-                                                    type="button"
-                                                    onClick={() => handleSelectNative(lang)}
-                                                    className={`flex w-full cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-left text-xs transition-colors ${
-                                                        isSelected
-                                                            ? "bg-accent font-medium text-primary"
-                                                            : "text-foreground hover:bg-muted"
-                                                    }`}
-                                                >
-                                                    <div className="flex items-center gap-2">
-                                                        <span>{lang.flag}</span>
-                                                        <span>{lang.name}</span>
-                                                        <span className="text-[11px] text-muted-foreground">
-                                                            {lang.nativeName}
-                                                        </span>
-                                                    </div>
-                                                    {isSelected && (
-                                                        <Check className="h-3.5 w-3.5 text-primary" />
-                                                    )}
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-
-                        <div
-                            id="card-i-am-learning"
-                            ref={learningRef}
-                            className="relative rounded-[26px] border border-border bg-card p-5 shadow-xs transition-colors sm:p-6"
-                            style={{
-                                boxShadow: currentLearning.themeColor
-                                    ? `inset 0 0 0 1px ${currentLearning.themeColor}40`
-                                    : undefined,
-                            }}
-                        >
-                            <h2 className="mb-3 text-[16px] font-medium text-foreground">
-                                I am learning
-                            </h2>
-
-                            <div className="flex items-center gap-3">
-                                <button
-                                    id="learning-lang-circle-btn"
-                                    type="button"
-                                    onClick={() => {
-                                        sound.playPebbleTap(progress.soundEnabled);
-                                        setLearningDropdownOpen((prev) => !prev);
-                                        setNativeDropdownOpen(false);
-                                    }}
-                                    title="Choose language to learn"
-                                    className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full text-primary-foreground shadow-xs transition-all active:scale-95"
-                                    style={{
-                                        backgroundColor:
-                                            currentLearning.themeColor ||
-                                            "hsl(var(--primary))",
-                                    }}
-                                >
-                                    <ChevronDown
-                                        className={`h-4 w-4 stroke-[2.5] transition-transform duration-200 ${
-                                            learningDropdownOpen ? "rotate-180" : ""
-                                        }`}
-                                    />
-                                </button>
-
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        sound.playPebbleTap(progress.soundEnabled);
-                                        setLearningDropdownOpen((prev) => !prev);
-                                        setNativeDropdownOpen(false);
-                                    }}
-                                    className="flex cursor-pointer items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
-                                >
-                                    <span>{currentLearning.flag}</span>
-                                    <span className="font-medium text-foreground">
-                                        {currentLearning.name}
-                                    </span>
-                                    <span className="text-muted-foreground">
-                                        ({currentLearning.nativeName})
-                                    </span>
-                                </button>
-                            </div>
-
-                            {learningDropdownOpen && (
-                                <div
-                                    id="learning-dropdown-menu"
-                                    className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 flex max-h-80 flex-col space-y-1.5 overflow-y-auto rounded-2xl border border-border bg-card p-3 shadow-2xl backdrop-blur-md"
-                                >
-                                    <div className="px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                                        Select language path
-                                    </div>
-
-                                    {LANGUAGES.map((lang) => {
-                                        const isSelected = lang.id === currentLearning.id;
-                                        return (
-                                            <button
-                                                key={lang.id}
-                                                id={`select-learning-${lang.id}`}
-                                                type="button"
-                                                onClick={() => handleSelectLearning(lang)}
-                                                className={`flex w-full cursor-pointer items-center justify-between rounded-xl border p-2.5 text-left transition-all ${
-                                                    isSelected
-                                                        ? "border-border bg-accent text-primary"
-                                                        : "border-transparent text-foreground hover:bg-muted"
-                                                }`}
-                                            >
-                                                <div className="flex items-center gap-3">
-                                                    <span
-                                                        className="h-3 w-3 shrink-0 rounded-full ring-1 ring-border"
-                                                        style={{
-                                                            backgroundColor:
-                                                                lang.themeColor ||
-                                                                "hsl(var(--muted-foreground))",
-                                                        }}
-                                                        aria-hidden
-                                                    />
-                                                    <span className="text-lg">{lang.flag}</span>
-                                                    <div>
-                                                        <div className="flex items-center gap-2">
-                                                            <span className="text-xs font-semibold">
-                                                                {lang.name}
-                                                            </span>
-                                                            <span className="text-[11px] text-muted-foreground">
-                                                                {lang.nativeName}
-                                                            </span>
-                                                        </div>
-                                                        <p className="line-clamp-1 text-[11px] text-muted-foreground">
-                                                            {lang.description}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                {isSelected ? (
-                                                    <Check className="h-4 w-4 shrink-0 text-primary" />
-                                                ) : (
-                                                    <span className="text-[11px] text-muted-foreground">
-                                                        Select
-                                                    </span>
-                                                )}
-                                            </button>
-                                        );
-                                    })}
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="mt-8 space-y-3">
-                            <button
-                                id="begin-journey-btn"
-                                type="button"
-                                onClick={() => {
-                                    sound.playPebbleTap(progress.soundEnabled);
-                                    persist();
-                                }}
-                                className="flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-xs transition-all hover:bg-primary/90 active:scale-[0.99]"
-                            >
-                                <span>Begin Learning {currentLearning.name}</span>
-                                <ArrowRight className="h-4 w-4" />
-                            </button>
-                        </div>
+                        {/* Language cards continue below — full panel preserved via existing structure */}
+                        <WelcomeLanguageCards
+                            progress={progress}
+                            currentNative={currentNative}
+                            currentLearning={currentLearning}
+                            nativeRef={nativeRef}
+                            learningRef={learningRef}
+                            nativeDropdownOpen={nativeDropdownOpen}
+                            setNativeDropdownOpen={setNativeDropdownOpen}
+                            learningDropdownOpen={learningDropdownOpen}
+                            setLearningDropdownOpen={setLearningDropdownOpen}
+                            searchQuery={searchQuery}
+                            setSearchQuery={setSearchQuery}
+                            filteredNatives={filteredNatives}
+                            handleSelectNative={handleSelectNative}
+                            handleSelectLearning={handleSelectLearning}
+                            persist={persist}
+                        />
                     </div>
 
                     <div className="relative pb-2 pt-8 text-center text-[11px] text-muted-foreground">
@@ -340,5 +143,220 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                 </div>
             </DrawerContent>
         </Drawer>
+    );
+}
+
+/** Inline cards kept in same file to avoid a large single rewrite miss */
+function WelcomeLanguageCards(props: any) {
+    const {
+        progress,
+        currentNative,
+        currentLearning,
+        nativeRef,
+        learningRef,
+        nativeDropdownOpen,
+        setNativeDropdownOpen,
+        learningDropdownOpen,
+        setLearningDropdownOpen,
+        searchQuery,
+        setSearchQuery,
+        filteredNatives,
+        handleSelectNative,
+        handleSelectLearning,
+        persist,
+    } = props;
+
+    return (
+        <>
+            <div
+                id="card-i-speak"
+                ref={nativeRef}
+                className="relative mb-3.5 rounded-[26px] border border-border bg-card p-5 shadow-xs transition-colors sm:p-6"
+            >
+                <h2 className="mb-3 text-[16px] font-medium text-foreground">I speak</h2>
+                <button
+                    id="native-lang-selector"
+                    type="button"
+                    onClick={() => {
+                        sound.playPebbleTap(progress.soundEnabled);
+                        setNativeDropdownOpen((prev: boolean) => !prev);
+                        setLearningDropdownOpen(false);
+                    }}
+                    className="flex h-12 w-full cursor-pointer items-center justify-between rounded-full border border-border bg-background px-4 text-sm text-foreground outline-none transition-all hover:border-primary/40 focus:border-primary"
+                >
+                    <div className="flex items-center gap-2.5 overflow-hidden">
+                        <span className="text-base leading-none">{currentNative.flag}</span>
+                        <span className="truncate font-normal">{currentNative.name}</span>
+                        {currentNative.nativeName !== currentNative.name && (
+                            <span className="text-xs text-muted-foreground">
+                                ({currentNative.nativeName})
+                            </span>
+                        )}
+                    </div>
+                    <ChevronDown
+                        className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${
+                            nativeDropdownOpen ? "rotate-180" : ""
+                        }`}
+                    />
+                </button>
+                {nativeDropdownOpen && (
+                    <div
+                        id="native-dropdown-menu"
+                        className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 flex max-h-72 flex-col overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-2xl backdrop-blur-md"
+                    >
+                        <div className="relative mb-2">
+                            <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+                            <input
+                                id="search-native-language"
+                                type="text"
+                                placeholder="Search languages..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full rounded-xl border border-border bg-background py-1.5 pl-8 pr-3 text-xs text-foreground outline-none placeholder:text-muted-foreground focus:border-primary"
+                                autoFocus
+                            />
+                        </div>
+                        <div className="custom-scrollbar space-y-1 overflow-y-auto pr-1">
+                            {filteredNatives.map((lang: LanguageOption) => {
+                                const isSelected = lang.value === currentNative.value;
+                                return (
+                                    <button
+                                        key={lang.value}
+                                        type="button"
+                                        onClick={() => handleSelectNative(lang)}
+                                        className={`flex w-full cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-left text-xs transition-colors ${
+                                            isSelected
+                                                ? "bg-accent font-medium text-primary"
+                                                : "text-foreground hover:bg-muted"
+                                        }`}
+                                    >
+                                        <div className="flex items-center gap-2">
+                                            <span>{lang.flag}</span>
+                                            <span>{lang.name}</span>
+                                            <span className="text-[11px] text-muted-foreground">
+                                                {lang.nativeName}
+                                            </span>
+                                        </div>
+                                        {isSelected && <Check className="h-3.5 w-3.5 text-primary" />}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            <div
+                id="card-i-am-learning"
+                ref={learningRef}
+                className="relative rounded-[26px] border border-border bg-card p-5 shadow-xs transition-colors sm:p-6"
+                style={{
+                    boxShadow: currentLearning.themeColor
+                        ? `inset 0 0 0 1px ${currentLearning.themeColor}40`
+                        : undefined,
+                }}
+            >
+                <h2 className="mb-3 text-[16px] font-medium text-foreground">I am learning</h2>
+                <div className="flex items-center gap-3">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            sound.playPebbleTap(progress.soundEnabled);
+                            setLearningDropdownOpen((prev: boolean) => !prev);
+                            setNativeDropdownOpen(false);
+                        }}
+                        className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full text-primary-foreground shadow-xs transition-all active:scale-95"
+                        style={{
+                            backgroundColor:
+                                currentLearning.themeColor || "hsl(var(--primary))",
+                        }}
+                    >
+                        <ChevronDown
+                            className={`h-4 w-4 stroke-[2.5] transition-transform duration-200 ${
+                                learningDropdownOpen ? "rotate-180" : ""
+                            }`}
+                        />
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            sound.playPebbleTap(progress.soundEnabled);
+                            setLearningDropdownOpen((prev: boolean) => !prev);
+                            setNativeDropdownOpen(false);
+                        }}
+                        className="flex cursor-pointer items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                        <span>{currentLearning.flag}</span>
+                        <span className="font-medium text-foreground">{currentLearning.name}</span>
+                        <span className="text-muted-foreground">({currentLearning.nativeName})</span>
+                    </button>
+                </div>
+                {learningDropdownOpen && (
+                    <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 flex max-h-80 flex-col space-y-1.5 overflow-y-auto rounded-2xl border border-border bg-card p-3 shadow-2xl backdrop-blur-md">
+                        <div className="px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                            Select language path
+                        </div>
+                        {LANGUAGES.map((lang) => {
+                            const isSelected = lang.id === currentLearning.id;
+                            return (
+                                <button
+                                    key={lang.id}
+                                    type="button"
+                                    onClick={() => handleSelectLearning(lang)}
+                                    className={`flex w-full cursor-pointer items-center justify-between rounded-xl border p-2.5 text-left transition-all ${
+                                        isSelected
+                                            ? "border-border bg-accent text-primary"
+                                            : "border-transparent text-foreground hover:bg-muted"
+                                    }`}
+                                >
+                                    <div className="flex items-center gap-3">
+                                        <span
+                                            className="h-3 w-3 shrink-0 rounded-full ring-1 ring-border"
+                                            style={{
+                                                backgroundColor:
+                                                    lang.themeColor ||
+                                                    "hsl(var(--muted-foreground))",
+                                            }}
+                                        />
+                                        <span className="text-lg">{lang.flag}</span>
+                                        <div>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-xs font-semibold">{lang.name}</span>
+                                                <span className="text-[11px] text-muted-foreground">
+                                                    {lang.nativeName}
+                                                </span>
+                                            </div>
+                                            <p className="line-clamp-1 text-[11px] text-muted-foreground">
+                                                {lang.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {isSelected ? (
+                                        <Check className="h-4 w-4 shrink-0 text-primary" />
+                                    ) : (
+                                        <span className="text-[11px] text-muted-foreground">Select</span>
+                                    )}
+                                </button>
+                            );
+                        })}
+                    </div>
+                )}
+            </div>
+
+            <div className="mt-8 space-y-3">
+                <button
+                    id="begin-journey-btn"
+                    type="button"
+                    onClick={() => {
+                        sound.playPebbleTap(progress.soundEnabled);
+                        persist();
+                    }}
+                    className="flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-xs transition-all hover:bg-primary/90 active:scale-[0.99]"
+                >
+                    <span>Begin Learning {currentLearning.name}</span>
+                    <ArrowRight className="h-4 w-4" />
+                </button>
+            </div>
+        </>
     );
 }
