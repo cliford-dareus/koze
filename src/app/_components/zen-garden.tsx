@@ -1,10 +1,12 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import { ProgressState } from "@/lib/progress";
 import { BookOpen, Clock, Flame, Layers, Sparkles } from "lucide-react";
 import CairnMascot from "@/app/_components/cairn-mascot";
 
 export default function ZenGarden({ progress }: { progress: ProgressState }) {
+    const reduceMotion = useReducedMotion();
     const stonesToShow = Math.min(8, Math.max(0, progress.cairnStonesCount || 0));
     const stoneWidths = [140, 124, 110, 96, 82, 68, 56, 44];
     const stoneColors = [
@@ -55,6 +57,8 @@ export default function ZenGarden({ progress }: { progress: ProgressState }) {
                         {stonesToShow === 0 ? (
                             <div className="mb-4 flex flex-col items-center gap-2 px-4">
                                 <CairnMascot
+                                    layoutId="cairn-mascot"
+                                    ceremony
                                     className="h-20 w-auto opacity-90"
                                     mood="encourage"
                                     label="Cairn waiting for your first pebble"
@@ -68,15 +72,27 @@ export default function ZenGarden({ progress }: { progress: ProgressState }) {
                                 const width = stoneWidths[idx] || 40;
                                 const color = stoneColors[idx % stoneColors.length];
                                 return (
-                                    <div
+                                    <motion.div
                                         key={idx}
-                                        className="h-5 rounded-full shadow-xs transition-transform duration-300 hover:scale-105 sm:h-6"
+                                        className="h-5 rounded-full shadow-xs sm:h-6"
                                         style={{
                                             width: `${width}px`,
                                             backgroundColor: color,
                                             border: "1px solid hsl(var(--border))",
                                         }}
                                         title={`Stone #${idx + 1}`}
+                                        initial={
+                                            reduceMotion
+                                                ? false
+                                                : { opacity: 0, y: 12, scale: 0.9 }
+                                        }
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        transition={{
+                                            delay: reduceMotion ? 0 : idx * 0.08,
+                                            duration: 0.4,
+                                            ease: [0.22, 1, 0.36, 1],
+                                        }}
+                                        whileHover={reduceMotion ? undefined : { scale: 1.05 }}
                                     />
                                 );
                             })
