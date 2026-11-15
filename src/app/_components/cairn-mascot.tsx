@@ -14,6 +14,15 @@ type CairnMascotProps = {
     label?: string;
     /** When false, skip motion entirely (static SVG) */
     animate?: boolean;
+    /**
+     * Staggered bottom → middle → top stone entrance (Phase C ceremony).
+     * Good for zen garden empty / first-pebble moments.
+     */
+    ceremony?: boolean;
+    /**
+     * Shared layout id for hero ↔ zen garden morph (e.g. "cairn-mascot").
+     */
+    layoutId?: string;
 };
 
 const bodyMotion = {
@@ -61,25 +70,51 @@ const shadowMotion = {
     },
 } as const;
 
+const stoneEnter = (delay: number, motionOn: boolean) =>
+    motionOn
+        ? {
+              initial: { opacity: 0, y: 10 },
+              animate: { opacity: 1, y: 0 },
+              transition: {
+                  delay,
+                  duration: 0.45,
+                  ease: [0.22, 1, 0.36, 1],
+              },
+          }
+        : { initial: false, animate: { opacity: 1, y: 0 } };
+
 /**
- * Chibi cairn mascot — oversized top stone with a soft face,
- * two smaller body stones. Theme-aware fills for light/dark.
- * Phase A+B: idle float, encourage sway, celebrate pop, idle blink.
+ * Chibi cairn mascot — Phase A–C motion:
+ * float, sway, celebrate, blink, staggered ceremony, layoutId morph.
  */
 export default function CairnMascot({
     className,
     mood = "idle",
     label = "Cairn, your quiet practice companion",
     animate = true,
+    ceremony = false,
+    layoutId,
 }: CairnMascotProps) {
     const reduceMotion = useReducedMotion();
     const motionOn = animate && !reduceMotion;
+    const runCeremony = ceremony && motionOn;
 
     const [blink, setBlink] = useState(false);
+    const [ceremonyDone, setCeremonyDone] = useState(!runCeremony);
 
-    // Soft idle blink every 4.5–7s; pause when tab hidden or mood changes
     useEffect(() => {
-        if (!motionOn || mood !== "idle") {
+        if (!runCeremony) {
+            setCeremonyDone(true);
+            return;
+        }
+        setCeremonyDone(false);
+        const t = window.setTimeout(() => setCeremonyDone(true), 900);
+        return () => window.clearTimeout(t);
+    }, [runCeremony]);
+
+    // Soft idle blink every 4.5–7s; only after ceremony settles
+    useEffect(() => {
+        if (!motionOn || mood !== "idle" || !ceremonyDone) {
             setBlink(false);
             return;
         }
@@ -107,7 +142,7 @@ export default function CairnMascot({
             cancelled = true;
             window.clearTimeout(timeoutId);
         };
-    }, [motionOn, mood]);
+    }, [motionOn, mood, ceremonyDone]);
 
     const smile =
         mood === "celebrate"
@@ -121,15 +156,30 @@ export default function CairnMascot({
     const eyeRyBase = mood === "celebrate" ? 4.2 : 3.8;
     const eyeRy = blink ? 0.35 : eyeRyBase;
 
-    const body = motionOn ? bodyMotion[mood] : { y: 0, rotate: 0, scale: 1 };
-    const shadow = motionOn ? shadowMotion[mood] : { scaleX: 1, opacity: 0.35 };
+    // During ceremony, hold still; then apply mood loops
+    const body =
+        motionOn && ceremonyDone
+            ? bodyMotion[mood]
+            : { y: 0, rotate: 0, scale: 1 };
+    const shadow =
+        motionOn && ceremonyDone
+            ? shadowMotion[mood]
+            : { scaleX: 1, opacity: 0.35 };
+
+    const bottom = stoneEnter(0, runCeremony);
+    const middle = stoneEnter(0.1, runCeremony);
+    const top = stoneEnter(0.2, runCeremony);
 
     return (
         <motion.div
+            layoutId={layoutId}
             className={cn("inline-flex", className)}
             animate={body}
             initial={mood === "celebrate" && motionOn ? { scale: 0.94 } : false}
             style={{ transformOrigin: "50% 85%" }}
+            transition={{
+                layout: { type: "spring", stiffness: 280, damping: 28 },
+            }}
         >
             <svg
                 viewBox="0 0 96 112"
@@ -141,7 +191,6 @@ export default function CairnMascot({
             >
                 <title>{label}</title>
 
-                {/* Soft ground shadow — breathes opposite to float */}
                 <motion.ellipse
                     cx="48"
                     cy="106"
@@ -153,132 +202,134 @@ export default function CairnMascot({
                 />
 
                 {/* Bottom stone */}
-                <ellipse
-                    cx="48"
-                    cy="94"
-                    rx="28"
-                    ry="11"
-                    className="fill-muted-foreground/20 dark:fill-muted-foreground/30"
-                />
-                <ellipse
-                    cx="48"
-                    cy="92"
-                    rx="26"
-                    ry="9.5"
-                    className="fill-muted"
-                />
-                <circle cx="36" cy="91" r="1.2" className="fill-primary/25" />
-                <circle cx="58" cy="93" r="0.9" className="fill-primary/20" />
+                <motion.g {...bottom}>
+                    <ellipse
+                        cx="48"
+                        cy="94"
+                        rx="28"
+                        ry="11"
+                        className="fill-muted-foreground/20 dark:fill-muted-foreground/30"
+                    />
+                    <ellipse
+                        cx="48"
+                        cy="92"
+                        rx="26"
+                        ry="9.5"
+                        className="fill-muted"
+                    />
+                    <circle cx="36" cy="91" r="1.2" className="fill-primary/25" />
+                    <circle cx="58" cy="93" r="0.9" className="fill-primary/20" />
+                </motion.g>
 
                 {/* Middle stone */}
-                <ellipse
-                    cx="48"
-                    cy="78"
-                    rx="20"
-                    ry="9"
-                    className="fill-muted-foreground/20 dark:fill-muted-foreground/30"
-                />
-                <ellipse
-                    cx="48"
-                    cy="76"
-                    rx="18.5"
-                    ry="8"
-                    className="fill-muted"
-                />
-                <circle cx="42" cy="75" r="0.8" className="fill-primary/20" />
+                <motion.g {...middle}>
+                    <ellipse
+                        cx="48"
+                        cy="78"
+                        rx="20"
+                        ry="9"
+                        className="fill-muted-foreground/20 dark:fill-muted-foreground/30"
+                    />
+                    <ellipse
+                        cx="48"
+                        cy="76"
+                        rx="18.5"
+                        ry="8"
+                        className="fill-muted"
+                    />
+                    <circle cx="42" cy="75" r="0.8" className="fill-primary/20" />
+                </motion.g>
 
-                {/* Top stone — chibi head */}
-                <ellipse
-                    cx="48"
-                    cy="48"
-                    rx="30"
-                    ry="28"
-                    className="fill-muted-foreground/25 dark:fill-muted-foreground/35"
-                />
-                <ellipse
-                    cx="48"
-                    cy="46"
-                    rx="28"
-                    ry="26"
-                    className="fill-card stroke-border"
-                    strokeWidth="1.25"
-                />
+                {/* Top stone — face */}
+                <motion.g {...top}>
+                    <ellipse
+                        cx="48"
+                        cy="48"
+                        rx="30"
+                        ry="28"
+                        className="fill-muted-foreground/25 dark:fill-muted-foreground/35"
+                    />
+                    <ellipse
+                        cx="48"
+                        cy="46"
+                        rx="28"
+                        ry="26"
+                        className="fill-card stroke-border"
+                        strokeWidth="1.25"
+                    />
 
-                {/* Soft cheek blush */}
-                <ellipse
-                    cx="32"
-                    cy="40"
-                    rx="5"
-                    ry="3"
-                    className="fill-rose-300/50 dark:fill-rose-400/30"
-                />
-                <ellipse
-                    cx="64"
-                    cy="40"
-                    rx="5"
-                    ry="3"
-                    className="fill-rose-300/50 dark:fill-rose-400/30"
-                />
+                    <ellipse
+                        cx="32"
+                        cy="40"
+                        rx="5"
+                        ry="3"
+                        className="fill-rose-300/50 dark:fill-rose-400/30"
+                    />
+                    <ellipse
+                        cx="64"
+                        cy="40"
+                        rx="5"
+                        ry="3"
+                        className="fill-rose-300/50 dark:fill-rose-400/30"
+                    />
 
-                {/* Eyes — blink by collapsing ry */}
-                <ellipse
-                    cx="38"
-                    cy={eyeY}
-                    rx={eyeRx}
-                    ry={eyeRy}
-                    className="fill-current transition-[ry] duration-75"
-                />
-                <ellipse
-                    cx="58"
-                    cy={eyeY}
-                    rx={eyeRx}
-                    ry={eyeRy}
-                    className="fill-current transition-[ry] duration-75"
-                />
-                {!blink && (
-                    <>
-                        <circle
-                            cx="36.5"
-                            cy={eyeY - 1.4}
-                            r="1.35"
-                            className="fill-card"
-                        />
-                        <circle
-                            cx="56.5"
-                            cy={eyeY - 1.4}
-                            r="1.35"
-                            className="fill-card"
-                        />
-                        <circle
-                            cx="39.2"
-                            cy={eyeY + 1.2}
-                            r="0.55"
-                            className="fill-card/80"
-                        />
-                        <circle
-                            cx="59.2"
-                            cy={eyeY + 1.2}
-                            r="0.55"
-                            className="fill-card/80"
-                        />
-                    </>
-                )}
+                    <ellipse
+                        cx="38"
+                        cy={eyeY}
+                        rx={eyeRx}
+                        ry={eyeRy}
+                        className="fill-current transition-[ry] duration-75"
+                    />
+                    <ellipse
+                        cx="58"
+                        cy={eyeY}
+                        rx={eyeRx}
+                        ry={eyeRy}
+                        className="fill-current transition-[ry] duration-75"
+                    />
+                    {!blink && (
+                        <>
+                            <circle
+                                cx="36.5"
+                                cy={eyeY - 1.4}
+                                r="1.35"
+                                className="fill-card"
+                            />
+                            <circle
+                                cx="56.5"
+                                cy={eyeY - 1.4}
+                                r="1.35"
+                                className="fill-card"
+                            />
+                            <circle
+                                cx="39.2"
+                                cy={eyeY + 1.2}
+                                r="0.55"
+                                className="fill-card/80"
+                            />
+                            <circle
+                                cx="59.2"
+                                cy={eyeY + 1.2}
+                                r="0.55"
+                                className="fill-card/80"
+                            />
+                        </>
+                    )}
 
-                {/* Smile */}
-                <path
-                    d={smile}
-                    className="stroke-current"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    fill="none"
-                />
+                    <path
+                        d={smile}
+                        className="stroke-current"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        fill="none"
+                    />
+                </motion.g>
 
-                {/* Celebrate sparkles */}
                 {mood === "celebrate" && (
                     <motion.g
                         initial={motionOn ? { opacity: 0, scale: 0.6 } : false}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.15 }}
+                        transition={{ duration: 0.5, delay: runCeremony ? 0.35 : 0.15 }}
                     >
                         <path
                             d="M18 28 L19.5 31.5 L23 33 L19.5 34.5 L18 38 L16.5 34.5 L13 33 L16.5 31.5 Z"
@@ -293,23 +344,24 @@ export default function CairnMascot({
                     </motion.g>
                 )}
 
-                {/* Encourage spark */}
                 {mood === "encourage" && (
                     <motion.path
                         d="M72 20 L73 23 L76 24 L73 25 L72 28 L71 25 L68 24 L71 23 Z"
                         className="fill-primary/45"
+                        initial={runCeremony ? { opacity: 0 } : false}
                         animate={
-                            motionOn
+                            motionOn && ceremonyDone
                                 ? {
                                       opacity: [0.35, 0.9, 0.35],
                                       y: [0, -2, 0],
                                   }
-                                : { opacity: 0.6 }
+                                : { opacity: ceremonyDone ? 0.6 : 0 }
                         }
                         transition={{
                             duration: 2.4,
                             repeat: Infinity,
                             ease: "easeInOut",
+                            delay: runCeremony ? 0.4 : 0,
                         }}
                     />
                 )}
