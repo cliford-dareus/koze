@@ -67,6 +67,18 @@ export default function Hero({
                             mood={goalMet ? "celebrate" : stones > 0 ? "idle" : "encourage"}
                             label="Cairn, your practice companion"
                         />
+                        <CairnMascot
+                            layoutId="cairn-mascot"
+                            className="h-24 w-auto sm:h-28"
+                            mood={!goalMet ? "happy" : stones > 0 ? "idle" : "encourage"}
+                            label="Cairn, your practice companion"
+                        />
+                        <CairnMascot
+                            layoutId="cairn-mascot"
+                            className="h-24 w-auto sm:h-28"
+                            mood={!goalMet ? "thinking" : stones > 0 ? "idle" : "encourage"}
+                            label="Cairn, your practice companion"
+                        />
                     </div>
                 </div>
 

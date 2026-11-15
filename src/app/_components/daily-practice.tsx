@@ -1,6 +1,6 @@
 "use client";
 
-import { getLessonsByDirection, LessonStep } from "@/data/lessons";
+import { getLessonsByDirection, LessonDirection, LessonStep } from "@/data/lessons";
 import { LANGUAGES } from "@/lib/languages";
 import { ProgressState, saveProgress } from "@/lib/progress";
 import { sound } from "@/lib/sound";
@@ -53,7 +53,7 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                         ? (`${progress.nativeLanguage}-${progress.learningLanguage}` as const)
                         : "en-fr");
 
-                const lessons = await getLessonsByDirection(direction);
+                const lessons = await getLessonsByDirection(direction as LessonDirection);
                 if (cancelled) return;
 
                 const allQuestions: PracticeStep[] = [];
