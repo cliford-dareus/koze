@@ -2,6 +2,8 @@
 
 import {
     LucideBookOpen,
+    LucideEar,
+    LucideGraduationCap,
     LucideHome,
     LucideLanguages,
     LucideMessageCircle,
@@ -13,8 +15,8 @@ import { usePathname } from "next/navigation";
 const NAV = [
     { href: "/", label: "Home", icon: LucideHome },
     { href: "/translation", label: "Translate", icon: LucideLanguages },
-    { href: "/listening", label: "Listen", icon: LucideBookOpen },
-    { href: "/lessons", label: "Lessons", icon: LucideBookOpen },
+    { href: "/listening", label: "Listen", icon: LucideEar },
+    { href: "/lessons", label: "Lessons", icon: LucideGraduationCap },
     { href: "/chat", label: "Practice", icon: LucideMessageCircle },
 ] as const;
 

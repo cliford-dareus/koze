@@ -6,6 +6,7 @@ import {
   DrawerContent,
   DrawerTrigger,
 } from "@/app/_components/ui/drawer";
+import CairnMascot from "@/app/_components/cairn-mascot";
 
 type Props = {
   quote: string;
@@ -15,7 +16,12 @@ type Props = {
 const SuccessModal = ({ quote, completeLevel }: Props) => {
   return (
     <div className="overflow-hidden">
-      <div className="text-center">
+      <div className="flex flex-col items-center text-center">
+        <CairnMascot
+          className="mb-3 h-20 w-auto"
+          mood="celebrate"
+          label="Cairn celebrates a correct listen"
+        />
         <DialogTitle asChild>
           <h3 className="font-display text-xl font-medium">Well heard</h3>
         </DialogTitle>

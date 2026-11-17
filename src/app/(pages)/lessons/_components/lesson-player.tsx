@@ -2,16 +2,21 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { directionLabel, PairItem, PairMatchingQuestion, type Lesson, type LessonDirection, type LessonStep } from "@/data/lessons";
+import {
+    directionLabel,
+    type Lesson,
+    type LessonDirection,
+    type LessonStep,
+} from "@/data/lessons";
 import { enhanceLesson, tagLabel } from "@/lib/lesson-pedagogy";
 import { loadProgress, recordActivity } from "@/lib/progress";
 import { Button } from "@/app/_components/ui/button";
-import MicAudioVisualizer from "@/app/_components/mic-audio-visualizer";
 import { sound } from "@/lib/sound";
-import { speak } from "@/lib/speech";
-import { ArrowRight, Check, MessageCircle, RotateCcw, Volume2 } from "lucide-react";
+import { ArrowRight, Check, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { LanguageOption, LANGUAGES } from "@/lib/languages";
+import { LANGUAGES } from "@/lib/languages";
+import CairnMascot from "@/app/_components/cairn-mascot";
+import { StepBody } from "./step-body";
 
 type Props = {
     lesson: Lesson;
@@ -36,20 +41,18 @@ export default function LessonPlayer({
     const [finished, setFinished] = useState(false);
     const [spoke, setSpoke] = useState(false);
 
-    const currentLanguage = LANGUAGES.find(l => l.value === direction?.split('-')[1]);
+    const currentLanguage = LANGUAGES.find(
+        (l) => l.value === direction?.split("-")[1],
+    );
 
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
-
-    // Sentence builder state
     const [selectedTokens, setSelectedTokens] = useState<string[]>([]);
     const [availableTokens, setAvailableTokens] = useState<string[]>([]);
-
-    // Pair matching state
     const [matchedPairIds, setMatchedPairIds] = useState<string[]>([]);
-
-    // Evaluation states
-    const [evaluation, setEvaluation] = useState<'idle' | 'correct' | 'review'>('idle');
-    const [feedbackExplanation, setFeedbackExplanation] = useState<string>('');
+    const [evaluation, setEvaluation] = useState<
+        "idle" | "correct" | "review"
+    >("idle");
+    const [feedbackExplanation, setFeedbackExplanation] = useState("");
 
     useEffect(() => {
         const p = loadProgress();
@@ -79,11 +82,15 @@ export default function LessonPlayer({
             setFinished(false);
         }
 
-        setEvaluation('idle');
-        setFeedbackExplanation('');
+        setEvaluation("idle");
+        setFeedbackExplanation("");
         setSelected(null);
         setChecked(false);
         setSpoke(false);
+        setSelectedOption(null);
+        setSelectedTokens([]);
+        setAvailableTokens([]);
+        setMatchedPairIds([]);
     }, [rawLesson, direction]);
 
     const step: LessonStep | undefined = steps[stepIndex];
@@ -100,7 +107,7 @@ export default function LessonPlayer({
             lessonCompleted: completed,
             topic: lesson.slug,
             direction: direction,
-            xpEarned: xpEarned
+            xpEarned: xpEarned,
         });
     };
 
@@ -108,10 +115,14 @@ export default function LessonPlayer({
         setSelected(null);
         setChecked(false);
         setSpoke(false);
+        setSelectedOption(null);
+        setEvaluation("idle");
+        setFeedbackExplanation("");
 
         if (stepIndex >= steps.length - 1) {
             setFinished(true);
-            persist(steps.length - 1, true);
+            persist(steps.length - 1, true, lesson.xp);
+            sound.playMilestoneHarp(true);
             return;
         }
 
@@ -125,94 +136,103 @@ export default function LessonPlayer({
         setSelected(null);
         setChecked(false);
         setSpoke(false);
+        setSelectedOption(null);
         setFinished(false);
+        setEvaluation("idle");
+        setFeedbackExplanation("");
         const prev = stepIndex - 1;
         setStepIndex(prev);
         persist(prev, false);
     };
 
-    // Check Answer Handler
     const handleCheck = () => {
         let isCorrect = false;
-        let explanationText = step?.explanation || '';
+        let explanationText = step?.explanation || "";
 
-        if (step.type === 'listen') {
-            const mc = step;
-            // isCorrect = selectedOption === mc.correctAnswer;
-        } else if (step.type === 'check') {
-            const mc = step;
-            isCorrect = selected === mc.answerIndex;
-        } else if (step.type === 'context-dialogue') {
-            const cd = step;
-            isCorrect = selectedOption === cd.correctAnswer;
-        } else if (step.type === 'sentence-builder') {
-            const sb = step
+        if (step.type === "listen") {
+            // listen steps rely on selected index like check
+            isCorrect = selected === (step as { answerIndex?: number }).answerIndex;
+        } else if (step.type === "check") {
+            isCorrect = selected === step.answerIndex;
+        } else if (step.type === "context-dialogue") {
+            isCorrect = selectedOption === step.correctAnswer;
+        } else if (step.type === "sentence-builder") {
             isCorrect =
-                selectedTokens.length === sb.correctTokens.length &&
-                selectedTokens.every((val, i) => val === sb.correctTokens[i]);
+                selectedTokens.length === step.correctTokens.length &&
+                selectedTokens.every((val, i) => val === step.correctTokens[i]);
             if (!isCorrect) {
-                explanationText = `Target phrasing: "${sb.targetSentence}" (${sb.targetTranslation})`;
+                explanationText = `Target phrasing: "${step.targetSentence}" (${step.targetTranslation})`;
             }
-        } else if (step.type === 'pair-matching') {
-            const pm = step;
-            isCorrect = matchedPairIds.length === pm.pairs.length;
+        } else if (step.type === "pair-matching") {
+            isCorrect = matchedPairIds.length === step.pairs.length;
         }
 
         if (isCorrect) {
             sound.playGentleChime(true);
-            setEvaluation('correct');
-            // setCorrectCount((prev) => prev + 1);
-            setFeedbackExplanation(explanationText || 'Wonderful clarity and focus.');
+            setEvaluation("correct");
+            setFeedbackExplanation(
+                explanationText || "Wonderful clarity and focus.",
+            );
         } else {
             sound.playReflectionTone(true);
-            setEvaluation('review');
+            setEvaluation("review");
             setFeedbackExplanation(
-                explanationText || 'Take a gentle breath. We will revisit this phrase shortly.'
+                explanationText ||
+                "Take a gentle breath. We will revisit this phrase shortly.",
             );
-            // Re-queue this question at the end for positive, pressure-free mastery
-            // setQuestionQueue((prev) => [...prev, currentQ]);
         }
+        setChecked(true);
     };
 
     const handleContinue = () => {
         sound.playPebbleTap(true);
-
         setSelected(null);
         setChecked(false);
         setSpoke(false);
+        setSelectedOption(null);
+        setSelectedTokens([]);
+        setAvailableTokens([]);
+        setMatchedPairIds([]);
 
         if (stepIndex + 1 < steps.length) {
             const next = stepIndex + 1;
             setStepIndex(next);
-            setEvaluation('idle');
+            setEvaluation("idle");
+            setFeedbackExplanation("");
             persist(next, false);
-        } else if (stepIndex >= steps.length - 1) {
-            // Completed all questions in the queue!
+        } else {
             setFinished(true);
             persist(steps.length - 1, true, lesson.xp);
             sound.playMilestoneHarp(true);
-            return;
         }
     };
 
     const canSubmit = () => {
-        if (evaluation !== 'idle') return false;
+        if (evaluation !== "idle") return false;
+        if (!step) return false;
 
-        if (step.type === 'check') {
+        if (step.type === "check" || step.type === "listen") {
             return selected !== null;
         }
-        if (step.type === 'listen' || step.type === 'context-dialogue') {
+        if (step.type === "context-dialogue") {
             return !!selectedOption;
         }
-        if (step.type === 'sentence-builder') {
+        if (step.type === "sentence-builder") {
             return selectedTokens.length > 0;
         }
-        if (step.type === 'pair-matching') {
-            const pm = step;
-            return matchedPairIds.length === pm.pairs.length;
+        if (step.type === "pair-matching") {
+            return matchedPairIds.length === step.pairs.length;
         }
         return false;
     };
+
+    const isInteractiveStep =
+        step &&
+        (step.type === "check" ||
+            step.type === "listen" ||
+            step.type === "context-dialogue" ||
+            step.type === "pair-matching" ||
+            step.type === "sentence-builder");
 
     if (!step) {
         return (
@@ -223,21 +243,24 @@ export default function LessonPlayer({
     }
 
     return (
-        <div className="flex flex-col">
-            <div className="flex flex-wrap items-center gap-2">
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                    {unitTitle}
+        <div className="mx-auto flex w-full max-w-lg flex-col pb-10">
+            {/* ── Sanctuary header ─────────────────────────────────────── */}
+            <header className="mb-1">
+                <div className="flex flex-wrap items-center gap-2">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+                        Studio · {unitTitle}
+                    </p>
+                    <span className="rounded-full border border-border bg-card px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+                        {directionLabel(lesson.direction)}
+                    </span>
+                </div>
+                <h1 className="mt-1.5 font-serif text-3xl font-semibold tracking-tight text-foreground">
+                    {lesson.title}
+                </h1>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {lesson.description}
                 </p>
-                <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
-                    {directionLabel(lesson.direction)}
-                </span>
-            </div>
-            <h1 className="mt-2 font-display text-3xl font-medium">
-                {lesson.title}
-            </h1>
-            <p className="mt-1 text-sm text-muted-foreground">
-                {lesson.description}
-            </p>
+            </header>
 
             {lesson.tags?.length ? (
                 <div className="mt-3 flex flex-wrap gap-1.5">
@@ -252,690 +275,226 @@ export default function LessonPlayer({
                 </div>
             ) : null}
 
-            <div className="mt-4">
-                <div className="mb-1 flex justify-between text-[11px] text-muted-foreground">
+            {/* ── Path progress ────────────────────────────────────────── */}
+            <div className="mt-5">
+                <div className="mb-1.5 flex justify-between text-[11px] text-muted-foreground">
                     <span>
                         Step {Math.min(stepIndex + 1, steps.length)} of{" "}
                         {steps.length}
                     </span>
-                    <span>{progressPct}%</span>
+                    <span className="font-medium text-primary">
+                        {progressPct}%
+                    </span>
                 </div>
-                <div className="h-1.5 overflow-hidden rounded-full bg-muted">
+                <div className="h-2 overflow-hidden rounded-full bg-muted">
                     <div
-                        className="h-full rounded-full bg-primary transition-all duration-300"
+                        className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
                         style={{ width: `${progressPct}%` }}
                     />
                 </div>
             </div>
 
+            {/* ── Finished state ───────────────────────────────────────── */}
             {finished ? (
-                <div className="mt-8 rounded-xl border border-border bg-card p-6 shadow-soft">
-                    <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                        Complete
-                    </p>
-                    <h2 className="mt-2 font-display text-2xl font-medium">
-                        Well done.
-                    </h2>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                        You finished &ldquo;{lesson.title}&rdquo;. Later lessons will
-                        weave in short reviews of what you already know.
-                    </p>
-                    <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-                        <Button asChild variant="default">
-                            <Link href="/lessons">Back to lessons</Link>
-                        </Button>
-                        {nextSlug ? (
-                            <Button asChild variant="outline">
-                                <Link
-                                    href={`/lessons/${nextSlug}?direction=${direction}`}
-                                >
-                                    Next: {nextTitle ?? "Continue"}
-                                </Link>
-                            </Button>
-                        ) : null}
-                    </div>
-                    <button
-                        type="button"
-                        className="mt-4 text-xs font-medium text-primary"
-                        onClick={() => {
-                            setFinished(false);
-                            setStepIndex(0);
-                            setSelected(null);
-                            setChecked(false);
-                            setSpoke(false);
-                            persist(0, false);
-                        }}
-                    >
-                        Review from the start
-                    </button>
-                </div>
-            ) : (
-                <div className="mt-6 rounded-xl border border-border bg-card p-5 shadow-soft">
-                    <StepBody
-                        step={step}
-                        selected={selected}
-                        checked={checked}
-                        spoke={spoke}
-                        onSelect={setSelected}
-                        onSpoke={() => setSpoke(true)}
-                        matchedPairIds={matchedPairIds}
-                        setMatchedPairIds={setMatchedPairIds}
-                        evaluation={evaluation}
-                        selectedTokens={selectedTokens}
-                        setSelectedTokens={setSelectedTokens}
-                        availableTokens={availableTokens}
-                        setAvailableTokens={setAvailableTokens}
-                        selectedOption={selectedOption}
-                        setSelectedOption={setSelectedOption}
-                        currentLanguage={currentLanguage}
-                    />
-
+                <div className="relative mt-8 overflow-hidden rounded-2xl border border-border bg-card p-6 text-center shadow-soft">
                     <div
-                        id="lesson-bottom-bar"
-                        className={`w-full border-t mt-4 transition-colors duration-200 py-5 px-4 sm:px-6 ${evaluation === 'correct'
-                            ? 'bg-accent border-[#C3DCB0]'
-                            : evaluation === 'review'
-                                ? 'bg-muted border-border'
-                                : 'bg-card border-border'
-                            }`}
-                    >
-                        {
-                            (step.type === 'check'
-                                || step.type === 'listen'
-                                || step.type === 'context-dialogue'
-                                || step.type === 'pair-matching'
-                                || step.type === 'sentence-builder'
-                            ) ? (<div className="max-w-2xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                                {evaluation === 'idle' ? (
-                                    <>
-                                        <div className="text-xs text-[#7A867C]">
-                                            Take your time. Mindful learning thrives on presence.
-                                        </div>
-                                        <button
-                                            id="check-answer-btn"
-                                            type="button"
-                                            disabled={!canSubmit()}
-                                            onClick={handleCheck}
-                                            className={`px-7 py-3 rounded-full text-sm font-semibold transition-all shadow-xs ${canSubmit()
-                                                ? 'bg-[#3F614C] hover:bg-[#34513F] text-white cursor-pointer hover:shadow-md'
-                                                : 'bg-[#E3DFD4] text-[#9AA39B] cursor-not-allowed'
-                                                }`}
-                                        >
-                                            Check Answer
-                                        </button>
-                                    </>
-                                ) : evaluation === 'correct' ? (
-                                    <>
-                                        <div className="flex items-start gap-3">
-                                            <div className="w-8 h-8 rounded-full bg-[#3F614C] text-white flex items-center justify-center shrink-0 mt-0.5">
-                                                <Check className="w-5 h-5" />
-                                            </div>
-                                            <div>
-                                                <div className="text-sm font-bold text-[#2A4B36]">
-                                                    Serene Understanding
-                                                </div>
-                                                <div className="text-xs text-[#486350] mt-0.5 leading-relaxed">
-                                                    {feedbackExplanation}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button
-                                            id="continue-correct-btn"
-                                            type="button"
-                                            onClick={handleContinue}
-                                            className="px-7 py-3 rounded-full bg-primary hover:bg-[#34513F] text-foreground text-sm font-semibold transition-all shadow-xs hover:shadow-md flex items-center justify-center gap-2"
-                                        >
-                                            <span>Continue</span>
-                                            <ArrowRight className="w-4 h-4" />
-                                        </button>
-                                    </>
-                                ) : (
-                                    <>
-                                        <div className="flex items-start gap-3">
-                                            <div className="w-8 h-8 rounded-full bg-[#B86E40] text-white flex items-center justify-center shrink-0 mt-0.5">
-                                                <RotateCcw className="w-4 h-4" />
-                                            </div>
-                                            <div>
-                                                <div className="text-sm font-bold text-[#8C4A21]">
-                                                    Mindful Reflection
-                                                </div>
-                                                <div className="text-xs text-[#70523C] mt-0.5 leading-relaxed">
-                                                    {feedbackExplanation}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button
-                                            id="continue-review-btn"
-                                            type="button"
-                                            onClick={handleContinue}
-                                            className="px-7 py-3 rounded-full bg-[#B86E40] hover:bg-[#9F5B32] text-white text-sm font-semibold transition-all shadow-xs hover:shadow-md flex items-center justify-center gap-2"
-                                        >
-                                            <span>Understood</span>
-                                            <ArrowRight className="w-4 h-4" />
-                                        </button>
-                                    </>
-                                )}
-                            </div>)
-                                : (
-                                    <div className="mt-8 flex items-center justify-between gap-3">
-                                        <Button
-                                            type="button"
-                                            variant="ghost"
-                                            onClick={goBack}
-                                            disabled={stepIndex === 0}
-                                        >
-                                            Back
-                                        </Button>
-
-                                        <Button type="button" onClick={goNext}>
-                                            {stepIndex >= steps.length - 1
-                                                ? "Finish"
-                                                : "Continue"}
-                                        </Button>
-                                    </div>)}
-                    </div>
-                </div>
-            )}
-        </div>
-    );
-}
-
-function StepBody({
-    step,
-    selected,
-    checked,
-    spoke,
-    onSelect,
-    onSpoke,
-    matchedPairIds,
-    setMatchedPairIds,
-    evaluation,
-    selectedTokens,
-    setSelectedTokens,
-    availableTokens,
-    setAvailableTokens,
-    selectedOption,
-    setSelectedOption,
-    currentLanguage,
-}: {
-    step: LessonStep;
-    selected: number | null;
-    checked: boolean;
-    spoke: boolean;
-    onSelect: (i: number) => void;
-    onSpoke: () => void;
-    matchedPairIds: string[];
-    setMatchedPairIds: (ids: string[]) => void;
-    evaluation?: "correct" | "review" | "idle";
-    selectedTokens: string[];
-    setSelectedTokens: (tokens: string[]) => void;
-    availableTokens: string[];
-    setAvailableTokens: (tokens: string[]) => void;
-    selectedOption: string | null;
-    setSelectedOption: (option: string | null) => void;
-    currentLanguage: LanguageOption | undefined;
-}) {
-    // Pair matching state
-    const [selectedForeignId, setSelectedForeignId] = useState<string | null>(null);
-    const [selectedNativeId, setSelectedNativeId] = useState<string | null>(null);
-
-    // Initialize per question
-    useEffect(() => {
-        if (!step) return;
-
-        if (step.type === 'sentence-builder') {
-            const sb = step;
-            setAvailableTokens([...sb.scrambledTokens]);
-            setSelectedTokens([]);
-        } else if (step.type === 'pair-matching') {
-            setMatchedPairIds([]);
-            setSelectedForeignId(null);
-            setSelectedNativeId(null);
-        }
-
-        // Auto-play speech for listening questions
-        // if (step.type === 'listening' && step.audioText) {
-        //     setTimeout(() => {
-        //         speech.speak(currentQ.audioText!, speechLang);
-        //     }, 400);
-        // }
-    }, [step]);
-
-    // Handle Token Tap in Sentence Builder
-    const handleAddToken = (token: string, idx: number) => {
-        sound.playPebbleTap(true);
-        setSelectedTokens([...selectedTokens, token]);
-        const nextAvail = [...availableTokens];
-        nextAvail.splice(idx, 1);
-        setAvailableTokens(nextAvail);
-        if (nextAvail.length < 2) {
-            onSelect(1);
-        }
-    };
-
-    const handleRemoveToken = (token: string, idx: number) => {
-        sound.playPebbleTap(true);
-        const nextSelected = [...selectedTokens];
-        nextSelected.splice(idx, 1);
-        setSelectedTokens(nextSelected);
-        setAvailableTokens([...availableTokens, token]);
-    };
-
-    // Handle Pair Matching Selection
-    const handleSelectForeign = (item: PairItem) => {
-        sound.playPebbleTap(true);
-        if (matchedPairIds.includes(item.id)) return;
-        // speak(item.foreign, speechLang);
-
-        if (selectedNativeId) {
-            // Check if match
-            if (selectedNativeId === item.id) {
-                sound.playGentleChime(true);
-                setMatchedPairIds([...matchedPairIds, item.id]);
-                setSelectedForeignId(null);
-                setSelectedNativeId(null);
-            } else {
-                sound.playReflectionTone(true);
-                setSelectedForeignId(null);
-                setSelectedNativeId(null);
-            }
-        } else {
-            setSelectedForeignId(item.id);
-        }
-    };
-
-    const handleSelectNative = (item: PairItem) => {
-        sound.playPebbleTap(true);
-        if (matchedPairIds.includes(item.id)) return;
-
-        if (selectedForeignId) {
-            if (selectedForeignId === item.id) {
-                sound.playGentleChime(true);
-                setMatchedPairIds([...matchedPairIds, item.id]);
-                onSelect(1);
-                setSelectedForeignId(null);
-                setSelectedNativeId(null);
-            } else {
-                sound.playReflectionTone(true);
-                setSelectedForeignId(null);
-                setSelectedNativeId(null);
-            }
-        } else {
-            setSelectedNativeId(item.id);
-        }
-    };
-
-    if (step.type === "intro") {
-        return (
-            <div>
-                <h2 className="font-display text-xl font-medium">{step.title}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {step.body}
-                </p>
-            </div>
-        );
-    }
-
-    if (step.type === "tip") {
-        return (
-            <div>
-                <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-primary">
-                    Tip
-                </p>
-                <h2 className="mt-1 font-display text-xl font-medium">
-                    {step.title}
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {step.body}
-                </p>
-                {step.bullets?.length ? (
-                    <ul className="mt-4 list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
-                        {step.bullets.map((b) => (
-                            <li key={b}>{b}</li>
-                        ))}
-                    </ul>
-                ) : null}
-            </div>
-        );
-    }
-
-    if (step.type === "vocab") {
-        return (
-            <div>
-                <h2 className="font-display text-xl font-medium">{step.title}</h2>
-                <ul className="mt-4 space-y-2">
-                    {step.items.map((item) => (
-                        <li
-                            key={item.term}
-                            className="flex flex-col rounded-lg border border-border px-3 py-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3"
-                        >
-                            <span className="font-medium">{item.term}</span>
-                            <span className="text-sm text-muted-foreground">
-                                {item.meaning}
-                                {item.note ? (
-                                    <span className="ml-1 text-xs">
-                                        · {item.note}
-                                    </span>
-                                ) : null}
-                            </span>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        );
-    }
-
-    if (step.type === "phrase") {
-        return (
-            <div>
-                <h2 className="font-display text-xl font-medium">{step.title}</h2>
-                {(step.sourceLabel || step.targetLabel) && (
-                    <p className="mt-1 text-[11px] text-muted-foreground">
-                        {step.sourceLabel ?? "Source"} →{" "}
-                        {step.targetLabel ?? "Target"}
-                    </p>
-                )}
-                <ul className="mt-4 space-y-3">
-                    {step.phrases.map((p) => (
-                        <li
-                            key={p.source + p.target}
-                            className="rounded-lg border border-border px-3 py-3"
-                        >
-                            <p className="text-xs text-muted-foreground">
-                                {p.source}
-                            </p>
-                            <p className="mt-1 font-display text-lg font-medium">
-                                {p.target}
-                            </p>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        );
-    }
-
-    if (step.type === "speak") {
-        return (
-            <div>
-                <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-primary">
-                    Speak
-                </p>
-                <h2 className="mt-1 font-display text-xl font-medium">
-                    {step.title}
-                </h2>
-                <p className="mt-2 text-sm text-muted-foreground">{step.prompt}</p>
-
-                {step.hint ? (
-                    <p className="mt-4 text-xs text-muted-foreground">
-                        Prompt: {step.hint}
-                    </p>
-                ) : null}
-
-                <p className="mt-3 rounded-xl border border-primary/25 bg-accent/40 px-4 py-4 text-center font-display text-2xl font-medium leading-snug">
-                    {step.targetLine}
-                </p>
-
-                <div className="mt-4">
-                    <MicAudioVisualizer
-                        label="Your voice"
-                        barCount={36}
-                        canvasClassName="h-20"
-                        className="border-0 bg-transparent p-0 shadow-none"
+                        className="lang-wash pointer-events-none absolute inset-0 opacity-50"
+                        aria-hidden
                     />
-                </div>
-
-                <Button
-                    type="button"
-                    variant={spoke ? "default" : "outline"}
-                    size="sm"
-                    className="mt-3"
-                    onClick={onSpoke}
-                >
-                    {spoke ? "Marked as spoken" : "I said it"}
-                </Button>
-            </div>
-        );
-    }
-
-    if (step.type === 'pair-matching') {
-        return (
-            <div className="space-y-4">
-                <div className="text-xs text-muted-foreground text-center mb-2">
-                    Match the harmonious pairs ({matchedPairIds.length} of{' '}
-                    {(step).pairs.length} paired)
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                    {/* Foreign Words Column */}
-                    <div className="space-y-2.5">
-                        {(step as PairMatchingQuestion).pairs.map((pair) => {
-                            const isMatched = matchedPairIds.includes(pair.id);
-                            const isSelected = selectedForeignId === pair.id;
-
-                            return (
-                                <button
-                                    key={pair.id}
-                                    type="button"
-                                    disabled={isMatched || evaluation !== 'idle'}
-                                    onClick={() => handleSelectForeign(pair)}
-                                    className={`w-full p-3.5 rounded-xl border-2 text-left transition-all ${isMatched
-                                        ? 'bg-background border-transparent opacity-40 cursor-default'
-                                        : isSelected
-                                            ? 'border-primary bg-accent text-primary scale-102 shadow-xs'
-                                            : 'border-border bg-background hover:bg-muted'
-                                        }`}
-                                >
-                                    <div className="font-semibold text-sm">
-                                        {pair.foreign}
-                                    </div>
-                                    {pair.phonetic && (
-                                        <div className="text-[11px] text-[#717E73]">{pair.phonetic}</div>
-                                    )}
-                                </button>
-                            );
-                        })}
-                    </div>
-
-                    {/* Native Meaning Column */}
-                    <div className="space-y-2.5">
-                        {step.pairs.map((pair) => {
-                            const isMatched = matchedPairIds.includes(pair.id);
-                            const isSelected = selectedNativeId === pair.id;
-
-                            return (
-                                <button
-                                    key={pair.id}
-                                    type="button"
-                                    disabled={isMatched || evaluation !== 'idle'}
-                                    onClick={() => handleSelectNative(pair)}
-                                    className={`w-full p-3.5 rounded-xl border-2 text-left transition-all ${isMatched
-                                        ? 'border-transparent opacity-40 cursor-default'
-                                        : isSelected
-                                            ? 'border-primary bg-accent text-primary scale-102 shadow-xs'
-                                            : 'border-border bg-background hover:bg-muted'
-                                        }`}
-                                >
-                                    <div className="font-medium text-sm">
-                                        {pair.native}
-                                    </div>
-                                </button>
-                            );
-                        })}
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
-    if (step.type === 'sentence-builder') {
-        return (
-            <div className="space-y-6">
-                {/* Target Meaning */}
-                <div className="text-center p-3 bg-background rounded-xl text-sm font-serif italic text-muted-foreground">
-                    "{step.targetTranslation}"
-                </div>
-
-                {/* Answer Assembled Slot */}
-                <div className="min-h-20 p-4 bg-background border-2 border-dashed border-border rounded-2xl flex flex-wrap items-center gap-2">
-                    {selectedTokens.length === 0 ? (
-                        <span className="text-xs text-muted-foreground italic mx-auto">
-                            Tap word pebbles below to weave your sentence
-                        </span>
-                    ) : (
-                        selectedTokens.map((token, idx) => (
-                            <button
-                                key={idx}
-                                type="button"
-                                disabled={evaluation !== 'idle'}
-                                onClick={() => handleRemoveToken(token, idx)}
-                                className="px-3.5 py-2 rounded-xl bg-background border border-border text-muted-foreground text-sm font-medium shadow-xs hover:bg-accent transition-transform active:scale-95"
-                            >
-                                {token}
-                            </button>
-                        ))
-                    )}
-                </div>
-
-                {/* Available Tokens Pebble Bank */}
-                <div className="flex flex-wrap items-center justify-center gap-2.5 pt-2">
-                    {availableTokens.map((token, idx) => (
-                        <button
-                            key={idx}
-                            type="button"
-                            disabled={evaluation !== 'idle'}
-                            onClick={() => handleAddToken(token, idx)}
-                            className="px-4 py-2.5 rounded-xl bg-background border border-border text-muted-foreground text-sm font-medium hover:bg-accent hover:scale-105 transition-all active:scale-95 shadow-xs"
-                        >
-                            {token}
-                        </button>
-                    ))}
-                </div>
-            </div>
-        )
-    }
-
-    if (step.type === 'context-dialogue') {
-        return (
-            <div className="space-y-6">
-                {/* Dialogue bubble */}
-                <div className="bg-card border border-border rounded-2xl p-5 relative">
-                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-                        <MessageCircle className="w-3.5 h-3.5 text-primary" />
-                        <span>{step.dialoguePartner}</span>
-                    </div>
-                    <div className="flex items-start justify-between gap-3">
-                        <div>
-                            <div className="font-serif text-xl text-primary">
-                                {step.partnerSays}
-                            </div>
-                            {step.partnerSaysPhonetic && (
-                                <div className="text-xs text-muted-foreground mt-0.5">
-                                    {step.partnerSaysPhonetic}
-                                </div>
-                            )}
-                            <div className="text-xs text-muted-foreground mt-1 italic">
-                                "{step.partnerSaysTranslation}"
-                            </div>
+                    <div className="relative">
+                        <div className="mb-3 flex justify-center">
+                            <CairnMascot
+                                className="h-20 w-auto"
+                                mood="celebrate"
+                                label="Cairn celebrates a finished lesson"
+                            />
+                        </div>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+                            Path complete
+                        </p>
+                        <h2 className="mt-2 font-serif text-2xl font-semibold tracking-tight text-foreground">
+                            Well done.
+                        </h2>
+                        <p className="mt-2 text-sm text-muted-foreground">
+                            You finished &ldquo;{lesson.title}&rdquo;. Later
+                            lessons will weave in short reviews of what you
+                            already know.
+                        </p>
+                        <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-center">
+                            <Button asChild variant="default" className="rounded-full">
+                                <Link href="/lessons">Back to lessons</Link>
+                            </Button>
+                            {nextSlug ? (
+                                <Button asChild variant="outline" className="rounded-full">
+                                    <Link
+                                        href={`/lessons/${nextSlug}?direction=${direction}`}
+                                    >
+                                        Next: {nextTitle ?? "Continue"}
+                                    </Link>
+                                </Button>
+                            ) : null}
                         </div>
                         <button
                             type="button"
+                            className="mt-4 text-xs font-medium text-primary hover:underline"
                             onClick={() => {
-                                speak(step.partnerSays, currentLanguage?.voice);
+                                setFinished(false);
+                                setStepIndex(0);
+                                setSelected(null);
+                                setChecked(false);
+                                setSpoke(false);
+                                setEvaluation("idle");
+                                persist(0, false);
                             }}
-                            className="p-2 rounded-full bg-card text-foreground hover:bg-accent transition-colors shrink-0"
-                            title="Listen to partner"
                         >
-                            <Volume2 className="w-4 h-4" />
+                            Review from the start
                         </button>
                     </div>
                 </div>
+            ) : (
+                /* ── Active step card ──────────────────────────────────── */
+                <div className="relative mt-6 overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6">
+                    <div
+                        className="lang-wash pointer-events-none absolute inset-0 opacity-30"
+                        aria-hidden
+                    />
+                    <div className="relative">
+                        <StepBody
+                            step={step}
+                            selected={selected}
+                            checked={checked}
+                            spoke={spoke}
+                            onSelect={setSelected}
+                            onSpoke={() => setSpoke(true)}
+                            matchedPairIds={matchedPairIds}
+                            setMatchedPairIds={setMatchedPairIds}
+                            evaluation={evaluation}
+                            selectedTokens={selectedTokens}
+                            setSelectedTokens={setSelectedTokens}
+                            availableTokens={availableTokens}
+                            setAvailableTokens={setAvailableTokens}
+                            selectedOption={selectedOption}
+                            setSelectedOption={setSelectedOption}
+                            currentLanguage={currentLanguage}
+                        />
 
-                {/* Response Options */}
-                <div className="space-y-3">
-                    {step.options.map((option, idx) => {
-                        const isSelected = selectedOption === option;
-                        return (
-                            <button
-                                key={idx}
-                                id={`dialogue-option-${idx}`}
-                                type="button"
-                                disabled={evaluation !== 'idle'}
-                                onClick={() => {
-                                    sound.playPebbleTap(true);
-                                    setSelectedOption(option);
-                                    speak(option, currentLanguage?.voice);
-                                }}
-                                className={`w-full p-4 rounded-2xl text-left border-2 transition-all ${isSelected
-                                    ? 'border-primary bg-accent text-primary shadow-xs'
-                                    : 'border-border bg-background hover:bg-muted'
-                                    }`}
-                            >
-                                <span className="text-sm sm:text-base font-medium text-foreground">
-                                    {option}
-                                </span>
-                            </button>
-                        );
-                    })}
+                        {/* ── Bottom evaluation / nav bar ───────────────── */}
+                        <div
+                            id="lesson-bottom-bar"
+                            className={cn(
+                                "mt-5 w-full border-t pt-5 transition-colors duration-200",
+                                evaluation === "correct"
+                                    ? "border-primary/25"
+                                    : evaluation === "review"
+                                        ? "border-border"
+                                        : "border-border",
+                            )}
+                        >
+                            {isInteractiveStep ? (
+                                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                                    {evaluation === "idle" ? (
+                                        <>
+                                            <p className="text-xs text-muted-foreground">
+                                                Take your time. Mindful learning
+                                                thrives on presence.
+                                            </p>
+                                            <button
+                                                id="check-answer-btn"
+                                                type="button"
+                                                disabled={!canSubmit()}
+                                                onClick={handleCheck}
+                                                className={cn(
+                                                    "rounded-full px-7 py-3 text-sm font-semibold shadow-xs transition-all",
+                                                    canSubmit()
+                                                        ? "cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-md"
+                                                        : "cursor-not-allowed bg-muted text-muted-foreground",
+                                                )}
+                                            >
+                                                Check answer
+                                            </button>
+                                        </>
+                                    ) : evaluation === "correct" ? (
+                                        <>
+                                            <div className="flex items-start gap-3">
+                                                <CairnMascot
+                                                    className="h-10 w-auto shrink-0"
+                                                    mood="happy"
+                                                    label="Cairn is happy with your answer"
+                                                />
+                                                <div>
+                                                    <div className="text-sm font-semibold text-primary">
+                                                        Serene understanding
+                                                    </div>
+                                                    <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+                                                        {feedbackExplanation}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button
+                                                id="continue-correct-btn"
+                                                type="button"
+                                                onClick={handleContinue}
+                                                className="flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground shadow-xs transition-all hover:bg-primary/90 hover:shadow-md"
+                                            >
+                                                <span>Continue</span>
+                                                <ArrowRight className="h-4 w-4" />
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="flex items-start gap-3">
+                                                <CairnMascot
+                                                    className="h-10 w-auto shrink-0"
+                                                    mood="puzzled"
+                                                    label="Cairn reflects with you"
+                                                />
+                                                <div>
+                                                    <div className="text-sm font-semibold text-primary">
+                                                        Mindful reflection
+                                                    </div>
+                                                    <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+                                                        {feedbackExplanation}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button
+                                                id="continue-review-btn"
+                                                type="button"
+                                                onClick={handleContinue}
+                                                className="flex items-center justify-center gap-2 rounded-full bg-secondary px-7 py-3 text-sm font-semibold text-secondary-foreground shadow-xs transition-all hover:bg-secondary/90 hover:shadow-md"
+                                            >
+                                                <span>Understood</span>
+                                                <ArrowRight className="h-4 w-4" />
+                                            </button>
+                                        </>
+                                    )}
+                                </div>
+                            ) : (
+                                <div className="flex items-center justify-between gap-3">
+                                    <Button
+                                        type="button"
+                                        variant="ghost"
+                                        className="rounded-full"
+                                        onClick={goBack}
+                                        disabled={stepIndex === 0}
+                                    >
+                                        Back
+                                    </Button>
+                                    <Button
+                                        type="button"
+                                        className="rounded-full"
+                                        onClick={goNext}
+                                    >
+                                        {stepIndex >= steps.length - 1
+                                            ? "Finish"
+                                            : "Continue"}
+                                    </Button>
+                                </div>
+                            )}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        )
-    }
-
-    return (
-        <div>
-            <div className="flex flex-wrap items-center gap-2">
-                <h2 className="font-display text-xl font-medium">{step.title}</h2>
-                {step.type === "check" && step.isReview ? (
-                    <span className="rounded-full bg-primary/15 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-primary">
-                        Review
-                    </span>
-                ) : null}
-            </div>
-            <p className="mt-3 text-sm">{step.prompt}</p>
-            <ul className="mt-4 space-y-2">
-                {step.options.map((opt, i) => {
-                    const isCorrect = i === step.answerIndex;
-                    const isSelected = selected === i;
-                    const phonetic = step.type === "listen" ? step?.phoneticAnswers?.[opt] : null;
-
-                    let style =
-                        "border-border bg-background hover:bg-muted";
-                    if (checked && isCorrect) {
-                        style = "border-primary bg-accent text-accent-foreground";
-                    } else if (checked && isSelected && !isCorrect) {
-                        style =
-                            "border-destructive/50 bg-destructive/5 text-foreground";
-                    } else if (isSelected) {
-                        style = "border-primary bg-accent text-primary";
-                    }
-
-                    return (
-                        <li key={opt}>
-                            <button
-                                type="button"
-                                disabled={evaluation !== 'idle' || checked}
-                                onClick={() => {
-                                    sound.playPebbleTap(true);
-                                    onSelect(i);
-                                    setSelectedOption(opt);
-                                    speak(opt, currentLanguage?.voice);
-                                }}
-                                className={`w-full rounded-lg border px-3 py-2.5 text-left text-sm transition-colors ${style}`}
-                            >
-                                <div className="font-medium text-base">{opt}</div>
-                                {phonetic && (
-                                    <div className="text-xs text-[#717E73] mt-0.5">{phonetic}</div>
-                                )}
-                            </button>
-                        </li>
-                    );
-                })}
-            </ul>
-            {checked && step?.explanation ? (
-                <p className="mt-3 text-sm text-muted-foreground">
-                    {step.explanation}
-                </p>
-            ) : null}
+            )}
         </div>
     );
 }

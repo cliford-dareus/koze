@@ -9,6 +9,7 @@ import { ProgressState } from "@/lib/progress";
 import { sound } from "@/lib/sound";
 import { speak, stopSpeaking } from "@/lib/speech";
 import { CheckCircle2, Eye, EyeOff, Headphones, Info, Pause, Play, Plus, RotateCcw, SkipBack, SkipForward, Volume2, Wind } from "lucide-react";
+import CairnMascot from "@/app/_components/cairn-mascot";
 import { useEffect, useState } from "react";
 
 type Props = {
@@ -182,9 +183,9 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                             : { vocab: matchingVocab, lineId: lineId || '' }
                                     );
                                 }}
-                                className={`inline underline decoration-dotted decoration-[#7FA98D] underline-offset-4 cursor-pointer transition-all px-0.5 rounded text-left ${isSelected
-                                    ? 'bg-card text-[#BEE3C8] font-medium'
-                                    : 'text-foreground hover:text-[#BEE3C8] hover:bg-background'
+                                className={`inline underline decoration-dotted decoration-primary underline-offset-4 cursor-pointer transition-all px-0.5 rounded text-left ${isSelected
+                                    ? 'bg-card text-primary font-medium'
+                                    : 'text-foreground hover:text-primary hover:bg-background'
                                     }`}
                                 title={`Inspect "${matchingVocab.word}" (${matchingVocab.translation})`}
                             >
@@ -201,25 +202,29 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
     return (
         <Drawer open={!!activeTrackId} onOpenChange={() => setActiveTrackId(null)}>
             <DrawerContent className="min-h-screen h-full">
-                <div className="p-4 h-full overflow-y-auto">
-                    <div className="bg-background border border-border rounded-2xl p-4 sm:p-5 space-y-4">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="relative mx-auto h-full max-w-2xl overflow-y-auto px-4 pb-10 pt-2">
+                    <div className="lang-wash pointer-events-none absolute inset-0 opacity-25" aria-hidden />
+                    <div className="relative space-y-4 overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-soft sm:p-5">
+                        <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
                             <div>
-                                <div className="flex items-center gap-2">
-                                    <span className="text-[11px] font-medium text-[#7D8F82] bg-background px-2.5 py-0.5 rounded-full border border-border">
+                                <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+                                    Studio · Listening
+                                </p>
+                                <div className="flex flex-wrap items-center gap-2">
+                                    <span className="rounded-full border border-border bg-background px-2.5 py-0.5 text-[11px] font-medium text-primary">
                                         {activeTrack?.category}
                                     </span>
-                                    <span className="text-xs text-[#70756F] capitalize">
+                                    <span className="text-xs text-muted-foreground capitalize">
                                         {activeTrack?.level} level • {activeTrack?.durationMinutes} min
                                     </span>
                                     {isCurrentTrackCompleted && (
-                                        <span className="text-[11px] text-[#A8D3B6] flex items-center gap-1">
+                                        <span className="text-[11px] text-primary flex items-center gap-1">
                                             <CheckCircle2 className="w-3.5 h-3.5" />
                                             <span>Absorbed</span>
                                         </span>
                                     )}
                                 </div>
-                                <h2 className="font-serif text-2xl font-normal text-foreground mt-1.5">
+                                <h2 className="mt-1.5 font-serif text-2xl font-semibold tracking-tight text-foreground">
                                     {activeTrack?.title}
                                 </h2>
                                 <p className="font-serif text-sm text-muted-foreground mt-0.5">
@@ -235,7 +240,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                     type="button"
                                     // onClick={handleToggleAmbient}
                                     className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium cursor-pointer transition-all border ${ambientSoundActive
-                                        ? 'bg-card text-[#BEE3C8] border-[#3B5441] shadow-xs'
+                                        ? 'bg-card text-primary border-border shadow-xs'
                                         : 'bg-background text-muted-foreground hover:text-foreground border-border'
                                         }`}
                                     title="Toggle background ambient atmosphere (rustling wind/tea rain)"
@@ -267,8 +272,8 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                         </div>
 
                         {/* Cultural atmosphere note */}
-                        <div className="text-xs text-muted-foreground bg-background rounded-xl p-3 border border-border flex items-start gap-2.5">
-                            <Info className="w-4 h-4 text-[#7FA98D] shrink-0 mt-0.5" />
+                        <div className="flex items-start gap-2.5 rounded-2xl border border-border bg-background p-3 text-xs text-muted-foreground">
+                            <Info className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                             <div>
                                 <span className="font-semibold text-primary">Acoustic Atmosphere: </span>
                                 <span>{activeTrack?.soundscapeDescription}</span>
@@ -288,7 +293,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                         setFocusMode('immersion');
                                     }}
                                     className={`px-3 py-1 rounded-full text-xs font-medium cursor-pointer transition-colors ${focusMode === 'immersion'
-                                        ? 'bg-card text-primary font-semibold border border-[#3A4F3E]'
+                                        ? 'bg-card text-primary font-semibold border border-border'
                                         : 'bg-background text-muted-foreground hover:text-foreground border border-border'
                                         }`}
                                 >
@@ -301,7 +306,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                         setFocusMode('guided');
                                     }}
                                     className={`px-3 py-1 rounded-full text-xs font-medium cursor-pointer transition-colors ${focusMode === 'guided'
-                                        ? 'bg-card text-primary font-semibold border border-[#3A4F3E]'
+                                        ? 'bg-card text-primary font-semibold border border-border'
                                         : 'bg-background text-muted-foreground hover:text-foreground border border-border'
                                         }`}
                                 >
@@ -314,7 +319,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                         setFocusMode('bilingual');
                                     }}
                                     className={`px-3 py-1 rounded-full text-xs font-medium cursor-pointer transition-colors ${focusMode === 'bilingual'
-                                        ? 'bg-card text-primary font-semibold border border-[#3A4F3E]'
+                                        ? 'bg-card text-primary font-semibold border border-border'
                                         : 'bg-background text-muted-foreground hover:text-foreground border border-border'
                                         }`}
                                 >
@@ -327,7 +332,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                     {/* ================= AUDIO PLAYER CONTROLS DOCK ================= */}
                     <div
                         id="listening-audio-player-bar"
-                        className="bg-background border border-border rounded-2xl p-4 mt-4 sm:p-5 shadow-lg flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                        className="relative mt-4 flex flex-col justify-between gap-4 overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-soft sm:flex-row sm:items-center sm:p-5"
                     >
                         {/* Left: Active speaker indicator and wave pulses */}
                         <div className="flex items-center gap-3.5">
@@ -366,7 +371,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                             {waveHeight.map((h, i) => (
                                 <div
                                     key={i}
-                                    className="w-1 rounded-full bg-[#7FA98D] transition-all duration-150"
+                                    className="w-1 rounded-full bg-primary transition-all duration-150"
                                     style={{
                                         height: `${h}%`,
                                         opacity: isPlaying ? 0.9 : 0.3,
@@ -392,7 +397,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                 id="listening-master-play-pause-btn"
                                 type="button"
                                 onClick={handleTogglePlay}
-                                className="px-5 py-2.5 rounded-full  bg-inherit hover:bg-card text-foreground border border-border font-semibold text-xs transition-all shadow-md hover:scale-105 cursor-pointer flex items-center gap-2"
+                                className="flex cursor-pointer items-center gap-2 rounded-full border border-primary bg-primary px-5 py-2.5 text-xs font-semibold text-primary-foreground shadow-xs transition-all hover:bg-primary/90 hover:scale-105"
                             >
                                 {isPlaying ? (
                                     <>
@@ -446,7 +451,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                         }`}
                                 >
                                     <Headphones
-                                        className={`w-10 h-10 text-[#A5C9B1] transition-transform ${isPlaying ? 'scale-110' : 'scale-100'
+                                        className={`w-10 h-10 text-foreground transition-transform ${isPlaying ? 'scale-110' : 'scale-100'
                                             }`}
                                     />
                                 </div>
@@ -470,7 +475,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                         sound.playPebbleTap(progress.soundEnabled);
                                         setPeekImmersion(!peekImmersion);
                                     }}
-                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background hover:bg-[#1E201C] border border-[#272926] text-xs text-muted-foreground hover:text-foreground cursor-pointer transition-colors"
+                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background hover:bg-muted border border-border text-xs text-muted-foreground hover:text-foreground cursor-pointer transition-colors"
                                 >
                                     {peekImmersion ? (
                                         <>
@@ -500,7 +505,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                             {activeTrack?.lines[currentLineIndex]?.text}
                                         </div>
                                         {activeTrack?.lines[currentLineIndex]?.phonetic && (
-                                            <div className="text-xs text-[#8E9E92] font-mono">
+                                            <div className="text-xs text-muted-foreground font-mono">
                                                 {activeTrack?.lines[currentLineIndex]?.phonetic}
                                             </div>
                                         )}
@@ -528,7 +533,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                         id={`line-card-${line.id}`}
                                         onClick={() => handleSelectLineToPlay(idx)}
                                         className={`group rounded-2xl p-5 border mt-4 transition-all cursor-pointer ${isCurrent
-                                            ? 'bg-card border-[#395240] shadow-md'
+                                            ? 'bg-card border-border shadow-md'
                                             : 'bg-background hover:bg-card border-border'
                                             }`}
                                     >
@@ -536,10 +541,10 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                             <div className="flex items-center gap-2.5">
                                                 <span className="text-xl">{speaker?.avatar || '👤'}</span>
                                                 <div>
-                                                    <span className="text-xs font-semibold text-[#ECEBE6]">
+                                                    <span className="text-xs font-semibold text-foreground">
                                                         {speaker?.name}
                                                     </span>
-                                                    <span className="text-[11px] text-[#70756F] ml-1.5">
+                                                    <span className="text-[11px] text-muted-foreground ml-1.5">
                                                         {speaker?.role}
                                                     </span>
                                                 </div>
@@ -547,7 +552,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
 
                                             <div className="flex items-center gap-2">
                                                 {isCurrent && isPlaying && (
-                                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#293B2F] text-[10px] text-[#A8D3B6] animate-pulse">
+                                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent text-[10px] text-primary animate-pulse">
                                                         <Volume2 className="w-3 h-3" />
                                                         <span>Speaking</span>
                                                     </span>
@@ -558,7 +563,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                                         e.stopPropagation();
                                                         handleSelectLineToPlay(idx);
                                                     }}
-                                                    className="p-1.5 rounded-lg text-muted group-hover:text-foreground hover:bg-[#252824] transition-colors"
+                                                    className="p-1.5 rounded-lg text-muted group-hover:text-foreground hover:bg-muted transition-colors"
                                                     title="Play this line"
                                                 >
                                                     <Play className="w-3.5 h-3.5 fill-current" />
@@ -584,7 +589,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
 
                                         {/* English translation (Always shown in bilingual, or when active in guided) */}
                                         {(focusMode === 'bilingual' || isCurrent) && (
-                                            <div className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed border-t border-[#252824] pt-2">
+                                            <div className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed border-t border-border pt-2">
                                                 {line.translation}
                                             </div>
                                         )}
@@ -596,17 +601,17 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
 
                     {/* ================= VOCABULARY INSPECTION MODAL ================= */}
                     <Dialog open={!!activeVocab} onOpenChange={() => setActiveVocab(null)}>
-                        <DialogContent className="w-[90%] bg-[#1C211D] border border-[#344537] rounded-2xl p-5 shadow-2xl animate-fade-in">
+                        <DialogContent className="w-[90%] rounded-2xl border border-border bg-card p-5 shadow-2xl animate-fade-in">
                             <div className="flex items-start justify-between gap-3">
                                 <div>
-                                    <div className="text-[10px] uppercase font-semibold text-[#7FA98D] tracking-wider">
+                                    <div className="text-[10px] uppercase font-semibold text-primary tracking-wider">
                                         Heard in Dialogue
                                     </div>
-                                    <h4 className="font-serif text-2xl text-[#ECEBE6] mt-0.5">
+                                    <h4 className="font-serif text-2xl text-foreground mt-0.5">
                                         {activeVocab?.vocab.word}
                                     </h4>
                                     {activeVocab?.vocab.phonetic && (
-                                        <div className="text-xs text-[#8EA092] font-mono mt-0.5">
+                                        <div className="text-xs text-muted-foreground font-mono mt-0.5">
                                             {activeVocab.vocab.phonetic}
                                         </div>
                                     )}
@@ -629,7 +634,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                                 window.speechSynthesis.speak(utt);
                                             }
                                         }}
-                                        className="p-2 rounded-full bg-[#252E27] hover:bg-[#303B32] text-[#A8D3B6] cursor-pointer transition-colors border border-[#37493A]"
+                                        className="p-2 rounded-full bg-muted hover:bg-muted text-primary cursor-pointer transition-colors border border-border"
                                         title="Pronounce word"
                                     >
                                         <Volume2 className="w-4 h-4" />
@@ -637,12 +642,12 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                 </div>
                             </div>
 
-                            <div className="mt-3 pt-3 border-t border-[#2A362D] space-y-1.5">
-                                <div className="text-sm font-medium text-[#ECEBE6]">
+                            <div className="mt-3 pt-3 border-t border-border space-y-1.5">
+                                <div className="text-sm font-medium text-foreground">
                                     "{activeVocab?.vocab.translation}"
                                 </div>
                                 {activeVocab?.vocab.note && (
-                                    <div className="text-xs text-[#8A968B] italic">
+                                    <div className="text-xs text-muted-foreground italic">
                                         Cultural Note: {activeVocab?.vocab.note}
                                     </div>
                                 )}
@@ -652,7 +657,7 @@ const ListeningManager = ({ activeTrackId, setActiveTrackId, progress, activeTra
                                 <button
                                     type="button"
                                     // onClick={() => handleAddToWordGarden(activeVocab?.vocab)}
-                                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#2E4133] hover:bg-[#3A5240] text-[#BEE3C8] text-xs font-semibold transition-all cursor-pointer border border-[#435F4B] shadow-xs"
+                                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary hover:bg-primary/90 text-primary text-xs font-semibold transition-all cursor-pointer border border-primary/30 shadow-xs"
                                 >
                                     <Plus className="w-3.5 h-3.5" />
                                     <span>Add to Word Garden</span>

@@ -6,6 +6,7 @@ import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/app/_components/ui/button";
 import { Input } from "@/app/_components/ui/input";
+import CairnMascot from "@/app/_components/cairn-mascot";
 
 function LoginForm() {
   const router = useRouter();
@@ -45,6 +46,9 @@ function LoginForm() {
 
   return (
     <div className="mx-auto w-full max-w-md">
+      <div className="mb-4 flex justify-center">
+        <CairnMascot className="h-20 w-auto" mood="idle" label="Cairn welcomes you back" />
+      </div>
       <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
         Welcome back
       </p>

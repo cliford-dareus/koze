@@ -1,31 +1,358 @@
 "use client";
 
 import Link from "next/link";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { LucideLock, LucideMic, LucideSend, LucideVolume2 } from "lucide-react";
+import {
+    TUTOR_SCENARIOS, TUTOR_UNIT_LABEL, getScenario, isScenarioUnlocked, unlockHint,
+    type TutorScenario, type TutorUnit,
+} from "@/data/tutor-scenarios";
+import { Button } from "@/app/_components/ui/button";
+import {
+    defaultProgress, loadProgress, recordActivity, removeSavedPhrase, savePhrase,
+    type ProgressState, type SavedPhrase,
+} from "@/lib/progress";
+import { directionForLearningLanguage } from "@/lib/learning-prefs";
+import { LANGUAGES, voiceFor } from "@/lib/languages";
+import { speak, startListening } from "@/lib/speech";
+import { cn } from "@/lib/utils";
+import CairnMascot from "@/app/_components/cairn-mascot";
 
-/** Temporary shell while full sanctuary redesign is applied. */
+type ChatMsg = { role: "user" | "assistant"; content: string; correction?: string | null; betterPhrase?: string | null };
+type TutorApiOk = { success: true; reply: string; correction: string | null; betterPhrase: string | null; continue: boolean; summaryHint: string | null };
+
 export default function PracticePage() {
-  return (
-    <div className="relative mx-auto flex w-full max-w-lg flex-col pb-10">
-      <div className="lang-wash pointer-events-none absolute inset-0 opacity-20" aria-hidden />
-      <header className="relative">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-          Studio · Practice
-        </p>
-        <h1 className="mt-1.5 font-serif text-3xl font-semibold tracking-tight text-foreground">
-          A patient conversation.
-        </h1>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          The full sanctuary redesign is ready — replace this file with{" "}
-          <code className="text-xs">artifacts/practice-page.tsx</code> from the
-          redesign session, or wait for the complete commit.
-        </p>
-      </header>
-      <Link
-        href="/chat"
-        className="relative mt-6 text-sm font-medium text-primary hover:underline"
-      >
-        Back to practice home
-      </Link>
-    </div>
-  );
-}
+    const [progress, setProgress] = useState<ProgressState>(defaultProgress());
+    const [phase, setPhase] = useState<"pick" | "chat" | "summary">("pick");
+    const [scenario, setScenario] = useState<TutorScenario | null>(null);
+    const [messages, setMessages] = useState<ChatMsg[]>([]);
+    const [draft, setDraft] = useState("");
+    const [busy, setBusy] = useState(false);
+    const [error, setError] = useState("");
+    const [listening, setListening] = useState(false);
+    const [userTurns, setUserTurns] = useState(0);
+    const [summaryHint, setSummaryHint] = useState<string | null>(null);
+    const [lastBetter, setLastBetter] = useState<string | null>(null);
+    const [phraseSaved, setPhraseSaved] = useState(false);
+    const stopListenRef = useRef<(() => void) | null>(null);
+
+    const direction = useMemo(
+        () => directionForLearningLanguage(progress.learningLanguage!, progress.nativeLanguage!),
+        [progress.learningLanguage, progress.nativeLanguage],
+    );
+    const voiceLang = voiceFor(progress.learningLanguage!);
+
+    useEffect(() => {
+        const refresh = () => setProgress(loadProgress());
+        refresh();
+        window.addEventListener("koze-progress", refresh);
+        window.addEventListener("storage", refresh);
+        return () => {
+            window.removeEventListener("koze-progress", refresh);
+            window.removeEventListener("storage", refresh);
+        };
+    }, []);
+
+    const currentLanguage = LANGUAGES.find((l) => l.value === progress.learningLanguage) || LANGUAGES[0];
+    const units = useMemo(() => {
+        const map = new Map<TutorUnit, TutorScenario[]>();
+        for (const s of TUTOR_SCENARIOS) {
+            const list = map.get(s.unit) ?? [];
+            list.push(s);
+            map.set(s.unit, list);
+        }
+        return map;
+    }, []);
+    const savedPhrases: SavedPhrase[] = progress?.savedPhrases ?? [];
+
+    const callTutor = useCallback(
+        async (opts: { scenarioId: string; messages: { role: "user" | "assistant"; content: string }[]; start?: boolean }) => {
+            const res = await fetch("/api/tutor", {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({
+                    scenarioId: opts.scenarioId,
+                    targetLanguage: progress.learningLanguage,
+                    supportLanguage: progress.nativeLanguage,
+                    messages: opts.messages,
+                    start: opts.start,
+                }),
+            });
+            const data = await res.json();
+            if (!res.ok || !data?.success) throw new Error(data?.error || "Tutor request failed");
+            return data as TutorApiOk;
+        },
+        [progress.learningLanguage, progress.nativeLanguage],
+    );
+
+    const beginScenario = async (s: TutorScenario) => {
+        const p = progress ?? loadProgress();
+        if (!isScenarioUnlocked(s, p, direction)) {
+            setError(unlockHint(s) || "Complete the related lesson first.");
+            return;
+        }
+        setError("");
+        setScenario(s);
+        setMessages([]);
+        setUserTurns(0);
+        setSummaryHint(null);
+        setLastBetter(null);
+        setPhraseSaved(false);
+        setPhase("chat");
+        setBusy(true);
+        try {
+            const data = await callTutor({ scenarioId: s.id, messages: [], start: true });
+            setMessages([{ role: "assistant", content: data.reply }]);
+            void speak(data.reply, voiceLang);
+        } catch (e) {
+            setError(e instanceof Error ? e.message : "Could not start.");
+            setPhase("pick");
+            setScenario(null);
+        } finally {
+            setBusy(false);
+        }
+    };
+
+    const finishSession = (hint: string | null, better: string | null) => {
+        setSummaryHint(hint);
+        setLastBetter(better);
+        setPhase("summary");
+        recordActivity("practice", { topic: scenario?.id ?? "practice" });
+        setProgress(loadProgress());
+    };
+
+    const send = async (text: string) => {
+        const content = text.trim();
+        if (!content || busy || !scenario) return;
+        setDraft("");
+        setError("");
+        const nextUser: ChatMsg = { role: "user", content };
+        const prior = [...messages, nextUser];
+        setMessages(prior);
+        const turns = userTurns + 1;
+        setUserTurns(turns);
+        setBusy(true);
+        try {
+            const data = await callTutor({
+                scenarioId: scenario.id,
+                messages: prior.map((m) => ({ role: m.role, content: m.content })),
+            });
+            const assistant: ChatMsg = {
+                role: "assistant",
+                content: data.reply,
+                correction: data.correction,
+                betterPhrase: data.betterPhrase,
+            };
+            setMessages([...prior, assistant]);
+            void speak(data.reply, voiceLang);
+            const hitLimit = turns >= scenario.maxTurns;
+            if (!data.continue || hitLimit) {
+                finishSession(
+                    data.summaryHint || (hitLimit ? "Nice work staying in the scene. Try again when you like." : null),
+                    data.betterPhrase,
+                );
+            }
+        } catch (e) {
+            setError(e instanceof Error ? e.message : "Something went wrong.");
+        } finally {
+            setBusy(false);
+        }
+    };
+
+    const listen = () => {
+        if (listening || busy) return;
+        setListening(true);
+        const stop = startListening(voiceLang, (text) => { setDraft(text); setListening(false); }, () => setListening(false));
+        stopListenRef.current = stop;
+        if (!stop) {
+            setListening(false);
+            setError("Voice input is not available in this browser.");
+        }
+    };
+
+    const reset = () => {
+        stopListenRef.current?.();
+        setPhase("pick");
+        setScenario(null);
+        setMessages([]);
+        setDraft("");
+        setError("");
+        setUserTurns(0);
+        setSummaryHint(null);
+        setLastBetter(null);
+        setPhraseSaved(false);
+        setListening(false);
+        setProgress(loadProgress());
+    };
+
+    const onSavePhrase = () => {
+        if (!lastBetter) return;
+        if (savePhrase({ text: lastBetter, scenarioId: scenario?.id })) {
+            setPhraseSaved(true);
+            setProgress(loadProgress());
+        }
+    };
+
+    if (phase === "pick") {
+        return (
+            <div className="relative mx-auto flex w-full max-w-lg flex-col pb-10">
+                <div className="lang-wash pointer-events-none absolute inset-0 opacity-20" aria-hidden />
+                <header className="relative">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">Studio · Practice</p>
+                    <h1 className="mt-1.5 font-serif text-3xl font-semibold tracking-tight text-foreground">A patient conversation.</h1>
+                    <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">
+                        Roleplays unlock as you finish related lessons. Practicing{" "}
+                        <span className="font-medium text-foreground">{currentLanguage.name}</span>.
+                    </p>
+                </header>
+                {error ? <p className="relative mt-4 text-sm text-destructive" role="alert">{error}</p> : null}
+                {savedPhrases.length > 0 ? (
+                    <div className="relative mt-6 overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-soft">
+                        <div className="lang-wash pointer-events-none absolute inset-0 opacity-20" aria-hidden />
+                        <p className="relative text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">Saved for review</p>
+                        <ul className="relative mt-3 space-y-2">
+                            {savedPhrases.slice(0, 8).map((ph) => (
+                                <li key={ph.id} className="flex items-start justify-between gap-2 text-sm">
+                                    <button type="button" className="min-w-0 flex-1 text-left font-medium hover:text-primary" onClick={() => void speak(ph.text, voiceLang)}>{ph.text}</button>
+                                    <button type="button" className="shrink-0 text-xs text-muted-foreground hover:text-destructive" onClick={() => { removeSavedPhrase(ph.id); setProgress(loadProgress()); }}>Remove</button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ) : null}
+                <div className="relative mt-8 space-y-8">
+                    {Array.from(units.entries()).map(([unit, list]) => (
+                        <section key={unit}>
+                            <h2 className="font-serif text-lg font-semibold tracking-tight text-foreground">{TUTOR_UNIT_LABEL[unit]}</h2>
+                            <ul className="mt-3 space-y-2.5">
+                                {list.map((s) => {
+                                    const unlocked = progress ? isScenarioUnlocked(s, progress, direction) : true;
+                                    return (
+                                        <li key={s.id}>
+                                            <button type="button" disabled={busy || !unlocked} onClick={() => void beginScenario(s)}
+                                                className={cn("w-full rounded-2xl border border-border bg-card p-4 text-left shadow-soft transition-all", unlocked ? "hover:-translate-y-0.5 hover:border-primary/30" : "opacity-70")}>
+                                                <div className="flex items-start justify-between gap-2">
+                                                    <p className="font-serif text-base font-medium text-foreground">{s.title}</p>
+                                                    {!unlocked ? <LucideLock size={16} className="shrink-0 text-muted-foreground" /> : null}
+                                                </div>
+                                                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{s.description}</p>
+                                                <p className="mt-2 text-xs font-medium text-primary">{unlocked ? `Start · up to ${s.maxTurns} turns →` : unlockHint(s)}</p>
+                                            </button>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </section>
+                    ))}
+                </div>
+                <Button variant="ghost" className="relative mt-6" asChild><Link href="/chat">Back to practice home</Link></Button>
+            </div>
+        );
+    }
+
+    if (phase === "summary" && scenario) {
+        return (
+            <div className="relative mx-auto flex w-full max-w-lg flex-col pb-10">
+                <div className="lang-wash pointer-events-none absolute inset-0 opacity-25" aria-hidden />
+                <div className="relative mb-4 flex justify-center">
+                    <CairnMascot className="h-20 w-auto" mood="celebrate" label="Cairn celebrates a finished practice" />
+                </div>
+                <header className="relative text-center">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">Path complete</p>
+                    <h1 className="mt-1.5 font-serif text-3xl font-semibold tracking-tight text-foreground">Well held.</h1>
+                    <p className="mt-2 text-sm text-muted-foreground">{scenario.title} · {userTurns} turns · practice XP</p>
+                </header>
+                <div className="relative mt-6 overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6">
+                    <div className="lang-wash pointer-events-none absolute inset-0 opacity-20" aria-hidden />
+                    <div className="relative">
+                        {summaryHint ? <p className="text-sm leading-relaxed text-foreground">{summaryHint}</p> : (
+                            <p className="text-sm text-muted-foreground">You stayed with the scene. That is enough for today.</p>
+                        )}
+                        {lastBetter ? (
+                            <div className="mt-4 overflow-hidden rounded-2xl border border-primary/20 bg-accent/40 px-4 py-3">
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">Phrase to keep</p>
+                                <p className="mt-1 font-serif text-lg font-medium text-foreground">{lastBetter}</p>
+                                <div className="mt-3 flex flex-wrap gap-2">
+                                    <Button type="button" size="sm" variant="outline" className="gap-1.5 rounded-full" onClick={() => void speak(lastBetter, voiceLang)}>
+                                        <LucideVolume2 size={14} /> Hear it
+                                    </Button>
+                                    <Button type="button" size="sm" variant={phraseSaved ? "default" : "outline"} className="rounded-full" disabled={phraseSaved} onClick={onSavePhrase}>
+                                        {phraseSaved ? "Saved for review" : "Save for review"}
+                                    </Button>
+                                </div>
+                            </div>
+                        ) : null}
+                        <p className="mt-4 text-xs text-muted-foreground">Counts toward your daily goal as practice.</p>
+                    </div>
+                </div>
+                <div className="relative mt-6 flex flex-col gap-2 sm:flex-row">
+                    <Button type="button" className="rounded-full" onClick={reset}>Choose another scenario</Button>
+                    <Button type="button" variant="outline" className="rounded-full" onClick={() => { const s = getScenario(scenario.id); if (s) void beginScenario(s); }}>
+                        Replay this one
+                    </Button>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className="relative mx-auto flex w-full max-w-lg flex-col pb-10">
+            <div className="lang-wash pointer-events-none absolute inset-0 opacity-15" aria-hidden />
+            <div className="relative flex items-start justify-between gap-3">
+                <div>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+                        {scenario ? `Studio · ${TUTOR_UNIT_LABEL[scenario.unit]}` : "Studio · Practice"}
+                    </p>
+                    <h1 className="mt-1 font-serif text-2xl font-semibold tracking-tight text-foreground">{scenario?.title ?? "Conversation"}</h1>
+                    {scenario ? <p className="mt-1 text-xs text-muted-foreground">Goal: {scenario.goal}</p> : null}
+                </div>
+                <span className="shrink-0 rounded-full border border-border bg-card px-2.5 py-1 text-xs font-medium text-primary shadow-xs">
+                    {userTurns}/{scenario?.maxTurns ?? "—"}
+                </span>
+            </div>
+            <div className="relative mt-6 flex flex-col gap-3">
+                {messages.map((m, i) => (
+                    <div key={i} className="flex flex-col gap-1.5">
+                        <div className={cn("rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-soft", m.role === "user" ? "ml-6 border border-primary/25 bg-primary text-primary-foreground" : "mr-6 border border-border bg-card text-foreground")}>
+                            {m.content}
+                        </div>
+                        {m.role === "assistant" && (m.correction || m.betterPhrase) ? (
+                            <div className="mr-6 rounded-2xl border border-border bg-muted/40 px-3.5 py-2.5 text-xs text-muted-foreground">
+                                {m.correction ? <p><span className="font-medium text-foreground">Note: </span>{m.correction}</p> : null}
+                                {m.betterPhrase ? <p className={m.correction ? "mt-1" : ""}><span className="font-medium text-foreground">Try: </span>{m.betterPhrase}</p> : null}
+                            </div>
+                        ) : null}
+                    </div>
+                ))}
+                {busy ? (
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <CairnMascot className="h-8 w-auto" mood="thinking" label="Cairn is thinking" />
+                        <span>The tutor is thinking…</span>
+                    </div>
+                ) : null}
+            </div>
+            {listening ? (
+                <p className="relative mt-4 flex items-center gap-2 text-xs font-medium text-primary">
+                    <CairnMascot className="h-7 w-auto" mood="listening" label="Cairn is listening" />
+                    <span className="size-2 animate-pulse rounded-full bg-primary" />
+                    Listening — speak clearly, then pause
+                </p>
+            ) : null}
+            {error ? <p className="relative mt-3 text-sm text-destructive" role="alert">{error}</p> : null}
+            <form className="relative mt-6 flex items-center gap-2" onSubmit={(e) => { e.preventDefault(); void send(draft); }}>
+                <input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="Your reply…" disabled={busy}
+                    className="min-h-11 flex-1 rounded-2xl border border-border bg-card px-4 text-sm outline-none ring-ring focus:ring-2" />
+                <Button type="button" variant="outline" size="icon" onClick={listen} disabled={busy} aria-label="Speak"
+                    className={cn("rounded-full", listening ? "border-primary bg-accent" : "")}>
+                    <LucideMic size={18} />
+                </Button>
+                <Button type="submit" size="icon" disabled={busy || !draft.trim()} aria-label="Send" className="rounded-full">
+                    <LucideSend size={18} />
+                </Button>
+            </form>
+            <button type="button" className="relative mt-4 text-xs font-medium text-muted-foreground hover:text-foreground" onClick={reset}>
+                Leave scenario
+            </button>
+        </div>
+    )
+};

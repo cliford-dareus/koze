@@ -8,6 +8,7 @@ import { LessonDirection } from "@/data/lessons";
 import { useEffect, useRef, useState } from "react";
 import { ProgressState, saveProgress } from "@/lib/progress";
 import { applyLanguageTheme } from "@/lib/language-theme";
+import CairnMascot from "@/app/_components/cairn-mascot";
 
 export function WelcomePanel({ progress }: { progress: ProgressState }) {
     const [isNativeLanguage, setIsNativeLanguage] = useState(progress.nativeLanguage);
@@ -93,6 +94,14 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                             />
                         </div>
 
+                        <div className="flex justify-center pb-2">
+                            <CairnMascot
+                                className="h-28 w-auto"
+                                mood="idle"
+                                label="Cairn welcomes you to the sanctuary"
+                            />
+                        </div>
+
                         <h1
                             id="welcome-title"
                             className="text-center font-serif text-[34px] font-normal tracking-tight text-foreground sm:text-[37px]"
@@ -141,9 +150,8 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                                     )}
                                 </div>
                                 <ChevronDown
-                                    className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${
-                                        nativeDropdownOpen ? "rotate-180" : ""
-                                    }`}
+                                    className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${nativeDropdownOpen ? "rotate-180" : ""
+                                        }`}
                                 />
                             </button>
 
@@ -175,11 +183,10 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                                                     id={`select-native-${lang.value}`}
                                                     type="button"
                                                     onClick={() => handleSelectNative(lang)}
-                                                    className={`flex w-full cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-left text-xs transition-colors ${
-                                                        isSelected
+                                                    className={`flex w-full cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-left text-xs transition-colors ${isSelected
                                                             ? "bg-accent font-medium text-primary"
                                                             : "text-foreground hover:bg-muted"
-                                                    }`}
+                                                        }`}
                                                 >
                                                     <div className="flex items-center gap-2">
                                                         <span>{lang.flag}</span>
@@ -231,9 +238,8 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                                     }}
                                 >
                                     <ChevronDown
-                                        className={`h-4 w-4 stroke-[2.5] transition-transform duration-200 ${
-                                            learningDropdownOpen ? "rotate-180" : ""
-                                        }`}
+                                        className={`h-4 w-4 stroke-[2.5] transition-transform duration-200 ${learningDropdownOpen ? "rotate-180" : ""
+                                            }`}
                                     />
                                 </button>
 
@@ -273,11 +279,10 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                                                 id={`select-learning-${lang.id}`}
                                                 type="button"
                                                 onClick={() => handleSelectLearning(lang)}
-                                                className={`flex w-full cursor-pointer items-center justify-between rounded-xl border p-2.5 text-left transition-all ${
-                                                    isSelected
+                                                className={`flex w-full cursor-pointer items-center justify-between rounded-xl border p-2.5 text-left transition-all ${isSelected
                                                         ? "border-border bg-accent text-primary"
                                                         : "border-transparent text-foreground hover:bg-muted"
-                                                }`}
+                                                    }`}
                                             >
                                                 <div className="flex items-center gap-3">
                                                     <span
