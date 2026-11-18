@@ -64,31 +64,60 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (!existing) {
         await User.create({
           email: user.email.toLowerCase(),
-          name: user.name || user.email.split("@")[0],
+          name: user.name,
           image: user.image,
+          emailVerified: new Date(),
           onboarding: { completed: false },
-          progress: {},
         });
       }
       return true;
     },
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger, session }) {
       if (user) {
         token.id = user.id;
-        token.onboardingCompleted = user.onboardingCompleted;
+        token.onboardingCompleted = user.onboardingCompleted ?? false;
         token.learningLanguage = user.learningLanguage;
         token.nativeLanguage = user.nativeLanguage;
       }
+
+      // Refresh profile flags from DB when needed
+      if (token.email && (trigger === "update" || token.onboardingCompleted === undefined)) {
+        try {
+          await connectDB();
+          const dbUser = await User.findOne({ email: String(token.email).toLowerCase() });
+          if (dbUser) {
+            token.id = String(dbUser._id);
+            token.onboardingCompleted = Boolean(dbUser.onboarding?.completed);
+            token.learningLanguage = dbUser.onboarding?.learningLanguage;
+            token.nativeLanguage = dbUser.onboarding?.nativeLanguage;
+            token.name = dbUser.name ?? dbUser.onboarding?.displayName ?? token.name;
+          }
+        } catch {
+          // keep existing token on transient DB errors
+        }
+      }
+
+      if (trigger === "update" && session) {
+        if (typeof session.onboardingCompleted === "boolean") {
+          token.onboardingCompleted = session.onboardingCompleted;
+        }
+        if (session.learningLanguage) token.learningLanguage = session.learningLanguage;
+        if (session.nativeLanguage) token.nativeLanguage = session.nativeLanguage;
+        if (session.name) token.name = session.name;
+      }
+
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        session.user.id = token.id as string;
+        session.user.id = token.id ?? "";
         session.user.onboardingCompleted = Boolean(token.onboardingCompleted);
-        session.user.learningLanguage = token.learningLanguage as string | undefined;
-        session.user.nativeLanguage = token.nativeLanguage as string | undefined;
+        session.user.learningLanguage = token.learningLanguage;
+        session.user.nativeLanguage = token.nativeLanguage;
       }
       return session;
     },
   },
+  trustHost: true,
+  secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
 });
