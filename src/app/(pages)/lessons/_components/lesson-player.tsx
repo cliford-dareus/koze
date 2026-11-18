@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 import { LANGUAGES } from "@/lib/languages";
 import CairnMascot from "@/app/_components/cairn-mascot";
 import { StepBody } from "./step-body";
+import { nativeFeedback } from "@/lib/native-feedback";
 
 type Props = {
     lesson: Lesson;
@@ -161,24 +162,24 @@ export default function LessonPlayer({
                 selectedTokens.length === step.correctTokens.length &&
                 selectedTokens.every((val, i) => val === step.correctTokens[i]);
             if (!isCorrect) {
-                explanationText = `Target phrasing: "${step.targetSentence}" (${step.targetTranslation})`;
+                explanationText = `${nativeFeedback(direction?.split("-")[0] || "en", "target")}: "${step.targetSentence}" (${step.targetTranslation})`;
             }
         } else if (step.type === "pair-matching") {
             isCorrect = matchedPairIds.length === step.pairs.length;
         }
 
+        const native = direction?.split("-")[0] || "en";
         if (isCorrect) {
             sound.playGentleChime(true);
             setEvaluation("correct");
             setFeedbackExplanation(
-                explanationText || "Wonderful clarity and focus.",
+                explanationText || nativeFeedback(native, "correct"),
             );
         } else {
             sound.playReflectionTone(true);
             setEvaluation("review");
             setFeedbackExplanation(
-                explanationText ||
-                "Take a gentle breath. We will revisit this phrase shortly.",
+                explanationText || nativeFeedback(native, "review"),
             );
         }
         setChecked(true);

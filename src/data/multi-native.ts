@@ -198,3 +198,137 @@ function reverseStep(step: LessonStep): LessonStep {
     }
     return step;
 }
+
+/** Instructional fields that should appear in the learner's native language. */
+const INSTRUCTION_TYPES = new Set([
+    "tip",
+    "intro",
+    "check",
+    "listen",
+    "sentence-builder",
+    "context-dialogue",
+    "pair-matching",
+]);
+
+export function collectInstructional(lessons: Lesson[]): string[] {
+    const seen = new Set<string>();
+    const out: string[] = [];
+    const add = (value?: string) => {
+        const text = value?.trim();
+        if (!text || seen.has(text)) return;
+        seen.add(text);
+        out.push(text);
+    };
+
+    for (const lesson of lessons) {
+        for (const step of lesson.steps) {
+            if (!INSTRUCTION_TYPES.has(step.type) && step.type !== "tip" && step.type !== "intro") {
+                if (typeof (step as { explanation?: string }).explanation === "string") {
+                    add((step as { explanation?: string }).explanation);
+                }
+                continue;
+            }
+            const s = step as {
+                title?: string;
+                body?: string;
+                bullets?: string[];
+                explanation?: string;
+                prompt?: string;
+            };
+            if (step.type === "tip" || step.type === "intro") {
+                add(s.title);
+                add(s.body);
+                s.bullets?.forEach(add);
+            }
+            add(s.explanation);
+            if (step.type !== "tip" && step.type !== "intro") add(s.prompt);
+            if (step.type === "check" || step.type === "listen") add(s.title);
+        }
+    }
+    return out;
+}
+
+function applyText(map: Map<string, string>, value?: string): string | undefined {
+    if (!value) return value;
+    return map.get(value) ?? map.get(value.trim()) ?? value;
+}
+
+/** Replace tip / intro / explanation / instructional prompt text with native translations. */
+export function applyInstructional(lessons: Lesson[], translations: Map<string, string>): Lesson[] {
+    if (!translations.size) return lessons;
+    return lessons.map((lesson) => ({
+        ...lesson,
+        steps: lesson.steps.map((step) => applyInstructionStep(step, translations)),
+    }));
+}
+
+function applyInstructionStep(step: LessonStep, map: Map<string, string>): LessonStep {
+    const next = { ...step } as LessonStep & {
+        title?: string;
+        body?: string;
+        bullets?: string[];
+        explanation?: string;
+        prompt?: string;
+    };
+    if (typeof next.explanation === "string") {
+        next.explanation = applyText(map, next.explanation) ?? next.explanation;
+    }
+    if (step.type === "tip" || step.type === "intro") {
+        if (typeof next.title === "string") next.title = applyText(map, next.title) ?? next.title;
+        if (typeof next.body === "string") next.body = applyText(map, next.body) ?? next.body;
+        if (Array.isArray(next.bullets)) {
+            next.bullets = next.bullets.map((b) => applyText(map, b) ?? b);
+        }
+        return next;
+    }
+    if (
+        step.type === "check" ||
+        step.type === "listen" ||
+        step.type === "sentence-builder" ||
+        step.type === "context-dialogue" ||
+        step.type === "pair-matching"
+    ) {
+        if (typeof next.prompt === "string") next.prompt = applyText(map, next.prompt) ?? next.prompt;
+        if ((step.type === "check" || step.type === "listen") && typeof next.title === "string") {
+            next.title = applyText(map, next.title) ?? next.title;
+        }
+    }
+    return next;
+}
+
+/**
+ * Fetch native-language tips and corrections. No-ops for English or on the server.
+ * Batches of 40 keep the Gemini call small; results are cached by the API.
+ */
+export async function localizeInstructional(
+    lessons: Lesson[],
+    nativeCode: string,
+): Promise<Lesson[]> {
+    if (!nativeCode || nativeCode === "en") return lessons;
+    if (typeof window === "undefined") return lessons;
+
+    const texts = collectInstructional(lessons);
+    if (!texts.length) return lessons;
+
+    const map = new Map<string, string>();
+    const batchSize = 40;
+    for (let i = 0; i < texts.length; i += batchSize) {
+        const batch = texts.slice(i, i + batchSize);
+        try {
+            const res = await fetch("/api/localize", {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({ target: nativeCode, texts: batch }),
+            });
+            if (!res.ok) continue;
+            const data = (await res.json()) as { translations?: string[] };
+            batch.forEach((text, idx) => {
+                const translated = data.translations?.[idx];
+                if (translated) map.set(text, translated);
+            });
+        } catch {
+            // keep English for this batch
+        }
+    }
+    return applyInstructional(lessons, map);
+}

@@ -6,6 +6,7 @@ import {
     buildEnglishGlossary,
     directionLabelFromCodes,
     isDirectionCode,
+    localizeInstructional,
     reversePack,
     splitDirection,
 } from "@/data/multi-native";
@@ -297,9 +298,9 @@ async function loadPacked(direction: string): Promise<Lesson[] | null> {
  * 2. en→target pack, with English glosses swapped for the native language
  * 3. Reverse of en→native when the learner is studying English
  */
-export async function resolveLessons(direction: LessonDirection): Promise<Lesson[]> {
-    if (!direction || !isDirectionCode(direction)) return [];
+const resolvedCache = new Map<string, Lesson[]>();
 
+async function resolveUncached(direction: string): Promise<Lesson[]> {
     const packed = await loadPacked(direction);
     if (packed) return packed;
 
@@ -319,6 +320,24 @@ export async function resolveLessons(direction: LessonDirection): Promise<Lesson
     const nativePack = await loadPacked(`en-${src}`);
     const glossary = nativePack ? buildEnglishGlossary(nativePack) : new Map();
     return adaptPackToNative(targetPack, direction, glossary, languageLabel(src));
+}
+
+/**
+ * Resolve lessons for any native→learning pair.
+ * Dedicated JSON wins; otherwise synthesize from the English hub.
+ * Tips, prompts, and corrections are localized into the native language.
+ * Results are cached in memory so a pair is built once per session.
+ */
+export async function resolveLessons(direction: LessonDirection): Promise<Lesson[]> {
+    if (!direction || !isDirectionCode(direction)) return [];
+    const hit = resolvedCache.get(direction);
+    if (hit) return hit;
+
+    const base = await resolveUncached(direction);
+    const src = direction.split("-")[0] || "en";
+    const localized = await localizeInstructional(base, src);
+    resolvedCache.set(direction, localized);
+    return localized;
 }
 
 export async function getLessonBySlug(
