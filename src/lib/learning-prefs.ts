@@ -1,5 +1,5 @@
 import type { LessonDirection } from "@/data/lessons";
-import { SUPPORTED_DIRECTIONS } from "@/data/lessons";
+import { isDirectionCode } from "@/data/multi-native";
 import { languageLabel } from "@/lib/languages";
 
 export const LEARNING_PREFS_KEY = "koze-learning-prefs-v1";
@@ -44,8 +44,9 @@ export function saveLearningPrefs(prefs: LearningPrefs) {
 }
 
 /**
- * Map native + learning language to a supported lesson direction.
- * Returns null when no pack exists for that pair (so callers can fall back).
+ * Map native + learning language to a direction code.
+ * Any two different known languages are valid (multi-native).
+ * Returns null when the codes are missing or identical.
  */
 export function directionForLearningLanguage(
     learningLanguage: string,
@@ -53,14 +54,9 @@ export function directionForLearningLanguage(
 ): LessonDirection {
     const native = (nativeLanguage || "en").toLowerCase();
     const learning = (learningLanguage || "fr").toLowerCase();
+    if (native === learning) return null;
     const code = `${native}-${learning}`;
-    if ((SUPPORTED_DIRECTIONS as string[]).includes(code)) {
-        return code as LessonDirection;
-    }
-    // Prefer any supported pack that targets the learning language
-    const byTarget = SUPPORTED_DIRECTIONS.find((d) => d.endsWith(`-${learning}`));
-    if (byTarget) return byTarget;
-    return null;
+    return isDirectionCode(code) ? code : null;
 }
 
 export function learningTrackLabel(direction: LessonDirection): string {

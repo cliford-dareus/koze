@@ -5,6 +5,7 @@ import { LanguageOption, LANGUAGES } from "@/lib/languages";
 import { sound } from "@/lib/sound";
 import { ArrowRight, Check, ChevronDown, Search } from "lucide-react";
 import { LessonDirection } from "@/data/lessons";
+import { directionForLearningLanguage } from "@/lib/learning-prefs";
 import { useEffect, useRef, useState } from "react";
 import { ProgressState, saveProgress } from "@/lib/progress";
 import { applyLanguageTheme } from "@/lib/language-theme";
@@ -50,7 +51,7 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
             ...progress,
             nativeLanguage,
             learningLanguage,
-            lessonDirection: `${currentNativeCode}-${learningLanguage}` as LessonDirection,
+            lessonDirection: directionForLearningLanguage(learningLanguage || "fr", currentNativeCode),
         };
         saveProgress(updated);
         applyLanguageTheme(

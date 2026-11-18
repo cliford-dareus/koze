@@ -6,7 +6,6 @@ import { User } from "@/models/User";
 import { defaultProgress, type ProgressState, type SavedPhrase } from "@/lib/progress";
 import { applyActivity, isLessonDirection, mergeProgress } from "@/lib/progress-server";
 import { DEFAULT_DAILY_GOAL } from "@/lib/gamification";
-import { SUPPORTED_DIRECTIONS } from "@/data/lessons";
 
 function normalizeProgress(raw: unknown): ProgressState {
     const base = defaultProgress();
@@ -173,9 +172,7 @@ function serializeProgress(state: ProgressState) {
     };
 }
 
-const directionEnum = z.enum(
-    SUPPORTED_DIRECTIONS as [string, ...string[]],
-);
+const directionEnum = z.string().refine(isLessonDirection, "Unsupported direction");
 
 const activitySchema = z.object({
     kind: z.enum([

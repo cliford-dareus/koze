@@ -100,6 +100,9 @@ describe("isLessonDirection", () => {
   it("accepts known directions and rejects junk", () => {
     expect(isLessonDirection("en-es")).toBe(true);
     expect(isLessonDirection("es-en")).toBe(true);
+    expect(isLessonDirection("es-fr")).toBe(true);
+    expect(isLessonDirection("ht-jp")).toBe(true);
+    expect(isLessonDirection("en-en")).toBe(false);
     expect(isLessonDirection("nope")).toBe(false);
     expect(isLessonDirection(null)).toBe(false);
   });

@@ -13,6 +13,7 @@ import ZenGarden from "./zen-garden";
 import RhythmPanel from "./rhythm-panel";
 import { LessonDirection } from "@/data/lessons";
 import { applyLanguageTheme } from "@/lib/language-theme";
+import { directionForLearningLanguage } from "@/lib/learning-prefs";
 
 function formatPracticeDate(isoDate: string | null | undefined) {
     if (!isoDate) return "Not yet";
@@ -43,10 +44,11 @@ export default function MainHeader({
     const handleSelectLanguage = (lang: LanguageOption) => {
         const native =
             progress.nativeLanguage || progress.lessonDirection?.split("-")[0] || "en";
+        const direction = directionForLearningLanguage(lang.value, native);
         const updated: ProgressState = {
             ...progress,
             learningLanguage: lang.value,
-            lessonDirection: `${native}-${lang.value}` as LessonDirection,
+            lessonDirection: direction,
         };
         saveProgress(updated);
         applyLanguageTheme(lang.themeColor);

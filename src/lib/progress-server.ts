@@ -1,5 +1,5 @@
 import type { LessonDirection } from "@/data/lessons";
-import { SUPPORTED_DIRECTIONS } from "@/data/lessons";
+import { isDirectionCode } from "@/data/multi-native";
 import { applyBadgeUnlocks } from "@/data/badges";
 import {
   applyXpAndDailyGoal,
@@ -15,9 +15,7 @@ import {
 export function isLessonDirection(
   v: unknown,
 ): v is Exclude<LessonDirection, null> {
-  return (
-    typeof v === "string" && (SUPPORTED_DIRECTIONS as string[]).includes(v)
-  );
+  return isDirectionCode(v);
 }
 
 /** UTC calendar day key (YYYY-MM-DD). Matches the keys used by progress tests. */

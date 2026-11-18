@@ -4,7 +4,8 @@ import {
     levelFromXp,
 } from "@/lib/gamification";
 import { applyBadgeUnlocks } from "@/data/badges";
-import { LessonDirection, SUPPORTED_DIRECTIONS } from "@/data/lessons";
+import { LessonDirection } from "@/data/lessons";
+import { isDirectionCode } from "@/data/multi-native";
 
 export type LessonProgressEntry = {
     currentStep: number;
@@ -12,10 +13,7 @@ export type LessonProgressEntry = {
 };
 
 function isLessonDirection(v: unknown): v is Exclude<LessonDirection, null> {
-    return (
-        typeof v === "string" &&
-        (SUPPORTED_DIRECTIONS as string[]).includes(v)
-    );
+    return isDirectionCode(v);
 }
 
 export type SavedPhrase = {

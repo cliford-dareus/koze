@@ -1,34 +1,21 @@
 import MANIFEST_JSON from "./lessons/manifest.json";
+import { languageLabel } from "@/lib/languages";
+import {
+    adaptPackToNative,
+    ALL_DIRECTIONS,
+    buildEnglishGlossary,
+    directionLabelFromCodes,
+    isDirectionCode,
+    reversePack,
+    splitDirection,
+} from "@/data/multi-native";
 
 /**
- * Directions that currently have JSON on disk.
- * Additional packs (en-es, es-en, …) are generated via
- * `node scripts/generate-lesson-packs.mjs` and registered below.
+ * A learning direction is any native→learning pair of known language codes
+ * (e.g. "en-fr", "es-fr", "ht-en"). Dedicated JSON packs exist for the
+ * English hub; other pairs are synthesized at load time.
  */
-export type LessonDirection =
-    | "en-fr"
-    | "fr-en"
-    | "en-es"
-    | "es-en"
-    | "en-ht"
-    | "ht-en"
-    | "en-pt"
-    | "pt-en"
-    | "en-de"
-    | "de-en"
-    | "en-it"
-    | "it-en"
-    | "en-zh"
-    | "zh-en"
-    | "en-jp"
-    | "jp-en"
-    | "en-ko"
-    | "ko-en"
-    | "en-ar"
-    | "ar-en"
-    | "en-hi"
-    | "hi-en"
-    | null;
+export type LessonDirection = string | null;
 
 /** Function / topic tags for review and curriculum filtering. */
 export type LessonTag =
@@ -272,36 +259,86 @@ export type LessonPackManifest = {
 };
 
 export const LESSON_PACKS = MANIFEST_JSON.packs as LessonPackManifest[];
-export const SUPPORTED_DIRECTIONS = MANIFEST_JSON.supportedDirections as Exclude<
-    LessonDirection,
-    null
->[];
+/** All native→learning pairs. JSON on disk is a subset; the rest are synthesized. */
+export const SUPPORTED_DIRECTIONS = ALL_DIRECTIONS;
+
+/** Directions that have a dedicated JSON pack on disk. */
+export const PACKED_DIRECTIONS = MANIFEST_JSON.supportedDirections as string[];
+
+const PACK_LOADERS: Record<string, () => Promise<{ default: unknown }>> = {
+    "en-fr": () => import("./lessons/en-fr.json") as Promise<{ default: unknown }>,
+    "en-es": () => import("./lessons/en-es.json") as Promise<{ default: unknown }>,
+    "en-ht": () => import("./lessons/en-ht.json") as Promise<{ default: unknown }>,
+    "en-pt": () => import("./lessons/en-pt.json") as Promise<{ default: unknown }>,
+    "en-de": () => import("./lessons/en-de.json") as Promise<{ default: unknown }>,
+    "en-it": () => import("./lessons/en-it.json") as Promise<{ default: unknown }>,
+    "en-zh": () => import("./lessons/en-zh.json") as Promise<{ default: unknown }>,
+    "en-jp": () => import("./lessons/en-jp.json") as Promise<{ default: unknown }>,
+    "en-ko": () => import("./lessons/en-ko.json") as Promise<{ default: unknown }>,
+    "en-ar": () => import("./lessons/en-ar.json") as Promise<{ default: unknown }>,
+    "en-hi": () => import("./lessons/en-hi.json") as Promise<{ default: unknown }>,
+    "fr-en": () => import("./lessons/fr-en.json") as Promise<{ default: unknown }>,
+};
+
+async function loadPacked(direction: string): Promise<Lesson[] | null> {
+    const loader = PACK_LOADERS[direction];
+    if (!loader) return null;
+    try {
+        const mod = await loader();
+        return (mod.default as Lesson[]).map((l) => ({ ...l, direction }) as Lesson);
+    } catch {
+        return null;
+    }
+}
+
+/**
+ * Resolve lessons for any native→learning pair.
+ * 1. Dedicated JSON pack if present
+ * 2. en→target pack, with English glosses swapped for the native language
+ * 3. Reverse of en→native when the learner is studying English
+ */
+export async function resolveLessons(direction: LessonDirection): Promise<Lesson[]> {
+    if (!direction || !isDirectionCode(direction)) return [];
+
+    const packed = await loadPacked(direction);
+    if (packed) return packed;
+
+    const parts = splitDirection(direction);
+    if (!parts) return [];
+    const { src, tgt } = parts;
+
+    if (tgt === "en") {
+        const forward = await loadPacked(`en-${src}`);
+        return forward ? reversePack(forward, direction) : [];
+    }
+
+    const targetPack = await loadPacked(`en-${tgt}`);
+    if (!targetPack) return [];
+    if (src === "en") return targetPack;
+
+    const nativePack = await loadPacked(`en-${src}`);
+    const glossary = nativePack ? buildEnglishGlossary(nativePack) : new Map();
+    return adaptPackToNative(targetPack, direction, glossary, languageLabel(src));
+}
 
 export async function getLessonBySlug(
     slug: string,
     direction: LessonDirection,
 ): Promise<Lesson | undefined> {
-    const path = LESSON_PACKS.find(p => p.direction === direction)?.file;
-    if (!path) return undefined;
-    const lessons = await import(`${path}`);
-    return (lessons.default as Lesson[]).find((l) => l.slug === slug || l.id === slug);
+    const lessons = await resolveLessons(direction);
+    return lessons.find((l) => l.slug === slug || l.id === slug);
 }
 
 export async function getLessonsByDirection(direction: LessonDirection): Promise<Lesson[]> {
-    const path = LESSON_PACKS.find(p => p.direction === direction)?.file;
-    if (!path) return [];
-    const lessons = await import(`${path}`);
-    return (lessons.default as Lesson[]);
+    return resolveLessons(direction);
 }
 
 export async function getLessonsByUnit(
     unitId: string,
     direction: LessonDirection,
 ): Promise<Lesson[]> {
-    const path = LESSON_PACKS.find(p => p.direction === direction)?.file;
-    if (!path) return [];
-    const lessons = await import(`${path}`);
-    return (lessons.default as Lesson[]).filter((l) => l.unitId === unitId);
+    const lessons = await resolveLessons(direction);
+    return lessons.filter((l) => l.unitId === unitId);
 }
 
 export async function getUnit(unitId: string): Promise<Unit | undefined> {
@@ -331,7 +368,8 @@ export async function getPreviousLesson(
 export function directionLabel(direction: LessonDirection): string {
     if (!direction) return "";
     const pack = LESSON_PACKS.find((p) => p.direction === direction);
-    if (pack?.label) return pack.label;
-    const [src = "", tgt = ""] = direction.split("-");
-    return `${src.toUpperCase()} → ${tgt.toUpperCase()}`;
+    if (pack?.label && isDirectionCode(direction) && direction.startsWith("en-")) {
+        return pack.label;
+    }
+    return directionLabelFromCodes(direction);
 }
