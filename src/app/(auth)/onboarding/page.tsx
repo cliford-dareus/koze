@@ -6,9 +6,11 @@ import { useSession } from "next-auth/react";
 import { Button } from "@/app/_components/ui/button";
 import { Input } from "@/app/_components/ui/input";
 import { LANGUAGES } from "@/lib/languages";
-import { syncProgressFromCloud } from "@/lib/progress";
+import { loadProgress, saveProgress, syncProgressFromCloud } from "@/lib/progress";
 import { saveLearningPrefs } from "@/lib/learning-prefs";
 import CairnMascot from "@/app/_components/cairn-mascot";
+import LessonSetupScreen from "@/app/_components/lesson-setup-screen";
+import { directionForLearningLanguage, learningTrackLabel } from "@/lib/learning-prefs";
 
 const GOALS = [
     { id: "travel", label: "Travel" },
@@ -33,6 +35,7 @@ export default function OnboardingPage() {
     const [dailyMinutes, setDailyMinutes] = useState(10);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [settingUp, setSettingUp] = useState(false);
 
     const title = useMemo(() => {
         if (step === 0) return "What should we call you?";
@@ -42,20 +45,24 @@ export default function OnboardingPage() {
     }, [step]);
 
     const lessonHint = useMemo(() => {
-        if (learningLanguage === "en") {
-            return "Lessons will use French → English (you’re learning English).";
-        }
-        if (learningLanguage === "fr") {
-            return "Lessons will use English → French (you’re learning French).";
-        }
-        return "Structured lessons currently focus on English ↔ French; other languages still work in Translate.";
-    }, [learningLanguage]);
+        const direction = directionForLearningLanguage(learningLanguage, nativeLanguage);
+        if (!direction) return "Choose two different languages to build your path.";
+        return learningTrackLabel(direction);
+    }, [learningLanguage, nativeLanguage]);
 
     const finish = async () => {
         setLoading(true);
         setError("");
         try {
             saveLearningPrefs({ learningLanguage, nativeLanguage });
+            const direction = directionForLearningLanguage(learningLanguage, nativeLanguage);
+            const local = loadProgress();
+            saveProgress({
+                ...local,
+                nativeLanguage,
+                learningLanguage,
+                lessonDirection: direction,
+            });
 
             const res = await fetch("/api/onboarding", {
                 method: "POST",
@@ -99,11 +106,28 @@ export default function OnboardingPage() {
                 return;
             }
             setError("");
+            if (step === 1) {
+                setSettingUp(true);
+                return;
+            }
             setStep((s) => s + 1);
             return;
         }
         void finish();
     };
+
+    if (settingUp) {
+        return (
+            <LessonSetupScreen
+                nativeLanguage={nativeLanguage}
+                learningLanguage={learningLanguage}
+                onDone={() => {
+                    setSettingUp(false);
+                    setStep(2);
+                }}
+            />
+        );
+    }
 
     return (
         <div className="mx-auto w-full max-w-md">

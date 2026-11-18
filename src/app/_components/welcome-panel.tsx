@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from "react";
 import { ProgressState, saveProgress } from "@/lib/progress";
 import { applyLanguageTheme } from "@/lib/language-theme";
 import CairnMascot from "@/app/_components/cairn-mascot";
+import LessonSetupScreen from "@/app/_components/lesson-setup-screen";
 
 export function WelcomePanel({ progress }: { progress: ProgressState }) {
     const [isNativeLanguage, setIsNativeLanguage] = useState(progress.nativeLanguage);
@@ -18,6 +19,7 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
     const [nativeDropdownOpen, setNativeDropdownOpen] = useState(false);
     const [learningDropdownOpen, setLearningDropdownOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
+    const [settingUp, setSettingUp] = useState(false);
 
     const nativeRef = useRef<HTMLDivElement>(null);
     const learningRef = useRef<HTMLDivElement>(null);
@@ -84,6 +86,17 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
         <Drawer open={!isNativeLanguage}>
             <DrawerContent className="min-h-[100%]">
                 <div className="relative flex min-h-screen flex-col items-center justify-between bg-background px-4 py-6 text-foreground selection:bg-primary/20">
+                    {settingUp ? (
+                        <LessonSetupScreen
+                            nativeLanguage={nativeLanguage || "en"}
+                            learningLanguage={learningLanguage || "fr"}
+                            onDone={() => {
+                                persist();
+                                setSettingUp(false);
+                            }}
+                        />
+                    ) : (
+                    <>
                     <div className="lang-wash pointer-events-none absolute inset-0 opacity-80" aria-hidden />
 
                     <div className="relative mx-auto flex w-full max-w-[430px] flex-col">
@@ -330,7 +343,8 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                                 type="button"
                                 onClick={() => {
                                     sound.playPebbleTap(progress.soundEnabled);
-                                    persist();
+                                    if (!nativeLanguage || !learningLanguage || nativeLanguage === learningLanguage) return;
+                                    setSettingUp(true);
                                 }}
                                 className="flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-xs transition-all hover:bg-primary/90 active:scale-[0.99]"
                             >
@@ -343,6 +357,8 @@ export function WelcomePanel({ progress }: { progress: ProgressState }) {
                     <div className="relative pb-2 pt-8 text-center text-[11px] text-muted-foreground">
                         A calm language learning space designed for peace and presence.
                     </div>
+                    </>
+                    )}
                 </div>
             </DrawerContent>
         </Drawer>
