@@ -1,19 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import { z } from "zod";
 import { connectDB } from "@/lib/db";
 import { User } from "@/models/User";
-
-const registerSchema = z.object({
-  name: z.string().trim().min(1).max(80).optional(),
-  email: z.string().email(),
-  password: z.string().min(6).max(128),
-});
+import { parseRegisterInput } from "@/lib/auth-validation";
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const parsed = registerSchema.safeParse(body);
+    const parsed = parseRegisterInput(body);
     if (!parsed.success) {
       return NextResponse.json(
         { success: false, error: "Invalid name, email, or password (min 6 characters)." },
@@ -21,7 +15,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const email = parsed.data.email.toLowerCase();
+    const email = parsed.data.email;
     await connectDB();
 
     const existing = await User.findOne({ email });

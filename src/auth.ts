@@ -2,14 +2,9 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import bcrypt from "bcryptjs";
-import { z } from "zod";
 import { connectDB } from "@/lib/db";
 import { User } from "@/models/User";
-
-const credentialsSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
-});
+import { parseCredentials } from "@/lib/auth-validation";
 
 const providers = [
   Credentials({
@@ -19,11 +14,11 @@ const providers = [
       password: { label: "Password", type: "password" },
     },
     async authorize(raw) {
-      const parsed = credentialsSchema.safeParse(raw);
+      const parsed = parseCredentials(raw);
       if (!parsed.success) return null;
 
       await connectDB();
-      const user = await User.findOne({ email: parsed.data.email.toLowerCase() }).select(
+      const user = await User.findOne({ email: parsed.data.email }).select(
         "+passwordHash name email image onboarding",
       );
 
@@ -69,60 +64,31 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (!existing) {
         await User.create({
           email: user.email.toLowerCase(),
-          name: user.name,
+          name: user.name || user.email.split("@")[0],
           image: user.image,
-          emailVerified: new Date(),
           onboarding: { completed: false },
+          progress: {},
         });
       }
       return true;
     },
-    async jwt({ token, user, trigger, session }) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.onboardingCompleted = user.onboardingCompleted ?? false;
+        token.onboardingCompleted = user.onboardingCompleted;
         token.learningLanguage = user.learningLanguage;
         token.nativeLanguage = user.nativeLanguage;
       }
-
-      // Refresh profile flags from DB when needed
-      if (token.email && (trigger === "update" || token.onboardingCompleted === undefined)) {
-        try {
-          await connectDB();
-          const dbUser = await User.findOne({ email: String(token.email).toLowerCase() });
-          if (dbUser) {
-            token.id = String(dbUser._id);
-            token.onboardingCompleted = Boolean(dbUser.onboarding?.completed);
-            token.learningLanguage = dbUser.onboarding?.learningLanguage;
-            token.nativeLanguage = dbUser.onboarding?.nativeLanguage;
-            token.name = dbUser.name ?? dbUser.onboarding?.displayName ?? token.name;
-          }
-        } catch {
-          // keep existing token on transient DB errors
-        }
-      }
-
-      if (trigger === "update" && session) {
-        if (typeof session.onboardingCompleted === "boolean") {
-          token.onboardingCompleted = session.onboardingCompleted;
-        }
-        if (session.learningLanguage) token.learningLanguage = session.learningLanguage;
-        if (session.nativeLanguage) token.nativeLanguage = session.nativeLanguage;
-        if (session.name) token.name = session.name;
-      }
-
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        session.user.id = token.id ?? "";
+        session.user.id = token.id as string;
         session.user.onboardingCompleted = Boolean(token.onboardingCompleted);
-        session.user.learningLanguage = token.learningLanguage;
-        session.user.nativeLanguage = token.nativeLanguage;
+        session.user.learningLanguage = token.learningLanguage as string | undefined;
+        session.user.nativeLanguage = token.nativeLanguage as string | undefined;
       }
       return session;
     },
   },
-  trustHost: true,
-  secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
 });
