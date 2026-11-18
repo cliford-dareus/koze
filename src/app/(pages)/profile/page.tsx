@@ -27,7 +27,7 @@ import {
     type ProgressState,
 } from "@/lib/progress";
 import { LANGUAGES } from "@/lib/languages";
-import { learningTrackLabel } from "@/lib/learning-prefs";
+import { directionForLearningLanguage, learningTrackLabel } from "@/lib/learning-prefs";
 import { Button } from "@/app/_components/ui/button";
 import ThemeToggle from "@/app/_components/theme-toggle";
 import BadgeShelf from "@/app/_components/badge-shelf";
@@ -62,7 +62,12 @@ export default function ProfilePage() {
         LANGUAGES[0];
     const nativeLang = LANGUAGES.find((l) => l.value === progress.nativeLanguage);
 
-    const direction = progress.lessonDirection || "en-fr";
+    const direction =
+        progress.lessonDirection ||
+        directionForLearningLanguage(
+            progress.learningLanguage || "fr",
+            progress.nativeLanguage || "en",
+        );
     const lessonsDone =
         progress.lessonsCompleted?.get?.(direction)?.length ??
         progress.lessonsCompletedCount ??

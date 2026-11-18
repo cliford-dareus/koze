@@ -1,4 +1,6 @@
 import type { LessonDirection } from "@/data/lessons";
+import { SUPPORTED_DIRECTIONS } from "@/data/lessons";
+import { languageLabel } from "@/lib/languages";
 
 export const LEARNING_PREFS_KEY = "koze-learning-prefs-v1";
 
@@ -42,22 +44,27 @@ export function saveLearningPrefs(prefs: LearningPrefs) {
 }
 
 /**
- * Map “I am learning X” → which lesson direction to prioritize.
- * - Learning English → French → English content (fr-en)
- * - Learning French → English → French content (en-fr)
- * - Other targets currently fall back to en-fr until more tracks exist
+ * Map native + learning language to a supported lesson direction.
+ * Returns null when no pack exists for that pair (so callers can fall back).
  */
 export function directionForLearningLanguage(
     learningLanguage: string,
     nativeLanguage: string
 ): LessonDirection {
-    const code = (learningLanguage || "fr").toLowerCase();
-    if (code) return `${nativeLanguage}-${code}` as LessonDirection;
-    return "en-fr";
+    const native = (nativeLanguage || "en").toLowerCase();
+    const learning = (learningLanguage || "fr").toLowerCase();
+    const code = `${native}-${learning}`;
+    if ((SUPPORTED_DIRECTIONS as string[]).includes(code)) {
+        return code as LessonDirection;
+    }
+    // Prefer any supported pack that targets the learning language
+    const byTarget = SUPPORTED_DIRECTIONS.find((d) => d.endsWith(`-${learning}`));
+    if (byTarget) return byTarget;
+    return null;
 }
 
 export function learningTrackLabel(direction: LessonDirection): string {
-    return direction === "fr-en"
-        ? "Learning English (French → English)"
-        : "Learning French (English → French)";
+    if (!direction) return "No track selected";
+    const [src = "", tgt = ""] = direction.split("-");
+    return `Learning ${languageLabel(tgt)} (${languageLabel(src)} → ${languageLabel(tgt)})`;
 }

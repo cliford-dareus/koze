@@ -51,7 +51,12 @@ export default function DailyPractice({ progress }: { progress: ProgressState })
                     progress.lessonDirection ??
                     (progress.nativeLanguage && progress.learningLanguage
                         ? (`${progress.nativeLanguage}-${progress.learningLanguage}` as const)
-                        : "en-fr");
+                        : null);
+
+                if (!direction) {
+                    setPracticeQuestions([]);
+                    return;
+                }
 
                 const lessons = await getLessonsByDirection(direction as LessonDirection);
                 if (cancelled) return;

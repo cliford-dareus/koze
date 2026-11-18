@@ -163,8 +163,12 @@ function hydrateProgress(raw: unknown): ProgressState {
         if (parsed.lessonsCompleted instanceof Map) {
             lessonsCompleted = new Map(parsed.lessonsCompleted);
         } else if (Array.isArray(parsed.lessonsCompleted)) {
+            // Legacy flat array — attach to the stored direction, or the original French track
+            const fallback = isLessonDirection(parsed.lessonDirection)
+                ? parsed.lessonDirection
+                : "en-fr";
             lessonsCompleted = new Map([
-                ["en-fr", parsed.lessonsCompleted as string[]],
+                [fallback, parsed.lessonsCompleted as string[]],
             ]);
         } else if (typeof parsed.lessonsCompleted === "object") {
             lessonsCompleted = new Map(Object.entries(parsed.lessonsCompleted));

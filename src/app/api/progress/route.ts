@@ -41,8 +41,11 @@ function normalizeProgress(raw: unknown): ProgressState {
         lessonsCompleted = p.lessonsCompleted as ProgressState["lessonsCompleted"];
     } else if (p.lessonsCompleted && typeof p.lessonsCompleted === "object") {
         if (Array.isArray(p.lessonsCompleted)) {
-            // Legacy flat array — fold into default direction
-            lessonsCompleted.set("en-fr", p.lessonsCompleted as string[]);
+            // Legacy flat array — attach to stored direction, or the original French track
+            const fallback = isLessonDirection(p.lessonDirection)
+                ? p.lessonDirection
+                : "en-fr";
+            lessonsCompleted.set(fallback, p.lessonsCompleted as string[]);
         } else {
             lessonsCompleted = new Map(
                 Object.entries(p.lessonsCompleted as Record<string, string[]>),

@@ -329,5 +329,9 @@ export async function getPreviousLesson(
 }
 
 export function directionLabel(direction: LessonDirection): string {
-    return direction === "en-fr" ? "EN → FR" : "FR → EN";
+    if (!direction) return "";
+    const pack = LESSON_PACKS.find((p) => p.direction === direction);
+    if (pack?.label) return pack.label;
+    const [src = "", tgt = ""] = direction.split("-");
+    return `${src.toUpperCase()} → ${tgt.toUpperCase()}`;
 }

@@ -165,14 +165,18 @@ export function isScenarioUnlocked(
     if (!required?.length) return true;
 
     const completed =
-        progress.lessonsCompleted?.get?.(direction!) ??
-        progress.lessonsCompleted?.get?.("en-fr") ??
-        progress.lessonsCompleted?.get?.("fr-en") ??
-        [];
+        (direction && progress.lessonsCompleted?.get?.(direction)) || [];
 
     const set = new Set(completed);
     for (const id of required) {
         if (set.has(id)) return true;
+    }
+
+    // Fall back: any direction may have completed the unlock lesson
+    if (progress.lessonsCompleted) {
+        for (const list of progress.lessonsCompleted.values()) {
+            if (required.some((id) => list.includes(id))) return true;
+        }
     }
     return false;
 }

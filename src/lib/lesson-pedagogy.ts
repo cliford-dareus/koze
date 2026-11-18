@@ -7,6 +7,7 @@ import {
     type LessonStep,
     type LessonTag,
 } from "@/data/lessons";
+import { languageLabel } from "@/lib/languages";
 
 /** Target share of check steps that should be spaced review (20–30%). */
 export const REVIEW_CHECK_RATIO = 0.25;
@@ -141,14 +142,13 @@ export function buildSpeakStep(lesson: Lesson): SpeakStep | null {
     if (!first?.target) return null;
 
     const tags = resolveLessonTags(lesson);
-    const learningFr = lesson.direction === "en-fr";
+    const [, tgt = ""] = (lesson.direction || "").split("-");
+    const targetName = languageLabel(tgt || "the target language");
 
     return {
         type: "speak",
-        title: learningFr ? "Say it aloud" : "Say the English",
-        prompt: learningFr
-            ? "Read the French line out loud. Use the mic visualizer if you like."
-            : "Say this line in English out loud.",
+        title: `Say it in ${targetName}`,
+        prompt: `Read the ${targetName} line out loud. Use the mic visualizer if you like.`,
         targetLine: first.target,
         hint: first.source,
         tags,
