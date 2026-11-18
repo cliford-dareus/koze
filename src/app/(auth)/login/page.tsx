@@ -45,76 +45,119 @@ function LoginForm() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-md">
-      <div className="mb-4 flex justify-center">
-        <CairnMascot className="h-20 w-auto" mood="idle" label="Cairn welcomes you back" />
+    <div className="relative mx-auto w-full max-w-md pb-10">
+      <div
+        className="lang-wash pointer-events-none absolute inset-0 opacity-25"
+        aria-hidden
+      />
+
+      <div className="relative mb-5 flex justify-center">
+        <CairnMascot
+          className="h-20 w-auto"
+          mood="idle"
+          label="Cairn welcomes you back"
+        />
       </div>
-      <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-        Welcome back
-      </p>
-      <h1 className="mt-2 font-display text-3xl font-medium">Sign in to Koze</h1>
-      <p className="mt-2 text-sm text-muted-foreground">
-        Your progress syncs across devices when you are signed in. You can still
-        practice as a guest from the home screen.
-      </p>
 
-      <form onSubmit={onSubmit} className="mt-8 space-y-4">
-        <div>
-          <label className="mb-1.5 block text-sm font-medium" htmlFor="email">
-            Email
-          </label>
-          <Input
-            id="email"
-            type="email"
-            autoComplete="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
-          />
+      <header className="relative text-center">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+          Studio · Welcome back
+        </p>
+        <h1 className="mt-1.5 font-serif text-3xl font-semibold tracking-tight text-foreground">
+          Sign in to Komorebi
+        </h1>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          Your progress syncs across devices when you are signed in. You can still
+          practice as a guest from the home screen.
+        </p>
+      </header>
+
+      <form
+        onSubmit={onSubmit}
+        className="relative mt-8 space-y-4 overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-soft sm:p-6"
+      >
+        <div
+          className="lang-wash pointer-events-none absolute inset-0 opacity-20"
+          aria-hidden
+        />
+        <div className="relative space-y-4">
+          <div>
+            <label
+              className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-muted-foreground"
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <Input
+              id="email"
+              type="email"
+              autoComplete="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@example.com"
+              className="rounded-xl"
+            />
+          </div>
+          <div>
+            <label
+              className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-muted-foreground"
+              htmlFor="password"
+            >
+              Password
+            </label>
+            <Input
+              id="password"
+              type="password"
+              autoComplete="current-password"
+              required
+              minLength={6}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              className="rounded-xl"
+            />
+          </div>
+
+          {error && (
+            <p className="text-sm text-destructive" role="alert">
+              {error}
+            </p>
+          )}
+
+          <Button
+            type="submit"
+            className="w-full rounded-full"
+            size="lg"
+            disabled={loading}
+          >
+            {loading ? "Signing in…" : "Sign in"}
+          </Button>
         </div>
-        <div>
-          <label className="mb-1.5 block text-sm font-medium" htmlFor="password">
-            Password
-          </label>
-          <Input
-            id="password"
-            type="password"
-            autoComplete="current-password"
-            required
-            minLength={6}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="••••••••"
-          />
-        </div>
-
-        {error && <p className="text-sm text-destructive">{error}</p>}
-
-        <Button type="submit" className="w-full" size="lg" disabled={loading}>
-          {loading ? "Signing in…" : "Sign in"}
-        </Button>
       </form>
 
       {process.env.NEXT_PUBLIC_GOOGLE_AUTH === "true" && (
         <Button
           type="button"
           variant="outline"
-          className="mt-3 w-full"
+          className="relative mt-3 w-full rounded-full"
           onClick={() => signIn("google", { callbackUrl })}
         >
           Continue with Google
         </Button>
       )}
 
-      <p className="mt-6 text-center text-sm text-muted-foreground">
+      <p className="relative mt-6 text-center text-sm text-muted-foreground">
         New here?{" "}
-        <Link href="/register" className="font-medium text-primary">
+        <Link href="/register" className="font-medium text-primary hover:underline">
           Create an account
         </Link>
       </p>
-      <p className="mt-2 text-center text-sm">
-        <Link href="/" className="text-muted-foreground underline-offset-2 hover:underline">
+      <p className="relative mt-2 text-center text-sm">
+        <Link
+          href="/"
+          className="text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+        >
           Continue as guest
         </Link>
       </p>
@@ -126,7 +169,14 @@ export default function LoginPage() {
   return (
     <Suspense
       fallback={
-        <p className="text-sm text-muted-foreground">Loading sign in…</p>
+        <div className="flex flex-col items-center gap-3 py-10">
+          <CairnMascot
+            className="h-16 w-auto"
+            mood="thinking"
+            label="Cairn is preparing sign in"
+          />
+          <p className="text-sm text-muted-foreground">Loading sign in…</p>
+        </div>
       }
     >
       <LoginForm />
