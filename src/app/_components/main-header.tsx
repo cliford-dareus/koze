@@ -73,13 +73,13 @@ export default function MainHeader({
                         className="flex cursor-pointer select-none items-center gap-2.5"
                         onClick={() => sound.playPebbleTap(progress.soundEnabled)}
                     >
-                        <div className="flex h-9 w-9 items-center justify-center rounded-xl text-primary shadow-xs">
+                        <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl shadow-xs">
                             <Image
                                 src={KOZE_LOGO}
-                                width={20}
-                                height={20}
+                                width={36}
+                                height={36}
                                 alt="Koze"
-                                className="size-7"
+                                className="size-9 object-cover"
                             />
                         </div>
                         <div className="hidden leading-tight sm:block">
